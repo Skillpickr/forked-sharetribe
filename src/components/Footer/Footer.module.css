@@ -118,6 +118,7 @@
 }
 
 .logo {
+  height: 50px;
   object-fit: contain;
   object-position: left center;
   width: 100%;
