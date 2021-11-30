@@ -51,7 +51,7 @@ const AboutPage = () => {
               <p>
                 Whether it is the alignment of asanas or being able to set the focus of the class,
                 we all have our own struggles and goals. Some of these cannot be addressed in a
-                regular class of twenty yogis. Working together with the experienced yoga teachers
+                regular class of twenty skillrs. Working together with the experienced Skillrs
                 from Skillpickr, you can together create just the right class for you.
               </p>
 
