@@ -38,11 +38,11 @@ const filterConfig = [
     },
   },
   {
-    id: 'yogaStyles',
-    label: 'yogaStyles',
+    id: 'skills',
+    label: 'skills',
     type: 'SelectMultipleFilter',
     group: 'secondary',
-    queryParamName: 'pub_yogaStyles',
+    queryParamName: 'pub_skills',
     config: {
       mode: 'has_all',
       options: [

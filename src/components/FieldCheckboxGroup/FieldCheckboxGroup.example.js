@@ -13,25 +13,25 @@ const label = <h3>Yoga styles</h3>;
 const commonProps = {
   label: label,
   options: [
-    { key: 'ashtanga', label: 'Ashtanga' },
-    { key: 'hatha', label: 'Hatha' },
-    { key: 'kundalini', label: 'Kundalini' },
-    { key: 'restorative', label: 'Restorative' },
-    { key: 'vinyasa', label: 'Vinyasa' },
-    { key: 'yin', label: 'yin' },
+    { key: 'influencers', label: 'Influencers' },
+    { key: 'photographer', label: 'Photographer' },
+    { key: 'keynote-speaker', label: 'Keynote Speaker' },
+    { key: 'teacher', label: 'Teacher' },
+    { key: 'animator', label: 'Animator' },
+    { key: 'designer', label: 'Designer' },
   ],
   twoColumns: true,
 };
 
 const optionalProps = {
-  name: 'yogaStyles-optional',
-  id: 'yogaStyles-optional',
+  name: 'skills-optional',
+  id: 'skills-optional',
   ...commonProps,
 };
 
 const requiredProps = {
-  name: 'yogaStyles-required',
-  id: `${formNameRequired}.yogaStyles-required`,
+  name: 'skills-required',
+  id: `${formNameRequired}.skills-required`,
   ...commonProps,
   validate: requiredFieldArrayCheckbox('this is required'),
 };

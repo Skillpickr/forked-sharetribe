@@ -92,11 +92,11 @@ export const filters = [
     config: {},
   },
   {
-    id: 'yogaStyles',
-    label: 'Yoga styles',
+    id: 'skills',
+    label: 'Skills',
     type: 'SelectMultipleFilter',
     group: 'secondary',
-    queryParamNames: ['pub_yogaStyles'],
+    queryParamNames: ['pub_skills'],
     config: {
       // Optional modes: 'has_all', 'has_any'
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
@@ -107,12 +107,12 @@ export const filters = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
-        { key: 'ashtanga', label: 'Ashtanga' },
-        { key: 'hatha', label: 'Hatha' },
-        { key: 'kundalini', label: 'Kundalini' },
-        { key: 'restorative', label: 'Restorative' },
-        { key: 'vinyasa', label: 'Vinyasa' },
-        { key: 'yin', label: 'Yin' },
+        { key: 'influencers', label: 'Influencers' },
+        { key: 'photographer', label: 'Photographer' },
+        { key: 'keynote-speaker', label: 'Keynote Speaker' },
+        { key: 'teacher', label: 'Teacher' },
+        { key: 'animator', label: 'Animator' },
+        { key: 'designer', label: 'Designer' },
       ],
     },
   },
@@ -129,8 +129,8 @@ export const filters = [
       // to make filter customizations a bit easier.
       options: [
         { key: 'none', label: 'None', hideFromFilters: true, hideFromListingInfo: true },
-        { key: '200h', label: 'Registered yoga teacher 200h' },
-        { key: '500h', label: 'Registered yoga teacher 500h' },
+        { key: 'certified', label: 'Certificate in the proffesion' },
+        { key: 'in-progress', label: 'In progress of getting a certificate for the proffesion' },
       ],
     },
   },
