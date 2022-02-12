@@ -135,7 +135,7 @@ const Footer = props => {
                   >
                     <FormattedMessage id="Footer.searchOdense" />
                   </NamedLink>
-                </li>              
+                </li>
               </ul>
             </div>
             <div className={css.searchesExtra}>
@@ -152,7 +152,6 @@ const Footer = props => {
                     <FormattedMessage id="Footer.searchAarhus" />
                   </NamedLink>
                 </li>
-                
               </ul>
             </div>
             <div className={css.extraLinks}>

@@ -58,13 +58,13 @@ const SectionLocations = props => {
         {locationLink(
           'Aarhus',
           aarhusImage,
-          '?address=Odense%2C%20RegionSouthern%20Denmark%2C%20Denmark&bounds=55.482592%2C10.576854%2C55.288122%2C10.221037',
+          '?address=Odense%2C%20RegionSouthern%20Denmark%2C%20Denmark&bounds=55.482592%2C10.576854%2C55.288122%2C10.221037'
         )}
         {locationLink(
           'Odense',
           odenseImage,
-          '?address=Aarhus%2C%20Central%20Denmark%20Region%2C%20Denmark&bounds=56.240905%2C10.255086%2C56.117521%2C10.114294',
-          )}
+          '?address=Aarhus%2C%20Central%20Denmark%20Region%2C%20Denmark&bounds=56.240905%2C10.255086%2C56.117521%2C10.114294'
+        )}
       </div>
     </div>
   );
