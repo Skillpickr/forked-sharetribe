@@ -28,16 +28,6 @@ const noop = () => null;
 
 const filterConfig = [
   {
-    id: 'certificate',
-    label: 'Certificate',
-    type: 'SelectSingleFilter',
-    group: 'secondary',
-    queryParamName: 'pub_certificate',
-    config: {
-      options: [{ key: 'cat1', label: 'Cat 1' }, { key: 'cat2', label: 'Cat 2' }],
-    },
-  },
-  {
     id: 'skills',
     label: 'skills',
     type: 'SelectMultipleFilter',

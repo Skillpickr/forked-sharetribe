@@ -116,24 +116,6 @@ export const filters = [
       ],
     },
   },
-  {
-    id: 'certificate',
-    label: 'Certificate',
-    type: 'SelectSingleFilter',
-    group: 'secondary',
-    queryParamNames: ['pub_certificate'],
-    config: {
-      // "key" is the option you see in Flex Console.
-      // "label" is set here for the UI only.
-      // Note: label is not added through the translation files
-      // to make filter customizations a bit easier.
-      options: [
-        { key: 'none', label: 'None', hideFromFilters: true, hideFromListingInfo: true },
-        { key: 'certified', label: 'Certificate in the proffesion' },
-        { key: 'in-progress', label: 'In progress of getting a certificate for the proffesion' },
-      ],
-    },
-  },
 ];
 
 export const sortConfig = {
