@@ -13,7 +13,7 @@ const label = <h3>Yoga styles</h3>;
 const commonProps = {
   label: label,
   options: [
-    { key: 'influencers', label: 'Influencers' },
+    { key: 'influencer', label: 'Influencer' },
     { key: 'photographer', label: 'Photographer' },
     { key: 'keynote-speaker', label: 'Keynote Speaker' },
     { key: 'teacher', label: 'Teacher' },

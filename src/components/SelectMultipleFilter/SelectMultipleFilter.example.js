@@ -6,7 +6,7 @@ import { stringify, parse } from '../../util/urlHelpers';
 const URL_PARAM = 'pub_skills';
 
 const options = [
-  { key: 'influencers', label: 'Influencers' },
+  { key: 'influencer', label: 'Influencer' },
   { key: 'photographer', label: 'Photographer' },
   { key: 'keynote-speaker', label: 'Keynote Speaker' },
   { key: 'teacher', label: 'Teacher' },
