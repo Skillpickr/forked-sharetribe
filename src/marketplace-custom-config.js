@@ -59,6 +59,8 @@ export const filters = [
         { key: '0', label: 'Any length' },
         { key: '60', label: '1 hour', shortLabel: '1h' },
         { key: '120', label: '2 hours', shortLabel: '2h' },
+        { key: '240', label: '4 hours', shortLabel: '4h' },
+        { key: '480', label: '8 hours', shortLabel: '8h' },
       ],
     },
   },
@@ -107,7 +109,7 @@ export const filters = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
-        { key: 'influencers', label: 'Influencers' },
+        { key: 'influencer', label: 'Influencer' },
         { key: 'photographer', label: 'Photographer' },
         { key: 'keynote-speaker', label: 'Keynote Speaker' },
         { key: 'teacher', label: 'Teacher' },
