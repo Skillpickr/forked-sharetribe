@@ -94,11 +94,28 @@ export const filters = [
     config: {},
   },
   {
-    id: 'skills',
-    label: 'Skills',
+    id: 'skill',
+    label: 'Skill',
+    type: 'SelectSingleFilter',
+    group: 'primary',
+    queryParamNames: ['pub_skill'],
+    config: {
+      // Schema type is enum for SelectSingleFilter
+      // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
+      searchMode: 'enum',
+      options: [
+        { key: 'dj', label: 'DJ' },
+        { key: 'photographer', label: 'Photographer' },
+        { key: 'video-grapher', label: 'Video Grapher' },
+      ],
+    },
+  },
+  {
+    id: 'photographerType',
+    label: 'Photographer',
     type: 'SelectMultipleFilter',
     group: 'secondary',
-    queryParamNames: ['pub_skills'],
+    queryParamNames: ['pub_photographerType'],
     config: {
       // Optional modes: 'has_all', 'has_any'
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
@@ -109,12 +126,9 @@ export const filters = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
-        { key: 'influencer', label: 'Influencer' },
-        { key: 'photographer', label: 'Photographer' },
-        { key: 'keynote-speaker', label: 'Keynote Speaker' },
-        { key: 'teacher', label: 'Teacher' },
-        { key: 'animator', label: 'Animator' },
-        { key: 'designer', label: 'Designer' },
+        { key: 'animal', label: 'Animal Photographer' },
+        { key: 'boudoir', label: 'Boudoir Photographer' },
+        { key: 'fashion', label: 'Fashion Photographer' },
       ],
     },
   },

@@ -10,7 +10,7 @@ import { ListingLink } from '../../components';
 
 import css from './EditListingFeaturesPanel.module.css';
 
-const FEATURES_NAME = 'skills';
+const FEATURES_NAME = 'skill';
 
 const EditListingFeaturesPanel = props => {
   const {
@@ -30,6 +30,9 @@ const EditListingFeaturesPanel = props => {
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureListing(listing);
   const { publicData } = currentListing.attributes;
+  const skill = publicData && publicData.skill;
+  const photographerType = publicData && publicData.photographerType;
+  const initialValues = { skill, photographerType };
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -47,9 +50,6 @@ const EditListingFeaturesPanel = props => {
     <FormattedMessage id="EditListingFeaturesPanel.createListingTitle" />
   );
 
-  const skills = publicData && publicData.skills;
-  const initialValues = { skills };
-
   return (
     <div className={classes}>
       <h1 className={css.title}>{panelTitle}</h1>
@@ -58,10 +58,10 @@ const EditListingFeaturesPanel = props => {
         name={FEATURES_NAME}
         initialValues={initialValues}
         onSubmit={values => {
-          const { skills = [] } = values;
+          const { skill = '', photographerType= [] } = values;
 
           const updatedValues = {
-            publicData: { skills },
+            publicData: { skill, photographerType },
           };
           onSubmit(updatedValues);
         }}

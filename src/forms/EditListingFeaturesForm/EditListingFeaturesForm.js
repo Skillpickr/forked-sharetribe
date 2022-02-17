@@ -7,7 +7,7 @@ import { FormattedMessage } from '../../util/reactIntl';
 import { findOptionsForSelectFilter } from '../../util/search';
 import { propTypes } from '../../util/types';
 import config from '../../config';
-import { Button, FieldCheckboxGroup, Form } from '../../components';
+import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '../../components';
 
 import css from './EditListingFeaturesForm.module.css';
 
@@ -49,13 +49,42 @@ const EditListingFeaturesFormComponent = props => (
         </p>
       ) : null;
 
-      const options = findOptionsForSelectFilter('skills', filterConfig);
+      const photographerKey = "photographerType"
+      const SkillOptions = findOptionsForSelectFilter('skill', filterConfig);
+      const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
+
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           {errorMessage}
           {errorMessageShowListing}
 
-          <FieldCheckboxGroup className={css.features} id={name} name={name} options={options} />
+
+      <FieldSelect
+        className={css.features}
+        name={name}
+        id={name}
+        label={'Skill'}
+      >
+        {SkillOptions.map(o => (
+          <option key={o.key} value={o.key}>
+            {o.label}
+          </option>
+        ))}
+
+      </FieldSelect>
+
+
+      {/* Photogapher */}
+      <FieldCheckboxGroup className={css.features} id={photographerKey} name={photographerKey} options={photographerOptions} label="Add you subset of skills" />
+
+      <FieldTextInput
+            id="gear"
+            name="gear"
+            className={css.features}
+            type="textarea"
+            label="Please list the gear included in the listing price*"
+            placeholder="Will expand while you write"
+          />
 
           <Button
             className={css.submitButton}

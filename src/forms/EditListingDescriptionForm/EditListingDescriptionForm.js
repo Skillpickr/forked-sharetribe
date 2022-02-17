@@ -107,6 +107,34 @@ const EditListingDescriptionFormComponent = props => (
             validate={composeValidators(required(descriptionRequiredMessage))}
           />
 
+          <FieldTextInput
+            id="experience"
+            name="experience"
+            className={css.description}
+            type="number"
+            label="Experience (years practice of skill or passion) *"
+            placeholder="How ma ny years"
+            validate={composeValidators(required(descriptionRequiredMessage))}
+          />
+          <FieldTextInput
+            id="track"
+            name="track"
+            className={css.description}
+            type="textarea"
+            label="Track record (past achievements or performances)"
+            placeholder="Will expand while you write"
+            validate={composeValidators(required(descriptionRequiredMessage))}
+          />
+          <FieldTextInput
+            id="bonus"
+            name="bonus"
+            className={css.description}
+            type="textarea"
+            label="Good to know/bonus information:*"
+            placeholder="Will expand while you write"
+            validate={composeValidators(required(descriptionRequiredMessage))}
+          />
+
           <Button
             className={css.submitButton}
             type="submit"
