@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
     "plugins": ["jest"],
     "rules": {
         "jest/no-disabled-tests": "warn",

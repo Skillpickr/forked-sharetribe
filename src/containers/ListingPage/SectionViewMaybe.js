@@ -11,6 +11,7 @@ const SectionViewMaybe = props => {
   const { options, publicData } = props;
   const selectedOption =
     publicData && publicData.view ? publicData.view : null;
+    
 
   // Don't return anything if public data doesn't contain view field
   // That's why we named this component as SectionViewMaybe

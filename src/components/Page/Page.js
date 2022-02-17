@@ -139,7 +139,6 @@ class PageComponent extends Component {
       locale: intl.locale,
     });
 
-    // eslint-disable-next-line react/no-array-index-key
     const metaTags = metaToHead.map((metaProps, i) => <meta key={i} {...metaProps} />);
 
     const facebookPage = config.siteFacebookPage;

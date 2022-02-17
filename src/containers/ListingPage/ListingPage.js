@@ -59,6 +59,7 @@ import SectionReviews from './SectionReviews';
 import SectionMapMaybe from './SectionMapMaybe';
 import css from './ListingPage.module.css';
 import SectionViewMaybe from './SectionViewMaybe';
+import SectionBonusMaybe from './SectionBonusMaybe';
 
 
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
@@ -373,11 +374,6 @@ export class ListingPageComponent extends Component {
       { id: 'ListingPage.schemaTitle' },
       { title, price: formattedPrice, siteTitle }
     );
-    const viewOptions = findOptionsForSelectFilter('view', filterConfig);
-const amenityOptions = findOptionsForSelectFilter(
-  'amenities',
-  filterConfig
-);
 
     const hostLink = (
       <NamedLink
@@ -391,7 +387,8 @@ const amenityOptions = findOptionsForSelectFilter(
     );
 
     const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
-
+  
+    const subSkillOptions = findOptionsForSelectFilter('photographerType', filterConfig);
     return (
       <Page
         title={schemaTitle}
@@ -439,10 +436,10 @@ const amenityOptions = findOptionsForSelectFilter(
                     showContactUser={showContactUser}
                     onContactUser={this.onContactUser}
                   />
-
+                  <SectionFeaturesMaybe options={skillOptions} subOptions={subSkillOptions} publicData={publicData} />
+                  <SectionBonusMaybe publicData={publicData}></SectionBonusMaybe>
                   <SectionDescriptionMaybe description={description} />
-                  <SectionFeaturesMaybe options={skillOptions} publicData={publicData} />
-                  {/* <SectionViewMaybe options={viewOptions} publicData={publicData} /> */}
+                  {/* <SectionViewMaybe o ptions={viewOptions} publicData={publicData} /> */}
                   <SectionMapMaybe
                     geolocation={geolocation}
                     publicData={publicData}
