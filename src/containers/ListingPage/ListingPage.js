@@ -59,6 +59,7 @@ import SectionReviews from './SectionReviews';
 import SectionMapMaybe from './SectionMapMaybe';
 import css from './ListingPage.module.css';
 import SectionBonusMaybe from './SectionBonusMaybe';
+import SectionSpecificationsMaybe from './SectionSpecificationsMaybe';
 
 
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
@@ -386,8 +387,9 @@ export class ListingPageComponent extends Component {
     );
 
     const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
-  
     const subSkillOptions = findOptionsForSelectFilter('photographerType', filterConfig);
+    const soundLightExperienceOptions = findOptionsForSelectFilter('soundLightExp', filterConfig);
+    const ownStudioOptions = findOptionsForSelectFilter('ownStudio', filterConfig);
     return (
       <Page
         title={schemaTitle}
@@ -434,10 +436,14 @@ export class ListingPageComponent extends Component {
                     hostLink={hostLink}
                     showContactUser={showContactUser}
                     onContactUser={this.onContactUser}
+                    listingSkill={publicData ? publicData.skill : null}
+                    skillOptions={skillOptions}
+
                   />
-                  <SectionFeaturesMaybe options={skillOptions} subOptions={subSkillOptions} publicData={publicData} />
-                  <SectionBonusMaybe publicData={publicData}></SectionBonusMaybe>
                   <SectionDescriptionMaybe description={description} />
+                  <SectionFeaturesMaybe options={skillOptions} subOptions={subSkillOptions} publicData={publicData} />
+                  <SectionSpecificationsMaybe soundLightExp={soundLightExperienceOptions} ownStudio={ownStudioOptions} publicData={publicData}></SectionSpecificationsMaybe>
+                  <SectionBonusMaybe publicData={publicData}></SectionBonusMaybe>
                   <SectionMapMaybe
                     geolocation={geolocation}
                     publicData={publicData}

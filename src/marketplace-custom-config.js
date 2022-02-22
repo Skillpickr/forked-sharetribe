@@ -162,8 +162,6 @@ export const filters = [
   },
   {
     id: 'ownStudio',
-    label: 'Do you have your own studio?',
-    type: 'SelectSingleFilter',
     config: {
       options: [
         { key: 'yes', label: 'Yes' },
@@ -173,8 +171,6 @@ export const filters = [
   },
   {
     id: 'soundLightExp',
-    label: 'Sound and Light Experience',
-    type: 'SelectSingleFilter',
     config: {
       options: [
         { key: 'yes', label: 'Yes' },
