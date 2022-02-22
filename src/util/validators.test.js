@@ -116,9 +116,6 @@ describe('validators', () => {
     it('should allow string that short enough', () => {
       expect(maxLength('fail', 3)('abc')).toBeUndefined();
     });
-    it('should allow string that short enough', () => {
-      expect(maxLength('fail', 3)('abc')).toBeUndefined();
-    });
     it('should nost allow string with extra whitespace', () => {
       expect(maxLength('fail', 3)('abc ')).toEqual('fail');
     });

@@ -35,9 +35,10 @@ const priceData = (price, intl) => {
   return {};
 };
 
-const getCertificateInfo = (certificateOptions, key) => {
-  return certificateOptions.find(c => c.key === key);
+const getSkillInfo = (skillOptions, key) => {
+  return skillOptions.find(c => c.key === key);
 };
+
 
 class ListingImage extends Component {
   render() {
@@ -63,11 +64,11 @@ export const ListingCardComponent = props => {
   const slug = createSlug(title);
   const firstImage =
     currentListing.images && currentListing.images.length > 0 ? currentListing.images[0] : null;
+    const skillOptions = findOptionsForSelectFilter('skill', filtersConfig);
+    const skill = publicData
+      ? getSkillInfo(skillOptions, publicData.skill)
+      : null;
 
-  const certificateOptions = findOptionsForSelectFilter('certificate', filtersConfig);
-  const certificate = publicData
-    ? getCertificateInfo(certificateOptions, publicData.certificate)
-    : null;
   const { formattedPrice, priceTitle } = priceData(price, intl);
 
   const unitType = config.bookingUnitType;
@@ -113,9 +114,9 @@ export const ListingCardComponent = props => {
               longWordClass: css.longWord,
             })}
           </div>
-          <div className={css.certificateInfo}>
-            {certificate && !certificate.hideFromListingInfo ? (
-              <span>{certificate.label}</span>
+          <div className={css.skillInfo}>
+            {skill && !skill.hideFromListingInfo ? (
+              <span>{skill.label}</span>
             ) : null}
           </div>
         </div>
