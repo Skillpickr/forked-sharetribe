@@ -120,7 +120,6 @@ export const filters = [
       // Optional modes: 'has_all', 'has_any'
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       searchMode: 'has_all',
-
       // "key" is the option you see in Flex Console.
       // "label" is set here for this web app's UI only.
       // Note: label is not added through the translation files
@@ -158,6 +157,29 @@ export const filters = [
         { key: 'astro', label: 'Astrophotographer' },
         { key: 'communication', label: 'Photographic communication' },
         { key: 'food', label: 'Food photographer' },
+      ],
+    },
+  },
+  {
+    id: 'ownStudio',
+    label: 'Do you have your own studio?',
+    type: 'SelectSingleFilter',
+    config: {
+      options: [
+        { key: 'yes', label: 'Yes' },
+        { key: 'no', label: 'No' },
+      ],
+    },
+  },
+  {
+    id: 'soundLightExp',
+    label: 'Sound and Light Experience',
+    type: 'SelectSingleFilter',
+    config: {
+      options: [
+        { key: 'yes', label: 'Yes' },
+        { key: 'no', label: 'No' },
+        { key: 'maybe', label: 'Willing to learn' },
       ],
     },
   },

@@ -58,7 +58,6 @@ import SectionFeaturesMaybe from './SectionFeaturesMaybe';
 import SectionReviews from './SectionReviews';
 import SectionMapMaybe from './SectionMapMaybe';
 import css from './ListingPage.module.css';
-import SectionViewMaybe from './SectionViewMaybe';
 import SectionBonusMaybe from './SectionBonusMaybe';
 
 
@@ -439,7 +438,6 @@ export class ListingPageComponent extends Component {
                   <SectionFeaturesMaybe options={skillOptions} subOptions={subSkillOptions} publicData={publicData} />
                   <SectionBonusMaybe publicData={publicData}></SectionBonusMaybe>
                   <SectionDescriptionMaybe description={description} />
-                  {/* <SectionViewMaybe o ptions={viewOptions} publicData={publicData} /> */}
                   <SectionMapMaybe
                     geolocation={geolocation}
                     publicData={publicData}

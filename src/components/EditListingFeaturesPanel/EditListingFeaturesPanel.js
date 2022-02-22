@@ -31,8 +31,11 @@ const EditListingFeaturesPanel = props => {
   const currentListing = ensureListing(listing);
   const { publicData } = currentListing.attributes;
   const skill = publicData && publicData.skill;
+  const gear = publicData && publicData.gear;
+  const soundLightExp = publicData && publicData.soundLightExp;
   const photographerType = publicData && publicData.photographerType;
-  const initialValues = { skill, photographerType };
+  const ownStudio = publicData && publicData.ownStudio;
+  const initialValues = { skill, photographerType, gear, soundLightExp, ownStudio };
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -58,10 +61,10 @@ const EditListingFeaturesPanel = props => {
         name={FEATURES_NAME}
         initialValues={initialValues}
         onSubmit={values => {
-          const { skill = '', photographerType= [] } = values;
+          const { skill = '', photographerType= [], gear='', soundLightExp = [], ownStudio = []} = values;
 
           const updatedValues = {
-            publicData: { skill, photographerType },
+            publicData: { skill, photographerType, gear, soundLightExp, ownStudio },
           };
           onSubmit(updatedValues);
         }}

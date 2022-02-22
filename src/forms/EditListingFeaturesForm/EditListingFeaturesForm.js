@@ -50,8 +50,12 @@ const EditListingFeaturesFormComponent = props => (
       ) : null;
 
       const photographerKey = "photographerType"
-      const SkillOptions = findOptionsForSelectFilter('skill', filterConfig);
+      const soundLightExpKey = "soundLightExp"
+      const ownStudioKey = "ownStudio"
+      const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
       const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
+      const soundLightExpOptions = findOptionsForSelectFilter(soundLightExpKey, filterConfig);
+      const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig);
 
       return (
         <Form className={classes} onSubmit={handleSubmit}>
@@ -65,18 +69,43 @@ const EditListingFeaturesFormComponent = props => (
         id={name}
         label={'Skill'}
       >
-        {SkillOptions.map(o => (
+        {skillOptions.map(o => (
           <option key={o.key} value={o.key}>
             {o.label}
           </option>
         ))}
 
       </FieldSelect>
+      {/* DJ */}  
 
+      {/* VideoGrapher */}  
 
-      {/* Photogapher */}
+      {/* Photogapher */}      
       <FieldCheckboxGroup className={css.features} id={photographerKey} name={photographerKey} options={photographerOptions} label="Add you subset of skills" />
-
+      <FieldSelect
+        className={css.features}
+        name={ownStudioKey}
+        id={ownStudioKey}
+        label={'Do you have your own studio?'}
+      >
+        {ownStudioOptions.map(o => (
+          <option key={o.key} value={o.key}>
+            {o.label}
+          </option>
+        ))}
+      </FieldSelect>
+      <FieldSelect
+        className={css.features}
+        name={soundLightExpKey}
+        id={soundLightExpKey}
+        label={'Sound & light experience'}
+      >
+        {soundLightExpOptions.map(o => (
+          <option key={o.key} value={o.key}>
+            {o.label}
+          </option>
+        ))}
+      </FieldSelect>
       <FieldTextInput
             id="gear"
             name="gear"
@@ -84,7 +113,8 @@ const EditListingFeaturesFormComponent = props => (
             type="textarea"
             label="Please list the gear included in the listing price*"
             placeholder="Will expand while you write"
-          />
+      />
+
 
           <Button
             className={css.submitButton}
