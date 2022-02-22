@@ -35,6 +35,11 @@ const priceData = (price, intl) => {
   return {};
 };
 
+const getSkillInfo = (skillOptions, key) => {
+  return skillOptions.find(c => c.key === key);
+};
+
+
 class ListingImage extends Component {
   render() {
     return <ResponsiveImage {...this.props} />;
@@ -59,6 +64,10 @@ export const ListingCardComponent = props => {
   const slug = createSlug(title);
   const firstImage =
     currentListing.images && currentListing.images.length > 0 ? currentListing.images[0] : null;
+    const skillOptions = findOptionsForSelectFilter('skill', filtersConfig);
+    const skill = publicData
+      ? getSkillInfo(skillOptions, publicData.skill)
+      : null;
 
   const { formattedPrice, priceTitle } = priceData(price, intl);
 
@@ -104,6 +113,11 @@ export const ListingCardComponent = props => {
               longWordMinLength: MIN_LENGTH_FOR_LONG_WORDS,
               longWordClass: css.longWord,
             })}
+          </div>
+          <div className={css.skillInfo}>
+            {skill && !skill.hideFromListingInfo ? (
+              <span>{skill.label}</span>
+            ) : null}
           </div>
         </div>
       </div>

@@ -55,6 +55,34 @@ const EditListingDescriptionFormComponent = props => (
         id: 'EditListingDescriptionForm.descriptionRequired',
       });
 
+      const exprienceMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.experience',
+      });
+      const experiencePlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.experiencePlaceholder',
+      });
+      const experienceRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.experienceRequired',
+      });
+
+      const trackMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.track',
+      });
+      const trackPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.trackPlaceholder',
+      });
+      const trackRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.trackRequired',
+      });
+
+      const bonusMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.bonus',
+      });
+      const bonusPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.bonusPlaceholder',
+      });
+
+
       const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {};
       const errorMessageUpdateListing = updateListingError ? (
         <p className={css.error}>
@@ -105,6 +133,33 @@ const EditListingDescriptionFormComponent = props => (
             label={descriptionMessage}
             placeholder={descriptionPlaceholderMessage}
             validate={composeValidators(required(descriptionRequiredMessage))}
+          />
+
+          <FieldTextInput
+            id="experience"
+            name="experience"
+            className={css.description}
+            type="number"
+            label={exprienceMessage}
+            placeholder={experiencePlaceholderMessage}
+            validate={composeValidators(required(experienceRequiredMessage))}
+          />
+          <FieldTextInput
+            id="track"
+            name="track"
+            className={css.description}
+            type="textarea"
+            label={trackMessage}
+            placeholder={trackPlaceholderMessage}
+            validate={composeValidators(required(trackRequiredMessage))}
+          />
+          <FieldTextInput
+            id="bonus"
+            name="bonus"
+            className={css.description}
+            type="textarea"
+            label={bonusMessage}
+            placeholder={bonusPlaceholderMessage}
           />
 
           <Button
