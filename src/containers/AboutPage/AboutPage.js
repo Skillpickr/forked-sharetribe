@@ -35,30 +35,28 @@ const AboutPage = () => {
         </LayoutWrapperTopbar>
 
         <LayoutWrapperMain className={css.staticPageWrapper}>
-          <h1 className={css.pageTitle}>Find new depths in your yoga practice</h1>
+          <h1 className={css.pageTitle}>SkillPickr - Passion led us here</h1>
           <img className={css.coverImage} src={image} alt="My first ice cream." />
 
           <div className={css.contentWrapper}>
             <div className={css.contentSide}>
-              <p>SkillPickr was listed by awesome People as an intangible cultural heritage</p>
+              <p>A global C2C gig marketplace with different categories but with one thing in common.</p>
             </div>
 
             <div className={css.contentMain}>
               <h2>
-                Each SkillPickr is an individual, and each one of us needs different care. Working together with an Pickr offers the possibility to rise our creativity to a whole new level.
+                WHY
               </h2>
 
               <p>
-                Whether it is the alignment of asanas or being able to set the focus of the class,
-                we all have our own struggles and goals. Some of these cannot be addressed in a
-                regular class of twenty skillrs. Working together with the experienced Skillrs
-                from Skillpickr, you can together create just the right class for you.
+              Simply because we love and believe in people whos attitudes and approaches to problems and challenges bear the mark of creativity - of courage, of talent, of innovative problem solving
               </p>
 
-              <h3 className={css.subtitle}>Are you a creative?</h3>
+              <h3 className={css.subtitle}>HOW</h3>
 
               <p>
-                SkillPickr offers you a platform through which you can reach thousands of yoga practitioners. Offering private yoga classes through Yogatime offers you a possibility to grow your customer base and earn some extra income on top of your regular classes.
+              By offering a large space for anyone to unleash their skills or passion and empower them to live a multi disciplinary creative life. 
+              By nurturing, inspire and encourage creative minds, help them find work with more ease and turn their skills into successful business. By making it easy for people to get in touch and book the skillset of creative minds without speed bumps.
               </p>
 
               {/* <h3 id="contact" className={css.subtitle}>
