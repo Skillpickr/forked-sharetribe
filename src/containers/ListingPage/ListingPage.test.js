@@ -28,16 +28,6 @@ const noop = () => null;
 
 const filterConfig = [
   {
-    id: 'certificate',
-    label: 'Certificate',
-    type: 'SelectSingleFilter',
-    group: 'secondary',
-    queryParamName: 'pub_certificate',
-    config: {
-      options: [{ key: 'cat1', label: 'Cat 1' }, { key: 'cat2', label: 'Cat 2' }],
-    },
-  },
-  {
     id: 'skills',
     label: 'skills',
     type: 'SelectMultipleFilter',
@@ -213,7 +203,7 @@ describe('ListingPage', () => {
       });
       const actionBar = shallow(<ActionBarMaybe isOwnListing listing={listing} editParams={{}} />);
       const formattedMessages = actionBar.find(FormattedMessage);
-      expect(formattedMessages.length).toEqual(2);
+      expect(formattedMessages.length).toHaveLength(2);
       expect(formattedMessages.at(0).props().id).toEqual('ListingPage.ownListing');
       expect(formattedMessages.at(1).props().id).toEqual('ListingPage.editListing');
     });
@@ -223,7 +213,7 @@ describe('ListingPage', () => {
       });
       const actionBar = shallow(<ActionBarMaybe isOwnListing listing={listing} editParams={{}} />);
       const formattedMessages = actionBar.find(FormattedMessage);
-      expect(formattedMessages.length).toEqual(2);
+      expect(formattedMessages.length).toHaveLength(2);
       expect(formattedMessages.at(0).props().id).toEqual('ListingPage.ownListingPendingApproval');
       expect(formattedMessages.at(1).props().id).toEqual('ListingPage.editListing');
     });
@@ -233,7 +223,7 @@ describe('ListingPage', () => {
       });
       const actionBar = shallow(<ActionBarMaybe isOwnListing listing={listing} editParams={{}} />);
       const formattedMessages = actionBar.find(FormattedMessage);
-      expect(formattedMessages.length).toEqual(2);
+      expect(formattedMessages.length).toHaveLength(2);
       expect(formattedMessages.at(0).props().id).toEqual('ListingPage.ownClosedListing');
       expect(formattedMessages.at(1).props().id).toEqual('ListingPage.editListing');
     });
@@ -245,7 +235,7 @@ describe('ListingPage', () => {
         <ActionBarMaybe isOwnListing={false} listing={listing} editParams={{}} />
       );
       const formattedMessages = actionBar.find(FormattedMessage);
-      expect(formattedMessages.length).toEqual(1);
+      expect(formattedMessages.length).toHaveLength(1);
       expect(formattedMessages.at(0).props().id).toEqual('ListingPage.closedListing');
     });
     it("is missing if listing is not closed or user's own", () => {

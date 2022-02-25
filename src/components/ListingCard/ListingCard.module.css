@@ -106,7 +106,7 @@
   }
 }
 
-.certificateInfo {
+.skillInfo {
   /* Font */
   @apply --marketplaceTinyFontStyles;
   color: var(--matterColor);
@@ -120,6 +120,7 @@
     margin-bottom: 0;
   }
 }
+
 
 .longWord {
   /* fallback option */

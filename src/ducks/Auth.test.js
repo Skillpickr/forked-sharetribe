@@ -236,8 +236,8 @@ describe('Auth duck', () => {
         },
         e => {
           expect(e.message).toEqual('Login or logout already in progress');
-          expect(sdk.login.mock.calls.length).toEqual(0);
-          expect(dispatch.mock.calls.length).toEqual(0);
+          expect(sdk.login.mock.calls.length).toHaveLength(0);
+          expect(dispatch.mock.calls.length).toHaveLength(0);
         }
       );
     });
@@ -256,8 +256,8 @@ describe('Auth duck', () => {
         },
         e => {
           expect(e.message).toEqual('Login or logout already in progress');
-          expect(sdk.login.mock.calls.length).toEqual(0);
-          expect(dispatch.mock.calls.length).toEqual(0);
+          expect(sdk.login.mock.calls.length).toHaveLength(0);
+          expect(dispatch.mock.calls.length).toHaveLength(0);
         }
       );
     });
@@ -271,7 +271,7 @@ describe('Auth duck', () => {
       const sdk = { logout: jest.fn(() => Promise.resolve({})) };
 
       return logout()(dispatch, getState, sdk).then(() => {
-        expect(sdk.logout.mock.calls.length).toEqual(1);
+        expect(sdk.logout.mock.calls.length).toHaveLength(1);
         expect(dispatch.mock.calls).toEqual([
           [logoutRequest()],
           [logoutSuccess()],
@@ -288,7 +288,7 @@ describe('Auth duck', () => {
       const sdk = { logout: jest.fn(() => Promise.reject(error)) };
 
       return logout()(dispatch, getState, sdk).then(() => {
-        expect(sdk.logout.mock.calls.length).toEqual(1);
+        expect(sdk.logout.mock.calls.length).toHaveLength(1);
         expect(dispatch.mock.calls).toEqual([
           [logoutRequest()],
           [logoutError(storableError(error))],
@@ -308,8 +308,8 @@ describe('Auth duck', () => {
         },
         e => {
           expect(e.message).toEqual('Login or logout already in progress');
-          expect(sdk.logout.mock.calls.length).toEqual(0);
-          expect(dispatch.mock.calls.length).toEqual(0);
+          expect(sdk.logout.mock.calls.length).toHaveLength(0);
+          expect(dispatch.mock.calls.length).toHaveLength(0);
         }
       );
     });
@@ -326,8 +326,8 @@ describe('Auth duck', () => {
         },
         e => {
           expect(e.message).toEqual('Login or logout already in progress');
-          expect(sdk.logout.mock.calls.length).toEqual(0);
-          expect(dispatch.mock.calls.length).toEqual(0);
+          expect(sdk.logout.mock.calls.length).toHaveLength(0);
+          expect(dispatch.mock.calls.length).toHaveLength(0);
         }
       );
     });

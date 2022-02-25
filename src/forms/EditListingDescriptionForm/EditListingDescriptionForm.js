@@ -7,7 +7,6 @@ import classNames from 'classnames';
 import { propTypes } from '../../util/types';
 import { maxLength, required, composeValidators } from '../../util/validators';
 import { Form, Button, FieldTextInput } from '../../components';
-import CustomCertificateSelectFieldMaybe from './CustomCertificateSelectFieldMaybe';
 
 import css from './EditListingDescriptionForm.module.css';
 
@@ -18,7 +17,6 @@ const EditListingDescriptionFormComponent = props => (
     {...props}
     render={formRenderProps => {
       const {
-        certificateOptions,
         className,
         disabled,
         ready,
@@ -56,6 +54,34 @@ const EditListingDescriptionFormComponent = props => (
       const descriptionRequiredMessage = intl.formatMessage({
         id: 'EditListingDescriptionForm.descriptionRequired',
       });
+
+      const exprienceMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.experience',
+      });
+      const experiencePlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.experiencePlaceholder',
+      });
+      const experienceRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.experienceRequired',
+      });
+
+      const trackMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.track',
+      });
+      const trackPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.trackPlaceholder',
+      });
+      const trackRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.trackRequired',
+      });
+
+      const bonusMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.bonus',
+      });
+      const bonusPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.bonusPlaceholder',
+      });
+
 
       const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {};
       const errorMessageUpdateListing = updateListingError ? (
@@ -109,11 +135,31 @@ const EditListingDescriptionFormComponent = props => (
             validate={composeValidators(required(descriptionRequiredMessage))}
           />
 
-          <CustomCertificateSelectFieldMaybe
-            id="certificate"
-            name="certificate"
-            certificateOptions={certificateOptions}
-            intl={intl}
+          <FieldTextInput
+            id="experience"
+            name="experience"
+            className={css.description}
+            type="number"
+            label={exprienceMessage}
+            placeholder={experiencePlaceholderMessage}
+            validate={composeValidators(required(experienceRequiredMessage))}
+          />
+          <FieldTextInput
+            id="track"
+            name="track"
+            className={css.description}
+            type="textarea"
+            label={trackMessage}
+            placeholder={trackPlaceholderMessage}
+            validate={composeValidators(required(trackRequiredMessage))}
+          />
+          <FieldTextInput
+            id="bonus"
+            name="bonus"
+            className={css.description}
+            type="textarea"
+            label={bonusMessage}
+            placeholder={bonusPlaceholderMessage}
           />
 
           <Button
@@ -147,12 +193,6 @@ EditListingDescriptionFormComponent.propTypes = {
     showListingsError: propTypes.error,
     updateListingError: propTypes.error,
   }),
-  certificateOptions: arrayOf(
-    shape({
-      key: string.isRequired,
-      label: string.isRequired,
-    })
-  ),
 };
 
 export default compose(injectIntl)(EditListingDescriptionFormComponent);

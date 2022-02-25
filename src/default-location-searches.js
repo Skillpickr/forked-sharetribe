@@ -63,30 +63,21 @@ const defaultLocations = [
     id: 'default-copenhagen',
     predictionPlace: {
       address: 'Copenhagen, Capital RegionDenmark, Denmark',
-      bounds: new LatLngBounds(
-        new LatLng(55.727852, 12.822593),
-        new LatLng(55.588413, 12.499474)
-      ),
+      bounds: new LatLngBounds(new LatLng(55.727852, 12.822593), new LatLng(55.588413, 12.499474)),
     },
   },
   {
     id: 'default-odense',
     predictionPlace: {
       address: 'Odense, RegionSouthern Denmark, Denmark',
-      bounds: new LatLngBounds(
-        new LatLng(55.482592, 10.576854),
-        new LatLng(55.288122, 10.221037)
-      ),
+      bounds: new LatLngBounds(new LatLng(55.482592, 10.576854), new LatLng(55.288122, 10.221037)),
     },
   },
   {
     id: 'default-aarhus',
     predictionPlace: {
       address: 'Aarhus, Central Denmark Region, Denmark',
-      bounds: new LatLngBounds(
-        new LatLng(56.240905, 10.255086),
-        new LatLng(56.117521, 10.114294)
-      ),
+      bounds: new LatLngBounds(new LatLng(56.240905, 10.255086), new LatLng(56.117521, 10.114294)),
     },
   },
 ];
