@@ -24,6 +24,7 @@ const PasswordRecoveryPage = loadable(() => import(/* webpackChunkName: "Passwor
 const PasswordResetPage = loadable(() => import(/* webpackChunkName: "PasswordResetPage" */ './containers/PasswordResetPage/PasswordResetPage'));
 const PaymentMethodsPage = loadable(() => import(/* webpackChunkName: "PaymentMethodsPage" */ './containers/PaymentMethodsPage/PaymentMethodsPage'));
 const PrivacyPolicyPage = loadable(() => import(/* webpackChunkName: "PrivacyPolicyPage" */ './containers/PrivacyPolicyPage/PrivacyPolicyPage'));
+const CookiePolicyPage = loadable(() => import(/* webpackChunkName: "CookiePolicyPage" */ './containers/CookiePolicyPage/CookiePolicyPage'));
 const ProfilePage = loadable(() => import(/* webpackChunkName: "ProfilePage" */ './containers/ProfilePage/ProfilePage'));
 const ProfileSettingsPage = loadable(() => import(/* webpackChunkName: "ProfileSettingsPage" */ './containers/ProfileSettingsPage/ProfileSettingsPage'));
 const SearchPage = loadable(() => import(/* webpackChunkName: "SearchPage" */ /* webpackPrefetch: true */  './containers/SearchPage/SearchPage'));
@@ -284,6 +285,11 @@ const routeConfiguration = () => {
       path: '/privacy-policy',
       name: 'PrivacyPolicyPage',
       component: PrivacyPolicyPage,
+    },
+    {
+      path: '/cookie-policy',
+      name: 'CookiePolicyPage',
+      component: CookiePolicyPage,
     },
     {
       path: '/styleguide',

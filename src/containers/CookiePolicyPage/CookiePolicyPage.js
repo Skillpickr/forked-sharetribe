@@ -4,7 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
 import { isScrollingDisabled } from '../../ducks/UI.duck';
-import { TopbarContainer } from '../../containers';
+import { TopbarContainer } from '..';
 import {
   Page,
   LayoutSideNavigation,
@@ -12,33 +12,33 @@ import {
   LayoutWrapperSideNav,
   LayoutWrapperTopbar,
   LayoutWrapperFooter,
-  PrivacyPolicy,
+  CookiePolicy,
   Footer,
 } from '../../components';
 import config from '../../config';
 
-import css from './PrivacyPolicyPage.module.css';
+import css from './CookiePolicyPage.module.css';
 
-const PrivacyPolicyPageComponent = props => {
+const CookiePolicyPageComponent = props => {
   const { scrollingDisabled, intl } = props;
 
   const tabs = [
     {
-      text: intl.formatMessage({ id: 'PrivacyPolicyPage.privacyTabTitle' }),
+      text: intl.formatMessage({ id: 'CookiePolicyPage.privacyTabTitle' }),
       selected: true,
       linkProps: {
-        name: 'PrivacyPolicyPage',
+        name: 'CookiePolicyPage',
       },
     },
     {
-      text: intl.formatMessage({ id: 'PrivacyPolicyPage.tosTabTitle' }),
+      text: intl.formatMessage({ id: 'CookiePolicyPage.tosTabTitle' }),
       selected: false,
       linkProps: {
         name: 'TermsOfServicePage',
       },
     },
     {
-      text: intl.formatMessage({ id: 'PrivacyPolicyPage.cookieTabTitle' }),
+      text: intl.formatMessage({ id: 'CookiePolicyPage.cookieTabTitle' }),
       selected: true,
       linkProps: {
         name: 'CookiePolicyPage',
@@ -46,7 +46,7 @@ const PrivacyPolicyPageComponent = props => {
     },
   ];
   const siteTitle = config.siteTitle;
-  const schemaTitle = intl.formatMessage({ id: 'PrivacyPolicyPage.schemaTitle' }, { siteTitle });
+  const schemaTitle = intl.formatMessage({ id: 'CookiePolicyPage.schemaTitle' }, { siteTitle });
   const schema = {
     '@context': 'http://schema.org',
     '@type': 'WebPage',
@@ -56,15 +56,15 @@ const PrivacyPolicyPageComponent = props => {
     <Page title={schemaTitle} scrollingDisabled={scrollingDisabled} schema={schema}>
       <LayoutSideNavigation>
         <LayoutWrapperTopbar>
-          <TopbarContainer currentPage="PrivacyPolicyPage" />
+          <TopbarContainer currentPage="CookiePolicyPage" />
         </LayoutWrapperTopbar>
         <LayoutWrapperSideNav tabs={tabs} />
         <LayoutWrapperMain>
           <div className={css.content}>
             <h1 className={css.heading}>
-              <FormattedMessage id="PrivacyPolicyPage.heading" />
+              <FormattedMessage id="CookiePolicyPage.heading" />
             </h1>
-            <PrivacyPolicy />
+            <CookiePolicy />
           </div>
         </LayoutWrapperMain>
         <LayoutWrapperFooter>
@@ -77,7 +77,7 @@ const PrivacyPolicyPageComponent = props => {
 
 const { bool } = PropTypes;
 
-PrivacyPolicyPageComponent.propTypes = {
+CookiePolicyPageComponent.propTypes = {
   scrollingDisabled: bool.isRequired,
 
   // from injectIntl
@@ -90,9 +90,9 @@ const mapStateToProps = state => {
   };
 };
 
-const PrivacyPolicyPage = compose(
+const CookiePolicyPage = compose(
   connect(mapStateToProps),
   injectIntl
-)(PrivacyPolicyPageComponent);
+)(CookiePolicyPageComponent);
 
-export default PrivacyPolicyPage;
+export default CookiePolicyPage;

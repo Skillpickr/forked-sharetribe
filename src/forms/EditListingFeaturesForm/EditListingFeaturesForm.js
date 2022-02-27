@@ -11,6 +11,7 @@ import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '.
 
 import css from './EditListingFeaturesForm.module.css';
 
+
 const EditListingFeaturesFormComponent = props => (
   <FinalForm
     {...props}
@@ -49,13 +50,28 @@ const EditListingFeaturesFormComponent = props => (
         </p>
       ) : null;
 
-      const photographerKey = "photographerType"
       const soundLightExpKey = "soundLightExp"
       const ownStudioKey = "ownStudio"
       const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
-      const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
       const soundLightExpOptions = findOptionsForSelectFilter(soundLightExpKey, filterConfig);
       const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig);
+      const photographerKey = "photographerType"
+      const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
+
+      // const findTypeForSkill = (key, type) => {
+      //   const key = key 
+
+      //   if(skillOptions.key === 'dj'){
+      //     const djKey = "djType"
+      //     const djOptions = findOptionsForSelectFilter(djKey, filterConfig);
+        
+      //   }
+      //   if (skillOptions.key === 'photographer'){
+      //     const photographerKey = "photographerType"
+      //     const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
+      //   }
+      // }
+
 
       return (
         <Form className={classes} onSubmit={handleSubmit}>
@@ -78,7 +94,11 @@ const EditListingFeaturesFormComponent = props => (
       </FieldSelect>
       {/* DJ */}  
 
+      {skillOptions.find(e => e.key === 'dj') ? null : <p>DJ is processing</p>}
+
       {/* VideoGrapher */}  
+
+      
 
       {/* Photogapher */}      
       <FieldCheckboxGroup className={css.features} id={photographerKey} name={photographerKey} options={photographerOptions} label="Add you subset of skills" />
