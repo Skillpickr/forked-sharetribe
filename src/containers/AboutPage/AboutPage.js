@@ -60,7 +60,7 @@ const AboutPage = () => {
               </p>
 
               {/* <h3 id="contact" className={css.subtitle}>
-                Create your own marketplace like Skillpickr
+                Contact
               </h3>
               <p>
                 Skillpickr is brought to you by{' '}
