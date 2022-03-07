@@ -18,7 +18,7 @@
  * the one in the generated pathname of the link.
  */
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { bool } from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import routeConfiguration from '../../routeConfiguration';
@@ -37,7 +37,7 @@ export const NamedLinkComponent = props => {
   };
 
   // Link props
-  const { to, children } = props;
+  const { to, children, disabled } = props;
   const pathname = pathByRouteName(name, routes, params);
   const { match } = props;
   const active = match.url && match.url === pathname;
@@ -49,7 +49,9 @@ export const NamedLinkComponent = props => {
     style,
     title,
   };
-
+    if(disabled){
+      return <Link onClick={e => e.preventDefault()} {...aElemProps}>{children}</Link>
+  }
   return (
     <Link onMouseOver={onOver} onTouchStart={onOver} to={{ pathname, ...to }} {...aElemProps}>
       {children}
@@ -68,6 +70,7 @@ NamedLinkComponent.defaultProps = {
   activeClassName: 'NamedLink_active',
   title: null,
   match: {},
+  disabled: false
 };
 
 // This ensures a nice display name in snapshots etc.
@@ -90,6 +93,7 @@ NamedLinkComponent.propTypes = {
 
   // from withRouter
   match: object,
+  disabled: bool
 };
 
 const NamedLink = withRouter(NamedLinkComponent);

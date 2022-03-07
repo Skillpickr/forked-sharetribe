@@ -23,6 +23,7 @@ import { TopbarContainer } from '../../containers';
 import facebookImage from '../../assets/skillpicker-facebook1200x630-01.jpg';
 import twitterImage from '../../assets/skillpicker-twitter600x314-01.jpg';
 import css from './LandingPage.module.css';
+import SectionCategories from '../../components/SectionCategories/SectionCategories';
 
 export const LandingPageComponent = props => {
   const {
@@ -72,7 +73,8 @@ export const LandingPageComponent = props => {
           <ul className={css.sections}>
             <li className={css.section}>
               <div className={css.sectionContentFirstChild}>
-                <SectionLocations />
+                {/* <SectionLocations /> */}
+                <SectionCategories />
               </div>
             </li>
             <li className={css.section}>

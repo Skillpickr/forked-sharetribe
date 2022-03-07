@@ -847,6 +847,8 @@
   "SectionHowItWorks.titleLineTwo": " ",
 
   "SectionLocations.title": "Browse a category",
+  "SectionCategories.title": "Browse a category",
+  "SectionCategories.categories": "{category}",
   "SelectMultipleFilter.labelSelected": "{labelText} • {count}",
   "SelectMultipleFilterPlainForm.labelSelected": "{labelText} • {count}",
   "SelectSingleFilter.popupClear": "Clear",
