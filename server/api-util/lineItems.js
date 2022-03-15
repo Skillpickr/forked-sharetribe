@@ -5,7 +5,8 @@ const { Money } = types;
 // This bookingUnitType needs to be one of the following:
 // line-item/night, line-item/day or line-item/units
 const bookingUnitType = 'line-item/units';
-const PROVIDER_COMMISSION_PERCENTAGE = -10;
+const PROVIDER_COMMISSION_PERCENTAGE = -20; // Provider commission is negative
+const CUSTOMER_COMMISSION_PERCENTAGE = 5; // Customer commission is positive
 
 /** Returns collection of lineItems (max 50)
  *
@@ -40,21 +41,42 @@ exports.transactionLineItems = (listing, bookingData) => {
    *
    * By default BookingBreakdown prints line items inside LineItemUnknownItemsMaybe if the lineItem code is not recognized. */
 
+  // const booking = {
+  //   code: bookingUnitType,
+  //   unitPrice,
+  //   quantity: calculateQuantityFromHours(startDate, endDate),
+  //   includeFor: ['customer', 'provider'],
+  // };
+
+  // const providerCommission = {
+  //   code: 'line-item/provider-commission',
+  //   unitPrice: calculateTotalFromLineItems([booking]),
+  //   percentage: PROVIDER_COMMISSION_PERCENTAGE,
+  //   includeFor: ['provider'],
+  // };
+
   const booking = {
     code: bookingUnitType,
     unitPrice,
-    quantity: calculateQuantityFromHours(startDate, endDate),
+    quantity: calculateQuantityFromDates(startDate, endDate, bookingUnitType),
     includeFor: ['customer', 'provider'],
   };
-
+  
   const providerCommission = {
     code: 'line-item/provider-commission',
     unitPrice: calculateTotalFromLineItems([booking]),
     percentage: PROVIDER_COMMISSION_PERCENTAGE,
     includeFor: ['provider'],
   };
+  
+  const customerCommission = {
+    code: 'line-item/customer-commission',
+    unitPrice: calculateTotalFromLineItems([booking]),
+    percentage: CUSTOMER_COMMISSION_PERCENTAGE,
+    includeFor: ['customer'],
+  };
 
-  const lineItems = [booking, providerCommission];
+  const lineItems = [booking, providerCommission, customerCommission];
 
   return lineItems;
 };
