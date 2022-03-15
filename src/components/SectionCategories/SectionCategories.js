@@ -60,13 +60,13 @@ const SectionCategories = props => {
         {categoryLink(
           'Performance',
           performanceImage,
-          '?address=Copenhagen%2C%20Capital%20RegionDenmark%2C%20Denmark&bounds=55.727852%2C12.822593%2C55.588413%2C12.499474',
+          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
           true
         )}
         {categoryLink(
           'Creative',
           creativeImage,
-          '?address=Copenhagen%2C%20Capital%20RegionDenmark%2C%20Denmark&bounds=55.727852%2C12.822593%2C55.588413%2C12.499474',
+          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
           false
         )}
       </div>
@@ -74,13 +74,13 @@ const SectionCategories = props => {
         {categoryLink(
           'Knowledge',
           knowledgeImage,
-          '?address=Copenhagen%2C%20Capital%20RegionDenmark%2C%20Denmark&bounds=55.727852%2C12.822593%2C55.588413%2C12.499474',
+          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
           true
         )}
         {categoryLink(
           'Media Production',
           mediaImage,
-          '?address=Copenhagen%2C%20Capital%20RegionDenmark%2C%20Denmark&bounds=55.727852%2C12.822593%2C55.588413%2C12.499474',
+          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
           true
         )}
       </div>

@@ -58,7 +58,7 @@ exports.transactionLineItems = (listing, bookingData) => {
   const booking = {
     code: bookingUnitType,
     unitPrice,
-    quantity: calculateQuantityFromDates(startDate, endDate, bookingUnitType),
+    quantity: calculateQuantityFromHours(startDate, endDate),
     includeFor: ['customer', 'provider'],
   };
   
