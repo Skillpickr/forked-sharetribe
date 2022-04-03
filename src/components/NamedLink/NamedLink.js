@@ -18,7 +18,7 @@
  * the one in the generated pathname of the link.
  */
 import React from 'react';
-import PropTypes, { bool } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import routeConfiguration from '../../routeConfiguration';
@@ -50,7 +50,7 @@ export const NamedLinkComponent = props => {
     title,
   };
     if(disabled){
-      return <Link onClick={e => e.preventDefault()} {...aElemProps}>{children}</Link>
+      return <Link onClick={e => e.preventDefault()} to={{}} {...aElemProps}>{children}</Link>
   }
   return (
     <Link onMouseOver={onOver} onTouchStart={onOver} to={{ pathname, ...to }} {...aElemProps}>
@@ -59,7 +59,7 @@ export const NamedLinkComponent = props => {
   );
 };
 
-const { object, string, shape, any } = PropTypes;
+const { object, string, shape, any, bool } = PropTypes;
 
 NamedLinkComponent.defaultProps = {
   params: {},

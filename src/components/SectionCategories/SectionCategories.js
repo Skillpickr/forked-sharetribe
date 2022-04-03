@@ -13,6 +13,11 @@ import knowledgeImage from './images/knowledge.jpg';
 import performanceImage from './images/performance.jpg';
 import mediaImage from './images/media.jpg';
 
+//Knowledge Photo by mentatdgt from Pexels
+// Media Photo by Lê Minh from Pexels
+// Performance Photo by Yan Krukov from Pexels
+// Creative Photo by Jordan Benton from Pexels
+
 class CategoryImage extends Component {
   render() {
     const { alt, ...rest } = this.props;
@@ -20,11 +25,6 @@ class CategoryImage extends Component {
   }
 }
 const LazyImage = lazyLoadWithDimensions(CategoryImage);
-
-//Knowledge Photo by mentatdgt from Pexels
-// Media Photo by Lê Minh from Pexels
-// Performance Photo by Yan Krukov from Pexels
-// Creative Photo by Jordan Benton from Pexels
 
 const categoryLink = (name, image, searchQuery, isComingSoon) => {
   const nameText = <span className={css.categoryName}>{name}</span>;
