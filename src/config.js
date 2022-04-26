@@ -32,7 +32,7 @@ const sortSearchByDistance = false;
 //
 // In a way, 'processAlias' defines which transaction process (or processes)
 // this particular web application is able to handle.
-const bookingProcessAlias = 'flex-hourly-default-process/release-1';
+const bookingProcessAlias = 'skillpickr-hourly-process/release-1';
 
 // The transaction line item code for the main unit type in bookings.
 //
@@ -99,13 +99,13 @@ const canonicalRootURL = process.env.REACT_APP_CANONICAL_ROOT_URL;
 const siteTitle = 'Skillpickr';
 
 // Twitter handle is needed in meta tags (twitter:site). Start it with '@' character
-const siteTwitterHandle = '@sharetribe';
+const siteTwitterHandle = '@skillpickr';
 
 // Instagram page is used in SEO schema (http://schema.org/Organization)
 const siteInstagramPage = null;
 
 // Facebook page is used in SEO schema (http://schema.org/Organization)
-const siteFacebookPage = 'https://www.facebook.com/Skillpickr/';
+const siteFacebookPage = 'https://www.facebook.com/skillpickr/';
 
 // Social logins & SSO
 
