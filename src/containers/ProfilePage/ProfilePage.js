@@ -174,7 +174,7 @@ export class ProfilePageComponent extends Component {
         <h1 className={css.desktopHeading}>
           <FormattedMessage id="ProfilePage.desktopHeading" values={{ name: displayName }} />
         </h1>
-        {hasBio ? <p className={css.bio}>{bio}</p> : null}
+        {/* {hasBio ? <p className={css.bio}>{bio}</p> : null} */}
         {isMobileLayout ? mobileReviews : desktopReviews}
       </div>
     );

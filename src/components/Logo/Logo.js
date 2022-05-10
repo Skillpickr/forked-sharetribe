@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import css from './Logo.module.css';
-import MobileLogoImage from './skillpickr-logo-small.png';
-import DesktopLogoImage from './skillpickr-logo.png';
+import MobileLogoImage from './logo_transparent_background.png';
+import DesktopLogoImage from './logo_transparent_background.png';
 import config from '../../config';
 
 const Logo = props => {

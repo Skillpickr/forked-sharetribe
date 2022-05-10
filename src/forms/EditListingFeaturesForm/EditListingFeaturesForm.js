@@ -94,7 +94,7 @@ const EditListingFeaturesFormComponent = props => (
       </FieldSelect>
       {/* DJ */}  
 
-      {skillOptions.find(e => e.key === 'dj') ? null : <p>DJ is processing</p>}
+      {/* {skillOptions.find(e => e.key === 'dj') ? null : <p>DJ is processing</p>} */}
 
       {/* VideoGrapher */}  
 
