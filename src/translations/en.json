@@ -293,6 +293,7 @@
   "EditListingPricingForm.priceRequired": "You need to add a valid price.",
   "EditListingPricingForm.priceTooLow": "Price should be at least {minPrice}.",
   "EditListingPricingForm.showListingFailed": "Fetching listing data failed",
+  "EditListingPricingForm.commissionFeeNote": "* SkillPickr charges 20% commission of the total price upon booking. We therefore suggest you add 20% to the price per hour on your originally pricing",
   "EditListingPricingForm.updateFailed": "Failed to update listing. Please try again.",
   "EditListingPricingPanel.createListingTitle": "Price per hour",
   "EditListingPricingPanel.listingPriceCurrencyInvalid": "Currency in SkillPickr profile is different from the marketplace currency. You cannot edit the price.",

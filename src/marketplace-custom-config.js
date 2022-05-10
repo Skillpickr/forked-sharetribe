@@ -104,9 +104,10 @@ export const filters = [
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       searchMode: 'enum',
       options: [
-        { key: 'dj', label: 'DJ' },
+        { key: 'none', label: 'None' },
+        // { key: 'dj', label: 'DJ' },
         { key: 'photographer', label: 'Photographer' },
-        { key: 'video-grapher', label: 'Video Grapher' },
+        // { key: 'video-grapher', label: 'Video Grapher' },
       ],
     },
   },
