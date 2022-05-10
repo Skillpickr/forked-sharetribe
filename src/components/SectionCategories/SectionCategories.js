@@ -58,7 +58,7 @@ const SectionCategories = props => {
       </div>
       <div className={css.categories}>
         {categoryLink(
-          'Performance',
+          'Performance & Entertainment',
           performanceImage,
           '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
           true
