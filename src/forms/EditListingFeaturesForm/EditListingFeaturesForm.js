@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { bool, func, shape, string } from 'prop-types';
 import classNames from 'classnames';
 import { Form as FinalForm } from 'react-final-form';
@@ -71,6 +71,22 @@ const EditListingFeaturesFormComponent = props => (
       //     const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
       //   }
       // }
+      const [fruit, setFruit] = useState();
+
+      const skillSelected= ({ skill }) => {
+        console.log(skill)
+        return null;
+      };
+      
+
+      handleSelectChange(type, value) {
+        this.setState(prevState => {
+          const selected = { ...prevState.selected, [type]: value };
+          this.props.onChange(skillSelected(selected));
+          console.log(selected)
+          return { selected };
+        });
+      }
 
 
       return (
@@ -78,12 +94,28 @@ const EditListingFeaturesFormComponent = props => (
           {errorMessage}
           {errorMessageShowListing}
 
-
+          <div>
+      <select 
+            onChange={e => this.handleSelectChange('skill', e.target.value)}
+              >
+              <option disabled value="">
+              {datePlaceholder}
+            </option>
+            {skillOptions.map(d => (
+              <option key={o.key} value={o.soundLightExpKey}>
+                {o.label}
+              </option>
+            ))}
+      </select>
+      <h1>Selected Fruit: {fruit}</h1>
+    </div>
       <FieldSelect
         className={css.features}
         name={name}
         id={name}
         label={'Skill'}
+        defaultValue="Select fruit"
+              onChange={(e) => setSkill(e.target.value)}
       >
         {skillOptions.map(o => (
           <option key={o.key} value={o.key}>
@@ -94,7 +126,7 @@ const EditListingFeaturesFormComponent = props => (
       </FieldSelect>
       {/* DJ */}  
 
-      {skillOptions.find(e => e.key === 'dj') ? null : <p>DJ is processing</p>}
+      {skillOptions.find(e => e.key === 'dj') ? <p>DJ is processing</p> : null}
 
       {/* VideoGrapher */}  
 
