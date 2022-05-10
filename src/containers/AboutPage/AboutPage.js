@@ -44,32 +44,31 @@ const AboutPage = () => {
             </div>
 
             <div className={css.contentMain}>
-              <h2>Purpose</h2>
+              <h2 className={css.subtitle}>Purpose</h2>
               <h3>
                 WHY
               </h3>
               <p>
               Simply because we love and believe in people whose attitudes and approaches to problems and challenges bear the mark of creativity - of courage, of talent, of innovative problem solving              </p>
 
-              <h3 className={css.subtitle}>HOW</h3>
+              <h3 >HOW</h3>
               <p>
               By offering a large space for anyone to unleash their skills or passion and empower them to live a multi disciplinary creative life. By nurturing, inspiring and encouraging creative minds, help them find work with more ease and turn their skills into successful business. By making it easy for people to get in touch and book the skills of creative minds without speed bumps.
               </p>
 
-              <h3 className={css.subtitle}>WHAT</h3>
+              <h3>WHAT</h3>
               <p>
                 Based on a global tooling marketplace we work to support people living a multidisciplinary creative life by building tools that optimize their productivity, processes and workflow. This we do to help all creatives evolve their skill and make their business thrive, regardless of what level they are on. The marketplace also reduces the friction between users, saving time and money finding the right match. 
               </p>
-              <br></br>
-              <h2>Guiding Principles</h2>
-              <p>At SkillPickr, our guiding principles serve as our commitment to continue working passionately toward improvement and sharing for every creative spirit.</p>
-              <p><strong>1. Sincerity</strong></p>
+              <h2 className={css.subtitle}>Guiding Principles</h2>
+              <p>At SkillPickr, our guiding principles serve as our commitment to continue working passionately toward:</p>
+              <p><strong>Sincerity</strong></p>
               <blockquote>"Because without sincerity there is no credibility, trust or growth"</blockquote>
-              <p><strong>2. Curiosity</strong></p>
+              <p><strong>Curiosity</strong></p>
               <blockquote>"Because curiosity is key! Things happen when we start to pay attention to what is happening with curiosity and as a bonus, curiosity is interrelated with inner motivation and innovation"</blockquote>
-              <p><strong>3. Self-discipline </strong></p>
+              <p><strong>Self-discipline </strong></p>
               <blockquote>"Because we want to succeed!"</blockquote>
-              <p><strong>4. Respect</strong></p>
+              <p><strong>Respect</strong></p>
               <blockquote>"Because it is such a good starting point for all kinds of relationships. It is also a gift and when given or received, something good comes along"</blockquote>
               <br></br>
 

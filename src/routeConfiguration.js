@@ -12,6 +12,7 @@ const pageDataLoadingAPI = getPageDataLoadingAPI();
 
 const AboutPage = loadable(() => import(/* webpackChunkName: "AboutPage" */ './containers/AboutPage/AboutPage'));
 const PricingPage = loadable(() => import(/* webpackChunkName: "PricingPage" */ './containers/PricingPage/PricingPage'));
+const ContactPage = loadable(() => import(/* webpackChunkName: "ContactPage" */ './containers/ContactPage/ContactPage'));
 const AuthenticationPage = loadable(() => import(/* webpackChunkName: "AuthenticationPage" */ './containers/AuthenticationPage/AuthenticationPage'));
 const CheckoutPage = loadable(() => import(/* webpackChunkName: "CheckoutPage" */ './containers/CheckoutPage/CheckoutPage'));
 const ContactDetailsPage = loadable(() => import(/* webpackChunkName: "ContactDetailsPage" */ './containers/ContactDetailsPage/ContactDetailsPage'));
@@ -73,6 +74,11 @@ const routeConfiguration = () => {
       path: '/pricing',
       name: 'PricingPage',
       component: PricingPage,
+    },
+    {
+      path: '/contact',
+      name: 'ContactPage',
+      component: ContactPage,
     },
     {
       path: '/s',
