@@ -103,12 +103,7 @@ export const filters = [
       // Schema type is enum for SelectSingleFilter
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       searchMode: 'enum',
-      options: [
-        { key: 'none', label: 'None' },
-        // { key: 'dj', label: 'DJ' },
-        { key: 'photographer', label: 'Photographer' },
-        // { key: 'video-grapher', label: 'Video Grapher' },
-      ],
+      options: [{ key: 'none', label: 'None' }, { key: 'photographer', label: 'Photographer' }],
     },
   },
   {
@@ -164,10 +159,7 @@ export const filters = [
   {
     id: 'ownStudio',
     config: {
-      options: [
-        { key: 'yes', label: 'Yes' },
-        { key: 'no', label: 'No' },
-      ],
+      options: [{ key: 'yes', label: 'Yes' }, { key: 'no', label: 'No' }],
     },
   },
   {

@@ -21,12 +21,22 @@ const AboutPage = () => {
   // prettier-ignore
   return (
     <StaticPage
-      title="About Us"
+      title="Pricing"
       schema={{
         '@context': 'http://schema.org',
-        '@type': 'AboutPage',
-        description: 'About Skillpickr',
-        name: 'About page',
+        '@type': 'PricingPage',
+        "description": 'Skillpickr Prices',
+        "name": 'Pricing Page',
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Question 1?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Answer: Lorem ipsum"
+            }
+          }
+        ]
       }}
     >
       <LayoutSingleColumn>

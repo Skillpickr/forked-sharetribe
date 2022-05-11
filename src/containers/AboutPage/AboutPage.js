@@ -25,8 +25,8 @@ const AboutPage = () => {
       schema={{
         '@context': 'http://schema.org',
         '@type': 'AboutPage',
-        description: 'About Skillpickr',
-        name: 'About page',
+        "description": 'About Skillpickr',
+        "name": 'About page',
       }}
     >
       <LayoutSingleColumn>

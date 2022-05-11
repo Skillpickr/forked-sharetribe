@@ -61,14 +61,14 @@ exports.transactionLineItems = (listing, bookingData) => {
     quantity: calculateQuantityFromHours(startDate, endDate),
     includeFor: ['customer', 'provider'],
   };
-  
+
   const providerCommission = {
     code: 'line-item/provider-commission',
     unitPrice: calculateTotalFromLineItems([booking]),
     percentage: PROVIDER_COMMISSION_PERCENTAGE,
     includeFor: ['provider'],
   };
-  
+
   const customerCommission = {
     code: 'line-item/customer-commission',
     unitPrice: calculateTotalFromLineItems([booking]),

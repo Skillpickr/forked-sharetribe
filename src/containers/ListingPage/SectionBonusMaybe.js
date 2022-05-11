@@ -23,7 +23,7 @@ const SectionDescriptionMaybe = props => {
             longWordClass: css.longWord,
           })}
         </p>
-        </div>
+      </div>
       <div className={css.sectionDescription}>
         <h2 className={css.descriptionTitle}>
           <FormattedMessage id="ListingPage.trackRecordTitle" />

@@ -8,7 +8,7 @@ import { compose } from 'redux';
 import { FormattedMessage } from '../../util/reactIntl';
 import { withViewport } from '../../util/contextHelpers';
 import { LayoutWrapperSideNav } from '../../components';
-import {propTypes} from '../../util/types';
+import { propTypes } from '../../util/types';
 
 const MAX_HORIZONTAL_NAV_SCREEN_WIDTH = 1023;
 
@@ -43,8 +43,6 @@ const LayoutWrapperAccountSettingsSideNavComponent = props => {
     hasScrolledToTab = true;
   }
 
-
-
   const tabs = [
     {
       text: <FormattedMessage id="LayoutWrapperAccountSettingsSideNav.contactDetailsTabTitle" />,
@@ -53,7 +51,7 @@ const LayoutWrapperAccountSettingsSideNavComponent = props => {
       linkProps: {
         name: 'ContactDetailsPage',
       },
-      show: true
+      show: true,
     },
     {
       text: <FormattedMessage id="LayoutWrapperAccountSettingsSideNav.passwordTabTitle" />,
@@ -62,7 +60,7 @@ const LayoutWrapperAccountSettingsSideNavComponent = props => {
       linkProps: {
         name: 'PasswordChangePage',
       },
-      show: true
+      show: true,
     },
     {
       text: <FormattedMessage id="LayoutWrapperAccountSettingsSideNav.paymentsTabTitle" />,
@@ -71,7 +69,7 @@ const LayoutWrapperAccountSettingsSideNavComponent = props => {
       linkProps: {
         name: 'StripePayoutPage',
       },
-      show: currentUserListing ? false : true
+      show: currentUserListing ? false : true,
     },
     {
       text: <FormattedMessage id="LayoutWrapperAccountSettingsSideNav.paymentMethodsTabTitle" />,
@@ -80,10 +78,10 @@ const LayoutWrapperAccountSettingsSideNavComponent = props => {
       linkProps: {
         name: 'PaymentMethodsPage',
       },
-      show: true
+      show: true,
     },
   ];
-  
+
   return <LayoutWrapperSideNav tabs={tabs.filter(tab => tab.show)} />;
 };
 

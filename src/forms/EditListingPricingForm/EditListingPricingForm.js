@@ -100,7 +100,7 @@ export const EditListingPricingFormComponent = props => (
             validate={priceValidators}
           />
           <span className={css.feeInfo}>
-          <FormattedMessage id="EditListingPricingForm.commissionFeeNote" />
+            <FormattedMessage id="EditListingPricingForm.commissionFeeNote" />
           </span>
 
           <Button

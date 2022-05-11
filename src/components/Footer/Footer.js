@@ -108,17 +108,17 @@ const Footer = props => {
                     <FormattedMessage id="Footer.toHelpPage" />
                   </NamedLink>
                 </li> */}
-                 <li className={css.listItem}>
+                <li className={css.listItem}>
                   <NamedLink name="ContactPage" className={css.link}>
                     <FormattedMessage id="Footer.toContactPage" />
                   </NamedLink>
-                </li> 
+                </li>
               </ul>
             </div>
             <div className={css.searches}>
               <ul className={css.list}>
                 <li className={css.listItem}>
-                   {/* <NamedLink
+                  {/* <NamedLink
                     name="SearchPage"
                     to={{
                       search:
@@ -140,7 +140,7 @@ const Footer = props => {
                   >
                     <FormattedMessage id="Footer.searchOdense" />
                   </NamedLink>  */}
-                </li> 
+                </li>
               </ul>
             </div>
             {/* <div className={css.searchesExtra}>

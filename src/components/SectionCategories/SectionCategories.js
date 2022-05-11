@@ -29,22 +29,23 @@ const LazyImage = lazyLoadWithDimensions(CategoryImage);
 const categoryLink = (name, image, searchQuery, isComingSoon) => {
   const nameText = <span className={css.categoryName}>{name}</span>;
   return (
-    <NamedLink name="SearchPage" to={{ search: searchQuery }} className={css.category} disabled={isComingSoon}>
+    <NamedLink
+      name="SearchPage"
+      to={{ search: searchQuery }}
+      className={css.category}
+      disabled={isComingSoon}
+    >
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.categoryImage} />
         </div>
       </div>
-      <div className={classNames(css.linkText, {[css.comingSoon]: isComingSoon})}>
-      <FormattedMessage
-          id="SectionCategories.categories"
-          values={{ category: nameText }}
-        />
+      <div className={classNames(css.linkText, { [css.comingSoon]: isComingSoon })}>
+        <FormattedMessage id="SectionCategories.categories" values={{ category: nameText }} />
       </div>
     </NamedLink>
   );
 };
-
 
 const SectionCategories = props => {
   const { rootClassName, className } = props;
