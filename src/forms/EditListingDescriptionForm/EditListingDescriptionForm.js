@@ -82,7 +82,6 @@ const EditListingDescriptionFormComponent = props => (
         id: 'EditListingDescriptionForm.bonusPlaceholder',
       });
 
-
       const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {};
       const errorMessageUpdateListing = updateListingError ? (
         <p className={css.error}>

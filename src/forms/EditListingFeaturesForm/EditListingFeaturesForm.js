@@ -11,7 +11,6 @@ import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '.
 
 import css from './EditListingFeaturesForm.module.css';
 
-
 const EditListingFeaturesFormComponent = props => (
   <FinalForm
     {...props}
@@ -50,21 +49,21 @@ const EditListingFeaturesFormComponent = props => (
         </p>
       ) : null;
 
-      const soundLightExpKey = "soundLightExp"
-      const ownStudioKey = "ownStudio"
+      const soundLightExpKey = 'soundLightExp';
+      const ownStudioKey = 'ownStudio';
       const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
       const soundLightExpOptions = findOptionsForSelectFilter(soundLightExpKey, filterConfig);
       const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig);
-      const photographerKey = "photographerType"
+      const photographerKey = 'photographerType';
       const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
 
       // const findTypeForSkill = (key, type) => {
-      //   const key = key 
+      //   const key = key
 
       //   if(skillOptions.key === 'dj'){
       //     const djKey = "djType"
       //     const djOptions = findOptionsForSelectFilter(djKey, filterConfig);
-        
+
       //   }
       //   if (skillOptions.key === 'photographer'){
       //     const photographerKey = "photographerType"
@@ -72,69 +71,64 @@ const EditListingFeaturesFormComponent = props => (
       //   }
       // }
 
-
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           {errorMessage}
           {errorMessageShowListing}
 
+          <FieldSelect className={css.features} name={name} id={name} label={'Skill'}>
+            {skillOptions.map(o => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          {/* DJ */}
 
-      <FieldSelect
-        className={css.features}
-        name={name}
-        id={name}
-        label={'Skill'}
-      >
-        {skillOptions.map(o => (
-          <option key={o.key} value={o.key}>
-            {o.label}
-          </option>
-        ))}
+          {/* {skillOptions.find(e => e.key === 'dj') ? null : <p>DJ is processing</p>} */}
 
-      </FieldSelect>
-      {/* DJ */}  
+          {/* VideoGrapher */}
 
-      {skillOptions.find(e => e.key === 'dj') ? null : <p>DJ is processing</p>}
-
-      {/* VideoGrapher */}  
-
-      
-
-      {/* Photogapher */}      
-      <FieldCheckboxGroup className={css.features} id={photographerKey} name={photographerKey} options={photographerOptions} label="Add you subset of skills" />
-      <FieldSelect
-        className={css.features}
-        name={ownStudioKey}
-        id={ownStudioKey}
-        label={'Do you have your own studio?'}
-      >
-        {ownStudioOptions.map(o => (
-          <option key={o.key} value={o.key}>
-            {o.label}
-          </option>
-        ))}
-      </FieldSelect>
-      <FieldSelect
-        className={css.features}
-        name={soundLightExpKey}
-        id={soundLightExpKey}
-        label={'Sound & light experience'}
-      >
-        {soundLightExpOptions.map(o => (
-          <option key={o.key} value={o.key}>
-            {o.label}
-          </option>
-        ))}
-      </FieldSelect>
-      <FieldTextInput
+          {/* Photogapher */}
+          <FieldCheckboxGroup
+            className={css.features}
+            id={photographerKey}
+            name={photographerKey}
+            options={photographerOptions}
+            label="Add you subset of skills"
+          />
+          <FieldSelect
+            className={css.features}
+            name={ownStudioKey}
+            id={ownStudioKey}
+            label={'Do you have your own studio?'}
+          >
+            {ownStudioOptions.map(o => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          <FieldSelect
+            className={css.features}
+            name={soundLightExpKey}
+            id={soundLightExpKey}
+            label={'Sound & light experience'}
+          >
+            {soundLightExpOptions.map(o => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          <FieldTextInput
             id="gear"
             name="gear"
             className={css.features}
             type="textarea"
             label="Please list the gear included in the listing price*"
             placeholder="Will expand while you write"
-      />
-
+          />
 
           <Button
             className={css.submitButton}

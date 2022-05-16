@@ -61,7 +61,6 @@ import css from './ListingPage.module.css';
 import SectionBonusMaybe from './SectionBonusMaybe';
 import SectionSpecificationsMaybe from './SectionSpecificationsMaybe';
 
-
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
 
 const { UUID } = sdkTypes;
@@ -438,11 +437,18 @@ export class ListingPageComponent extends Component {
                     onContactUser={this.onContactUser}
                     listingSkill={publicData ? publicData.skill : null}
                     skillOptions={skillOptions}
-
                   />
                   <SectionDescriptionMaybe description={description} />
-                  <SectionFeaturesMaybe options={skillOptions} subOptions={subSkillOptions} publicData={publicData} />
-                  <SectionSpecificationsMaybe soundLightExp={soundLightExperienceOptions} ownStudio={ownStudioOptions} publicData={publicData}></SectionSpecificationsMaybe>
+                  <SectionFeaturesMaybe
+                    options={skillOptions}
+                    subOptions={subSkillOptions}
+                    publicData={publicData}
+                  />
+                  <SectionSpecificationsMaybe
+                    soundLightExp={soundLightExperienceOptions}
+                    ownStudio={ownStudioOptions}
+                    publicData={publicData}
+                  ></SectionSpecificationsMaybe>
                   <SectionBonusMaybe publicData={publicData}></SectionBonusMaybe>
                   <SectionMapMaybe
                     geolocation={geolocation}

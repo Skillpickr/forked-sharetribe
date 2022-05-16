@@ -13,6 +13,11 @@ import knowledgeImage from './images/knowledge.jpg';
 import performanceImage from './images/performance.jpg';
 import mediaImage from './images/media.jpg';
 
+//Knowledge Photo by mentatdgt from Pexels
+// Media Photo by Lê Minh from Pexels
+// Performance Photo by Yan Krukov from Pexels
+// Creative Photo by Jordan Benton from Pexels
+
 class CategoryImage extends Component {
   render() {
     const { alt, ...rest } = this.props;
@@ -21,30 +26,26 @@ class CategoryImage extends Component {
 }
 const LazyImage = lazyLoadWithDimensions(CategoryImage);
 
-//Knowledge Photo by mentatdgt from Pexels
-// Media Photo by Lê Minh from Pexels
-// Performance Photo by Yan Krukov from Pexels
-// Creative Photo by Jordan Benton from Pexels
-
 const categoryLink = (name, image, searchQuery, isComingSoon) => {
   const nameText = <span className={css.categoryName}>{name}</span>;
   return (
-    <NamedLink name="SearchPage" to={{ search: searchQuery }} className={css.category} disabled={isComingSoon}>
+    <NamedLink
+      name="SearchPage"
+      to={{ search: searchQuery }}
+      className={css.category}
+      disabled={isComingSoon}
+    >
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.categoryImage} />
         </div>
       </div>
-      <div className={classNames(css.linkText, {[css.comingSoon]: isComingSoon})}>
-      <FormattedMessage
-          id="SectionCategories.categories"
-          values={{ category: nameText }}
-        />
+      <div className={classNames(css.linkText, { [css.comingSoon]: isComingSoon })}>
+        <FormattedMessage id="SectionCategories.categories" values={{ category: nameText }} />
       </div>
     </NamedLink>
   );
 };
-
 
 const SectionCategories = props => {
   const { rootClassName, className } = props;
@@ -58,15 +59,15 @@ const SectionCategories = props => {
       </div>
       <div className={css.categories}>
         {categoryLink(
-          'Performance',
+          'Performance & Entertainment',
           performanceImage,
-          '?address=Copenhagen%2C%20Capital%20RegionDenmark%2C%20Denmark&bounds=55.727852%2C12.822593%2C55.588413%2C12.499474',
+          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
           true
         )}
         {categoryLink(
           'Creative',
           creativeImage,
-          '?address=Copenhagen%2C%20Capital%20RegionDenmark%2C%20Denmark&bounds=55.727852%2C12.822593%2C55.588413%2C12.499474',
+          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
           false
         )}
       </div>
@@ -74,13 +75,13 @@ const SectionCategories = props => {
         {categoryLink(
           'Knowledge',
           knowledgeImage,
-          '?address=Copenhagen%2C%20Capital%20RegionDenmark%2C%20Denmark&bounds=55.727852%2C12.822593%2C55.588413%2C12.499474',
+          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
           true
         )}
         {categoryLink(
           'Media Production',
           mediaImage,
-          '?address=Copenhagen%2C%20Capital%20RegionDenmark%2C%20Denmark&bounds=55.727852%2C12.822593%2C55.588413%2C12.499474',
+          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
           true
         )}
       </div>
