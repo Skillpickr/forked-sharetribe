@@ -75,6 +75,16 @@ const EditListingDescriptionFormComponent = props => (
         id: 'EditListingDescriptionForm.trackRequired',
       });
 
+      const urlMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.url',
+      });
+      const urlPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.urlPlaceholder',
+      });
+      const urlRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.urlRequired',
+      });
+
       const bonusMessage = intl.formatMessage({
         id: 'EditListingDescriptionForm.bonus',
       });
@@ -151,6 +161,14 @@ const EditListingDescriptionFormComponent = props => (
             label={trackMessage}
             placeholder={trackPlaceholderMessage}
             validate={composeValidators(required(trackRequiredMessage))}
+          />
+          <FieldTextInput
+            id="url"
+            name="url"
+            className={css.description}
+            type="text"
+            label={urlMessage}
+            placeholder={urlPlaceholderMessage}
           />
           <FieldTextInput
             id="bonus"
