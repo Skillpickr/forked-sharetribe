@@ -13,28 +13,33 @@ const SectionDescriptionMaybe = props => {
 
   return bonus || track ? (
     <div>
-      <div className={css.sectionDescription}>
-        <h2 className={css.descriptionTitle}>
-          <FormattedMessage id="ListingPage.bonusTitle" />
-        </h2>
-        <p className={css.description}>
-          {richText(bonus, {
-            longWordMinLength: MIN_LENGTH_FOR_LONG_WORDS_IN_DESCRIPTION,
-            longWordClass: css.longWord,
-          })}
-        </p>
-      </div>
-      <div className={css.sectionDescription}>
-        <h2 className={css.descriptionTitle}>
-          <FormattedMessage id="ListingPage.trackRecordTitle" />
-        </h2>
-        <p className={css.description}>
-          {richText(track, {
-            longWordMinLength: MIN_LENGTH_FOR_LONG_WORDS_IN_DESCRIPTION,
-            longWordClass: css.longWord,
-          })}
-        </p>
-      </div>
+        {bonus && 
+          <div className={css.sectionDescription}>
+            <h2 className={css.descriptionTitle}>
+              <FormattedMessage id="ListingPage.bonusTitle" />
+            </h2>
+            <p className={css.description}>
+              {richText(bonus, {
+                longWordMinLength: MIN_LENGTH_FOR_LONG_WORDS_IN_DESCRIPTION,
+                longWordClass: css.longWord,
+              })}
+            </p>
+          </div>
+        }
+        {track && 
+          <div className={css.sectionDescription}>
+            <h2 className={css.descriptionTitle}>
+              <FormattedMessage id="ListingPage.trackRecordTitle" />
+            </h2>
+            <p className={css.description}>
+              {richText(track, {
+                longWordMinLength: MIN_LENGTH_FOR_LONG_WORDS_IN_DESCRIPTION,
+                longWordClass: css.longWord,
+              })}
+            </p>
+          </div>
+        }
+
     </div>
   ) : null;
 };
