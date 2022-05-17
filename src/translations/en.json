@@ -1087,7 +1087,7 @@
   "TopbarMobileMenu.signupOrLogin": "{signup} or {login}",
   "TopbarMobileMenu.unauthorizedGreeting": "Hello there,{lineBreak}would you like to {signupOrLogin}?",
   "TopbarMobileMenu.yourListingsLink": "Your SkillPickr profile",
-  "TopbarSearchForm.placeholder": "What are you looking for?",
+  "TopbarSearchForm.placeholder": "Locate the skill",
   "TopbarSearchForm.searchHelp": "Tip: You can also search for skilled people by zip code, for example \"2200\" or city district \"Copenhagen\".",
   "TransactionPage.deletedListing": "deleted SkillPickr profile",
   "TransactionPage.fetchOrderFailed": "Fetching order data failed.",
