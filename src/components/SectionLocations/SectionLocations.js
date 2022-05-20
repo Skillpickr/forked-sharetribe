@@ -30,7 +30,7 @@ const locationLink = (name, image, searchQuery) => {
         </div>
       </div>
       <div className={css.linkText}>
-      {/* <FormattedMessage
+        {/* <FormattedMessage
           id="SectionLocations.listingsInLocation"
           values={{ location: nameText }}
         /> */}

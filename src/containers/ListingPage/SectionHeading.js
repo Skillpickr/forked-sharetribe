@@ -9,13 +9,7 @@ const getSkillInfo = (skillOptions, key) => {
 };
 
 const SectionHeading = props => {
-  const {
-    richTitle,
-    showContactUser,
-    listingSkill,
-    skillOptions,
-    onContactUser,
-  } = props;
+  const { richTitle, showContactUser, listingSkill, skillOptions, onContactUser } = props;
 
   const skill = getSkillInfo(skillOptions, listingSkill);
   const showSkill = skill && !skill.hideFromListingInfo;
@@ -25,7 +19,7 @@ const SectionHeading = props => {
       <div className={css.heading}>
         <h1 className={css.title}>{richTitle}</h1>
         <div className={css.author}>
-        {showSkill ? <span>{skill.label}</span> : null}
+          {showSkill ? <span>{skill.label}</span> : null}
           {showContactUser ? (
             <span className={css.contactWrapper}>
               {showSkill ? <span className={css.separator}>•</span> : null}

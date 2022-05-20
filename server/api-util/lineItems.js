@@ -6,7 +6,7 @@ const { Money } = types;
 // line-item/night, line-item/day or line-item/units
 const bookingUnitType = 'line-item/units';
 const PROVIDER_COMMISSION_PERCENTAGE = -20; // Provider commission is negative
-const CUSTOMER_COMMISSION_PERCENTAGE = 5; // Customer commission is positive
+const CUSTOMER_COMMISSION_PERCENTAGE = 7; // Customer commission is positive
 
 /** Returns collection of lineItems (max 50)
  *
@@ -61,14 +61,14 @@ exports.transactionLineItems = (listing, bookingData) => {
     quantity: calculateQuantityFromHours(startDate, endDate),
     includeFor: ['customer', 'provider'],
   };
-  
+
   const providerCommission = {
     code: 'line-item/provider-commission',
     unitPrice: calculateTotalFromLineItems([booking]),
     percentage: PROVIDER_COMMISSION_PERCENTAGE,
     includeFor: ['provider'],
   };
-  
+
   const customerCommission = {
     code: 'line-item/customer-commission',
     unitPrice: calculateTotalFromLineItems([booking]),

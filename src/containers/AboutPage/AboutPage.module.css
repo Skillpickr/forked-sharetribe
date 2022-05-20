@@ -59,7 +59,13 @@
 }
 
 .subtitle {
-  @apply --marketplaceH3FontStyles;
+  @apply --marketplaceH2FontStyles;
   margin-top: 32px;
   margin-bottom: 16px;
 }
+
+/* .bullet {
+  list-style-type: circle;
+  padding-left: 50px;
+  margin: 0;
+} */
