@@ -61,13 +61,12 @@ const SectionCategories = props => {
         {categoryLink(
           'Performance & Entertainment',
           performanceImage,
-          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
-          true
+          '?pub_category=p-and-e',          true
         )}
         {categoryLink(
           'Creative',
           creativeImage,
-          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
+          '?pub_category=creative',
           false
         )}
       </div>
@@ -75,14 +74,12 @@ const SectionCategories = props => {
         {categoryLink(
           'Knowledge',
           knowledgeImage,
-          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
-          true
+          '?pub_category=knowledge',          true
         )}
         {categoryLink(
           'Media Production',
           mediaImage,
-          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
-          true
+          '?pub_category=media-production',          true
         )}
       </div>
     </div>

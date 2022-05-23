@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { bool, func, shape, string } from 'prop-types';
 import classNames from 'classnames';
 import { Form as FinalForm } from 'react-final-form';
@@ -10,6 +10,26 @@ import config from '../../config';
 import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '../../components';
 
 import css from './EditListingFeaturesForm.module.css';
+import EditPhotographerForm from './EditPhotographerForm/EditPhotographerForm';
+import { Skills } from './EditListingFeaturesForm.example';
+
+class PhotographerComponent extends React.Component {
+  render() {
+    return <h1>Hello, you gifted Photographer</h1> 
+  }
+}
+
+class DjComponent extends React.Component {
+  render() {
+    return <h1>Hello, you talented DJ</h1>;
+  }
+}
+
+class DefaultComponent extends React.Component {
+  render() {
+    return <h1>Hello, please choose a profession</h1>;
+  }
+}
 
 const EditListingFeaturesFormComponent = props => (
   <FinalForm
@@ -49,70 +69,11 @@ const EditListingFeaturesFormComponent = props => (
         </p>
       ) : null;
 
-      const soundLightExpKey = 'soundLightExp';
+      // ############### SHARE COMPONENT ###########################
       const ownStudioKey = 'ownStudio';
-      const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
-      const soundLightExpOptions = findOptionsForSelectFilter(soundLightExpKey, filterConfig);
       const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig);
-      const photographerKey = 'photographerType';
-      const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
-
-      // const findTypeForSkill = (key, type) => {
-      //   const key = key
-
-      //   if(skillOptions.key === 'dj'){
-      //     const djKey = "djType"
-      //     const djOptions = findOptionsForSelectFilter(djKey, filterConfig);
-
-      //   }
-      //   if (skillOptions.key === 'photographer'){
-      //     const photographerKey = "photographerType"
-      //     const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
-      //   }
-      // }
-      const [fruit, setFruit] = useState();
-
-      const skillSelected= ({ skill }) => {
-        console.log(skill)
-        return null;
-      };
-      
-
-      handleSelectChange(type, value) {
-        this.setState(prevState => {
-          const selected = { ...prevState.selected, [type]: value };
-          this.props.onChange(skillSelected(selected));
-          console.log(selected)
-          return { selected };
-        });
-      }
-
-      return (
-        <Form className={classes} onSubmit={handleSubmit}>
-          {errorMessage}
-          {errorMessageShowListing}
-
-          <FieldSelect className={css.features} name={name} id={name} label={'Skill'}>
-            {skillOptions.map(o => (
-              <option key={o.key} value={o.key}>
-                {o.label}
-              </option>
-            ))}
-          </FieldSelect>
-          {/* DJ */}
-
-          {/* {skillOptions.find(e => e.key === 'dj') ? null : <p>DJ is processing</p>} */}
-
-          {/* VideoGrapher */}
-
-          {/* Photogapher */}
-          <FieldCheckboxGroup
-            className={css.features}
-            id={photographerKey}
-            name={photographerKey}
-            options={photographerOptions}
-            label="Add you subset of skills"
-          />
+      const sharedComponent = (
+        <div>
           <FieldSelect
             className={css.features}
             name={ownStudioKey}
@@ -120,18 +81,6 @@ const EditListingFeaturesFormComponent = props => (
             label={'Do you have your own studio?'}
           >
             {ownStudioOptions.map(o => (
-              <option key={o.key} value={o.key}>
-                {o.label}
-              </option>
-            ))}
-          </FieldSelect>
-          <FieldSelect
-            className={css.features}
-            name={soundLightExpKey}
-            id={soundLightExpKey}
-            label={'Sound & light experience'}
-          >
-            {soundLightExpOptions.map(o => (
               <option key={o.key} value={o.key}>
                 {o.label}
               </option>
@@ -145,6 +94,96 @@ const EditListingFeaturesFormComponent = props => (
             label="Please list the gear included in the listing price*"
             placeholder="Will expand while you write"
           />
+        </div>
+      )
+
+      // ############### Photographer COMPONENT ###########################
+      const photographerKey = 'photographerType';
+      const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
+      const soundLightExpKey = 'soundLightExp';
+      const soundLightExpOptions = findOptionsForSelectFilter(soundLightExpKey, filterConfig);
+      const photographerComponent = (
+        <div>
+          <FieldCheckboxGroup
+            className={css.features}
+            id={photographerKey}
+            name={photographerKey}
+            options={photographerOptions}
+            label="Please add your subset of photographer skills (you can choose multiple)"
+          />
+          <FieldSelect
+            className={css.features}
+            name={soundLightExpKey}
+            id={soundLightExpKey}
+            label={'Sound & light experience'}
+          >
+            {soundLightExpOptions.map(o => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          {sharedComponent}
+      </div>
+      ) 
+
+      // ############### DJ COMPONENT ###########################
+      const djKey = 'djType';
+      const djOptions = findOptionsForSelectFilter(djKey, filterConfig);
+      const djComponent = (
+        <div>
+          <FieldCheckboxGroup
+            className={css.features}
+            id={djKey}
+            name={djKey}
+            options={djOptions}
+            label="Please add your subset of DJ skills"
+          />
+          {sharedComponent}
+      </div>
+      ) 
+
+      const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
+      const [state, setState] = useState('photographer');
+      const handleChange = e => {
+        setState(e);
+      };
+      const components = {
+        none: DefaultComponent,
+        photographer: PhotographerComponent,
+        dj: DjComponent,
+      };
+      console.log(state)
+      const SelectedComponent = components[state];
+
+      return (
+        <Form className={classes} onSubmit={handleSubmit}>
+          {errorMessage}
+          {errorMessageShowListing}
+
+          <FieldSelect
+            className={css.features}
+            name={name}
+            id={name}
+            label={'Skill'}
+            onChange={handleChange}
+          >
+            {skillOptions.map(o => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          {SelectedComponent ? <SelectedComponent /> : <DefaultComponent />}
+          {/* {SelectedComponent ? <SelectedComponent /> : <DefaultComponent /> } */}
+
+          {/* VideoGrapher */}
+        
+          {/* Photogapher */}
+          {state.includes('photographer') && photographerComponent}
+
+          {/* DJ */}
+          {state.includes( 'dj') && djComponent }
 
           <Button
             className={css.submitButton}
