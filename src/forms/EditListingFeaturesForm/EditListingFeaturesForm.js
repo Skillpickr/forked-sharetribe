@@ -7,11 +7,10 @@ import { FormattedMessage } from '../../util/reactIntl';
 import { findOptionsForSelectFilter } from '../../util/search';
 import { propTypes } from '../../util/types';
 import config from '../../config';
+import * as validators from '../../util/validators';
 import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '../../components';
 
 import css from './EditListingFeaturesForm.module.css';
-import EditPhotographerForm from './EditPhotographerForm/EditPhotographerForm';
-import { Skills } from './EditListingFeaturesForm.example';
 
 class PhotographerComponent extends React.Component {
   render() {
@@ -27,7 +26,7 @@ class DjComponent extends React.Component {
 
 class DefaultComponent extends React.Component {
   render() {
-    return <h1>Hello, please choose a profession</h1>;
+    return <h1>Please choose a profession</h1>;
   }
 }
 
@@ -55,6 +54,7 @@ const EditListingFeaturesFormComponent = props => (
       const submitReady = (updated && pristine) || ready;
       const submitInProgress = updateInProgress;
       const submitDisabled = disabled || submitInProgress;
+      const required = validators.required('This field is required');
 
       const { updateListingError, showListingsError } = fetchErrors || {};
       const errorMessage = updateListingError ? (
@@ -79,6 +79,7 @@ const EditListingFeaturesFormComponent = props => (
             name={ownStudioKey}
             id={ownStudioKey}
             label={'Do you have your own studio?'}
+            validate={required}
           >
             {ownStudioOptions.map(o => (
               <option key={o.key} value={o.key}>
@@ -93,6 +94,7 @@ const EditListingFeaturesFormComponent = props => (
             type="textarea"
             label="Please list the gear included in the listing price*"
             placeholder="Will expand while you write"
+            validate={required}
           />
         </div>
       )
@@ -116,6 +118,7 @@ const EditListingFeaturesFormComponent = props => (
             name={soundLightExpKey}
             id={soundLightExpKey}
             label={'Sound & light experience'}
+            validate={required}
           >
             {soundLightExpOptions.map(o => (
               <option key={o.key} value={o.key}>
@@ -130,6 +133,10 @@ const EditListingFeaturesFormComponent = props => (
       // ############### DJ COMPONENT ###########################
       const djKey = 'djType';
       const djOptions = findOptionsForSelectFilter(djKey, filterConfig);
+      const djGearForPlayingKey = 'djGearForPlaying'
+      const djGearForPlayingOptions = findOptionsForSelectFilter(djGearForPlayingKey, filterConfig)
+      const songRequestKey = 'songRequest'
+      const songRequestOptions = findOptionsForSelectFilter(songRequestKey, filterConfig)
       const djComponent = (
         <div>
           <FieldCheckboxGroup
@@ -139,12 +146,67 @@ const EditListingFeaturesFormComponent = props => (
             options={djOptions}
             label="Please add your subset of DJ skills"
           />
+          <FieldTextInput
+            id="technicalRider"
+            name="technicalRider"
+            className={css.features}
+            type="textarea"
+            label="Technical rider"
+            placeholder="Will expand while you write"
+            validate={required}
+          />
+          <FieldTextInput
+            id="cateringRider"
+            name="cateringRider"
+            className={css.features}
+            type="textarea"
+            label="Catering/hospitality rider"
+            placeholder="Will expand while you write"
+            validate={required}
+          />
+          <FieldSelect
+            className={css.features}
+            name={djGearForPlayingKey}
+            id={djGearForPlayingKey}
+            label={'DJ gear for playing'}
+            validate={required}
+          >
+            {djGearForPlayingOptions.map(o => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          <FieldTextInput
+            id="playingStyle"
+            name="playingStyle"
+            className={css.features}
+            type="textarea"
+            label="Describe your playing style"
+            placeholder="Will expand while you write"
+            validate={required}
+          />
+          <FieldSelect
+            className={css.features}
+            name={songRequestKey}
+            id={songRequestKey}
+            label={'Are you accessible at the event for guest who request songs?'}
+            validate={required}
+          >
+            {songRequestOptions.map(o => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
           {sharedComponent}
       </div>
       ) 
 
-      const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
-      const [state, setState] = useState('photographer');
+      const skillKey = 'skill'
+      const skillOptions = findOptionsForSelectFilter(skillKey, filterConfig);
+      let key = ''
+      const [state, setState] = useState(key);
       const handleChange = e => {
         setState(e);
       };
@@ -167,6 +229,7 @@ const EditListingFeaturesFormComponent = props => (
             id={name}
             label={'Skill'}
             onChange={handleChange}
+            value={key}
           >
             {skillOptions.map(o => (
               <option key={o.key} value={o.key}>

@@ -219,6 +219,24 @@ export const filters = [
       ],
     },
   },
+  {
+    id: 'songRequest',
+    config: {
+      options: [
+        { key: 'yes', label: 'Yes' },
+        { key: 'no', label: 'No' }
+      ],
+    },
+  },
+  {
+    id: 'djGearForPlaying',
+    config: {
+      options: [
+        { key: 'notIncluded', label: 'Gear for playing is to be provided and is not included in price' },
+        { key: 'included', label: 'All gear included in price' }
+      ],
+    },
+  },
 ];
 
 export const sortConfig = {

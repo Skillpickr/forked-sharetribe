@@ -35,8 +35,26 @@ const EditListingFeaturesPanel = props => {
   const soundLightExp = publicData && publicData.soundLightExp;
   const photographerType = publicData && publicData.photographerType;
   const ownStudio = publicData && publicData.ownStudio;
-  const category = metaData && metaData.category;
-  const initialValues = { skill, photographerType, gear, soundLightExp, ownStudio, category };
+  // const category = metaData && metaData.category;
+  const djType = publicData && publicData.djType;
+  const technicalRider = publicData && publicData.technicalRider;
+  const cateringRider = publicData && publicData.cateringRider;
+  const djGearForPlaying = publicData && publicData.djGearForPlaying;
+  const playingStyle = publicData && publicData.playingStyle;
+  const songRequest = publicData && publicData.songRequest
+  const initialValues = { 
+    skill, 
+    photographerType, 
+    gear, 
+    soundLightExp, 
+    ownStudio,
+    djType,
+    technicalRider,
+    cateringRider,
+    djGearForPlaying,
+    playingStyle,
+    songRequest
+  };
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -68,11 +86,27 @@ const EditListingFeaturesPanel = props => {
             gear = '',
             soundLightExp = [],
             ownStudio = [],
-            category = []
+            djType = [],
+            technicalRider = '',
+            cateringRider = '',
+            djGearForPlaying = [],
+            playingStyle = '',
+            songRequest = []
           } = values;
           const updatedValues = {
-            publicData: { skill, photographerType, gear, soundLightExp, ownStudio },
-            metaData: { category }
+            publicData: { 
+              skill, 
+              photographerType, 
+              gear, 
+              soundLightExp, 
+              ownStudio, 
+              djType, 
+              technicalRider, 
+              cateringRider, 
+              djGearForPlaying,
+              playingStyle,
+              songRequest
+            },
           };
           onSubmit(updatedValues);
         }}
