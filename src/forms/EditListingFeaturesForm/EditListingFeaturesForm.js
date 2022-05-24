@@ -14,7 +14,7 @@ import css from './EditListingFeaturesForm.module.css';
 
 class PhotographerComponent extends React.Component {
   render() {
-    return <h1>Hello, you gifted Photographer</h1> 
+    return <h1>Hello, you gifted Photographer</h1>;
   }
 }
 
@@ -81,6 +81,9 @@ const EditListingFeaturesFormComponent = props => (
             label={'Do you have your own studio?'}
             validate={required}
           >
+            <option disabled value="">
+              Please choose from the list
+            </option>
             {ownStudioOptions.map(o => (
               <option key={o.key} value={o.key}>
                 {o.label}
@@ -97,7 +100,7 @@ const EditListingFeaturesFormComponent = props => (
             validate={required}
           />
         </div>
-      )
+      );
 
       // ############### Photographer COMPONENT ###########################
       const photographerKey = 'photographerType';
@@ -120,6 +123,9 @@ const EditListingFeaturesFormComponent = props => (
             label={'Sound & light experience'}
             validate={required}
           >
+            <option disabled value="">
+              Please choose from the list
+            </option>
             {soundLightExpOptions.map(o => (
               <option key={o.key} value={o.key}>
                 {o.label}
@@ -127,16 +133,16 @@ const EditListingFeaturesFormComponent = props => (
             ))}
           </FieldSelect>
           {sharedComponent}
-      </div>
-      ) 
+        </div>
+      );
 
       // ############### DJ COMPONENT ###########################
       const djKey = 'djType';
       const djOptions = findOptionsForSelectFilter(djKey, filterConfig);
-      const djGearForPlayingKey = 'djGearForPlaying'
-      const djGearForPlayingOptions = findOptionsForSelectFilter(djGearForPlayingKey, filterConfig)
-      const songRequestKey = 'songRequest'
-      const songRequestOptions = findOptionsForSelectFilter(songRequestKey, filterConfig)
+      const djGearForPlayingKey = 'djGearForPlaying';
+      const djGearForPlayingOptions = findOptionsForSelectFilter(djGearForPlayingKey, filterConfig);
+      const songRequestKey = 'songRequest';
+      const songRequestOptions = findOptionsForSelectFilter(songRequestKey, filterConfig);
       const djComponent = (
         <div>
           <FieldCheckboxGroup
@@ -171,6 +177,9 @@ const EditListingFeaturesFormComponent = props => (
             label={'DJ gear for playing'}
             validate={required}
           >
+            <option disabled value="">
+              Please choose from the list
+            </option>
             {djGearForPlayingOptions.map(o => (
               <option key={o.key} value={o.key}>
                 {o.label}
@@ -193,6 +202,9 @@ const EditListingFeaturesFormComponent = props => (
             label={'Are you accessible at the event for guest who request songs?'}
             validate={required}
           >
+            <option disabled value="">
+              Please choose from the list
+            </option>
             {songRequestOptions.map(o => (
               <option key={o.key} value={o.key}>
                 {o.label}
@@ -200,12 +212,12 @@ const EditListingFeaturesFormComponent = props => (
             ))}
           </FieldSelect>
           {sharedComponent}
-      </div>
-      ) 
+        </div>
+      );
 
-      const skillKey = 'skill'
+      const skillKey = 'skill';
       const skillOptions = findOptionsForSelectFilter(skillKey, filterConfig);
-      let key = ''
+      let key = '';
       const [state, setState] = useState(key);
       const handleChange = e => {
         setState(e);
@@ -215,7 +227,7 @@ const EditListingFeaturesFormComponent = props => (
         photographer: PhotographerComponent,
         dj: DjComponent,
       };
-      console.log(state)
+      console.log(state);
       const SelectedComponent = components[state];
 
       return (
@@ -231,6 +243,9 @@ const EditListingFeaturesFormComponent = props => (
             onChange={handleChange}
             value={key}
           >
+            <option disabled value="">
+              Please choose from the list
+            </option>
             {skillOptions.map(o => (
               <option key={o.key} value={o.key}>
                 {o.label}
@@ -241,12 +256,12 @@ const EditListingFeaturesFormComponent = props => (
           {/* {SelectedComponent ? <SelectedComponent /> : <DefaultComponent /> } */}
 
           {/* VideoGrapher */}
-        
+
           {/* Photogapher */}
           {state.includes('photographer') && photographerComponent}
 
           {/* DJ */}
-          {state.includes( 'dj') && djComponent }
+          {state.includes('dj') && djComponent}
 
           <Button
             className={css.submitButton}

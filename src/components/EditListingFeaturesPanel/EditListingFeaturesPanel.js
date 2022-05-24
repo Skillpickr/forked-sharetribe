@@ -41,19 +41,19 @@ const EditListingFeaturesPanel = props => {
   const cateringRider = publicData && publicData.cateringRider;
   const djGearForPlaying = publicData && publicData.djGearForPlaying;
   const playingStyle = publicData && publicData.playingStyle;
-  const songRequest = publicData && publicData.songRequest
-  const initialValues = { 
-    skill, 
-    photographerType, 
-    gear, 
-    soundLightExp, 
+  const songRequest = publicData && publicData.songRequest;
+  const initialValues = {
+    skill,
+    photographerType,
+    gear,
+    soundLightExp,
     ownStudio,
     djType,
     technicalRider,
     cateringRider,
     djGearForPlaying,
     playingStyle,
-    songRequest
+    songRequest,
   };
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
@@ -81,7 +81,7 @@ const EditListingFeaturesPanel = props => {
         initialValues={initialValues}
         onSubmit={values => {
           const {
-            skill = '',
+            skill = 'none',
             photographerType = [],
             gear = '',
             soundLightExp = [],
@@ -91,21 +91,21 @@ const EditListingFeaturesPanel = props => {
             cateringRider = '',
             djGearForPlaying = [],
             playingStyle = '',
-            songRequest = []
+            songRequest = [],
           } = values;
           const updatedValues = {
-            publicData: { 
-              skill, 
-              photographerType, 
-              gear, 
-              soundLightExp, 
-              ownStudio, 
-              djType, 
-              technicalRider, 
-              cateringRider, 
+            publicData: {
+              skill,
+              photographerType,
+              gear,
+              soundLightExp,
+              ownStudio,
+              djType,
+              technicalRider,
+              cateringRider,
               djGearForPlaying,
               playingStyle,
-              songRequest
+              songRequest,
             },
           };
           onSubmit(updatedValues);

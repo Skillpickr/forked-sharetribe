@@ -25,32 +25,31 @@ const SectionSpecificationsMaybe = props => {
   const ownStudioConfig = ownStudio.find(o => o.key === selectedOwnStudio);
   const ownStudioLabel = ownStudioConfig ? ownStudioConfig.label : null;
 
-  return  soundLightExpLabel || ownStudioLabel || homepageUrl ?  (
+  return soundLightExpLabel || ownStudioLabel || homepageUrl ? (
     <div className={css.sectionFeatures}>
       <h2 className={css.featuresTitle}>
         <FormattedMessage id="ListingPage.specificationsTitle" />
       </h2>
 
-      {soundLightExpLabel &&
-      <p className={css.description}>
-        <FormattedMessage
-        id="ListingPage.soundLightExp"
-        values={{ soundLightExp: soundLightExpLabel }}
-        />
-      </p>
-      }
-      {ownStudioLabel && 
+      {soundLightExpLabel && (
+        <p className={css.description}>
+          <FormattedMessage
+            id="ListingPage.soundLightExp"
+            values={{ soundLightExp: soundLightExpLabel }}
+          />
+        </p>
+      )}
+      {ownStudioLabel && (
         <p className={css.description}>
           <FormattedMessage id="ListingPage.ownStudio" values={{ ownStudio: ownStudioLabel }} />
         </p>
-      }
-      {homepageUrl && 
+      )}
+      {homepageUrl && (
         <p className={css.description}>
           <FormattedMessage id="ListingPage.homepageUrl" />
-          <ExternalLink href={homepageUrl} >{homepageUrl}</ExternalLink> 
+          <ExternalLink href={homepageUrl}>{homepageUrl}</ExternalLink>
         </p>
-      }
-
+      )}
     </div>
   ) : null;
 };

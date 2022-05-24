@@ -61,26 +61,14 @@ const SectionCategories = props => {
         {categoryLink(
           'Performance & Entertainment',
           performanceImage,
-          '?pub_category=p-and-e',          true
+          '?pub_category=p-and-e',
+          true
         )}
-        {categoryLink(
-          'Creative',
-          creativeImage,
-          '?pub_category=creative',
-          false
-        )}
+        {categoryLink('Creative', creativeImage, '?pub_category=creative', false)}
       </div>
       <div className={css.categories}>
-        {categoryLink(
-          'Knowledge',
-          knowledgeImage,
-          '?pub_category=knowledge',          true
-        )}
-        {categoryLink(
-          'Media Production',
-          mediaImage,
-          '?pub_category=media-production',          true
-        )}
+        {categoryLink('Knowledge', knowledgeImage, '?pub_category=knowledge', true)}
+        {categoryLink('Media Production', mediaImage, '?pub_category=media-production', true)}
       </div>
     </div>
   );

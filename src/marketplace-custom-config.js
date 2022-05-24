@@ -103,11 +103,11 @@ export const filters = [
       // Schema type is enum for SelectSingleFilter
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       options: [
-        { key: 'creative', label: 'Creative' }, 
+        { key: 'creative', label: 'Creative' },
         { key: 'p-and-e', label: 'Performance and Entertainment' },
         { key: 'media-production', label: 'Media Production' },
-        { key: 'knowledge', label: 'Knowledge' }
-      ]
+        { key: 'knowledge', label: 'Knowledge' },
+      ],
     },
   },
   {
@@ -121,10 +121,9 @@ export const filters = [
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       searchMode: 'enum',
       options: [
-        { key: 'none', label: 'None' }, 
         { key: 'photographer', label: 'Photographer' },
-        { key: 'dj', label: 'DJ' }
-      ]
+        { key: 'dj', label: 'DJ' },
+      ],
     },
   },
   {
@@ -222,18 +221,18 @@ export const filters = [
   {
     id: 'songRequest',
     config: {
-      options: [
-        { key: 'yes', label: 'Yes' },
-        { key: 'no', label: 'No' }
-      ],
+      options: [{ key: 'yes', label: 'Yes' }, { key: 'no', label: 'No' }],
     },
   },
   {
     id: 'djGearForPlaying',
     config: {
       options: [
-        { key: 'notIncluded', label: 'Gear for playing is to be provided and is not included in price' },
-        { key: 'included', label: 'All gear included in price' }
+        {
+          key: 'notIncluded',
+          label: 'Gear for playing is to be provided and is not included in price',
+        },
+        { key: 'included', label: 'All gear included in price' },
       ],
     },
   },
