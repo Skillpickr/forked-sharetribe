@@ -66,8 +66,6 @@ export const ListingCardComponent = props => {
   const skillOptions = findOptionsForSelectFilter('skill', filtersConfig);
   const skill = publicData ? getSkillInfo(skillOptions, publicData.skill) : null;
 
-console.log(parseReverseGeo(publicData.location.address))
-
   const { formattedPrice, priceTitle } = priceData(price, intl);
 
   const unitType = config.bookingUnitType;
@@ -116,7 +114,7 @@ console.log(parseReverseGeo(publicData.location.address))
           <div className={css.skillInfo}>
             {skill && !skill.hideFromListingInfo ? <span>{skill.label}</span> : null}
           </div>
-          {/* turn into city name instead <div className={css.certificateInfo}>
+          {/* <div className={css.certificateInfo}>
             {certificate && !certificate.hideFromListingInfo ? (
               <span>{certificate.label}</span>
             ) : null}
