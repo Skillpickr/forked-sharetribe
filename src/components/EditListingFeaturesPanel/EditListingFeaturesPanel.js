@@ -79,9 +79,10 @@ const EditListingFeaturesPanel = props => {
         className={css.form}
         name={FEATURES_NAME}
         initialValues={initialValues}
+        skill={skill}
         onSubmit={values => {
           const {
-            skill = 'none',
+            skill = [],
             photographerType = [],
             gear = '',
             soundLightExp = [],

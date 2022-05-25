@@ -48,6 +48,7 @@ const EditListingFeaturesFormComponent = props => (
         updateInProgress,
         fetchErrors,
         filterConfig,
+        skill
       } = formRenderProps;
 
       const classes = classNames(rootClassName || css.root, className);
@@ -175,7 +176,6 @@ const EditListingFeaturesFormComponent = props => (
             name={djGearForPlayingKey}
             id={djGearForPlayingKey}
             label={'DJ gear for playing'}
-            validate={required}
           >
             <option disabled value="">
               Please choose from the list
@@ -215,10 +215,10 @@ const EditListingFeaturesFormComponent = props => (
         </div>
       );
 
+      // ############### MAIN COMPONENT ###########################
       const skillKey = 'skill';
       const skillOptions = findOptionsForSelectFilter(skillKey, filterConfig);
-      let key = '';
-      const [state, setState] = useState(key);
+      const [state, setState] = useState(skill);
       const handleChange = e => {
         setState(e);
       };
@@ -227,7 +227,6 @@ const EditListingFeaturesFormComponent = props => (
         photographer: PhotographerComponent,
         dj: DjComponent,
       };
-      console.log(state);
       const SelectedComponent = components[state];
 
       return (
@@ -241,7 +240,7 @@ const EditListingFeaturesFormComponent = props => (
             id={name}
             label={'Skill'}
             onChange={handleChange}
-            value={key}
+            value={skill}
           >
             <option disabled value="">
               Please choose from the list
@@ -283,6 +282,7 @@ EditListingFeaturesFormComponent.defaultProps = {
   className: null,
   fetchErrors: null,
   filterConfig: config.custom.filters,
+  skill: null
 };
 
 EditListingFeaturesFormComponent.propTypes = {
@@ -300,6 +300,7 @@ EditListingFeaturesFormComponent.propTypes = {
     updateListingError: propTypes.error,
   }),
   filterConfig: propTypes.filterConfig,
+  skill: string.isRequired
 };
 
 const EditListingFeaturesForm = EditListingFeaturesFormComponent;

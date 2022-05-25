@@ -7,10 +7,12 @@ import css from './ListingPage.module.css';
 const SectionSpecificationsMaybe = props => {
   // Component's props should include all the possible options (from config)
   // and listing's publicData
-  const { soundLightExp, ownStudio, publicData } = props;
+  const { soundLightExp, ownStudio, djGearForPlaying, songRequest, publicData, skillType } = props;
   const selectedSoundLightExp =
     publicData && publicData.soundLightExp ? publicData.soundLightExp : null;
   const selectedOwnStudio = publicData && publicData.ownStudio ? publicData.ownStudio : null;
+  const selectedDjGearForPlaying = publicData && publicData.djGearForPlaying ? publicData.djGearForPlaying: null;
+  const selectedSongRequest = publicData && publicData.songRequest ? publicData.songRequest: null;
   const homepageUrl = publicData && publicData.url ? publicData.url : null;
 
   // Don't return anything if public data doesn't contain view field
@@ -24,6 +26,10 @@ const SectionSpecificationsMaybe = props => {
   const soundLightExpLabel = soundLightExpConfig ? soundLightExpConfig.label : null;
   const ownStudioConfig = ownStudio.find(o => o.key === selectedOwnStudio);
   const ownStudioLabel = ownStudioConfig ? ownStudioConfig.label : null;
+  const djGearForPlayingConfig = djGearForPlaying.find(o => o.key === selectedDjGearForPlaying);
+  const djGearForPlayingLabel = djGearForPlayingConfig ? djGearForPlayingConfig.label : null;
+  const songRequestConfig = songRequest.find(o => o.key === selectedSongRequest);
+  const songRequestabel = songRequestConfig ? songRequestConfig.label : null;
 
   return soundLightExpLabel || ownStudioLabel || homepageUrl ? (
     <div className={css.sectionFeatures}>
@@ -39,7 +45,7 @@ const SectionSpecificationsMaybe = props => {
           />
         </p>
       )}
-      {ownStudioLabel && (
+      {ownStudioLabel &&  (
         <p className={css.description}>
           <FormattedMessage id="ListingPage.ownStudio" values={{ ownStudio: ownStudioLabel }} />
         </p>
