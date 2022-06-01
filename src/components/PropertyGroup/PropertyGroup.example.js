@@ -12,7 +12,7 @@ const exampleOptions = [
 export const WithSomeSelected = {
   component: PropertyGroup,
   props: {
-    id: 'yogaStyles',
+    id: 'skills',
     options: exampleOptions,
     selectedOptions: ['hatha', 'vinyasa', 'yin'],
     twoColumns: true,

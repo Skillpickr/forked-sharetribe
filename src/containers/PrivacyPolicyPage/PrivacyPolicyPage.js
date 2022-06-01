@@ -37,6 +37,13 @@ const PrivacyPolicyPageComponent = props => {
         name: 'TermsOfServicePage',
       },
     },
+    {
+      text: intl.formatMessage({ id: 'PrivacyPolicyPage.cookieTabTitle' }),
+      selected: true,
+      linkProps: {
+        name: 'CookiePolicyPage',
+      },
+    },
   ];
   const siteTitle = config.siteTitle;
   const schemaTitle = intl.formatMessage({ id: 'PrivacyPolicyPage.schemaTitle' }, { siteTitle });

@@ -11,7 +11,7 @@ const RADIX = 10;
 
 const formatSelectedLabel = (minDurationOptions, minDuration, startDate, endDate) => {
   // Only show the minimum duration label for options whose key
-  // matches the given param and that have the short label defined.
+  // matches the given param and that h ave the short label defined.
   const minDurationOption =
     typeof minDuration === 'number'
       ? minDurationOptions.find(option => {

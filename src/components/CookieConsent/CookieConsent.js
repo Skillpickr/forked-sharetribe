@@ -5,6 +5,7 @@ import { ExternalLink } from '../../components';
 import classNames from 'classnames';
 
 import css from './CookieConsent.module.css';
+import NamedLink from '../NamedLink/NamedLink';
 
 class CookieConsent extends Component {
   constructor(props) {
@@ -47,9 +48,9 @@ class CookieConsent extends Component {
       return null;
     } else {
       const cookieLink = (
-        <ExternalLink href="https://cookiesandyou.com" className={css.cookieLink}>
+        <NamedLink name="CookiePolicyPage" className={css.cookieLink}>
           <FormattedMessage id="CookieConsent.cookieLink" />
-        </ExternalLink>
+        </NamedLink>
       );
       const classes = classNames(rootClassName || css.root, className);
 

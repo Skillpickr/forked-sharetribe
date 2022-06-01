@@ -10,7 +10,7 @@ import { ListingLink } from '../../components';
 
 import css from './EditListingFeaturesPanel.module.css';
 
-const FEATURES_NAME = 'yogaStyles';
+const FEATURES_NAME = 'skill';
 
 const EditListingFeaturesPanel = props => {
   const {
@@ -30,6 +30,12 @@ const EditListingFeaturesPanel = props => {
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureListing(listing);
   const { publicData } = currentListing.attributes;
+  const skill = publicData && publicData.skill;
+  const gear = publicData && publicData.gear;
+  const soundLightExp = publicData && publicData.soundLightExp;
+  const photographerType = publicData && publicData.photographerType;
+  const ownStudio = publicData && publicData.ownStudio;
+  const initialValues = { skill, photographerType, gear, soundLightExp, ownStudio };
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -47,9 +53,6 @@ const EditListingFeaturesPanel = props => {
     <FormattedMessage id="EditListingFeaturesPanel.createListingTitle" />
   );
 
-  const yogaStyles = publicData && publicData.yogaStyles;
-  const initialValues = { yogaStyles };
-
   return (
     <div className={classes}>
       <h1 className={css.title}>{panelTitle}</h1>
@@ -58,10 +61,16 @@ const EditListingFeaturesPanel = props => {
         name={FEATURES_NAME}
         initialValues={initialValues}
         onSubmit={values => {
-          const { yogaStyles = [] } = values;
+          const {
+            skill = '',
+            photographerType = [],
+            gear = '',
+            soundLightExp = [],
+            ownStudio = [],
+          } = values;
 
           const updatedValues = {
-            publicData: { yogaStyles },
+            publicData: { skill, photographerType, gear, soundLightExp, ownStudio },
           };
           onSubmit(updatedValues);
         }}
