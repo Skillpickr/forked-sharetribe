@@ -95,9 +95,12 @@ export const filters = [
   },
   {
     id: 'category',
+    // label: 'Category',
+    // type: 'SelectSingleFilter', // needs to be changed after meta is created
+    // group: 'primary',
     label: 'Category',
-    type: 'SelectSingleFilter',
-    group: 'primary',
+    type: '',
+    group: 'secondary',
     queryParamNames: ['pub_category'],
     config: {
       // Schema type is enum for SelectSingleFilter

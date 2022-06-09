@@ -859,6 +859,7 @@
   "SectionLocations.title": "Browse a category",
   "SectionCategories.title": "Browse a category",
   "SectionCategories.categories": "{category}",
+  "SectionCategories.subCategories": "{subCategory}",
   "SelectMultipleFilter.labelSelected": "{labelText} • {count}",
   "SelectMultipleFilterPlainForm.labelSelected": "{labelText} • {count}",
   "SelectSingleFilter.popupClear": "Clear",

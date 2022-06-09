@@ -37,11 +37,14 @@ const categoryLink = (name, image, searchQuery, isComingSoon) => {
     >
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
-          <LazyImage src={image} alt={name} className={css.categoryImage} />
+          <LazyImage src={image} alt={title} className={css.categoryImage} />
         </div>
       </div>
       <div className={classNames(css.linkText, { [css.comingSoon]: isComingSoon })}>
-        <FormattedMessage id="SectionCategories.categories" values={{ category: nameText }} />
+          <FormattedMessage id="SectionCategories.categories" values={{ category: nameText }} />
+        <p>
+          <FormattedMessage id="SectionCategories.subCategories" values={{ subCategory: subText }} />
+        </p>
       </div>
     </NamedLink>
   );
@@ -58,17 +61,14 @@ const SectionCategories = props => {
         <FormattedMessage id="SectionCategories.title" />
       </div>
       <div className={css.categories}>
-        {categoryLink(
-          'Performance & Entertainment',
-          performanceImage,
-          '?pub_category=p-and-e',
-          true
-        )}
-        {categoryLink('Creative', creativeImage, '?pub_category=creative', false)}
+        {categoryLink('Performance & Entertainment', '(e.g. DJ)', performanceImage,'?pub_skill=dj',false)}
+        {/* {categoryLink('Performance & Entertainment',performanceImage,'?pub_category=p-and-e',true)} */}
+        {categoryLink('Creative','(e.g. Photographer)',  creativeImage, '?pub_skill=photographer', false)}
+        {/* {categoryLink('Creative', creativeImage, '?pub_category=creative', false)} */}
       </div>
       <div className={css.categories}>
-        {categoryLink('Knowledge', knowledgeImage, '?pub_category=knowledge', true)}
-        {categoryLink('Media Production', mediaImage, '?pub_category=media-production', true)}
+        {categoryLink('Knowledge', '', knowledgeImage, '?pub_category=knowledge', true)}
+        {categoryLink('Media Production', '', mediaImage, '?pub_category=media-production', true)}
       </div>
     </div>
   );
