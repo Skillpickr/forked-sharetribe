@@ -3,12 +3,13 @@ import { bool, func, shape, string } from 'prop-types';
 import classNames from 'classnames';
 import { Form as FinalForm } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
-import { FormattedMessage } from '../../util/reactIntl';
+import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl';
 import { findOptionsForSelectFilter } from '../../util/search';
 import { propTypes } from '../../util/types';
 import config from '../../config';
 import * as validators from '../../util/validators';
 import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '../../components';
+import { compose } from 'redux';
 
 import css from './EditListingFeaturesForm.module.css';
 
@@ -43,6 +44,7 @@ const EditListingFeaturesFormComponent = props => (
         name,
         handleSubmit,
         pristine,
+        intl,
         saveActionMsg,
         updated,
         updateInProgress,
@@ -50,6 +52,59 @@ const EditListingFeaturesFormComponent = props => (
         filterConfig,
         skill
       } = formRenderProps;
+
+      const ownStudioKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.ownStudioKeyMessage',
+      });
+      const gearMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.gear',
+      });
+      const gearMessagePlaceholder = intl.formatMessage({
+        id: 'EditListingFeaturesForm.gearMessagePlaceholder',
+      });
+
+      const photographerKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.photographerKeyMessage',
+      });
+      const soundLightExpKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.soundLightExpKeyMessage',
+      });
+
+      const djKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.djKeyMessage',
+      });
+
+      const technicalRiderMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.technicalRiderMessage',
+      });
+      const technicalRiderPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.technicalRiderPlaceholderMessage',
+      });
+
+      const cateringRiderMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.photographerKeyMessage',
+      });
+      const cateringRiderPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.soundLightExpKeyMessage',
+      });
+
+
+      const djGearForPlayingKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.djGearForPlayingKeyMessage',
+      });
+
+      const playingStyleMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.playingStyleMessage',
+      });
+      const playingStylePlaceholderMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.playingStylePlaceholderMessage',
+      });
+      const songRequestKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.songRequestKeyMessage',
+      });
+      const skillMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.skillMessage',
+      });
 
       const classes = classNames(rootClassName || css.root, className);
       const submitReady = (updated && pristine) || ready;
@@ -79,11 +134,10 @@ const EditListingFeaturesFormComponent = props => (
             className={css.features}
             name={ownStudioKey}
             id={ownStudioKey}
-            label={'Do you have your own studio?'}
-            validate={required}
+            label={ownStudioKeyMessage}
           >
             <option disabled value="">
-              Please choose from the list
+              <FormattedMessage id="EditListingFeaturesForm.chooseFromList" />
             </option>
             {ownStudioOptions.map(o => (
               <option key={o.key} value={o.key}>
@@ -96,8 +150,8 @@ const EditListingFeaturesFormComponent = props => (
             name="gear"
             className={css.features}
             type="textarea"
-            label="Please list the gear included in the listing price*"
-            placeholder="Will expand while you write"
+            label={gearMessage}
+            placeholder={gearMessagePlaceholder}
           />
         </div>
       );
@@ -114,17 +168,16 @@ const EditListingFeaturesFormComponent = props => (
             id={photographerKey}
             name={photographerKey}
             options={photographerOptions}
-            label="Please add your subset of photographer skills (you can choose multiple)"
+            label={photographerKeyMessage}
           />
           <FieldSelect
             className={css.features}
             name={soundLightExpKey}
             id={soundLightExpKey}
-            label={'Sound & light experience'}
-            validate={required}
+            label={soundLightExpKeyMessage}
           >
             <option disabled value="">
-              Please choose from the list
+              <FormattedMessage id="EditListingFeaturesForm.chooseFromList" />
             </option>
             {soundLightExpOptions.map(o => (
               <option key={o.key} value={o.key}>
@@ -150,34 +203,32 @@ const EditListingFeaturesFormComponent = props => (
             id={djKey}
             name={djKey}
             options={djOptions}
-            label="Please add your subset of DJ skills"
+            label={djKeyMessage}
           />
           <FieldTextInput
             id="technicalRider"
             name="technicalRider"
             className={css.features}
             type="textarea"
-            label="Technical rider"
-            placeholder="Will expand while you write"
-            validate={required}
+            label={technicalRiderMessage}
+            placeholder={technicalRiderPlaceholderMessage}
           />
           <FieldTextInput
             id="cateringRider"
             name="cateringRider"
             className={css.features}
             type="textarea"
-            label="Catering/hospitality rider"
-            placeholder="Will expand while you write"
-            validate={required}
+            label={cateringRiderMessage}
+            placeholder={cateringRiderPlaceholderMessage}
           />
           <FieldSelect
             className={css.features}
             name={djGearForPlayingKey}
             id={djGearForPlayingKey}
-            label={'DJ gear for playing'}
+            label={djGearForPlayingKeyMessage}
           >
             <option disabled value="">
-              Please choose from the list
+              <FormattedMessage id="EditListingFeaturesForm.chooseFromList" />
             </option>
             {djGearForPlayingOptions.map(o => (
               <option key={o.key} value={o.key}>
@@ -190,19 +241,17 @@ const EditListingFeaturesFormComponent = props => (
             name="playingStyle"
             className={css.features}
             type="textarea"
-            label="Describe your playing style"
-            placeholder="Will expand while you write"
-            validate={required}
+            label={playingStyleMessage}
+            placeholder={playingStylePlaceholderMessage}
           />
           <FieldSelect
             className={css.features}
             name={songRequestKey}
             id={songRequestKey}
-            label={'Are you accessible at the event for guest who request songs?'}
-            validate={required}
+            label={songRequestKeyMessage}
           >
             <option disabled value="">
-              Please choose from the list
+              <FormattedMessage id="EditListingFeaturesForm.chooseFromList" />
             </option>
             {songRequestOptions.map(o => (
               <option key={o.key} value={o.key}>
@@ -217,6 +266,8 @@ const EditListingFeaturesFormComponent = props => (
       // ############### MAIN COMPONENT ###########################
       const skillKey = 'skill';
       const skillOptions = findOptionsForSelectFilter(skillKey, filterConfig);
+      console.log(filterConfig[6].type)
+      console.log(filterConfig)
       const [state, setState] = useState(skill);
       const handleChange = e => {
         setState(e);
@@ -237,12 +288,12 @@ const EditListingFeaturesFormComponent = props => (
             className={css.features}
             name={name}
             id={name}
-            label={'Skill'}
+            label={skillMessage}
             onChange={handleChange}
             value={skill}
           >
             <option disabled value="">
-              Please choose from the list
+              <FormattedMessage id="EditListingFeaturesForm.chooseFromList" />
             </option>
             {skillOptions.map(o => (
               <option key={o.key} value={o.key}>
@@ -286,6 +337,7 @@ EditListingFeaturesFormComponent.defaultProps = {
 
 EditListingFeaturesFormComponent.propTypes = {
   rootClassName: string,
+    intl: intlShape.isRequired,
   className: string,
   name: string.isRequired,
   onSubmit: func.isRequired,
@@ -304,4 +356,4 @@ EditListingFeaturesFormComponent.propTypes = {
 
 const EditListingFeaturesForm = EditListingFeaturesFormComponent;
 
-export default EditListingFeaturesForm;
+export default compose(injectIntl)(EditListingFeaturesForm);

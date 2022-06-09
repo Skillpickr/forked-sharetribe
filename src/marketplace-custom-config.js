@@ -204,12 +204,18 @@ export const filters = [
   },
   {
     id: 'ownStudio',
+    type: '',
+    group: 'secondary',
+    queryParamNames: [''],
     config: {
       options: [{ key: 'yes', label: 'Yes' }, { key: 'no', label: 'No' }],
     },
   },
   {
     id: 'soundLightExp',
+    type: '',
+    group: 'secondary',
+    queryParamNames: [''],
     config: {
       options: [
         { key: 'yes', label: 'Yes' },
@@ -220,12 +226,18 @@ export const filters = [
   },
   {
     id: 'songRequest',
+    type: '',
+    group: 'secondary',
+    queryParamNames: [''],
     config: {
       options: [{ key: 'yes', label: 'Yes' }, { key: 'no', label: 'No' }],
     },
   },
   {
     id: 'djGearForPlaying',
+    type: '',
+    group: 'secondary',
+    queryParamNames: [''],
     config: {
       options: [
         {
