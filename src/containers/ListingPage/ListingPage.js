@@ -408,12 +408,9 @@ export class ListingPageComponent extends Component {
       if (optionConfig.key === 'photographer'){
         subSkillOptions = findOptionsForSelectFilter('photographerType', filterConfig);
         Array.prototype.push.apply(selectedSubOptions, publicData.photographerType);
-        console.log('inside photo')
      } else if (optionConfig.key === 'dj') {
-       console.log(publicData.djType)
        subSkillOptions = findOptionsForSelectFilter('djType', filterConfig);
        Array.prototype.push.apply(selectedSubOptions, publicData.djType);
-       console.log('inside dj',selectedSubOptions)
      }
     }else null;
     const selectedConfigSubOptions = subSkillOptions.filter(o =>

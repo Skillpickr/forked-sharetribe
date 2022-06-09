@@ -98,7 +98,6 @@ const EditListingFeaturesFormComponent = props => (
             type="textarea"
             label="Please list the gear included in the listing price*"
             placeholder="Will expand while you write"
-            validate={required}
           />
         </div>
       );
