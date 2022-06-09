@@ -130,6 +130,7 @@
     right: auto;
     height: calc(0.41 * 100vw);
     max-height: 50vh;
+    -o-object-fit: cover;
     object-fit: cover;
     border-radius: var(--borderRadius);
 
@@ -473,6 +474,12 @@
   }
 }
 
+.sectionFeatures ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
 .sectionMap {
   padding: 0 24px;
   margin-bottom: 35px;
@@ -608,5 +615,7 @@
   word-break: break-all;
   /* use break-word if available */
   word-break: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   hyphens: auto;
 }

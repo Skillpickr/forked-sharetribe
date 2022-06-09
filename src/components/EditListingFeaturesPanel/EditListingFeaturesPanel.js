@@ -29,13 +29,32 @@ const EditListingFeaturesPanel = props => {
 
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureListing(listing);
-  const { publicData } = currentListing.attributes;
+  const { publicData, metaData } = currentListing.attributes;
   const skill = publicData && publicData.skill;
   const gear = publicData && publicData.gear;
   const soundLightExp = publicData && publicData.soundLightExp;
   const photographerType = publicData && publicData.photographerType;
   const ownStudio = publicData && publicData.ownStudio;
-  const initialValues = { skill, photographerType, gear, soundLightExp, ownStudio };
+  // const category = metaData && metaData.category;
+  const djType = publicData && publicData.djType;
+  const technicalRider = publicData && publicData.technicalRider;
+  const cateringRider = publicData && publicData.cateringRider;
+  const djGearForPlaying = publicData && publicData.djGearForPlaying;
+  const playingStyle = publicData && publicData.playingStyle;
+  const songRequest = publicData && publicData.songRequest;
+  const initialValues = {
+    skill,
+    photographerType,
+    gear,
+    soundLightExp,
+    ownStudio,
+    djType,
+    technicalRider,
+    cateringRider,
+    djGearForPlaying,
+    playingStyle,
+    songRequest,
+  };
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -60,17 +79,35 @@ const EditListingFeaturesPanel = props => {
         className={css.form}
         name={FEATURES_NAME}
         initialValues={initialValues}
+        skill={skill}
         onSubmit={values => {
           const {
-            skill = '',
+            skill = [],
             photographerType = [],
             gear = '',
             soundLightExp = [],
             ownStudio = [],
+            djType = [],
+            technicalRider = '',
+            cateringRider = '',
+            djGearForPlaying = [],
+            playingStyle = '',
+            songRequest = [],
           } = values;
-
           const updatedValues = {
-            publicData: { skill, photographerType, gear, soundLightExp, ownStudio },
+            publicData: {
+              skill,
+              photographerType,
+              gear,
+              soundLightExp,
+              ownStudio,
+              djType,
+              technicalRider,
+              cateringRider,
+              djGearForPlaying,
+              playingStyle,
+              songRequest,
+            },
           };
           onSubmit(updatedValues);
         }}
