@@ -26,8 +26,9 @@ class CategoryImage extends Component {
 }
 const LazyImage = lazyLoadWithDimensions(CategoryImage);
 
-const categoryLink = (name, image, searchQuery, isComingSoon) => {
-  const nameText = <span className={css.categoryName}>{name}</span>;
+const categoryLink = (title, subTitle, image, searchQuery, isComingSoon) => {
+  const nameText = <span className={css.categoryName}>{title}</span>;
+  const subText = <span className={css.categoryName}>{subTitle}</span>;
   return (
     <NamedLink
       name="SearchPage"
