@@ -275,6 +275,12 @@ const EditListingFeaturesFormComponent = props => (
       };
       const SelectedComponent = components[state];
 
+      const category = 'category';
+      if(state.includes('photographer')){
+
+      }
+
+
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           {errorMessage}

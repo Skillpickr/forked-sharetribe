@@ -93,6 +93,7 @@ const EditListingFeaturesPanel = props => {
             djGearForPlaying = [],
             playingStyle = '',
             songRequest = [],
+            category = ''
           } = values;
           const updatedValues = {
             publicData: {
@@ -108,6 +109,9 @@ const EditListingFeaturesPanel = props => {
               playingStyle,
               songRequest,
             },
+            metaData: {
+              category
+            }
           };
           onSubmit(updatedValues);
         }}
