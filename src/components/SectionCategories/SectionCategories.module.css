@@ -73,7 +73,9 @@
   width: 100%;
   height: 100%;
   border-radius: 4px;
+  -webkit-filter: brightness(50%);
   filter: brightness(50%);
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -84,10 +86,15 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 
   @media (--viewportMedium) {
     margin-top: 0;
   }
+}
+
+.linkText p span {
+  color: white;
 }
 
 .categoryName {

@@ -26,8 +26,9 @@ class CategoryImage extends Component {
 }
 const LazyImage = lazyLoadWithDimensions(CategoryImage);
 
-const categoryLink = (name, image, searchQuery, isComingSoon) => {
-  const nameText = <span className={css.categoryName}>{name}</span>;
+const categoryLink = (title, subTitle, image, searchQuery, isComingSoon) => {
+  const nameText = <span className={css.categoryName}>{title}</span>;
+  const subText = <span className={css.categoryName}>{subTitle}</span>;
   return (
     <NamedLink
       name="SearchPage"
@@ -37,11 +38,17 @@ const categoryLink = (name, image, searchQuery, isComingSoon) => {
     >
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
-          <LazyImage src={image} alt={name} className={css.categoryImage} />
+          <LazyImage src={image} alt={title} className={css.categoryImage} />
         </div>
       </div>
       <div className={classNames(css.linkText, { [css.comingSoon]: isComingSoon })}>
         <FormattedMessage id="SectionCategories.categories" values={{ category: nameText }} />
+        <p>
+          <FormattedMessage
+            id="SectionCategories.subCategories"
+            values={{ subCategory: subText }}
+          />
+        </p>
       </div>
     </NamedLink>
   );
@@ -60,30 +67,24 @@ const SectionCategories = props => {
       <div className={css.categories}>
         {categoryLink(
           'Performance & Entertainment',
+          '(e.g. DJ)',
           performanceImage,
-          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
-          true
-        )}
-        {categoryLink(
-          'Creative',
-          creativeImage,
-          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
+          '?pub_skill=dj',
           false
         )}
+        {/* {categoryLink('Performance & Entertainment',performanceImage,'?pub_category=p-and-e',true)} */}
+        {categoryLink(
+          'Creative',
+          '(e.g. Photographer)',
+          creativeImage,
+          '?pub_skill=photographer',
+          false
+        )}
+        {/* {categoryLink('Creative', creativeImage, '?pub_category=creative', false)} */}
       </div>
       <div className={css.categories}>
-        {categoryLink(
-          'Knowledge',
-          knowledgeImage,
-          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
-          true
-        )}
-        {categoryLink(
-          'Media Production',
-          mediaImage,
-          '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
-          true
-        )}
+        {categoryLink('Knowledge', '', knowledgeImage, '?pub_category=knowledge', true)}
+        {categoryLink('Media Production', '', mediaImage, '?pub_category=media-production', true)}
       </div>
     </div>
   );

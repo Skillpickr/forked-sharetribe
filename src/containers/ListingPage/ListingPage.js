@@ -386,9 +386,37 @@ export class ListingPageComponent extends Component {
     );
 
     const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
-    const subSkillOptions = findOptionsForSelectFilter('photographerType', filterConfig);
     const soundLightExperienceOptions = findOptionsForSelectFilter('soundLightExp', filterConfig);
     const ownStudioOptions = findOptionsForSelectFilter('ownStudio', filterConfig);
+    const djGearForPlayingOptions = findOptionsForSelectFilter('djGearForPlaying', filterConfig);
+    const songRequestOptions = findOptionsForSelectFilter('songRequest', filterConfig);
+    const selectedOption = publicData && publicData.skill ? publicData.skill : null;
+
+    // Don't return anything if public data doesn't contain view field
+    // That's why we named this component as SectionViewMaybe
+    if (!publicData || !selectedOption) {
+      return null;
+    }
+
+    // Find selected options label
+    const optionConfig = skillOptions.find(o => o.key === selectedOption);
+    const optionLabel = optionConfig ? optionConfig.label : null;
+
+    let subSkillOptions;
+    const selectedSubOptions = [];
+    if (publicData) {
+      if (optionConfig.key === 'photographer') {
+        subSkillOptions = findOptionsForSelectFilter('photographerType', filterConfig);
+        Array.prototype.push.apply(selectedSubOptions, publicData.photographerType);
+      } else if (optionConfig.key === 'dj') {
+        subSkillOptions = findOptionsForSelectFilter('djType', filterConfig);
+        Array.prototype.push.apply(selectedSubOptions, publicData.djType);
+      }
+    } else null;
+    const selectedConfigSubOptions = subSkillOptions.filter(o =>
+      selectedSubOptions.find(s => s === o.key)
+    );
+
     return (
       <Page
         title={schemaTitle}
@@ -440,13 +468,16 @@ export class ListingPageComponent extends Component {
                   />
                   <SectionDescriptionMaybe description={description} />
                   <SectionFeaturesMaybe
-                    options={skillOptions}
-                    subOptions={subSkillOptions}
-                    publicData={publicData}
+                    optionLabel={optionLabel}
+                    selectedSubOptions={selectedSubOptions}
+                    selectedConfigSubOptions={selectedConfigSubOptions}
                   />
                   <SectionSpecificationsMaybe
                     soundLightExp={soundLightExperienceOptions}
                     ownStudio={ownStudioOptions}
+                    djGearForPlaying={djGearForPlayingOptions}
+                    songRequest={songRequestOptions}
+                    skillType={optionConfig.key}
                     publicData={publicData}
                   ></SectionSpecificationsMaybe>
                   <SectionBonusMaybe publicData={publicData}></SectionBonusMaybe>
