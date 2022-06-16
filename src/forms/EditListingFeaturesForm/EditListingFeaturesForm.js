@@ -129,29 +129,7 @@ const EditListingFeaturesFormComponent = props => (
       const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig);
       const sharedComponent = (
         <div>
-          <FieldSelect
-            className={css.features}
-            name={ownStudioKey}
-            id={ownStudioKey}
-            label={ownStudioKeyMessage}
-          >
-            <FormattedMessage id='EditListingFeaturesForm.chooseFromList'>
-              {(id) => <option disabled value="">{id}</option>}
-            </FormattedMessage>
-            {ownStudioOptions.map(o => (
-              <option key={o.key} value={o.key}>
-                {o.label}
-              </option>
-            ))}
-          </FieldSelect>
-          <FieldTextInput
-            id="gear"
-            name="gear"
-            className={css.features}
-            type="textarea"
-            label={gearMessage}
-            placeholder={gearMessagePlaceholder}
-          />
+
         </div>
       );
 
@@ -184,6 +162,29 @@ const EditListingFeaturesFormComponent = props => (
               </option>
             ))}
           </FieldSelect>
+                    <FieldSelect
+            className={css.features}
+            name={ownStudioKey}
+            id={ownStudioKey}
+            label={ownStudioKeyMessage}
+          >
+            <FormattedMessage id='EditListingFeaturesForm.chooseFromList'>
+              {(id) => <option disabled value="">{id}</option>}
+            </FormattedMessage>
+            {ownStudioOptions.map(o => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          <FieldTextInput
+            id="gear"
+            name="gear"
+            className={css.features}
+            type="textarea"
+            label={gearMessage}
+            placeholder={gearMessagePlaceholder}
+          />
           {sharedComponent}
         </div>
       );

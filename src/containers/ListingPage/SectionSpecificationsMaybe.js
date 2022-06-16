@@ -93,12 +93,17 @@ const SectionSpecificationsMaybe = props => {
           <FormattedMessage id="ListingPage.ownStudio" values={{ ownStudio: ownStudioLabel }} />
         </p>
       )}
+            {gear && (
+          <p className={css.description}>
+            <FormattedMessage id="ListingPage.gear" values={{ gear: gear }} />
+          </p>
+      )}
     </div>
   )
 
   const [state] = useState(skillType);
 
-  return soundLightExpLabel || ownStudioLabel || homepageUrl || djGearForPlayingLabel ? (
+  return homepageUrl || skillType ? (
     <div className={css.sectionFeatures}>
       <h2 className={css.featuresTitle}>
         <FormattedMessage id="ListingPage.specificationsTitle" />
@@ -116,12 +121,6 @@ const SectionSpecificationsMaybe = props => {
           <FormattedMessage id="ListingPage.homepageUrl" />
           <ExternalLink href={homepageUrl}>{homepageUrl}</ExternalLink>
         </p>
-      )}
-
-      {gear && (
-          <p className={css.description}>
-            <FormattedMessage id="ListingPage.gear" values={{ gear: gear }} />
-          </p>
       )}
     </div>
   ) : null;
