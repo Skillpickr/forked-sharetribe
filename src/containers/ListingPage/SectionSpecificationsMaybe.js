@@ -19,13 +19,13 @@ const SectionSpecificationsMaybe = props => {
 
   // Don't return anything if public data doesn't contain view field
   // That's why we named this component as SectionViewMaybe
-  if (!publicData ) {
+  if (!publicData) {
     return null;
   }
 
   // Find selected options label
   const selectedSoundLightExp =
-  publicData && publicData.soundLightExp ? publicData.soundLightExp : null;
+    publicData && publicData.soundLightExp ? publicData.soundLightExp : null;
   const soundLightExpConfig = soundLightExp.find(o => o.key === selectedSoundLightExp);
   const soundLightExpLabel = soundLightExpConfig ? soundLightExpConfig.label : null;
 
@@ -33,11 +33,12 @@ const SectionSpecificationsMaybe = props => {
   const ownStudioConfig = ownStudio.find(o => o.key === selectedOwnStudio);
   const ownStudioLabel = ownStudioConfig ? ownStudioConfig.label : null;
 
-  const selectedDjGearForPlaying = publicData && publicData.djGearForPlaying ? publicData.djGearForPlaying: null;
+  const selectedDjGearForPlaying =
+    publicData && publicData.djGearForPlaying ? publicData.djGearForPlaying : null;
   const djGearForPlayingConfig = djGearForPlaying.find(o => o.key === selectedDjGearForPlaying);
   const djGearForPlayingLabel = djGearForPlayingConfig ? djGearForPlayingConfig.label : null;
 
-  const selectedSongRequest = publicData && publicData.songRequest ? publicData.songRequest: null;
+  const selectedSongRequest = publicData && publicData.songRequest ? publicData.songRequest : null;
   const songRequestConfig = songRequest.find(o => o.key === selectedSongRequest);
   const songRequestLabel = songRequestConfig ? songRequestConfig.label : null;
 
@@ -61,21 +62,24 @@ const SectionSpecificationsMaybe = props => {
       )}
       {playingStyle && (
         <p className={css.description}>
-          <FormattedMessage id="ListingPage.playingStyle" values={{ style: playingStyle }}/>
+          <FormattedMessage id="ListingPage.playingStyle" values={{ style: playingStyle }} />
         </p>
       )}
       {technicalRider && (
         <p className={css.description}>
-          <FormattedMessage id="ListingPage.technicalRider" values={{ technical: technicalRider }}/>
+          <FormattedMessage
+            id="ListingPage.technicalRider"
+            values={{ technical: technicalRider }}
+          />
         </p>
       )}
       {cateringRider && (
         <p className={css.description}>
-          <FormattedMessage id="ListingPage.cateringRider" values={{ catering: cateringRider }}/>
+          <FormattedMessage id="ListingPage.cateringRider" values={{ catering: cateringRider }} />
         </p>
       )}
     </div>
-  )
+  );
 
   const photographerComponent = (
     <div>
@@ -88,18 +92,18 @@ const SectionSpecificationsMaybe = props => {
         </p>
       )}
 
-      {ownStudioLabel &&  (
+      {ownStudioLabel && (
         <p className={css.description}>
           <FormattedMessage id="ListingPage.ownStudio" values={{ ownStudio: ownStudioLabel }} />
         </p>
       )}
-            {gear && (
-          <p className={css.description}>
-            <FormattedMessage id="ListingPage.gear" values={{ gear: gear }} />
-          </p>
+      {gear && (
+        <p className={css.description}>
+          <FormattedMessage id="ListingPage.gear" values={{ gear: gear }} />
+        </p>
       )}
     </div>
-  )
+  );
 
   const [state] = useState(skillType);
 
@@ -109,12 +113,11 @@ const SectionSpecificationsMaybe = props => {
         <FormattedMessage id="ListingPage.specificationsTitle" />
       </h2>
 
-       {/* Photogapher */}
+      {/* Photogapher */}
       {state.includes('photographer') && photographerComponent}
 
       {/* DJ */}
       {state.includes('dj') && djComponent}
-
 
       {homepageUrl && (
         <p className={css.description}>

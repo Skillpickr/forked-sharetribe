@@ -49,7 +49,7 @@ const EditListingFeaturesFormComponent = props => (
         updateInProgress,
         fetchErrors,
         filterConfig,
-        skill
+        skill,
       } = formRenderProps;
 
       const ownStudioKeyMessage = intl.formatMessage({
@@ -86,7 +86,6 @@ const EditListingFeaturesFormComponent = props => (
       const cateringRiderPlaceholderMessage = intl.formatMessage({
         id: 'EditListingFeaturesForm.cateringRiderPlaceholderMessage',
       });
-
 
       const djGearForPlayingKeyMessage = intl.formatMessage({
         id: 'EditListingFeaturesForm.djGearForPlayingKeyMessage',
@@ -127,11 +126,7 @@ const EditListingFeaturesFormComponent = props => (
       // ############### SHARE COMPONENT ###########################
       const ownStudioKey = 'ownStudio';
       const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig);
-      const sharedComponent = (
-        <div>
-
-        </div>
-      );
+      const sharedComponent = <div></div>;
 
       // ############### Photographer COMPONENT ###########################
       const photographerKey = 'photographerType';
@@ -153,23 +148,31 @@ const EditListingFeaturesFormComponent = props => (
             id={soundLightExpKey}
             label={soundLightExpKeyMessage}
           >
-            <FormattedMessage id='EditListingFeaturesForm.chooseFromList'>
-                {(id) => <option disabled value="">{id}</option>}
-              </FormattedMessage>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {id => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
             {soundLightExpOptions.map(o => (
               <option key={o.key} value={o.key}>
                 {o.label}
               </option>
             ))}
           </FieldSelect>
-                    <FieldSelect
+          <FieldSelect
             className={css.features}
             name={ownStudioKey}
             id={ownStudioKey}
             label={ownStudioKeyMessage}
           >
-            <FormattedMessage id='EditListingFeaturesForm.chooseFromList'>
-              {(id) => <option disabled value="">{id}</option>}
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {id => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
             </FormattedMessage>
             {ownStudioOptions.map(o => (
               <option key={o.key} value={o.key}>
@@ -227,9 +230,13 @@ const EditListingFeaturesFormComponent = props => (
             id={djGearForPlayingKey}
             label={djGearForPlayingKeyMessage}
           >
-                         <FormattedMessage id='EditListingFeaturesForm.chooseFromList'>
-                {(id) => <option disabled value="">{id}</option>}
-              </FormattedMessage>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {id => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
             {djGearForPlayingOptions.map(o => (
               <option key={o.key} value={o.key}>
                 {o.label}
@@ -250,9 +257,13 @@ const EditListingFeaturesFormComponent = props => (
             id={songRequestKey}
             label={songRequestKeyMessage}
           >
-                         <FormattedMessage id='EditListingFeaturesForm.chooseFromList'>
-                {(id) => <option disabled value="">{id}</option>}
-              </FormattedMessage>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {id => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
             {songRequestOptions.map(o => (
               <option key={o.key} value={o.key}>
                 {o.label}
@@ -289,8 +300,8 @@ const EditListingFeaturesFormComponent = props => (
             onChange={handleChange}
             value={skill}
           >
-            <FormattedMessage id='EditListingFeaturesForm.chooseFromList'>
-              {(id) => <option value="">{id}</option>}
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {id => <option value="">{id}</option>}
             </FormattedMessage>
             {skillOptions.map(o => (
               <option key={o.key} value={o.key}>
@@ -298,7 +309,7 @@ const EditListingFeaturesFormComponent = props => (
               </option>
             ))}
           </FieldSelect>
-          {SelectedComponent ? <SelectedComponent /> : <DefaultComponent /> }
+          {SelectedComponent ? <SelectedComponent /> : <DefaultComponent />}
 
           {/* VideoGrapher */}
 
@@ -328,12 +339,12 @@ EditListingFeaturesFormComponent.defaultProps = {
   className: null,
   fetchErrors: null,
   filterConfig: config.custom.filters,
-  skill: ''
+  skill: '',
 };
 
 EditListingFeaturesFormComponent.propTypes = {
   rootClassName: string,
-    intl: intlShape.isRequired,
+  intl: intlShape.isRequired,
   className: string,
   name: string.isRequired,
   onSubmit: func.isRequired,
@@ -347,7 +358,7 @@ EditListingFeaturesFormComponent.propTypes = {
     updateListingError: propTypes.error,
   }),
   filterConfig: propTypes.filterConfig,
-  skill: string.isRequired
+  skill: string.isRequired,
 };
 
 const EditListingFeaturesForm = EditListingFeaturesFormComponent;

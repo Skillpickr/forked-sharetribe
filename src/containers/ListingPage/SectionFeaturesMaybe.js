@@ -9,7 +9,6 @@ const SectionFeaturesMaybe = props => {
   // and listing's publicData
   const { optionLabel, selectedSubOptions, selectedConfigSubOptions } = props;
 
-
   return (
     <div className={css.sectionFeatures}>
       <h2 className={css.featuresTitle}>
