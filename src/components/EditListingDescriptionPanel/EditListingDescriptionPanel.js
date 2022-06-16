@@ -59,7 +59,14 @@ const EditListingDescriptionPanel = props => {
         initialValues={initialValues}
         saveActionMsg={submitButtonText}
         onSubmit={values => {
-          const { title, description, experience = number, track = '', url = '', bonus = '' } = values;
+          const {
+            title,
+            description,
+            experience = number,
+            track = '',
+            url = '',
+            bonus = '',
+          } = values;
           const updateValues = {
             title: title.trim(),
             description,

@@ -114,6 +114,11 @@ export const ListingCardComponent = props => {
           <div className={css.skillInfo}>
             {skill && !skill.hideFromListingInfo ? <span>{skill.label}</span> : null}
           </div>
+          {/* <div className={css.certificateInfo}>
+            {certificate && !certificate.hideFromListingInfo ? (
+              <span>{certificate.label}</span>
+            ) : null}
+          </div> */}
         </div>
       </div>
     </NamedLink>
