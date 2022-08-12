@@ -42,9 +42,12 @@ const categoryLink = (title, subTitle, image, searchQuery, isComingSoon) => {
         </div>
       </div>
       <div className={classNames(css.linkText, { [css.comingSoon]: isComingSoon })}>
-          <FormattedMessage id="SectionCategories.categories" values={{ category: nameText }} />
+        <FormattedMessage id="SectionCategories.categories" values={{ category: nameText }} />
         <p>
-          <FormattedMessage id="SectionCategories.subCategories" values={{ subCategory: subText }} />
+          <FormattedMessage
+            id="SectionCategories.subCategories"
+            values={{ subCategory: subText }}
+          />
         </p>
       </div>
     </NamedLink>
@@ -62,9 +65,21 @@ const SectionCategories = props => {
         <FormattedMessage id="SectionCategories.title" />
       </div>
       <div className={css.categories}>
-        {categoryLink('Performance & Entertainment', '(e.g. DJ)', performanceImage,'?pub_skill=dj',false)}
+        {categoryLink(
+          'Performance & Entertainment',
+          '(e.g. DJ)',
+          performanceImage,
+          '?pub_skill=dj',
+          false
+        )}
         {/* {categoryLink('Performance & Entertainment',performanceImage,'?pub_category=p-and-e',true)} */}
-        {categoryLink('Creative','(e.g. Photographer)',  creativeImage, '?pub_skill=photographer', false)}
+        {categoryLink(
+          'Creative',
+          '(e.g. Photographer)',
+          creativeImage,
+          '?pub_skill=photographer',
+          false
+        )}
         {/* {categoryLink('Creative', creativeImage, '?pub_category=creative', false)} */}
       </div>
       <div className={css.categories}>

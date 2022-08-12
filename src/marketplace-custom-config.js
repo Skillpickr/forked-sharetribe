@@ -123,10 +123,7 @@ export const filters = [
       // Schema type is enum for SelectSingleFilter
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       searchMode: 'enum',
-      options: [
-        { key: 'photographer', label: 'Photographer' },
-        { key: 'dj', label: 'DJ' },
-      ],
+      options: [{ key: 'photographer', label: 'Photographer' }, { key: 'dj', label: 'DJ' }],
     },
   },
   {

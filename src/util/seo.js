@@ -152,7 +152,11 @@ export const metaTagProps = tagData => {
   const defaultMeta = [
     { name: 'description', content: tagData.description },
     { name: 'author', content: author },
-    { name: 'keywords', content: 'Skillpickr, photographer, dj, musician, for hire, hyr, fest,  musik, music, wedding, company, event, skills, pick'}
+    {
+      name: 'keywords',
+      content:
+        'Skillpickr, photographer, dj, musician, for hire, hyr, fest,  musik, music, wedding, company, event, skills, pick',
+    },
   ];
 
   const openGraphMeta = openGraphMetaProps({

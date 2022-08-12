@@ -397,22 +397,22 @@ export class ListingPageComponent extends Component {
     if (!publicData || !selectedOption) {
       return null;
     }
-  
+
     // Find selected options label
     const optionConfig = skillOptions.find(o => o.key === selectedOption);
     const optionLabel = optionConfig ? optionConfig.label : null;
-    
-    let subSkillOptions
-    const selectedSubOptions = []
-    if(publicData){
-      if (optionConfig.key === 'photographer'){
+
+    let subSkillOptions;
+    const selectedSubOptions = [];
+    if (publicData) {
+      if (optionConfig.key === 'photographer') {
         subSkillOptions = findOptionsForSelectFilter('photographerType', filterConfig);
         Array.prototype.push.apply(selectedSubOptions, publicData.photographerType);
-     } else if (optionConfig.key === 'dj') {
-       subSkillOptions = findOptionsForSelectFilter('djType', filterConfig);
-       Array.prototype.push.apply(selectedSubOptions, publicData.djType);
-     }
-    }else null;
+      } else if (optionConfig.key === 'dj') {
+        subSkillOptions = findOptionsForSelectFilter('djType', filterConfig);
+        Array.prototype.push.apply(selectedSubOptions, publicData.djType);
+      }
+    } else null;
     const selectedConfigSubOptions = subSkillOptions.filter(o =>
       selectedSubOptions.find(s => s === o.key)
     );
@@ -475,7 +475,7 @@ export class ListingPageComponent extends Component {
                   <SectionSpecificationsMaybe
                     soundLightExp={soundLightExperienceOptions}
                     ownStudio={ownStudioOptions}
-                    djGearForPlaying ={djGearForPlayingOptions}
+                    djGearForPlaying={djGearForPlayingOptions}
                     songRequest={songRequestOptions}
                     skillType={optionConfig.key}
                     publicData={publicData}
