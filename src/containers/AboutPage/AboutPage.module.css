@@ -2,6 +2,13 @@
 
 .pageTitle {
   text-align: center;
+  position: absolute;
+  color: var(--marketplaceColor);
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  background-color: white;
 }
 
 .staticPageWrapper {
@@ -19,6 +26,7 @@
   width: 100%;
   height: 528px;
   border-radius: 4px;
+  -o-object-fit: cover;
   object-fit: cover;
   margin: 32px 0 40px;
 }
@@ -51,6 +59,13 @@
 }
 
 .subtitle {
+  composes: h2 from global;
   margin-top: 32px;
   margin-bottom: 16px;
 }
+
+/* .bullet {
+  list-style-type: circle;
+  padding-left: 50px;
+  margin: 0;
+} */

@@ -10,8 +10,8 @@ import { metaTagProps } from '../../util/seo';
 import { canonicalRoutePath } from '../../util/routes';
 import { CookieConsent } from '../../components';
 
-import facebookImage from '../../assets/yogatimeFacebook-1200x630.jpg';
-import twitterImage from '../../assets/yogatimeTwitter-600x314.jpg';
+import facebookImage from '../../assets/skillpicker-facebook1200x630-01.jpg';
+import twitterImage from '../../assets/skillpicker-twitter600x314-01.jpg';
 import css from './Page.module.css';
 
 const preventDefault = e => {
@@ -139,7 +139,6 @@ class PageComponent extends Component {
       locale: intl.locale,
     });
 
-    // eslint-disable-next-line react/no-array-index-key
     const metaTags = metaToHead.map((metaProps, i) => <meta key={i} {...metaProps} />);
 
     const facebookPage = config.siteFacebookPage;

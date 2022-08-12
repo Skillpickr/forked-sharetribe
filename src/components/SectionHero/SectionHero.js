@@ -22,14 +22,14 @@ const SectionHero = props => {
         <h1 className={classNames(css.heroMainTitle, { [css.heroMainTitleFEDelay]: mounted })}>
           <FormattedMessage id="SectionHero.title" />
         </h1>
-        <h2 className={classNames(css.heroSubTitle, { [css.heroSubTitleFEDelay]: mounted })}>
+        {/*  <h2 className={classNames(css.heroSubTitle, { [css.heroSubTitleFEDelay]: mounted })}>
           <FormattedMessage id="SectionHero.subTitle" />
-        </h2>
+        </> */}
         <NamedLink
           name="SearchPage"
           to={{
             search:
-              'address=United%20States%20of%20America&bounds=71.540724%2C-66.885444%2C18.765563%2C-179.9',
+              '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846',
           }}
           className={classNames(css.heroButton, { [css.heroButtonFEDelay]: mounted })}
         >

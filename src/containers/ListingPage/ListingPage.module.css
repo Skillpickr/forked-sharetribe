@@ -129,6 +129,7 @@
     right: auto;
     height: calc(0.41 * 100vw);
     max-height: 50vh;
+    -o-object-fit: cover;
     object-fit: cover;
     border-radius: var(--borderRadius);
 
@@ -461,6 +462,29 @@
   }
 }
 
+.sectionBonus {
+  padding: 0 24px;
+  margin-bottom: 32px;
+
+  @media (--viewportMedium) {
+    padding: 0;
+    margin-bottom: 52px;
+  }
+}
+
+.bonusTitle {
+  /* Font */
+  composes: h3 from global;
+  color: var(--matterColorAnti);
+
+  margin-top: 0;
+  margin-bottom: 16px;
+  @media (--viewportMedium) {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+}
+
 .description {
   margin-top: 0;
   margin-bottom: 0;
@@ -472,6 +496,12 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+}
+
+.sectionFeatures ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
 }
 
 .sectionMap {
@@ -609,5 +639,7 @@
   word-break: break-all;
   /* use break-word if available */
   word-break: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   hyphens: auto;
 }

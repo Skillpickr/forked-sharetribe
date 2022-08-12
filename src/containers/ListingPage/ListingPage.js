@@ -58,6 +58,8 @@ import SectionFeaturesMaybe from './SectionFeaturesMaybe';
 import SectionReviews from './SectionReviews';
 import SectionMapMaybe from './SectionMapMaybe';
 import css from './ListingPage.module.css';
+import SectionBonusMaybe from './SectionBonusMaybe';
+import SectionSpecificationsMaybe from './SectionSpecificationsMaybe';
 
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
 
@@ -383,8 +385,37 @@ export class ListingPageComponent extends Component {
       </NamedLink>
     );
 
-    const yogaStylesOptions = findOptionsForSelectFilter('yogaStyles', filterConfig);
-    const certificateOptions = findOptionsForSelectFilter('certificate', filterConfig);
+    const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
+    const soundLightExperienceOptions = findOptionsForSelectFilter('soundLightExp', filterConfig);
+    const ownStudioOptions = findOptionsForSelectFilter('ownStudio', filterConfig);
+    const djGearForPlayingOptions = findOptionsForSelectFilter('djGearForPlaying', filterConfig);
+    const songRequestOptions = findOptionsForSelectFilter('songRequest', filterConfig);
+    const selectedOption = publicData && publicData.skill ? publicData.skill : null;
+
+    // Don't return anything if public data doesn't contain view field
+    // That's why we named this component as SectionViewMaybe
+    if (!publicData || !selectedOption) {
+      return null;
+    }
+
+    // Find selected options label
+    const optionConfig = skillOptions.find(o => o.key === selectedOption);
+    const optionLabel = optionConfig ? optionConfig.label : null;
+
+    let subSkillOptions;
+    const selectedSubOptions = [];
+    if (publicData) {
+      if (optionConfig.key === 'photographer') {
+        subSkillOptions = findOptionsForSelectFilter('photographerType', filterConfig);
+        Array.prototype.push.apply(selectedSubOptions, publicData.photographerType);
+      } else if (optionConfig.key === 'dj') {
+        subSkillOptions = findOptionsForSelectFilter('djType', filterConfig);
+        Array.prototype.push.apply(selectedSubOptions, publicData.djType);
+      }
+    } else null;
+    const selectedConfigSubOptions = subSkillOptions.filter(o =>
+      selectedSubOptions.find(s => s === o.key)
+    );
 
     return (
       <Page
@@ -429,14 +460,27 @@ export class ListingPageComponent extends Component {
                     priceTitle={priceTitle}
                     formattedPrice={formattedPrice}
                     richTitle={richTitle}
-                    listingCertificate={publicData ? publicData.certificate : null}
-                    certificateOptions={certificateOptions}
                     hostLink={hostLink}
                     showContactUser={showContactUser}
                     onContactUser={this.onContactUser}
+                    listingSkill={publicData ? publicData.skill : null}
+                    skillOptions={skillOptions}
                   />
                   <SectionDescriptionMaybe description={description} />
-                  <SectionFeaturesMaybe options={yogaStylesOptions} publicData={publicData} />
+                  <SectionFeaturesMaybe
+                    optionLabel={optionLabel}
+                    selectedSubOptions={selectedSubOptions}
+                    selectedConfigSubOptions={selectedConfigSubOptions}
+                  />
+                  <SectionSpecificationsMaybe
+                    soundLightExp={soundLightExperienceOptions}
+                    ownStudio={ownStudioOptions}
+                    djGearForPlaying={djGearForPlayingOptions}
+                    songRequest={songRequestOptions}
+                    skillType={optionConfig.key}
+                    publicData={publicData}
+                  ></SectionSpecificationsMaybe>
+                  <SectionBonusMaybe publicData={publicData}></SectionBonusMaybe>
                   <SectionMapMaybe
                     geolocation={geolocation}
                     publicData={publicData}

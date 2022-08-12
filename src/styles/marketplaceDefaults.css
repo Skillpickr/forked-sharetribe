@@ -16,9 +16,9 @@
 :root {
   /* ================ Colors ================ */
 
-  --marketplaceColor: #0095b3;
-  --marketplaceColorLight: #00bfe6;
-  --marketplaceColorDark: #006a80;
+  --marketplaceColor: #fc6161;
+  --marketplaceColorLight: #feb4b4;
+  --marketplaceColorDark: #fa0e0e;
 
   /* Used with inline CSS SVGs */
   --marketplaceColorEncoded: %230095b3;
@@ -176,6 +176,11 @@ body {
   text-rendering: optimizeSpeed;
 
   background-color: var(--matterColorBright);
+}
+
+::-moz-selection {
+  background: var(--marketplaceColor); /* WebKit/Blink Browsers */
+  color: var(--matterColorLight);
 }
 
 ::selection {
@@ -421,6 +426,8 @@ select {
   padding: 5px 0 5px 0;
 
   /* Unset user agent styles */
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 
   /* Borders */
@@ -466,6 +473,22 @@ textarea,
   border-bottom-color: var(--marketplaceColor);
   border-radius: 0;
 
+  &::-webkit-input-placeholder {
+    color: var(--matterColorAnti);
+  }
+
+  &::-moz-placeholder {
+    color: var(--matterColorAnti);
+  }
+
+  &:-ms-input-placeholder {
+    color: var(--matterColorAnti);
+  }
+
+  &::-ms-input-placeholder {
+    color: var(--matterColorAnti);
+  }
+
   &::placeholder {
     color: var(--matterColorAnti);
   }
@@ -493,6 +516,22 @@ textarea {
   box-sizing: content-box;
   padding: 0 0 10px 0;
 
+  &::-webkit-input-placeholder {
+    padding: 0 0 10px 0;
+  }
+
+  &::-moz-placeholder {
+    padding: 0 0 10px 0;
+  }
+
+  &:-ms-input-placeholder {
+    padding: 0 0 10px 0;
+  }
+
+  &::-ms-input-placeholder {
+    padding: 0 0 10px 0;
+  }
+
   &::placeholder {
     padding: 0 0 10px 0;
   }
@@ -517,7 +556,7 @@ textarea {
 .defaultBackgroundImage {
   /* Gradient direction and overlaying the black color on top of the image for better readability */
   background: linear-gradient(-45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
-    url('../assets/background-1440.jpg');
+    url('../assets/background1.jpg');
 
   /* Add loading color for the div */
   background-color: var(--matterColor);
@@ -538,7 +577,7 @@ textarea {
   /* Gradient direction and overlaying the black color on top of the image for better readability */
   @media (--viewportMedium) {
     background: linear-gradient(-45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
-      url('../assets/background-1440.jpg');
+      url('../assets/background1.jpg');
 
     /* Add loading color for the div */
     background-color: var(--matterColor);

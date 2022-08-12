@@ -106,7 +106,7 @@
   }
 }
 
-.certificateInfo {
+.skillInfo {
   /* Font */
   composes: marketplaceTinyFontStyles from global;
   color: var(--matterColor);

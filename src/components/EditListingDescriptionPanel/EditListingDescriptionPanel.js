@@ -3,7 +3,6 @@ import { bool, func, object, string } from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from '../../util/reactIntl';
 import { ensureOwnListing } from '../../util/data';
-import { findOptionsForSelectFilter } from '../../util/search';
 import { LISTING_STATE_DRAFT } from '../../util/types';
 import { ListingLink } from '../../components';
 import { EditListingDescriptionForm } from '../../forms';
@@ -30,6 +29,12 @@ const EditListingDescriptionPanel = props => {
   const currentListing = ensureOwnListing(listing);
   const { description, title, publicData } = currentListing.attributes;
 
+  const experience = publicData && publicData.experience;
+  const track = publicData && publicData.track;
+  const url = publicData && publicData.url;
+  const bonus = publicData && publicData.bonus;
+  const initialValues = { title, description, experience, track, url, bonus };
+
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
     <FormattedMessage
@@ -46,20 +51,26 @@ const EditListingDescriptionPanel = props => {
     <FormattedMessage id="EditListingDescriptionPanel.createListingTitle" />
   );
 
-  const certificateOptions = findOptionsForSelectFilter('certificate', config.custom.filters);
   return (
     <div className={classes}>
       <h1 className={css.title}>{panelTitle}</h1>
       <EditListingDescriptionForm
         className={css.form}
-        initialValues={{ title, description, certificate: publicData.certificate }}
+        initialValues={initialValues}
         saveActionMsg={submitButtonText}
         onSubmit={values => {
-          const { title, description, certificate } = values;
+          const {
+            title,
+            description,
+            experience = number,
+            track = '',
+            url = '',
+            bonus = '',
+          } = values;
           const updateValues = {
             title: title.trim(),
             description,
-            publicData: { certificate },
+            publicData: { experience, track, url, bonus },
           };
 
           onSubmit(updateValues);
@@ -70,7 +81,6 @@ const EditListingDescriptionPanel = props => {
         updated={panelUpdated}
         updateInProgress={updateInProgress}
         fetchErrors={errors}
-        certificateOptions={certificateOptions}
       />
     </div>
   );
