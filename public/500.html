@@ -9,29 +9,37 @@
     <style>
 
      /**
-      * Poppins font is downloaded from Google Fonts
+      * Lato font is downloaded from Google Fonts
       * but served from sharetribe.com assets.
       *
-      * https://fonts.google.com/specimen/Poppins
+      * https://fonts.google.com/specimen/Lato
       */
 
       @font-face {
-        font-family: 'poppins';
-        src: url('https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-Medium.ttf') format('truetype');
+        /* 'Lato-Regular' */
+        font-family: 'Lato';
+        src: url('src/assets/fonts/Lato/Lato-Regular.ttf') format('truetype');
+        font-weight: 400; /* Regular */
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Lato';
+        src: url('src/assets/fonts/Lato/Lato-Bold.ttf') format('truetype');
         font-weight: 500; /* Medium */
         font-style: normal;
       }
 
       @font-face {
-        font-family: 'poppins';
-        src: url('https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-SemiBold.ttf') format('truetype');
-        font-weight: 600; /* SemiBold */
-        font-style: normal;
+        font-family: 'Lato';
+        src: url('src/assets/fonts/Lato/Lato-BoldItalic.ttf') format('truetype');
+        font-weight: 500; /* Medium italics */
+        font-style: italic;
       }
 
       @font-face {
-        font-family: 'poppins';
-        src: url('https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-Bold.ttf') format('truetype');
+        font-family: 'Lato';
+        src: url('src/assets/fonts/Lato/Lato-Black.ttf') format('truetype');
         font-weight: 700; /* Bold */
         font-style: normal;
       }
@@ -90,7 +98,7 @@
 
 
         /* Font */
-        font-weight: 600;
+        font-weight: 500;
         font-size: 18px;
         line-height: 24px;
         letter-spacing: -0.3px;
@@ -122,13 +130,13 @@
       }
 
       .fontsLoaded body {
-        font-family: poppins, Helvetica, Arial, sans-serif;
+        font-family: Lato, Helvetica, Arial, sans-serif;
         opacity: 1;
       }
 
       @media (min-width: 768px) {
         h1 {
-          font-weight: 600;
+          font-weight: 500;
           line-height: 40px;
           letter-spacing: -0.9px;
         }
@@ -195,11 +203,11 @@
             return;
           }
 
-          var poppinsMedium = new FontFace('poppins', 'url("https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-Medium.ttf") format("truetype")', { style: 'normal', weight: '500' });
-          var poppinsSemibold = new FontFace('poppins', 'url("https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-SemiBold.ttf") format("truetype")', { style: 'normal', weight: '600' });
-          var poppinsBold = new FontFace('poppins', 'url("https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-Bold.ttf") format("truetype")', { style: 'normal', weight: '700' });
+          var LatoMedium = new FontFace('Lato', 'url("https://assets-sharetribecom.sharetribe.com/webfonts/Lato/Lato-Medium.ttf") format("truetype")', { style: 'normal', weight: '500' });
+          var LatoSemibold = new FontFace('Lato', 'url("https://assets-sharetribecom.sharetribe.com/webfonts/Lato/Lato-SemiBold.ttf") format("truetype")', { style: 'normal', weight: '600' });
+          var LatoBold = new FontFace('Lato', 'url("https://assets-sharetribecom.sharetribe.com/webfonts/Lato/Lato-Bold.ttf") format("truetype")', { style: 'normal', weight: '700' });
 
-          Promise.all([poppinsMedium.load(), poppinsSemibold.load(), poppinsBold.load()])
+          Promise.all([LatoMedium.load(), LatoSemibold.load(), LatoBold.load()])
             .then(function(values) {
               values.forEach(function(f) {
                 document.fonts.add(f);
