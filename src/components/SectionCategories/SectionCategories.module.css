@@ -1,8 +1,7 @@
-@import '../../styles/propertySets.css';
+@import '../../styles/customMediaQueries.css';
 
 .title {
-  @apply --marketplaceH1FontStyles;
-
+  composes: h1 from global;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -80,8 +79,8 @@
 }
 
 .linkText {
-  @apply --marketplaceH1FontStyles;
-  color: var(--matterColor);
+  composes: h1 from global;
+  color: var;
   position: absolute;
   top: 50%;
   left: 50%;

@@ -14,7 +14,7 @@ import {
 import css from './PricingPage.module.css';
 import image from './pricing.jpg';
 
-const AboutPage = () => {
+const PricingPage = () => {
   const { siteTwitterHandle, siteFacebookPage } = config;
   const siteTwitterPage = twitterPageURL(siteTwitterHandle);
 
@@ -97,4 +97,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default PricingPage;
