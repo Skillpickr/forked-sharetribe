@@ -99,6 +99,15 @@ const TopbarDesktop = props => {
             </div>
           </OwnListingLink>
         </MenuItem>
+        <MenuItem key="ManageListingsPage">
+          <NamedLink
+            className={classNames(css.yourListingsLink, currentPageClass('ManageListingsPage'))}
+            name="ManageListingsPage"
+          >
+            <span className={css.menuItemBorder} />
+            <FormattedMessage id="TopbarDesktop.yourListingsLink" />
+          </NamedLink>
+        </MenuItem>
         <MenuItem key="ProfileSettingsPage">
           <NamedLink
             className={classNames(css.profileSettingsLink, currentPageClass('ProfileSettingsPage'))}
@@ -175,6 +184,11 @@ const TopbarDesktop = props => {
         />
       </NamedLink>
       {search}
+      <NamedLink className={css.createListingLink} name="NewListingPage">
+        <span className={css.createListing}>
+          <FormattedMessage id="TopbarDesktop.createListing" />
+        </span>
+      </NamedLink>
       {listingLink}
       {createListingLink}
       {inboxLink}
