@@ -40,21 +40,21 @@
       @font-face {
         font-family: 'Lato';
         src: url('src/assets/fonts/Lato/Lato-Bold.ttf') format('truetype');
-        font-weight: 500; /* Medium */
+        font-weight: 700; /* Bold */
         font-style: normal;
       }
 
       @font-face {
         font-family: 'Lato';
         src: url('src/assets/fonts/Lato/Lato-BoldItalic.ttf') format('truetype');
-        font-weight: 500; /* Medium italics */
+        font-weight: 700; /* Bold italics */
         font-style: italic;
       }
 
       @font-face {
         font-family: 'Lato';
         src: url('src/assets/fonts/Lato/Lato-Black.ttf') format('truetype');
-        font-weight: 700; /* Bold */
+        font-weight: 900; /* Black */
         font-style: normal;
       }
 
@@ -105,9 +105,9 @@
 
         // Fonts we use (Check font-face rules from <style> tag in <head> section)
         var LatoRegular = new FontFaceObserver('Lato', { weight: 400 });
-        var LatoMedium = new FontFaceObserver('Lato', { weight: 500 });
-        var LatoSemibold = new FontFaceObserver('Lato', { weight: 600 });
-        var LatoBold = new FontFaceObserver('Lato', { weight: 700 });
+        var LatoMedium = new FontFaceObserver('Lato', { weight: 700 });
+        var LatoSemibold = new FontFaceObserver('Lato', { weight: 700 });
+        var LatoBold = new FontFaceObserver('Lato', { weight: 900 });
 
         var fontLoadingTimeout = 5000;
 
