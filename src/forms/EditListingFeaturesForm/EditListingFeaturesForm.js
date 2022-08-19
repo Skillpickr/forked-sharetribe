@@ -11,6 +11,8 @@ import * as validators from '../../util/validators';
 import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '../../components';
 import { compose } from 'redux';
 import css from './EditListingFeaturesForm.module.css';
+import { Skills, Categories } from '../../util/category';
+import { CheckboxFieldsType, DropdownFieldsType } from '../../util/featuresFields';
 
 class PhotographerComponent extends React.Component {
   render() {
@@ -123,15 +125,12 @@ const EditListingFeaturesFormComponent = props => (
         </p>
       ) : null;
 
-      // ############### SHARE COMPONENT ###########################
-      const ownStudioKey = 'ownStudio';
-      const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig);
-      const sharedComponent = <div></div>;
-
       // ############### Photographer COMPONENT ###########################
-      const photographerKey = 'photographerType';
+      const ownStudioKey = DropdownFieldsType.ownStudioKey;
+      const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig);
+      const photographerKey = CheckboxFieldsType.photographerTypeKey;
       const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
-      const soundLightExpKey = 'soundLightExp';
+      const soundLightExpKey = DropdownFieldsType.soundLightExpKey;
       const soundLightExpOptions = findOptionsForSelectFilter(soundLightExpKey, filterConfig);
       const photographerComponent = (
         <div>
@@ -188,16 +187,16 @@ const EditListingFeaturesFormComponent = props => (
             label={gearMessage}
             placeholder={gearMessagePlaceholder}
           />
-          {sharedComponent}
         </div>
       );
 
       // ############### DJ COMPONENT ###########################
-      const djKey = 'djType';
+
+      const djKey = CheckboxFieldsType.djTypeKey;
       const djOptions = findOptionsForSelectFilter(djKey, filterConfig);
-      const djGearForPlayingKey = 'djGearForPlaying';
+      const djGearForPlayingKey = DropdownFieldsType.djGearForPlayingKey;
       const djGearForPlayingOptions = findOptionsForSelectFilter(djGearForPlayingKey, filterConfig);
-      const songRequestKey = 'songRequest';
+      const songRequestKey = DropdownFieldsType.songRequestKey;
       const songRequestOptions = findOptionsForSelectFilter(songRequestKey, filterConfig);
       const djComponent = (
         <div>
@@ -270,7 +269,6 @@ const EditListingFeaturesFormComponent = props => (
               </option>
             ))}
           </FieldSelect>
-          {sharedComponent}
         </div>
       );
 
@@ -278,9 +276,24 @@ const EditListingFeaturesFormComponent = props => (
       const skillKey = 'skill';
       const skillOptions = findOptionsForSelectFilter(skillKey, filterConfig);
       const [state, setState] = useState(skill);
-      const handleChange = e => {
-        setState(e);
+      const categoryKey = 'category';
+      const categoryOptions = findOptionsForSelectFilter(categoryKey, filterConfig);
+
+      let category = '';
+      const handleChange = skillSet => {
+        console.log('skilleset: ', skillSet);
+        setState(skillSet);
+        if (skillSet.includes(Skills.photographer)) {
+          const opt = categoryOptions.find(element => element.key === Categories.creative);
+          category = opt.key;
+        }
+        if (skillSet.includes(Skills.dj)) {
+          const opt = categoryOptions.find(element => element.key === Categories.performance);
+          category = opt.key;
+        }
+        props.parentCallback(category);
       };
+
       const components = {
         photographer: PhotographerComponent,
         dj: DjComponent,
@@ -314,10 +327,10 @@ const EditListingFeaturesFormComponent = props => (
           {/* VideoGrapher */}
 
           {/* Photogapher */}
-          {state.includes('photographer') && photographerComponent}
+          {state.includes(Skills.photographer) && photographerComponent}
 
           {/* DJ */}
-          {state.includes('dj') && djComponent}
+          {state.includes(Skills.dj) && djComponent}
 
           <Button
             className={css.submitButton}

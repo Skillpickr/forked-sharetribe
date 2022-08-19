@@ -60,6 +60,8 @@ import SectionMapMaybe from './SectionMapMaybe';
 import css from './ListingPage.module.css';
 import SectionBonusMaybe from './SectionBonusMaybe';
 import SectionSpecificationsMaybe from './SectionSpecificationsMaybe';
+import { CheckboxFieldsType, DropdownFieldsType } from '../../util/featuresFields';
+import { Skills } from '../../util/category';
 
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
 
@@ -386,10 +388,19 @@ export class ListingPageComponent extends Component {
     );
 
     const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
-    const soundLightExperienceOptions = findOptionsForSelectFilter('soundLightExp', filterConfig);
-    const ownStudioOptions = findOptionsForSelectFilter('ownStudio', filterConfig);
-    const djGearForPlayingOptions = findOptionsForSelectFilter('djGearForPlaying', filterConfig);
-    const songRequestOptions = findOptionsForSelectFilter('songRequest', filterConfig);
+    const soundLightExperienceOptions = findOptionsForSelectFilter(
+      DropdownFieldsType.soundLightExpKey,
+      filterConfig
+    );
+    const ownStudioOptions = findOptionsForSelectFilter(
+      DropdownFieldsType.ownStudioKey,
+      filterConfig
+    );
+    const djGearForPlayingOptions = findOptionsForSelectFilter(
+      DropdownFieldsType.djGearForPlayingKey,
+      filterConfig
+    );
+    const songRequestOptions = findOptionsForSelectFilter(DropdownFieldsType.songRequestKey, filterConfig);
     const selectedOption = publicData && publicData.skill ? publicData.skill : null;
 
     // Don't return anything if public data doesn't contain view field
@@ -405,11 +416,14 @@ export class ListingPageComponent extends Component {
     let subSkillOptions;
     const selectedSubOptions = [];
     if (publicData) {
-      if (optionConfig.key === 'photographer') {
-        subSkillOptions = findOptionsForSelectFilter('photographerType', filterConfig);
+      if (optionConfig.key === Skills.photographer) {
+        subSkillOptions = findOptionsForSelectFilter(
+          CheckboxFieldsType.photographerTypeKey,
+          filterConfig
+        );
         Array.prototype.push.apply(selectedSubOptions, publicData.photographerType);
-      } else if (optionConfig.key === 'dj') {
-        subSkillOptions = findOptionsForSelectFilter('djType', filterConfig);
+      } else if (optionConfig.key === Skills.dj) {
+        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.djTypeKey, filterConfig);
         Array.prototype.push.apply(selectedSubOptions, publicData.djType);
       }
     } else null;

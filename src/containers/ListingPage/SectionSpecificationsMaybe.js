@@ -3,6 +3,7 @@ import { FormattedMessage } from '../../util/reactIntl';
 import { ExternalLink } from '../../components';
 
 import css from './ListingPage.module.css';
+import { Skills } from '../../util/category';
 
 const SectionSpecificationsMaybe = props => {
   const MIN_LENGTH_FOR_LONG_WORDS_IN_DESCRIPTION = 20;
@@ -114,10 +115,10 @@ const SectionSpecificationsMaybe = props => {
       </h2>
 
       {/* Photogapher */}
-      {state.includes('photographer') && photographerComponent}
+      {state.includes(Skills.photographer) && photographerComponent}
 
       {/* DJ */}
-      {state.includes('dj') && djComponent}
+      {state.includes(Skills.dj) && djComponent}
 
       {homepageUrl && (
         <p className={css.description}>

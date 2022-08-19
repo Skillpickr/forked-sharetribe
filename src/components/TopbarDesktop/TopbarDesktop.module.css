@@ -51,7 +51,9 @@
   /* NOTE: extremely wide logos, need special handling. */
   width: auto;
   max-width: 220px;
+  -o-object-fit: contain;
   object-fit: contain;
+  -o-object-position: left center;
   object-position: left center;
 }
 
@@ -188,14 +190,32 @@
   /* Style: red dot */
   background-color: var(--failColor);
 
+  -webkit-animation-name: notificationPop;
+
   animation-name: notificationPop;
+  -webkit-animation-duration: 0.1s;
   animation-duration: 0.1s;
+  -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
+  -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
+
+  -webkit-animation-timing-function: ease-in;
 
   animation-timing-function: ease-in;
   opacity: 0;
   transform: scale(0);
+}
+
+@-webkit-keyframes notificationPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes notificationPop {
@@ -213,18 +233,20 @@
 .profileMenuLabel {
   border-bottom: 0px solid;
   transition: var(--transitionStyleButton);
-
+  border: 0;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   height: 100%;
   margin: 0;
   padding: 0 12px 0 12px;
+  background-color: transparent;
 
   &:hover {
     border-bottom: 4px solid var(--marketplaceColor);
     border-radius: 0;
     text-decoration: none;
+    background-color: transparent;
   }
 
   &:active {
