@@ -29,21 +29,23 @@ const EditListingFeaturesPanel = props => {
 
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureListing(listing);
-  const { publicData, metaData } = currentListing.attributes;
+  const { publicData } = currentListing.attributes;
   const skill = publicData && publicData.skill;
+  const category = publicData && publicData.category;
   const gear = publicData && publicData.gear;
   const soundLightExp = publicData && publicData.soundLightExp;
   const photographerType = publicData && publicData.photographerType;
   const ownStudio = publicData && publicData.ownStudio;
-  // const category = metaData && metaData.category;
   const djType = publicData && publicData.djType;
   const technicalRider = publicData && publicData.technicalRider;
   const cateringRider = publicData && publicData.cateringRider;
   const djGearForPlaying = publicData && publicData.djGearForPlaying;
   const playingStyle = publicData && publicData.playingStyle;
   const songRequest = publicData && publicData.songRequest;
+
   const initialValues = {
     skill,
+    category,
     photographerType,
     gear,
     soundLightExp,
@@ -60,17 +62,51 @@ const EditListingFeaturesPanel = props => {
   const panelTitle = isPublished ? (
     <FormattedMessage
       id="EditListingFeaturesPanel.title"
-      values={{
-        listingTitle: (
-          <ListingLink listing={listing}>
-            <FormattedMessage id="EditListingFeaturesPanel.listingTitle" />
-          </ListingLink>
-        ),
-      }}
+      values={{ listingTitle: <ListingLink listing={listing} /> }}
     />
   ) : (
     <FormattedMessage id="EditListingFeaturesPanel.createListingTitle" />
   );
+
+  let setCategory = '';
+  const handleCallback = childData => {
+    setCategory = childData;
+  };
+  const handleSubmit = values => {
+    let categorySubmit = '';
+    const {
+      skill = [],
+      photographerType = [],
+      gear = '',
+      soundLightExp = [],
+      ownStudio = [],
+      djType = [],
+      technicalRider = '',
+      cateringRider = '',
+      djGearForPlaying = [],
+      playingStyle = '',
+      songRequest = [],
+      category,
+    } = values;
+    categorySubmit = setCategory;
+    const updatedValues = {
+      publicData: {
+        skill,
+        photographerType,
+        gear,
+        soundLightExp,
+        ownStudio,
+        djType,
+        technicalRider,
+        cateringRider,
+        djGearForPlaying,
+        playingStyle,
+        songRequest,
+        categorySubmit,
+      },
+    };
+    onSubmit(updatedValues);
+  };
 
   return (
     <div className={classes}>
@@ -80,41 +116,8 @@ const EditListingFeaturesPanel = props => {
         name={FEATURES_NAME}
         initialValues={initialValues}
         skill={skill}
-        onSubmit={values => {
-          const {
-            skill = [],
-            photographerType = [],
-            gear = '',
-            soundLightExp = [],
-            ownStudio = [],
-            djType = [],
-            technicalRider = '',
-            cateringRider = '',
-            djGearForPlaying = [],
-            playingStyle = '',
-            songRequest = [],
-            category = ''
-          } = values;
-          const updatedValues = {
-            publicData: {
-              skill,
-              photographerType,
-              gear,
-              soundLightExp,
-              ownStudio,
-              djType,
-              technicalRider,
-              cateringRider,
-              djGearForPlaying,
-              playingStyle,
-              songRequest,
-            },
-            metaData: {
-              category
-            }
-          };
-          onSubmit(updatedValues);
-        }}
+        parentCallback={handleCallback}
+        onSubmit={handleSubmit}
         onChange={onChange}
         saveActionMsg={submitButtonText}
         disabled={disabled}

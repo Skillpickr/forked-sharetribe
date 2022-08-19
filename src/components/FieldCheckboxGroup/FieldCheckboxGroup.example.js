@@ -4,6 +4,7 @@ import arrayMutators from 'final-form-arrays';
 import { Button } from '../../components';
 import FieldCheckboxGroup from './FieldCheckboxGroup';
 import { requiredFieldArrayCheckbox } from '../../util/validators';
+import { Skills } from '../../util/category';
 
 const formName = 'Styleguide.FieldCheckboxGroup';
 const formNameRequired = 'Styleguide.FieldCheckboxGroupRequired';
@@ -14,7 +15,7 @@ const commonProps = {
   label: label,
   options: [
     { key: 'influencer', label: 'Influencer' },
-    { key: 'photographer', label: 'Photographer' },
+    { key: Skills.photographer, label: 'Photographer' },
     { key: 'keynote-speaker', label: 'Keynote Speaker' },
     { key: 'teacher', label: 'Teacher' },
     { key: 'animator', label: 'Animator' },

@@ -32,6 +32,8 @@
  *         and tie them with correct extended data key
  *         (i.e. pub_<key> or meta_<key>).
  */
+import { Categories, Skills } from './util/category';
+import { CheckboxFieldsType, DropdownFieldsType } from './util/featuresFields';
 
 export const filters = [
   {
@@ -95,21 +97,18 @@ export const filters = [
   },
   {
     id: 'category',
-    // label: 'Category',
-    // type: 'SelectSingleFilter', // needs to be changed after meta is created
-    // group: 'primary',
     label: 'Category',
     type: '',
-    group: 'secondary',
+    group: 'primary',
     queryParamNames: ['pub_category'],
     config: {
       // Schema type is enum for SelectSingleFilter
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       options: [
-        { key: 'creative', label: 'Creative' },
-        { key: 'p-and-e', label: 'Performance and Entertainment' },
-        { key: 'media-production', label: 'Media Production' },
-        { key: 'knowledge', label: 'Knowledge' },
+        { key: Categories.creative, label: 'Creative' },
+        { key: Categories.performance, label: 'Performance and Entertainment' },
+        { key: Categories.audioProd, label: 'Audio Production' },
+        { key: Categories.knowledge, label: 'Knowledge' },
       ],
     },
   },
@@ -122,12 +121,14 @@ export const filters = [
     config: {
       // Schema type is enum for SelectSingleFilter
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
-      searchMode: 'enum',
-      options: [{ key: 'photographer', label: 'Photographer' }, { key: 'dj', label: 'DJ' }],
+      options: [
+        { key: Skills.photographer, label: 'Photographer' },
+        { key: Skills.dj, label: 'DJ' },
+      ],
     },
   },
   {
-    id: 'photographerType',
+    id: CheckboxFieldsType.photographerTypeKey,
     label: 'Photographer',
     type: 'SelectMultipleFilter',
     group: 'secondary',
@@ -177,7 +178,7 @@ export const filters = [
     },
   },
   {
-    id: 'djType',
+    id: CheckboxFieldsType.djTypeKey,
     label: 'DJ',
     type: 'SelectMultipleFilter',
     group: 'secondary',
@@ -203,7 +204,7 @@ export const filters = [
     },
   },
   {
-    id: 'ownStudio',
+    id: DropdownFieldsType.ownStudioKey,
     type: '',
     group: 'secondary',
     queryParamNames: [''],
@@ -212,7 +213,7 @@ export const filters = [
     },
   },
   {
-    id: 'soundLightExp',
+    id: DropdownFieldsType.soundLightExpKey,
     type: '',
     group: 'secondary',
     queryParamNames: [''],
@@ -225,16 +226,20 @@ export const filters = [
     },
   },
   {
-    id: 'songRequest',
+    id: DropdownFieldsType.songRequestKey,
     type: '',
     group: 'secondary',
     queryParamNames: [''],
     config: {
-      options: [{ key: 'yes', label: 'Yes' }, { key: 'no', label: 'No' }],
+      options: [
+        { key: 'yes', label: 'Yes' },
+        { key: 'no', label: 'No' },
+        { key: 'depends', label: 'Ask me - depends on the type of the event' },
+      ],
     },
   },
   {
-    id: 'djGearForPlaying',
+    id: DropdownFieldsType.djGearForPlayingKey,
     type: '',
     group: 'secondary',
     queryParamNames: [''],
