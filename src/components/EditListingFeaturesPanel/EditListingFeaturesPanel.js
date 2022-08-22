@@ -116,7 +116,6 @@ const EditListingFeaturesPanel = props => {
         musicalGenre,
       },
     };
-    console.log(updatedValues);
     onSubmit(updatedValues);
   };
 

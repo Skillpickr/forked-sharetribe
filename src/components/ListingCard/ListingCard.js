@@ -78,7 +78,6 @@ export const ListingCardComponent = props => {
   } else {
     skillTitle = skill.label;
   }
-  console.log('Title: ', skillTitle);
 
   const { formattedPrice, priceTitle } = priceData(price, intl);
 

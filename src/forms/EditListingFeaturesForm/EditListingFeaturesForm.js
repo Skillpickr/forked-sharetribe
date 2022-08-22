@@ -360,14 +360,12 @@ const EditListingFeaturesFormComponent = props => (
 
       let category = '';
       const handleChange = skillSet => {
-        console.log('skilleset: ', skillSet);
         setState(skillSet);
         if (skillSet.includes(Skills.photographer)) {
           const opt = categoryOptions.find(element => element.key === Categories.creative);
           category = opt.key;
         }
         if (skillSet.includes(Skills.musicianSoloist)) {
-          console.log('music');
           const opt = categoryOptions.find(element => element.key === Categories.performance);
           category = opt.key;
         }
