@@ -3,15 +3,32 @@ import { FormattedMessage } from '../../util/reactIntl';
 import { InlineTextButton } from '../../components';
 
 import css from './ListingPage.module.css';
+import { Skills } from '../../util/category';
 
 const getSkillInfo = (skillOptions, key) => {
   return skillOptions.find(c => c.key === key);
 };
 
 const SectionHeading = props => {
-  const { richTitle, showContactUser, listingSkill, skillOptions, onContactUser } = props;
+  const {
+    richTitle,
+    showContactUser,
+    listingSkill,
+    skillOptions,
+    onContactUser,
+    musicianSoloist,
+    musicianSoloistOptions,
+  } = props;
 
   const skill = getSkillInfo(skillOptions, listingSkill);
+  let skillTitle = '';
+  if (musicianSoloist) {
+    const type = getSkillInfo(musicianSoloistOptions, musicianSoloist);
+    skillTitle = skill.label + ' • ' + type.label;
+  } else {
+    skillTitle = skill.label;
+  }
+
   const showSkill = skill && !skill.hideFromListingInfo;
 
   return (
@@ -19,7 +36,7 @@ const SectionHeading = props => {
       <div className={css.heading}>
         <h1 className={css.title}>{richTitle}</h1>
         <div className={css.author}>
-          {showSkill ? <span>{skill.label}</span> : null}
+          {showSkill ? <span className={css.subTitle}>{skillTitle}</span> : null}
           {showContactUser ? (
             <span className={css.contactWrapper}>
               {showSkill ? <span className={css.separator}>•</span> : null}

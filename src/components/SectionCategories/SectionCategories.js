@@ -85,9 +85,9 @@ const SectionCategories = props => {
         {/* {categories} */}
         {categoryLink(
           'Performance & Entertainment',
-          '(e.g. DJ)',
+          '(e.g. DJ, Musicians)',
           performanceImage,
-          '?pub_category=creative',
+          '?pub_category=performance',
           false
         )}
         {/* {categoryLink('Performance & Entertainment',performanceImage,'?pub_category=p-and-e',true)} */}
@@ -95,7 +95,7 @@ const SectionCategories = props => {
           'Creative',
           '(e.g. Photographer)',
           creativeImage,
-          '?pub_category=performance',
+          '?pub_category=creative',
           false
         )}
         {/* {categoryLink('Creative', creativeImage, '?pub_category=creative', false)} */}

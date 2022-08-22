@@ -32,6 +32,12 @@ class DefaultComponent extends React.Component {
   }
 }
 
+class MusicianComponent extends React.Component {
+  render() {
+    return <h1>Hello, your musical genius</h1>;
+  }
+}
+
 const EditListingFeaturesFormComponent = props => (
   <FinalForm
     {...props}
@@ -69,6 +75,18 @@ const EditListingFeaturesFormComponent = props => (
       });
       const soundLightExpKeyMessage = intl.formatMessage({
         id: 'EditListingFeaturesForm.soundLightExpKeyMessage',
+      });
+
+      const musicSoloistKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.musicSoloistKeyMessage',
+      });
+
+      const musicianTypeKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.musicianTypeKeyMessage',
+      });
+
+      const musicalGenreKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.musicalGenreKeyMessage',
       });
 
       const djKeyMessage = intl.formatMessage({
@@ -271,6 +289,67 @@ const EditListingFeaturesFormComponent = props => (
           </FieldSelect>
         </div>
       );
+      // ############### Music Soloist COMPONENT ###########################
+
+      const musicSoloistKey = DropdownFieldsType.musicianSoloKey;
+      const musicSoloistOptions = findOptionsForSelectFilter(musicSoloistKey, filterConfig);
+      const musicianTypeKey = CheckboxFieldsType.musicianTypeKey;
+      const musicianTypeOptions = findOptionsForSelectFilter(musicianTypeKey, filterConfig);
+      const musicalGenreKey = CheckboxFieldsType.musicalGenre;
+      const musicalGenreOptions = findOptionsForSelectFilter(musicalGenreKey, filterConfig);
+      const musicianSoloistComponent = (
+        <div>
+          <FieldSelect
+            className={css.features}
+            name={musicSoloistKey}
+            id={musicSoloistKey}
+            label={musicSoloistKeyMessage}
+          >
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {id => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {musicSoloistOptions.map(o => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          <FieldCheckboxGroup
+            className={css.features}
+            id={musicianTypeKey}
+            name={musicianTypeKey}
+            options={musicianTypeOptions}
+            label={musicianTypeKeyMessage}
+          />
+          <FieldCheckboxGroup
+            className={css.features}
+            id={musicalGenreKey}
+            name={musicalGenreKey}
+            options={musicalGenreOptions}
+            label={musicalGenreKeyMessage}
+          />
+          <FieldTextInput
+            id="technicalRider"
+            name="technicalRider"
+            className={css.features}
+            type="textarea"
+            label={technicalRiderMessage}
+            placeholder={technicalRiderPlaceholderMessage}
+          />
+          <FieldTextInput
+            id="cateringRider"
+            name="cateringRider"
+            className={css.features}
+            type="textarea"
+            label={cateringRiderMessage}
+            placeholder={cateringRiderPlaceholderMessage}
+          />
+        </div>
+      );
 
       // ############### MAIN COMPONENT ###########################
       const skillKey = 'skill';
@@ -287,6 +366,11 @@ const EditListingFeaturesFormComponent = props => (
           const opt = categoryOptions.find(element => element.key === Categories.creative);
           category = opt.key;
         }
+        if (skillSet.includes(Skills.musicianSoloist)) {
+          console.log('music');
+          const opt = categoryOptions.find(element => element.key === Categories.performance);
+          category = opt.key;
+        }
         if (skillSet.includes(Skills.dj)) {
           const opt = categoryOptions.find(element => element.key === Categories.performance);
           category = opt.key;
@@ -297,6 +381,7 @@ const EditListingFeaturesFormComponent = props => (
       const components = {
         photographer: PhotographerComponent,
         dj: DjComponent,
+        musicianSoloist: MusicianComponent,
       };
       const SelectedComponent = components[state];
 
@@ -331,6 +416,9 @@ const EditListingFeaturesFormComponent = props => (
 
           {/* DJ */}
           {state.includes(Skills.dj) && djComponent}
+
+          {/* Musician Soloist */}
+          {state.includes(Skills.musicianSoloist) && musicianSoloistComponent}
 
           <Button
             className={css.submitButton}

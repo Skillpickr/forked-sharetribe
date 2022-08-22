@@ -4,6 +4,7 @@ import { ExternalLink } from '../../components';
 
 import css from './ListingPage.module.css';
 import { Skills } from '../../util/category';
+import { PropertyGroup } from '../../components';
 
 const SectionSpecificationsMaybe = props => {
   const MIN_LENGTH_FOR_LONG_WORDS_IN_DESCRIPTION = 20;
@@ -62,22 +63,28 @@ const SectionSpecificationsMaybe = props => {
         </p>
       )}
       {playingStyle && (
-        <p className={css.description}>
-          <FormattedMessage id="ListingPage.playingStyle" values={{ style: playingStyle }} />
-        </p>
+        <div>
+          <p className={css.subTitle}>
+            <FormattedMessage id="ListingPage.playingStyle" />
+          </p>
+          <p className={css.description}>{playingStyle}</p>
+        </div>
       )}
       {technicalRider && (
-        <p className={css.description}>
-          <FormattedMessage
-            id="ListingPage.technicalRider"
-            values={{ technical: technicalRider }}
-          />
-        </p>
+        <div>
+          <p className={css.subTitle}>
+            <FormattedMessage id="ListingPage.technicalRider" />
+          </p>
+          <p className={css.description}>{technicalRider}</p>
+        </div>
       )}
       {cateringRider && (
-        <p className={css.description}>
-          <FormattedMessage id="ListingPage.cateringRider" values={{ catering: cateringRider }} />
-        </p>
+        <div>
+          <p className={css.subTitle}>
+            <FormattedMessage id="ListingPage.cateringRider" />
+          </p>
+          <p className={css.description}>{cateringRider}</p>
+        </div>
       )}
     </div>
   );
@@ -99,9 +106,33 @@ const SectionSpecificationsMaybe = props => {
         </p>
       )}
       {gear && (
-        <p className={css.description}>
-          <FormattedMessage id="ListingPage.gear" values={{ gear: gear }} />
-        </p>
+        <div>
+          <p className={css.subTitle}>
+            <FormattedMessage id="ListingPage.gear" />
+          </p>
+          <p className={css.description}>{gear}</p>
+        </div>
+      )}
+    </div>
+  );
+
+  const musicianComponent = (
+    <div>
+      {technicalRider && (
+        <div>
+          <p className={css.subTitle}>
+            <FormattedMessage id="ListingPage.technicalRider" />
+          </p>
+          <p className={css.description}>{technicalRider}</p>
+        </div>
+      )}
+      {cateringRider && (
+        <div>
+          <p className={css.subTitle}>
+            <FormattedMessage id="ListingPage.cateringRider" />
+          </p>
+          <p className={css.description}>{cateringRider}</p>
+        </div>
       )}
     </div>
   );
@@ -113,6 +144,12 @@ const SectionSpecificationsMaybe = props => {
       <h2 className={css.featuresTitle}>
         <FormattedMessage id="ListingPage.specificationsTitle" />
       </h2>
+      {homepageUrl && (
+        <p className={css.description}>
+          <FormattedMessage id="ListingPage.homepageUrl" />
+          <ExternalLink href={homepageUrl}>{homepageUrl}</ExternalLink>
+        </p>
+      )}
 
       {/* Photogapher */}
       {state.includes(Skills.photographer) && photographerComponent}
@@ -120,12 +157,8 @@ const SectionSpecificationsMaybe = props => {
       {/* DJ */}
       {state.includes(Skills.dj) && djComponent}
 
-      {homepageUrl && (
-        <p className={css.description}>
-          <FormattedMessage id="ListingPage.homepageUrl" />
-          <ExternalLink href={homepageUrl}>{homepageUrl}</ExternalLink>
-        </p>
-      )}
+      {/* Musician */}
+      {state.includes(Skills.musicianSoloist) && musicianComponent}
     </div>
   ) : null;
 };
