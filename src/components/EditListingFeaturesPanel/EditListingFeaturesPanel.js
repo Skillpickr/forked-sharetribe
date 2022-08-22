@@ -42,6 +42,9 @@ const EditListingFeaturesPanel = props => {
   const djGearForPlaying = publicData && publicData.djGearForPlaying;
   const playingStyle = publicData && publicData.playingStyle;
   const songRequest = publicData && publicData.songRequest;
+  const musicSoloistType = publicData && publicData.musicSoloistType;
+  const musicianType = publicData && publicData.musicianType;
+  const musicalGenre = publicData && publicData.musicalGenre;
 
   const initialValues = {
     skill,
@@ -56,6 +59,9 @@ const EditListingFeaturesPanel = props => {
     djGearForPlaying,
     playingStyle,
     songRequest,
+    musicSoloistType,
+    musicianType,
+    musicalGenre,
   };
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
@@ -73,7 +79,7 @@ const EditListingFeaturesPanel = props => {
     setCategory = childData;
   };
   const handleSubmit = values => {
-    let categorySubmit = '';
+    let category = '';
     const {
       skill = [],
       photographerType = [],
@@ -86,9 +92,11 @@ const EditListingFeaturesPanel = props => {
       djGearForPlaying = [],
       playingStyle = '',
       songRequest = [],
-      category,
+      musicSoloistType = '',
+      musicianType = [],
+      musicalGenre = [],
     } = values;
-    categorySubmit = setCategory;
+    category = setCategory;
     const updatedValues = {
       publicData: {
         skill,
@@ -102,7 +110,10 @@ const EditListingFeaturesPanel = props => {
         djGearForPlaying,
         playingStyle,
         songRequest,
-        categorySubmit,
+        category,
+        musicSoloistType,
+        musicianType,
+        musicalGenre,
       },
     };
     onSubmit(updatedValues);

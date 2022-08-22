@@ -8,6 +8,7 @@ const Categories = {
 const Skills = {
   photographer: 'photographer',
   dj: 'dj',
+  musicianSoloist: 'musicianSoloist',
 };
 
 export { Categories, Skills };

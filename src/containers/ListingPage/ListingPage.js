@@ -55,6 +55,7 @@ import SectionAvatar from './SectionAvatar';
 import SectionHeading from './SectionHeading';
 import SectionDescriptionMaybe from './SectionDescriptionMaybe';
 import SectionFeaturesMaybe from './SectionFeaturesMaybe';
+import SectionGenresMaybe from './SectionGenresMaybe';
 import SectionReviews from './SectionReviews';
 import SectionMapMaybe from './SectionMapMaybe';
 import css from './ListingPage.module.css';
@@ -392,6 +393,10 @@ export class ListingPageComponent extends Component {
       DropdownFieldsType.soundLightExpKey,
       filterConfig
     );
+    const musicSoloistOptions = findOptionsForSelectFilter(
+      DropdownFieldsType.musicianSoloKey,
+      filterConfig
+    );
     const ownStudioOptions = findOptionsForSelectFilter(
       DropdownFieldsType.ownStudioKey,
       filterConfig
@@ -400,7 +405,10 @@ export class ListingPageComponent extends Component {
       DropdownFieldsType.djGearForPlayingKey,
       filterConfig
     );
-    const songRequestOptions = findOptionsForSelectFilter(DropdownFieldsType.songRequestKey, filterConfig);
+    const songRequestOptions = findOptionsForSelectFilter(
+      DropdownFieldsType.songRequestKey,
+      filterConfig
+    );
     const selectedOption = publicData && publicData.skill ? publicData.skill : null;
 
     // Don't return anything if public data doesn't contain view field
@@ -415,6 +423,9 @@ export class ListingPageComponent extends Component {
 
     let subSkillOptions;
     const selectedSubOptions = [];
+    let genreOptions;
+    let selectedConfigGenreOptions;
+    const selectedGenres = [];
     if (publicData) {
       if (optionConfig.key === Skills.photographer) {
         subSkillOptions = findOptionsForSelectFilter(
@@ -425,6 +436,17 @@ export class ListingPageComponent extends Component {
       } else if (optionConfig.key === Skills.dj) {
         subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.djTypeKey, filterConfig);
         Array.prototype.push.apply(selectedSubOptions, publicData.djType);
+      } else if (optionConfig.key === Skills.musicianSoloist) {
+        subSkillOptions = findOptionsForSelectFilter(
+          CheckboxFieldsType.musicianTypeKey,
+          filterConfig
+        );
+        Array.prototype.push.apply(selectedSubOptions, publicData.musicianType);
+        genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicalGenre, filterConfig);
+        Array.prototype.push.apply(selectedGenres, publicData.musicalGenre);
+        selectedConfigGenreOptions = genreOptions.filter(o =>
+          selectedGenres.find(s => s === o.key)
+        );
       }
     } else null;
     const selectedConfigSubOptions = subSkillOptions.filter(o =>
@@ -479,13 +501,22 @@ export class ListingPageComponent extends Component {
                     onContactUser={this.onContactUser}
                     listingSkill={publicData ? publicData.skill : null}
                     skillOptions={skillOptions}
+                    musicianSoloist={publicData ? publicData.musicSoloistType : null}
+                    musicianSoloistOptions={musicSoloistOptions}
                   />
                   <SectionDescriptionMaybe description={description} />
+
                   <SectionFeaturesMaybe
                     optionLabel={optionLabel}
                     selectedSubOptions={selectedSubOptions}
                     selectedConfigSubOptions={selectedConfigSubOptions}
                   />
+                  {optionConfig.key === Skills.musicianSoloist && (
+                    <SectionGenresMaybe
+                      selectedGenres={selectedGenres}
+                      selectedConfigGenreOptions={selectedConfigGenreOptions}
+                    />
+                  )}
                   <SectionSpecificationsMaybe
                     soundLightExp={soundLightExperienceOptions}
                     ownStudio={ownStudioOptions}
