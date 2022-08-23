@@ -207,7 +207,7 @@ export const filters = [
   {
     id: DropdownFieldsType.musicianSoloKey,
     label: 'Musician',
-    type: 'SelectSingleFilter',
+    type: 'SelectMultipleFilter',
     group: 'secondary',
     queryParamNames: ['pub_musicianSoloType'],
     config: {
@@ -381,7 +381,7 @@ export const filters = [
   },
   {
     id: CheckboxFieldsType.musicianTypeKey,
-    label: 'Musical Genre',
+    label: 'Type of musician',
     type: 'SelectMultipleFilter',
     group: 'secondary',
     queryParamNames: ['pub_musicianSoloType'],

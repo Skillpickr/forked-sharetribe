@@ -38,6 +38,7 @@ const FilterComponent = props => {
           queryParamNames={queryParamNames}
           initialValues={initialValues(queryParamNames)}
           onSelect={getHandleChangedValueFn(useHistoryPush)}
+          twoColumns={true}
           {...config}
           {...rest}
         />

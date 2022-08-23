@@ -16,13 +16,13 @@ import { CheckboxFieldsType, DropdownFieldsType } from '../../util/featuresField
 
 class PhotographerComponent extends React.Component {
   render() {
-    return <h1>Hello, you gifted Photographer</h1>;
+    return <h1>Hello you gifted Photographer</h1>;
   }
 }
 
 class DjComponent extends React.Component {
   render() {
-    return <h1>Hello, you talented DJ</h1>;
+    return <h1>Hello you talented DJ</h1>;
   }
 }
 
@@ -34,7 +34,7 @@ class DefaultComponent extends React.Component {
 
 class MusicianComponent extends React.Component {
   render() {
-    return <h1>Hello, your musical genius</h1>;
+    return <h1>Hello you musical genius</h1>;
   }
 }
 
