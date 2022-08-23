@@ -11,22 +11,30 @@ import * as validators from '../../util/validators';
 import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '../../components';
 import { compose } from 'redux';
 import css from './EditListingFeaturesForm.module.css';
+import { Skills, Categories } from '../../util/category';
+import { CheckboxFieldsType, DropdownFieldsType } from '../../util/featuresFields';
 
 class PhotographerComponent extends React.Component {
   render() {
-    return <h1>Hello, you gifted Photographer</h1>;
+    return <h1>Hello you gifted Photographer</h1>;
   }
 }
 
 class DjComponent extends React.Component {
   render() {
-    return <h1>Hello, you talented DJ</h1>;
+    return <h1>Hello you talented DJ</h1>;
   }
 }
 
 class DefaultComponent extends React.Component {
   render() {
     return <h1>Please choose a profession</h1>;
+  }
+}
+
+class MusicianComponent extends React.Component {
+  render() {
+    return <h1>Hello you musical genius</h1>;
   }
 }
 
@@ -67,6 +75,18 @@ const EditListingFeaturesFormComponent = props => (
       });
       const soundLightExpKeyMessage = intl.formatMessage({
         id: 'EditListingFeaturesForm.soundLightExpKeyMessage',
+      });
+
+      const musicSoloistKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.musicSoloistKeyMessage',
+      });
+
+      const musicianTypeKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.musicianTypeKeyMessage',
+      });
+
+      const musicalGenreKeyMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.musicalGenreKeyMessage',
       });
 
       const djKeyMessage = intl.formatMessage({
@@ -123,15 +143,12 @@ const EditListingFeaturesFormComponent = props => (
         </p>
       ) : null;
 
-      // ############### SHARE COMPONENT ###########################
-      const ownStudioKey = 'ownStudio';
-      const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig);
-      const sharedComponent = <div></div>;
-
       // ############### Photographer COMPONENT ###########################
-      const photographerKey = 'photographerType';
+      const ownStudioKey = DropdownFieldsType.ownStudioKey;
+      const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig);
+      const photographerKey = CheckboxFieldsType.photographerTypeKey;
       const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig);
-      const soundLightExpKey = 'soundLightExp';
+      const soundLightExpKey = DropdownFieldsType.soundLightExpKey;
       const soundLightExpOptions = findOptionsForSelectFilter(soundLightExpKey, filterConfig);
       const photographerComponent = (
         <div>
@@ -188,16 +205,16 @@ const EditListingFeaturesFormComponent = props => (
             label={gearMessage}
             placeholder={gearMessagePlaceholder}
           />
-          {sharedComponent}
         </div>
       );
 
       // ############### DJ COMPONENT ###########################
-      const djKey = 'djType';
+
+      const djKey = CheckboxFieldsType.djTypeKey;
       const djOptions = findOptionsForSelectFilter(djKey, filterConfig);
-      const djGearForPlayingKey = 'djGearForPlaying';
+      const djGearForPlayingKey = DropdownFieldsType.djGearForPlayingKey;
       const djGearForPlayingOptions = findOptionsForSelectFilter(djGearForPlayingKey, filterConfig);
-      const songRequestKey = 'songRequest';
+      const songRequestKey = DropdownFieldsType.songRequestKey;
       const songRequestOptions = findOptionsForSelectFilter(songRequestKey, filterConfig);
       const djComponent = (
         <div>
@@ -270,7 +287,67 @@ const EditListingFeaturesFormComponent = props => (
               </option>
             ))}
           </FieldSelect>
-          {sharedComponent}
+        </div>
+      );
+      // ############### Music Soloist COMPONENT ###########################
+
+      const musicSoloistKey = DropdownFieldsType.musicianSoloKey;
+      const musicSoloistOptions = findOptionsForSelectFilter(musicSoloistKey, filterConfig);
+      const musicianTypeKey = CheckboxFieldsType.musicianTypeKey;
+      const musicianTypeOptions = findOptionsForSelectFilter(musicianTypeKey, filterConfig);
+      const musicalGenreKey = CheckboxFieldsType.musicalGenre;
+      const musicalGenreOptions = findOptionsForSelectFilter(musicalGenreKey, filterConfig);
+      const musicianSoloistComponent = (
+        <div>
+          <FieldSelect
+            className={css.features}
+            name={musicSoloistKey}
+            id={musicSoloistKey}
+            label={musicSoloistKeyMessage}
+          >
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {id => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {musicSoloistOptions.map(o => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          <FieldCheckboxGroup
+            className={css.features}
+            id={musicianTypeKey}
+            name={musicianTypeKey}
+            options={musicianTypeOptions}
+            label={musicianTypeKeyMessage}
+          />
+          <FieldCheckboxGroup
+            className={css.features}
+            id={musicalGenreKey}
+            name={musicalGenreKey}
+            options={musicalGenreOptions}
+            label={musicalGenreKeyMessage}
+          />
+          <FieldTextInput
+            id="technicalRider"
+            name="technicalRider"
+            className={css.features}
+            type="textarea"
+            label={technicalRiderMessage}
+            placeholder={technicalRiderPlaceholderMessage}
+          />
+          <FieldTextInput
+            id="cateringRider"
+            name="cateringRider"
+            className={css.features}
+            type="textarea"
+            label={cateringRiderMessage}
+            placeholder={cateringRiderPlaceholderMessage}
+          />
         </div>
       );
 
@@ -278,12 +355,31 @@ const EditListingFeaturesFormComponent = props => (
       const skillKey = 'skill';
       const skillOptions = findOptionsForSelectFilter(skillKey, filterConfig);
       const [state, setState] = useState(skill);
-      const handleChange = e => {
-        setState(e);
+      const categoryKey = 'category';
+      const categoryOptions = findOptionsForSelectFilter(categoryKey, filterConfig);
+
+      let category = '';
+      const handleChange = skillSet => {
+        setState(skillSet);
+        if (skillSet.includes(Skills.photographer)) {
+          const opt = categoryOptions.find(element => element.key === Categories.creative);
+          category = opt.key;
+        }
+        if (skillSet.includes(Skills.musicianSoloist)) {
+          const opt = categoryOptions.find(element => element.key === Categories.performance);
+          category = opt.key;
+        }
+        if (skillSet.includes(Skills.dj)) {
+          const opt = categoryOptions.find(element => element.key === Categories.performance);
+          category = opt.key;
+        }
+        props.parentCallback(category);
       };
+
       const components = {
         photographer: PhotographerComponent,
         dj: DjComponent,
+        musicianSoloist: MusicianComponent,
       };
       const SelectedComponent = components[state];
 
@@ -314,10 +410,13 @@ const EditListingFeaturesFormComponent = props => (
           {/* VideoGrapher */}
 
           {/* Photogapher */}
-          {state.includes('photographer') && photographerComponent}
+          {state.includes(Skills.photographer) && photographerComponent}
 
           {/* DJ */}
-          {state.includes('dj') && djComponent}
+          {state.includes(Skills.dj) && djComponent}
+
+          {/* Musician Soloist */}
+          {state.includes(Skills.musicianSoloist) && musicianSoloistComponent}
 
           <Button
             className={css.submitButton}

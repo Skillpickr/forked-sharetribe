@@ -16,11 +16,13 @@ const ContactPage = loadable(() => import(/* webpackChunkName: "ContactPage" */ 
 const AuthenticationPage = loadable(() => import(/* webpackChunkName: "AuthenticationPage" */ './containers/AuthenticationPage/AuthenticationPage'));
 const CheckoutPage = loadable(() => import(/* webpackChunkName: "CheckoutPage" */ './containers/CheckoutPage/CheckoutPage'));
 const ContactDetailsPage = loadable(() => import(/* webpackChunkName: "ContactDetailsPage" */ './containers/ContactDetailsPage/ContactDetailsPage'));
+const DeleteAccountPage = loadable(() => import(/* webpackChunkName: "DeleteAccountPage" */ './containers/DeleteAccountPage/DeleteAccountPage'));
 const EditListingPage = loadable(() => import(/* webpackChunkName: "EditListingPage" */ './containers/EditListingPage/EditListingPage'));
 const EmailVerificationPage = loadable(() => import(/* webpackChunkName: "EmailVerificationPage" */ './containers/EmailVerificationPage/EmailVerificationPage'));
 const InboxPage = loadable(() => import(/* webpackChunkName: "InboxPage" */ './containers/InboxPage/InboxPage'));
 const LandingPage = loadable(() => import(/* webpackChunkName: "LandingPage" */ './containers/LandingPage/LandingPage'));
 const ListingPage = loadable(() => import(/* webpackChunkName: "ListingPage" */ /* webpackPrefetch: true */ './containers/ListingPage/ListingPage'));
+const ManageListingsPage = loadable(() => import(/* webpackChunkName: "ManageListingsPage" */ './containers/ManageListingsPage/ManageListingsPage'));
 const PasswordChangePage = loadable(() => import(/* webpackChunkName: "PasswordChangePage" */ './containers/PasswordChangePage/PasswordChangePage'));
 const PasswordRecoveryPage = loadable(() => import(/* webpackChunkName: "PasswordRecoveryPage" */ './containers/PasswordRecoveryPage/PasswordRecoveryPage'));
 const PasswordResetPage = loadable(() => import(/* webpackChunkName: "PasswordResetPage" */ './containers/PasswordResetPage/PasswordResetPage'));
@@ -42,6 +44,7 @@ export const ACCOUNT_SETTINGS_PAGES = [
   'PasswordChangePage',
   'StripePayoutPage',
   'PaymentMethodsPage',
+  'DeleteAccountPage',
 ];
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Nil_UUID
@@ -128,7 +131,6 @@ const routeConfiguration = () => {
       name: 'EditListingPage',
       auth: true,
       component: EditListingPage,
-      extraProps: { allowOnlyOneListing: true },
       loadData: pageDataLoadingAPI.EditListingPage.loadData,
     },
     {
@@ -233,6 +235,14 @@ const routeConfiguration = () => {
       component: props => <NamedRedirect name="SaleDetailsPage" params={{ ...props.params }} />,
     },
     {
+      path: '/listings',
+      name: 'ManageListingsPage',
+      auth: true,
+      authPage: 'LoginPage',
+      component: ManageListingsPage,
+      loadData: pageDataLoadingAPI.ManageListingsPage.loadData,
+    },
+    {
       path: '/sale/:id/details',
       name: 'SaleDetailsPage',
       auth: true,
@@ -287,6 +297,13 @@ const routeConfiguration = () => {
       authPage: 'LoginPage',
       component: PaymentMethodsPage,
       loadData: pageDataLoadingAPI.PaymentMethodsPage.loadData,
+    },
+    {
+     path: '/account/delete-profile',
+     name: 'DeleteAccountPage',
+     auth: true,
+     authPage: 'LoginPage',
+     component: DeleteAccountPage,
     },
     {
       path: '/terms-of-service',

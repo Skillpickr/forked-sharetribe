@@ -12,6 +12,8 @@ import creativeImage from './images/creative.jpg';
 import knowledgeImage from './images/knowledge.jpg';
 import performanceImage from './images/performance.jpg';
 import mediaImage from './images/media.jpg';
+import { findOptionsForSelectFilter } from '../../util/search';
+import config from '../../config';
 
 //Knowledge Photo by mentatdgt from Pexels
 // Media Photo by Lê Minh from Pexels
@@ -55,9 +57,24 @@ const categoryLink = (title, subTitle, image, searchQuery, isComingSoon) => {
 };
 
 const SectionCategories = props => {
-  const { rootClassName, className } = props;
+  const { rootClassName, className, filterConfig } = props;
 
+  // TODO: Change the categories to generic by inserting the const categories in the nelow return statement
   const classes = classNames(rootClassName || css.root, className);
+  const categoryKey = 'category';
+  const categoryList = findOptionsForSelectFilter(categoryKey, filterConfig);
+  console.log(categoryList);
+  const categories = () => {
+    for (category in categoryList) {
+      return categoryLink(
+        category.label,
+        'test',
+        './images/' + category.key + '.jpg',
+        '?pub_category=' + category.key,
+        false
+      );
+    }
+  };
 
   return (
     <div className={classes}>
@@ -65,11 +82,12 @@ const SectionCategories = props => {
         <FormattedMessage id="SectionCategories.title" />
       </div>
       <div className={css.categories}>
+        {/* {categories} */}
         {categoryLink(
           'Performance & Entertainment',
-          '(e.g. DJ)',
+          '(e.g. DJ, Musicians)',
           performanceImage,
-          '?pub_skill=dj',
+          '?pub_category=performance',
           false
         )}
         {/* {categoryLink('Performance & Entertainment',performanceImage,'?pub_category=p-and-e',true)} */}
@@ -77,14 +95,14 @@ const SectionCategories = props => {
           'Creative',
           '(e.g. Photographer)',
           creativeImage,
-          '?pub_skill=photographer',
+          '?pub_category=creative',
           false
         )}
         {/* {categoryLink('Creative', creativeImage, '?pub_category=creative', false)} */}
       </div>
       <div className={css.categories}>
         {categoryLink('Knowledge', '', knowledgeImage, '?pub_category=knowledge', true)}
-        {categoryLink('Media Production', '', mediaImage, '?pub_category=media-production', true)}
+        {categoryLink('Audio Production', '', mediaImage, '?pub_category=audio-prod', true)}
       </div>
     </div>
   );
@@ -97,6 +115,11 @@ const { string } = PropTypes;
 SectionCategories.propTypes = {
   rootClassName: string,
   className: string,
+  filterConfig: PropTypes.array,
+};
+
+SectionCategories.defaultProps = {
+  filterConfig: config.custom.filters,
 };
 
 export default SectionCategories;

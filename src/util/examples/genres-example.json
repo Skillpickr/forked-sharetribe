@@ -1,0 +1,204 @@
+[
+  {
+    "category": "Ceremonial music",
+    "genres": [
+      "Christmas",
+      "Contemporary Christian",
+      "Military",
+      "Traditional church music"
+    ]
+  },
+  {
+    "category": "Classical",
+    "defaultSelection": "Classical",
+    "genres": [
+      "Classical",
+      "Baroque",
+      "Classical crossover",
+      "Contemporary classical",
+      "Early music",
+      "Fanfare",
+      "Film / TV music",
+      "Medieval music",
+      "Musical theatre",
+      "Opera",
+      "Renaissance"
+    ]
+  },
+  {
+    "category": "Electronic",
+    "defaultSelection": "Electronic",
+    "genres": [
+      "Electronic",
+      "Ambient",
+      "Breakbeat",
+      "Deep house",
+      "Drum 'n' Bass",
+      "Dubstep",
+      "EDM",
+      "Electro-Swing",
+      "Electronica",
+      "Garage",
+      "House",
+      "IDM",
+      "Ibiza club",
+      "Industrial",
+      "Jungle",
+      "Techno",
+      "Triphop"
+    ]
+  },
+  {
+    "category": "Era",
+    "genres": [
+      "1920s era music",
+      "1930s era music",
+      "1940s era music",
+      "1950s era music",
+      "1960s era music",
+      "1970s era music",
+      "1980s era music",
+      "1990s era music"
+    ]
+  },
+  {
+    "category": "Folk",
+    "defaultSelection": "Folk",
+    "genres": [
+      "Folk",
+      "Bluegrass",
+      "Ceilidh",
+      "Country",
+      "Folk rock",
+      "Irish rock",
+      "Rockabilly",
+      "Traditional English folk",
+      "Traditional Irish folk",
+      "Traditional Scottish folk",
+      "Welsh folk"
+    ]
+  },
+  {
+    "category": "Jazz",
+    "defaultSelection": "Jazz",
+    "genres": [
+      "Jazz",
+      "Blues",
+      "Cabaret",
+      "Dixieland",
+      "Gypsy jazz",
+      "Jazz fusion",
+      "Latin jazz",
+      "Modern jazz",
+      "Postmodern jukebox jazz",
+      "Ragtime",
+      "Swing",
+      "Barbershop",
+      "Gospel"
+    ]
+  },
+  {
+    "category": "Other",
+    "genres": [
+      "Avant garde",
+      "Easy listening",
+      "Experimental",
+      "Light music",
+      "Marching",
+      "Noise music",
+      "Originals"
+    ]
+  },
+  {
+    "category": "Pop",
+    "defaultSelection": "Pop",
+    "genres": [
+      "Pop",
+      "Acoustic",
+      "Ambient pop",
+      "Americana",
+      "Covers",
+      "Disco",
+      "Funk",
+      "Funk rock",
+      "Hip Hop",
+      "Karaoke",
+      "Motown",
+      "R&B",
+      "Soul",
+      "Top 40",
+      "Tribute",
+      "Vintage"
+    ]
+  },
+  {
+    "category": "Rock",
+    "defaultSelection": "Rock",
+    "genres": [
+      "Rock",
+      "Alternative rock",
+      "Britpop",
+      "Classic rock",
+      "Glam rock",
+      "Hard rock",
+      "Hardcore",
+      "Heavy metal",
+      "Indie",
+      "Pop rock",
+      "Post rock",
+      "Power rock",
+      "Progressive rock",
+      "Punk rock",
+      "Rock 'n' Roll",
+      "Synth rock"
+    ]
+  },
+  {
+    "category": "World music",
+    "defaultSelection": "World music",
+    "genres": [
+      "World music",
+      "African music",
+      "Afrobeat",
+      "Arabic",
+      "Argentinian",
+      "Armenian",
+      "Asian music",
+      "Australian music",
+      "Balkan",
+      "Bavarian oompah",
+      "Bollywood",
+      "Bossa nova",
+      "Brazilian music",
+      "Calypso",
+      "Caribbean music",
+      "Choro",
+      "Cuban music",
+      "Cumbia",
+      "Flamenco",
+      "French music",
+      "German music",
+      "Greek music",
+      "Hawaiian music",
+      "Indian music",
+      "Italian music",
+      "Jewish music",
+      "Klezmer",
+      "Latin",
+      "Mariachi",
+      "Merengue",
+      "Polish music",
+      "Polka",
+      "Polynesian music",
+      "Reggae",
+      "Russian music",
+      "Salsa",
+      "Samba",
+      "Scottish music",
+      "Ska",
+      "Skiffle",
+      "Spanish music",
+      "Tango"
+    ]
+  }
+]

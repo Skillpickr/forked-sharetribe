@@ -13,6 +13,7 @@ import config from '../../config';
 import { NamedLink, ResponsiveImage } from '../../components';
 
 import css from './ListingCard.module.css';
+import { Skills } from '../../util/category';
 
 const MIN_LENGTH_FOR_LONG_WORDS = 10;
 
@@ -66,6 +67,18 @@ export const ListingCardComponent = props => {
   const skillOptions = findOptionsForSelectFilter('skill', filtersConfig);
   const skill = publicData ? getSkillInfo(skillOptions, publicData.skill) : null;
 
+  const musicSoloistOptions = findOptionsForSelectFilter('musicSoloistType', filtersConfig);
+  const musicSoloistType = publicData
+    ? getSkillInfo(musicSoloistOptions, publicData.musicSoloistType)
+    : null;
+
+  let skillTitle = '';
+  if (skill.key === Skills.musicianSoloist) {
+    skillTitle = skill.label + ' • ' + musicSoloistType.label;
+  } else {
+    skillTitle = skill.label;
+  }
+
   const { formattedPrice, priceTitle } = priceData(price, intl);
 
   const unitType = config.bookingUnitType;
@@ -112,7 +125,7 @@ export const ListingCardComponent = props => {
             })}
           </div>
           <div className={css.skillInfo}>
-            {skill && !skill.hideFromListingInfo ? <span>{skill.label}</span> : null}
+            {skill && !skill.hideFromListingInfo ? <span>{skillTitle}</span> : null}
           </div>
           {/* <div className={css.certificateInfo}>
             {certificate && !certificate.hideFromListingInfo ? (
