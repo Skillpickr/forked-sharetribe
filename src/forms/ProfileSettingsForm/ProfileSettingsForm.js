@@ -277,7 +277,7 @@ class ProfileSettingsFormComponent extends Component {
                   />
                 </div>
               </div>
-              {/* <div className={classNames(css.sectionContainer, css.lastSection)}>
+              <div className={classNames(css.sectionContainer, css.lastSection)}>
                 <h3 className={css.sectionTitle}>
                   <FormattedMessage id="ProfileSettingsForm.bioHeading" />
                 </h3>
@@ -291,7 +291,7 @@ class ProfileSettingsFormComponent extends Component {
                 <p className={css.bioInfo}>
                   <FormattedMessage id="ProfileSettingsForm.bioInfo" />
                 </p>
-              </div> */}
+              </div>
               {submitError}
               <Button
                 className={css.submitButton}

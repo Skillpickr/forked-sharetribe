@@ -58,6 +58,7 @@ import SectionFeaturesMaybe from './SectionFeaturesMaybe';
 import SectionGenresMaybe from './SectionGenresMaybe';
 import SectionReviews from './SectionReviews';
 import SectionMapMaybe from './SectionMapMaybe';
+import SectionHostMaybe from './SectionHostMaybe';
 import css from './ListingPage.module.css';
 import SectionBonusMaybe from './SectionBonusMaybe';
 import SectionSpecificationsMaybe from './SectionSpecificationsMaybe';
@@ -532,6 +533,19 @@ export class ListingPageComponent extends Component {
                     listingId={currentListing.id}
                   />
                   <SectionReviews reviews={reviews} fetchReviewsError={fetchReviewsError} />
+                  <SectionHostMaybe
+                    title={title}
+                    listing={currentListing}
+                    authorDisplayName={authorDisplayName}
+                    onContactUser={this.onContactUser}
+                    isEnquiryModalOpen={isAuthenticated && this.state.enquiryModalOpen}
+                    onCloseEnquiryModal={() => this.setState({ enquiryModalOpen: false })}
+                    sendEnquiryError={sendEnquiryError}
+                    sendEnquiryInProgress={sendEnquiryInProgress}
+                    onSubmitEnquiry={this.onSubmitEnquiry}
+                    currentUser={currentUser}
+                    onManageDisableScrolling={onManageDisableScrolling}
+                  />
                 </div>
                 <BookingPanel
                   className={css.bookingPanel}

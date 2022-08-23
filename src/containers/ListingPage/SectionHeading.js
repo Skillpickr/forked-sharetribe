@@ -12,6 +12,7 @@ const getSkillInfo = (skillOptions, key) => {
 const SectionHeading = props => {
   const {
     richTitle,
+    hostLink,
     showContactUser,
     listingSkill,
     skillOptions,
@@ -37,9 +38,11 @@ const SectionHeading = props => {
         <h1 className={css.title}>{richTitle}</h1>
         <div className={css.author}>
           {showSkill ? <span className={css.subTitle}>{skillTitle}</span> : null}
+          <span className={css.separator}>•</span>
+          <FormattedMessage id="ListingPage.hostedBy" values={{ name: hostLink }} />
           {showContactUser ? (
             <span className={css.contactWrapper}>
-              {showSkill ? <span className={css.separator}>•</span> : null}
+              <span className={css.separator}>•</span>
               <InlineTextButton
                 rootClassName={css.contactLink}
                 onClick={onContactUser}

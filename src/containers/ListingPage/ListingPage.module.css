@@ -359,7 +359,6 @@
 .subTitle {
   font-weight: var(--fontWeightSemiBold);
   margin-bottom: 0;
-  margin-left: 16px;
 }
 
 .author {
@@ -494,7 +493,6 @@
 .description {
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 16px;
 
   /* Preserve newlines, but collapse other whitespace */
   white-space: ;
