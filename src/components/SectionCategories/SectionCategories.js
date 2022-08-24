@@ -63,7 +63,7 @@ const SectionCategories = props => {
   const classes = classNames(rootClassName || css.root, className);
   const categoryKey = 'category';
   const categoryList = findOptionsForSelectFilter(categoryKey, filterConfig);
-  console.log(categoryList);
+  // console.log(categoryList);
   const categories = () => {
     for (category in categoryList) {
       return categoryLink(
