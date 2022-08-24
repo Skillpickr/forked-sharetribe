@@ -7,12 +7,12 @@ import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl';
 import { findOptionsForSelectFilter } from '../../util/search';
 import { propTypes } from '../../util/types';
 import config from '../../config';
-import * as validators from '../../util/validators';
 import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '../../components';
 import { compose } from 'redux';
 import css from './EditListingFeaturesForm.module.css';
 import { Skills, Categories } from '../../util/category';
 import { CheckboxFieldsType, DropdownFieldsType } from '../../util/featuresFields';
+import { required, composeValidators } from '../../util/validators';
 
 class PhotographerComponent extends React.Component {
   render() {
@@ -128,7 +128,7 @@ const EditListingFeaturesFormComponent = props => (
       const submitReady = (updated && pristine) || ready;
       const submitInProgress = updateInProgress;
       const submitDisabled = disabled || submitInProgress;
-      const required = validators.required('This field is required');
+      const requiredCheckbox = 'You need to check a box';
 
       const { updateListingError, showListingsError } = fetchErrors || {};
       const errorMessage = updateListingError ? (
@@ -324,6 +324,7 @@ const EditListingFeaturesFormComponent = props => (
             name={musicianTypeKey}
             options={musicianTypeOptions}
             label={musicianTypeKeyMessage}
+            validate={composeValidators(required(requiredCheckbox))}
           />
           <FieldCheckboxGroup
             className={css.features}
@@ -331,6 +332,7 @@ const EditListingFeaturesFormComponent = props => (
             name={musicalGenreKey}
             options={musicalGenreOptions}
             label={musicalGenreKeyMessage}
+            validate={composeValidators(required(requiredCheckbox))}
           />
           <FieldTextInput
             id="technicalRider"

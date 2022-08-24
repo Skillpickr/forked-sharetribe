@@ -367,6 +367,7 @@ export const filters = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
+        { key: 'a-cappella ', label: 'A Cappella ' },
         { key: 'blues', label: 'Blues' },
         { key: 'classical', label: 'Classical' },
         { key: 'ceremonial', label: 'Ceremonial Music' },
