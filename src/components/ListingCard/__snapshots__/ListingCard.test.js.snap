@@ -41,9 +41,9 @@ exports[`ListingCard matches snapshot 1`] = `
     >
       <div
         className="priceValue"
-        title={55}
+        title="ListingCard.unsupportedPriceTitle"
       >
-        55
+        ListingCard.unsupportedPrice
       </div>
       <div
         className="perUnit"
@@ -63,6 +63,9 @@ exports[`ListingCard matches snapshot 1`] = `
          
         title
       </div>
+      <div
+        className="skillInfo"
+      />
     </div>
   </div>
 </NamedLink>
