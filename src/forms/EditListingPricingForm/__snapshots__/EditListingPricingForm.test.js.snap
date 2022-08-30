@@ -27,6 +27,13 @@ exports[`EditListingPricingForm matches snapshot 1`] = `
       value=""
     />
   </div>
+  <span
+    className="feeInfo"
+  >
+    <span>
+      EditListingPricingForm.commissionFeeNote
+    </span>
+  </span>
   <button
     className="root submitButton"
     disabled={true}
