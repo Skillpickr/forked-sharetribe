@@ -129,6 +129,7 @@ const EditListingFeaturesFormComponent = props => (
       const submitInProgress = updateInProgress;
       const submitDisabled = disabled || submitInProgress;
       const requiredCheckbox = 'You need to check a box';
+      const requiredDropdown = 'Please choose a category';
 
       const { updateListingError, showListingsError } = fetchErrors || {};
       const errorMessage = updateListingError ? (
@@ -304,6 +305,7 @@ const EditListingFeaturesFormComponent = props => (
             name={musicSoloistKey}
             id={musicSoloistKey}
             label={musicSoloistKeyMessage}
+            validate={composeValidators(required(requiredDropdown))}
           >
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {id => (
@@ -365,14 +367,17 @@ const EditListingFeaturesFormComponent = props => (
         setState(skillSet);
         if (skillSet.includes(Skills.photographer)) {
           const opt = categoryOptions.find(element => element.key === Categories.creative);
+          console.log('photo');
           category = opt.key;
         }
         if (skillSet.includes(Skills.musicianSoloist)) {
           const opt = categoryOptions.find(element => element.key === Categories.performance);
+          console.log('music');
           category = opt.key;
         }
         if (skillSet.includes(Skills.dj)) {
           const opt = categoryOptions.find(element => element.key === Categories.performance);
+          console.log('dj');
           category = opt.key;
         }
         props.parentCallback(category);
