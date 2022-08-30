@@ -68,15 +68,20 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.18.9",
     "bfj": "^7.0.2",
     "chalk": "^v4.1.2",
     "concurrently": "^7.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.1",
     "inquirer": "^8.2.4",
     "nodemon": "^2.0.16",
-    "prettier": "^1.18.2"
+    "prettier": "^2.7.1"
   },
   "resolutions": {
     "react-dates/lodash": "^4.17.21",
@@ -98,7 +103,10 @@
     "build": "yarn build-web&&yarn build-server",
     "build-web": "sharetribe-scripts build",
     "build-server": "sharetribe-scripts build-server",
-    "format": "prettier --write '**/*.{js,css}'",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    // "format": "prettier --write '**/*.{js,css}'",
     "format-ci": "prettier --list-different '**/*.{js,css}'",
     "format-docs": "prettier --write '**/*.md'",
     "test": "NODE_ICU_DATA=node_modules/full-icu sharetribe-scripts test",
