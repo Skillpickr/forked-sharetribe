@@ -18,28 +18,36 @@ class EditListingFeaturesPanel extends Component {
 
     this.getInitialValues = this.getInitialValues.bind(this);
     this.getCategory = this.getCategory.bind(this);
+    this.getSkill = this.getSkill.bind(this);
 
     this.state = {
       initialValues: this.getInitialValues(),
       category: this.getCategory(),
+      skill: this.getSkill(),
     };
   }
 
-  componentDidMount() {}
-
-  getCategory() {
+  getCurrentListing() {
     const { listing } = this.props;
     const currentListing = ensureListing(listing);
-    const { publicData } = currentListing.attributes;
+    return currentListing;
+  }
+
+  getCategory() {
+    const { publicData } = this.getCurrentListing().attributes;
     const category = publicData && publicData.category;
     return { category };
   }
 
-  getInitialValues() {
-    const { listing } = this.props;
-    const currentListing = ensureListing(listing);
-    const { publicData } = currentListing.attributes;
+  getSkill() {
+    const { publicData } = this.getCurrentListing().attributes;
+    const skill = publicData && publicData.skill;
+    return skill;
+  }
 
+  getInitialValues() {
+    const { publicData } = this.getCurrentListing().attributes;
+    const skill = publicData && publicData.skill;
     const gear = publicData && publicData.gear;
     const soundLightExp = publicData && publicData.soundLightExp;
     const photographerType = publicData && publicData.photographerType;
@@ -67,6 +75,7 @@ class EditListingFeaturesPanel extends Component {
       musicSoloistType,
       musicianType,
       musicalGenre,
+      skill,
     };
   }
 
@@ -85,14 +94,11 @@ class EditListingFeaturesPanel extends Component {
       errors,
     } = this.props;
 
-    const currentListing = ensureListing(listing);
-    const { publicData } = currentListing.attributes;
-    const skill = publicData && publicData.skill;
-
     const classes = classNames(rootClassName || css.root, className);
 
     const isPublished =
-      currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
+      this.getCurrentListing().id &&
+      this.getCurrentListing().attributes.state !== LISTING_STATE_DRAFT;
     const panelTitle = isPublished ? (
       <FormattedMessage
         id="EditListingFeaturesPanel.title"
@@ -103,7 +109,6 @@ class EditListingFeaturesPanel extends Component {
     );
 
     const handleCallback = childData => {
-      console.log('childe', childData);
       this.setState({ category: childData });
     };
 
@@ -153,7 +158,7 @@ class EditListingFeaturesPanel extends Component {
           className={css.form}
           name={FEATURES_NAME}
           initialValues={this.state.initialValues}
-          skill={skill}
+          skill={this.state.skill}
           parentCallback={handleCallback}
           onSubmit={handleSubmit}
           onChange={onChange}

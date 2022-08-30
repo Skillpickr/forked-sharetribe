@@ -7,7 +7,6 @@ const URL_PARAM = 'pub_skills';
 
 const options = [
   { key: 'influencer', label: 'Influencer' },
-  { key: Skills.photographer, label: 'Photographer' },
   { key: 'keynote-speaker', label: 'Keynote Speaker' },
   { key: 'teacher', label: 'Teacher' },
   { key: 'animator', label: 'Animator' },

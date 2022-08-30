@@ -17,8 +17,8 @@
 
 .title {
   -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-          hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
   margin-top: 8px;
   margin-bottom: 19px;
 
@@ -27,6 +27,6 @@
   }
 }
 
-.details{
+.details {
   margin-bottom: 24px;
 }

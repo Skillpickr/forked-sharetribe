@@ -73,10 +73,12 @@ export const ListingCardComponent = props => {
     : null;
 
   let skillTitle = '';
-  if (skill.key === Skills.musicianSoloist) {
-    skillTitle = skill.label + ' • ' + musicSoloistType.label;
-  } else {
-    skillTitle = skill.label;
+  if (skill) {
+    if (skill.key === Skills.musicianSoloist) {
+      skillTitle = skill.label + ' • ' + musicSoloistType.label;
+    } else {
+      skillTitle = skill.label;
+    }
   }
 
   const { formattedPrice, priceTitle } = priceData(price, intl);
