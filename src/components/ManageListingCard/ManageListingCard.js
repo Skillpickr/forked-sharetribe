@@ -1,29 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
-import classNames from 'classnames';
-import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl';
-import routeConfiguration from '../../routeConfiguration';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { compose } from 'redux'
+import { withRouter } from 'react-router-dom'
+import classNames from 'classnames'
+import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl'
+import routeConfiguration from '../../routeConfiguration'
 import {
   LINE_ITEM_NIGHT,
   LINE_ITEM_DAY,
   LISTING_STATE_PENDING_APPROVAL,
   LISTING_STATE_CLOSED,
   LISTING_STATE_DRAFT,
-  propTypes,
-} from '../../util/types';
-import { formatMoney } from '../../util/currency';
-import { ensureOwnListing } from '../../util/data';
+  propTypes
+} from '../../util/types'
+import { formatMoney } from '../../util/currency'
+import { ensureOwnListing } from '../../util/data'
 import {
   LISTING_PAGE_PENDING_APPROVAL_VARIANT,
   LISTING_PAGE_DRAFT_VARIANT,
   LISTING_PAGE_PARAM_TYPE_DRAFT,
   LISTING_PAGE_PARAM_TYPE_EDIT,
-  createSlug,
-} from '../../util/urlHelpers';
-import { createResourceLocatorString, findRouteByRouteName } from '../../util/routes';
-import config from '../../config';
+  createSlug
+} from '../../util/urlHelpers'
+import { createResourceLocatorString, findRouteByRouteName } from '../../util/routes'
+import config from '../../config'
 import {
   InlineTextButton,
   Menu,
@@ -32,46 +32,40 @@ import {
   MenuItem,
   NamedLink,
   IconSpinner,
-  ResponsiveImage,
-} from '../../components';
+  ResponsiveImage
+} from '../../components'
 
-import MenuIcon from './MenuIcon';
-import Overlay from './Overlay';
-import css from './ManageListingCard.module.css';
+import MenuIcon from './MenuIcon'
+import Overlay from './Overlay'
+import css from './ManageListingCard.module.css'
 
 // Menu content needs the same padding
-const MENU_CONTENT_OFFSET = -12;
-const MAX_LENGTH_FOR_WORDS_IN_TITLE = 7;
+const MENU_CONTENT_OFFSET = -12
+const MAX_LENGTH_FOR_WORDS_IN_TITLE = 7
 
 const priceData = (price, intl) => {
   if (price && price.currency === config.currency) {
-    const formattedPrice = formatMoney(intl, price);
-    return { formattedPrice, priceTitle: formattedPrice };
+    const formattedPrice = formatMoney(intl, price)
+    return { formattedPrice, priceTitle: formattedPrice }
   } else if (price) {
     return {
-      formattedPrice: intl.formatMessage(
-        { id: 'ManageListingCard.unsupportedPrice' },
-        { currency: price.currency }
-      ),
-      priceTitle: intl.formatMessage(
-        { id: 'ManageListingCard.unsupportedPriceTitle' },
-        { currency: price.currency }
-      ),
-    };
+      formattedPrice: intl.formatMessage({ id: 'ManageListingCard.unsupportedPrice' }, { currency: price.currency }),
+      priceTitle: intl.formatMessage({ id: 'ManageListingCard.unsupportedPriceTitle' }, { currency: price.currency })
+    }
   }
-  return {};
-};
+  return {}
+}
 
 const createListingURL = (routes, listing) => {
-  const id = listing.id.uuid;
-  const slug = createSlug(listing.attributes.title);
-  const isPendingApproval = listing.attributes.state === LISTING_STATE_PENDING_APPROVAL;
-  const isDraft = listing.attributes.state === LISTING_STATE_DRAFT;
+  const id = listing.id.uuid
+  const slug = createSlug(listing.attributes.title)
+  const isPendingApproval = listing.attributes.state === LISTING_STATE_PENDING_APPROVAL
+  const isDraft = listing.attributes.state === LISTING_STATE_DRAFT
   const variant = isDraft
     ? LISTING_PAGE_DRAFT_VARIANT
     : isPendingApproval
     ? LISTING_PAGE_PENDING_APPROVAL_VARIANT
-    : null;
+    : null
 
   const linkProps =
     isPendingApproval || isDraft
@@ -80,23 +74,23 @@ const createListingURL = (routes, listing) => {
           params: {
             id,
             slug,
-            variant,
-          },
+            variant
+          }
         }
       : {
           name: 'ListingPage',
-          params: { id, slug },
-        };
+          params: { id, slug }
+        }
 
-  return createResourceLocatorString(linkProps.name, routes, linkProps.params, {});
-};
+  return createResourceLocatorString(linkProps.name, routes, linkProps.params, {})
+}
 
 // Cards are not fixed sizes - So, long words in title make flexboxed items to grow too big.
 // 1. We split title to an array of words and spaces.
 //    "foo bar".split(/([^\s]+)/gi) => ["", "foo", " ", "bar", ""]
 // 2. Then we break long words by adding a '<span>' with word-break: 'break-all';
 const formatTitle = (title, maxLength) => {
-  const nonWhiteSpaceSequence = /([^\s]+)/gi;
+  const nonWhiteSpaceSequence = /([^\s]+)/gi
   return title.split(nonWhiteSpaceSequence).map((word, index) => {
     return word.length > maxLength ? (
       <span key={index} style={{ wordBreak: 'break-all' }}>
@@ -104,11 +98,11 @@ const formatTitle = (title, maxLength) => {
       </span>
     ) : (
       word
-    );
-  });
-};
+    )
+  })
+}
 
-export const ManageListingCardComponent = props => {
+export const ManageListingCardComponent = (props) => {
   const {
     className,
     rootClassName,
@@ -123,72 +117,68 @@ export const ManageListingCardComponent = props => {
     onOpenListing,
     onToggleMenu,
     renderSizes,
-    availabilityEnabled,
-  } = props;
-  const classes = classNames(rootClassName || css.root, className);
-  const currentListing = ensureOwnListing(listing);
-  const id = currentListing.id.uuid;
-  const { title = '', price, state } = currentListing.attributes;
-  const slug = createSlug(title);
-  const isPendingApproval = state === LISTING_STATE_PENDING_APPROVAL;
-  const isClosed = state === LISTING_STATE_CLOSED;
-  const isDraft = state === LISTING_STATE_DRAFT;
-  const firstImage =
-    currentListing.images && currentListing.images.length > 0 ? currentListing.images[0] : null;
+    availabilityEnabled
+  } = props
+  const classes = classNames(rootClassName || css.root, className)
+  const currentListing = ensureOwnListing(listing)
+  const id = currentListing.id.uuid
+  const { title = '', price, state } = currentListing.attributes
+  const slug = createSlug(title)
+  const isPendingApproval = state === LISTING_STATE_PENDING_APPROVAL
+  const isClosed = state === LISTING_STATE_CLOSED
+  const isDraft = state === LISTING_STATE_DRAFT
+  const firstImage = currentListing.images && currentListing.images.length > 0 ? currentListing.images[0] : null
 
   const menuItemClasses = classNames(css.menuItem, {
-    [css.menuItemDisabled]: !!actionsInProgressListingId,
-  });
+    [css.menuItemDisabled]: !!actionsInProgressListingId
+  })
 
-  const { formattedPrice, priceTitle } = priceData(price, intl);
+  const { formattedPrice, priceTitle } = priceData(price, intl)
 
-  const hasError = hasOpeningError || hasClosingError;
-  const thisListingInProgress =
-    actionsInProgressListingId && actionsInProgressListingId.uuid === id;
+  const hasError = hasOpeningError || hasClosingError
+  const thisListingInProgress = actionsInProgressListingId && actionsInProgressListingId.uuid === id
 
   const onOverListingLink = () => {
     // Enforce preloading of ListingPage (loadable component)
-    const { component: Page } = findRouteByRouteName('ListingPage', routeConfiguration());
+    const { component: Page } = findRouteByRouteName('ListingPage', routeConfiguration())
     // Loadable Component has a "preload" function.
     if (Page.preload) {
-      Page.preload();
+      Page.preload()
     }
-  };
+  }
 
   const titleClasses = classNames(css.title, {
     [css.titlePending]: isPendingApproval,
-    [css.titleDraft]: isDraft,
-  });
+    [css.titleDraft]: isDraft
+  })
 
-  const editListingLinkType = isDraft
-    ? LISTING_PAGE_PARAM_TYPE_DRAFT
-    : LISTING_PAGE_PARAM_TYPE_EDIT;
+  const editListingLinkType = isDraft ? LISTING_PAGE_PARAM_TYPE_DRAFT : LISTING_PAGE_PARAM_TYPE_EDIT
 
-  const unitType = config.bookingUnitType;
-  const isNightly = unitType === LINE_ITEM_NIGHT;
-  const isDaily = unitType === LINE_ITEM_DAY;
+  const unitType = config.bookingUnitType
+  const isNightly = unitType === LINE_ITEM_NIGHT
+  const isDaily = unitType === LINE_ITEM_DAY
 
   const unitTranslationKey = isNightly
     ? 'ManageListingCard.perNight'
     : isDaily
     ? 'ManageListingCard.perDay'
-    : 'ManageListingCard.perUnit';
+    : 'ManageListingCard.perUnit'
 
   return (
     <div className={classes}>
       <div
         className={css.threeToTwoWrapper}
         tabIndex={0}
-        onClick={event => {
-          event.preventDefault();
-          event.stopPropagation();
+        onClick={(event) => {
+          event.preventDefault()
+          event.stopPropagation()
 
           // ManageListingCard contains links, buttons and elements that are working with routing.
           // This card doesn't work if <a> or <button> is used to wrap events that are card 'clicks'.
           //
           // NOTE: It might be better to absolute-position those buttons over a card-links.
           // (So, that they have no parent-child relationship - like '<a>bla<a>blaa</a></a>')
-          history.push(createListingURL(routeConfiguration(), listing));
+          history.push(createListingURL(routeConfiguration(), listing))
         }}
         onMouseOver={onOverListingLink}
         onTouchStart={onOverListingLink}
@@ -216,9 +206,9 @@ export const ManageListingCardComponent = props => {
               contentPlacementOffset={MENU_CONTENT_OFFSET}
               contentPosition="left"
               useArrow={false}
-              onToggleActive={isOpen => {
-                const listingOpen = isOpen ? currentListing : null;
-                onToggleMenu(listingOpen);
+              onToggleActive={(isOpen) => {
+                const listingOpen = isOpen ? currentListing : null
+                onToggleMenu(listingOpen)
               }}
               isOpen={isMenuOpen}
             >
@@ -231,12 +221,12 @@ export const ManageListingCardComponent = props => {
                 <MenuItem key="close-listing">
                   <InlineTextButton
                     rootClassName={menuItemClasses}
-                    onClick={event => {
-                      event.preventDefault();
-                      event.stopPropagation();
+                    onClick={(event) => {
+                      event.preventDefault()
+                      event.stopPropagation()
                       if (!actionsInProgressListingId) {
-                        onToggleMenu(null);
-                        onCloseListing(currentListing.id);
+                        onToggleMenu(null)
+                        onCloseListing(currentListing.id)
                       }
                     }}
                   >
@@ -251,10 +241,7 @@ export const ManageListingCardComponent = props => {
           <React.Fragment>
             <div className={classNames({ [css.draftNoImage]: !firstImage })} />
             <Overlay
-              message={intl.formatMessage(
-                { id: 'ManageListingCard.draftOverlayText' },
-                { listingTitle: title }
-              )}
+              message={intl.formatMessage({ id: 'ManageListingCard.draftOverlayText' }, { listingTitle: title })}
             >
               <NamedLink
                 className={css.finishListingDraftLink}
@@ -267,20 +254,15 @@ export const ManageListingCardComponent = props => {
           </React.Fragment>
         ) : null}
         {isClosed ? (
-          <Overlay
-            message={intl.formatMessage(
-              { id: 'ManageListingCard.closedListing' },
-              { listingTitle: title }
-            )}
-          >
+          <Overlay message={intl.formatMessage({ id: 'ManageListingCard.closedListing' }, { listingTitle: title })}>
             <button
               className={css.openListingButton}
               disabled={!!actionsInProgressListingId}
-              onClick={event => {
-                event.preventDefault();
-                event.stopPropagation();
+              onClick={(event) => {
+                event.preventDefault()
+                event.stopPropagation()
                 if (!actionsInProgressListingId) {
-                  onOpenListing(currentListing.id);
+                  onOpenListing(currentListing.id)
                 }
               }}
             >
@@ -289,12 +271,7 @@ export const ManageListingCardComponent = props => {
           </Overlay>
         ) : null}
         {isPendingApproval ? (
-          <Overlay
-            message={intl.formatMessage(
-              { id: 'ManageListingCard.pendingApproval' },
-              { listingTitle: title }
-            )}
-          />
+          <Overlay message={intl.formatMessage({ id: 'ManageListingCard.pendingApproval' }, { listingTitle: title })} />
         ) : null}
         {thisListingInProgress ? (
           <Overlay>
@@ -327,10 +304,10 @@ export const ManageListingCardComponent = props => {
           <div className={css.titleWrapper}>
             <InlineTextButton
               rootClassName={titleClasses}
-              onClick={event => {
-                event.preventDefault();
-                event.stopPropagation();
-                history.push(createListingURL(routeConfiguration(), listing));
+              onClick={(event) => {
+                event.preventDefault()
+                event.stopPropagation()
+                history.push(createListingURL(routeConfiguration(), listing))
               }}
             >
               {formatTitle(title, MAX_LENGTH_FOR_WORDS_IN_TITLE)}
@@ -363,18 +340,18 @@ export const ManageListingCardComponent = props => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 ManageListingCardComponent.defaultProps = {
   className: null,
   rootClassName: null,
   actionsInProgressListingId: null,
   renderSizes: null,
-  availabilityEnabled: config.enableAvailability,
-};
+  availabilityEnabled: config.enableAvailability
+}
 
-const { bool, func, shape, string } = PropTypes;
+const { bool, func, shape, string } = PropTypes
 
 ManageListingCardComponent.propTypes = {
   className: string,
@@ -395,11 +372,8 @@ ManageListingCardComponent.propTypes = {
 
   // from withRouter
   history: shape({
-    push: func.isRequired,
-  }).isRequired,
-};
+    push: func.isRequired
+  }).isRequired
+}
 
-export default compose(
-  withRouter,
-  injectIntl
-)(ManageListingCardComponent);
+export default compose(withRouter, injectIntl)(ManageListingCardComponent)

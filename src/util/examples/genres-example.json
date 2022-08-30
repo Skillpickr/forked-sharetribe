@@ -1,12 +1,7 @@
 [
   {
     "category": "Ceremonial music",
-    "genres": [
-      "Christmas",
-      "Contemporary Christian",
-      "Military",
-      "Traditional church music"
-    ]
+    "genres": ["Christmas", "Contemporary Christian", "Military", "Traditional church music"]
   },
   {
     "category": "Classical",
@@ -99,15 +94,7 @@
   },
   {
     "category": "Other",
-    "genres": [
-      "Avant garde",
-      "Easy listening",
-      "Experimental",
-      "Light music",
-      "Marching",
-      "Noise music",
-      "Originals"
-    ]
+    "genres": ["Avant garde", "Easy listening", "Experimental", "Light music", "Marching", "Noise music", "Originals"]
   },
   {
     "category": "Pop",

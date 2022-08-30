@@ -1,9 +1,9 @@
-import React from 'react';
-import { arrayOf, bool, number, oneOf, shape, string } from 'prop-types';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
-import classNames from 'classnames';
+import React from 'react'
+import { arrayOf, bool, number, oneOf, shape, string } from 'prop-types'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
+import classNames from 'classnames'
 import {
   txIsAccepted,
   txIsCanceled,
@@ -12,13 +12,13 @@ import {
   txIsRequested,
   txHasBeenDelivered,
   txIsPaymentExpired,
-  txIsPaymentPending,
-} from '../../util/transaction';
-import { propTypes, DATE_TYPE_DATETIME } from '../../util/types';
-import { createSlug, stringify } from '../../util/urlHelpers';
-import { ensureCurrentUser, ensureListing } from '../../util/data';
-import { getMarketplaceEntities } from '../../ducks/marketplaceData.duck';
-import { isScrollingDisabled } from '../../ducks/UI.duck';
+  txIsPaymentPending
+} from '../../util/transaction'
+import { propTypes, DATE_TYPE_DATETIME } from '../../util/types'
+import { createSlug, stringify } from '../../util/urlHelpers'
+import { ensureCurrentUser, ensureListing } from '../../util/data'
+import { getMarketplaceEntities } from '../../ducks/marketplaceData.duck'
+import { isScrollingDisabled } from '../../ducks/UI.duck'
 import {
   Avatar,
   BookingTimeInfo,
@@ -34,26 +34,26 @@ import {
   LayoutWrapperFooter,
   Footer,
   IconSpinner,
-  UserDisplayName,
-} from '../../components';
-import { TopbarContainer, NotFoundPage } from '../../containers';
-import config from '../../config';
+  UserDisplayName
+} from '../../components'
+import { TopbarContainer, NotFoundPage } from '../../containers'
+import config from '../../config'
 
-import css from './InboxPage.module.css';
+import css from './InboxPage.module.css'
 
 const formatDate = (intl, date) => {
   return {
     short: intl.formatDate(date, {
       month: 'short',
-      day: 'numeric',
+      day: 'numeric'
     }),
-    long: `${intl.formatDate(date)} ${intl.formatTime(date)}`,
-  };
-};
+    long: `${intl.formatDate(date)} ${intl.formatTime(date)}`
+  }
+}
 
 // Translated name of the state of the given transaction
 export const txState = (intl, tx, type) => {
-  const isOrder = type === 'order';
+  const isOrder = type === 'order'
 
   if (txIsEnquired(tx)) {
     return {
@@ -62,9 +62,9 @@ export const txState = (intl, tx, type) => {
       lastTransitionedAtClassName: css.lastTransitionedAtEmphasized,
       stateClassName: css.stateActionNeeded,
       state: intl.formatMessage({
-        id: 'InboxPage.stateEnquiry',
-      }),
-    };
+        id: 'InboxPage.stateEnquiry'
+      })
+    }
   } else if (txIsRequested(tx)) {
     const requested = isOrder
       ? {
@@ -73,8 +73,8 @@ export const txState = (intl, tx, type) => {
           lastTransitionedAtClassName: css.lastTransitionedAtEmphasized,
           stateClassName: css.stateActionNeeded,
           state: intl.formatMessage({
-            id: 'InboxPage.stateRequested',
-          }),
+            id: 'InboxPage.stateRequested'
+          })
         }
       : {
           nameClassName: css.nameEmphasized,
@@ -82,11 +82,11 @@ export const txState = (intl, tx, type) => {
           lastTransitionedAtClassName: css.lastTransitionedAtEmphasized,
           stateClassName: css.stateActionNeeded,
           state: intl.formatMessage({
-            id: 'InboxPage.statePending',
-          }),
-        };
+            id: 'InboxPage.statePending'
+          })
+        }
 
-    return requested;
+    return requested
   } else if (txIsPaymentPending(tx)) {
     return {
       nameClassName: isOrder ? css.nameNotEmphasized : css.nameEmphasized,
@@ -94,9 +94,9 @@ export const txState = (intl, tx, type) => {
       lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
       stateClassName: isOrder ? css.stateActionNeeded : css.stateNoActionNeeded,
       state: intl.formatMessage({
-        id: 'InboxPage.statePendingPayment',
-      }),
-    };
+        id: 'InboxPage.statePendingPayment'
+      })
+    }
   } else if (txIsPaymentExpired(tx)) {
     return {
       nameClassName: css.nameNotEmphasized,
@@ -104,9 +104,9 @@ export const txState = (intl, tx, type) => {
       lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
       stateClassName: css.stateNoActionNeeded,
       state: intl.formatMessage({
-        id: 'InboxPage.stateExpired',
-      }),
-    };
+        id: 'InboxPage.stateExpired'
+      })
+    }
   } else if (txIsDeclined(tx)) {
     return {
       nameClassName: css.nameNotEmphasized,
@@ -114,9 +114,9 @@ export const txState = (intl, tx, type) => {
       lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
       stateClassName: css.stateNoActionNeeded,
       state: intl.formatMessage({
-        id: 'InboxPage.stateDeclined',
-      }),
-    };
+        id: 'InboxPage.stateDeclined'
+      })
+    }
   } else if (txIsAccepted(tx)) {
     return {
       nameClassName: css.nameNotEmphasized,
@@ -124,9 +124,9 @@ export const txState = (intl, tx, type) => {
       lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
       stateClassName: css.stateSucces,
       state: intl.formatMessage({
-        id: 'InboxPage.stateAccepted',
-      }),
-    };
+        id: 'InboxPage.stateAccepted'
+      })
+    }
   } else if (txIsCanceled(tx)) {
     return {
       nameClassName: css.nameNotEmphasized,
@@ -134,9 +134,9 @@ export const txState = (intl, tx, type) => {
       lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
       stateClassName: css.stateNoActionNeeded,
       state: intl.formatMessage({
-        id: 'InboxPage.stateCanceled',
-      }),
-    };
+        id: 'InboxPage.stateCanceled'
+      })
+    }
   } else if (txHasBeenDelivered(tx)) {
     return {
       nameClassName: css.nameNotEmphasized,
@@ -144,27 +144,25 @@ export const txState = (intl, tx, type) => {
       lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
       stateClassName: css.stateNoActionNeeded,
       state: intl.formatMessage({
-        id: 'InboxPage.stateDelivered',
-      }),
-    };
+        id: 'InboxPage.stateDelivered'
+      })
+    }
   } else {
-    console.warn('This transition is unknown:', tx.attributes.lastTransition);
-    return null;
+    console.warn('This transition is unknown:', tx.attributes.lastTransition)
+    return null
   }
-};
+}
 
 // Functional component as internal helper to print BookingTimeInfo if that is needed
-const BookingInfoMaybe = props => {
-  const { bookingClassName, isOrder, intl, tx, unitType } = props;
-  const isEnquiry = txIsEnquired(tx);
+const BookingInfoMaybe = (props) => {
+  const { bookingClassName, isOrder, intl, tx, unitType } = props
+  const isEnquiry = txIsEnquired(tx)
 
   if (isEnquiry) {
-    return null;
+    return null
   }
-  const listingAttributes = ensureListing(tx.listing).attributes;
-  const timeZone = listingAttributes.availabilityPlan
-    ? listingAttributes.availabilityPlan.timezone
-    : 'Etc/UTC';
+  const listingAttributes = ensureListing(tx.listing).attributes
+  const timeZone = listingAttributes.availabilityPlan ? listingAttributes.availabilityPlan.timezone : 'Etc/UTC'
 
   // If you want to show the booking price after the booking time on InboxPage you can
   // add the price after the BookingTimeInfo component. You can get the price by uncommenting
@@ -188,58 +186,56 @@ const BookingInfoMaybe = props => {
         timeZone={timeZone}
       />
     </div>
-  );
-};
+  )
+}
 
 BookingInfoMaybe.propTypes = {
   intl: intlShape.isRequired,
   isOrder: bool.isRequired,
   tx: propTypes.transaction.isRequired,
-  unitType: propTypes.bookingUnitType.isRequired,
-};
+  unitType: propTypes.bookingUnitType.isRequired
+}
 
 const createListingLink = (listing, otherUser, searchParams = {}, className = '') => {
-  const listingId = listing.id && listing.id.uuid;
-  const label = listing.attributes.title;
-  const listingDeleted = listing.attributes.deleted;
+  const listingId = listing.id && listing.id.uuid
+  const label = listing.attributes.title
+  const listingDeleted = listing.attributes.deleted
 
   if (!listingDeleted) {
-    const params = { id: listingId, slug: createSlug(label) };
-    const to = { search: stringify(searchParams) };
+    const params = { id: listingId, slug: createSlug(label) }
+    const to = { search: stringify(searchParams) }
     return (
       <NamedLink className={className} name="ListingPage" params={params} to={to}>
         <Avatar user={otherUser} disableProfileLink />
       </NamedLink>
-    );
+    )
   } else {
-    return <FormattedMessage id="TransactionPanel.deletedListingOrderTitle" />;
+    return <FormattedMessage id="TransactionPanel.deletedListingOrderTitle" />
   }
-};
+}
 
-export const InboxItem = props => {
-  const { unitType, type, tx, intl, stateData } = props;
-  const { customer, provider, listing } = tx;
-  const isOrder = type === 'order';
+export const InboxItem = (props) => {
+  const { unitType, type, tx, intl, stateData } = props
+  const { customer, provider, listing } = tx
+  const isOrder = type === 'order'
 
-  const otherUser = isOrder ? provider : customer;
-  const otherUserDisplayName = <UserDisplayName user={otherUser} intl={intl} />;
-  const isOtherUserBanned = otherUser.attributes.banned;
+  const otherUser = isOrder ? provider : customer
+  const otherUserDisplayName = <UserDisplayName user={otherUser} intl={intl} />
+  const isOtherUserBanned = otherUser.attributes.banned
 
-  const isSaleNotification = !isOrder && txIsRequested(tx);
-  const rowNotificationDot = isSaleNotification ? <div className={css.notificationDot} /> : null;
-  const lastTransitionedAt = formatDate(intl, tx.attributes.lastTransitionedAt);
+  const isSaleNotification = !isOrder && txIsRequested(tx)
+  const rowNotificationDot = isSaleNotification ? <div className={css.notificationDot} /> : null
+  const lastTransitionedAt = formatDate(intl, tx.attributes.lastTransitionedAt)
 
   const linkClasses = classNames(css.itemLink, {
-    [css.bannedUserLink]: isOtherUserBanned,
-  });
+    [css.bannedUserLink]: isOtherUserBanned
+  })
 
-  const listingLink = listing ? createListingLink(listing, otherUser) : null;
+  const listingLink = listing ? createListingLink(listing, otherUser) : null
 
   return (
     <div className={css.item}>
-      <div className={css.itemAvatar}>
-        {isOrder && listing ? listingLink : <Avatar user={otherUser} />}
-      </div>
+      <div className={css.itemAvatar}>{isOrder && listing ? listingLink : <Avatar user={otherUser} />}</div>
       <NamedLink
         className={linkClasses}
         name={isOrder ? 'OrderDetailsPage' : 'SaleDetailsPage'}
@@ -247,9 +243,7 @@ export const InboxItem = props => {
       >
         <div className={css.rowNotificationDot}>{rowNotificationDot}</div>
         <div className={css.itemInfo}>
-          <div className={classNames(css.itemUsername, stateData.nameClassName)}>
-            {otherUserDisplayName}
-          </div>
+          <div className={classNames(css.itemUsername, stateData.nameClassName)}>{otherUserDisplayName}</div>
           <BookingInfoMaybe
             bookingClassName={stateData.bookingClassName}
             intl={intl}
@@ -259,9 +253,7 @@ export const InboxItem = props => {
           />
         </div>
         <div className={css.itemState}>
-          <div className={classNames(css.stateName, stateData.stateClassName)}>
-            {stateData.state}
-          </div>
+          <div className={classNames(css.stateName, stateData.stateClassName)}>{stateData.state}</div>
           <div
             className={classNames(css.lastTransitionedAt, stateData.lastTransitionedAtClassName)}
             title={lastTransitionedAt.long}
@@ -271,17 +263,17 @@ export const InboxItem = props => {
         </div>
       </NamedLink>
     </div>
-  );
-};
+  )
+}
 
 InboxItem.propTypes = {
   unitType: propTypes.bookingUnitType.isRequired,
   type: oneOf(['order', 'sale']).isRequired,
   tx: propTypes.transaction.isRequired,
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-export const InboxPageComponent = props => {
+export const InboxPageComponent = (props) => {
   const {
     unitType,
     currentUser,
@@ -293,54 +285,53 @@ export const InboxPageComponent = props => {
     params,
     providerNotificationCount,
     scrollingDisabled,
-    transactions,
-  } = props;
-  const { tab } = params;
-  const ensuredCurrentUser = ensureCurrentUser(currentUser);
+    transactions
+  } = props
+  const { tab } = params
+  const ensuredCurrentUser = ensureCurrentUser(currentUser)
 
-  const validTab = tab === 'orders' || tab === 'sales';
+  const validTab = tab === 'orders' || tab === 'sales'
   if (!validTab) {
-    return <NotFoundPage />;
+    return <NotFoundPage />
   }
 
-  const isOrders = tab === 'orders';
+  const isOrders = tab === 'orders'
 
-  const ordersTitle = intl.formatMessage({ id: 'InboxPage.ordersTitle' });
-  const salesTitle = intl.formatMessage({ id: 'InboxPage.salesTitle' });
-  const title = isOrders ? ordersTitle : salesTitle;
+  const ordersTitle = intl.formatMessage({ id: 'InboxPage.ordersTitle' })
+  const salesTitle = intl.formatMessage({ id: 'InboxPage.salesTitle' })
+  const title = isOrders ? ordersTitle : salesTitle
 
-  const toTxItem = tx => {
-    const type = isOrders ? 'order' : 'sale';
-    const stateData = txState(intl, tx, type);
+  const toTxItem = (tx) => {
+    const type = isOrders ? 'order' : 'sale'
+    const stateData = txState(intl, tx, type)
 
     // Render InboxItem only if the latest transition of the transaction is handled in the `txState` function.
     return stateData ? (
       <li key={tx.id.uuid} className={css.listItem}>
         <InboxItem unitType={unitType} type={type} tx={tx} intl={intl} stateData={stateData} />
       </li>
-    ) : null;
-  };
+    ) : null
+  }
 
   const error = fetchOrdersOrSalesError ? (
     <p className={css.error}>
       <FormattedMessage id="InboxPage.fetchFailed" />
     </p>
-  ) : null;
+  ) : null
 
   const noResults =
     !fetchInProgress && transactions.length === 0 && !fetchOrdersOrSalesError ? (
       <li key="noResults" className={css.noResults}>
         <FormattedMessage id={isOrders ? 'InboxPage.noOrdersFound' : 'InboxPage.noSalesFound'} />
       </li>
-    ) : null;
+    ) : null
 
   const hasOrderOrSaleTransactions = (tx, isOrdersTab, user) => {
     return isOrdersTab
       ? user.id && tx && tx.length > 0 && tx[0].customer.id.uuid === user.id.uuid
-      : user.id && tx && tx.length > 0 && tx[0].provider.id.uuid === user.id.uuid;
-  };
-  const hasTransactions =
-    !fetchInProgress && hasOrderOrSaleTransactions(transactions, isOrders, ensuredCurrentUser);
+      : user.id && tx && tx.length > 0 && tx[0].provider.id.uuid === user.id.uuid
+  }
+  const hasTransactions = !fetchInProgress && hasOrderOrSaleTransactions(transactions, isOrders, ensuredCurrentUser)
   const pagingLinks =
     hasTransactions && pagination && pagination.totalPages > 1 ? (
       <PaginationLinks
@@ -349,10 +340,10 @@ export const InboxPageComponent = props => {
         pagePathParams={params}
         pagination={pagination}
       />
-    ) : null;
+    ) : null
 
   const providerNotificationBadge =
-    providerNotificationCount > 0 ? <NotificationBadge count={providerNotificationCount} /> : null;
+    providerNotificationCount > 0 ? <NotificationBadge count={providerNotificationCount} /> : null
 
   const tabs = [
     {
@@ -364,8 +355,8 @@ export const InboxPageComponent = props => {
       selected: isOrders,
       linkProps: {
         name: 'InboxPage',
-        params: { tab: 'orders' },
-      },
+        params: { tab: 'orders' }
+      }
     },
     {
       text: (
@@ -377,11 +368,11 @@ export const InboxPageComponent = props => {
       selected: !isOrders,
       linkProps: {
         name: 'InboxPage',
-        params: { tab: 'sales' },
-      },
-    },
-  ];
-  const nav = <TabNav rootClassName={css.tabs} tabRootClassName={css.tab} tabs={tabs} />;
+        params: { tab: 'sales' }
+      }
+    }
+  ]
+  const nav = <TabNav rootClassName={css.tabs} tabRootClassName={css.tab} tabs={tabs} />
 
   return (
     <Page title={title} scrollingDisabled={scrollingDisabled}>
@@ -419,8 +410,8 @@ export const InboxPageComponent = props => {
         </LayoutWrapperFooter>
       </LayoutSideNavigation>
     </Page>
-  );
-};
+  )
+}
 
 InboxPageComponent.defaultProps = {
   unitType: config.bookingUnitType,
@@ -430,12 +421,12 @@ InboxPageComponent.defaultProps = {
   fetchOrdersOrSalesError: null,
   pagination: null,
   providerNotificationCount: 0,
-  sendVerificationEmailError: null,
-};
+  sendVerificationEmailError: null
+}
 
 InboxPageComponent.propTypes = {
   params: shape({
-    tab: string.isRequired,
+    tab: string.isRequired
   }).isRequired,
 
   unitType: propTypes.bookingUnitType,
@@ -449,16 +440,12 @@ InboxPageComponent.propTypes = {
   transactions: arrayOf(propTypes.transaction).isRequired,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const mapStateToProps = state => {
-  const { fetchInProgress, fetchOrdersOrSalesError, pagination, transactionRefs } = state.InboxPage;
-  const {
-    currentUser,
-    currentUserListing,
-    currentUserNotificationCount: providerNotificationCount,
-  } = state.user;
+const mapStateToProps = (state) => {
+  const { fetchInProgress, fetchOrdersOrSalesError, pagination, transactionRefs } = state.InboxPage
+  const { currentUser, currentUserListing, currentUserNotificationCount: providerNotificationCount } = state.user
   return {
     currentUser,
     currentUserListing,
@@ -467,13 +454,10 @@ const mapStateToProps = state => {
     pagination,
     providerNotificationCount,
     scrollingDisabled: isScrollingDisabled(state),
-    transactions: getMarketplaceEntities(state, transactionRefs),
-  };
-};
+    transactions: getMarketplaceEntities(state, transactionRefs)
+  }
+}
 
-const InboxPage = compose(
-  connect(mapStateToProps),
-  injectIntl
-)(InboxPageComponent);
+const InboxPage = compose(connect(mapStateToProps), injectIntl)(InboxPageComponent)
 
-export default InboxPage;
+export default InboxPage

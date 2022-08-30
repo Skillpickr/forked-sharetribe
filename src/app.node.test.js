@@ -2,37 +2,37 @@
  * @jest-environment node
  */
 
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import forEach from 'lodash/forEach';
-import { ServerApp } from './app';
-import configureStore from './store';
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import forEach from 'lodash/forEach'
+import { ServerApp } from './app'
+import configureStore from './store'
 
 const render = (url, context) => {
-  const store = configureStore();
+  const store = configureStore()
 
-  const helmetContext = {};
+  const helmetContext = {}
 
   const body = ReactDOMServer.renderToString(
     <ServerApp url={url} context={context} helmetContext={helmetContext} store={store} />
-  );
+  )
 
-  const { helmet: head } = helmetContext;
-  return { head, body };
-};
+  const { helmet: head } = helmetContext
+  return { head, body }
+}
 
 describe('Application - node environment', () => {
   it('renders in the server without crashing', () => {
-    render('/', {});
-  });
+    render('/', {})
+  })
 
   it('renders the styleguide without crashing', () => {
-    render('/styleguide', {});
-  });
+    render('/styleguide', {})
+  })
 
   it('server renders redirects for pages that require authentication', () => {
-    const loginPath = '/login';
-    const signupPath = '/signup';
+    const loginPath = '/login'
+    const signupPath = '/signup'
     const urlRedirects = {
       '/l/new': signupPath,
       '/l/listing-title-slug/1234/new/description': signupPath,
@@ -49,21 +49,21 @@ describe('Application - node environment', () => {
       '/account/contact-details': loginPath,
       '/account/change-password': loginPath,
       '/account/payments': loginPath,
-      '/verify-email': loginPath,
-    };
+      '/verify-email': loginPath
+    }
     forEach(urlRedirects, (redirectPath, url) => {
-      const context = {};
-      render(url, context);
-      expect(context.url).toEqual(redirectPath);
-    });
-  });
+      const context = {}
+      render(url, context)
+      expect(context.url).toEqual(redirectPath)
+    })
+  })
 
   it('redirects to correct URLs', () => {
-    const urlRedirects = { '/l': '/', '/u': '/' };
+    const urlRedirects = { '/l': '/', '/u': '/' }
     forEach(urlRedirects, (redirectPath, url) => {
-      const context = {};
-      render(url, context);
-      expect(context.url).toEqual(redirectPath);
-    });
-  });
-});
+      const context = {}
+      render(url, context)
+      expect(context.url).toEqual(redirectPath)
+    })
+  })
+})

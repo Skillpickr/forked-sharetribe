@@ -1,34 +1,29 @@
-import React, { Component } from 'react';
-import { array, arrayOf, bool, func, object, shape, string, oneOf } from 'prop-types';
-import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import config from '../../config';
-import routeConfiguration from '../../routeConfiguration';
-import { findOptionsForSelectFilter } from '../../util/search';
-import { LISTING_STATE_PENDING_APPROVAL, LISTING_STATE_CLOSED, propTypes } from '../../util/types';
-import { types as sdkTypes } from '../../util/sdkLoader';
+import React, { Component } from 'react'
+import { array, arrayOf, bool, func, object, shape, string, oneOf } from 'prop-types'
+import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import config from '../../config'
+import routeConfiguration from '../../routeConfiguration'
+import { findOptionsForSelectFilter } from '../../util/search'
+import { LISTING_STATE_PENDING_APPROVAL, LISTING_STATE_CLOSED, propTypes } from '../../util/types'
+import { types as sdkTypes } from '../../util/sdkLoader'
 import {
   LISTING_PAGE_DRAFT_VARIANT,
   LISTING_PAGE_PENDING_APPROVAL_VARIANT,
   LISTING_PAGE_PARAM_TYPE_DRAFT,
   LISTING_PAGE_PARAM_TYPE_EDIT,
-  createSlug,
-} from '../../util/urlHelpers';
-import { formatMoney } from '../../util/currency';
-import { createResourceLocatorString, findRouteByRouteName } from '../../util/routes';
-import {
-  ensureListing,
-  ensureOwnListing,
-  ensureUser,
-  userDisplayNameAsString,
-} from '../../util/data';
-import { timestampToDate, calculateQuantityFromHours } from '../../util/dates';
-import { richText } from '../../util/richText';
-import { getMarketplaceEntities } from '../../ducks/marketplaceData.duck';
-import { manageDisableScrolling, isScrollingDisabled } from '../../ducks/UI.duck';
-import { initializeCardPaymentData } from '../../ducks/stripe.duck.js';
+  createSlug
+} from '../../util/urlHelpers'
+import { formatMoney } from '../../util/currency'
+import { createResourceLocatorString, findRouteByRouteName } from '../../util/routes'
+import { ensureListing, ensureOwnListing, ensureUser, userDisplayNameAsString } from '../../util/data'
+import { timestampToDate, calculateQuantityFromHours } from '../../util/dates'
+import { richText } from '../../util/richText'
+import { getMarketplaceEntities } from '../../ducks/marketplaceData.duck'
+import { manageDisableScrolling, isScrollingDisabled } from '../../ducks/UI.duck'
+import { initializeCardPaymentData } from '../../ducks/stripe.duck.js'
 import {
   Page,
   Modal,
@@ -39,104 +34,93 @@ import {
   LayoutWrapperMain,
   LayoutWrapperFooter,
   Footer,
-  BookingPanel,
-} from '../../components';
-import { EnquiryForm } from '../../forms';
-import { TopbarContainer, NotFoundPage } from '../../containers';
+  BookingPanel
+} from '../../components'
+import { EnquiryForm } from '../../forms'
+import { TopbarContainer, NotFoundPage } from '../../containers'
 
-import {
-  sendEnquiry,
-  setInitialValues,
-  fetchTimeSlots,
-  fetchTransactionLineItems,
-} from './ListingPage.duck';
-import SectionImages from './SectionImages';
-import SectionAvatar from './SectionAvatar';
-import SectionHeading from './SectionHeading';
-import SectionDescriptionMaybe from './SectionDescriptionMaybe';
-import SectionFeaturesMaybe from './SectionFeaturesMaybe';
-import SectionGenresMaybe from './SectionGenresMaybe';
-import SectionReviews from './SectionReviews';
-import SectionMapMaybe from './SectionMapMaybe';
-import SectionHostMaybe from './SectionHostMaybe';
-import css from './ListingPage.module.css';
-import SectionBonusMaybe from './SectionBonusMaybe';
-import SectionSpecificationsMaybe from './SectionSpecificationsMaybe';
-import { CheckboxFieldsType, DropdownFieldsType } from '../../util/featuresFields';
-import { Skills } from '../../util/category';
+import { sendEnquiry, setInitialValues, fetchTimeSlots, fetchTransactionLineItems } from './ListingPage.duck'
+import SectionImages from './SectionImages'
+import SectionAvatar from './SectionAvatar'
+import SectionHeading from './SectionHeading'
+import SectionDescriptionMaybe from './SectionDescriptionMaybe'
+import SectionFeaturesMaybe from './SectionFeaturesMaybe'
+import SectionGenresMaybe from './SectionGenresMaybe'
+import SectionReviews from './SectionReviews'
+import SectionMapMaybe from './SectionMapMaybe'
+import SectionHostMaybe from './SectionHostMaybe'
+import css from './ListingPage.module.css'
+import SectionBonusMaybe from './SectionBonusMaybe'
+import SectionSpecificationsMaybe from './SectionSpecificationsMaybe'
+import { CheckboxFieldsType, DropdownFieldsType } from '../../util/featuresFields'
+import { Skills } from '../../util/category'
 
-const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
+const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16
 
-const { UUID } = sdkTypes;
+const { UUID } = sdkTypes
 
 const priceData = (price, intl) => {
   if (price && price.currency === config.currency) {
-    const formattedPrice = formatMoney(intl, price);
-    return { formattedPrice, priceTitle: formattedPrice };
+    const formattedPrice = formatMoney(intl, price)
+    return { formattedPrice, priceTitle: formattedPrice }
   } else if (price) {
     return {
       formattedPrice: `(${price.currency})`,
-      priceTitle: `Unsupported currency (${price.currency})`,
-    };
+      priceTitle: `Unsupported currency (${price.currency})`
+    }
   }
-  return {};
-};
+  return {}
+}
 
 export class ListingPageComponent extends Component {
   constructor(props) {
-    super(props);
-    const { enquiryModalOpenForListingId, params } = props;
+    super(props)
+    const { enquiryModalOpenForListingId, params } = props
     this.state = {
       pageClassNames: [],
       imageCarouselOpen: false,
-      enquiryModalOpen: enquiryModalOpenForListingId === params.id,
-    };
+      enquiryModalOpen: enquiryModalOpenForListingId === params.id
+    }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.onContactUser = this.onContactUser.bind(this);
-    this.onSubmitEnquiry = this.onSubmitEnquiry.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.onContactUser = this.onContactUser.bind(this)
+    this.onSubmitEnquiry = this.onSubmitEnquiry.bind(this)
   }
 
   handleSubmit(values) {
-    const {
-      history,
-      getListing,
-      params,
-      callSetInitialValues,
-      onInitializeCardPaymentData,
-    } = this.props;
-    const listingId = new UUID(params.id);
-    const listing = getListing(listingId);
+    const { history, getListing, params, callSetInitialValues, onInitializeCardPaymentData } = this.props
+    const listingId = new UUID(params.id)
+    const listing = getListing(listingId)
 
-    const { bookingStartTime, bookingEndTime, ...restOfValues } = values;
-    const bookingStart = timestampToDate(bookingStartTime);
-    const bookingEnd = timestampToDate(bookingEndTime);
+    const { bookingStartTime, bookingEndTime, ...restOfValues } = values
+    const bookingStart = timestampToDate(bookingStartTime)
+    const bookingEnd = timestampToDate(bookingEndTime)
 
     const bookingData = {
       quantity: calculateQuantityFromHours(bookingStart, bookingEnd),
-      ...restOfValues,
-    };
+      ...restOfValues
+    }
 
     const initialValues = {
       listing,
       bookingData,
       bookingDates: {
         bookingStart,
-        bookingEnd,
+        bookingEnd
       },
-      confirmPaymentError: null,
-    };
+      confirmPaymentError: null
+    }
 
-    const saveToSessionStorage = !this.props.currentUser;
+    const saveToSessionStorage = !this.props.currentUser
 
-    const routes = routeConfiguration();
+    const routes = routeConfiguration()
     // Customize checkout page state with current listing and selected bookingDates
-    const { setInitialValues } = findRouteByRouteName('CheckoutPage', routes);
+    const { setInitialValues } = findRouteByRouteName('CheckoutPage', routes)
 
-    callSetInitialValues(setInitialValues, initialValues, saveToSessionStorage);
+    callSetInitialValues(setInitialValues, initialValues, saveToSessionStorage)
 
     // Clear previous Stripe errors from store if there is any
-    onInitializeCardPaymentData();
+    onInitializeCardPaymentData()
 
     // Redirect to CheckoutPage
     history.push(
@@ -146,44 +130,42 @@ export class ListingPageComponent extends Component {
         { id: listing.id.uuid, slug: createSlug(listing.attributes.title) },
         {}
       )
-    );
+    )
   }
 
   onContactUser() {
-    const { currentUser, history, callSetInitialValues, params, location } = this.props;
+    const { currentUser, history, callSetInitialValues, params, location } = this.props
 
     if (!currentUser) {
-      const state = { from: `${location.pathname}${location.search}${location.hash}` };
+      const state = { from: `${location.pathname}${location.search}${location.hash}` }
 
       // We need to log in before showing the modal, but first we need to ensure
       // that modal does open when user is redirected back to this listingpage
-      callSetInitialValues(setInitialValues, { enquiryModalOpenForListingId: params.id });
+      callSetInitialValues(setInitialValues, { enquiryModalOpenForListingId: params.id })
 
       // signup and return back to listingPage.
-      history.push(createResourceLocatorString('SignupPage', routeConfiguration(), {}, {}), state);
+      history.push(createResourceLocatorString('SignupPage', routeConfiguration(), {}, {}), state)
     } else {
-      this.setState({ enquiryModalOpen: true });
+      this.setState({ enquiryModalOpen: true })
     }
   }
 
   onSubmitEnquiry(values) {
-    const { history, params, onSendEnquiry } = this.props;
-    const routes = routeConfiguration();
-    const listingId = new UUID(params.id);
-    const { message } = values;
+    const { history, params, onSendEnquiry } = this.props
+    const routes = routeConfiguration()
+    const listingId = new UUID(params.id)
+    const { message } = values
 
     onSendEnquiry(listingId, message.trim())
-      .then(txId => {
-        this.setState({ enquiryModalOpen: false });
+      .then((txId) => {
+        this.setState({ enquiryModalOpen: false })
 
         // Redirect to OrderDetailsPage
-        history.push(
-          createResourceLocatorString('OrderDetailsPage', routes, { id: txId.uuid }, {})
-        );
+        history.push(createResourceLocatorString('OrderDetailsPage', routes, { id: txId.uuid }, {}))
       })
       .catch(() => {
         // Ignore, error handling in duck file
-      });
+      })
   }
 
   render() {
@@ -209,29 +191,26 @@ export class ListingPageComponent extends Component {
       onFetchTransactionLineItems,
       lineItems,
       fetchLineItemsInProgress,
-      fetchLineItemsError,
-    } = this.props;
+      fetchLineItemsError
+    } = this.props
 
-    const listingId = new UUID(rawParams.id);
-    const isPendingApprovalVariant = rawParams.variant === LISTING_PAGE_PENDING_APPROVAL_VARIANT;
-    const isDraftVariant = rawParams.variant === LISTING_PAGE_DRAFT_VARIANT;
+    const listingId = new UUID(rawParams.id)
+    const isPendingApprovalVariant = rawParams.variant === LISTING_PAGE_PENDING_APPROVAL_VARIANT
+    const isDraftVariant = rawParams.variant === LISTING_PAGE_DRAFT_VARIANT
     const currentListing =
       isPendingApprovalVariant || isDraftVariant
         ? ensureOwnListing(getOwnListing(listingId))
-        : ensureListing(getListing(listingId));
+        : ensureListing(getListing(listingId))
 
-    const listingSlug = rawParams.slug || createSlug(currentListing.attributes.title || '');
-    const params = { slug: listingSlug, ...rawParams };
+    const listingSlug = rawParams.slug || createSlug(currentListing.attributes.title || '')
+    const params = { slug: listingSlug, ...rawParams }
 
-    const listingType = isDraftVariant
-      ? LISTING_PAGE_PARAM_TYPE_DRAFT
-      : LISTING_PAGE_PARAM_TYPE_EDIT;
-    const listingTab = isDraftVariant ? 'photos' : 'description';
+    const listingType = isDraftVariant ? LISTING_PAGE_PARAM_TYPE_DRAFT : LISTING_PAGE_PARAM_TYPE_EDIT
+    const listingTab = isDraftVariant ? 'photos' : 'description'
 
-    const isApproved =
-      currentListing.id && currentListing.attributes.state !== LISTING_STATE_PENDING_APPROVAL;
+    const isApproved = currentListing.id && currentListing.attributes.state !== LISTING_STATE_PENDING_APPROVAL
 
-    const pendingIsApproved = isPendingApprovalVariant && isApproved;
+    const pendingIsApproved = isPendingApprovalVariant && isApproved
 
     // If a /pending-approval URL is shared, the UI requires
     // authentication and attempts to fetch the listing from own
@@ -239,48 +218,38 @@ export class ListingPageComponent extends Component {
     // another user. We use this information to try to fetch the
     // public listing.
     const pendingOtherUsersListing =
-      (isPendingApprovalVariant || isDraftVariant) &&
-      showListingError &&
-      showListingError.status === 403;
-    const shouldShowPublicListingPage = pendingIsApproved || pendingOtherUsersListing;
+      (isPendingApprovalVariant || isDraftVariant) && showListingError && showListingError.status === 403
+    const shouldShowPublicListingPage = pendingIsApproved || pendingOtherUsersListing
 
     if (shouldShowPublicListingPage) {
-      return <NamedRedirect name="ListingPage" params={params} search={location.search} />;
+      return <NamedRedirect name="ListingPage" params={params} search={location.search} />
     }
 
-    const {
-      description = '',
-      geolocation = null,
-      price = null,
-      title = '',
-      publicData,
-    } = currentListing.attributes;
+    const { description = '', geolocation = null, price = null, title = '', publicData } = currentListing.attributes
 
     const richTitle = (
       <span>
         {richText(title, {
           longWordMinLength: MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE,
-          longWordClass: css.longWord,
+          longWordClass: css.longWord
         })}
       </span>
-    );
+    )
 
-    const bookingTitle = (
-      <FormattedMessage id="ListingPage.bookingTitle" values={{ title: richTitle }} />
-    );
+    const bookingTitle = <FormattedMessage id="ListingPage.bookingTitle" values={{ title: richTitle }} />
 
-    const topbar = <TopbarContainer />;
+    const topbar = <TopbarContainer />
 
     if (showListingError && showListingError.status === 404) {
       // 404 listing not found
 
-      return <NotFoundPage />;
+      return <NotFoundPage />
     } else if (showListingError) {
       // Other error in fetching listing
 
       const errorTitle = intl.formatMessage({
-        id: 'ListingPage.errorLoadingListingTitle',
-      });
+        id: 'ListingPage.errorLoadingListingTitle'
+      })
 
       return (
         <Page title={errorTitle} scrollingDisabled={scrollingDisabled}>
@@ -296,13 +265,13 @@ export class ListingPageComponent extends Component {
             </LayoutWrapperFooter>
           </LayoutSingleColumn>
         </Page>
-      );
+      )
     } else if (!currentListing.id) {
       // Still loading the listing
 
       const loadingTitle = intl.formatMessage({
-        id: 'ListingPage.loadingListingTitle',
-      });
+        id: 'ListingPage.loadingListingTitle'
+      })
 
       return (
         <Page title={loadingTitle} scrollingDisabled={scrollingDisabled}>
@@ -318,141 +287,110 @@ export class ListingPageComponent extends Component {
             </LayoutWrapperFooter>
           </LayoutSingleColumn>
         </Page>
-      );
+      )
     }
 
-    const handleViewPhotosClick = e => {
+    const handleViewPhotosClick = (e) => {
       // Stop event from bubbling up to prevent image click handler
       // trying to open the carousel as well.
-      e.stopPropagation();
+      e.stopPropagation()
       this.setState({
-        imageCarouselOpen: true,
-      });
-    };
-    const authorAvailable = currentListing && currentListing.author;
-    const userAndListingAuthorAvailable = !!(currentUser && authorAvailable);
-    const isOwnListing =
-      userAndListingAuthorAvailable && currentListing.author.id.uuid === currentUser.id.uuid;
-    const showContactUser = authorAvailable && (!currentUser || (currentUser && !isOwnListing));
+        imageCarouselOpen: true
+      })
+    }
+    const authorAvailable = currentListing && currentListing.author
+    const userAndListingAuthorAvailable = !!(currentUser && authorAvailable)
+    const isOwnListing = userAndListingAuthorAvailable && currentListing.author.id.uuid === currentUser.id.uuid
+    const showContactUser = authorAvailable && (!currentUser || (currentUser && !isOwnListing))
 
-    const currentAuthor = authorAvailable ? currentListing.author : null;
-    const ensuredAuthor = ensureUser(currentAuthor);
+    const currentAuthor = authorAvailable ? currentListing.author : null
+    const ensuredAuthor = ensureUser(currentAuthor)
 
     // When user is banned or deleted the listing is also deleted.
     // Because listing can be never showed with banned or deleted user we don't have to provide
     // banned or deleted display names for the function
-    const authorDisplayName = userDisplayNameAsString(ensuredAuthor, '');
+    const authorDisplayName = userDisplayNameAsString(ensuredAuthor, '')
 
-    const { formattedPrice, priceTitle } = priceData(price, intl);
+    const { formattedPrice, priceTitle } = priceData(price, intl)
 
-    const handleBookingSubmit = values => {
-      const isCurrentlyClosed = currentListing.attributes.state === LISTING_STATE_CLOSED;
+    const handleBookingSubmit = (values) => {
+      const isCurrentlyClosed = currentListing.attributes.state === LISTING_STATE_CLOSED
       if (isOwnListing || isCurrentlyClosed) {
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 0)
       } else {
-        this.handleSubmit(values);
+        this.handleSubmit(values)
       }
-    };
+    }
 
     const listingImages = (listing, variantName) =>
       (listing.images || [])
-        .map(image => {
-          const variants = image.attributes.variants;
-          const variant = variants ? variants[variantName] : null;
+        .map((image) => {
+          const variants = image.attributes.variants
+          const variant = variants ? variants[variantName] : null
 
           // deprecated
           // for backwards combatility only
-          const sizes = image.attributes.sizes;
-          const size = sizes ? sizes.find(i => i.name === variantName) : null;
+          const sizes = image.attributes.sizes
+          const size = sizes ? sizes.find((i) => i.name === variantName) : null
 
-          return variant || size;
+          return variant || size
         })
-        .filter(variant => variant != null);
+        .filter((variant) => variant != null)
 
-    const facebookImages = listingImages(currentListing, 'facebook');
-    const twitterImages = listingImages(currentListing, 'twitter');
-    const schemaImages = JSON.stringify(facebookImages.map(img => img.url));
-    const siteTitle = config.siteTitle;
+    const facebookImages = listingImages(currentListing, 'facebook')
+    const twitterImages = listingImages(currentListing, 'twitter')
+    const schemaImages = JSON.stringify(facebookImages.map((img) => img.url))
+    const siteTitle = config.siteTitle
     const schemaTitle = intl.formatMessage(
       { id: 'ListingPage.schemaTitle' },
       { title, price: formattedPrice, siteTitle }
-    );
+    )
 
     const hostLink = (
-      <NamedLink
-        className={css.authorNameLink}
-        name="ListingPage"
-        params={params}
-        to={{ hash: '#host' }}
-      >
+      <NamedLink className={css.authorNameLink} name="ListingPage" params={params} to={{ hash: '#host' }}>
         {authorDisplayName}
       </NamedLink>
-    );
+    )
 
-    const skillOptions = findOptionsForSelectFilter('skill', filterConfig);
-    const soundLightExperienceOptions = findOptionsForSelectFilter(
-      DropdownFieldsType.soundLightExpKey,
-      filterConfig
-    );
-    const musicSoloistOptions = findOptionsForSelectFilter(
-      DropdownFieldsType.musicianSoloKey,
-      filterConfig
-    );
-    const ownStudioOptions = findOptionsForSelectFilter(
-      DropdownFieldsType.ownStudioKey,
-      filterConfig
-    );
-    const djGearForPlayingOptions = findOptionsForSelectFilter(
-      DropdownFieldsType.djGearForPlayingKey,
-      filterConfig
-    );
-    const songRequestOptions = findOptionsForSelectFilter(
-      DropdownFieldsType.songRequestKey,
-      filterConfig
-    );
-    const selectedOption = publicData && publicData.skill ? publicData.skill : null;
+    const skillOptions = findOptionsForSelectFilter('skill', filterConfig)
+    const soundLightExperienceOptions = findOptionsForSelectFilter(DropdownFieldsType.soundLightExpKey, filterConfig)
+    const musicSoloistOptions = findOptionsForSelectFilter(DropdownFieldsType.musicianSoloKey, filterConfig)
+    const ownStudioOptions = findOptionsForSelectFilter(DropdownFieldsType.ownStudioKey, filterConfig)
+    const djGearForPlayingOptions = findOptionsForSelectFilter(DropdownFieldsType.djGearForPlayingKey, filterConfig)
+    const songRequestOptions = findOptionsForSelectFilter(DropdownFieldsType.songRequestKey, filterConfig)
+    const selectedOption = publicData && publicData.skill ? publicData.skill : null
 
     // Don't return anything if public data doesn't contain view field
     // That's why we named this component as SectionViewMaybe
     if (!publicData || !selectedOption) {
-      return null;
+      return null
     }
 
     // Find selected options label
-    const optionConfig = skillOptions.find(o => o.key === selectedOption);
-    const optionLabel = optionConfig ? optionConfig.label : null;
+    const optionConfig = skillOptions.find((o) => o.key === selectedOption)
+    const optionLabel = optionConfig ? optionConfig.label : null
 
-    let subSkillOptions;
-    const selectedSubOptions = [];
-    let genreOptions;
-    let selectedConfigGenreOptions;
-    const selectedGenres = [];
+    let subSkillOptions
+    const selectedSubOptions = []
+    let genreOptions
+    let selectedConfigGenreOptions
+    const selectedGenres = []
     if (publicData) {
       if (optionConfig.key === Skills.photographer) {
-        subSkillOptions = findOptionsForSelectFilter(
-          CheckboxFieldsType.photographerTypeKey,
-          filterConfig
-        );
-        Array.prototype.push.apply(selectedSubOptions, publicData.photographerType);
+        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.photographerTypeKey, filterConfig)
+        Array.prototype.push.apply(selectedSubOptions, publicData.photographerType)
       } else if (optionConfig.key === Skills.dj) {
-        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.djTypeKey, filterConfig);
-        Array.prototype.push.apply(selectedSubOptions, publicData.djType);
+        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.djTypeKey, filterConfig)
+        Array.prototype.push.apply(selectedSubOptions, publicData.djType)
       } else if (optionConfig.key === Skills.musicianSoloist) {
-        subSkillOptions = findOptionsForSelectFilter(
-          CheckboxFieldsType.musicianTypeKey,
-          filterConfig
-        );
-        Array.prototype.push.apply(selectedSubOptions, publicData.musicianType);
-        genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicalGenre, filterConfig);
-        Array.prototype.push.apply(selectedGenres, publicData.musicalGenre);
-        selectedConfigGenreOptions = genreOptions.filter(o =>
-          selectedGenres.find(s => s === o.key)
-        );
+        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicianTypeKey, filterConfig)
+        Array.prototype.push.apply(selectedSubOptions, publicData.musicianType)
+        genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicalGenre, filterConfig)
+        Array.prototype.push.apply(selectedGenres, publicData.musicalGenre)
+        selectedConfigGenreOptions = genreOptions.filter((o) => selectedGenres.find((s) => s === o.key))
       }
-    } else null;
-    const selectedConfigSubOptions = subSkillOptions.filter(o =>
-      selectedSubOptions.find(s => s === o.key)
-    );
+    } else null
+    const selectedConfigSubOptions = subSkillOptions.filter((o) => selectedSubOptions.find((s) => s === o.key))
 
     return (
       <Page
@@ -468,7 +406,7 @@ export class ListingPageComponent extends Component {
           '@type': 'ItemPage',
           description: description,
           name: schemaTitle,
-          image: schemaImages,
+          image: schemaImages
         }}
       >
         <LayoutSingleColumn className={css.pageRoot}>
@@ -483,7 +421,7 @@ export class ListingPageComponent extends Component {
                   id: listingId.uuid,
                   slug: listingSlug,
                   type: listingType,
-                  tab: listingTab,
+                  tab: listingTab
                 }}
                 imageCarouselOpen={this.state.imageCarouselOpen}
                 onImageCarouselClose={() => this.setState({ imageCarouselOpen: false })}
@@ -527,11 +465,7 @@ export class ListingPageComponent extends Component {
                     publicData={publicData}
                   ></SectionSpecificationsMaybe>
                   <SectionBonusMaybe publicData={publicData}></SectionBonusMaybe>
-                  <SectionMapMaybe
-                    geolocation={geolocation}
-                    publicData={publicData}
-                    listingId={currentListing.id}
-                  />
+                  <SectionMapMaybe geolocation={geolocation} publicData={publicData} listingId={currentListing.id} />
                   <SectionReviews reviews={reviews} fetchReviewsError={fetchReviewsError} />
                   <SectionHostMaybe
                     title={title}
@@ -588,7 +522,7 @@ export class ListingPageComponent extends Component {
           </LayoutWrapperFooter>
         </LayoutSingleColumn>
       </Page>
-    );
+    )
   }
 }
 
@@ -603,16 +537,16 @@ ListingPageComponent.defaultProps = {
   sendEnquiryError: null,
   filterConfig: config.custom.filters,
   lineItems: null,
-  fetchLineItemsError: null,
-};
+  fetchLineItemsError: null
+}
 
 ListingPageComponent.propTypes = {
   // from withRouter
   history: shape({
-    push: func.isRequired,
+    push: func.isRequired
   }).isRequired,
   location: shape({
-    search: string,
+    search: string
   }).isRequired,
 
   unitType: propTypes.bookingUnitType,
@@ -622,7 +556,7 @@ ListingPageComponent.propTypes = {
   params: shape({
     id: string.isRequired,
     slug: string,
-    variant: oneOf([LISTING_PAGE_DRAFT_VARIANT, LISTING_PAGE_PENDING_APPROVAL_VARIANT]),
+    variant: oneOf([LISTING_PAGE_DRAFT_VARIANT, LISTING_PAGE_PENDING_APPROVAL_VARIANT])
   }).isRequired,
 
   isAuthenticated: bool.isRequired,
@@ -653,11 +587,11 @@ ListingPageComponent.propTypes = {
   onFetchTransactionLineItems: func.isRequired,
   lineItems: array,
   fetchLineItemsInProgress: bool.isRequired,
-  fetchLineItemsError: propTypes.error,
-};
+  fetchLineItemsError: propTypes.error
+}
 
-const mapStateToProps = state => {
-  const { isAuthenticated } = state.Auth;
+const mapStateToProps = (state) => {
+  const { isAuthenticated } = state.Auth
   const {
     showListingError,
     reviews,
@@ -668,21 +602,21 @@ const mapStateToProps = state => {
     lineItems,
     fetchLineItemsInProgress,
     fetchLineItemsError,
-    enquiryModalOpenForListingId,
-  } = state.ListingPage;
-  const { currentUser } = state.user;
+    enquiryModalOpenForListingId
+  } = state.ListingPage
+  const { currentUser } = state.user
 
-  const getListing = id => {
-    const ref = { id, type: 'listing' };
-    const listings = getMarketplaceEntities(state, [ref]);
-    return listings.length === 1 ? listings[0] : null;
-  };
+  const getListing = (id) => {
+    const ref = { id, type: 'listing' }
+    const listings = getMarketplaceEntities(state, [ref])
+    return listings.length === 1 ? listings[0] : null
+  }
 
-  const getOwnListing = id => {
-    const ref = { id, type: 'ownListing' };
-    const listings = getMarketplaceEntities(state, [ref]);
-    return listings.length === 1 ? listings[0] : null;
-  };
+  const getOwnListing = (id) => {
+    const ref = { id, type: 'ownListing' }
+    const listings = getMarketplaceEntities(state, [ref])
+    return listings.length === 1 ? listings[0] : null
+  }
 
   return {
     isAuthenticated,
@@ -699,11 +633,11 @@ const mapStateToProps = state => {
     fetchLineItemsInProgress,
     fetchLineItemsError,
     sendEnquiryInProgress,
-    sendEnquiryError,
-  };
-};
+    sendEnquiryError
+  }
+}
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onManageDisableScrolling: (componentId, disableScrolling) =>
     dispatch(manageDisableScrolling(componentId, disableScrolling)),
   callSetInitialValues: (setInitialValues, values, saveToSessionStorage) =>
@@ -712,9 +646,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchTransactionLineItems(bookingData, listingId, isOwnListing)),
   onSendEnquiry: (listingId, message) => dispatch(sendEnquiry(listingId, message)),
   onInitializeCardPaymentData: () => dispatch(initializeCardPaymentData()),
-  onFetchTimeSlots: (listingId, start, end, timeZone) =>
-    dispatch(fetchTimeSlots(listingId, start, end, timeZone)),
-});
+  onFetchTimeSlots: (listingId, start, end, timeZone) => dispatch(fetchTimeSlots(listingId, start, end, timeZone))
+})
 
 // Note: it is important that the withRouter HOC is **outside** the
 // connect HOC, otherwise React Router won't rerender any Route
@@ -722,13 +655,6 @@ const mapDispatchToProps = dispatch => ({
 // lifecycle hook.
 //
 // See: https://github.com/ReactTraining/react-router/issues/4671
-const ListingPage = compose(
-  withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
-  injectIntl
-)(ListingPageComponent);
+const ListingPage = compose(withRouter, connect(mapStateToProps, mapDispatchToProps), injectIntl)(ListingPageComponent)
 
-export default ListingPage;
+export default ListingPage

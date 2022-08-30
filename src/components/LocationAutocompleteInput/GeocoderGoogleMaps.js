@@ -1,21 +1,21 @@
-import React from 'react';
-import classNames from 'classnames';
-import { getPlacePredictions, getPlaceDetails, locationBounds } from '../../util/googleMaps';
-import { userLocation } from '../../util/maps';
-import config from '../../config';
+import React from 'react'
+import classNames from 'classnames'
+import { getPlacePredictions, getPlaceDetails, locationBounds } from '../../util/googleMaps'
+import { userLocation } from '../../util/maps'
+import config from '../../config'
 
-import css from './LocationAutocompleteInput.module.css';
+import css from './LocationAutocompleteInput.module.css'
 
-export const CURRENT_LOCATION_ID = 'current-location';
+export const CURRENT_LOCATION_ID = 'current-location'
 
 // When displaying data from the Google Maps Places API, and
 // attribution is required next to the results.
 // See: https://developers.google.com/places/web-service/policies#powered
-export const GeocoderAttribution = props => {
-  const { rootClassName, className } = props;
-  const classes = classNames(rootClassName || css.poweredByGoogle, className);
-  return <div className={classes} />;
-};
+export const GeocoderAttribution = (props) => {
+  const { rootClassName, className } = props
+  const classes = classNames(rootClassName || css.poweredByGoogle, className)
+  return <div className={classes} />
+}
 
 /**
  * A forward geocoding (place name -> coordinates) implementation
@@ -23,12 +23,11 @@ export const GeocoderAttribution = props => {
  */
 class GeocoderGoogleMaps {
   constructor() {
-    this.sessionToken = null;
+    this.sessionToken = null
   }
   getSessionToken() {
-    this.sessionToken =
-      this.sessionToken || new window.google.maps.places.AutocompleteSessionToken();
-    return this.sessionToken;
+    this.sessionToken = this.sessionToken || new window.google.maps.places.AutocompleteSessionToken()
+    return this.sessionToken
   }
 
   // Public API
@@ -48,19 +47,17 @@ class GeocoderGoogleMaps {
     const limitCountriesMaybe = config.maps.search.countryLimit
       ? {
           componentRestrictions: {
-            country: config.maps.search.countryLimit,
-          },
+            country: config.maps.search.countryLimit
+          }
         }
-      : {};
+      : {}
 
-    return getPlacePredictions(search, this.getSessionToken(), limitCountriesMaybe).then(
-      results => {
-        return {
-          search,
-          predictions: results.predictions,
-        };
+    return getPlacePredictions(search, this.getSessionToken(), limitCountriesMaybe).then((results) => {
+      return {
+        search,
+        predictions: results.predictions
       }
-    );
+    })
   }
 
   /**
@@ -69,10 +66,10 @@ class GeocoderGoogleMaps {
   getPredictionId(prediction) {
     if (prediction.predictionPlace) {
       // default prediction defined above
-      return prediction.id;
+      return prediction.id
     }
     // prediction from Google Maps Places API
-    return prediction.place_id;
+    return prediction.place_id
   }
 
   /**
@@ -81,10 +78,10 @@ class GeocoderGoogleMaps {
   getPredictionAddress(prediction) {
     if (prediction.predictionPlace) {
       // default prediction defined above
-      return prediction.predictionPlace.address;
+      return prediction.predictionPlace.address
     }
     // prediction from Google Maps Places API
-    return prediction.description;
+    return prediction.description
   }
 
   /**
@@ -96,24 +93,24 @@ class GeocoderGoogleMaps {
    */
   getPlaceDetails(prediction) {
     if (this.getPredictionId(prediction) === CURRENT_LOCATION_ID) {
-      return userLocation().then(latlng => {
+      return userLocation().then((latlng) => {
         return {
           address: '',
           origin: latlng,
-          bounds: locationBounds(latlng, config.maps.search.currentLocationBoundsDistance),
-        };
-      });
+          bounds: locationBounds(latlng, config.maps.search.currentLocationBoundsDistance)
+        }
+      })
     }
 
     if (prediction.predictionPlace) {
-      return Promise.resolve(prediction.predictionPlace);
+      return Promise.resolve(prediction.predictionPlace)
     }
 
-    return getPlaceDetails(prediction.place_id, this.getSessionToken()).then(place => {
-      this.sessionToken = null;
-      return place;
-    });
+    return getPlaceDetails(prediction.place_id, this.getSessionToken()).then((place) => {
+      this.sessionToken = null
+      return place
+    })
   }
 }
 
-export default GeocoderGoogleMaps;
+export default GeocoderGoogleMaps

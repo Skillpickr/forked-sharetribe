@@ -1,24 +1,24 @@
 /* eslint-disable no-console */
-import React from 'react';
-import { Form as FinalForm, FormSpy } from 'react-final-form';
-import * as validators from '../../util/validators';
-import { Button } from '../../components';
-import FieldTextInput from './FieldTextInput';
+import React from 'react'
+import { Form as FinalForm, FormSpy } from 'react-final-form'
+import * as validators from '../../util/validators'
+import { Button } from '../../components'
+import FieldTextInput from './FieldTextInput'
 
-import css from './FieldTextInputExample.module.css';
+import css from './FieldTextInputExample.module.css'
 
-const FormComponent = props => (
+const FormComponent = (props) => (
   <FinalForm
     {...props}
-    render={fieldRenderProps => {
-      const { handleSubmit, onChange, invalid, pristine, submitting, formName } = fieldRenderProps;
-      const required = validators.required('This field is required');
-      const submitDisabled = invalid || pristine || submitting;
+    render={(fieldRenderProps) => {
+      const { handleSubmit, onChange, invalid, pristine, submitting, formName } = fieldRenderProps
+      const required = validators.required('This field is required')
+      const submitDisabled = invalid || pristine || submitting
       return (
         <form
-          onSubmit={e => {
-            e.preventDefault();
-            handleSubmit(e);
+          onSubmit={(e) => {
+            e.preventDefault()
+            handleSubmit(e)
           }}
         >
           <FormSpy onChange={onChange} />
@@ -37,12 +37,7 @@ const FormComponent = props => (
             name="input2"
             label="Input that does not require a value:"
           />
-          <FieldTextInput
-            className={css.field}
-            type="text"
-            name="input3"
-            placeholder="Input without label..."
-          />
+          <FieldTextInput className={css.field} type="text" name="input3" placeholder="Input without label..." />
           <FieldTextInput
             className={css.field}
             type="textarea"
@@ -68,23 +63,23 @@ const FormComponent = props => (
             Submit
           </Button>
         </form>
-      );
+      )
     }}
   />
-);
+)
 
 export const Inputs = {
   component: FormComponent,
   props: {
     formName: 'Inputs',
-    onChange: formState => {
+    onChange: (formState) => {
       if (Object.keys(formState.values).length > 0) {
-        console.log('form values changed to:', formState.values);
+        console.log('form values changed to:', formState.values)
       }
     },
-    onSubmit: values => {
-      console.log('submit values:', values);
-    },
+    onSubmit: (values) => {
+      console.log('submit values:', values)
+    }
   },
-  group: 'inputs',
-};
+  group: 'inputs'
+}

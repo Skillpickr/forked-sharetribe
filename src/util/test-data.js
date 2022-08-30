@@ -1,17 +1,17 @@
-import Decimal from 'decimal.js';
-import moment from 'moment';
-import { types as sdkTypes } from './sdkLoader';
-import { nightsBetween } from '../util/dates';
+import Decimal from 'decimal.js'
+import moment from 'moment'
+import { types as sdkTypes } from './sdkLoader'
+import { nightsBetween } from '../util/dates'
 import {
   TRANSITION_ACCEPT,
   TRANSITION_CONFIRM_PAYMENT,
   TRANSITION_REQUEST_PAYMENT,
   TX_TRANSITION_ACTOR_CUSTOMER,
-  TX_TRANSITION_ACTOR_PROVIDER,
-} from '../util/transaction';
-import { LISTING_STATE_PUBLISHED, TIME_SLOT_DAY } from '../util/types';
+  TX_TRANSITION_ACTOR_PROVIDER
+} from '../util/transaction'
+import { LISTING_STATE_PUBLISHED, TIME_SLOT_DAY } from '../util/types'
 
-const { UUID, LatLng, Money } = sdkTypes;
+const { UUID, LatLng, Money } = sdkTypes
 
 // Create a booking that conforms to the util/types booking schema
 export const createBooking = (id, attributes = {}) => ({
@@ -22,9 +22,9 @@ export const createBooking = (id, attributes = {}) => ({
     displayStart: new Date(Date.UTC(2017, 5, 10)),
     end: new Date(Date.UTC(2017, 5, 10)),
     displayEnd: new Date(Date.UTC(2017, 5, 10)),
-    ...attributes,
-  },
-});
+    ...attributes
+  }
+})
 
 // Create a stripeAccount that conforms to the util/types stripeAccount schema
 export const createStripeAccount = (id, attributes = {}) => ({
@@ -32,9 +32,9 @@ export const createStripeAccount = (id, attributes = {}) => ({
   type: 'stripeAccount',
   attributes: {
     stripeAccountId: 'acc_testiaccountid',
-    ...attributes,
-  },
-});
+    ...attributes
+  }
+})
 
 // Create a user that conforms to the util/types user schema
 export const createUser = (id, attributes = {}) => ({
@@ -45,11 +45,11 @@ export const createUser = (id, attributes = {}) => ({
     deleted: false,
     profile: {
       displayName: `${id} display name`,
-      abbreviatedName: 'TT',
+      abbreviatedName: 'TT'
     },
-    ...attributes,
-  },
-});
+    ...attributes
+  }
+})
 
 // Create a user that conforms to the util/types currentUser schema
 export const createCurrentUser = (id, attributes = {}, includes = {}) => ({
@@ -64,15 +64,15 @@ export const createCurrentUser = (id, attributes = {}, includes = {}) => ({
       firstName: `${id} first name`,
       lastName: `${id} last name`,
       displayName: `${id} display name`,
-      abbreviatedName: `${id} abbreviated name`,
+      abbreviatedName: `${id} abbreviated name`
     },
-    ...attributes,
+    ...attributes
   },
-  ...includes,
-});
+  ...includes
+})
 
 // Create a user that conforms to the util/types user schema
-export const createImage = id => ({
+export const createImage = (id) => ({
   id: new UUID(id),
   type: 'image',
   attributes: {
@@ -82,17 +82,17 @@ export const createImage = id => ({
         name: 'square',
         height: 408,
         width: 408,
-        url: 'https://via.placeholder.com/408x408',
+        url: 'https://via.placeholder.com/408x408'
       },
       square2x: {
         name: 'square2x',
         height: 816,
         width: 816,
-        url: 'https://via.placeholder.com/816x816',
-      },
-    },
-  },
-});
+        url: 'https://via.placeholder.com/816x816'
+      }
+    }
+  }
+})
 
 // Create a user that conforms to the util/types listing schema
 export const createListing = (id, attributes = {}, includes = {}) => ({
@@ -106,10 +106,10 @@ export const createListing = (id, attributes = {}, includes = {}) => ({
     state: LISTING_STATE_PUBLISHED,
     price: new Money(5500, 'USD'),
     publicData: {},
-    ...attributes,
+    ...attributes
   },
-  ...includes,
-});
+  ...includes
+})
 
 // Create a user that conforms to the util/types ownListing schema
 export const createOwnListing = (id, attributes = {}, includes = {}) => ({
@@ -131,25 +131,25 @@ export const createOwnListing = (id, attributes = {}, includes = {}) => ({
         { dayOfWeek: 'thu', seats: 1 },
         { dayOfWeek: 'fri', seats: 1 },
         { dayOfWeek: 'sat', seats: 1 },
-        { dayOfWeek: 'sun', seats: 1 },
-      ],
+        { dayOfWeek: 'sun', seats: 1 }
+      ]
     },
     publicData: {},
-    ...attributes,
+    ...attributes
   },
-  ...includes,
-});
+  ...includes
+})
 
-export const createTxTransition = options => {
+export const createTxTransition = (options) => {
   return {
     createdAt: new Date(Date.UTC(2017, 4, 1)),
     by: TX_TRANSITION_ACTOR_CUSTOMER,
     transition: TRANSITION_REQUEST_PAYMENT,
-    ...options,
-  };
-};
+    ...options
+  }
+}
 
-export const createTransaction = options => {
+export const createTransaction = (options) => {
   const {
     id,
     lastTransition = TRANSITION_ACCEPT,
@@ -165,21 +165,21 @@ export const createTransaction = options => {
       createTxTransition({
         createdAt: new Date(Date.UTC(2017, 4, 1)),
         by: TX_TRANSITION_ACTOR_CUSTOMER,
-        transition: TRANSITION_REQUEST_PAYMENT,
+        transition: TRANSITION_REQUEST_PAYMENT
       }),
       createTxTransition({
         createdAt: new Date(Date.UTC(2017, 4, 1, 0, 0, 1)),
         by: TX_TRANSITION_ACTOR_CUSTOMER,
-        transition: TRANSITION_CONFIRM_PAYMENT,
+        transition: TRANSITION_CONFIRM_PAYMENT
       }),
       createTxTransition({
         createdAt: new Date(Date.UTC(2017, 5, 1)),
         by: TX_TRANSITION_ACTOR_PROVIDER,
-        transition: TRANSITION_ACCEPT,
-      }),
-    ],
-  } = options;
-  const nightCount = booking ? nightsBetween(booking.attributes.start, booking.attributes.end) : 1;
+        transition: TRANSITION_ACCEPT
+      })
+    ]
+  } = options
+  const nightCount = booking ? nightsBetween(booking.attributes.start, booking.attributes.end) : 1
   return {
     id: new UUID(id),
     type: 'transaction',
@@ -196,25 +196,25 @@ export const createTransaction = options => {
           quantity: new Decimal(nightCount),
           unitPrice: new Money(total.amount / nightCount, total.currency),
           lineTotal: total,
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/provider-commission',
           includeFor: ['provider'],
           unitPrice: new Money(commission.amount * -1, commission.currency),
           lineTotal: new Money(commission.amount * -1, commission.currency),
-          reversal: false,
-        },
+          reversal: false
+        }
       ],
-      transitions,
+      transitions
     },
     booking,
     listing,
     customer,
     provider,
-    reviews,
-  };
-};
+    reviews
+  }
+}
 
 export const createMessage = (id, attributes = {}, includes = {}) => {
   return {
@@ -223,11 +223,11 @@ export const createMessage = (id, attributes = {}, includes = {}) => {
     attributes: {
       createdAt: new Date(Date.UTC(2017, 10, 9, 8, 12)),
       content: `Message ${id}\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-      ...attributes,
+      ...attributes
     },
-    ...includes,
-  };
-};
+    ...includes
+  }
+}
 
 export const createReview = (id, attributes = {}, includes = {}) => {
   return {
@@ -239,11 +239,11 @@ export const createReview = (id, attributes = {}, includes = {}) => {
       rating: 3,
       state: 'public',
       type: 'ofProvider',
-      ...attributes,
+      ...attributes
     },
-    ...includes,
-  };
-};
+    ...includes
+  }
+}
 
 /**
  * Creates an array of time slot objects.
@@ -254,24 +254,22 @@ export const createReview = (id, attributes = {}, includes = {}) => {
  * @return {Array} array of time slots
  */
 export const createTimeSlots = (startDate, numberOfDays) => {
-  const startTime = moment.utc(startDate).startOf('day');
+  const startTime = moment.utc(startDate).startOf('day')
 
-  return Array.from({ length: numberOfDays }, (v, i) => i).map(i => {
+  return Array.from({ length: numberOfDays }, (v, i) => i).map((i) => {
     return {
       id: new UUID(i),
       type: 'timeSlot',
       attributes: {
-        start: moment(startTime)
-          .add(i, 'days')
-          .toDate(),
+        start: moment(startTime).add(i, 'days').toDate(),
         end: moment(startTime)
           .add(i + 1, 'days')
           .toDate(),
-        type: TIME_SLOT_DAY,
-      },
-    };
-  });
-};
+        type: TIME_SLOT_DAY
+      }
+    }
+  })
+}
 
 // Default config for currency formatting in tests and examples.
 export const currencyConfig = {
@@ -280,25 +278,25 @@ export const currencyConfig = {
   currencyDisplay: 'symbol',
   useGrouping: true,
   minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-};
+  maximumFractionDigits: 2
+}
 
-const pad = num => {
-  return num >= 0 && num < 10 ? `0${num}` : `${num}`;
-};
+const pad = (num) => {
+  return num >= 0 && num < 10 ? `0${num}` : `${num}`
+}
 
 // Create fake Internalization object to help with shallow rendering.
 export const fakeIntl = {
-  formatDate: d => `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`,
-  formatMessage: msg => msg.id,
-  formatNumber: d => d,
-  formatPlural: d => d,
-  formatRelativeTime: d => d,
-  formatTime: d => `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}`,
-  now: () => Date.UTC(2017, 10, 23, 12, 59),
-};
+  formatDate: (d) => `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`,
+  formatMessage: (msg) => msg.id,
+  formatNumber: (d) => d,
+  formatPlural: (d) => d,
+  formatRelativeTime: (d) => d,
+  formatTime: (d) => `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}`,
+  now: () => Date.UTC(2017, 10, 23, 12, 59)
+}
 
-const noop = () => null;
+const noop = () => null
 
 export const fakeFormProps = {
   anyTouched: false,
@@ -328,11 +326,11 @@ export const fakeFormProps = {
   submitFailed: false,
   submitting: false,
   pure: true,
-  initialized: true,
-};
+  initialized: true
+}
 
 // Create fake viewport to help with shallow rendering
 export const fakeViewport = {
   width: 2100,
-  height: 1339,
-};
+  height: 1339
+}

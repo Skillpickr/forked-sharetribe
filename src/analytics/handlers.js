@@ -1,6 +1,6 @@
 export class LoggingAnalyticsHandler {
   trackPageView(url) {
-    console.log('Analytics page view:', url);
+    console.log('Analytics page view:', url)
   }
 }
 
@@ -9,9 +9,9 @@ export class LoggingAnalyticsHandler {
 export class GoogleAnalyticsHandler {
   constructor(gtag) {
     if (typeof gtag !== 'function') {
-      throw new Error('Variable `gtag` missing for Google Analytics');
+      throw new Error('Variable `gtag` missing for Google Analytics')
     }
-    this.gtag = gtag;
+    this.gtag = gtag
   }
   trackPageView(canonicalPath, previousPath) {
     // GA4 property. Manually send page_view events
@@ -25,9 +25,9 @@ export class GoogleAnalyticsHandler {
     if (previousPath) {
       window.setTimeout(() => {
         this.gtag('event', 'page_view', {
-          page_path: canonicalPath,
-        });
-      }, 300);
+          page_path: canonicalPath
+        })
+      }, 300)
     }
   }
 }

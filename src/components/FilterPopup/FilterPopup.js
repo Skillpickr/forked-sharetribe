@@ -1,83 +1,83 @@
-import React, { Component } from 'react';
-import { bool, func, node, number, object, string } from 'prop-types';
-import classNames from 'classnames';
-import { injectIntl, intlShape } from '../../util/reactIntl';
+import React, { Component } from 'react'
+import { bool, func, node, number, object, string } from 'prop-types'
+import classNames from 'classnames'
+import { injectIntl, intlShape } from '../../util/reactIntl'
 
-import { OutsideClickHandler } from '../../components';
-import { FilterForm } from '../../forms';
-import css from './FilterPopup.module.css';
+import { OutsideClickHandler } from '../../components'
+import { FilterForm } from '../../forms'
+import css from './FilterPopup.module.css'
 
-const KEY_CODE_ESCAPE = 27;
+const KEY_CODE_ESCAPE = 27
 
 class FilterPopup extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.state = { isOpen: false };
-    this.filter = null;
-    this.filterContent = null;
+    this.state = { isOpen: false }
+    this.filter = null
+    this.filterContent = null
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClear = this.handleClear.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.toggleOpen = this.toggleOpen.bind(this);
-    this.positionStyleForContent = this.positionStyleForContent.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleClear = this.handleClear.bind(this)
+    this.handleCancel = this.handleCancel.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.toggleOpen = this.toggleOpen.bind(this)
+    this.positionStyleForContent = this.positionStyleForContent.bind(this)
   }
 
   handleSubmit(values) {
-    const { onSubmit } = this.props;
-    this.setState({ isOpen: false });
-    onSubmit(values);
+    const { onSubmit } = this.props
+    this.setState({ isOpen: false })
+    onSubmit(values)
   }
 
   handleChange(values) {
-    const { onChange } = this.props;
+    const { onChange } = this.props
     if (onChange) {
-      onChange(values);
+      onChange(values)
     }
   }
 
   handleClear() {
-    const { onSubmit, onClear } = this.props;
-    this.setState({ isOpen: false });
+    const { onSubmit, onClear } = this.props
+    this.setState({ isOpen: false })
 
     if (onClear) {
-      onClear();
+      onClear()
     }
 
-    onSubmit(null);
+    onSubmit(null)
   }
 
   handleCancel() {
-    const { onSubmit, onCancel, initialValues } = this.props;
-    this.setState({ isOpen: false });
+    const { onSubmit, onCancel, initialValues } = this.props
+    this.setState({ isOpen: false })
 
     if (onCancel) {
-      onCancel();
+      onCancel()
     }
 
-    onSubmit(initialValues);
+    onSubmit(initialValues)
   }
 
   handleBlur() {
-    this.setState({ isOpen: false });
+    this.setState({ isOpen: false })
   }
 
   handleKeyDown(e) {
     // Gather all escape presses to close menu
     if (e.keyCode === KEY_CODE_ESCAPE) {
-      this.toggleOpen(false);
+      this.toggleOpen(false)
     }
   }
 
   toggleOpen(enforcedState) {
     if (enforcedState) {
-      this.setState({ isOpen: enforcedState });
+      this.setState({ isOpen: enforcedState })
     } else {
-      this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+      this.setState((prevState) => ({ isOpen: !prevState.isOpen }))
     }
   }
 
@@ -86,22 +86,20 @@ class FilterPopup extends Component {
       // Render the filter content to the right from the menu
       // unless there's no space in which case it is rendered
       // to the left
-      const distanceToRight = window.innerWidth - this.filter.getBoundingClientRect().right;
-      const labelWidth = this.filter.offsetWidth;
-      const contentWidth = this.filterContent.offsetWidth;
-      const contentWidthBiggerThanLabel = contentWidth - labelWidth;
-      const renderToRight = distanceToRight > contentWidthBiggerThanLabel;
-      const contentPlacementOffset = this.props.contentPlacementOffset;
+      const distanceToRight = window.innerWidth - this.filter.getBoundingClientRect().right
+      const labelWidth = this.filter.offsetWidth
+      const contentWidth = this.filterContent.offsetWidth
+      const contentWidthBiggerThanLabel = contentWidth - labelWidth
+      const renderToRight = distanceToRight > contentWidthBiggerThanLabel
+      const contentPlacementOffset = this.props.contentPlacementOffset
 
-      const offset = renderToRight
-        ? { left: contentPlacementOffset }
-        : { right: contentPlacementOffset };
+      const offset = renderToRight ? { left: contentPlacementOffset } : { right: contentPlacementOffset }
       // set a min-width if the content is narrower than the label
-      const minWidth = contentWidth < labelWidth ? { minWidth: labelWidth } : null;
+      const minWidth = contentWidth < labelWidth ? { minWidth: labelWidth } : null
 
-      return { ...offset, ...minWidth };
+      return { ...offset, ...minWidth }
     }
-    return {};
+    return {}
   }
 
   render() {
@@ -116,24 +114,24 @@ class FilterPopup extends Component {
       children,
       initialValues,
       keepDirtyOnReinitialize,
-      contentPlacementOffset,
-    } = this.props;
+      contentPlacementOffset
+    } = this.props
 
-    const classes = classNames(rootClassName || css.root, className);
-    const popupClasses = classNames(css.popup, { [css.isOpen]: this.state.isOpen });
-    const popupSizeClasses = popupClassName || css.popupSize;
-    const labelStyles = isSelected ? css.labelSelected : css.label;
-    const labelMaxWidthMaybe = labelMaxWidth ? { maxWidth: `${labelMaxWidth}px` } : {};
-    const labelMaxWidthStyles = labelMaxWidth ? css.labelEllipsis : null;
-    const contentStyle = this.positionStyleForContent();
+    const classes = classNames(rootClassName || css.root, className)
+    const popupClasses = classNames(css.popup, { [css.isOpen]: this.state.isOpen })
+    const popupSizeClasses = popupClassName || css.popupSize
+    const labelStyles = isSelected ? css.labelSelected : css.label
+    const labelMaxWidthMaybe = labelMaxWidth ? { maxWidth: `${labelMaxWidth}px` } : {}
+    const labelMaxWidthStyles = labelMaxWidth ? css.labelEllipsis : null
+    const contentStyle = this.positionStyleForContent()
 
     return (
       <OutsideClickHandler onOutsideClick={this.handleBlur}>
         <div
           className={classes}
           onKeyDown={this.handleKeyDown}
-          ref={node => {
-            this.filter = node;
+          ref={(node) => {
+            this.filter = node
           }}
         >
           <button
@@ -146,8 +144,8 @@ class FilterPopup extends Component {
           <div
             id={id}
             className={popupClasses}
-            ref={node => {
-              this.filterContent = node;
+            ref={(node) => {
+              this.filterContent = node
             }}
             style={contentStyle}
           >
@@ -170,7 +168,7 @@ class FilterPopup extends Component {
           </div>
         </div>
       </OutsideClickHandler>
-    );
+    )
   }
 }
 
@@ -184,8 +182,8 @@ FilterPopup.defaultProps = {
   contentPlacementOffset: 0,
   liveEdit: false,
   label: null,
-  labelMaxWidth: null,
-};
+  labelMaxWidth: null
+}
 
 FilterPopup.propTypes = {
   rootClassName: string,
@@ -203,7 +201,7 @@ FilterPopup.propTypes = {
   children: node.isRequired,
 
   // form injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-export default injectIntl(FilterPopup);
+export default injectIntl(FilterPopup)

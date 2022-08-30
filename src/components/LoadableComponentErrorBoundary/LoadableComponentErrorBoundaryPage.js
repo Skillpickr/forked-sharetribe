@@ -1,30 +1,24 @@
-import React from 'react';
-import { FormattedMessage } from '../../util/reactIntl';
-import { pathByRouteName } from '../../util/routes';
-import routeConfiguration from '../../routeConfiguration';
-import {
-  LayoutSingleColumn,
-  LayoutWrapperTopbar,
-  LayoutWrapperMain,
-  InlineTextButton,
-  Logo,
-} from '../../components';
+import React from 'react'
+import { FormattedMessage } from '../../util/reactIntl'
+import { pathByRouteName } from '../../util/routes'
+import routeConfiguration from '../../routeConfiguration'
+import { LayoutSingleColumn, LayoutWrapperTopbar, LayoutWrapperMain, InlineTextButton, Logo } from '../../components'
 
-import css from './LoadableComponentErrorBoundary.module.css';
+import css from './LoadableComponentErrorBoundary.module.css'
 
 export const LoadableComponentErrorBoundaryPage = () => {
-  const landingPagePath = pathByRouteName('LandingPage', routeConfiguration());
+  const landingPagePath = pathByRouteName('LandingPage', routeConfiguration())
   const handleOnClick = () => {
     if (typeof window !== 'undefined') {
-      window.location = landingPagePath;
+      window.location = landingPagePath
     }
-  };
+  }
 
   const landingPageLink = (
     <InlineTextButton onClick={handleOnClick}>
       <FormattedMessage id="LoadableComponentErrorBoundaryPage.landingPageLink" />
     </InlineTextButton>
-  );
+  )
 
   return (
     <div>
@@ -56,5 +50,5 @@ export const LoadableComponentErrorBoundaryPage = () => {
         </LayoutWrapperMain>
       </LayoutSingleColumn>
     </div>
-  );
-};
+  )
+}

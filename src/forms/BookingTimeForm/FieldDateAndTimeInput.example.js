@@ -1,17 +1,17 @@
 /* eslint-disable no-console */
-import React from 'react';
-import { Form as FinalForm, FormSpy } from 'react-final-form';
-import moment from 'moment';
-import { injectIntl } from '../../util/reactIntl';
-import { types as sdkTypes } from '../../util/sdkLoader';
-import { Button } from '../../components';
-import { required, bookingDateRequired, composeValidators } from '../../util/validators';
-import { LINE_ITEM_UNITS, TIME_SLOT_TIME } from '../../util/types';
-import FieldDateAndTimeInput from './FieldDateAndTimeInput';
+import React from 'react'
+import { Form as FinalForm, FormSpy } from 'react-final-form'
+import moment from 'moment'
+import { injectIntl } from '../../util/reactIntl'
+import { types as sdkTypes } from '../../util/sdkLoader'
+import { Button } from '../../components'
+import { required, bookingDateRequired, composeValidators } from '../../util/validators'
+import { LINE_ITEM_UNITS, TIME_SLOT_TIME } from '../../util/types'
+import FieldDateAndTimeInput from './FieldDateAndTimeInput'
 
-const { UUID } = sdkTypes;
+const { UUID } = sdkTypes
 
-const identity = v => v;
+const identity = (v) => v
 
 const startDateInputProps = {
   name: 'bookingStartDate',
@@ -20,8 +20,8 @@ const startDateInputProps = {
   label: 'Start Date',
   placeholderText: moment().format('ddd, MMMM D'),
   format: identity,
-  validate: composeValidators(required('Required'), bookingDateRequired('Date is not valid')),
-};
+  validate: composeValidators(required('Required'), bookingDateRequired('Date is not valid'))
+}
 
 const endDateInputProps = {
   name: 'bookingEndDate',
@@ -30,19 +30,19 @@ const endDateInputProps = {
   label: 'End Date',
   placeholderText: moment().format('ddd, MMMM D'),
   format: identity,
-  validate: composeValidators(required('Required'), bookingDateRequired('Date is not valid')),
-};
+  validate: composeValidators(required('Required'), bookingDateRequired('Date is not valid'))
+}
 
 const startTimeInputProps = {
   id: `EmptyDateInputForm.bookingStartDate`,
   name: 'bookingStartTime',
-  label: 'Start Time',
-};
+  label: 'Start Time'
+}
 const endTimeInputProps = {
   id: `EmptyDateInputForm.bookingEndDate`,
   name: 'bookingEndTime',
-  label: 'End Time',
-};
+  label: 'End Time'
+}
 
 const timeSlots = [
   {
@@ -51,8 +51,8 @@ const timeSlots = [
     attributes: {
       start: new Date('2019-10-14T09:00:00Z'),
       end: new Date('2019-10-14T10:00:00Z'),
-      type: TIME_SLOT_TIME,
-    },
+      type: TIME_SLOT_TIME
+    }
   },
   {
     id: new UUID(2),
@@ -60,8 +60,8 @@ const timeSlots = [
     attributes: {
       start: new Date('2019-10-14T16:00:00Z'),
       end: new Date('2019-10-14T20:00:00Z'),
-      type: TIME_SLOT_TIME,
-    },
+      type: TIME_SLOT_TIME
+    }
   },
   {
     id: new UUID(3),
@@ -69,8 +69,8 @@ const timeSlots = [
     attributes: {
       start: new Date('2019-10-20T09:00:00Z'),
       end: new Date('2019-10-22T18:00:00Z'),
-      type: TIME_SLOT_TIME,
-    },
+      type: TIME_SLOT_TIME
+    }
   },
   {
     id: new UUID(4),
@@ -78,8 +78,8 @@ const timeSlots = [
     attributes: {
       start: new Date('2019-10-17T09:00:00Z'),
       end: new Date('2019-10-17T18:00:00Z'),
-      type: TIME_SLOT_TIME,
-    },
+      type: TIME_SLOT_TIME
+    }
   },
   {
     id: new UUID(5),
@@ -87,23 +87,23 @@ const timeSlots = [
     attributes: {
       start: new Date('2019-10-28T09:00:00Z'),
       end: new Date('2019-11-03T18:00:00Z'),
-      type: TIME_SLOT_TIME,
-    },
-  },
-];
+      type: TIME_SLOT_TIME
+    }
+  }
+]
 
 const monthlyTimeSlots = {
   '2019-10': {
     timeSlots,
     fetchTimeSlotsError: null,
-    fetchTimeSlotsInProgress: null,
-  },
-};
+    fetchTimeSlotsInProgress: null
+  }
+}
 
-const FormComponent = props => (
+const FormComponent = (props) => (
   <FinalForm
     {...props}
-    render={fieldRenderProps => {
+    render={(fieldRenderProps) => {
       const {
         style,
         form,
@@ -117,21 +117,21 @@ const FormComponent = props => (
         timeZone,
         monthlyTimeSlots,
         values,
-        intl,
-      } = fieldRenderProps;
-      const submitDisabled = pristine || submitting;
+        intl
+      } = fieldRenderProps
+      const submitDisabled = pristine || submitting
 
       const dateInputProps = {
         startDateInputProps,
-        endDateInputProps,
-      };
+        endDateInputProps
+      }
 
       return (
         <form
           style={style}
-          onSubmit={e => {
-            e.preventDefault();
-            handleSubmit(e);
+          onSubmit={(e) => {
+            e.preventDefault()
+            handleSubmit(e)
           }}
         >
           <FormSpy onChange={onChange} />
@@ -149,10 +149,10 @@ const FormComponent = props => (
             Select
           </Button>
         </form>
-      );
+      )
     }}
   />
-);
+)
 
 export const Empty = {
   component: injectIntl(FormComponent),
@@ -166,11 +166,11 @@ export const Empty = {
     timeZone: 'Etc/UTC',
     monthlyTimeSlots,
     initialValues: { bookingStartDate: { date: new Date(2019, 9, 29) } },
-    onChange: formState => {},
-    onSubmit: values => {
-      console.log('Submitting a form with values:', values);
+    onChange: (formState) => {},
+    onSubmit: (values) => {
+      console.log('Submitting a form with values:', values)
     },
-    onFetchTimeSlots: identity,
+    onFetchTimeSlots: identity
   },
-  group: 'custom inputs',
-};
+  group: 'custom inputs'
+}

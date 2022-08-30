@@ -1,66 +1,66 @@
-import React, { Component, useState } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { FormattedMessage } from '../../util/reactIntl';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { FormattedMessage } from '../../util/reactIntl'
 
-import { LISTING_STATE_DRAFT } from '../../util/types';
-import { ensureListing } from '../../util/data';
-import { EditListingFeaturesForm } from '../../forms';
-import { ListingLink } from '../../components';
+import { LISTING_STATE_DRAFT } from '../../util/types'
+import { ensureListing } from '../../util/data'
+import { EditListingFeaturesForm } from '../../forms'
+import { ListingLink } from '../../components'
 
-import css from './EditListingFeaturesPanel.module.css';
+import css from './EditListingFeaturesPanel.module.css'
 
-const FEATURES_NAME = 'skill';
+const FEATURES_NAME = 'skill'
 
 class EditListingFeaturesPanel extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.getInitialValues = this.getInitialValues.bind(this);
-    this.getCategory = this.getCategory.bind(this);
-    this.getSkill = this.getSkill.bind(this);
+    this.getInitialValues = this.getInitialValues.bind(this)
+    this.getCategory = this.getCategory.bind(this)
+    this.getSkill = this.getSkill.bind(this)
 
     this.state = {
       initialValues: this.getInitialValues(),
       category: this.getCategory(),
-      skill: this.getSkill(),
-    };
+      skill: this.getSkill()
+    }
   }
 
   getCurrentListing() {
-    const { listing } = this.props;
-    const currentListing = ensureListing(listing);
-    return currentListing;
+    const { listing } = this.props
+    const currentListing = ensureListing(listing)
+    return currentListing
   }
 
   getCategory() {
-    const { publicData } = this.getCurrentListing().attributes;
-    const category = publicData && publicData.category;
-    return { category };
+    const { publicData } = this.getCurrentListing().attributes
+    const category = publicData && publicData.category
+    return { category }
   }
 
   getSkill() {
-    const { publicData } = this.getCurrentListing().attributes;
-    const skill = publicData && publicData.skill;
-    return skill;
+    const { publicData } = this.getCurrentListing().attributes
+    const skill = publicData && publicData.skill
+    return skill
   }
 
   getInitialValues() {
-    const { publicData } = this.getCurrentListing().attributes;
-    const skill = publicData && publicData.skill;
-    const gear = publicData && publicData.gear;
-    const soundLightExp = publicData && publicData.soundLightExp;
-    const photographerType = publicData && publicData.photographerType;
-    const ownStudio = publicData && publicData.ownStudio;
-    const djType = publicData && publicData.djType;
-    const technicalRider = publicData && publicData.technicalRider;
-    const cateringRider = publicData && publicData.cateringRider;
-    const djGearForPlaying = publicData && publicData.djGearForPlaying;
-    const playingStyle = publicData && publicData.playingStyle;
-    const songRequest = publicData && publicData.songRequest;
-    const musicSoloistType = publicData && publicData.musicSoloistType;
-    const musicianType = publicData && publicData.musicianType;
-    const musicalGenre = publicData && publicData.musicalGenre;
+    const { publicData } = this.getCurrentListing().attributes
+    const skill = publicData && publicData.skill
+    const gear = publicData && publicData.gear
+    const soundLightExp = publicData && publicData.soundLightExp
+    const photographerType = publicData && publicData.photographerType
+    const ownStudio = publicData && publicData.ownStudio
+    const djType = publicData && publicData.djType
+    const technicalRider = publicData && publicData.technicalRider
+    const cateringRider = publicData && publicData.cateringRider
+    const djGearForPlaying = publicData && publicData.djGearForPlaying
+    const playingStyle = publicData && publicData.playingStyle
+    const songRequest = publicData && publicData.songRequest
+    const musicSoloistType = publicData && publicData.musicSoloistType
+    const musicianType = publicData && publicData.musicianType
+    const musicalGenre = publicData && publicData.musicalGenre
     return {
       photographerType,
       gear,
@@ -75,8 +75,8 @@ class EditListingFeaturesPanel extends Component {
       musicSoloistType,
       musicianType,
       musicalGenre,
-      skill,
-    };
+      skill
+    }
   }
 
   render() {
@@ -91,14 +91,12 @@ class EditListingFeaturesPanel extends Component {
       submitButtonText,
       panelUpdated,
       updateInProgress,
-      errors,
-    } = this.props;
+      errors
+    } = this.props
 
-    const classes = classNames(rootClassName || css.root, className);
+    const classes = classNames(rootClassName || css.root, className)
 
-    const isPublished =
-      this.getCurrentListing().id &&
-      this.getCurrentListing().attributes.state !== LISTING_STATE_DRAFT;
+    const isPublished = this.getCurrentListing().id && this.getCurrentListing().attributes.state !== LISTING_STATE_DRAFT
     const panelTitle = isPublished ? (
       <FormattedMessage
         id="EditListingFeaturesPanel.title"
@@ -106,13 +104,13 @@ class EditListingFeaturesPanel extends Component {
       />
     ) : (
       <FormattedMessage id="EditListingFeaturesPanel.createListingTitle" />
-    );
+    )
 
-    const handleCallback = childData => {
-      this.setState({ category: childData });
-    };
+    const handleCallback = (childData) => {
+      this.setState({ category: childData })
+    }
 
-    const handleSubmit = values => {
+    const handleSubmit = (values) => {
       const {
         skill = [],
         photographerType = [],
@@ -127,9 +125,9 @@ class EditListingFeaturesPanel extends Component {
         songRequest = [],
         musicSoloistType = '',
         musicianType = [],
-        musicalGenre = [],
-      } = values;
-      let category = this.state.category;
+        musicalGenre = []
+      } = values
+      let category = this.state.category
       const updatedValues = {
         publicData: {
           skill,
@@ -146,11 +144,11 @@ class EditListingFeaturesPanel extends Component {
           category,
           musicSoloistType,
           musicianType,
-          musicalGenre,
-        },
-      };
-      onSubmit(updatedValues);
-    };
+          musicalGenre
+        }
+      }
+      onSubmit(updatedValues)
+    }
     return (
       <div className={classes}>
         <h1 className={css.title}>{panelTitle}</h1>
@@ -170,17 +168,17 @@ class EditListingFeaturesPanel extends Component {
           fetchErrors={errors}
         />
       </div>
-    );
+    )
   }
 }
 
 EditListingFeaturesPanel.defaultProps = {
   rootClassName: null,
   className: null,
-  listing: null,
-};
+  listing: null
+}
 
-const { bool, func, object, string } = PropTypes;
+const { bool, func, object, string } = PropTypes
 
 EditListingFeaturesPanel.propTypes = {
   rootClassName: string,
@@ -196,7 +194,7 @@ EditListingFeaturesPanel.propTypes = {
   submitButtonText: string.isRequired,
   panelUpdated: bool.isRequired,
   updateInProgress: bool.isRequired,
-  errors: object.isRequired,
-};
+  errors: object.isRequired
+}
 
-export default EditListingFeaturesPanel;
+export default EditListingFeaturesPanel

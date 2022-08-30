@@ -1,12 +1,12 @@
-import React from 'react';
-import { bool, object } from 'prop-types';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { injectIntl, intlShape } from '../../util/reactIntl';
-import { isScrollingDisabled } from '../../ducks/UI.duck';
-import { propTypes } from '../../util/types';
-import config from '../../config';
+import React from 'react'
+import { bool, object } from 'prop-types'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { injectIntl, intlShape } from '../../util/reactIntl'
+import { isScrollingDisabled } from '../../ducks/UI.duck'
+import { propTypes } from '../../util/types'
+import config from '../../config'
 import {
   Page,
   SectionHero,
@@ -16,32 +16,25 @@ import {
   LayoutWrapperTopbar,
   LayoutWrapperMain,
   LayoutWrapperFooter,
-  Footer,
-} from '../../components';
-import { TopbarContainer } from '../../containers';
+  Footer
+} from '../../components'
+import { TopbarContainer } from '../../containers'
 
-import facebookImage from '../../assets/skillpicker-facebook1200x630-01.jpg';
-import twitterImage from '../../assets/skillpicker-twitter600x314-01.jpg';
-import css from './LandingPage.module.css';
-import SectionCategories from '../../components/SectionCategories/SectionCategories';
+import facebookImage from '../../assets/skillpicker-facebook1200x630-01.jpg'
+import twitterImage from '../../assets/skillpicker-twitter600x314-01.jpg'
+import css from './LandingPage.module.css'
+import SectionCategories from '../../components/SectionCategories/SectionCategories'
 
-export const LandingPageComponent = props => {
-  const {
-    history,
-    intl,
-    location,
-    scrollingDisabled,
-    currentUserListing,
-    currentUserListingFetched,
-  } = props;
+export const LandingPageComponent = (props) => {
+  const { history, intl, location, scrollingDisabled, currentUserListing, currentUserListingFetched } = props
 
   // Schema for search engines (helps them to understand what this page is about)
   // http://schema.org
   // We are using JSON-LD format
-  const siteTitle = config.siteTitle;
-  const schemaTitle = intl.formatMessage({ id: 'LandingPage.schemaTitle' }, { siteTitle });
-  const schemaDescription = intl.formatMessage({ id: 'LandingPage.schemaDescription' });
-  const schemaImage = `${config.canonicalRootURL}${facebookImage}`;
+  const siteTitle = config.siteTitle
+  const schemaTitle = intl.formatMessage({ id: 'LandingPage.schemaTitle' }, { siteTitle })
+  const schemaDescription = intl.formatMessage({ id: 'LandingPage.schemaDescription' })
+  const schemaImage = `${config.canonicalRootURL}${facebookImage}`
 
   return (
     <Page
@@ -51,15 +44,13 @@ export const LandingPageComponent = props => {
       description={schemaDescription}
       title={schemaTitle}
       facebookImages={[{ url: facebookImage, width: 1200, height: 630 }]}
-      twitterImages={[
-        { url: `${config.canonicalRootURL}${twitterImage}`, width: 600, height: 314 },
-      ]}
+      twitterImages={[{ url: `${config.canonicalRootURL}${twitterImage}`, width: 600, height: 314 }]}
       schema={{
         '@context': 'http://schema.org',
         '@type': 'WebPage',
         description: schemaDescription,
         name: schemaTitle,
-        image: [schemaImage],
+        image: [schemaImage]
       }}
     >
       <LayoutSingleColumn>
@@ -92,13 +83,13 @@ export const LandingPageComponent = props => {
         </LayoutWrapperFooter>
       </LayoutSingleColumn>
     </Page>
-  );
-};
+  )
+}
 
 LandingPageComponent.defaultProps = {
   currentUserListing: null,
-  currentUserListingFetched: false,
-};
+  currentUserListingFetched: false
+}
 
 LandingPageComponent.propTypes = {
   scrollingDisabled: bool.isRequired,
@@ -110,18 +101,18 @@ LandingPageComponent.propTypes = {
   location: object.isRequired,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const mapStateToProps = state => {
-  const { currentUserListing, currentUserListingFetched } = state.user;
+const mapStateToProps = (state) => {
+  const { currentUserListing, currentUserListingFetched } = state.user
 
   return {
     scrollingDisabled: isScrollingDisabled(state),
     currentUserListing,
-    currentUserListingFetched,
-  };
-};
+    currentUserListingFetched
+  }
+}
 
 // Note: it is important that the withRouter HOC is **outside** the
 // connect HOC, otherwise React Router won't rerender any Route
@@ -129,10 +120,6 @@ const mapStateToProps = state => {
 // lifecycle hook.
 //
 // See: https://github.com/ReactTraining/react-router/issues/4671
-const LandingPage = compose(
-  withRouter,
-  connect(mapStateToProps),
-  injectIntl
-)(LandingPageComponent);
+const LandingPage = compose(withRouter, connect(mapStateToProps), injectIntl)(LandingPageComponent)
 
-export default LandingPage;
+export default LandingPage

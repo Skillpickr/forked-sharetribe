@@ -1,26 +1,26 @@
-import UserDisplayName from './UserDisplayName';
-import { types as sdkTypes } from '../../util/sdkLoader';
-import { fakeIntl } from '../../util/test-data';
+import UserDisplayName from './UserDisplayName'
+import { types as sdkTypes } from '../../util/sdkLoader'
+import { fakeIntl } from '../../util/test-data'
 
-const { UUID } = sdkTypes;
+const { UUID } = sdkTypes
 
 const bannedUser = {
   id: new UUID('banned-user'),
   type: 'user',
   attributes: {
     banned: true,
-    deleted: false,
-  },
-};
+    deleted: false
+  }
+}
 
 const deletedUser = {
   id: new UUID('deleted-user'),
   type: 'user',
   attributes: {
     banned: false,
-    deleted: true,
-  },
-};
+    deleted: true
+  }
+}
 
 const normalUser = {
   id: new UUID('normal-user'),
@@ -30,44 +30,44 @@ const normalUser = {
     deleted: false,
     profile: {
       displayName: 'Normal User',
-      abbreviatedName: 'NU',
-    },
-  },
-};
+      abbreviatedName: 'NU'
+    }
+  }
+}
 
 export const BannedUser = {
   component: UserDisplayName,
   props: {
     user: bannedUser,
-    intl: fakeIntl,
+    intl: fakeIntl
   },
-  group: 'users',
-};
+  group: 'users'
+}
 
 export const DeletedUser = {
   component: UserDisplayName,
   props: {
     user: deletedUser,
-    intl: fakeIntl,
+    intl: fakeIntl
   },
-  group: 'users',
-};
+  group: 'users'
+}
 
 export const NormalUser = {
   component: UserDisplayName,
   props: {
     user: normalUser,
-    intl: fakeIntl,
+    intl: fakeIntl
   },
-  group: 'users',
-};
+  group: 'users'
+}
 
 export const BannedUserWithCustomName = {
   component: UserDisplayName,
   props: {
     user: bannedUser,
     bannedUserDisplayName: 'Custom banned user name',
-    intl: fakeIntl,
+    intl: fakeIntl
   },
-  group: 'users',
-};
+  group: 'users'
+}

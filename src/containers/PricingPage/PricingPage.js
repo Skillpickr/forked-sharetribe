@@ -1,22 +1,22 @@
-import React from 'react';
-import config from '../../config';
-import { twitterPageURL } from '../../util/urlHelpers';
-import { StaticPage, TopbarContainer } from '..';
+import React from 'react'
+import config from '../../config'
+import { twitterPageURL } from '../../util/urlHelpers'
+import { StaticPage, TopbarContainer } from '..'
 import {
   LayoutSingleColumn,
   LayoutWrapperTopbar,
   LayoutWrapperMain,
   LayoutWrapperFooter,
   Footer,
-  ExternalLink,
-} from '../../components';
+  ExternalLink
+} from '../../components'
 
-import css from './PricingPage.module.css';
-import image from './pricing.jpg';
+import css from './PricingPage.module.css'
+import image from './pricing.jpg'
 
 const PricingPage = () => {
-  const { siteTwitterHandle, siteFacebookPage } = config;
-  const siteTwitterPage = twitterPageURL(siteTwitterHandle);
+  const { siteTwitterHandle, siteFacebookPage } = config
+  const siteTwitterPage = twitterPageURL(siteTwitterHandle)
 
   // prettier-ignore
   return (
@@ -25,7 +25,7 @@ const PricingPage = () => {
       schema={{
         '@context': 'http://schema.org',
         '@type': 'PricingPage',
-        "description": 'Skillpickr Prices',
+        "description": 'SkillPickr Prices',
         "name": 'Pricing Page',
         "mainEntity": [
           {
@@ -74,7 +74,7 @@ const PricingPage = () => {
                 Contact
               </h3>
               <p>
-                Skillpickr is brought to you by{' '}
+                SkillPickr is brought to you by{' '}
                 <ExternalLink href="http://sharetribe.com">Sharetribe</ExternalLink>. Sharetribe
                 offers anyone a possibility to create a marketplace without restricting your own
                 creativity. Do not hesitate to reach out and learn how to best turn your
@@ -95,6 +95,6 @@ const PricingPage = () => {
       </LayoutSingleColumn>
     </StaticPage>
   );
-};
+}
 
-export default PricingPage;
+export default PricingPage

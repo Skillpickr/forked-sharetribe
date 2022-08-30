@@ -1,5 +1,5 @@
-import TimeRange from './TimeRange';
-import { fakeIntl } from '../../util/test-data';
+import TimeRange from './TimeRange'
+import { fakeIntl } from '../../util/test-data'
 
 export const DateAndTimeSingleDay = {
   component: TimeRange,
@@ -8,10 +8,10 @@ export const DateAndTimeSingleDay = {
     startDate: new Date(Date.UTC(2019, 8, 30, 3, 0)),
     endDate: new Date(Date.UTC(2019, 8, 30, 4, 0)),
     dateType: 'datetime',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}
 
 export const DateAndTimeMultipleDays = {
   component: TimeRange,
@@ -20,10 +20,10 @@ export const DateAndTimeMultipleDays = {
     startDate: new Date(Date.UTC(2019, 8, 28, 3, 0)),
     endDate: new Date(Date.UTC(2019, 8, 30, 5, 0)),
     dateType: 'datetime',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}
 
 export const OnlyDateSingleDay = {
   component: TimeRange,
@@ -32,10 +32,10 @@ export const OnlyDateSingleDay = {
     startDate: new Date(Date.UTC(2019, 8, 29, 3, 0)),
     endDate: new Date(Date.UTC(2019, 8, 30, 4, 0)),
     dateType: 'date',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}
 
 export const OnlyDateMultipleDays = {
   component: TimeRange,
@@ -44,10 +44,10 @@ export const OnlyDateMultipleDays = {
     startDate: new Date(Date.UTC(2019, 8, 28, 3, 0)),
     endDate: new Date(Date.UTC(2019, 8, 30, 5, 0)),
     dateType: 'date',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}
 
 export const OnlyDateSingleNight = {
   component: TimeRange,
@@ -56,10 +56,10 @@ export const OnlyDateSingleNight = {
     startDate: new Date(Date.UTC(2019, 8, 29, 3, 0)),
     endDate: new Date(Date.UTC(2019, 8, 30, 4, 0)),
     dateType: 'date',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}
 
 export const OnlyDateMultipleNights = {
   component: TimeRange,
@@ -68,7 +68,7 @@ export const OnlyDateMultipleNights = {
     startDate: new Date(Date.UTC(2019, 8, 28, 3, 0)),
     endDate: new Date(Date.UTC(2019, 8, 30, 5, 0)),
     dateType: 'date',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}

@@ -1,21 +1,21 @@
-import React from 'react';
-import { arrayOf, bool, func, shape, string } from 'prop-types';
-import { compose } from 'redux';
-import { Form as FinalForm } from 'react-final-form';
-import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl';
-import classNames from 'classnames';
-import { propTypes } from '../../util/types';
-import { maxLength, required, composeValidators } from '../../util/validators';
-import { Form, Button, FieldTextInput } from '../../components';
+import React from 'react'
+import { arrayOf, bool, func, shape, string } from 'prop-types'
+import { compose } from 'redux'
+import { Form as FinalForm } from 'react-final-form'
+import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl'
+import classNames from 'classnames'
+import { propTypes } from '../../util/types'
+import { maxLength, required, composeValidators } from '../../util/validators'
+import { Form, Button, FieldTextInput } from '../../components'
 
-import css from './EditListingDescriptionForm.module.css';
+import css from './EditListingDescriptionForm.module.css'
 
-const TITLE_MAX_LENGTH = 60;
+const TITLE_MAX_LENGTH = 60
 
-const EditListingDescriptionFormComponent = props => (
+const EditListingDescriptionFormComponent = (props) => (
   <FinalForm
     {...props}
-    render={formRenderProps => {
+    render={(formRenderProps) => {
       const {
         className,
         disabled,
@@ -27,95 +27,95 @@ const EditListingDescriptionFormComponent = props => (
         saveActionMsg,
         updated,
         updateInProgress,
-        fetchErrors,
-      } = formRenderProps;
+        fetchErrors
+      } = formRenderProps
 
-      const titleMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.title' });
+      const titleMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.title' })
       const titlePlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.titlePlaceholder',
-      });
+        id: 'EditListingDescriptionForm.titlePlaceholder'
+      })
       const titleRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.titleRequired',
-      });
+        id: 'EditListingDescriptionForm.titleRequired'
+      })
       const maxLengthMessage = intl.formatMessage(
         { id: 'EditListingDescriptionForm.maxLength' },
         {
-          maxLength: TITLE_MAX_LENGTH,
+          maxLength: TITLE_MAX_LENGTH
         }
-      );
+      )
 
       const descriptionMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.description',
-      });
+        id: 'EditListingDescriptionForm.description'
+      })
       const descriptionPlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.descriptionPlaceholder',
-      });
-      const maxLength60Message = maxLength(maxLengthMessage, TITLE_MAX_LENGTH);
+        id: 'EditListingDescriptionForm.descriptionPlaceholder'
+      })
+      const maxLength60Message = maxLength(maxLengthMessage, TITLE_MAX_LENGTH)
       const descriptionRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.descriptionRequired',
-      });
+        id: 'EditListingDescriptionForm.descriptionRequired'
+      })
 
       const exprienceMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.experience',
-      });
+        id: 'EditListingDescriptionForm.experience'
+      })
       const experiencePlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.experiencePlaceholder',
-      });
+        id: 'EditListingDescriptionForm.experiencePlaceholder'
+      })
       const experienceRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.experienceRequired',
-      });
+        id: 'EditListingDescriptionForm.experienceRequired'
+      })
 
       const trackMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.track',
-      });
+        id: 'EditListingDescriptionForm.track'
+      })
       const trackPlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.trackPlaceholder',
-      });
+        id: 'EditListingDescriptionForm.trackPlaceholder'
+      })
       const trackRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.trackRequired',
-      });
+        id: 'EditListingDescriptionForm.trackRequired'
+      })
 
       const urlMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.url',
-      });
+        id: 'EditListingDescriptionForm.url'
+      })
       const urlPlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.urlPlaceholder',
-      });
+        id: 'EditListingDescriptionForm.urlPlaceholder'
+      })
       const urlRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.urlRequired',
-      });
+        id: 'EditListingDescriptionForm.urlRequired'
+      })
 
       const bonusMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.bonus',
-      });
+        id: 'EditListingDescriptionForm.bonus'
+      })
       const bonusPlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.bonusPlaceholder',
-      });
+        id: 'EditListingDescriptionForm.bonusPlaceholder'
+      })
 
-      const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {};
+      const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {}
       const errorMessageUpdateListing = updateListingError ? (
         <p className={css.error}>
           <FormattedMessage id="EditListingDescriptionForm.updateFailed" />
         </p>
-      ) : null;
+      ) : null
 
       // This error happens only on first tab (of EditListingWizard)
       const errorMessageCreateListingDraft = createListingDraftError ? (
         <p className={css.error}>
           <FormattedMessage id="EditListingDescriptionForm.createListingDraftError" />
         </p>
-      ) : null;
+      ) : null
 
       const errorMessageShowListing = showListingsError ? (
         <p className={css.error}>
           <FormattedMessage id="EditListingDescriptionForm.showListingFailed" />
         </p>
-      ) : null;
+      ) : null
 
-      const classes = classNames(css.root, className);
-      const submitReady = (updated && pristine) || ready;
-      const submitInProgress = updateInProgress;
-      const submitDisabled = invalid || disabled || submitInProgress;
+      const classes = classNames(css.root, className)
+      const submitReady = (updated && pristine) || ready
+      const submitInProgress = updateInProgress
+      const submitDisabled = invalid || disabled || submitInProgress
 
       return (
         <Form className={classes} onSubmit={handleSubmit}>
@@ -189,12 +189,12 @@ const EditListingDescriptionFormComponent = props => (
             {saveActionMsg}
           </Button>
         </Form>
-      );
+      )
     }}
   />
-);
+)
 
-EditListingDescriptionFormComponent.defaultProps = { className: null, fetchErrors: null };
+EditListingDescriptionFormComponent.defaultProps = { className: null, fetchErrors: null }
 
 EditListingDescriptionFormComponent.propTypes = {
   className: string,
@@ -208,8 +208,8 @@ EditListingDescriptionFormComponent.propTypes = {
   fetchErrors: shape({
     createListingDraftError: propTypes.error,
     showListingsError: propTypes.error,
-    updateListingError: propTypes.error,
-  }),
-};
+    updateListingError: propTypes.error
+  })
+}
 
-export default compose(injectIntl)(EditListingDescriptionFormComponent);
+export default compose(injectIntl)(EditListingDescriptionFormComponent)

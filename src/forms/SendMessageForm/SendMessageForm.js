@@ -1,45 +1,39 @@
-import React, { Component } from 'react';
-import { string, bool, func } from 'prop-types';
-import { compose } from 'redux';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
-import { Form as FinalForm } from 'react-final-form';
-import classNames from 'classnames';
-import { Form, FieldTextInput, SecondaryButton } from '../../components';
-import { propTypes } from '../../util/types';
+import React, { Component } from 'react'
+import { string, bool, func } from 'prop-types'
+import { compose } from 'redux'
+import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
+import { Form as FinalForm } from 'react-final-form'
+import classNames from 'classnames'
+import { Form, FieldTextInput, SecondaryButton } from '../../components'
+import { propTypes } from '../../util/types'
 
-import css from './SendMessageForm.module.css';
+import css from './SendMessageForm.module.css'
 
-const BLUR_TIMEOUT_MS = 100;
+const BLUR_TIMEOUT_MS = 100
 
 const IconSendMessage = () => {
   return (
-    <svg
-      className={css.sendIcon}
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className={css.sendIcon} width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
       <g className={css.strokeMatter} fill="none" fillRule="evenodd" strokeLinejoin="round">
         <path d="M12.91 1L0 7.003l5.052 2.212z" />
         <path d="M10.75 11.686L5.042 9.222l7.928-8.198z" />
         <path d="M5.417 8.583v4.695l2.273-2.852" />
       </g>
     </svg>
-  );
-};
+  )
+}
 
 class SendMessageFormComponent extends Component {
   constructor(props) {
-    super(props);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-    this.blurTimeoutId = null;
+    super(props)
+    this.handleFocus = this.handleFocus.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
+    this.blurTimeoutId = null
   }
 
   handleFocus() {
-    this.props.onFocus();
-    window.clearTimeout(this.blurTimeoutId);
+    this.props.onFocus()
+    window.clearTimeout(this.blurTimeoutId)
   }
 
   handleBlur() {
@@ -48,15 +42,15 @@ class SendMessageFormComponent extends Component {
     // focus is switched between the message area and the submit
     // button.
     this.blurTimeoutId = window.setTimeout(() => {
-      this.props.onBlur();
-    }, BLUR_TIMEOUT_MS);
+      this.props.onBlur()
+    }, BLUR_TIMEOUT_MS)
   }
 
   render() {
     return (
       <FinalForm
         {...this.props}
-        render={formRenderProps => {
+        render={(formRenderProps) => {
           const {
             rootClassName,
             className,
@@ -66,14 +60,14 @@ class SendMessageFormComponent extends Component {
             sendMessageError,
             invalid,
             form,
-            formId,
-          } = formRenderProps;
+            formId
+          } = formRenderProps
 
-          const classes = classNames(rootClassName || css.root, className);
-          const submitInProgress = inProgress;
-          const submitDisabled = invalid || submitInProgress;
+          const classes = classNames(rootClassName || css.root, className)
+          const submitInProgress = inProgress
+          const submitDisabled = invalid || submitInProgress
           return (
-            <Form className={classes} onSubmit={values => handleSubmit(values, form)}>
+            <Form className={classes} onSubmit={(values) => handleSubmit(values, form)}>
               <FieldTextInput
                 inputRootClass={css.textarea}
                 type="textarea"
@@ -103,10 +97,10 @@ class SendMessageFormComponent extends Component {
                 </SecondaryButton>
               </div>
             </Form>
-          );
+          )
         }}
       />
-    );
+    )
   }
 }
 
@@ -117,8 +111,8 @@ SendMessageFormComponent.defaultProps = {
   messagePlaceholder: null,
   onFocus: () => null,
   onBlur: () => null,
-  sendMessageError: null,
-};
+  sendMessageError: null
+}
 
 SendMessageFormComponent.propTypes = {
   rootClassName: string,
@@ -132,11 +126,11 @@ SendMessageFormComponent.propTypes = {
   sendMessageError: propTypes.error,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const SendMessageForm = compose(injectIntl)(SendMessageFormComponent);
+const SendMessageForm = compose(injectIntl)(SendMessageFormComponent)
 
-SendMessageForm.displayName = 'SendMessageForm';
+SendMessageForm.displayName = 'SendMessageForm'
 
-export default SendMessageForm;
+export default SendMessageForm

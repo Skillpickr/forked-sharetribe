@@ -2,24 +2,18 @@
  *  TopbarMobileMenu prints the menu content for authenticated user or
  * shows login actions for those who are not authenticated.
  */
-import React from 'react';
-import { bool, func, number, string } from 'prop-types';
-import { FormattedMessage } from '../../util/reactIntl';
-import classNames from 'classnames';
-import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration';
-import { propTypes } from '../../util/types';
-import { ensureCurrentUser } from '../../util/data';
-import {
-  AvatarLarge,
-  InlineTextButton,
-  NamedLink,
-  NotificationBadge,
-  OwnListingLink,
-} from '../../components';
+import React from 'react'
+import { bool, func, number, string } from 'prop-types'
+import { FormattedMessage } from '../../util/reactIntl'
+import classNames from 'classnames'
+import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration'
+import { propTypes } from '../../util/types'
+import { ensureCurrentUser } from '../../util/data'
+import { AvatarLarge, InlineTextButton, NamedLink, NotificationBadge, OwnListingLink } from '../../components'
 
-import css from './TopbarMobileMenu.module.css';
+import css from './TopbarMobileMenu.module.css'
 
-const TopbarMobileMenu = props => {
+const TopbarMobileMenu = (props) => {
   const {
     isAuthenticated,
     currentPage,
@@ -28,29 +22,29 @@ const TopbarMobileMenu = props => {
     currentUserListingFetched,
     currentUser,
     notificationCount,
-    onLogout,
-  } = props;
+    onLogout
+  } = props
 
-  const user = ensureCurrentUser(currentUser);
+  const user = ensureCurrentUser(currentUser)
 
   if (!isAuthenticated) {
     const signup = (
       <NamedLink name="SignupPage" className={css.signupLink}>
         <FormattedMessage id="TopbarMobileMenu.signupLink" />
       </NamedLink>
-    );
+    )
 
     const login = (
       <NamedLink name="LoginPage" className={css.loginLink}>
         <FormattedMessage id="TopbarMobileMenu.loginLink" />
       </NamedLink>
-    );
+    )
 
     const signupOrLogin = (
       <span className={css.authenticationLinks}>
         <FormattedMessage id="TopbarMobileMenu.signupOrLogin" values={{ signup, login }} />
       </span>
-    );
+    )
     return (
       <div className={css.root}>
         <div className={css.content}>
@@ -67,20 +61,17 @@ const TopbarMobileMenu = props => {
           </NamedLink>
         </div>
       </div>
-    );
+    )
   }
 
   const notificationCountBadge =
-    notificationCount > 0 ? (
-      <NotificationBadge className={css.notificationBadge} count={notificationCount} />
-    ) : null;
+    notificationCount > 0 ? <NotificationBadge className={css.notificationBadge} count={notificationCount} /> : null
 
-  const displayName = user.attributes.profile.firstName;
-  const currentPageClass = page => {
-    const isAccountSettingsPage =
-      page === 'AccountSettingsPage' && ACCOUNT_SETTINGS_PAGES.includes(currentPage);
-    return currentPage === page || isAccountSettingsPage ? css.currentPage : null;
-  };
+  const displayName = user.attributes.profile.firstName
+  const currentPageClass = (page) => {
+    const isAccountSettingsPage = page === 'AccountSettingsPage' && ACCOUNT_SETTINGS_PAGES.includes(currentPage)
+    return currentPage === page || isAccountSettingsPage ? css.currentPage : null
+  }
 
   return (
     <div className={css.root}>
@@ -124,16 +115,16 @@ const TopbarMobileMenu = props => {
         </NamedLink>
       </div>
     </div>
-  );
-};
+  )
+}
 
 TopbarMobileMenu.defaultProps = {
   currentUser: null,
   notificationCount: 0,
   currentPage: null,
   currentUserListing: null,
-  currentUserListingFetched: false,
-};
+  currentUserListingFetched: false
+}
 
 TopbarMobileMenu.propTypes = {
   isAuthenticated: bool.isRequired,
@@ -143,7 +134,7 @@ TopbarMobileMenu.propTypes = {
   currentUser: propTypes.currentUser,
   currentPage: string,
   notificationCount: number,
-  onLogout: func.isRequired,
-};
+  onLogout: func.isRequired
+}
 
-export default TopbarMobileMenu;
+export default TopbarMobileMenu

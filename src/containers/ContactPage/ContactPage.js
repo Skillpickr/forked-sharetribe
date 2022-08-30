@@ -1,22 +1,22 @@
-import React from 'react';
-import config from '../../config';
-import { twitterPageURL } from '../../util/urlHelpers';
-import { StaticPage, TopbarContainer } from '..';
+import React from 'react'
+import config from '../../config'
+import { twitterPageURL } from '../../util/urlHelpers'
+import { StaticPage, TopbarContainer } from '..'
 import {
   LayoutSingleColumn,
   LayoutWrapperTopbar,
   LayoutWrapperMain,
   LayoutWrapperFooter,
   Footer,
-  ExternalLink,
-} from '../../components';
+  ExternalLink
+} from '../../components'
 
-import css from './ContactPage.module.css';
-import image from './contact.jpg';
+import css from './ContactPage.module.css'
+import image from './contact.jpg'
 
 const AboutPage = () => {
-  const { siteTwitterHandle, siteFacebookPage } = config;
-  const siteTwitterPage = twitterPageURL(siteTwitterHandle);
+  const { siteTwitterHandle, siteFacebookPage } = config
+  const siteTwitterPage = twitterPageURL(siteTwitterHandle)
 
   // prettier-ignore
   return (
@@ -25,7 +25,7 @@ const AboutPage = () => {
       schema={{
         '@context': 'http://schema.org',
         '@type': 'ContactPAge',
-        "description": 'Contact Skillpickr',
+        "description": 'Contact SkillPickr',
         "name": 'Contact page',
       }}
     >
@@ -81,6 +81,6 @@ const AboutPage = () => {
       </LayoutSingleColumn>
     </StaticPage>
   );
-};
+}
 
-export default AboutPage;
+export default AboutPage

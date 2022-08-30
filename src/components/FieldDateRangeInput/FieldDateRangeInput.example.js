@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React from 'react'
 //import { Form as FinalForm, FormSpy } from 'react-final-form';
 //import moment from 'moment';
 //import { Button } from '../../components';
@@ -10,12 +10,10 @@ import React from 'react';
 
 // NOTE: We haven't updated this component to work with time-based availability
 export const Empty = {
-  component: () => (
-    <span> We haven't updated this component to work with time-based availability</span>
-  ),
+  component: () => <span> We haven&apos;t updated this component to work with time-based availability</span>,
   props: {},
-  group: 'custom inputs',
-};
+  group: 'custom inputs'
+}
 
 // const identity = v => v;
 

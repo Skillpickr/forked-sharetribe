@@ -1,17 +1,18 @@
-const path = require('path');
-const fs = require('fs');
-const _ = require('lodash');
-const { types } = require('sharetribe-flex-sdk');
+/* eslint-disable no-useless-escape */
+const path = require('path')
+const fs = require('fs')
+const _ = require('lodash')
+const { types } = require('sharetribe-flex-sdk')
 
-const buildPath = path.resolve(__dirname, '..', 'build');
+const buildPath = path.resolve(__dirname, '..', 'build')
 
 // The HTML build file is generated from the `public/index.html` file
 // and used as a template for server side rendering. The application
 // head and body are injected to the template from the results of
 // calling the `renderApp` function imported from the bundle above.
-const indexHtml = fs.readFileSync(path.join(buildPath, 'index.html'), 'utf-8');
+const indexHtml = fs.readFileSync(path.join(buildPath, 'index.html'), 'utf-8')
 
-const reNoMatch = /($^)/;
+const reNoMatch = /($^)/
 
 // Not all the Helmet provided data is tags to be added inside <head> or <body>
 // <html> tag's attributes need separate interpolation functionality
@@ -28,12 +29,12 @@ const templateWithHtmlAttributes = _.template(indexHtml, {
   interpolate: /data-htmlattr=\"([\s\S]+?)\"/g,
   // Disable evaluated and escaped variables in the template
   evaluate: reNoMatch,
-  escape: reNoMatch,
-});
+  escape: reNoMatch
+})
 
 // Template tags inside given template string (templatedWithHtmlAttributes),
 // which cantains <html> attributes already.
-const templateTags = templatedWithHtmlAttributes =>
+const templateTags = (templatedWithHtmlAttributes) =>
   _.template(templatedWithHtmlAttributes, {
     // Interpolate variables in the HTML template with the following
     // syntax: <!--!variableName-->
@@ -55,61 +56,55 @@ const templateTags = templatedWithHtmlAttributes =>
     interpolate: /<!--!([\s\S]+?)-->/g,
     // Disable evaluated and escaped variables in the template
     evaluate: reNoMatch,
-    escape: reNoMatch,
-  });
+    escape: reNoMatch
+  })
 
 // Interpolate htmlAttributes and other helmet data into the template
-const template = params => {
-  const htmlAttributes = params.htmlAttributes;
-  const tags = _.omit(params, ['htmlAttributes']);
-  const templatedWithHtmlAttributes = templateWithHtmlAttributes({ htmlAttributes });
-  return templateTags(templatedWithHtmlAttributes)(tags);
-};
+const template = (params) => {
+  const htmlAttributes = params.htmlAttributes
+  const tags = _.omit(params, ['htmlAttributes'])
+  const templatedWithHtmlAttributes = templateWithHtmlAttributes({ htmlAttributes })
+  return templateTags(templatedWithHtmlAttributes)(tags)
+}
 
 //
 // Clean Error details when stringifying Error.
 //
-const cleanErrorValue = value => {
+const cleanErrorValue = (value) => {
   // This should not happen
   // Pick only selected few values to be stringified if Error object is encountered.
   // Other values might contain circular structures
   // (SDK's Axios library might add ctx and config which has such structures)
   if (value instanceof Error) {
-    const { name, message, status, statusText, apiErrors } = value;
-    return { type: 'error', name, message, status, statusText, apiErrors };
+    const { name, message, status, statusText, apiErrors } = value
+    return { type: 'error', name, message, status, statusText, apiErrors }
   }
-  return value;
-};
+  return value
+}
 
 //
 // JSON replacer
 // This stringifies SDK types and errors.
 //
 const replacer = (key = null, value) => {
-  const cleanedValue = cleanErrorValue(value);
-  return types.replacer(key, cleanedValue);
-};
+  const cleanedValue = cleanErrorValue(value)
+  return types.replacer(key, cleanedValue)
+}
 
-exports.render = function(requestUrl, context, data, renderApp, webExtractor) {
-  const { preloadedState, translations } = data;
+exports.render = function (requestUrl, context, data, renderApp, webExtractor) {
+  const { preloadedState, translations } = data
 
   // Bind webExtractor as "this" for collectChunks call.
-  const collectWebChunks = webExtractor.collectChunks.bind(webExtractor);
+  const collectWebChunks = webExtractor.collectChunks.bind(webExtractor)
 
   // Render the app with given route, preloaded state, hosted translations.
-  const { head, body } = renderApp(
-    requestUrl,
-    context,
-    preloadedState,
-    translations,
-    collectWebChunks
-  );
+  const { head, body } = renderApp(requestUrl, context, preloadedState, translations, collectWebChunks)
 
   // Preloaded state needs to be passed for client side too.
   // For security reasons we ensure that preloaded state is considered as a string
   // by replacing '<' character with its unicode equivalent.
   // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-  const serializedState = JSON.stringify(preloadedState, replacer).replace(/</g, '\\u003c');
+  const serializedState = JSON.stringify(preloadedState, replacer).replace(/</g, '\\u003c')
 
   // At this point the serializedState is a string, the second
   // JSON.stringify wraps it within double quotes and escapes the
@@ -117,7 +112,7 @@ exports.render = function(requestUrl, context, data, renderApp, webExtractor) {
   // as a string.
   const preloadedStateScript = `
       <script>window.__PRELOADED_STATE__ = ${JSON.stringify(serializedState)};</script>
-  `;
+  `
 
   // We want to precisely control where the analytics script is
   // injected in the HTML file so we can catch all events as early as
@@ -127,9 +122,9 @@ exports.render = function(requestUrl, context, data, renderApp, webExtractor) {
   //       include this script through react-helmet.
   //
   // See: https://developers.google.com/analytics/devguides/collection/gtagjs
-  const googleAnalyticsId = process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
+  const googleAnalyticsId = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
   // Add Google Analytics script if correct id exists (it should start with 'G-' prefix)
-  const hasGoogleAnalyticsv4Id = googleAnalyticsId?.indexOf('G-') === 0;
+  const hasGoogleAnalyticsv4Id = googleAnalyticsId?.indexOf('G-') === 0
 
   // Google Analytics: gtag.js
   // NOTE: FTW is a single-page application (SPA).
@@ -144,8 +139,8 @@ exports.render = function(requestUrl, context, data, renderApp, webExtractor) {
       
         gtag('config', '${googleAnalyticsId}');
       </script>
-    `;
-  const googleAnalyticsScript = hasGoogleAnalyticsv4Id ? gtagScripts : '';
+    `
+  const googleAnalyticsScript = hasGoogleAnalyticsv4Id ? gtagScripts : ''
 
   return template({
     htmlAttributes: head.htmlAttributes.toString(),
@@ -158,6 +153,6 @@ exports.render = function(requestUrl, context, data, renderApp, webExtractor) {
     ssrStyles: webExtractor.getStyleTags(),
     ssrLinks: webExtractor.getLinkTags(),
     ssrScripts: webExtractor.getScriptTags(),
-    body,
-  });
-};
+    body
+  })
+}

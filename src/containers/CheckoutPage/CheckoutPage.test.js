@@ -1,10 +1,10 @@
-import React from 'react';
-import { renderShallow } from '../../util/test-helpers';
-import { createUser, createCurrentUser, createListing, fakeIntl } from '../../util/test-data';
-import { CheckoutPageComponent } from './CheckoutPage';
-import checkoutPageReducer, { SET_INITIAL_VALUES, setInitialValues } from './CheckoutPage.duck';
+import React from 'react'
+import { renderShallow } from '../../util/test-helpers'
+import { createUser, createCurrentUser, createListing, fakeIntl } from '../../util/test-data'
+import { CheckoutPageComponent } from './CheckoutPage'
+import checkoutPageReducer, { SET_INITIAL_VALUES, setInitialValues } from './CheckoutPage.duck'
 
-const noop = () => null;
+const noop = () => null
 
 describe('CheckoutPage', () => {
   it('matches snapshot', () => {
@@ -12,11 +12,11 @@ describe('CheckoutPage', () => {
       'listing1',
       { availabilityPlan: { timezone: 'Etc/UTC' } },
       { author: createUser('author') }
-    );
+    )
     const props = {
       bookingDates: {
         bookingStart: new Date(Date.UTC(2017, 3, 14)),
-        bookingEnd: new Date(Date.UTC(2017, 3, 16)),
+        bookingEnd: new Date(Date.UTC(2017, 3, 16))
       },
       dispatch: noop,
       history: { push: noop, action: 'PUSH' },
@@ -36,11 +36,11 @@ describe('CheckoutPage', () => {
       onRetrievePaymentIntent: noop,
       onSavePaymentMethod: noop,
       onSendMessage: noop,
-      confirmCardPaymentInProgress: false,
-    };
-    const tree = renderShallow(<CheckoutPageComponent {...props} />);
-    expect(tree).toMatchSnapshot();
-  });
+      confirmCardPaymentInProgress: false
+    }
+    const tree = renderShallow(<CheckoutPageComponent {...props} />)
+    expect(tree).toMatchSnapshot()
+  })
 
   describe('Duck', () => {
     it('ActionCreator: setInitialValues(initialValues)', () => {
@@ -48,20 +48,20 @@ describe('CheckoutPage', () => {
         '00000000-0000-0000-0000-000000000000',
         {},
         {
-          author: createUser('author1'),
+          author: createUser('author1')
         }
-      );
+      )
       const bookingDates = {
         bookingStart: new Date(Date.UTC(2017, 3, 14)),
-        bookingEnd: new Date(Date.UTC(2017, 3, 16)),
-      };
+        bookingEnd: new Date(Date.UTC(2017, 3, 16))
+      }
       const expectedAction = {
         type: SET_INITIAL_VALUES,
-        payload: { listing, bookingDates },
-      };
+        payload: { listing, bookingDates }
+      }
 
-      expect(setInitialValues({ listing, bookingDates })).toEqual(expectedAction);
-    });
+      expect(setInitialValues({ listing, bookingDates })).toEqual(expectedAction)
+    })
 
     describe('Reducer', () => {
       const initialValues = {
@@ -74,29 +74,29 @@ describe('CheckoutPage', () => {
         speculateTransactionInProgress: false,
         speculatedTransaction: null,
         transaction: null,
-        confirmPaymentError: null,
-      };
+        confirmPaymentError: null
+      }
 
       it('should return the initial state', () => {
-        expect(checkoutPageReducer(undefined, {})).toEqual(initialValues);
-      });
+        expect(checkoutPageReducer(undefined, {})).toEqual(initialValues)
+      })
 
       it('should handle SET_INITIAL_VALUES', () => {
         const listing = createListing(
           '00000000-0000-0000-0000-000000000000',
           {},
           {
-            author: createUser('author1'),
+            author: createUser('author1')
           }
-        );
+        )
         const bookingDates = {
           bookingStart: new Date(Date.UTC(2017, 3, 14)),
-          bookingEnd: new Date(Date.UTC(2017, 3, 16)),
-        };
-        const payload = { listing, bookingDates };
-        const expected = { ...initialValues, ...payload };
-        expect(checkoutPageReducer({}, { type: SET_INITIAL_VALUES, payload })).toEqual(expected);
-      });
-    });
-  });
-});
+          bookingEnd: new Date(Date.UTC(2017, 3, 16))
+        }
+        const payload = { listing, bookingDates }
+        const expected = { ...initialValues, ...payload }
+        expect(checkoutPageReducer({}, { type: SET_INITIAL_VALUES, payload })).toEqual(expected)
+      })
+    })
+  })
+})

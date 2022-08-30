@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const EditIcon = props => {
-  const { className } = props;
+const EditIcon = (props) => {
+  const { className } = props
   return (
     <svg
       className={className}
@@ -12,14 +12,7 @@ const EditIcon = props => {
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g
-        stroke="none"
-        strokeWidth="1"
-        fill="none"
-        fillRule="evenodd"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
+      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round">
         <g transform="translate(-255.000000, -76.000000)" stroke="#FFFFFF">
           <g transform="translate(0.000000, 60.000000)">
             <g transform="translate(256.000000, 16.000000)">
@@ -31,13 +24,13 @@ const EditIcon = props => {
         </g>
       </g>
     </svg>
-  );
-};
+  )
+}
 
-EditIcon.defaultProps = { className: null };
+EditIcon.defaultProps = { className: null }
 
-const { string } = PropTypes;
+const { string } = PropTypes
 
-EditIcon.propTypes = { className: string };
+EditIcon.propTypes = { className: string }
 
-export default EditIcon;
+export default EditIcon
