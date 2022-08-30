@@ -305,7 +305,7 @@ const EditListingFeaturesFormComponent = props => (
             name={musicSoloistKey}
             id={musicSoloistKey}
             label={musicSoloistKeyMessage}
-            validate={composeValidators(required(requiredDropdown))}
+            validate={required(requiredDropdown)}
           >
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {id => (
