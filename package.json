@@ -106,7 +106,6 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
-    // "format": "prettier --write '**/*.{js,css}'",
     "format-ci": "prettier --list-different '**/*.{js,css}'",
     "format-docs": "prettier --write '**/*.md'",
     "test": "NODE_ICU_DATA=node_modules/full-icu sharetribe-scripts test",
@@ -133,16 +132,5 @@
   },
   "engines": {
     "node": ">=14.15.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "proseWrap": "always"
   }
 }
