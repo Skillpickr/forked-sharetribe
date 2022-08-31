@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import css from './IconKeys.module.css';
+import css from './IconKeys.module.css'
 
-const IconKeys = props => {
-  const { className } = props;
+const IconKeys = (props) => {
+  const { className } = props
   return (
     <svg
       className={className}
@@ -12,16 +12,8 @@ const IconKeys = props => {
       height="57px"
       viewBox="0 0 50 57"
       version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g
-        stroke="none"
-        strokeWidth="1"
-        fill="none"
-        fillRule="evenodd"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
+      xmlns="http://www.w3.org/2000/svg">
+      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round">
         <g className={css.strokeMarketplaceColor} transform="translate(-538.000000, -240.000000)">
           <g transform="translate(540.000000, 242.000000)">
             <g>
@@ -46,15 +38,15 @@ const IconKeys = props => {
         </g>
       </g>
     </svg>
-  );
-};
+  )
+}
 
-IconKeys.defaultProps = { className: null };
+IconKeys.defaultProps = { className: null }
 
-const { string } = PropTypes;
+const { string } = PropTypes
 
 IconKeys.propTypes = {
-  className: string,
-};
+  className: string
+}
 
-export default IconKeys;
+export default IconKeys

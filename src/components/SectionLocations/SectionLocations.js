@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from '../../util/reactIntl';
-import classNames from 'classnames';
-import { lazyLoadWithDimensions } from '../../util/contextHelpers';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { FormattedMessage } from '../../util/reactIntl'
+import classNames from 'classnames'
+import { lazyLoadWithDimensions } from '../../util/contextHelpers'
 
-import { NamedLink } from '../../components';
+import { NamedLink } from '../../components'
 
-import css from './SectionLocations.module.css';
+import css from './SectionLocations.module.css'
 
-import copenhagenImage from './images/Copenhagen.jpg';
-import aarhusImage from './images/Aarhus.jpg';
-import odenseImage from './images/Odense.jpg';
+import copenhagenImage from './images/Copenhagen.jpg'
+import aarhusImage from './images/Aarhus.jpg'
+import odenseImage from './images/Odense.jpg'
 
 class LocationImage extends Component {
   render() {
-    const { alt, ...rest } = this.props;
-    return <img alt={alt} {...rest} />;
+    const { alt, ...rest } = this.props
+    return <img alt={alt} {...rest} />
   }
 }
-const LazyImage = lazyLoadWithDimensions(LocationImage);
+const LazyImage = lazyLoadWithDimensions(LocationImage)
 
 const locationLink = (name, image, searchQuery) => {
-  const nameText = <span className={css.locationName}>{name}</span>;
+  const nameText = <span className={css.locationName}>{name}</span>
   return (
     <NamedLink name="SearchPage" to={{ search: searchQuery }} className={css.location}>
       <div className={css.imageWrapper}>
@@ -36,13 +36,13 @@ const locationLink = (name, image, searchQuery) => {
         /> */}
       </div>
     </NamedLink>
-  );
-};
+  )
+}
 
-const SectionLocations = props => {
-  const { rootClassName, className } = props;
+const SectionLocations = (props) => {
+  const { rootClassName, className } = props
 
-  const classes = classNames(rootClassName || css.root, className);
+  const classes = classNames(rootClassName || css.root, className)
 
   return (
     <div className={classes}>
@@ -67,16 +67,16 @@ const SectionLocations = props => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-SectionLocations.defaultProps = { rootClassName: null, className: null };
+SectionLocations.defaultProps = { rootClassName: null, className: null }
 
-const { string } = PropTypes;
+const { string } = PropTypes
 
 SectionLocations.propTypes = {
   rootClassName: string,
-  className: string,
-};
+  className: string
+}
 
-export default SectionLocations;
+export default SectionLocations

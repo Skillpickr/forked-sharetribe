@@ -1,10 +1,10 @@
-import React from 'react';
-import { AvatarLarge, AvatarMedium } from '../../components';
+import React from 'react'
+import { AvatarLarge, AvatarMedium } from '../../components'
 
-import css from './ListingPage.module.css';
+import css from './ListingPage.module.css'
 
-const SectionAvatar = props => {
-  const { user } = props;
+const SectionAvatar = (props) => {
+  const { user } = props
   return (
     <div className={css.sectionAvatar}>
       <AvatarLarge
@@ -16,7 +16,7 @@ const SectionAvatar = props => {
 
       <AvatarMedium user={user} className={css.avatarMobile} disableProfileLink />
     </div>
-  );
-};
+  )
+}
 
-export default SectionAvatar;
+export default SectionAvatar

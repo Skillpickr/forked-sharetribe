@@ -1,133 +1,114 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
-import { Form as FinalForm } from 'react-final-form';
-import classNames from 'classnames';
-import * as validators from '../../util/validators';
-import { Form, PrimaryButton, FieldTextInput } from '../../components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { compose } from 'redux'
+import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
+import { Form as FinalForm } from 'react-final-form'
+import classNames from 'classnames'
+import * as validators from '../../util/validators'
+import { Form, PrimaryButton, FieldTextInput } from '../../components'
 
-import css from './SignupForm.module.css';
+import css from './SignupForm.module.css'
 
-const KEY_CODE_ENTER = 13;
+const KEY_CODE_ENTER = 13
 
-const SignupFormComponent = props => (
+const SignupFormComponent = (props) => (
   <FinalForm
     {...props}
-    render={fieldRenderProps => {
-      const {
-        rootClassName,
-        className,
-        formId,
-        handleSubmit,
-        inProgress,
-        invalid,
-        intl,
-        onOpenTermsOfService,
-      } = fieldRenderProps;
+    render={(fieldRenderProps) => {
+      const { rootClassName, className, formId, handleSubmit, inProgress, invalid, intl, onOpenTermsOfService } =
+        fieldRenderProps
 
       // email
       const emailLabel = intl.formatMessage({
-        id: 'SignupForm.emailLabel',
-      });
+        id: 'SignupForm.emailLabel'
+      })
       const emailPlaceholder = intl.formatMessage({
-        id: 'SignupForm.emailPlaceholder',
-      });
+        id: 'SignupForm.emailPlaceholder'
+      })
       const emailRequiredMessage = intl.formatMessage({
-        id: 'SignupForm.emailRequired',
-      });
-      const emailRequired = validators.required(emailRequiredMessage);
+        id: 'SignupForm.emailRequired'
+      })
+      const emailRequired = validators.required(emailRequiredMessage)
       const emailInvalidMessage = intl.formatMessage({
-        id: 'SignupForm.emailInvalid',
-      });
-      const emailValid = validators.emailFormatValid(emailInvalidMessage);
+        id: 'SignupForm.emailInvalid'
+      })
+      const emailValid = validators.emailFormatValid(emailInvalidMessage)
 
       // password
       const passwordLabel = intl.formatMessage({
-        id: 'SignupForm.passwordLabel',
-      });
+        id: 'SignupForm.passwordLabel'
+      })
       const passwordPlaceholder = intl.formatMessage({
-        id: 'SignupForm.passwordPlaceholder',
-      });
+        id: 'SignupForm.passwordPlaceholder'
+      })
       const passwordRequiredMessage = intl.formatMessage({
-        id: 'SignupForm.passwordRequired',
-      });
+        id: 'SignupForm.passwordRequired'
+      })
       const passwordMinLengthMessage = intl.formatMessage(
         {
-          id: 'SignupForm.passwordTooShort',
+          id: 'SignupForm.passwordTooShort'
         },
         {
-          minLength: validators.PASSWORD_MIN_LENGTH,
+          minLength: validators.PASSWORD_MIN_LENGTH
         }
-      );
+      )
       const passwordMaxLengthMessage = intl.formatMessage(
         {
-          id: 'SignupForm.passwordTooLong',
+          id: 'SignupForm.passwordTooLong'
         },
         {
-          maxLength: validators.PASSWORD_MAX_LENGTH,
+          maxLength: validators.PASSWORD_MAX_LENGTH
         }
-      );
-      const passwordMinLength = validators.minLength(
-        passwordMinLengthMessage,
-        validators.PASSWORD_MIN_LENGTH
-      );
-      const passwordMaxLength = validators.maxLength(
-        passwordMaxLengthMessage,
-        validators.PASSWORD_MAX_LENGTH
-      );
-      const passwordRequired = validators.requiredStringNoTrim(passwordRequiredMessage);
-      const passwordValidators = validators.composeValidators(
-        passwordRequired,
-        passwordMinLength,
-        passwordMaxLength
-      );
+      )
+      const passwordMinLength = validators.minLength(passwordMinLengthMessage, validators.PASSWORD_MIN_LENGTH)
+      const passwordMaxLength = validators.maxLength(passwordMaxLengthMessage, validators.PASSWORD_MAX_LENGTH)
+      const passwordRequired = validators.requiredStringNoTrim(passwordRequiredMessage)
+      const passwordValidators = validators.composeValidators(passwordRequired, passwordMinLength, passwordMaxLength)
 
       // firstName
       const firstNameLabel = intl.formatMessage({
-        id: 'SignupForm.firstNameLabel',
-      });
+        id: 'SignupForm.firstNameLabel'
+      })
       const firstNamePlaceholder = intl.formatMessage({
-        id: 'SignupForm.firstNamePlaceholder',
-      });
+        id: 'SignupForm.firstNamePlaceholder'
+      })
       const firstNameRequiredMessage = intl.formatMessage({
-        id: 'SignupForm.firstNameRequired',
-      });
-      const firstNameRequired = validators.required(firstNameRequiredMessage);
+        id: 'SignupForm.firstNameRequired'
+      })
+      const firstNameRequired = validators.required(firstNameRequiredMessage)
 
       // lastName
       const lastNameLabel = intl.formatMessage({
-        id: 'SignupForm.lastNameLabel',
-      });
+        id: 'SignupForm.lastNameLabel'
+      })
       const lastNamePlaceholder = intl.formatMessage({
-        id: 'SignupForm.lastNamePlaceholder',
-      });
+        id: 'SignupForm.lastNamePlaceholder'
+      })
       const lastNameRequiredMessage = intl.formatMessage({
-        id: 'SignupForm.lastNameRequired',
-      });
-      const lastNameRequired = validators.required(lastNameRequiredMessage);
+        id: 'SignupForm.lastNameRequired'
+      })
+      const lastNameRequired = validators.required(lastNameRequiredMessage)
 
-      const classes = classNames(rootClassName || css.root, className);
-      const submitInProgress = inProgress;
-      const submitDisabled = invalid || submitInProgress;
+      const classes = classNames(rootClassName || css.root, className)
+      const submitInProgress = inProgress
+      const submitDisabled = invalid || submitInProgress
 
-      const handleTermsKeyUp = e => {
+      const handleTermsKeyUp = (e) => {
         // Allow click action with keyboard like with normal links
         if (e.keyCode === KEY_CODE_ENTER) {
-          onOpenTermsOfService();
+          onOpenTermsOfService()
         }
-      };
+      }
       const termsLink = (
         <span
           className={css.termsLink}
           onClick={onOpenTermsOfService}
           role="button"
           tabIndex="0"
-          onKeyUp={handleTermsKeyUp}
-        >
+          onKeyUp={handleTermsKeyUp}>
           <FormattedMessage id="SignupForm.termsAndConditionsLinkText" />
         </span>
-      );
+      )
 
       return (
         <Form className={classes} onSubmit={handleSubmit}>
@@ -178,10 +159,7 @@ const SignupFormComponent = props => (
           <div className={css.bottomWrapper}>
             <p className={css.bottomWrapperText}>
               <span className={css.termsText}>
-                <FormattedMessage
-                  id="SignupForm.termsAndConditionsAcceptText"
-                  values={{ termsLink }}
-                />
+                <FormattedMessage id="SignupForm.termsAndConditionsAcceptText" values={{ termsLink }} />
               </span>
             </p>
             <PrimaryButton type="submit" inProgress={submitInProgress} disabled={submitDisabled}>
@@ -189,14 +167,14 @@ const SignupFormComponent = props => (
             </PrimaryButton>
           </div>
         </Form>
-      );
+      )
     }}
   />
-);
+)
 
-SignupFormComponent.defaultProps = { inProgress: false };
+SignupFormComponent.defaultProps = { inProgress: false }
 
-const { bool, func } = PropTypes;
+const { bool, func } = PropTypes
 
 SignupFormComponent.propTypes = {
   inProgress: bool,
@@ -204,10 +182,10 @@ SignupFormComponent.propTypes = {
   onOpenTermsOfService: func.isRequired,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const SignupForm = compose(injectIntl)(SignupFormComponent);
-SignupForm.displayName = 'SignupForm';
+const SignupForm = compose(injectIntl)(SignupFormComponent)
+SignupForm.displayName = 'SignupForm'
 
-export default SignupForm;
+export default SignupForm

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { array, bool, func, object, string } from 'prop-types';
-import { FormattedMessage } from '../../util/reactIntl';
-import classNames from 'classnames';
-import { LISTING_STATE_DRAFT } from '../../util/types';
-import { EditListingPhotosForm } from '../../forms';
-import { ensureOwnListing } from '../../util/data';
-import { ListingLink } from '../../components';
+import React, { Component } from 'react'
+import { array, bool, func, object, string } from 'prop-types'
+import { FormattedMessage } from '../../util/reactIntl'
+import classNames from 'classnames'
+import { LISTING_STATE_DRAFT } from '../../util/types'
+import { EditListingPhotosForm } from '../../forms'
+import { ensureOwnListing } from '../../util/data'
+import { ListingLink } from '../../components'
 
-import css from './EditListingPhotosPanel.module.css';
+import css from './EditListingPhotosPanel.module.css'
 
 class EditListingPhotosPanel extends Component {
   render() {
@@ -26,15 +26,14 @@ class EditListingPhotosPanel extends Component {
       updateInProgress,
       onChange,
       onSubmit,
-      onRemoveImage,
-    } = this.props;
+      onRemoveImage
+    } = this.props
 
-    const rootClass = rootClassName || css.root;
-    const classes = classNames(rootClass, className);
-    const currentListing = ensureOwnListing(listing);
+    const rootClass = rootClassName || css.root
+    const classes = classNames(rootClass, className)
+    const currentListing = ensureOwnListing(listing)
 
-    const isPublished =
-      currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
+    const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT
     const panelTitle = isPublished ? (
       <FormattedMessage
         id="EditListingPhotosPanel.title"
@@ -42,7 +41,7 @@ class EditListingPhotosPanel extends Component {
       />
     ) : (
       <FormattedMessage id="EditListingPhotosPanel.createListingTitle" />
-    );
+    )
 
     return (
       <div className={classes}>
@@ -55,9 +54,9 @@ class EditListingPhotosPanel extends Component {
           initialValues={{ images }}
           images={images}
           onImageUpload={onImageUpload}
-          onSubmit={values => {
-            const { addImage, ...updateValues } = values;
-            onSubmit(updateValues);
+          onSubmit={(values) => {
+            const { addImage, ...updateValues } = values
+            onSubmit(updateValues)
           }}
           onChange={onChange}
           onUpdateImageOrder={onUpdateImageOrder}
@@ -67,7 +66,7 @@ class EditListingPhotosPanel extends Component {
           updateInProgress={updateInProgress}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -76,8 +75,8 @@ EditListingPhotosPanel.defaultProps = {
   rootClassName: null,
   errors: null,
   images: [],
-  listing: null,
-};
+  listing: null
+}
 
 EditListingPhotosPanel.propTypes = {
   className: string,
@@ -97,7 +96,7 @@ EditListingPhotosPanel.propTypes = {
   submitButtonText: string.isRequired,
   panelUpdated: bool.isRequired,
   updateInProgress: bool.isRequired,
-  onRemoveImage: func.isRequired,
-};
+  onRemoveImage: func.isRequired
+}
 
-export default EditListingPhotosPanel;
+export default EditListingPhotosPanel

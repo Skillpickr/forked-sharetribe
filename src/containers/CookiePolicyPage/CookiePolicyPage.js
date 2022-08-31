@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
-import { isScrollingDisabled } from '../../ducks/UI.duck';
-import { TopbarContainer } from '..';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
+import { isScrollingDisabled } from '../../ducks/UI.duck'
+import { TopbarContainer } from '..'
 import {
   Page,
   LayoutSideNavigation,
@@ -13,45 +13,45 @@ import {
   LayoutWrapperTopbar,
   LayoutWrapperFooter,
   CookiePolicy,
-  Footer,
-} from '../../components';
-import config from '../../config';
+  Footer
+} from '../../components'
+import config from '../../config'
 
-import css from './CookiePolicyPage.module.css';
+import css from './CookiePolicyPage.module.css'
 
-const CookiePolicyPageComponent = props => {
-  const { scrollingDisabled, intl } = props;
+const CookiePolicyPageComponent = (props) => {
+  const { scrollingDisabled, intl } = props
 
   const tabs = [
     {
       text: intl.formatMessage({ id: 'CookiePolicyPage.privacyTabTitle' }),
       selected: true,
       linkProps: {
-        name: 'CookiePolicyPage',
-      },
+        name: 'CookiePolicyPage'
+      }
     },
     {
       text: intl.formatMessage({ id: 'CookiePolicyPage.tosTabTitle' }),
       selected: false,
       linkProps: {
-        name: 'TermsOfServicePage',
-      },
+        name: 'TermsOfServicePage'
+      }
     },
     {
       text: intl.formatMessage({ id: 'CookiePolicyPage.cookieTabTitle' }),
       selected: true,
       linkProps: {
-        name: 'CookiePolicyPage',
-      },
-    },
-  ];
-  const siteTitle = config.siteTitle;
-  const schemaTitle = intl.formatMessage({ id: 'CookiePolicyPage.schemaTitle' }, { siteTitle });
+        name: 'CookiePolicyPage'
+      }
+    }
+  ]
+  const siteTitle = config.siteTitle
+  const schemaTitle = intl.formatMessage({ id: 'CookiePolicyPage.schemaTitle' }, { siteTitle })
   const schema = {
     '@context': 'http://schema.org',
     '@type': 'WebPage',
-    name: schemaTitle,
-  };
+    name: schemaTitle
+  }
   return (
     <Page title={schemaTitle} scrollingDisabled={scrollingDisabled} schema={schema}>
       <LayoutSideNavigation>
@@ -72,27 +72,24 @@ const CookiePolicyPageComponent = props => {
         </LayoutWrapperFooter>
       </LayoutSideNavigation>
     </Page>
-  );
-};
+  )
+}
 
-const { bool } = PropTypes;
+const { bool } = PropTypes
 
 CookiePolicyPageComponent.propTypes = {
   scrollingDisabled: bool.isRequired,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    scrollingDisabled: isScrollingDisabled(state),
-  };
-};
+    scrollingDisabled: isScrollingDisabled(state)
+  }
+}
 
-const CookiePolicyPage = compose(
-  connect(mapStateToProps),
-  injectIntl
-)(CookiePolicyPageComponent);
+const CookiePolicyPage = compose(connect(mapStateToProps), injectIntl)(CookiePolicyPageComponent)
 
-export default CookiePolicyPage;
+export default CookiePolicyPage

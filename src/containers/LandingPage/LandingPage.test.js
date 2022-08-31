@@ -1,9 +1,9 @@
-import React from 'react';
-import { fakeIntl } from '../../util/test-data';
-import { renderShallow } from '../../util/test-helpers';
-import { LandingPageComponent } from './LandingPage';
+import React from 'react'
+import { fakeIntl } from '../../util/test-data'
+import { renderShallow } from '../../util/test-helpers'
+import { LandingPageComponent } from './LandingPage'
 
-const noop = () => null;
+const noop = () => null
 
 describe('LandingPage', () => {
   it('matches snapshot', () => {
@@ -21,7 +21,7 @@ describe('LandingPage', () => {
         sendVerificationEmailInProgress={false}
         onResendVerificationEmail={noop}
       />
-    );
-    expect(tree).toMatchSnapshot();
-  });
-});
+    )
+    expect(tree).toMatchSnapshot()
+  })
+})

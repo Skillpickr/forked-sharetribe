@@ -2,53 +2,39 @@
  * This component will show the booking info and calculated total price.
  * I.e. dates and other details related to payment decision in receipt format.
  */
-import React from 'react';
-import { oneOf, string } from 'prop-types';
-import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl';
-import classNames from 'classnames';
-import {
-  propTypes,
-  LINE_ITEM_CUSTOMER_COMMISSION,
-  LINE_ITEM_PROVIDER_COMMISSION,
-} from '../../util/types';
+import React from 'react'
+import { oneOf, string } from 'prop-types'
+import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl'
+import classNames from 'classnames'
+import { propTypes, LINE_ITEM_CUSTOMER_COMMISSION, LINE_ITEM_PROVIDER_COMMISSION } from '../../util/types'
 
-import LineItemBookingPeriod from './LineItemBookingPeriod';
-import LineItemBasePriceMaybe from './LineItemBasePriceMaybe';
-import LineItemUnitPriceMaybe from './LineItemUnitPriceMaybe';
-import LineItemSubTotalMaybe from './LineItemSubTotalMaybe';
-import LineItemCustomerCommissionMaybe from './LineItemCustomerCommissionMaybe';
-import LineItemCustomerCommissionRefundMaybe from './LineItemCustomerCommissionRefundMaybe';
-import LineItemProviderCommissionMaybe from './LineItemProviderCommissionMaybe';
-import LineItemProviderCommissionRefundMaybe from './LineItemProviderCommissionRefundMaybe';
-import LineItemRefundMaybe from './LineItemRefundMaybe';
-import LineItemTotalPrice from './LineItemTotalPrice';
-import LineItemUnknownItemsMaybe from './LineItemUnknownItemsMaybe';
+import LineItemBookingPeriod from './LineItemBookingPeriod'
+import LineItemBasePriceMaybe from './LineItemBasePriceMaybe'
+import LineItemUnitPriceMaybe from './LineItemUnitPriceMaybe'
+import LineItemSubTotalMaybe from './LineItemSubTotalMaybe'
+import LineItemCustomerCommissionMaybe from './LineItemCustomerCommissionMaybe'
+import LineItemCustomerCommissionRefundMaybe from './LineItemCustomerCommissionRefundMaybe'
+import LineItemProviderCommissionMaybe from './LineItemProviderCommissionMaybe'
+import LineItemProviderCommissionRefundMaybe from './LineItemProviderCommissionRefundMaybe'
+import LineItemRefundMaybe from './LineItemRefundMaybe'
+import LineItemTotalPrice from './LineItemTotalPrice'
+import LineItemUnknownItemsMaybe from './LineItemUnknownItemsMaybe'
 
-import css from './BookingBreakdown.module.css';
+import css from './BookingBreakdown.module.css'
 
-export const BookingBreakdownComponent = props => {
-  const {
-    rootClassName,
-    className,
-    userRole,
-    unitType,
-    transaction,
-    booking,
-    intl,
-    dateType,
-    timeZone,
-  } = props;
+export const BookingBreakdownComponent = (props) => {
+  const { rootClassName, className, userRole, unitType, transaction, booking, intl, dateType, timeZone } = props
 
-  const isCustomer = userRole === 'customer';
-  const isProvider = userRole === 'provider';
+  const isCustomer = userRole === 'customer'
+  const isProvider = userRole === 'provider'
 
-  const hasCommissionLineItem = transaction.attributes.lineItems.find(item => {
-    const hasCustomerCommission = isCustomer && item.code === LINE_ITEM_CUSTOMER_COMMISSION;
-    const hasProviderCommission = isProvider && item.code === LINE_ITEM_PROVIDER_COMMISSION;
-    return (hasCustomerCommission || hasProviderCommission) && !item.reversal;
-  });
+  const hasCommissionLineItem = transaction.attributes.lineItems.find((item) => {
+    const hasCustomerCommission = isCustomer && item.code === LINE_ITEM_CUSTOMER_COMMISSION
+    const hasProviderCommission = isProvider && item.code === LINE_ITEM_PROVIDER_COMMISSION
+    return (hasCustomerCommission || hasProviderCommission) && !item.reversal
+  })
 
-  const classes = classNames(rootClassName || css.root, className);
+  const classes = classNames(rootClassName || css.root, className)
 
   /**
    * BookingBreakdown contains different line items:
@@ -90,46 +76,20 @@ export const BookingBreakdownComponent = props => {
 
   return (
     <div className={classes}>
-      <LineItemBookingPeriod
-        booking={booking}
-        unitType={unitType}
-        dateType={dateType}
-        timeZone={timeZone}
-      />
+      <LineItemBookingPeriod booking={booking} unitType={unitType} dateType={dateType} timeZone={timeZone} />
       <LineItemUnitPriceMaybe transaction={transaction} unitType={unitType} intl={intl} />
 
       <LineItemBasePriceMaybe transaction={transaction} unitType={unitType} intl={intl} />
       <LineItemUnknownItemsMaybe transaction={transaction} isProvider={isProvider} intl={intl} />
 
-      <LineItemSubTotalMaybe
-        transaction={transaction}
-        unitType={unitType}
-        userRole={userRole}
-        intl={intl}
-      />
+      <LineItemSubTotalMaybe transaction={transaction} unitType={unitType} userRole={userRole} intl={intl} />
       <LineItemRefundMaybe transaction={transaction} intl={intl} />
 
-      <LineItemCustomerCommissionMaybe
-        transaction={transaction}
-        isCustomer={isCustomer}
-        intl={intl}
-      />
-      <LineItemCustomerCommissionRefundMaybe
-        transaction={transaction}
-        isCustomer={isCustomer}
-        intl={intl}
-      />
+      <LineItemCustomerCommissionMaybe transaction={transaction} isCustomer={isCustomer} intl={intl} />
+      <LineItemCustomerCommissionRefundMaybe transaction={transaction} isCustomer={isCustomer} intl={intl} />
 
-      <LineItemProviderCommissionMaybe
-        transaction={transaction}
-        isProvider={isProvider}
-        intl={intl}
-      />
-      <LineItemProviderCommissionRefundMaybe
-        transaction={transaction}
-        isProvider={isProvider}
-        intl={intl}
-      />
+      <LineItemProviderCommissionMaybe transaction={transaction} isProvider={isProvider} intl={intl} />
+      <LineItemProviderCommissionRefundMaybe transaction={transaction} isProvider={isProvider} intl={intl} />
 
       <LineItemTotalPrice transaction={transaction} isProvider={isProvider} intl={intl} />
 
@@ -139,15 +99,15 @@ export const BookingBreakdownComponent = props => {
         </span>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
 BookingBreakdownComponent.defaultProps = {
   rootClassName: null,
   className: null,
   dateType: null,
-  timeZone: null,
-};
+  timeZone: null
+}
 
 BookingBreakdownComponent.propTypes = {
   rootClassName: string,
@@ -161,11 +121,11 @@ BookingBreakdownComponent.propTypes = {
   timeZone: string,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const BookingBreakdown = injectIntl(BookingBreakdownComponent);
+const BookingBreakdown = injectIntl(BookingBreakdownComponent)
 
-BookingBreakdown.displayName = 'BookingBreakdown';
+BookingBreakdown.displayName = 'BookingBreakdown'
 
-export default BookingBreakdown;
+export default BookingBreakdown

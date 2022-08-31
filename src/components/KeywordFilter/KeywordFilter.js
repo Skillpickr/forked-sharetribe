@@ -1,40 +1,40 @@
-import React, { Component } from 'react';
-import { arrayOf, func, number, shape, string } from 'prop-types';
-import classNames from 'classnames';
-import { injectIntl, intlShape } from '../../util/reactIntl';
-import debounce from 'lodash/debounce';
-import { FieldTextInput } from '../../components';
+import React, { Component } from 'react'
+import { arrayOf, func, number, shape, string } from 'prop-types'
+import classNames from 'classnames'
+import { injectIntl, intlShape } from '../../util/reactIntl'
+import debounce from 'lodash/debounce'
+import { FieldTextInput } from '../../components'
 
-import { FilterPopup, FilterPlain } from '../../components';
-import css from './KeywordFilter.module.css';
+import { FilterPopup, FilterPlain } from '../../components'
+import css from './KeywordFilter.module.css'
 
 // When user types, we wait for new keystrokes a while before searching new content
-const DEBOUNCE_WAIT_TIME = 600;
+const DEBOUNCE_WAIT_TIME = 600
 // Short search queries (e.g. 2 letters) have a longer timeout before search is made
-const TIMEOUT_FOR_SHORT_QUERIES = 2000;
+const TIMEOUT_FOR_SHORT_QUERIES = 2000
 
-const getKeywordQueryParam = queryParamNames => {
+const getKeywordQueryParam = (queryParamNames) => {
   return Array.isArray(queryParamNames)
     ? queryParamNames[0]
     : typeof queryParamNames === 'string'
     ? queryParamNames
-    : 'keywords';
-};
+    : 'keywords'
+}
 
 class KeywordFilter extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.filter = null;
-    this.filterContent = null;
-    this.shortKeywordTimeout = null;
-    this.mobileInputRef = React.createRef();
+    this.filter = null
+    this.filterContent = null
+    this.shortKeywordTimeout = null
+    this.mobileInputRef = React.createRef()
 
-    this.positionStyleForContent = this.positionStyleForContent.bind(this);
+    this.positionStyleForContent = this.positionStyleForContent.bind(this)
   }
 
   componentWillUnmount() {
-    window.clearTimeout(this.shortKeywordTimeout);
+    window.clearTimeout(this.shortKeywordTimeout)
   }
 
   positionStyleForContent() {
@@ -42,22 +42,20 @@ class KeywordFilter extends Component {
       // Render the filter content to the right from the menu
       // unless there's no space in which case it is rendered
       // to the left
-      const distanceToRight = window.innerWidth - this.filter.getBoundingClientRect().right;
-      const labelWidth = this.filter.offsetWidth;
-      const contentWidth = this.filterContent.offsetWidth;
-      const contentWidthBiggerThanLabel = contentWidth - labelWidth;
-      const renderToRight = distanceToRight > contentWidthBiggerThanLabel;
-      const contentPlacementOffset = this.props.contentPlacementOffset;
+      const distanceToRight = window.innerWidth - this.filter.getBoundingClientRect().right
+      const labelWidth = this.filter.offsetWidth
+      const contentWidth = this.filterContent.offsetWidth
+      const contentWidthBiggerThanLabel = contentWidth - labelWidth
+      const renderToRight = distanceToRight > contentWidthBiggerThanLabel
+      const contentPlacementOffset = this.props.contentPlacementOffset
 
-      const offset = renderToRight
-        ? { left: contentPlacementOffset }
-        : { right: contentPlacementOffset };
+      const offset = renderToRight ? { left: contentPlacementOffset } : { right: contentPlacementOffset }
       // set a min-width if the content is narrower than the label
-      const minWidth = contentWidth < labelWidth ? { minWidth: labelWidth } : null;
+      const minWidth = contentWidth < labelWidth ? { minWidth: labelWidth } : null
 
-      return { ...offset, ...minWidth };
+      return { ...offset, ...minWidth }
     }
-    return {};
+    return {}
   }
 
   render() {
@@ -74,73 +72,66 @@ class KeywordFilter extends Component {
       intl,
       showAsPopup,
       ...rest
-    } = this.props;
+    } = this.props
 
-    const classes = classNames(rootClassName || css.root, className);
+    const classes = classNames(rootClassName || css.root, className)
 
-    const urlParam = getKeywordQueryParam(queryParamNames);
-    const hasInitialValues =
-      !!initialValues && !!initialValues[urlParam] && initialValues[urlParam].length > 0;
+    const urlParam = getKeywordQueryParam(queryParamNames)
+    const hasInitialValues = !!initialValues && !!initialValues[urlParam] && initialValues[urlParam].length > 0
     const labelForPopup = hasInitialValues
-      ? intl.formatMessage(
-          { id: 'KeywordFilter.labelSelected' },
-          { labelText: initialValues[urlParam] }
-        )
-      : label;
+      ? intl.formatMessage({ id: 'KeywordFilter.labelSelected' }, { labelText: initialValues[urlParam] })
+      : label
 
     const labelForPlain = hasInitialValues
-      ? intl.formatMessage(
-          { id: 'KeywordFilterPlainForm.labelSelected' },
-          { labelText: initialValues[urlParam] }
-        )
-      : label;
+      ? intl.formatMessage({ id: 'KeywordFilterPlainForm.labelSelected' }, { labelText: initialValues[urlParam] })
+      : label
 
-    const filterText = intl.formatMessage({ id: 'KeywordFilter.filterText' });
+    const filterText = intl.formatMessage({ id: 'KeywordFilter.filterText' })
 
-    const placeholder = intl.formatMessage({ id: 'KeywordFilter.placeholder' });
+    const placeholder = intl.formatMessage({ id: 'KeywordFilter.placeholder' })
 
-    const contentStyle = this.positionStyleForContent();
+    const contentStyle = this.positionStyleForContent()
 
     // pass the initial values with the name key so that
     // they can be passed to the correct field
-    const namedInitialValues = { [name]: initialValues[urlParam] };
+    const namedInitialValues = { [name]: initialValues[urlParam] }
 
-    const handleSubmit = values => {
-      const usedValue = values ? values[name] : values;
-      onSubmit({ [urlParam]: usedValue });
-    };
+    const handleSubmit = (values) => {
+      const usedValue = values ? values[name] : values
+      onSubmit({ [urlParam]: usedValue })
+    }
 
     const debouncedSubmit = debounce(handleSubmit, DEBOUNCE_WAIT_TIME, {
       leading: false,
-      trailing: true,
-    });
+      trailing: true
+    })
     // Use timeout for shart queries and debounce for queries with any length
-    const handleChangeWithDebounce = values => {
+    const handleChangeWithDebounce = (values) => {
       // handleSubmit gets values as params.
       // If this field ("keyword") is short, create timeout
-      const hasKeywordValue = values && values[name];
-      const keywordValue = hasKeywordValue ? values && values[name] : '';
+      const hasKeywordValue = values && values[name]
+      const keywordValue = hasKeywordValue ? values && values[name] : ''
       if (!hasKeywordValue || (hasKeywordValue && keywordValue.length >= 3)) {
         if (this.shortKeywordTimeout) {
-          window.clearTimeout(this.shortKeywordTimeout);
+          window.clearTimeout(this.shortKeywordTimeout)
         }
-        return debouncedSubmit(values);
+        return debouncedSubmit(values)
       } else {
         this.shortKeywordTimeout = window.setTimeout(() => {
           // if mobileInputRef exists, use the most up-to-date value from there
           return this.mobileInputRef && this.mobileInputRef.current
             ? handleSubmit({ ...values, [name]: this.mobileInputRef.current.value })
-            : handleSubmit(values);
-        }, TIMEOUT_FOR_SHORT_QUERIES);
+            : handleSubmit(values)
+        }, TIMEOUT_FOR_SHORT_QUERIES)
       }
-    };
+    }
 
     // Uncontrolled input needs to be cleared through the reference to DOM element.
     const handleClear = () => {
       if (this.mobileInputRef && this.mobileInputRef.current) {
-        this.mobileInputRef.current.value = '';
+        this.mobileInputRef.current.value = ''
       }
-    };
+    }
 
     return showAsPopup ? (
       <FilterPopup
@@ -157,8 +148,7 @@ class KeywordFilter extends Component {
         onSubmit={handleSubmit}
         initialValues={namedInitialValues}
         keepDirtyOnReinitialize
-        {...rest}
-      >
+        {...rest}>
         <FieldTextInput
           className={css.field}
           name={name}
@@ -181,8 +171,7 @@ class KeywordFilter extends Component {
         onSubmit={handleChangeWithDebounce}
         onClear={handleClear}
         initialValues={namedInitialValues}
-        {...rest}
-      >
+        {...rest}>
         <fieldset className={css.fieldPlain}>
           <label>{filterText}</label>
           <FieldTextInput
@@ -196,7 +185,7 @@ class KeywordFilter extends Component {
           />
         </fieldset>
       </FilterPlain>
-    );
+    )
   }
 }
 
@@ -204,8 +193,8 @@ KeywordFilter.defaultProps = {
   rootClassName: null,
   className: null,
   initialValues: null,
-  contentPlacementOffset: 0,
-};
+  contentPlacementOffset: 0
+}
 
 KeywordFilter.propTypes = {
   rootClassName: string,
@@ -216,12 +205,12 @@ KeywordFilter.propTypes = {
   label: string.isRequired,
   onSubmit: func.isRequired,
   initialValues: shape({
-    keyword: string,
+    keyword: string
   }),
   contentPlacementOffset: number,
 
   // form injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-export default injectIntl(KeywordFilter);
+export default injectIntl(KeywordFilter)

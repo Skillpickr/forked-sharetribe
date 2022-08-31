@@ -1,39 +1,39 @@
-const { transactionLineItems } = require('../api-util/lineItems');
-const { getSdk, getTrustedSdk, handleError, serialize } = require('../api-util/sdk');
+const { transactionLineItems } = require('../api-util/lineItems')
+const { getSdk, getTrustedSdk, handleError, serialize } = require('../api-util/sdk')
 
 module.exports = (req, res) => {
-  const { isSpeculative, bookingData, bodyParams, queryParams } = req.body;
+  const { isSpeculative, bookingData, bodyParams, queryParams } = req.body
 
-  const { listingId, ...restParams } = bodyParams && bodyParams.params ? bodyParams.params : {};
+  const { listingId, ...restParams } = bodyParams && bodyParams.params ? bodyParams.params : {}
 
-  const sdk = getSdk(req, res);
-  let lineItems = null;
+  const sdk = getSdk(req, res)
+  let lineItems = null
 
   sdk.listings
     .show({ id: listingId })
-    .then(listingResponse => {
-      const listing = listingResponse.data.data;
-      lineItems = transactionLineItems(listing, bookingData);
+    .then((listingResponse) => {
+      const listing = listingResponse.data.data
+      lineItems = transactionLineItems(listing, bookingData)
 
-      return getTrustedSdk(req);
+      return getTrustedSdk(req)
     })
-    .then(trustedSdk => {
+    .then((trustedSdk) => {
       // Add lineItems to the body params
       const body = {
         ...bodyParams,
         params: {
           ...restParams,
-          lineItems,
-        },
-      };
+          lineItems
+        }
+      }
 
       if (isSpeculative) {
-        return trustedSdk.transactions.transitionSpeculative(body, queryParams);
+        return trustedSdk.transactions.transitionSpeculative(body, queryParams)
       }
-      return trustedSdk.transactions.transition(body, queryParams);
+      return trustedSdk.transactions.transition(body, queryParams)
     })
-    .then(apiResponse => {
-      const { status, statusText, data } = apiResponse;
+    .then((apiResponse) => {
+      const { status, statusText, data } = apiResponse
       res
         .status(status)
         .set('Content-Type', 'application/transit+json')
@@ -41,12 +41,12 @@ module.exports = (req, res) => {
           serialize({
             status,
             statusText,
-            data,
+            data
           })
         )
-        .end();
+        .end()
     })
-    .catch(e => {
-      handleError(res, e);
-    });
-};
+    .catch((e) => {
+      handleError(res, e)
+    })
+}

@@ -5,7 +5,7 @@ This variable is set in a hidden file: .env
 To make Stripe connection work, you also need to set Stripe's private key in the Flex Console.
 */
 
-export const stripePublishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY;
+export const stripePublishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
 
 /**
  * Default merchant category code (MCC)
@@ -15,7 +15,7 @@ export const stripePublishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
  *
  * See the whole list of MCC codes from https://stripe.com/docs/connect/setting-mcc#list
  */
-export const defaultMCC = '5734';
+export const defaultMCC = '5734'
 
 /*
 Stripe only supports payments in certain countries, see full list
@@ -31,32 +31,32 @@ export const stripeCountryDetails = [
     currency: 'AUD',
     accountConfig: {
       bsb: true,
-      accountNumber: true,
-    },
+      accountNumber: true
+    }
   },
   {
     // Austria
     code: 'AT',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Belgium
     code: 'BE',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     //Bulgraia
     code: 'BG',
     currency: 'BGN',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Canada
@@ -65,72 +65,72 @@ export const stripeCountryDetails = [
     accountConfig: {
       transitNumber: true,
       institutionNumber: true,
-      accountNumber: true,
-    },
+      accountNumber: true
+    }
   },
   {
     //Cyprus
     code: 'CY',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     //	Czech Republic
     code: 'CZ',
     currency: 'CZK',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Denmark
     code: 'DK',
     currency: 'DKK',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Estionia
     code: 'EE',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Finland
     code: 'FI',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // France
     code: 'FR',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Germany
     code: 'DE',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Greece
     code: 'GR',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Hong Kong
@@ -139,24 +139,24 @@ export const stripeCountryDetails = [
     accountConfig: {
       clearingCode: true,
       branchCode: true,
-      accountNumber: true,
-    },
+      accountNumber: true
+    }
   },
   {
     // Ireland
     code: 'IE',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Italy
     code: 'IT',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Japan
@@ -168,96 +168,96 @@ export const stripeCountryDetails = [
       bankCode: true,
       branchCode: true,
       accountNumber: true,
-      accountOwnerName: true,
-    },
+      accountOwnerName: true
+    }
   },
   {
     // Latvia
     code: 'LV',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Lithuania
     code: 'LT',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Luxembourg
     code: 'LU',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Malta
     code: 'MT',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Mexico
     code: 'MX',
     currency: 'MXN',
     accountConfig: {
-      clabe: true,
-    },
+      clabe: true
+    }
   },
   {
     // Netherlands
     code: 'NL',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // New Zealand
     code: 'NZ',
     currency: 'NZD',
     accountConfig: {
-      accountNumber: true,
-    },
+      accountNumber: true
+    }
   },
   {
     // Norway
     code: 'NO',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Poland
     code: 'PL',
     currency: 'PLN',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Portugal
     code: 'PT',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Romania
     code: 'RO',
     currency: 'RON',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Singapore
@@ -266,48 +266,48 @@ export const stripeCountryDetails = [
     accountConfig: {
       bankCode: true,
       branchCode: true,
-      accountNumber: true,
-    },
+      accountNumber: true
+    }
   },
   {
     // Slovakia
     code: 'SK',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Slovenia
     code: 'SI',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Spain
     code: 'ES',
     currency: 'EUR',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Sweden
     code: 'SE',
     currency: 'SEK',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // Switzerland
     code: 'CH',
     currency: 'CHF',
     accountConfig: {
-      iban: true,
-    },
+      iban: true
+    }
   },
   {
     // United Kingdom
@@ -315,8 +315,8 @@ export const stripeCountryDetails = [
     currency: 'GBP',
     accountConfig: {
       sortCode: true,
-      accountNumber: true,
-    },
+      accountNumber: true
+    }
   },
   {
     // United States
@@ -324,10 +324,10 @@ export const stripeCountryDetails = [
     currency: 'USD',
     accountConfig: {
       routingNumber: true,
-      accountNumber: true,
-    },
-  },
-];
+      accountNumber: true
+    }
+  }
+]
 
 /*
 NOTE: This configuration will not be updated!

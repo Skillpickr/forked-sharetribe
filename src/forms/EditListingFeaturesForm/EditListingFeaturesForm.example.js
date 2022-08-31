@@ -1,9 +1,9 @@
-import EditListingFeaturesForm from './EditListingFeaturesForm';
+import EditListingFeaturesForm from './EditListingFeaturesForm'
 
-const NAME = 'skills';
+const NAME = 'skills'
 
-const initialValueArray = ['hatha', 'vinyasa', 'yin'];
-const initialValues = { [NAME]: initialValueArray };
+const initialValueArray = ['hatha', 'vinyasa', 'yin']
+const initialValues = { [NAME]: initialValueArray }
 
 const filterConfig = [
   {
@@ -20,24 +20,24 @@ const filterConfig = [
         { key: 'kundalini', label: 'Kundalini' },
         { key: 'restorative', label: 'Restorative' },
         { key: 'vinyasa', label: 'Vinyasa' },
-        { key: 'yin', label: 'Yin' },
-      ],
-    },
-  },
-];
+        { key: 'yin', label: 'Yin' }
+      ]
+    }
+  }
+]
 
 export const Skills = {
   component: EditListingFeaturesForm,
   props: {
     name: NAME,
-    onSubmit: values => console.log('EditListingFeaturesForm submit:', values),
+    onSubmit: (values) => console.log('EditListingFeaturesForm submit:', values),
     initialValues: initialValues,
     saveActionMsg: 'Save yoga styles',
     updated: false,
     updateInProgress: false,
     disabled: false,
     ready: false,
-    filterConfig,
+    filterConfig
   },
-  group: 'forms',
-};
+  group: 'forms'
+}

@@ -1,11 +1,11 @@
-import React from 'react';
-import { FormattedMessage } from '../../util/reactIntl';
-import { ResponsiveImage, Modal, ImageCarousel } from '../../components';
-import ActionBarMaybe from './ActionBarMaybe';
+import React from 'react'
+import { FormattedMessage } from '../../util/reactIntl'
+import { ResponsiveImage, Modal, ImageCarousel } from '../../components'
+import ActionBarMaybe from './ActionBarMaybe'
 
-import css from './ListingPage.module.css';
+import css from './ListingPage.module.css'
 
-const SectionImages = props => {
+const SectionImages = (props) => {
   const {
     title,
     listing,
@@ -14,28 +14,25 @@ const SectionImages = props => {
     handleViewPhotosClick,
     imageCarouselOpen,
     onImageCarouselClose,
-    onManageDisableScrolling,
-  } = props;
+    onManageDisableScrolling
+  } = props
 
-  const hasImages = listing.images && listing.images.length > 0;
-  const firstImage = hasImages ? listing.images[0] : null;
+  const hasImages = listing.images && listing.images.length > 0
+  const firstImage = hasImages ? listing.images[0] : null
 
   // Action bar is wrapped with a div that prevents the click events
   // to the parent that would otherwise open the image carousel
   const actionBar = listing.id ? (
-    <div onClick={e => e.stopPropagation()}>
+    <div onClick={(e) => e.stopPropagation()}>
       <ActionBarMaybe isOwnListing={isOwnListing} listing={listing} editParams={editParams} />
     </div>
-  ) : null;
+  ) : null
 
   const viewPhotosButton = hasImages ? (
     <button className={css.viewPhotos} onClick={handleViewPhotosClick}>
-      <FormattedMessage
-        id="ListingPage.viewImagesButton"
-        values={{ count: listing.images.length }}
-      />
+      <FormattedMessage id="ListingPage.viewImagesButton" values={{ count: listing.images.length }} />
     </button>
-  ) : null;
+  ) : null
 
   return (
     <div className={css.sectionImages}>
@@ -46,12 +43,7 @@ const SectionImages = props => {
             rootClassName={css.rootForImage}
             alt={title}
             image={firstImage}
-            variants={[
-              'landscape-crop',
-              'landscape-crop2x',
-              'landscape-crop4x',
-              'landscape-crop6x',
-            ]}
+            variants={['landscape-crop', 'landscape-crop2x', 'landscape-crop4x', 'landscape-crop6x']}
           />
           {viewPhotosButton}
         </div>
@@ -64,15 +56,14 @@ const SectionImages = props => {
         isOpen={imageCarouselOpen}
         onClose={onImageCarouselClose}
         usePortal
-        onManageDisableScrolling={onManageDisableScrolling}
-      >
+        onManageDisableScrolling={onManageDisableScrolling}>
         <ImageCarousel
           images={listing.images}
           imageVariants={['scaled-small', 'scaled-medium', 'scaled-large', 'scaled-xlarge']}
         />
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default SectionImages;
+export default SectionImages

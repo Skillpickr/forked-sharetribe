@@ -1,12 +1,12 @@
-const { calculateQuantityFromHours, calculateTotalFromLineItems } = require('./lineItemHelpers');
-const { types } = require('sharetribe-flex-sdk');
-const { Money } = types;
+const { calculateQuantityFromHours, calculateTotalFromLineItems } = require('./lineItemHelpers')
+const { types } = require('sharetribe-flex-sdk')
+const { Money } = types
 
 // This bookingUnitType needs to be one of the following:
 // line-item/night, line-item/day or line-item/units
-const bookingUnitType = 'line-item/units';
-const PROVIDER_COMMISSION_PERCENTAGE = -15; // Provider commission is negative
-const CUSTOMER_COMMISSION_PERCENTAGE = 10; // Customer commission is positive
+const bookingUnitType = 'line-item/units'
+const PROVIDER_COMMISSION_PERCENTAGE = -15 // Provider commission is negative
+const CUSTOMER_COMMISSION_PERCENTAGE = 10 // Customer commission is positive
 
 /** Returns collection of lineItems (max 50)
  *
@@ -29,8 +29,8 @@ const CUSTOMER_COMMISSION_PERCENTAGE = 10; // Customer commission is positive
  * @returns {Array} lineItems
  */
 exports.transactionLineItems = (listing, bookingData) => {
-  const unitPrice = listing.attributes.price;
-  const { startDate, endDate } = bookingData;
+  const unitPrice = listing.attributes.price
+  const { startDate, endDate } = bookingData
 
   /**
    * If you want to use pre-defined component and translations for printing the lineItems base price for booking,
@@ -59,24 +59,24 @@ exports.transactionLineItems = (listing, bookingData) => {
     code: bookingUnitType,
     unitPrice,
     quantity: calculateQuantityFromHours(startDate, endDate),
-    includeFor: ['customer', 'provider'],
-  };
+    includeFor: ['customer', 'provider']
+  }
 
   const providerCommission = {
     code: 'line-item/provider-commission',
     unitPrice: calculateTotalFromLineItems([booking]),
     percentage: PROVIDER_COMMISSION_PERCENTAGE,
-    includeFor: ['provider'],
-  };
+    includeFor: ['provider']
+  }
 
   const customerCommission = {
     code: 'line-item/customer-commission',
     unitPrice: calculateTotalFromLineItems([booking]),
     percentage: CUSTOMER_COMMISSION_PERCENTAGE,
-    includeFor: ['customer'],
-  };
+    includeFor: ['customer']
+  }
 
-  const lineItems = [booking, providerCommission, customerCommission];
+  const lineItems = [booking, providerCommission, customerCommission]
 
-  return lineItems;
-};
+  return lineItems
+}

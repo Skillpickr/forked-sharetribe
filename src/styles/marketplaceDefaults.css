@@ -35,7 +35,7 @@
 
   --matterColorDark: #000000;
   --matterColor: #4a4a4a;
-  --matterColorAnti: #b2b2b2;
+  --matterColorAnti: #8c8c8c;
   --matterColorNegative: #e7e7e7;
   --matterColorBright: #fcfcfc;
   --matterColorLight: #ffffff;
@@ -555,8 +555,7 @@ textarea {
 /* Full screen Background image located in root-folder/src/assets */
 .defaultBackgroundImage {
   /* Gradient direction and overlaying the black color on top of the image for better readability */
-  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
-    url('../assets/background1.jpg');
+  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('../assets/background1.jpg');
 
   /* Add loading color for the div */
   background-color: var(--matterColor);
@@ -576,8 +575,7 @@ textarea {
 .defaultBackgroundImageForDesktop {
   /* Gradient direction and overlaying the black color on top of the image for better readability */
   @media (--viewportMedium) {
-    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
-      url('../assets/background1.jpg');
+    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('../assets/background1.jpg');
 
     /* Add loading color for the div */
     background-color: var(--matterColor);

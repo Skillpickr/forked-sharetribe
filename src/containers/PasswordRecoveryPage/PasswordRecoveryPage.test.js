@@ -1,9 +1,9 @@
-import React from 'react';
-import { renderShallow } from '../../util/test-helpers';
-import { fakeIntl } from '../../util/test-data';
-import { PasswordRecoveryPageComponent } from './PasswordRecoveryPage';
+import React from 'react'
+import { renderShallow } from '../../util/test-helpers'
+import { fakeIntl } from '../../util/test-data'
+import { PasswordRecoveryPageComponent } from './PasswordRecoveryPage'
 
-const noop = () => null;
+const noop = () => null
 
 describe('ContactDetailsPage', () => {
   it('matches snapshot', () => {
@@ -27,7 +27,7 @@ describe('ContactDetailsPage', () => {
         onRetypeEmail={noop}
         intl={fakeIntl}
       />
-    );
-    expect(tree).toMatchSnapshot();
-  });
-});
+    )
+    expect(tree).toMatchSnapshot()
+  })
+})

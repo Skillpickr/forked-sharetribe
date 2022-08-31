@@ -1,19 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-import css from './IconSpinner.module.css';
+import css from './IconSpinner.module.css'
 
-const IconSpinner = props => {
-  const { rootClassName, className } = props;
-  const classes = classNames(rootClassName || css.root, className);
+const IconSpinner = (props) => {
+  const { rootClassName, className } = props
+  const classes = classNames(rootClassName || css.root, className)
   return (
-    <svg
-      className={classes}
-      viewBox="0 0 30 30"
-      preserveAspectRatio="xMidYMid"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className={classes} viewBox="0 0 30 30" preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg">
       <circle cx="15" cy="15" r="12" fill="none" strokeLinecap="round">
         <animateTransform
           attributeName="transform"
@@ -36,19 +31,19 @@ const IconSpinner = props => {
         />
       </circle>
     </svg>
-  );
-};
+  )
+}
 
 IconSpinner.defaultProps = {
   rootClassName: null,
-  className: null,
-};
+  className: null
+}
 
-const { string } = PropTypes;
+const { string } = PropTypes
 
 IconSpinner.propTypes = {
   rootClassName: string,
-  className: string,
-};
+  className: string
+}
 
-export default IconSpinner;
+export default IconSpinner

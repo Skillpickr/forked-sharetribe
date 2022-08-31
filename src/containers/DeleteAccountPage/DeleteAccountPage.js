@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
-import { propTypes } from '../../util/types';
-import { isScrollingDisabled } from '../../ducks/UI.duck';
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
+import { propTypes } from '../../util/types'
+import { isScrollingDisabled } from '../../ducks/UI.duck'
 import {
   LayoutSideNavigation,
   LayoutWrapperMain,
@@ -13,17 +13,17 @@ import {
   LayoutWrapperFooter,
   Footer,
   Page,
-  UserNav,
-} from '../../components';
-import { DeleteAccountForm } from '../../forms';
-import { TopbarContainer } from '..';
-import { deleteUserAccount } from '../../util/api';
+  UserNav
+} from '../../components'
+import { DeleteAccountForm } from '../../forms'
+import { TopbarContainer } from '..'
+import { deleteUserAccount } from '../../util/api'
 
-import { deleteAccount, deleteAccountClear, resetPassword } from './DeleteAccountPage.duck';
-import { logout } from '../../ducks/Auth.duck';
-import css from './DeleteAccountPage.module.css';
+import { deleteAccount, deleteAccountClear, resetPassword } from './DeleteAccountPage.duck'
+import { logout } from '../../ducks/Auth.duck'
+import css from './DeleteAccountPage.module.css'
 
-export const DeleteAccountPageComponent = props => {
+export const DeleteAccountPageComponent = (props) => {
   const {
     deleteAccountError,
     deleteAccountInProgress,
@@ -36,40 +36,36 @@ export const DeleteAccountPageComponent = props => {
     resetPasswordError,
     accountDeleted,
     scrollingDisabled,
-    intl,
-  } = props;
+    intl
+  } = props
 
-  const handleDeleteAccount = values => {
+  const handleDeleteAccount = (values) => {
     return onSubmitDeleteAccount(values).then(() => {
-      onLogout();
-    });
-  };
+      onLogout()
+    })
+  }
 
   useEffect(() => {
-    return onChange();
-  }, []);
+    return onChange()
+  }, [])
 
   const pageDetails = (
     <div className={css.details}>
       <FormattedMessage
-        id={
-          deleteAccountError?.status == 409
-            ? 'DeleteAccountPage.error'
-            : 'DeleteAccountPage.details'
-        }
+        id={deleteAccountError?.status == 409 ? 'DeleteAccountPage.error' : 'DeleteAccountPage.details'}
         values={{
-          errorCause: deleteAccountError?.message,
+          errorCause: deleteAccountError?.message
         }}
       />
     </div>
-  );
+  )
 
   const title = intl.formatMessage({
-    id: 'DeleteAccountPage.title',
-  });
+    id: 'DeleteAccountPage.title'
+  })
 
   // Show form for a valid current user
-  const showDeleteAccountForm = currentUser && currentUser.id && deleteAccountError?.status !== 409;
+  const showDeleteAccountForm = currentUser && currentUser.id && deleteAccountError?.status !== 409
 
   const deleteAccountForm = showDeleteAccountForm ? (
     <DeleteAccountForm
@@ -84,7 +80,7 @@ export const DeleteAccountPageComponent = props => {
       inProgress={deleteAccountInProgress}
       ready={accountDeleted}
     />
-  ) : null;
+  ) : null
 
   return (
     <Page title={title} scrollingDisabled={scrollingDisabled}>
@@ -112,17 +108,17 @@ export const DeleteAccountPageComponent = props => {
         </LayoutWrapperFooter>
       </LayoutSideNavigation>
     </Page>
-  );
-};
+  )
+}
 
 DeleteAccountPageComponent.defaultProps = {
   deleteAccountError: null,
   currentUser: null,
   resetPasswordInProgress: false,
-  resetPasswordError: null,
-};
+  resetPasswordError: null
+}
 
-const { bool, func } = PropTypes;
+const { bool, func } = PropTypes
 
 DeleteAccountPageComponent.propTypes = {
   deleteAccountError: propTypes.error,
@@ -136,19 +132,14 @@ DeleteAccountPageComponent.propTypes = {
   resetPasswordError: propTypes.error,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   // Topbar needs user info.
-  const {
-    deleteAccountError,
-    deleteAccountInProgress,
-    accountDeleted,
-    resetPasswordInProgress,
-    resetPasswordError,
-  } = state.DeleteAccountPage;
-  const { currentUser } = state.user;
+  const { deleteAccountError, deleteAccountInProgress, accountDeleted, resetPasswordInProgress, resetPasswordError } =
+    state.DeleteAccountPage
+  const { currentUser } = state.user
   return {
     deleteAccountError,
     deleteAccountInProgress,
@@ -156,23 +147,17 @@ const mapStateToProps = state => {
     accountDeleted,
     scrollingDisabled: isScrollingDisabled(state),
     resetPasswordInProgress,
-    resetPasswordError,
-  };
-};
+    resetPasswordError
+  }
+}
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onChange: () => dispatch(deleteAccountClear()),
   onLogout: () => dispatch(logout()),
-  onSubmitDeleteAccount: values => dispatch(deleteAccount(values)),
-  onResetPassword: values => dispatch(resetPassword(values)),
-});
+  onSubmitDeleteAccount: (values) => dispatch(deleteAccount(values)),
+  onResetPassword: (values) => dispatch(resetPassword(values))
+})
 
-const DeleteAccountPage = compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
-  injectIntl
-)(DeleteAccountPageComponent);
+const DeleteAccountPage = compose(connect(mapStateToProps, mapDispatchToProps), injectIntl)(DeleteAccountPageComponent)
 
-export default DeleteAccountPage;
+export default DeleteAccountPage

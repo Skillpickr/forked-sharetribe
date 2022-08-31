@@ -1,4 +1,4 @@
-import PropertyGroup from './PropertyGroup';
+import PropertyGroup from './PropertyGroup'
 
 const exampleOptions = [
   { key: 'ashtanga', label: 'Ashtanga' },
@@ -6,8 +6,8 @@ const exampleOptions = [
   { key: 'kundalini', label: 'Kundalini' },
   { key: 'restorative', label: 'Restorative' },
   { key: 'vinyasa', label: 'Vinyasa' },
-  { key: 'yin', label: 'yin' },
-];
+  { key: 'yin', label: 'yin' }
+]
 
 export const WithSomeSelected = {
   component: PropertyGroup,
@@ -15,7 +15,7 @@ export const WithSomeSelected = {
     id: 'skills',
     options: exampleOptions,
     selectedOptions: ['hatha', 'vinyasa', 'yin'],
-    twoColumns: true,
+    twoColumns: true
   },
-  group: 'misc',
-};
+  group: 'misc'
+}

@@ -1,6 +1,6 @@
 {
-    "name": "Skillpickr",
-    "short_name": "Skillpickr",
+    "name": "SkillPickr",
+    "short_name": "SkillPickr",
     "start_url": "/?source=pwa",
     "display": "standalone",
     "theme_color": "#fc6161",

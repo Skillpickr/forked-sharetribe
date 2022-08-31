@@ -1,22 +1,22 @@
-import React from 'react';
-import config from '../../config';
-import { twitterPageURL } from '../../util/urlHelpers';
-import { StaticPage, TopbarContainer } from '../../containers';
+import React from 'react'
+import config from '../../config'
+import { twitterPageURL } from '../../util/urlHelpers'
+import { StaticPage, TopbarContainer } from '../../containers'
 import {
   LayoutSingleColumn,
   LayoutWrapperTopbar,
   LayoutWrapperMain,
   LayoutWrapperFooter,
   Footer,
-  ExternalLink,
-} from '../../components';
+  ExternalLink
+} from '../../components'
 
-import css from './AboutPage.module.css';
-import image from './about-us.jpg';
+import css from './AboutPage.module.css'
+import image from './about-us.jpg'
 
 const AboutPage = () => {
-  const { siteTwitterHandle, siteFacebookPage } = config;
-  const siteTwitterPage = twitterPageURL(siteTwitterHandle);
+  const { siteTwitterHandle, siteFacebookPage } = config
+  const siteTwitterPage = twitterPageURL(siteTwitterHandle)
 
   // prettier-ignore
   return (
@@ -25,7 +25,7 @@ const AboutPage = () => {
       schema={{
         '@context': 'http://schema.org',
         '@type': 'AboutPage',
-        "description": 'About Skillpickr',
+        "description": 'About SkillPickr',
         "name": 'About page',
       }}
     >
@@ -63,13 +63,13 @@ const AboutPage = () => {
               <h2 className={css.subtitle}>Guiding Principles</h2>
               <p>At SkillPickr, our guiding principles serve as our commitment to continue working passionately toward:</p>
               <p><strong>Sincerity</strong></p>
-              <blockquote>"Because without sincerity there is no credibility, trust or growth"</blockquote>
+              <blockquote>Because without sincerity there is no credibility, trust or growth</blockquote>
               <p><strong>Curiosity</strong></p>
-              <blockquote>"Because curiosity is key! Things happen when we start to pay attention to what is happening with curiosity and as a bonus, curiosity is interrelated with inner motivation and innovation"</blockquote>
+              <blockquote>Because curiosity is key! Things happen when we start to pay attention to what is happening with curiosity and as a bonus, curiosity is interrelated with inner motivation and innovation</blockquote>
               <p><strong>Self-discipline </strong></p>
-              <blockquote>"Because we want to succeed!"</blockquote>
+              <blockquote>Because we want to succeed!</blockquote>
               <p><strong>Respect</strong></p>
-              <blockquote>"Because it is such a good starting point for all kinds of relationships. It is also a gift and when given or received, something good comes along"</blockquote>
+              <blockquote>Because it is such a good starting point for all kinds of relationships. It is also a gift and when given or received, something good comes along</blockquote>
               <br></br>
 
 
@@ -77,7 +77,7 @@ const AboutPage = () => {
                 Contact
               </h3>
               <p>
-                Skillpickr is brought to you by{' '}
+                SkillPickr is brought to you by{' '}
                 <ExternalLink href="http://sharetribe.com">Sharetribe</ExternalLink>. Sharetribe
                 offers anyone a possibility to create a marketplace without restricting your own
                 creativity. Do not hesitate to reach out and learn how to best turn your
@@ -98,6 +98,6 @@ const AboutPage = () => {
       </LayoutSingleColumn>
     </StaticPage>
   );
-};
+}
 
-export default AboutPage;
+export default AboutPage

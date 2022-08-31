@@ -1,34 +1,27 @@
-import React from 'react';
-import { FormattedMessage } from '../../util/reactIntl';
-import classNames from 'classnames';
-import { createSlug, stringify } from '../../util/urlHelpers';
-import { AvatarMedium, NamedLink, ResponsiveImage } from '../../components';
+import React from 'react'
+import { FormattedMessage } from '../../util/reactIntl'
+import classNames from 'classnames'
+import { createSlug, stringify } from '../../util/urlHelpers'
+import { AvatarMedium, NamedLink, ResponsiveImage } from '../../components'
 
-import css from './TransactionPanel.module.css';
+import css from './TransactionPanel.module.css'
 
-const createListingLink = (
-  listingId,
-  label,
-  listingDeleted,
-  provider,
-  searchParams = {},
-  className = ''
-) => {
+const createListingLink = (listingId, label, listingDeleted, provider, searchParams = {}, className = '') => {
   if (!listingDeleted) {
-    const params = { id: listingId, slug: createSlug(label) };
-    const to = { search: stringify(searchParams) };
+    const params = { id: listingId, slug: createSlug(label) }
+    const to = { search: stringify(searchParams) }
     return (
       <NamedLink className={className} name="ListingPage" params={params} to={to}>
         <AvatarMedium user={provider} disableProfileLink />
       </NamedLink>
-    );
+    )
   } else {
-    return <FormattedMessage id="TransactionPanel.deletedListingOrderTitle" />;
+    return <FormattedMessage id="TransactionPanel.deletedListingOrderTitle" />
   }
-};
+}
 
 // Functional component as a helper to build AddressLinkMaybe
-const DetailCardImage = props => {
+const DetailCardImage = (props) => {
   const {
     className,
     rootClassName,
@@ -38,11 +31,11 @@ const DetailCardImage = props => {
     listingDeleted,
     image,
     provider,
-    isCustomer,
-  } = props;
+    isCustomer
+  } = props
 
-  const classes = classNames(rootClassName || css.detailCardImageWrapper, className);
-  const listingLink = createListingLink(listingId, listingTitle, listingDeleted, provider);
+  const classes = classNames(rootClassName || css.detailCardImageWrapper, className)
+  const listingLink = createListingLink(listingId, listingTitle, listingDeleted, provider)
 
   return (
     <React.Fragment>
@@ -56,11 +49,9 @@ const DetailCardImage = props => {
           />
         </div>
       </div>
-      {isCustomer ? (
-        <div className={avatarWrapperClassName || css.avatarWrapper}>{listingLink}</div>
-      ) : null}
+      {isCustomer ? <div className={avatarWrapperClassName || css.avatarWrapper}>{listingLink}</div> : null}
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default DetailCardImage;
+export default DetailCardImage

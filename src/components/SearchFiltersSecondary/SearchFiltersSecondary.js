@@ -1,64 +1,64 @@
-import React, { Component } from 'react';
-import { func, object, string } from 'prop-types';
-import classNames from 'classnames';
-import { FormattedMessage } from '../../util/reactIntl';
+import React, { Component } from 'react'
+import { func, object, string } from 'prop-types'
+import classNames from 'classnames'
+import { FormattedMessage } from '../../util/reactIntl'
 
-import { InlineTextButton } from '../../components';
-import css from './SearchFiltersSecondary.module.css';
+import { InlineTextButton } from '../../components'
+import css from './SearchFiltersSecondary.module.css'
 
 class SearchFiltersSecondaryComponent extends Component {
   constructor(props) {
-    super(props);
-    this.state = { currentQueryParams: props.urlQueryParams };
+    super(props)
+    this.state = { currentQueryParams: props.urlQueryParams }
 
-    this.applyFilters = this.applyFilters.bind(this);
-    this.cancelFilters = this.cancelFilters.bind(this);
-    this.resetAll = this.resetAll.bind(this);
+    this.applyFilters = this.applyFilters.bind(this)
+    this.cancelFilters = this.cancelFilters.bind(this)
+    this.resetAll = this.resetAll.bind(this)
   }
 
   // Apply the filters by redirecting to SearchPage with new filters.
   applyFilters() {
-    const { applyFilters, onClosePanel } = this.props;
+    const { applyFilters, onClosePanel } = this.props
 
     if (applyFilters) {
-      applyFilters();
+      applyFilters()
     }
 
     // Ensure that panel closes (if now changes have been made)
-    onClosePanel();
+    onClosePanel()
   }
 
   // Close the filters by clicking cancel, revert to the initial params
   cancelFilters() {
-    const { cancelFilters } = this.props;
+    const { cancelFilters } = this.props
 
     if (cancelFilters) {
-      cancelFilters();
+      cancelFilters()
     }
 
-    this.props.onClosePanel();
+    this.props.onClosePanel()
   }
 
   // Reset all filter query parameters
   resetAll(e) {
-    const { resetAll, onClosePanel } = this.props;
+    const { resetAll, onClosePanel } = this.props
 
     if (resetAll) {
-      resetAll(e);
+      resetAll(e)
     }
 
     // Ensure that panel closes (if now changes have been made)
-    onClosePanel();
+    onClosePanel()
 
     // blur event target if event is passed
     if (e && e.currentTarget) {
-      e.currentTarget.blur();
+      e.currentTarget.blur()
     }
   }
 
   render() {
-    const { rootClassName, className, children } = this.props;
-    const classes = classNames(rootClassName || css.root, className);
+    const { rootClassName, className, children } = this.props
+    const classes = classNames(rootClassName || css.root, className)
 
     return (
       <div className={classes}>
@@ -75,14 +75,14 @@ class SearchFiltersSecondaryComponent extends Component {
           </InlineTextButton>
         </div>
       </div>
-    );
+    )
   }
 }
 
 SearchFiltersSecondaryComponent.defaultProps = {
   rootClassName: null,
-  className: null,
-};
+  className: null
+}
 
 SearchFiltersSecondaryComponent.propTypes = {
   rootClassName: string,
@@ -90,9 +90,9 @@ SearchFiltersSecondaryComponent.propTypes = {
   urlQueryParams: object.isRequired,
   applyFilters: func.isRequired,
   resetAll: func.isRequired,
-  onClosePanel: func.isRequired,
-};
+  onClosePanel: func.isRequired
+}
 
-const SearchFiltersSecondary = SearchFiltersSecondaryComponent;
+const SearchFiltersSecondary = SearchFiltersSecondaryComponent
 
-export default SearchFiltersSecondary;
+export default SearchFiltersSecondary

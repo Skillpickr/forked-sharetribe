@@ -1,13 +1,13 @@
-import React from 'react';
-import { FormattedMessage } from '../../util/reactIntl';
-import { PropertyGroup } from '../../components';
+import React from 'react'
+import { FormattedMessage } from '../../util/reactIntl'
+import { PropertyGroup } from '../../components'
 
-import css from './ListingPage.module.css';
+import css from './ListingPage.module.css'
 
-const SectionFeaturesMaybe = props => {
+const SectionFeaturesMaybe = (props) => {
   // Component's props should include all the possible options (from config)
   // and listing's publicData
-  const { optionLabel, selectedSubOptions, selectedConfigSubOptions } = props;
+  const { optionLabel, selectedSubOptions, selectedConfigSubOptions } = props
 
   return (
     <div className={css.sectionFeatures}>
@@ -21,7 +21,7 @@ const SectionFeaturesMaybe = props => {
         twoColumns={selectedConfigSubOptions.length > 5}
       />
     </div>
-  );
-};
+  )
+}
 
-export default SectionFeaturesMaybe;
+export default SectionFeaturesMaybe

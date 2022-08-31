@@ -1,10 +1,10 @@
 // NOTE: renderdeep doesn't work due to map integration
-import React from 'react';
-import { renderShallow } from '../../util/test-helpers';
-import { fakeIntl } from '../../util/test-data';
-import { EditListingLocationFormComponent } from './EditListingLocationForm';
+import React from 'react'
+import { renderShallow } from '../../util/test-helpers'
+import { fakeIntl } from '../../util/test-data'
+import { EditListingLocationFormComponent } from './EditListingLocationForm'
 
-const noop = () => null;
+const noop = () => null
 
 describe('EditListingLocationForm', () => {
   it('matches snapshot', () => {
@@ -19,7 +19,7 @@ describe('EditListingLocationForm', () => {
         disabled={false}
         ready={false}
       />
-    );
-    expect(tree).toMatchSnapshot();
-  });
-});
+    )
+    expect(tree).toMatchSnapshot()
+  })
+})
