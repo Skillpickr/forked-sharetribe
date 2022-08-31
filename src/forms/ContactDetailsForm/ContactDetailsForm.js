@@ -284,8 +284,7 @@ class ContactDetailsFormComponent extends Component {
               onSubmit={(e) => {
                 this.submittedValues = values
                 handleSubmit(e)
-              }}
-            >
+              }}>
               <div className={css.contactDetailsSection}>
                 <FieldTextInput
                   type="email"
@@ -334,8 +333,7 @@ class ContactDetailsFormComponent extends Component {
                   type="submit"
                   inProgress={inProgress}
                   ready={pristineSinceLastSubmit}
-                  disabled={submitDisabled}
-                >
+                  disabled={submitDisabled}>
                   <FormattedMessage id="ContactDetailsForm.saveChanges" />
                 </PrimaryButton>
               </div>

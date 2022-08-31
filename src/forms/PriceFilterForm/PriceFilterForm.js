@@ -117,8 +117,7 @@ const PriceFilterFormComponent = (props) => {
             onSubmit={handleSubmit}
             tabIndex="0"
             contentRef={contentRef}
-            style={{ minWidth: '300px', ...style }}
-          >
+            style={{ minWidth: '300px', ...style }}>
             <div className={css.contentWrapper}>
               <span className={css.label}>
                 <FormattedMessage id="PriceFilterForm.label" />

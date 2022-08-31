@@ -43,8 +43,7 @@ const FormComponent = (props) => (
           onSubmit={(e) => {
             e.preventDefault()
             handleSubmit(e)
-          }}
-        >
+          }}>
           <FormSpy onChange={onChange} />
           <FieldDateInput {...dateInputProps} />
           <Button type="submit" disabled={submitDisabled} style={{ marginTop: '24px' }}>

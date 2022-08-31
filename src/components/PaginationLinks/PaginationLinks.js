@@ -65,8 +65,7 @@ export const PaginationLinksComponent = (props) => {
       name={pageName}
       params={pagePathParams}
       to={{ search: stringify(prevSearchParams) }}
-      title={intl.formatMessage({ id: 'PaginationLinks.previous' })}
-    >
+      title={intl.formatMessage({ id: 'PaginationLinks.previous' })}>
       <IconArrowHead direction="left" size="big" rootClassName={css.arrowIcon} />
     </NamedLink>
   )
@@ -84,8 +83,7 @@ export const PaginationLinksComponent = (props) => {
       name={pageName}
       params={pagePathParams}
       to={{ search: stringify(nextSearchParams) }}
-      title={intl.formatMessage({ id: 'PaginationLinks.next' })}
-    >
+      title={intl.formatMessage({ id: 'PaginationLinks.next' })}>
       <IconArrowHead direction="right" size="big" rootClassName={css.arrowIcon} />
     </NamedLink>
   )
@@ -108,8 +106,7 @@ export const PaginationLinksComponent = (props) => {
         name={pageName}
         params={pagePathParams}
         to={{ search: stringify({ ...pageSearchParams, page: v }) }}
-        title={intl.formatMessage({ id: 'PaginationLinks.toPage' }, { page: v })}
-      >
+        title={intl.formatMessage({ id: 'PaginationLinks.toPage' }, { page: v })}>
         {v}
       </NamedLink>
     ) : (

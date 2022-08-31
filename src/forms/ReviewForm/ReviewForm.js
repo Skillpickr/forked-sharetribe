@@ -86,8 +86,7 @@ const ReviewFormComponent = (props) => (
             type="submit"
             inProgress={submitInProgress}
             disabled={submitDisabled}
-            ready={reviewSent}
-          >
+            ready={reviewSent}>
             {reviewSubmitMessage}
           </PrimaryButton>
         </Form>

@@ -51,8 +51,7 @@ class AddImagesTest extends Component {
         <AddImages
           images={this.state.images}
           savedImageAltText="Saved image"
-          onRemoveImage={(imageId) => console.log('remove image:', imageId)}
-        >
+          onRemoveImage={(imageId) => console.log('remove image:', imageId)}>
           <div className={css.addImageWrapper}>
             <div className={css.aspectRatioWrapper}>
               <label className={css.addImage} htmlFor="addImageExampleInput">

@@ -198,8 +198,7 @@ class TopbarComponent extends Component {
           <Button
             rootClassName={css.menu}
             onClick={this.handleMobileMenuOpen}
-            title={intl.formatMessage({ id: 'Topbar.menuIcon' })}
-          >
+            title={intl.formatMessage({ id: 'Topbar.menuIcon' })}>
             <MenuIcon className={css.menuIcon} />
             {notificationDot}
           </Button>
@@ -209,8 +208,7 @@ class TopbarComponent extends Component {
           <Button
             rootClassName={css.searchMenu}
             onClick={this.handleMobileSearchOpen}
-            title={intl.formatMessage({ id: 'Topbar.searchIcon' })}
-          >
+            title={intl.formatMessage({ id: 'Topbar.searchIcon' })}>
             <SearchIcon className={css.searchMenuIcon} />
           </Button>
         </div>
@@ -233,8 +231,7 @@ class TopbarComponent extends Component {
           isOpen={isMobileMenuOpen}
           onClose={this.handleMobileMenuClose}
           usePortal
-          onManageDisableScrolling={onManageDisableScrolling}
-        >
+          onManageDisableScrolling={onManageDisableScrolling}>
           {authInProgress ? null : mobileMenu}
         </Modal>
         <Modal
@@ -243,8 +240,7 @@ class TopbarComponent extends Component {
           isOpen={isMobileSearchOpen}
           onClose={this.handleMobileSearchClose}
           usePortal
-          onManageDisableScrolling={onManageDisableScrolling}
-        >
+          onManageDisableScrolling={onManageDisableScrolling}>
           <div className={css.searchContainer}>
             <TopbarSearchForm onSubmit={this.handleSubmit} initialValues={initialSearchFormValues} isMobile />
             <p className={css.mobileHelp}>

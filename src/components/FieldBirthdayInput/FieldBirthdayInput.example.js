@@ -20,8 +20,7 @@ const FormComponent = (props) => (
           onSubmit={(e) => {
             e.preventDefault()
             handleSubmit(e)
-          }}
-        >
+          }}>
           <FormSpy onChange={onChange} />
           <FieldBirthdayInput
             id={`birthday`}

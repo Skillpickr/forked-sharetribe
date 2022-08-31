@@ -105,8 +105,7 @@ const SignupFormComponent = (props) => (
           onClick={onOpenTermsOfService}
           role="button"
           tabIndex="0"
-          onKeyUp={handleTermsKeyUp}
-        >
+          onKeyUp={handleTermsKeyUp}>
           <FormattedMessage id="SignupForm.termsAndConditionsLinkText" />
         </span>
       )

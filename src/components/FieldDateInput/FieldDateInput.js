@@ -86,8 +86,7 @@ class FieldDateInputComponent extends Component {
               [css.mobileMargins]: useMobileMargins,
               [css.labelDisabled]: showLabelAsDisabled
             })}
-            htmlFor={id}
-          >
+            htmlFor={id}>
             {label}
           </label>
         ) : null}

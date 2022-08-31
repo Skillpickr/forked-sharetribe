@@ -193,8 +193,7 @@ class Menu extends Component {
         onKeyDown={this.onKeyDown}
         ref={(c) => {
           this.menu = c
-        }}
-      >
+        }}>
         {menuChildren}
       </div>
     )

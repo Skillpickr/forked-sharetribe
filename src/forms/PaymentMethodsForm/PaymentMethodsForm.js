@@ -256,8 +256,7 @@ class PaymentMethodsForm extends Component {
             className={css.submitButton}
             type="submit"
             inProgress={submitInProgress}
-            disabled={submitDisabled}
-          >
+            disabled={submitDisabled}>
             <FormattedMessage id="PaymentMethodsForm.submitPaymentInfo" />
           </PrimaryButton>
         </div>

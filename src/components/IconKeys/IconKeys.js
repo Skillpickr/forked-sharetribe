@@ -12,8 +12,7 @@ const IconKeys = (props) => {
       height="57px"
       viewBox="0 0 50 57"
       version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+      xmlns="http://www.w3.org/2000/svg">
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round">
         <g className={css.strokeMarketplaceColor} transform="translate(-538.000000, -240.000000)">
           <g transform="translate(540.000000, 242.000000)">

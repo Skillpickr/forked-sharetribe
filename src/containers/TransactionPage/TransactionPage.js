@@ -250,8 +250,7 @@ export const TransactionPageComponent = (props) => {
   return (
     <Page
       title={intl.formatMessage({ id: 'TransactionPage.title' }, { title: listingTitle })}
-      scrollingDisabled={scrollingDisabled}
-    >
+      scrollingDisabled={scrollingDisabled}>
       <LayoutSingleColumn>
         <LayoutWrapperTopbar>
           <TopbarContainer />

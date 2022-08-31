@@ -148,8 +148,7 @@ class KeywordFilter extends Component {
         onSubmit={handleSubmit}
         initialValues={namedInitialValues}
         keepDirtyOnReinitialize
-        {...rest}
-      >
+        {...rest}>
         <FieldTextInput
           className={css.field}
           name={name}
@@ -172,8 +171,7 @@ class KeywordFilter extends Component {
         onSubmit={handleChangeWithDebounce}
         onClear={handleClear}
         initialValues={namedInitialValues}
-        {...rest}
-      >
+        {...rest}>
         <fieldset className={css.fieldPlain}>
           <label>{filterText}</label>
           <FieldTextInput

@@ -29,8 +29,7 @@ const StripeConnectAccountStatusBox = (props) => {
           type="button"
           inProgress={inProgress}
           disabled={disabled}
-          onClick={onGetStripeConnectAccountLink}
-        >
+          onClick={onGetStripeConnectAccountLink}>
           <FormattedMessage id="StripeConnectAccountStatusBox.getVerifiedButton" />
         </PrimaryButton>
       </div>
@@ -51,8 +50,7 @@ const StripeConnectAccountStatusBox = (props) => {
           type="button"
           inProgress={inProgress}
           disabled={disabled}
-          onClick={onGetStripeConnectAccountLink}
-        >
+          onClick={onGetStripeConnectAccountLink}>
           <IconEdit className={css.icon} pencilClassName={css.iconEditPencil} />
           <FormattedMessage id="StripeConnectAccountStatusBox.editAccountButton" />
         </InlineTextButton>
@@ -76,8 +74,7 @@ const StripeConnectAccountStatusBox = (props) => {
           type="button"
           inProgress={inProgress}
           disabled={disabled}
-          onClick={onGetStripeConnectAccountLink}
-        >
+          onClick={onGetStripeConnectAccountLink}>
           <FormattedMessage id="StripeConnectAccountStatusBox.getVerifiedButton" />
         </PrimaryButton>
       </div>

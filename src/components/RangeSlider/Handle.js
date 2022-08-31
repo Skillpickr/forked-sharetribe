@@ -112,8 +112,7 @@ class Handle extends Component {
         onTouchStart={this.onTouchStart}
         onTouchMove={this.onTouchMove}
         onTouchEnd={this.onTouchEnd}
-        role="button"
-      >
+        role="button">
         <div
           className={classNames(css.visibleHandle, {
             [css.dragged]: this.state.dragging

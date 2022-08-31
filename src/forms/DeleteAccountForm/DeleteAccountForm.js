@@ -151,8 +151,7 @@ export const DeleteAccountFormComponent = (props) => {
                 .catch(() => {
                   // Error is handled in duck file already.
                 })
-            }}
-          >
+            }}>
             <div className={confirmClasses}>
               <h3 className={css.confirmChangesTitle}>
                 <FormattedMessage id="DeleteAccountForm.confirmChangesTitle" />

@@ -40,8 +40,7 @@ const PayoutDetailsBusinessProfile = (props) => {
           autoComplete="mcc"
           disabled={disabled}
           label={mccLabel}
-          validate={mccRequired}
-        >
+          validate={mccRequired}>
           <option disabled value="">
             {mccPlaceholder}
           </option>

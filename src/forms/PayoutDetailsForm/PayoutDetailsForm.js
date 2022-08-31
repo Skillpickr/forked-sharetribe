@@ -160,8 +160,7 @@ const PayoutDetailsFormComponent = (props) => (
                   className={css.selectCountry}
                   autoComplete="country"
                   label={countryLabel}
-                  validate={countryRequired}
-                >
+                  validate={countryRequired}>
                   <option disabled value="">
                     {countryPlaceholder}
                   </option>
@@ -193,8 +192,7 @@ const PayoutDetailsFormComponent = (props) => (
                 type="submit"
                 inProgress={submitInProgress}
                 disabled={submitDisabled}
-                ready={ready}
-              >
+                ready={ready}>
                 {submitButtonText ? submitButtonText : <FormattedMessage id="PayoutDetailsForm.submitButtonText" />}
               </Button>
             </React.Fragment>

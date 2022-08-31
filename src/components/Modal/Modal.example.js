@@ -26,8 +26,7 @@ const ModalWrapper = (props) => {
           setOpen(false)
           console.log('Closing modal')
         }}
-        onManageDisableScrolling={onManageDisableScrolling}
-      >
+        onManageDisableScrolling={onManageDisableScrolling}>
         <div style={{ margin: '1rem' }}>Some content inside Modal component</div>
       </Modal>
 

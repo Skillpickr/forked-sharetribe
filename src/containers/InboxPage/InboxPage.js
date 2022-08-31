@@ -239,8 +239,7 @@ export const InboxItem = (props) => {
       <NamedLink
         className={linkClasses}
         name={isOrder ? 'OrderDetailsPage' : 'SaleDetailsPage'}
-        params={{ id: tx.id.uuid }}
-      >
+        params={{ id: tx.id.uuid }}>
         <div className={css.rowNotificationDot}>{rowNotificationDot}</div>
         <div className={css.itemInfo}>
           <div className={classNames(css.itemUsername, stateData.nameClassName)}>{otherUserDisplayName}</div>
@@ -256,8 +255,7 @@ export const InboxItem = (props) => {
           <div className={classNames(css.stateName, stateData.stateClassName)}>{stateData.state}</div>
           <div
             className={classNames(css.lastTransitionedAt, stateData.lastTransitionedAtClassName)}
-            title={lastTransitionedAt.long}
-          >
+            title={lastTransitionedAt.long}>
             {lastTransitionedAt.short}
           </div>
         </div>

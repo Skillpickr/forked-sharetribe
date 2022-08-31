@@ -38,8 +38,7 @@ const OwnListingLink = (props) => {
         slug,
         type: getListingType(isDraft),
         tab: 'photos'
-      }}
-    >
+      }}>
       <span className={css.menuItemBorder} />
       {children ? children : <FormattedMessage id="OwnListingLink.editYourListingLink" />}
     </NamedLink>

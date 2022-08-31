@@ -21,8 +21,7 @@ const FormComponent = (props) => (
           onSubmit={(e) => {
             e.preventDefault()
             handleSubmit(e)
-          }}
-        >
+          }}>
           <FormSpy onChange={onChange} />
           <FieldReviewRating id={`${formId}.rate1`} name="rating" label="Rate your experience" validate={required} />
           <Button style={{ marginTop: 24 }} type="submit" disabled={submitDisabled}>

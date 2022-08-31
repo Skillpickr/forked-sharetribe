@@ -17,8 +17,7 @@ const FormComponent = (props) => (
           onSubmit={(e) => {
             e.preventDefault()
             handleSubmit(e)
-          }}
-        >
+          }}>
           <FormSpy onChange={onChange} />
           <FieldSelect id="select1" name="select1" label="Choose an option:" validate={required}>
             <option value="">Pick something...</option>

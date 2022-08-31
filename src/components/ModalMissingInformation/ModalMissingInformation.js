@@ -126,8 +126,7 @@ class ModalMissingInformation extends Component {
         }}
         usePortal
         onManageDisableScrolling={onManageDisableScrolling}
-        closeButtonMessage={closeButtonMessage}
-      >
+        closeButtonMessage={closeButtonMessage}>
         {content}
       </Modal>
     )

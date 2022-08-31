@@ -15,8 +15,7 @@ const Overlay = (props) => {
       onClick={(event) => {
         event.preventDefault()
         event.stopPropagation()
-      }}
-    >
+      }}>
       <div className={css.overlay} />
       <div className={css.overlayContent}>
         {errorMessage ? <div className={css.errorMessage}>{errorMessage}</div> : null}

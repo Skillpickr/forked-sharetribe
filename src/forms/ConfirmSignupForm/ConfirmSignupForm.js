@@ -84,8 +84,7 @@ const ConfirmSignupFormComponent = (props) => (
           onClick={onOpenTermsOfService}
           role="button"
           tabIndex="0"
-          onKeyUp={handleTermsKeyUp}
-        >
+          onKeyUp={handleTermsKeyUp}>
           <FormattedMessage id="ConfirmSignupForm.termsAndConditionsLinkText" />
         </span>
       )

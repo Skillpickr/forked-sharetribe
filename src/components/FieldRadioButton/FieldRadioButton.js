@@ -25,8 +25,7 @@ const IconRadioButton = (props) => {
           className={classNames(css.checked, checkedClassName || css.checkedStyle)}
           transform="translate(2 -12)"
           fill="none"
-          fillRule="evenodd"
-        >
+          fillRule="evenodd">
           <circle strokeWidth="2" cx="5" cy="19" r="6" />
           <circle fill="#FFF" fillRule="nonzero" cx="5" cy="19" r="3" />
         </g>

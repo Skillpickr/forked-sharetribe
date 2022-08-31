@@ -130,8 +130,7 @@ export class EditListingPhotosFormComponent extends Component {
               onSubmit={(e) => {
                 this.submittedImages = images
                 handleSubmit(e)
-              }}
-            >
+              }}>
               {updateListingError ? (
                 <p className={css.error}>
                   <FormattedMessage id="EditListingPhotosForm.updateFailed" />
@@ -144,8 +143,7 @@ export class EditListingPhotosFormComponent extends Component {
                 savedImageAltText={intl.formatMessage({
                   id: 'EditListingPhotosForm.savedImageAltText'
                 })}
-                onRemoveImage={onRemoveImage}
-              >
+                onRemoveImage={onRemoveImage}>
                 <Field
                   id="addImage"
                   name="addImage"
@@ -153,8 +151,7 @@ export class EditListingPhotosFormComponent extends Component {
                   form={null}
                   label={chooseImageText}
                   type="file"
-                  disabled={imageUploadRequested}
-                >
+                  disabled={imageUploadRequested}>
                   {(fieldprops) => {
                     const { accept, input, label, disabled: fieldDisabled } = fieldprops
                     const { name, type } = input
@@ -206,8 +203,7 @@ export class EditListingPhotosFormComponent extends Component {
                 type="submit"
                 inProgress={submitInProgress}
                 disabled={submitDisabled}
-                ready={submitReady}
-              >
+                ready={submitReady}>
                 {saveActionMsg}
               </Button>
             </Form>

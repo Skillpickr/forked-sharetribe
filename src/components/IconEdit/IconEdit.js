@@ -14,8 +14,7 @@ const IconEdit = (props) => {
         fill="none"
         fillRule="evenodd"
         strokeLinecap="round"
-        strokeLinejoin="round"
-      >
+        strokeLinejoin="round">
         <path d="M5.307 11.155L1 13l1.846-4.308L10.539 1 13 3.461zM11 5L9 3M5 11L3 9" />
       </g>
     </svg>

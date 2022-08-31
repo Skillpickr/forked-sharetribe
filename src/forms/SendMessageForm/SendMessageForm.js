@@ -90,8 +90,7 @@ class SendMessageFormComponent extends Component {
                   inProgress={submitInProgress}
                   disabled={submitDisabled}
                   onFocus={this.handleFocus}
-                  onBlur={this.handleBlur}
-                >
+                  onBlur={this.handleBlur}>
                   <IconSendMessage />
                   <FormattedMessage id="SendMessageForm.sendMessage" />
                 </SecondaryButton>

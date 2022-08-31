@@ -144,8 +144,7 @@ class BirthdayInputComponent extends Component {
             })}
             onFocus={() => this.handleSelectFocus()}
             onBlur={() => this.handleSelectBlur()}
-            onChange={(e) => this.handleSelectChange('day', e.target.value)}
-          >
+            onChange={(e) => this.handleSelectChange('day', e.target.value)}>
             <option disabled value="">
               {datePlaceholder}
             </option>
@@ -168,8 +167,7 @@ class BirthdayInputComponent extends Component {
             })}
             onFocus={() => this.handleSelectFocus()}
             onBlur={() => this.handleSelectBlur()}
-            onChange={(e) => this.handleSelectChange('month', e.target.value)}
-          >
+            onChange={(e) => this.handleSelectChange('month', e.target.value)}>
             <option disabled value="">
               {monthPlaceholder}
             </option>
@@ -192,8 +190,7 @@ class BirthdayInputComponent extends Component {
             })}
             onFocus={() => this.handleSelectFocus()}
             onBlur={() => this.handleSelectBlur()}
-            onChange={(e) => this.handleSelectChange('year', e.target.value)}
-          >
+            onChange={(e) => this.handleSelectChange('year', e.target.value)}>
             <option disabled value="">
               {yearPlaceholder}
             </option>

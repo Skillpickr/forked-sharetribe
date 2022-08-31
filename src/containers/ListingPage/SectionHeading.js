@@ -46,8 +46,7 @@ const SectionHeading = (props) => {
               <InlineTextButton
                 rootClassName={css.contactLink}
                 onClick={onContactUser}
-                enforcePagePreloadFor="SignupPage"
-              >
+                enforcePagePreloadFor="SignupPage">
                 <FormattedMessage id="ListingPage.contactUser" />
               </InlineTextButton>
             </span>

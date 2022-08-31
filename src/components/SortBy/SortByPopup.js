@@ -62,8 +62,7 @@ class SortByPopup extends Component {
         useArrow={false}
         contentPlacementOffset={contentPlacementOffset}
         onToggleActive={this.onToggleActive}
-        isOpen={this.state.isOpen}
-      >
+        isOpen={this.state.isOpen}>
         <MenuLabel className={menuLabelClasses}>
           <SortByIcon />
           {menuLabel}
@@ -83,8 +82,7 @@ class SortByPopup extends Component {
                 <button
                   className={css.menuItem}
                   disabled={option.disabled}
-                  onClick={() => (selected ? null : this.selectOption(urlParam, option.key))}
-                >
+                  onClick={() => (selected ? null : this.selectOption(urlParam, option.key))}>
                   <span className={menuItemBorderClass} />
                   {option.longLabel || option.label}
                 </button>

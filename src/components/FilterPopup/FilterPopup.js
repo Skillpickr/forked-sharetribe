@@ -132,13 +132,11 @@ class FilterPopup extends Component {
           onKeyDown={this.handleKeyDown}
           ref={(node) => {
             this.filter = node
-          }}
-        >
+          }}>
           <button
             className={classNames(labelStyles, labelMaxWidthStyles)}
             style={labelMaxWidthMaybe}
-            onClick={() => this.toggleOpen()}
-          >
+            onClick={() => this.toggleOpen()}>
             {label}
           </button>
           <div
@@ -147,8 +145,7 @@ class FilterPopup extends Component {
             ref={(node) => {
               this.filterContent = node
             }}
-            style={contentStyle}
-          >
+            style={contentStyle}>
             {this.state.isOpen ? (
               <FilterForm
                 id={`${id}.form`}
@@ -160,8 +157,7 @@ class FilterPopup extends Component {
                 onSubmit={this.handleSubmit}
                 onChange={this.handleChange}
                 onCancel={this.handleCancel}
-                onClear={this.handleClear}
-              >
+                onClear={this.handleClear}>
                 {children}
               </FilterForm>
             ) : null}

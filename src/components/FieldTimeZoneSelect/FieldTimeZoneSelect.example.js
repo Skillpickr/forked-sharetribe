@@ -19,8 +19,7 @@ const FormComponent = (props) => (
           onSubmit={(e) => {
             e.preventDefault()
             handleSubmit(e)
-          }}
-        >
+          }}>
           <FormSpy onChange={onChange} subscription={{ values: true, dirty: true }} />
           <FieldTimeZoneSelect id="timezone1" name="timezone1" label="Choose an option:" validate={required} />
 

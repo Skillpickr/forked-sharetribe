@@ -141,8 +141,7 @@ const PanelHeading = (props) => {
           className={titleClasses}
           id="TransactionPanel.salePaymentPendingTitle"
           values={{ customerName, listingLink }}
-          isCustomerBanned={isCustomerBanned}
-        >
+          isCustomerBanned={isCustomerBanned}>
           <p className={css.transactionInfoMessage}>
             <FormattedMessage id="TransactionPanel.salePaymentPendingInfo" values={{ customerName }} />
           </p>
@@ -171,8 +170,7 @@ const PanelHeading = (props) => {
           id="TransactionPanel.orderPreauthorizedTitle"
           values={{ customerName }}
           subtitleId="TransactionPanel.orderPreauthorizedSubtitle"
-          subtitleValues={{ listingLink }}
-        >
+          subtitleValues={{ listingLink }}>
           {!listingDeleted ? (
             <p className={css.transactionInfoMessage}>
               <FormattedMessage id="TransactionPanel.orderPreauthorizedInfo" values={{ providerName }} />
@@ -183,8 +181,7 @@ const PanelHeading = (props) => {
         <HeadingProvider
           className={titleClasses}
           id="TransactionPanel.saleRequestedTitle"
-          values={{ customerName, listingLink }}
-        >
+          values={{ customerName, listingLink }}>
           {!isCustomerBanned ? (
             <p className={titleClasses}>
               <FormattedMessage id="TransactionPanel.saleRequestedInfo" values={{ customerName }} />

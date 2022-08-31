@@ -194,8 +194,7 @@ class PageComponent extends Component {
         <Helmet
           htmlAttributes={{
             lang: intl.locale
-          }}
-        >
+          }}>
           <title>{title}</title>
           {referrerMeta}
           <link rel="canonical" href={canonicalUrl} />
@@ -212,8 +211,7 @@ class PageComponent extends Component {
           style={scrollPositionStyles}
           ref={(c) => {
             this.contentDiv = c
-          }}
-        >
+          }}>
           {children}
         </div>
       </div>

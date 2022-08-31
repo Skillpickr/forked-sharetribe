@@ -26,8 +26,7 @@ const ModalInMobileWrapper = (props) => {
           console.log('Closing modal')
         }}
         isModalOpenOnMobile={isOpen}
-        onManageDisableScrolling={onManageDisableScrolling}
-      >
+        onManageDisableScrolling={onManageDisableScrolling}>
         <div style={{ margin: '1rem' }}>Some content inside ModalInMobile component</div>
       </ModalInMobile>
       <div style={{ margin: '1rem' }}>

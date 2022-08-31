@@ -169,8 +169,7 @@ export class SearchMapComponent extends Component {
         className={reusableContainerClassName}
         reusableMapHiddenHandle={REUSABLE_MAP_HIDDEN_HANDLE}
         onReattach={forceUpdateHandler}
-        messages={messages}
-      >
+        messages={messages}>
         <SearchMapWithMapbox
           id={id}
           className={classes}

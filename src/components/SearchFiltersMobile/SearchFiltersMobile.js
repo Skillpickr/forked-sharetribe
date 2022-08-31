@@ -103,8 +103,7 @@ class SearchFiltersMobileComponent extends Component {
           showAsModalMaxWidth={showAsModalMaxWidth}
           onManageDisableScrolling={onManageDisableScrolling}
           containerClassName={css.modalContainer}
-          closeButtonMessage={modalCloseButtonMessage}
-        >
+          closeButtonMessage={modalCloseButtonMessage}>
           <div className={css.modalHeadingWrapper}>
             <span className={css.modalHeading}>{filtersHeading}</span>
             <button className={css.resetAllButton} onClick={(e) => this.resetAll(e)}>

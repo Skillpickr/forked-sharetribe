@@ -59,8 +59,7 @@ class FieldReviewRatingComponent extends Component {
             key={`label.${inputId}`}
             className={css.label}
             htmlFor={inputId}
-            title={intl.formatMessage({ id: `FieldReviewRating.${starId}` })}
-          >
+            title={intl.formatMessage({ id: `FieldReviewRating.${starId}` })}>
             <IconReviewStar rootClassName={css.star} />
           </label>
         )
@@ -74,8 +73,7 @@ class FieldReviewRatingComponent extends Component {
           className={css.ratingFieldSet}
           ref={(c) => {
             this.ratingFieldSet = c
-          }}
-        >
+          }}>
           {label ? <legend>{label}</legend> : null}
           <div className={css.rating}>{createStarRating(5)}</div>
         </fieldset>

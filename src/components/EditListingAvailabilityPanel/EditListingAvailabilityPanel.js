@@ -42,8 +42,7 @@ const Weekday = (props) => {
     <div
       className={classNames(css.weekDay, { [css.blockedWeekDay]: !hasEntry })}
       onClick={() => openEditModal(true)}
-      role="button"
-    >
+      role="button">
       <div className={css.dayOfWeek}>
         <FormattedMessage id={`EditListingAvailabilityPanel.dayOfWeek.${dayOfWeek}`} />
       </div>
@@ -285,8 +284,7 @@ const EditListingAvailabilityPanel = (props) => {
                     </div>
                     <button
                       className={css.removeExceptionButton}
-                      onClick={() => onDeleteAvailabilityException({ id: availabilityException.id })}
-                    >
+                      onClick={() => onDeleteAvailabilityException({ id: availabilityException.id })}>
                       <IconClose size="normal" className={css.removeIcon} />
                     </button>
                   </div>
@@ -307,8 +305,7 @@ const EditListingAvailabilityPanel = (props) => {
             className={css.addExceptionButton}
             onClick={() => setIsEditExceptionsModalOpen(true)}
             disabled={disabled}
-            ready={ready}
-          >
+            ready={ready}>
             <FormattedMessage id="EditListingAvailabilityPanel.addException" />
           </InlineTextButton>
         ) : null}
@@ -332,8 +329,7 @@ const EditListingAvailabilityPanel = (props) => {
           onClose={() => setIsEditPlanModalOpen(false)}
           onManageDisableScrolling={onManageDisableScrolling}
           containerClassName={css.modalContainer}
-          usePortal
-        >
+          usePortal>
           <EditListingAvailabilityPlanForm
             formId="EditListingAvailabilityPlanForm"
             listingTitle={currentListing.attributes.title}
@@ -353,8 +349,7 @@ const EditListingAvailabilityPanel = (props) => {
           onClose={() => setIsEditExceptionsModalOpen(false)}
           onManageDisableScrolling={onManageDisableScrolling}
           containerClassName={css.modalContainer}
-          usePortal
-        >
+          usePortal>
           <EditListingAvailabilityExceptionForm
             formId="EditListingAvailabilityExceptionForm"
             onSubmit={saveException}

@@ -19,8 +19,7 @@ const FormComponent = (props) => (
           onSubmit={(e) => {
             e.preventDefault()
             handleSubmit(e)
-          }}
-        >
+          }}>
           <FormSpy onChange={onChange} />
           <FieldBoolean
             id={`${form}.boolOption`}

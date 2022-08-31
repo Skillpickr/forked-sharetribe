@@ -165,8 +165,7 @@ export const StripePayoutPageComponent = (props) => {
                 onChange={onPayoutDetailsFormChange}
                 onSubmit={onPayoutDetailsFormSubmit}
                 onGetStripeConnectAccountLink={handleGetStripeConnectAccountLink}
-                stripeConnected={stripeConnected}
-              >
+                stripeConnected={stripeConnected}>
                 {stripeConnected && !returnedAbnormallyFromStripe && showVerificationNeeded ? (
                   <StripeConnectAccountStatusBox
                     type="verificationNeeded"

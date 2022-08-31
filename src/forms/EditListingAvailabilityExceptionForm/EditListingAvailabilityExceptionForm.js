@@ -433,8 +433,7 @@ const EditListingAvailabilityExceptionForm = (props) => {
                   exceptionEndTime: null
                 })
               })
-            }}
-          >
+            }}>
             <h2 className={css.heading}>
               <FormattedMessage id="EditListingAvailabilityExceptionForm.title" />
             </h2>
@@ -490,8 +489,7 @@ const EditListingAvailabilityExceptionForm = (props) => {
                     className={exceptionStartDate ? css.fieldSelect : css.fieldSelectDisabled}
                     selectClassName={exceptionStartDate ? css.select : css.selectDisabled}
                     disabled={startTimeDisabled}
-                    onChange={(value) => onExceptionStartTimeChange(value, timeRangesOnSelectedDate, formRenderProps)}
-                  >
+                    onChange={(value) => onExceptionStartTimeChange(value, timeRangesOnSelectedDate, formRenderProps)}>
                     {exceptionStartDay ? (
                       availableStartTimes.map((p) => (
                         <option key={p.timestamp} value={p.timestamp}>
@@ -536,8 +534,7 @@ const EditListingAvailabilityExceptionForm = (props) => {
                     id={`${idPrefix}.exceptionEndTime`}
                     className={exceptionStartDate ? css.fieldSelect : css.fieldSelectDisabled}
                     selectClassName={exceptionStartDate ? css.select : css.selectDisabled}
-                    disabled={endTimeDisabled}
-                  >
+                    disabled={endTimeDisabled}>
                     {exceptionStartDay && exceptionStartTime && endDate ? (
                       availableEndTimes.map((p, i) => {
                         const isLastIndex = i === availableEndTimes.length - 1

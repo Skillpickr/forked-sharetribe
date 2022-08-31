@@ -120,8 +120,7 @@ class ProfileSettingsFormComponent extends Component {
                 className={errorClasses}
                 rootClassName={css.uploadingImage}
                 aspectRatioClassName={css.squareAspectRatio}
-                file={profileImage.file}
-              >
+                file={profileImage.file}>
                 {uploadingOverlay}
               </ImageFromFile>
             ) : null
@@ -180,8 +179,7 @@ class ProfileSettingsFormComponent extends Component {
               onSubmit={(e) => {
                 this.submittedValues = values
                 handleSubmit(e)
-              }}
-            >
+              }}>
               <div className={css.sectionContainer}>
                 <h3 className={css.sectionTitle}>
                   <FormattedMessage id="ProfileSettingsForm.yourProfilePicture" />
@@ -194,8 +192,7 @@ class ProfileSettingsFormComponent extends Component {
                   type="file"
                   form={null}
                   uploadImageError={uploadImageError}
-                  disabled={uploadInProgress}
-                >
+                  disabled={uploadInProgress}>
                   {(fieldProps) => {
                     const { accept, id, input, label, disabled, uploadImageError } = fieldProps
                     const { name, type } = input
@@ -291,8 +288,7 @@ class ProfileSettingsFormComponent extends Component {
                 type="submit"
                 inProgress={submitInProgress}
                 disabled={submitDisabled}
-                ready={pristineSinceLastSubmit}
-              >
+                ready={pristineSinceLastSubmit}>
                 <FormattedMessage id="ProfileSettingsForm.saveChanges" />
               </Button>
             </Form>

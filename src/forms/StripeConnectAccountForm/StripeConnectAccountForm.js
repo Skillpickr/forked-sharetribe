@@ -117,8 +117,7 @@ const CreateStripeAccountFields = (props) => {
         className={css.selectCountry}
         autoComplete="country"
         label={countryLabel}
-        validate={countryRequired}
-      >
+        validate={countryRequired}>
         <option disabled value="">
           {intl.formatMessage({ id: 'StripeConnectAccountForm.countryPlaceholder' })}
         </option>
@@ -312,8 +311,7 @@ const StripeConnectAccountFormComponent = (props) => {
                 type="submit"
                 inProgress={submitInProgress}
                 disabled={submitDisabled}
-                ready={ready}
-              >
+                ready={ready}>
                 {submitButtonText || <FormattedMessage id="StripeConnectAccountForm.submitButtonText" />}
               </Button>
             </>

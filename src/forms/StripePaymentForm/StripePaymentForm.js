@@ -490,8 +490,7 @@ class StripePaymentForm extends Component {
             className={css.submitButton}
             type="submit"
             inProgress={submitInProgress}
-            disabled={submitDisabled}
-          >
+            disabled={submitDisabled}>
             {billingDetailsNeeded ? (
               <FormattedMessage id="StripePaymentForm.submitPaymentInfo" />
             ) : (

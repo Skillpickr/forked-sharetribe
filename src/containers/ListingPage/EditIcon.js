@@ -10,8 +10,7 @@ const EditIcon = (props) => {
       height="16px"
       viewBox="0 0 16 16"
       version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+      xmlns="http://www.w3.org/2000/svg">
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round">
         <g transform="translate(-255.000000, -76.000000)" stroke="#FFFFFF">
           <g transform="translate(0.000000, 60.000000)">

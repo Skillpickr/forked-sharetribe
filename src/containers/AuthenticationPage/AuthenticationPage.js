@@ -386,8 +386,7 @@ export class AuthenticationPageComponent extends Component {
           '@context': 'http://schema.org',
           '@type': 'WebPage',
           name: schemaTitle
-        }}
-      >
+        }}>
         <LayoutSingleColumn>
           <LayoutWrapperTopbar>
             <TopbarContainer className={topbarClasses} />
@@ -399,8 +398,7 @@ export class AuthenticationPageComponent extends Component {
               isOpen={this.state.tosModalOpen}
               onClose={() => this.setState({ tosModalOpen: false })}
               usePortal
-              onManageDisableScrolling={onManageDisableScrolling}
-            >
+              onManageDisableScrolling={onManageDisableScrolling}>
               <div className={css.termsWrapper}>
                 <h2 className={css.termsHeading}>
                   <FormattedMessage id="AuthenticationPage.termsHeading" />

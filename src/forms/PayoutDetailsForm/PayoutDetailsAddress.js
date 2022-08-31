@@ -144,8 +144,7 @@ const PayoutDetailsAddress = (props) => {
           className={css.selectCountry}
           autoComplete="address-level1"
           label={stateLabel}
-          validate={stateRequired}
-        >
+          validate={stateRequired}>
           <option disabled value="">
             {statePlaceholder}
           </option>

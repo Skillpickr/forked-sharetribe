@@ -77,8 +77,7 @@ export const ListingCardComponent = (props) => {
       <div
         className={css.threeToTwoWrapper}
         onMouseEnter={() => setActiveListing(currentListing.id)}
-        onMouseLeave={() => setActiveListing(null)}
-      >
+        onMouseLeave={() => setActiveListing(null)}>
         <div className={css.aspectWrapper}>
           <LazyImage
             rootClassName={css.rootForImage}

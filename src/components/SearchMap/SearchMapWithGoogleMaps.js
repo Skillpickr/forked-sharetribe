@@ -204,8 +204,7 @@ class SearchMapPriceLabelWithOverlay extends Component {
         position={position}
         map={map}
         mapPaneName={mapPaneName}
-        getPixelPositionOffset={getPixelPositionOffset}
-      >
+        getPixelPositionOffset={getPixelPositionOffset}>
         <SearchMapPriceLabel
           isActive={isActive}
           className={className}
@@ -239,8 +238,7 @@ class SearchMapGroupLabelWithOverlay extends Component {
         position={position}
         map={map}
         mapPaneName={mapPaneName}
-        getPixelPositionOffset={getPixelPositionOffset}
-      >
+        getPixelPositionOffset={getPixelPositionOffset}>
         <SearchMapGroupLabel
           isActive={isActive}
           className={className}
@@ -336,8 +334,7 @@ const InfoCardComponent = (props) => {
       map={map}
       mapPaneName={FLOAT_PANE}
       getPixelPositionOffset={getPixelPositionOffset}
-      styles={{ zIndex: 1 }}
-    >
+      styles={{ zIndex: 1 }}>
       <SearchMapInfoCard
         mapComponentRefreshToken={mapComponentRefreshToken}
         className={INFO_CARD_HANDLE}

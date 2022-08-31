@@ -36,8 +36,7 @@ const SectionHostMaybe = (props) => {
         isOpen={isEnquiryModalOpen}
         onClose={onCloseEnquiryModal}
         usePortal
-        onManageDisableScrolling={onManageDisableScrolling}
-      >
+        onManageDisableScrolling={onManageDisableScrolling}>
         <EnquiryForm
           className={css.enquiryForm}
           submitButtonWrapperClassName={css.enquirySubmitButtonWrapper}

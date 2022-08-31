@@ -16,8 +16,7 @@ const FormComponent = (props) => (
           onSubmit={(e) => {
             e.preventDefault()
             handleSubmit(e)
-          }}
-        >
+          }}>
           <FieldDateRangeController name="dates" onChange={handleChange} />
         </form>
       )

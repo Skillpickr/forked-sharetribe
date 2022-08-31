@@ -219,8 +219,7 @@ export class ProfilePageComponent extends Component {
           '@context': 'http://schema.org',
           '@type': 'ProfilePage',
           name: schemaTitle
-        }}
-      >
+        }}>
         <LayoutSideNavigation>
           <LayoutWrapperTopbar>
             <TopbarContainer currentPage="ProfilePage" />

@@ -36,13 +36,11 @@ const ListingCard = (props) => {
         e.preventDefault()
         // Use clickHandler from props to call internal router
         clickHandler(listing)
-      }}
-    >
+      }}>
       <div
         className={classNames(css.card, css.borderRadiusInheritTop, {
           [css.borderRadiusInheritBottom]: !isInCarousel
-        })}
-      >
+        })}>
         <div className={classNames(css.threeToTwoWrapper, css.borderRadiusInheritTop)}>
           <div className={classNames(css.aspectWrapper, css.borderRadiusInheritTop)}>
             <ResponsiveImage

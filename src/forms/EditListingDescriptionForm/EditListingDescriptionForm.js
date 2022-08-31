@@ -184,8 +184,7 @@ const EditListingDescriptionFormComponent = (props) => (
             type="submit"
             inProgress={submitInProgress}
             disabled={submitDisabled}
-            ready={submitReady}
-          >
+            ready={submitReady}>
             {saveActionMsg}
           </Button>
         </Form>

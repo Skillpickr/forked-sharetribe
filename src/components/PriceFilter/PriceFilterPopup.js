@@ -159,8 +159,7 @@ class PriceFilterPopup extends Component {
           onKeyDown={this.handleKeyDown}
           ref={(node) => {
             this.filter = node
-          }}
-        >
+          }}>
           <button className={labelStyles} onClick={() => this.toggleOpen()}>
             {currentLabel}
           </button>

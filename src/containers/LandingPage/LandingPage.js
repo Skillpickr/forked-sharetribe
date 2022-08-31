@@ -51,8 +51,7 @@ export const LandingPageComponent = (props) => {
         description: schemaDescription,
         name: schemaTitle,
         image: [schemaImage]
-      }}
-    >
+      }}>
       <LayoutSingleColumn>
         <LayoutWrapperTopbar>
           <TopbarContainer />

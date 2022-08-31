@@ -67,16 +67,14 @@ class FilterPlainComponent extends Component {
           className={classNames(plainClassName, css.plain, { [css.isOpen]: this.state.isOpen })}
           ref={(node) => {
             this.filterContent = node
-          }}
-        >
+          }}>
           <FilterForm
             id={`${id}.form`}
             liveEdit
             contentPlacementOffset={contentPlacementOffset}
             onChange={this.handleChange}
             initialValues={initialValues}
-            keepDirtyOnReinitialize={keepDirtyOnReinitialize}
-          >
+            keepDirtyOnReinitialize={keepDirtyOnReinitialize}>
             {children}
           </FilterForm>
         </div>

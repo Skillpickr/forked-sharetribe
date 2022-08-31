@@ -168,8 +168,7 @@ class PasswordChangeFormComponent extends Component {
                   .catch(() => {
                     // Error is handled in duck file already.
                   })
-              }}
-            >
+              }}>
               <div className={css.newPasswordSection}>
                 <FieldTextInput
                   type="password"

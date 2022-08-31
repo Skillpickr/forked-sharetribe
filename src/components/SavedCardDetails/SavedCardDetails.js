@@ -186,8 +186,7 @@ const SavedCardDetails = (props) => {
           }}
           usePortal
           contentClassName={css.modalContent}
-          onManageDisableScrolling={onManageDisableScrolling}
-        >
+          onManageDisableScrolling={onManageDisableScrolling}>
           <div>
             <div className={css.modalTitle}>{removeCardModalTitle}</div>
             <p className={css.modalMessage}>{removeCardModalContent}</p>

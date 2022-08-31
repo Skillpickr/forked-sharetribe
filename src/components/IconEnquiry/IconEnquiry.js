@@ -14,8 +14,7 @@ const IconEnquiry = (props) => {
         fill="none"
         fillRule="evenodd"
         strokeLinecap="round"
-        strokeLinejoin="round"
-      >
+        strokeLinejoin="round">
         <path
           d="M37.522 17L45 22.22v19.933C45 43.724 43.744 45 42.196 45H4.804C3.256 45 2 43.724 2 42.153V22.22L9.478 17"
           strokeWidth="2"

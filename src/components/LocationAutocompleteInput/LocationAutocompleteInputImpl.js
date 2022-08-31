@@ -83,8 +83,7 @@ const LocationPredictionsList = (props) => {
         onMouseUp={(e) => {
           e.preventDefault()
           onSelectEnd(prediction)
-        }}
-      >
+        }}>
         {predictionId === CURRENT_LOCATION_ID ? (
           <span className={css.currentLocation}>
             <IconCurrentLocation />

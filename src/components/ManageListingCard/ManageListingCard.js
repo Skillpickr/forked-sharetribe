@@ -181,8 +181,7 @@ export const ManageListingCardComponent = (props) => {
           history.push(createListingURL(routeConfiguration(), listing))
         }}
         onMouseOver={onOverListingLink}
-        onTouchStart={onOverListingLink}
-      >
+        onTouchStart={onOverListingLink}>
         <div className={css.aspectWrapper}>
           <ResponsiveImage
             rootClassName={css.rootForImage}
@@ -210,8 +209,7 @@ export const ManageListingCardComponent = (props) => {
                 const listingOpen = isOpen ? currentListing : null
                 onToggleMenu(listingOpen)
               }}
-              isOpen={isMenuOpen}
-            >
+              isOpen={isMenuOpen}>
               <MenuLabel className={css.menuLabel} isOpenClassName={css.listingMenuIsOpen}>
                 <div className={css.iconWrapper}>
                   <MenuIcon className={css.menuIcon} isActive={isMenuOpen} />
@@ -228,8 +226,7 @@ export const ManageListingCardComponent = (props) => {
                         onToggleMenu(null)
                         onCloseListing(currentListing.id)
                       }
-                    }}
-                  >
+                    }}>
                     <FormattedMessage id="ManageListingCard.closeListing" />
                   </InlineTextButton>
                 </MenuItem>
@@ -241,13 +238,11 @@ export const ManageListingCardComponent = (props) => {
           <React.Fragment>
             <div className={classNames({ [css.draftNoImage]: !firstImage })} />
             <Overlay
-              message={intl.formatMessage({ id: 'ManageListingCard.draftOverlayText' }, { listingTitle: title })}
-            >
+              message={intl.formatMessage({ id: 'ManageListingCard.draftOverlayText' }, { listingTitle: title })}>
               <NamedLink
                 className={css.finishListingDraftLink}
                 name="EditListingPage"
-                params={{ id, slug, type: LISTING_PAGE_PARAM_TYPE_DRAFT, tab: 'photos' }}
-              >
+                params={{ id, slug, type: LISTING_PAGE_PARAM_TYPE_DRAFT, tab: 'photos' }}>
                 <FormattedMessage id="ManageListingCard.finishListingDraft" />
               </NamedLink>
             </Overlay>
@@ -264,8 +259,7 @@ export const ManageListingCardComponent = (props) => {
                 if (!actionsInProgressListingId) {
                   onOpenListing(currentListing.id)
                 }
-              }}
-            >
+              }}>
               <FormattedMessage id="ManageListingCard.openListing" />
             </button>
           </Overlay>
@@ -308,8 +302,7 @@ export const ManageListingCardComponent = (props) => {
                 event.preventDefault()
                 event.stopPropagation()
                 history.push(createListingURL(routeConfiguration(), listing))
-              }}
-            >
+              }}>
               {formatTitle(title, MAX_LENGTH_FOR_WORDS_IN_TITLE)}
             </InlineTextButton>
           </div>
@@ -319,8 +312,7 @@ export const ManageListingCardComponent = (props) => {
           <NamedLink
             className={css.manageLink}
             name="EditListingPage"
-            params={{ id, slug, type: editListingLinkType, tab: 'description' }}
-          >
+            params={{ id, slug, type: editListingLinkType, tab: 'description' }}>
             <FormattedMessage id="ManageListingCard.editListing" />
           </NamedLink>
 
@@ -331,8 +323,7 @@ export const ManageListingCardComponent = (props) => {
               <NamedLink
                 className={css.manageLink}
                 name="EditListingPage"
-                params={{ id, slug, type: editListingLinkType, tab: 'availability' }}
-              >
+                params={{ id, slug, type: editListingLinkType, tab: 'availability' }}>
                 <FormattedMessage id="ManageListingCard.manageAvailability" />
               </NamedLink>
             </React.Fragment>

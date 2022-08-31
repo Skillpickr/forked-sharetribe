@@ -80,8 +80,7 @@ class PasswordRecoveryFormComponent extends Component {
               onSubmit={(e) => {
                 this.submittedValues = values
                 handleSubmit(e)
-              }}
-            >
+              }}>
               <FieldTextInput
                 className={css.email}
                 type="email"

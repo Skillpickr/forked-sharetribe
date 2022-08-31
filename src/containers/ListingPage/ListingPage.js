@@ -407,8 +407,7 @@ export class ListingPageComponent extends Component {
           description: description,
           name: schemaTitle,
           image: schemaImages
-        }}
-      >
+        }}>
         <LayoutSingleColumn className={css.pageRoot}>
           <LayoutWrapperTopbar>{topbar}</LayoutWrapperTopbar>
           <LayoutWrapperMain>
@@ -462,8 +461,7 @@ export class ListingPageComponent extends Component {
                     djGearForPlaying={djGearForPlayingOptions}
                     songRequest={songRequestOptions}
                     skillType={optionConfig.key}
-                    publicData={publicData}
-                  ></SectionSpecificationsMaybe>
+                    publicData={publicData}></SectionSpecificationsMaybe>
                   <SectionBonusMaybe publicData={publicData}></SectionBonusMaybe>
                   <SectionMapMaybe geolocation={geolocation} publicData={publicData} listingId={currentListing.id} />
                   <SectionReviews reviews={reviews} fetchReviewsError={fetchReviewsError} />
@@ -504,8 +502,7 @@ export class ListingPageComponent extends Component {
               contentClassName={css.enquiryModalContent}
               isOpen={isAuthenticated && this.state.enquiryModalOpen}
               onClose={() => this.setState({ enquiryModalOpen: false })}
-              onManageDisableScrolling={onManageDisableScrolling}
-            >
+              onManageDisableScrolling={onManageDisableScrolling}>
               <EnquiryForm
                 className={css.enquiryForm}
                 submitButtonWrapperClassName={css.enquirySubmitButtonWrapper}

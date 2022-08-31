@@ -146,8 +146,7 @@ const DailyPlan = (props) => {
                         <FieldSelect
                           id={`${name}.startTime`}
                           name={`${name}.startTime`}
-                          selectClassName={css.fieldSelect}
-                        >
+                          selectClassName={css.fieldSelect}>
                           <option disabled value="">
                             {startTimePlaceholder}
                           </option>
@@ -175,8 +174,7 @@ const DailyPlan = (props) => {
                     <div
                       className={css.fieldArrayRemove}
                       onClick={() => fields.remove(index)}
-                      style={{ cursor: 'pointer' }}
-                    >
+                      style={{ cursor: 'pointer' }}>
                       <IconClose rootClassName={css.closeIcon} />
                     </div>
                   </div>
@@ -187,16 +185,14 @@ const DailyPlan = (props) => {
                 <InlineTextButton
                   type="button"
                   className={css.buttonSetHours}
-                  onClick={() => fields.push({ startTime: null, endTime: null })}
-                >
+                  onClick={() => fields.push({ startTime: null, endTime: null })}>
                   <FormattedMessage id="EditListingAvailabilityPlanForm.setHours" />
                 </InlineTextButton>
               ) : (
                 <InlineTextButton
                   type="button"
                   className={css.buttonAddNew}
-                  onClick={() => fields.push({ startTime: null, endTime: null })}
-                >
+                  onClick={() => fields.push({ startTime: null, endTime: null })}>
                   <FormattedMessage id="EditListingAvailabilityPlanForm.addAnother" />
                 </InlineTextButton>
               )}

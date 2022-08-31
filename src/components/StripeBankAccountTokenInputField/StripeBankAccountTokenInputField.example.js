@@ -20,8 +20,7 @@ const formComponent = (country) => (props) =>
             onSubmit={(e) => {
               e.preventDefault()
               handleSubmit(e)
-            }}
-          >
+            }}>
             <FormSpy onChange={onChange} />
             <StripeBankAccountTokenInputField
               id={`${formName}.token`}

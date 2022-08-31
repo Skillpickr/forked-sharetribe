@@ -161,8 +161,7 @@ export const withDimensions = (Component, options = {}) => {
           ref={(element) => {
             this.element = element
           }}
-          style={style}
-        >
+          style={style}>
           {hasDimensions ? <Component {...props} /> : null}
         </div>
       )
@@ -293,8 +292,7 @@ export const lazyLoadWithDimensions = (Component, options = {}) => {
           ref={(element) => {
             this.element = element
           }}
-          style={style}
-        >
+          style={style}>
           {width !== 0 && height !== 0 ? <Component {...props} /> : null}
         </div>
       )

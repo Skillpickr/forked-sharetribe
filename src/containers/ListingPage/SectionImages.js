@@ -56,8 +56,7 @@ const SectionImages = (props) => {
         isOpen={imageCarouselOpen}
         onClose={onImageCarouselClose}
         usePortal
-        onManageDisableScrolling={onManageDisableScrolling}
-      >
+        onManageDisableScrolling={onManageDisableScrolling}>
         <ImageCarousel
           images={listing.images}
           imageVariants={['scaled-small', 'scaled-medium', 'scaled-large', 'scaled-xlarge']}

@@ -37,8 +37,7 @@ const ReviewModal = (props) => {
       onClose={onCloseModal}
       onManageDisableScrolling={onManageDisableScrolling}
       usePortal
-      closeButtonMessage={closeButtonMessage}
-    >
+      closeButtonMessage={closeButtonMessage}>
       <IconReviewUser className={css.modalIcon} />
       <p className={css.modalTitle}>
         <FormattedMessage id="ReviewModal.title" values={{ revieweeName: reviewee }} />

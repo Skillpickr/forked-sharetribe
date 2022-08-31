@@ -86,8 +86,7 @@ const TopbarMobileMenu = (props) => {
         <NamedLink
           className={classNames(css.inbox, currentPageClass('InboxPage'))}
           name="InboxPage"
-          params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}
-        >
+          params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
           <FormattedMessage id="TopbarMobileMenu.inboxLink" />
           {notificationCountBadge}
         </NamedLink>
@@ -98,14 +97,12 @@ const TopbarMobileMenu = (props) => {
         />
         <NamedLink
           className={classNames(css.navigationLink, currentPageClass('ProfileSettingsPage'))}
-          name="ProfileSettingsPage"
-        >
+          name="ProfileSettingsPage">
           <FormattedMessage id="TopbarMobileMenu.profileSettingsLink" />
         </NamedLink>
         <NamedLink
           className={classNames(css.navigationLink, currentPageClass('AccountSettingsPage'))}
-          name="AccountSettingsPage"
-        >
+          name="AccountSettingsPage">
           <FormattedMessage id="TopbarMobileMenu.accountSettingsLink" />
         </NamedLink>
       </div>

@@ -165,8 +165,7 @@ const EditListingFeaturesFormComponent = (props) => (
             className={css.features}
             name={soundLightExpKey}
             id={soundLightExpKey}
-            label={soundLightExpKeyMessage}
-          >
+            label={soundLightExpKeyMessage}>
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {(id) => (
                 <option disabled value="">
@@ -243,8 +242,7 @@ const EditListingFeaturesFormComponent = (props) => (
             className={css.features}
             name={djGearForPlayingKey}
             id={djGearForPlayingKey}
-            label={djGearForPlayingKeyMessage}
-          >
+            label={djGearForPlayingKeyMessage}>
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {(id) => (
                 <option disabled value="">
@@ -297,8 +295,7 @@ const EditListingFeaturesFormComponent = (props) => (
             name={musicSoloistKey}
             id={musicSoloistKey}
             label={musicSoloistKeyMessage}
-            validate={required(requiredDropdown)}
-          >
+            validate={required(requiredDropdown)}>
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {(id) => (
                 <option disabled value="">
@@ -390,8 +387,7 @@ const EditListingFeaturesFormComponent = (props) => (
             id={name}
             label={skillMessage}
             onChange={handleChange}
-            value={skill}
-          >
+            value={skill}>
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {(id) => <option value="">{id}</option>}
             </FormattedMessage>
@@ -419,8 +415,7 @@ const EditListingFeaturesFormComponent = (props) => (
             type="submit"
             inProgress={submitInProgress}
             disabled={submitDisabled}
-            ready={submitReady}
-          >
+            ready={submitReady}>
             {saveActionMsg}
           </Button>
         </Form>

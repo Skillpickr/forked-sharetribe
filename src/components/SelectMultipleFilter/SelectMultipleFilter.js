@@ -136,8 +136,7 @@ class SelectMultipleFilter extends Component {
         onSubmit={handleSubmit}
         initialValues={namedInitialValues}
         keepDirtyOnReinitialize
-        {...rest}
-      >
+        {...rest}>
         <GroupOfFieldCheckboxes className={css.fieldGroup} name={name} id={`${id}-checkbox-group`} options={options} />
       </FilterPopup>
     ) : (
@@ -151,8 +150,7 @@ class SelectMultipleFilter extends Component {
         contentPlacementOffset={contentStyle}
         onSubmit={handleSubmit}
         initialValues={namedInitialValues}
-        {...rest}
-      >
+        {...rest}>
         <GroupOfFieldCheckboxes
           className={css.fieldGroupPlain}
           name={name}

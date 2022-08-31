@@ -30,8 +30,7 @@ const SectionHero = (props) => {
           to={{
             search: '?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846'
           }}
-          className={classNames(css.heroButton, { [css.heroButtonFEDelay]: mounted })}
-        >
+          className={classNames(css.heroButton, { [css.heroButtonFEDelay]: mounted })}>
           <FormattedMessage id="SectionHero.browseButton" />
         </NamedLink>
       </div>

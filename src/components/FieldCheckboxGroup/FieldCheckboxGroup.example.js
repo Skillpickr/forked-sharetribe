@@ -64,8 +64,7 @@ const formComponent = (country) => (props) =>
             onSubmit={(e) => {
               e.preventDefault()
               handleSubmit(e)
-            }}
-          >
+            }}>
             <FormSpy onChange={onChange} subscription={{ values: true, dirty: true }} />
             <FieldCheckboxGroup {...componentProps} />
 

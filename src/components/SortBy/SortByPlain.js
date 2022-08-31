@@ -60,8 +60,7 @@ class SortByPlain extends Component {
                 key={option.key}
                 className={optionClass}
                 disabled={option.disabled}
-                onClick={() => (selected ? null : this.selectOption(option.key))}
-              >
+                onClick={() => (selected ? null : this.selectOption(option.key))}>
                 <span className={optionBorderClass} />
                 {option.longLabel || option.label}
               </button>

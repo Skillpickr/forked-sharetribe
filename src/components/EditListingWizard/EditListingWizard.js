@@ -379,8 +379,7 @@ class EditListingWizard extends Component {
           isOpen={this.state.showPayoutDetails}
           onClose={this.handlePayoutModalClose}
           onManageDisableScrolling={onManageDisableScrolling}
-          usePortal
-        >
+          usePortal>
           <div className={css.modalPayoutDetailsWrapper}>
             <h1 className={css.modalTitle}>
               <FormattedMessage id="EditListingWizard.payoutModalTitleOneMoreThing" />
@@ -414,8 +413,7 @@ class EditListingWizard extends Component {
                   onChange={onPayoutDetailsFormChange}
                   onSubmit={rest.onPayoutDetailsSubmit}
                   onGetStripeConnectAccountLink={handleGetStripeConnectAccountLink}
-                  stripeConnected={stripeConnected}
-                >
+                  stripeConnected={stripeConnected}>
                   {stripeConnected && !returnedAbnormallyFromStripe && showVerificationNeeded ? (
                     <StripeConnectAccountStatusBox
                       type="verificationNeeded"

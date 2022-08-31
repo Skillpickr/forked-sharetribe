@@ -108,8 +108,7 @@ const BookingPanel = (props) => {
         isModalOpenOnMobile={isBook}
         onClose={() => closeBookModal(history, location)}
         showAsModalMaxWidth={MODAL_BREAKPOINT}
-        onManageDisableScrolling={onManageDisableScrolling}
-      >
+        onManageDisableScrolling={onManageDisableScrolling}>
         <div className={css.modalHeading}>
           <h1 className={css.title}>{title}</h1>
         </div>
@@ -163,8 +162,7 @@ const BookingPanel = (props) => {
         {showBookingTimeForm ? (
           <Button
             rootClassName={css.bookButton}
-            onClick={() => openBookModal(isOwnListing, isClosed, history, location)}
-          >
+            onClick={() => openBookModal(isOwnListing, isClosed, history, location)}>
             <FormattedMessage id="BookingPanel.ctaButtonMessage" />
           </Button>
         ) : isClosed ? (

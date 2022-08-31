@@ -230,8 +230,7 @@ class MainPanel extends Component {
           resultsCount={totalItems}
           searchInProgress={searchInProgress}
           searchListingsError={searchListingsError}
-          {...propsForSecondaryFiltersToggle}
-        >
+          {...propsForSecondaryFiltersToggle}>
           {primaryFilters.map((config) => {
             return (
               <FilterComponent
@@ -261,8 +260,7 @@ class MainPanel extends Component {
           onOpenModal={onOpenModal}
           onCloseModal={onCloseModal}
           resetAll={this.resetAll}
-          selectedFiltersCount={selectedFiltersCount}
-        >
+          selectedFiltersCount={selectedFiltersCount}>
           {filterConfig.map((config) => {
             return (
               <FilterComponent
@@ -286,8 +284,7 @@ class MainPanel extends Component {
               applyFilters={this.applyFilters}
               cancelFilters={this.cancelFilters}
               resetAll={this.resetAll}
-              onClosePanel={() => this.setState({ isSecondaryFiltersOpen: false })}
-            >
+              onClosePanel={() => this.setState({ isSecondaryFiltersOpen: false })}>
               {secondaryFilters.map((config) => {
                 return (
                   <FilterComponent
@@ -307,8 +304,7 @@ class MainPanel extends Component {
           <div
             className={classNames(css.listings, {
               [css.newSearchInProgress]: !listingsAreLoaded
-            })}
-          >
+            })}>
             {searchListingsError ? (
               <h2 className={css.error}>
                 <FormattedMessage id="SearchPage.searchError" />

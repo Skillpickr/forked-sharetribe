@@ -127,8 +127,7 @@ export class BookingDateRangeFilterComponent extends Component {
         {...onClearPopupMaybe}
         {...onCancelPopupMaybe}
         initialValues={initialDates}
-        {...rest}
-      >
+        {...rest}>
         <FieldDateRangeController
           name="dates"
           controllerRef={(node) => {
@@ -148,8 +147,7 @@ export class BookingDateRangeFilterComponent extends Component {
         onSubmit={handleSubmit}
         {...onClearPlainMaybe}
         initialValues={initialDates}
-        {...rest}
-      >
+        {...rest}>
         <FieldDateRangeController
           name="dates"
           controllerRef={(node) => {

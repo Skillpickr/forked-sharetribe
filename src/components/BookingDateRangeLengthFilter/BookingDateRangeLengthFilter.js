@@ -184,8 +184,7 @@ export class BookingDateRangeLengthFilterComponent extends Component {
           name={minDurationQueryParamName}
           label={minDurationLabel}
           className={css.duration}
-          disabled={!datesSelected}
-        >
+          disabled={!datesSelected}>
           {dateRangeLengthFilter.config.options.map(({ key, label }) => {
             return (
               <option key={key} value={key}>
@@ -212,8 +211,7 @@ export class BookingDateRangeLengthFilterComponent extends Component {
         {...onClearPopupMaybe}
         {...onCancelPopupMaybe}
         initialValues={initialValues}
-        {...rest}
-      >
+        {...rest}>
         {fields}
       </FilterPopup>
     ) : (
@@ -228,8 +226,7 @@ export class BookingDateRangeLengthFilterComponent extends Component {
         onSubmit={handleSubmit}
         {...onClearPlainMaybe}
         initialValues={initialValues}
-        {...rest}
-      >
+        {...rest}>
         {fields}
       </FilterPlain>
     )

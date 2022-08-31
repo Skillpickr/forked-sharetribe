@@ -41,8 +41,7 @@ class SectionMapMaybe extends Component {
             className={css.map}
             onClick={() => {
               this.setState({ isStatic: false })
-            }}
-          >
+            }}>
             {map}
           </button>
         ) : (

@@ -68,8 +68,7 @@ const TopbarDesktop = (props) => {
         <MenuItem key="ManageListingsPage">
           <NamedLink
             className={classNames(css.yourListingsLink, currentPageClass('ManageListingsPage'))}
-            name="ManageListingsPage"
-          >
+            name="ManageListingsPage">
             <span className={css.menuItemBorder} />
             <FormattedMessage id="TopbarDesktop.yourListingsLink" />
           </NamedLink>
@@ -77,8 +76,7 @@ const TopbarDesktop = (props) => {
         <MenuItem key="ProfileSettingsPage">
           <NamedLink
             className={classNames(css.profileSettingsLink, currentPageClass('ProfileSettingsPage'))}
-            name="ProfileSettingsPage"
-          >
+            name="ProfileSettingsPage">
             <span className={css.menuItemBorder} />
             <FormattedMessage id="TopbarDesktop.profileSettingsLink" />
           </NamedLink>
@@ -86,8 +84,7 @@ const TopbarDesktop = (props) => {
         <MenuItem key="AccountSettingsPage">
           <NamedLink
             className={classNames(css.yourListingsLink, currentPageClass('AccountSettingsPage'))}
-            name="AccountSettingsPage"
-          >
+            name="AccountSettingsPage">
             <span className={css.menuItemBorder} />
             <FormattedMessage id="TopbarDesktop.accountSettingsLink" />
           </NamedLink>

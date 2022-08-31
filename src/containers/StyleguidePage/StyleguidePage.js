@@ -32,8 +32,7 @@ const Example = (props) => {
         <NamedLink
           name="StyleguideComponentExample"
           params={{ component: componentName, example: exampleName }}
-          className={css.link}
-        >
+          className={css.link}>
           {exampleName}
         </NamedLink>
       </h3>
@@ -41,8 +40,7 @@ const Example = (props) => {
         <NamedLink
           name="StyleguideComponentExampleRaw"
           params={{ component: componentName, example: exampleName }}
-          className={css.link}
-        >
+          className={css.link}>
           raw
         </NamedLink>
       </span>

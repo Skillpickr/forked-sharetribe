@@ -140,8 +140,7 @@ class FieldDateRangeInputComponent extends Component {
         <div
           className={classNames(css.inputBorders, {
             [css.mobileMargins]: useMobileMargins && !this.state.focusedInput
-          })}
-        >
+          })}>
           <div className={startDateBorderClasses} />
           <div className={endDateBorderClasses} />
         </div>

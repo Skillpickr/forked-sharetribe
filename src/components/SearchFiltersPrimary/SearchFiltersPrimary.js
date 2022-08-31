@@ -31,8 +31,7 @@ const SearchFiltersPrimaryComponent = (props) => {
       className={toggleSecondaryFiltersOpenButtonClasses}
       onClick={() => {
         toggleSecondaryFiltersOpen(!isSecondaryFiltersOpen)
-      }}
-    >
+      }}>
       <FormattedMessage id="SearchFiltersPrimary.moreFiltersButton" values={{ count: selectedSecondaryFiltersCount }} />
     </button>
   ) : null
