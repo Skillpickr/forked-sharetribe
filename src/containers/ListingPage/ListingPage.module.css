@@ -356,6 +356,11 @@
   }
 }
 
+.subTitle {
+  font-weight: var(--fontWeightSemiBold);
+  margin-bottom: 0;
+}
+
 .author {
   width: 100%;
   composes: h5 from global;
@@ -451,7 +456,7 @@
 
 .featuresTitle {
   /* Font */
-  composes: h3 from global;
+  composes: h2 from global;
   color: var(--matterColorAnti);
 
   margin-top: 0;
@@ -490,9 +495,8 @@
   margin-bottom: 0;
 
   /* Preserve newlines, but collapse other whitespace */
-  white-space: pre-line;
-
-  @media (--viewportMedium) {
+  white-space: ;
+  white-space @media (--viewportMedium) {
     margin-top: 0;
     margin-bottom: 0;
   }

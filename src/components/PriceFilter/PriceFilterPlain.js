@@ -1,66 +1,64 @@
-import React, { Component } from 'react';
-import { arrayOf, func, node, number, shape, string } from 'prop-types';
-import classNames from 'classnames';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
-import { propTypes } from '../../util/types';
-import { formatCurrencyMajorUnit } from '../../util/currency';
-import config from '../../config';
+import React, { Component } from 'react'
+import { arrayOf, func, node, number, shape, string } from 'prop-types'
+import classNames from 'classnames'
+import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
+import { propTypes } from '../../util/types'
+import { formatCurrencyMajorUnit } from '../../util/currency'
+import config from '../../config'
 
-import { PriceFilterForm } from '../../forms';
+import { PriceFilterForm } from '../../forms'
 
-import css from './PriceFilterPlain.module.css';
+import css from './PriceFilterPlain.module.css'
 
-const RADIX = 10;
+const RADIX = 10
 
-const getPriceQueryParamName = queryParamNames => {
+const getPriceQueryParamName = (queryParamNames) => {
   return Array.isArray(queryParamNames)
     ? queryParamNames[0]
     : typeof queryParamNames === 'string'
     ? queryParamNames
-    : 'price';
-};
+    : 'price'
+}
 
 // Parse value, which should look like "0,1000"
-const parse = priceRange => {
-  const [minPrice, maxPrice] = !!priceRange
-    ? priceRange.split(',').map(v => Number.parseInt(v, RADIX))
-    : [];
+const parse = (priceRange) => {
+  const [minPrice, maxPrice] = !!priceRange ? priceRange.split(',').map((v) => Number.parseInt(v, RADIX)) : []
   // Note: we compare to null, because 0 as minPrice is falsy in comparisons.
-  return !!priceRange && minPrice != null && maxPrice != null ? { minPrice, maxPrice } : null;
-};
+  return !!priceRange && minPrice != null && maxPrice != null ? { minPrice, maxPrice } : null
+}
 
 // Format value, which should look like { minPrice, maxPrice }
 const format = (range, queryParamName) => {
-  const { minPrice, maxPrice } = range || {};
+  const { minPrice, maxPrice } = range || {}
   // Note: we compare to null, because 0 as minPrice is falsy in comparisons.
-  const value = minPrice != null && maxPrice != null ? `${minPrice},${maxPrice}` : null;
-  return { [queryParamName]: value };
-};
+  const value = minPrice != null && maxPrice != null ? `${minPrice},${maxPrice}` : null
+  return { [queryParamName]: value }
+}
 
 class PriceFilterPlainComponent extends Component {
   constructor(props) {
-    super(props);
-    this.state = { isOpen: true };
+    super(props)
+    this.state = { isOpen: true }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClear = this.handleClear.bind(this);
-    this.toggleIsOpen = this.toggleIsOpen.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleClear = this.handleClear.bind(this)
+    this.toggleIsOpen = this.toggleIsOpen.bind(this)
   }
 
   handleChange(values) {
-    const { onSubmit, queryParamNames } = this.props;
-    const priceQueryParamName = getPriceQueryParamName(queryParamNames);
-    onSubmit(format(values, priceQueryParamName));
+    const { onSubmit, queryParamNames } = this.props
+    const priceQueryParamName = getPriceQueryParamName(queryParamNames)
+    onSubmit(format(values, priceQueryParamName))
   }
 
   handleClear() {
-    const { onSubmit, queryParamNames } = this.props;
-    const priceQueryParamName = getPriceQueryParamName(queryParamNames);
-    onSubmit(format(null, priceQueryParamName));
+    const { onSubmit, queryParamNames } = this.props
+    const priceQueryParamName = getPriceQueryParamName(queryParamNames)
+    onSubmit(format(null, priceQueryParamName))
   }
 
   toggleIsOpen() {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+    this.setState((prevState) => ({ isOpen: !prevState.isOpen }))
   }
 
   render() {
@@ -75,29 +73,29 @@ class PriceFilterPlainComponent extends Component {
       max,
       step,
       intl,
-      currencyConfig,
-    } = this.props;
-    const classes = classNames(rootClassName || css.root, className);
+      currencyConfig
+    } = this.props
+    const classes = classNames(rootClassName || css.root, className)
 
-    const priceQueryParam = getPriceQueryParamName(queryParamNames);
-    const initialPrice = initialValues ? parse(initialValues[priceQueryParam]) : {};
-    const { minPrice, maxPrice } = initialPrice || {};
+    const priceQueryParam = getPriceQueryParamName(queryParamNames)
+    const initialPrice = initialValues ? parse(initialValues[priceQueryParam]) : {}
+    const { minPrice, maxPrice } = initialPrice || {}
 
-    const hasValue = value => value != null;
-    const hasInitialValues = initialValues && hasValue(minPrice) && hasValue(maxPrice);
+    const hasValue = (value) => value != null
+    const hasInitialValues = initialValues && hasValue(minPrice) && hasValue(maxPrice)
 
-    const labelClass = hasInitialValues ? css.filterLabelSelected : css.filterLabel;
+    const labelClass = hasInitialValues ? css.filterLabelSelected : css.filterLabel
     const labelText = hasInitialValues
       ? intl.formatMessage(
           { id: 'PriceFilter.labelSelectedPlain' },
           {
             minPrice: formatCurrencyMajorUnit(intl, currencyConfig.currency, minPrice),
-            maxPrice: formatCurrencyMajorUnit(intl, currencyConfig.currency, maxPrice),
+            maxPrice: formatCurrencyMajorUnit(intl, currencyConfig.currency, maxPrice)
           }
         )
       : label
       ? label
-      : intl.formatMessage({ id: 'PriceFilter.label' });
+      : intl.formatMessage({ id: 'PriceFilter.label' })
 
     return (
       <div className={classes}>
@@ -115,8 +113,8 @@ class PriceFilterPlainComponent extends Component {
             initialValues={hasInitialValues ? initialPrice : { minPrice: min, maxPrice: max }}
             onChange={this.handleChange}
             intl={intl}
-            contentRef={node => {
-              this.filterContent = node;
+            contentRef={(node) => {
+              this.filterContent = node
             }}
             min={min}
             max={max}
@@ -126,7 +124,7 @@ class PriceFilterPlainComponent extends Component {
           />
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -135,8 +133,8 @@ PriceFilterPlainComponent.defaultProps = {
   className: null,
   initialValues: null,
   step: number,
-  currencyConfig: config.currencyConfig,
-};
+  currencyConfig: config.currencyConfig
+}
 
 PriceFilterPlainComponent.propTypes = {
   rootClassName: string,
@@ -146,7 +144,7 @@ PriceFilterPlainComponent.propTypes = {
   queryParamNames: arrayOf(string).isRequired,
   onSubmit: func.isRequired,
   initialValues: shape({
-    price: string,
+    price: string
   }),
   min: number.isRequired,
   max: number.isRequired,
@@ -154,9 +152,9 @@ PriceFilterPlainComponent.propTypes = {
   currencyConfig: propTypes.currencyConfig,
 
   // form injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const PriceFilterPlain = injectIntl(PriceFilterPlainComponent);
+const PriceFilterPlain = injectIntl(PriceFilterPlainComponent)
 
-export default PriceFilterPlain;
+export default PriceFilterPlain

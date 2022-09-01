@@ -1,6 +1,6 @@
-import EditListingAvailabilityPlanForm from './EditListingAvailabilityPlanForm';
+import EditListingAvailabilityPlanForm from './EditListingAvailabilityPlanForm'
 
-const WEEKDAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const WEEKDAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
 export const Example = {
   component: EditListingAvailabilityPlanForm,
@@ -9,9 +9,9 @@ export const Example = {
     listingTitle: 'Yogi Shawarma',
     weekdays: WEEKDAYS,
     onSubmit(values) {
-      console.log('submit with values:', values);
+      console.log('submit with values:', values)
     },
-    fetchErrors: {},
+    fetchErrors: {}
   },
-  group: 'forms',
-};
+  group: 'forms'
+}

@@ -1,14 +1,14 @@
-import React from 'react';
-import { bool, func, shape, string } from 'prop-types';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
-import { propTypes } from '../../util/types';
-import { verify } from '../../ducks/EmailVerification.duck';
-import { isScrollingDisabled } from '../../ducks/UI.duck';
-import { parse } from '../../util/urlHelpers';
-import { ensureCurrentUser } from '../../util/data';
+import React from 'react'
+import { bool, func, shape, string } from 'prop-types'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
+import { propTypes } from '../../util/types'
+import { verify } from '../../ducks/EmailVerification.duck'
+import { isScrollingDisabled } from '../../ducks/UI.duck'
+import { parse } from '../../util/urlHelpers'
+import { ensureCurrentUser } from '../../util/data'
 import {
   Page,
   LayoutSingleColumn,
@@ -16,12 +16,12 @@ import {
   LayoutWrapperMain,
   LayoutWrapperFooter,
   Footer,
-  NamedRedirect,
-} from '../../components';
-import { EmailVerificationForm } from '../../forms';
-import { TopbarContainer } from '../../containers';
+  NamedRedirect
+} from '../../components'
+import { EmailVerificationForm } from '../../forms'
+import { TopbarContainer } from '../../containers'
 
-import css from './EmailVerificationPage.module.css';
+import css from './EmailVerificationPage.module.css'
 
 /**
   Parse verification token from URL
@@ -34,18 +34,18 @@ import css from './EmailVerificationPage.module.css';
   the unwanted result of the `parse` method is that it automatically
   parses the token to number.
 */
-const parseVerificationToken = search => {
-  const urlParams = parse(search);
-  const verificationToken = urlParams.t;
+const parseVerificationToken = (search) => {
+  const urlParams = parse(search)
+  const verificationToken = urlParams.t
 
   if (verificationToken) {
-    return `${verificationToken}`;
+    return `${verificationToken}`
   }
 
-  return null;
-};
+  return null
+}
 
-export const EmailVerificationPageComponent = props => {
+export const EmailVerificationPageComponent = (props) => {
   const {
     currentUser,
     intl,
@@ -54,22 +54,22 @@ export const EmailVerificationPageComponent = props => {
     isVerified,
     emailVerificationInProgress,
     verificationError,
-    location,
-  } = props;
+    location
+  } = props
   const title = intl.formatMessage({
-    id: 'EmailVerificationPage.title',
-  });
+    id: 'EmailVerificationPage.title'
+  })
 
   const initialValues = {
-    verificationToken: parseVerificationToken(location ? location.search : null),
-  };
-  const user = ensureCurrentUser(currentUser);
+    verificationToken: parseVerificationToken(location ? location.search : null)
+  }
+  const user = ensureCurrentUser(currentUser)
 
   // The first attempt to verify email is done when the page is loaded
   // If the verify API call is successfull and the user has verified email
   // We can redirect user forward from email verification page.
   if (isVerified && user && user.attributes.emailVerified) {
-    return <NamedRedirect name="LandingPage" />;
+    return <NamedRedirect name="LandingPage" />
   }
 
   return (
@@ -100,13 +100,13 @@ export const EmailVerificationPageComponent = props => {
         </LayoutWrapperFooter>
       </LayoutSingleColumn>
     </Page>
-  );
-};
+  )
+}
 
 EmailVerificationPageComponent.defaultProps = {
   currentUser: null,
-  verificationError: null,
-};
+  verificationError: null
+}
 
 EmailVerificationPageComponent.propTypes = {
   currentUser: propTypes.currentUser,
@@ -118,30 +118,30 @@ EmailVerificationPageComponent.propTypes = {
 
   // from withRouter
   location: shape({
-    search: string,
+    search: string
   }).isRequired,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const mapStateToProps = state => {
-  const { currentUser } = state.user;
-  const { isVerified, verificationError, verificationInProgress } = state.EmailVerification;
+const mapStateToProps = (state) => {
+  const { currentUser } = state.user
+  const { isVerified, verificationError, verificationInProgress } = state.EmailVerification
   return {
     isVerified,
     verificationError,
     emailVerificationInProgress: verificationInProgress,
     currentUser,
-    scrollingDisabled: isScrollingDisabled(state),
-  };
-};
+    scrollingDisabled: isScrollingDisabled(state)
+  }
+}
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   submitVerification: ({ verificationToken }) => {
-    return dispatch(verify(verificationToken));
-  },
-});
+    return dispatch(verify(verificationToken))
+  }
+})
 
 // Note: it is important that the withRouter HOC is **outside** the
 // connect HOC, otherwise React Router won't rerender any Route
@@ -151,11 +151,8 @@ const mapDispatchToProps = dispatch => ({
 // See: https://github.com/ReactTraining/react-router/issues/4671
 const EmailVerificationPage = compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   injectIntl
-)(EmailVerificationPageComponent);
+)(EmailVerificationPageComponent)
 
-export default EmailVerificationPage;
+export default EmailVerificationPage

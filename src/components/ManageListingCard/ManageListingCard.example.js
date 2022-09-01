@@ -1,20 +1,16 @@
 /* eslint-disable no-console */
-import React from 'react';
-import ManageListingCard from './ManageListingCard';
-import {
-  LISTING_STATE_CLOSED,
-  LISTING_STATE_PENDING_APPROVAL,
-  LISTING_STATE_DRAFT,
-} from '../../util/types';
-import { createOwnListing, fakeIntl } from '../../util/test-data';
+import React from 'react'
+import ManageListingCard from './ManageListingCard'
+import { LISTING_STATE_CLOSED, LISTING_STATE_PENDING_APPROVAL, LISTING_STATE_DRAFT } from '../../util/types'
+import { createOwnListing, fakeIntl } from '../../util/test-data'
 
-const noop = () => null;
+const noop = () => null
 
-const ManageListingCardWrapper = props => (
+const ManageListingCardWrapper = (props) => (
   <div style={{ maxWidth: '400px' }}>
     <ManageListingCard {...props} />
   </div>
-);
+)
 
 export const Published = {
   component: ManageListingCardWrapper,
@@ -27,9 +23,9 @@ export const Published = {
     onCloseListing: noop,
     onOpenListing: noop,
     onToggleMenu: noop,
-    history: { push: noop },
-  },
-};
+    history: { push: noop }
+  }
+}
 
 export const Closed = {
   component: ManageListingCardWrapper,
@@ -38,15 +34,15 @@ export const Closed = {
     hasOpeningError: false,
     intl: fakeIntl,
     listing: createOwnListing('listing-closed', {
-      state: LISTING_STATE_CLOSED,
+      state: LISTING_STATE_CLOSED
     }),
     isMenuOpen: false,
     onCloseListing: noop,
     onOpenListing: noop,
     onToggleMenu: noop,
-    history: { push: noop },
-  },
-};
+    history: { push: noop }
+  }
+}
 
 export const PendingApproval = {
   component: ManageListingCardWrapper,
@@ -55,15 +51,15 @@ export const PendingApproval = {
     hasOpeningError: false,
     intl: fakeIntl,
     listing: createOwnListing('listing-pending', {
-      state: LISTING_STATE_PENDING_APPROVAL,
+      state: LISTING_STATE_PENDING_APPROVAL
     }),
     isMenuOpen: false,
     onCloseListing: noop,
     onOpenListing: noop,
     onToggleMenu: noop,
-    history: { push: noop },
-  },
-};
+    history: { push: noop }
+  }
+}
 
 export const Draft = {
   component: ManageListingCardWrapper,
@@ -72,12 +68,12 @@ export const Draft = {
     hasOpeningError: false,
     intl: fakeIntl,
     listing: createOwnListing('listing-draft', {
-      state: LISTING_STATE_DRAFT,
+      state: LISTING_STATE_DRAFT
     }),
     isMenuOpen: false,
     onCloseListing: noop,
     onOpenListing: noop,
     onToggleMenu: noop,
-    history: { push: noop },
-  },
-};
+    history: { push: noop }
+  }
+}

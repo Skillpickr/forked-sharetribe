@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from '../../util/reactIntl';
-import classNames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { FormattedMessage } from '../../util/reactIntl'
+import classNames from 'classnames'
 
-import css from './StripeBankAccountTokenInputField.module.css';
+import css from './StripeBankAccountTokenInputField.module.css'
 
-const StripeBankAccountRequiredInput = props => {
+const StripeBankAccountRequiredInput = (props) => {
   const {
     className,
     rootClassName,
@@ -20,17 +20,17 @@ const StripeBankAccountRequiredInput = props => {
     showStripeError,
     inputError,
     disabled,
-    showInColumns,
-  } = props;
+    showInColumns
+  } = props
 
-  const showInputError = isTouched && !!inputError;
+  const showInputError = isTouched && !!inputError
 
   const classes = classNames(rootClassName || css.input, className, {
     [css.inputSuccess]: !!value,
-    [css.inputError]: showInputError || showStripeError,
-  });
+    [css.inputError]: showInputError || showStripeError
+  })
 
-  const columnsClass = showInColumns ? css.longForm : null;
+  const columnsClass = showInColumns ? css.longForm : null
 
   const inputProps = {
     className: classes,
@@ -40,10 +40,10 @@ const StripeBankAccountRequiredInput = props => {
     onChange,
     onFocus,
     onBlur,
-    disabled,
-  };
+    disabled
+  }
 
-  const errorMessage = <p className={css.error}>{inputError}</p>;
+  const errorMessage = <p className={css.error}>{inputError}</p>
 
   return (
     <div className={classNames(classes, columnsClass)}>
@@ -53,17 +53,17 @@ const StripeBankAccountRequiredInput = props => {
       <input {...inputProps} />
       {showInputError ? errorMessage : null}
     </div>
-  );
-};
+  )
+}
 
-const { bool, func, string } = PropTypes;
+const { bool, func, string } = PropTypes
 
 StripeBankAccountRequiredInput.defaultProps = {
   rootClassName: null,
   className: null,
   inputError: null,
-  disabled: false,
-};
+  disabled: false
+}
 
 StripeBankAccountRequiredInput.propTypes = {
   rootClassName: string,
@@ -78,7 +78,7 @@ StripeBankAccountRequiredInput.propTypes = {
   isTouched: bool.isRequired,
   showStripeError: bool.isRequired,
   inputError: string,
-  disabled: bool,
-};
+  disabled: bool
+}
 
-export default StripeBankAccountRequiredInput;
+export default StripeBankAccountRequiredInput

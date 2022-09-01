@@ -1,13 +1,13 @@
-import React from 'react';
-import { bool, object, string } from 'prop-types';
-import { FormattedMessage, intlShape } from '../../util/reactIntl';
+import React from 'react'
+import { bool, object, string } from 'prop-types'
+import { FormattedMessage, intlShape } from '../../util/reactIntl'
 
-import PayoutDetailsAddress from './PayoutDetailsAddress';
-import PayoutDetailsPersonalDetails from './PayoutDetailsPersonalDetails';
+import PayoutDetailsAddress from './PayoutDetailsAddress'
+import PayoutDetailsPersonalDetails from './PayoutDetailsPersonalDetails'
 
-import css from './PayoutDetailsForm.module.css';
+import css from './PayoutDetailsForm.module.css'
 
-const PayoutDetailsAccountOpener = props => {
+const PayoutDetailsAccountOpener = (props) => {
   const {
     fieldId,
     country,
@@ -20,15 +20,15 @@ const PayoutDetailsAccountOpener = props => {
     showPersonalAddressField,
     showPersonalIdNumberField,
     showPhoneNumberField,
-    values,
-  } = props;
+    values
+  } = props
 
   const showOwnershipPercentageField =
     showOwnerField &&
     values &&
     values[fieldId] &&
     values[fieldId].role &&
-    values[fieldId].role.find(r => r === 'owner');
+    values[fieldId].role.find((r) => r === 'owner')
 
   return (
     <div className={css.accountOpenerWrapper}>
@@ -65,8 +65,8 @@ const PayoutDetailsAccountOpener = props => {
         <FormattedMessage id="PayoutDetailsForm.accountOpenerInfoText" />
       </p>
     </div>
-  );
-};
+  )
+}
 
 PayoutDetailsAccountOpener.defaultProps = {
   disabled: false,
@@ -76,8 +76,8 @@ PayoutDetailsAccountOpener.defaultProps = {
   showPersonalAddressField: false,
   showPersonalIdNumberField: false,
   showPhoneNumberField: false,
-  values: null,
-};
+  values: null
+}
 
 PayoutDetailsAccountOpener.propTypes = {
   country: string.isRequired,
@@ -93,7 +93,7 @@ PayoutDetailsAccountOpener.propTypes = {
   values: object,
 
   // from parent
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-export default PayoutDetailsAccountOpener;
+export default PayoutDetailsAccountOpener

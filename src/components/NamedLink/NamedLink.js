@@ -17,53 +17,53 @@
  * will be added to the element className if the current URL matches
  * the one in the generated pathname of the link.
  */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
-import classNames from 'classnames';
-import routeConfiguration from '../../routeConfiguration';
-import { pathByRouteName, findRouteByRouteName } from '../../util/routes';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link, withRouter } from 'react-router-dom'
+import classNames from 'classnames'
+import routeConfiguration from '../../routeConfiguration'
+import { pathByRouteName, findRouteByRouteName } from '../../util/routes'
 
-export const NamedLinkComponent = props => {
-  const { name, params, title } = props;
-  const routes = routeConfiguration();
+export const NamedLinkComponent = (props) => {
+  const { name, params, title } = props
+  const routes = routeConfiguration()
 
   const onOver = () => {
-    const { component: Page } = findRouteByRouteName(name, routes);
+    const { component: Page } = findRouteByRouteName(name, routes)
     // Loadable Component has a "preload" function.
     if (Page.preload) {
-      Page.preload();
+      Page.preload()
     }
-  };
+  }
 
   // Link props
-  const { to, children, disabled } = props;
-  const pathname = pathByRouteName(name, routes, params);
-  const { match } = props;
-  const active = match.url && match.url === pathname;
+  const { to, children, disabled } = props
+  const pathname = pathByRouteName(name, routes, params)
+  const { match } = props
+  const active = match.url && match.url === pathname
 
   // <a> element props
-  const { className, style, activeClassName } = props;
+  const { className, style, activeClassName } = props
   const aElemProps = {
     className: classNames(className, { [activeClassName]: active }),
     style,
-    title,
-  };
+    title
+  }
   if (disabled) {
     return (
-      <Link onClick={e => e.preventDefault()} to={{}} {...aElemProps}>
+      <Link onClick={(e) => e.preventDefault()} to={{}} {...aElemProps}>
         {children}
       </Link>
-    );
+    )
   }
   return (
     <Link onMouseOver={onOver} onTouchStart={onOver} to={{ pathname, ...to }} {...aElemProps}>
       {children}
     </Link>
-  );
-};
+  )
+}
 
-const { object, string, shape, any, bool } = PropTypes;
+const { object, string, shape, any, bool } = PropTypes
 
 NamedLinkComponent.defaultProps = {
   params: {},
@@ -74,11 +74,11 @@ NamedLinkComponent.defaultProps = {
   activeClassName: 'NamedLink_active',
   title: null,
   match: {},
-  disabled: false,
-};
+  disabled: false
+}
 
 // This ensures a nice display name in snapshots etc.
-NamedLinkComponent.displayName = 'NamedLink';
+NamedLinkComponent.displayName = 'NamedLink'
 
 NamedLinkComponent.propTypes = {
   // name of the route in routeConfiguration
@@ -97,10 +97,10 @@ NamedLinkComponent.propTypes = {
 
   // from withRouter
   match: object,
-  disabled: bool,
-};
+  disabled: bool
+}
 
-const NamedLink = withRouter(NamedLinkComponent);
-NamedLink.displayName = 'NamedLink';
+const NamedLink = withRouter(NamedLinkComponent)
+NamedLink.displayName = 'NamedLink'
 
-export default NamedLink;
+export default NamedLink

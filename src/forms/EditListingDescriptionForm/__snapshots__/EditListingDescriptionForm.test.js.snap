@@ -50,6 +50,88 @@ exports[`EditListingDescriptionForm matches snapshot 1`] = `
       value=""
     />
   </div>
+  <div
+    className="root description"
+  >
+    <label
+      htmlFor="experience"
+    >
+      EditListingDescriptionForm.experience
+    </label>
+    <input
+      className="input"
+      id="experience"
+      name="experience"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="EditListingDescriptionForm.experiencePlaceholder"
+      type="number"
+      value=""
+    />
+  </div>
+  <div
+    className="root description"
+  >
+    <label
+      htmlFor="track"
+    >
+      EditListingDescriptionForm.track
+    </label>
+    <textarea
+      className="input textarea"
+      id="track"
+      maxLength={5000}
+      name="track"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="EditListingDescriptionForm.trackPlaceholder"
+      rows={1}
+      value=""
+    />
+  </div>
+  <div
+    className="root description"
+  >
+    <label
+      htmlFor="url"
+    >
+      EditListingDescriptionForm.url
+    </label>
+    <input
+      className="input inputSuccess"
+      id="url"
+      name="url"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="EditListingDescriptionForm.urlPlaceholder"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="root description"
+  >
+    <label
+      htmlFor="bonus"
+    >
+      EditListingDescriptionForm.bonus
+    </label>
+    <textarea
+      className="input inputSuccess textarea"
+      id="bonus"
+      maxLength={5000}
+      name="bonus"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="EditListingDescriptionForm.bonusPlaceholder"
+      rows={1}
+      value=""
+    />
+  </div>
   <button
     className="root submitButton"
     disabled={true}

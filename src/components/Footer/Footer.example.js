@@ -1,7 +1,7 @@
-import Footer from './Footer';
-import css from './FooterExample.module.css';
+import Footer from './Footer'
+import css from './FooterExample.module.css'
 
 export const Default = {
   component: Footer,
-  props: { className: css.example },
-};
+  props: { className: css.example }
+}

@@ -1,9 +1,9 @@
-const Decimal = require('decimal.js');
-const moment = require('moment-timezone/builds/moment-timezone-with-data-10-year-range.min');
-const { types } = require('sharetribe-flex-sdk');
-const { Money } = types;
+const Decimal = require('decimal.js')
+const moment = require('moment-timezone/builds/moment-timezone-with-data-10-year-range.min')
+const { types } = require('sharetribe-flex-sdk')
+const { Money } = types
 
-const { getAmountAsDecimalJS, convertDecimalJSToNumber } = require('./currency');
+const { getAmountAsDecimalJS, convertDecimalJSToNumber } = require('./currency')
 
 /** Helper functions for constructing line items*/
 
@@ -17,16 +17,16 @@ const { getAmountAsDecimalJS, convertDecimalJSToNumber } = require('./currency')
  * @returns {Money} lineTotal
  */
 exports.calculateTotalPriceFromQuantity = (unitPrice, unitCount) => {
-  const amountFromUnitPrice = getAmountAsDecimalJS(unitPrice);
+  const amountFromUnitPrice = getAmountAsDecimalJS(unitPrice)
 
   // NOTE: We round the total price to the nearest integer.
   //       Payment processors don't support fractional subunits.
-  const totalPrice = amountFromUnitPrice.times(unitCount).toNearest(1, Decimal.ROUND_HALF_UP);
+  const totalPrice = amountFromUnitPrice.times(unitCount).toNearest(1, Decimal.ROUND_HALF_UP)
   // Get total price as Number (and validate that the conversion is safe)
-  const numericTotalPrice = convertDecimalJSToNumber(totalPrice);
+  const numericTotalPrice = convertDecimalJSToNumber(totalPrice)
 
-  return new Money(numericTotalPrice, unitPrice.currency);
-};
+  return new Money(numericTotalPrice, unitPrice.currency)
+}
 
 /**
  * Calculates lineTotal for lineItem based on percentage.
@@ -38,20 +38,17 @@ exports.calculateTotalPriceFromQuantity = (unitPrice, unitCount) => {
  * @returns {Money} lineTotal
  */
 exports.calculateTotalPriceFromPercentage = (unitPrice, percentage) => {
-  const amountFromUnitPrice = getAmountAsDecimalJS(unitPrice);
+  const amountFromUnitPrice = getAmountAsDecimalJS(unitPrice)
 
   // NOTE: We round the total price to the nearest integer.
   //       Payment processors don't support fractional subunits.
-  const totalPrice = amountFromUnitPrice
-    .times(percentage)
-    .dividedBy(100)
-    .toNearest(1, Decimal.ROUND_HALF_UP);
+  const totalPrice = amountFromUnitPrice.times(percentage).dividedBy(100).toNearest(1, Decimal.ROUND_HALF_UP)
 
   // Get total price as Number (and validate that the conversion is safe)
-  const numericTotalPrice = convertDecimalJSToNumber(totalPrice);
+  const numericTotalPrice = convertDecimalJSToNumber(totalPrice)
 
-  return new Money(numericTotalPrice, unitPrice.currency);
-};
+  return new Money(numericTotalPrice, unitPrice.currency)
+}
 
 /**
  * Calculates lineTotal for lineItem based on seats and units.
@@ -65,23 +62,20 @@ exports.calculateTotalPriceFromPercentage = (unitPrice, percentage) => {
  */
 exports.calculateTotalPriceFromSeats = (unitPrice, unitCount, seats) => {
   if (seats < 0) {
-    throw new Error(`Value of seats can't be negative`);
+    throw new Error(`Value of seats can't be negative`)
   }
 
-  const amountFromUnitPrice = getAmountAsDecimalJS(unitPrice);
+  const amountFromUnitPrice = getAmountAsDecimalJS(unitPrice)
 
   // NOTE: We round the total price to the nearest integer.
   //       Payment processors don't support fractional subunits.
-  const totalPrice = amountFromUnitPrice
-    .times(unitCount)
-    .times(seats)
-    .toNearest(1, Decimal.ROUND_HALF_UP);
+  const totalPrice = amountFromUnitPrice.times(unitCount).times(seats).toNearest(1, Decimal.ROUND_HALF_UP)
 
   // Get total price as Number (and validate that the conversion is safe)
-  const numericTotalPrice = convertDecimalJSToNumber(totalPrice);
+  const numericTotalPrice = convertDecimalJSToNumber(totalPrice)
 
-  return new Money(numericTotalPrice, unitPrice.currency);
-};
+  return new Money(numericTotalPrice, unitPrice.currency)
+}
 
 /**
  * Calculate the quantity of hours between start and end dates.
@@ -99,8 +93,8 @@ exports.calculateTotalPriceFromSeats = (unitPrice, unitCount, seats) => {
  *
  */
 exports.calculateQuantityFromHours = (startDate, endDate) => {
-  return moment(endDate).diff(moment(startDate), 'hours', true);
-};
+  return moment(endDate).diff(moment(startDate), 'hours', true)
+}
 
 /**
  *
@@ -113,21 +107,21 @@ exports.calculateQuantityFromHours = (startDate, endDate) => {
  * @return {Money} lineTotal
  *
  */
-exports.calculateLineTotal = lineItem => {
-  const { code, unitPrice, quantity, percentage, seats, units } = lineItem;
+exports.calculateLineTotal = (lineItem) => {
+  const { code, unitPrice, quantity, percentage, seats, units } = lineItem
 
   if (quantity) {
-    return this.calculateTotalPriceFromQuantity(unitPrice, quantity);
+    return this.calculateTotalPriceFromQuantity(unitPrice, quantity)
   } else if (percentage) {
-    return this.calculateTotalPriceFromPercentage(unitPrice, percentage);
+    return this.calculateTotalPriceFromPercentage(unitPrice, percentage)
   } else if (seats && units) {
-    return this.calculateTotalPriceFromSeats(unitPrice, units, seats);
+    return this.calculateTotalPriceFromSeats(unitPrice, units, seats)
   } else {
     throw new Error(
       `Can't calculate the lineTotal of lineItem: ${code}. Make sure the lineItem has quantity, percentage or both seats and units`
-    );
+    )
   }
-};
+}
 
 /**
  * Calculates the total sum of lineTotals for given lineItems
@@ -135,38 +129,38 @@ exports.calculateLineTotal = lineItem => {
  * @param {Array} lineItems
  * @retuns {Money} total sum
  */
-exports.calculateTotalFromLineItems = lineItems => {
+exports.calculateTotalFromLineItems = (lineItems) => {
   const totalPrice = lineItems.reduce((sum, lineItem) => {
-    const lineTotal = this.calculateLineTotal(lineItem);
-    return getAmountAsDecimalJS(lineTotal).add(sum);
-  }, 0);
+    const lineTotal = this.calculateLineTotal(lineItem)
+    return getAmountAsDecimalJS(lineTotal).add(sum)
+  }, 0)
 
   // Get total price as Number (and validate that the conversion is safe)
-  const numericTotalPrice = convertDecimalJSToNumber(totalPrice);
-  const unitPrice = lineItems[0].unitPrice;
+  const numericTotalPrice = convertDecimalJSToNumber(totalPrice)
+  const unitPrice = lineItems[0].unitPrice
 
-  return new Money(numericTotalPrice, unitPrice.currency);
-};
+  return new Money(numericTotalPrice, unitPrice.currency)
+}
 
 /**
  * Calculates the total sum of lineTotals for given lineItems where `includeFor` includes `provider`
  * @param {*} lineItems
  * @returns {Money} total sum
  */
-exports.calculateTotalForProvider = lineItems => {
-  const providerLineItems = lineItems.filter(lineItem => lineItem.includeFor.includes('provider'));
-  return this.calculateTotalFromLineItems(providerLineItems);
-};
+exports.calculateTotalForProvider = (lineItems) => {
+  const providerLineItems = lineItems.filter((lineItem) => lineItem.includeFor.includes('provider'))
+  return this.calculateTotalFromLineItems(providerLineItems)
+}
 
 /**
  * Calculates the total sum of lineTotals for given lineItems where `includeFor` includes `customer`
  * @param {*} lineItems
  * @returns {Money} total sum
  */
-exports.calculateTotalForCustomer = lineItems => {
-  const providerLineItems = lineItems.filter(lineItem => lineItem.includeFor.includes('customer'));
-  return this.calculateTotalFromLineItems(providerLineItems);
-};
+exports.calculateTotalForCustomer = (lineItems) => {
+  const providerLineItems = lineItems.filter((lineItem) => lineItem.includeFor.includes('customer'))
+  return this.calculateTotalFromLineItems(providerLineItems)
+}
 
 /**
  * Constructs lineItems that can be used directly in FTW.
@@ -179,25 +173,25 @@ exports.calculateTotalForCustomer = lineItems => {
  * @returns {Array} lineItems with lineTotal and reversal info
  *
  */
-exports.constructValidLineItems = lineItems => {
-  const lineItemsWithTotals = lineItems.map(lineItem => {
-    const { code, quantity, percentage } = lineItem;
+exports.constructValidLineItems = (lineItems) => {
+  const lineItemsWithTotals = lineItems.map((lineItem) => {
+    const { code, quantity, percentage } = lineItem
 
     if (!/^line-item\/.+/.test(code)) {
-      throw new Error(`Invalid line item code: ${code}`);
+      throw new Error(`Invalid line item code: ${code}`)
     }
 
     // lineItems are expected to be in similar format as when they are returned from API
     // so that we can use them in e.g. BookingBreakdown component.
     // This means we need to convert quantity to Decimal and add attributes lineTotal and reversal to lineItems
-    const lineTotal = this.calculateLineTotal(lineItem);
+    const lineTotal = this.calculateLineTotal(lineItem)
     return {
       ...lineItem,
       lineTotal,
       quantity: quantity ? new Decimal(quantity) : null,
       percentage: percentage ? new Decimal(percentage) : null,
-      reversal: false,
-    };
-  });
-  return lineItemsWithTotals;
-};
+      reversal: false
+    }
+  })
+  return lineItemsWithTotals
+}

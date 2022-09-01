@@ -1,11 +1,11 @@
-import React from 'react';
-import { FormattedMessage } from '../../util/reactIntl';
-import { UserCard, Modal } from '../../components';
-import { EnquiryForm } from '../../forms';
+import React from 'react'
+import { FormattedMessage } from '../../util/reactIntl'
+import { UserCard, Modal } from '../../components'
+import { EnquiryForm } from '../../forms'
 
-import css from './ListingPage.module.css';
+import css from './ListingPage.module.css'
 
-const SectionHostMaybe = props => {
+const SectionHostMaybe = (props) => {
   const {
     title,
     listing,
@@ -17,11 +17,11 @@ const SectionHostMaybe = props => {
     sendEnquiryInProgress,
     onSubmitEnquiry,
     currentUser,
-    onManageDisableScrolling,
-  } = props;
+    onManageDisableScrolling
+  } = props
 
   if (!listing.author) {
-    return null;
+    return null
   }
 
   return (
@@ -36,8 +36,7 @@ const SectionHostMaybe = props => {
         isOpen={isEnquiryModalOpen}
         onClose={onCloseEnquiryModal}
         usePortal
-        onManageDisableScrolling={onManageDisableScrolling}
-      >
+        onManageDisableScrolling={onManageDisableScrolling}>
         <EnquiryForm
           className={css.enquiryForm}
           submitButtonWrapperClassName={css.enquirySubmitButtonWrapper}
@@ -49,7 +48,7 @@ const SectionHostMaybe = props => {
         />
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default SectionHostMaybe;
+export default SectionHostMaybe

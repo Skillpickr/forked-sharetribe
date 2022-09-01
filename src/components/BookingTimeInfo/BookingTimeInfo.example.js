@@ -1,12 +1,6 @@
-import BookingTimeInfo from './BookingTimeInfo';
-import {
-  fakeIntl,
-  createBooking,
-  createTransaction,
-  createUser,
-  createListing,
-} from '../../util/test-data';
-import { LINE_ITEM_DAY, LINE_ITEM_NIGHT, LINE_ITEM_UNITS } from '../../util/types';
+import BookingTimeInfo from './BookingTimeInfo'
+import { fakeIntl, createBooking, createTransaction, createUser, createListing } from '../../util/test-data'
+import { LINE_ITEM_DAY, LINE_ITEM_NIGHT, LINE_ITEM_UNITS } from '../../util/types'
 
 export const DateAndTimeSingleDay = {
   component: BookingTimeInfo,
@@ -21,15 +15,15 @@ export const DateAndTimeSingleDay = {
         displayStart: new Date(Date.UTC(2019, 8, 30, 3, 0)),
         displayEnd: new Date(Date.UTC(2019, 8, 30, 4, 0)),
         start: new Date(Date.UTC(2019, 8, 30, 3, 0)),
-        end: new Date(Date.UTC(2019, 8, 30, 4, 0)),
-      }),
+        end: new Date(Date.UTC(2019, 8, 30, 4, 0))
+      })
     }),
     unitType: LINE_ITEM_UNITS,
     dateType: 'datetime',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}
 
 export const DateAndTimeMultipleDays = {
   component: BookingTimeInfo,
@@ -44,15 +38,15 @@ export const DateAndTimeMultipleDays = {
         displayStart: new Date(Date.UTC(2019, 8, 28, 3, 0)),
         displayEnd: new Date(Date.UTC(2019, 8, 30, 5, 0)),
         start: new Date(Date.UTC(2019, 8, 28, 3, 0)),
-        end: new Date(Date.UTC(2019, 8, 30, 5, 0)),
-      }),
+        end: new Date(Date.UTC(2019, 8, 30, 5, 0))
+      })
     }),
     unitType: LINE_ITEM_UNITS,
     dateType: 'datetime',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}
 
 export const OnlyDateSingleDay = {
   component: BookingTimeInfo,
@@ -67,15 +61,15 @@ export const OnlyDateSingleDay = {
         displayStart: new Date(Date.UTC(2019, 8, 29, 3, 0)),
         displayEnd: new Date(Date.UTC(2019, 8, 30, 4, 0)),
         start: new Date(Date.UTC(2019, 8, 29, 3, 0)),
-        end: new Date(Date.UTC(2019, 8, 30, 4, 0)),
-      }),
+        end: new Date(Date.UTC(2019, 8, 30, 4, 0))
+      })
     }),
     unitType: LINE_ITEM_DAY,
     dateType: 'date',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}
 
 export const OnlyDateMultipleDays = {
   component: BookingTimeInfo,
@@ -90,15 +84,15 @@ export const OnlyDateMultipleDays = {
         displayStart: new Date(Date.UTC(2019, 8, 28, 3, 0)),
         displayEnd: new Date(Date.UTC(2019, 8, 30, 5, 0)),
         start: new Date(Date.UTC(2019, 8, 28, 3, 0)),
-        end: new Date(Date.UTC(2019, 8, 30, 5, 0)),
-      }),
+        end: new Date(Date.UTC(2019, 8, 30, 5, 0))
+      })
     }),
     unitType: LINE_ITEM_DAY,
     dateType: 'date',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}
 
 export const OnlyDateSingleNight = {
   component: BookingTimeInfo,
@@ -113,15 +107,15 @@ export const OnlyDateSingleNight = {
         displayStart: new Date(Date.UTC(2019, 8, 29, 3, 0)),
         displayEnd: new Date(Date.UTC(2019, 8, 30, 4, 0)),
         start: new Date(Date.UTC(2019, 8, 29, 3, 0)),
-        end: new Date(Date.UTC(2019, 8, 30, 4, 0)),
-      }),
+        end: new Date(Date.UTC(2019, 8, 30, 4, 0))
+      })
     }),
     unitType: LINE_ITEM_NIGHT,
     dateType: 'date',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}
 
 export const OnlyDateMultipleNights = {
   component: BookingTimeInfo,
@@ -136,12 +130,12 @@ export const OnlyDateMultipleNights = {
         displayStart: new Date(Date.UTC(2019, 8, 28, 3, 0)),
         displayEnd: new Date(Date.UTC(2019, 8, 30, 5, 0)),
         start: new Date(Date.UTC(2019, 8, 28, 3, 0)),
-        end: new Date(Date.UTC(2019, 8, 30, 5, 0)),
-      }),
+        end: new Date(Date.UTC(2019, 8, 30, 5, 0))
+      })
     }),
     unitType: LINE_ITEM_NIGHT,
     dateType: 'date',
-    timeZone: 'Etc/UTC',
+    timeZone: 'Etc/UTC'
   },
-  group: 'inbox',
-};
+  group: 'inbox'
+}

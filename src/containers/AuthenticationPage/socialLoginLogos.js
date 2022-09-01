@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 // This is Facebook's logo, you are not allowed to change its color
 export const FacebookLogo = (
@@ -9,7 +9,7 @@ export const FacebookLogo = (
       fillRule="nonzero"
     />
   </svg>
-);
+)
 
 // This is Google's logo, you are not allowed to change its color
 export const GoogleLogo = (
@@ -34,4 +34,4 @@ export const GoogleLogo = (
       <path d="M0 0h20v20H0z" />
     </g>
   </svg>
-);
+)

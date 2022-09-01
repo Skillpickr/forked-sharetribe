@@ -1,33 +1,52 @@
-import React from 'react';
-import { FormattedMessage } from '../../util/reactIntl';
-import { InlineTextButton } from '../../components';
+import React from 'react'
+import { FormattedMessage } from '../../util/reactIntl'
+import { InlineTextButton } from '../../components'
 
-import css from './ListingPage.module.css';
+import css from './ListingPage.module.css'
+import { Skills } from '../../util/category'
 
 const getSkillInfo = (skillOptions, key) => {
-  return skillOptions.find(c => c.key === key);
-};
+  return skillOptions.find((c) => c.key === key)
+}
 
-const SectionHeading = props => {
-  const { richTitle, showContactUser, listingSkill, skillOptions, onContactUser } = props;
+const SectionHeading = (props) => {
+  const {
+    richTitle,
+    hostLink,
+    showContactUser,
+    listingSkill,
+    skillOptions,
+    onContactUser,
+    musicianSoloist,
+    musicianSoloistOptions
+  } = props
 
-  const skill = getSkillInfo(skillOptions, listingSkill);
-  const showSkill = skill && !skill.hideFromListingInfo;
+  const skill = getSkillInfo(skillOptions, listingSkill)
+  let skillTitle = ''
+  if (musicianSoloist) {
+    const type = getSkillInfo(musicianSoloistOptions, musicianSoloist)
+    skillTitle = skill.label + ' • ' + type.label
+  } else {
+    skillTitle = skill.label
+  }
+
+  const showSkill = skill && !skill.hideFromListingInfo
 
   return (
     <div className={css.sectionHeading}>
       <div className={css.heading}>
         <h1 className={css.title}>{richTitle}</h1>
         <div className={css.author}>
-          {showSkill ? <span>{skill.label}</span> : null}
+          {showSkill ? <span className={css.subTitle}>{skillTitle}</span> : null}
+          <span className={css.separator}>•</span>
+          <FormattedMessage id="ListingPage.hostedBy" values={{ name: hostLink }} />
           {showContactUser ? (
             <span className={css.contactWrapper}>
-              {showSkill ? <span className={css.separator}>•</span> : null}
+              <span className={css.separator}>•</span>
               <InlineTextButton
                 rootClassName={css.contactLink}
                 onClick={onContactUser}
-                enforcePagePreloadFor="SignupPage"
-              >
+                enforcePagePreloadFor="SignupPage">
                 <FormattedMessage id="ListingPage.contactUser" />
               </InlineTextButton>
             </span>
@@ -35,7 +54,7 @@ const SectionHeading = props => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SectionHeading;
+export default SectionHeading
