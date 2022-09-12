@@ -107,6 +107,22 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
   const customDirectives = {
     // Example: Add custom directive override
     // imgSrc: exampleImgSrc,
+    connectSrc: [
+      // Tawk
+      '*.tawk.to',
+      'wss://*.tawk.to'
+    ],
+    fontSrc: ['*.tawk.to', 'fonts.gstatic.com'],
+    frameSrc: ['*.tawk.to'],
+    imgSrc: [
+      // Tawk
+      '*.tawk.to',
+      'cdn.jsdelivr.net',
+      'tawk.link'
+    ],
+    scriptSrc: ['*.tawk.to', 'cdn.jsdelivr.net'],
+    styleSrc: ['*.tawk.to', 'fonts.googleapis.com', 'cdn.jsdelivr.net'],
+    formAction: ['*.tawk.to']
   }
 
   // ================ END CUSTOM CSP URLs ================ //
