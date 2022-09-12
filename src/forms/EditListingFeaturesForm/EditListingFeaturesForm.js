@@ -387,7 +387,8 @@ const EditListingFeaturesFormComponent = (props) => (
             id={name}
             label={skillMessage}
             onChange={handleChange}
-            value={skill}>
+            value={skill}
+            validate={required(requiredDropdown)}>
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {(id) => <option value="">{id}</option>}
             </FormattedMessage>
