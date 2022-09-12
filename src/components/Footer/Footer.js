@@ -47,6 +47,8 @@ const Footer = (props) => {
   const { rootClassName, className, intl } = props
   const socialMediaLinks = renderSocialMediaLinks(intl)
   const classes = classNames(rootClassName || css.root, className)
+  const { siteHelpCenter } = config
+  const goToHC = intl.formatMessage({ id: 'Footer.goToHelpCenter' })
 
   return (
     <div className={classes}>
@@ -87,6 +89,11 @@ const Footer = (props) => {
                   <NamedLink name="PricingPage" className={css.link}>
                     <FormattedMessage id="Footer.toPricingPage" />
                   </NamedLink>
+                </li>
+                <li>
+                  <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
+                    <FormattedMessage id="Footer.toHelpCenter" />
+                  </ExternalLink>
                 </li>
                 {/* <li className={css.listItem}>
                   <NamedLink name="LandingPage" className={css.link}>
