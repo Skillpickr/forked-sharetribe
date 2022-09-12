@@ -115,6 +115,7 @@ const siteInstagramPage = null
 // Facebook page is used in SEO schema (http://schema.org/Organization)
 const siteFacebookPage = 'https://www.facebook.com/skillpickr/'
 
+const siteHelpCenter = 'https://skillpickr.tawk.help/'
 // Social logins & SSO
 
 // Note: Facebook app id is also used for tracking:
@@ -237,6 +238,7 @@ const config = {
   siteFacebookPage,
   siteInstagramPage,
   siteTwitterHandle,
+  siteHelpCenter,
   facebookAppId,
   sentryDsn,
   usingSSL,
