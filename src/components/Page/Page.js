@@ -14,6 +14,11 @@ import facebookImage from '../../assets/skillpicker-facebook1200x630-01.jpg'
 import twitterImage from '../../assets/skillpicker-twitter600x314-01.jpg'
 import css from './Page.module.css'
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Toasts } from '../../components'
+import { addToast } from '../../ducks/toasts.duck'
+
 const preventDefault = (e) => {
   e.preventDefault()
 }
@@ -213,6 +218,7 @@ class PageComponent extends Component {
             this.contentDiv = c
           }}>
           {children}
+          <Toasts />
         </div>
       </div>
     )
@@ -272,6 +278,10 @@ PageComponent.propTypes = {
   twitterHandle: string, // twitter handle
   updated: string, // article:modified_time
 
+  actions: shape({
+    addToast: func.isRequired
+  }).isRequired,
+
   // from withRouter
   history: shape({
     listen: func.isRequired
@@ -282,7 +292,11 @@ PageComponent.propTypes = {
   intl: intlShape.isRequired
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({ addToast }, dispatch)
+})
+
 const Page = injectIntl(withRouter(PageComponent))
 Page.displayName = 'Page'
 
-export default Page
+export default connect(null, mapDispatchToProps)(Page)

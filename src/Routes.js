@@ -111,7 +111,7 @@ class RouteComponentRenderer extends Component {
   }
 }
 
-RouteComponentRenderer.defaultProps = { staticContext: {} }
+RouteComponentRenderer.defaultProps = { staticContext: {}, dispatch: null }
 
 RouteComponentRenderer.propTypes = {
   isAuthenticated: bool.isRequired,

@@ -3,6 +3,7 @@ import { clearCurrentUser, fetchCurrentUser } from './user.duck'
 import { createUserWithIdp } from '../util/api'
 import { storableError } from '../util/errors'
 import * as log from '../util/log'
+import { addToast } from './toasts.duck'
 
 const authenticated = (authInfo) => authInfo && authInfo.isAnonymous === false
 
@@ -218,6 +219,7 @@ export const signup = (params) => (dispatch, getState, sdk) => {
         firstName: params.firstName,
         lastName: params.lastName
       })
+      dispatch(addToast({ text: 'something is wrong' }))
     })
 }
 

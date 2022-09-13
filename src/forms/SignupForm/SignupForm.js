@@ -144,15 +144,6 @@ const SignupFormComponent = (props) => (
               placeholder={emailPlaceholder}
               validate={validators.composeValidators(emailRequired, emailValid)}
             />
-            {/* <PhoneInput
-              className={css.phone}
-              id={formId ? `${formId}.phone` : 'phone'}
-              name="phone"
-              labels={phoneLabel}
-              placeholder={phonePlaceholder}
-              value={value}
-              onChange={setValue}
-            /> */}
             <div className={css.phone}>
               <Field
                 id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
@@ -169,15 +160,6 @@ const SignupFormComponent = (props) => (
                 }}
               </Field>
             </div>
-
-            {/* <FieldPhoneNumberInput
-              className={css.phone}
-              id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
-              name="phoneNumber"
-              label={phoneLabel}
-              placeholder={phonePlaceholder}
-              validate={phoneRequired}
-            /> */}
             <div className={css.name}>
               <FieldTextInput
                 className={css.firstNameRoot}
