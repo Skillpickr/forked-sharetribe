@@ -69,46 +69,46 @@ const routeConfiguration = () => {
       component: LandingPage,
     },
     {
-      path: '/about',
+      path: '/:locale/about',
       name: 'AboutPage',
       component: AboutPage,
     },
     {
-      path: '/pricing',
+      path: '/:locale/pricing',
       name: 'PricingPage',
       component: PricingPage,
     },
     {
-      path: '/contact',
+      path: '/:locale/contact',
       name: 'ContactPage',
       component: ContactPage,
     },
     {
-      path: '/s',
+      path: '/:locale/s',
       name: 'SearchPage',
       component: SearchPage,
       loadData: pageDataLoadingAPI.SearchPage.loadData,
     },
     {
-      path: '/l',
+      path: '/:locale/l',
       name: 'ListingBasePage',
       component: RedirectToLandingPage,
     },
     {
-      path: '/l/:slug/:id',
+      path: '/:locale/l/:slug/:id',
       name: 'ListingPage',
       component: ListingPage,
       loadData: pageDataLoadingAPI.ListingPage.loadData,
     },
     {
-      path: '/l/:slug/:id/checkout',
+      path: '/:locale/l/:slug/:id/checkout',
       name: 'CheckoutPage',
       auth: true,
       component: CheckoutPage,
       setInitialValues: pageDataLoadingAPI.CheckoutPage.setInitialValues,
     },
     {
-      path: '/l/:slug/:id/:variant',
+      path: '/:locale/l/:slug/:id/:variant',
       name: 'ListingPageVariant',
       auth: true,
       authPage: 'LoginPage',
@@ -116,7 +116,7 @@ const routeConfiguration = () => {
       loadData: pageDataLoadingAPI.ListingPage.loadData,
     },
     {
-      path: '/l/new',
+      path: '/:locale/l/new',
       name: 'NewListingPage',
       auth: true,
       component: () => (
@@ -127,14 +127,14 @@ const routeConfiguration = () => {
       ),
     },
     {
-      path: '/l/:slug/:id/:type/:tab',
+      path: '/:locale/l/:slug/:id/:type/:tab',
       name: 'EditListingPage',
       auth: true,
       component: EditListingPage,
       loadData: pageDataLoadingAPI.EditListingPage.loadData,
     },
     {
-      path: '/l/:slug/:id/:type/:tab/:returnURLType',
+      path: '/:locale/l/:slug/:id/:type/:tab/:returnURLType',
       name: 'EditListingStripeOnboardingPage',
       auth: true,
       component: EditListingPage,
@@ -144,24 +144,24 @@ const routeConfiguration = () => {
     // Canonical path should be after the `/l/new` path since they
     // conflict and `new` is not a valid listing UUID.
     {
-      path: '/l/:id',
+      path: '/:locale/l/:id',
       name: 'ListingPageCanonical',
       component: ListingPage,
       loadData: pageDataLoadingAPI.ListingPage.loadData,
     },
     {
-      path: '/u',
+      path: '/:locale/u',
       name: 'ProfileBasePage',
       component: RedirectToLandingPage,
     },
     {
-      path: '/u/:id',
+      path: '/:locale/u/:id',
       name: 'ProfilePage',
       component: ProfilePage,
       loadData: pageDataLoadingAPI.ProfilePage.loadData,
     },
     {
-      path: '/profile-settings',
+      path: '/:locale/profile-settings',
       name: 'ProfileSettingsPage',
       auth: true,
       authPage: 'LoginPage',
@@ -172,37 +172,37 @@ const routeConfiguration = () => {
     // so that in the error case users can be redirected back to the LoginPage
     // In case you change this, remember to update the route in server/api/auth/loginWithIdp.js
     {
-      path: '/login',
+      path: '/:locale/login',
       name: 'LoginPage',
       component: AuthenticationPage,
       extraProps: { tab: 'login' },
     },
     {
-      path: '/signup',
+      path: '/:locale/signup',
       name: 'SignupPage',
       component: AuthenticationPage,
       extraProps: { tab: 'signup' },
     },
     {
-      path: '/confirm',
+      path: '/:locale/confirm',
       name: 'ConfirmPage',
       component: AuthenticationPage,
       extraProps: { tab: 'confirm' },
     },
     {
-      path: '/recover-password',
+      path: '/:locale/recover-password',
       name: 'PasswordRecoveryPage',
       component: PasswordRecoveryPage,
     },
     {
-      path: '/inbox',
+      path: '/:locale/inbox',
       name: 'InboxBasePage',
       auth: true,
       authPage: 'LoginPage',
       component: () => <NamedRedirect name="InboxPage" params={{ tab: 'sales' }} />,
     },
     {
-      path: '/inbox/:tab',
+      path: '/:locale/inbox/:tab',
       name: 'InboxPage',
       auth: true,
       authPage: 'LoginPage',
@@ -210,14 +210,14 @@ const routeConfiguration = () => {
       loadData: pageDataLoadingAPI.InboxPage.loadData,
     },
     {
-      path: '/order/:id',
+      path: '/:locale/order/:id',
       name: 'OrderPage',
       auth: true,
       authPage: 'LoginPage',
       component: props => <NamedRedirect name="OrderDetailsPage" params={{ ...props.params }} />,
     },
     {
-      path: '/order/:id/details',
+      path: '/:locale/order/:id/details',
       name: 'OrderDetailsPage',
       auth: true,
       authPage: 'LoginPage',
@@ -228,14 +228,14 @@ const routeConfiguration = () => {
       setInitialValues: pageDataLoadingAPI.TransactionPage.setInitialValues,
     },
     {
-      path: '/sale/:id',
+      path: '/:locale/sale/:id',
       name: 'SalePage',
       auth: true,
       authPage: 'LoginPage',
       component: props => <NamedRedirect name="SaleDetailsPage" params={{ ...props.params }} />,
     },
     {
-      path: '/listings',
+      path: '/:locale/listings',
       name: 'ManageListingsPage',
       auth: true,
       authPage: 'LoginPage',
@@ -243,7 +243,7 @@ const routeConfiguration = () => {
       loadData: pageDataLoadingAPI.ManageListingsPage.loadData,
     },
     {
-      path: '/sale/:id/details',
+      path: '/:locale/sale/:id/details',
       name: 'SaleDetailsPage',
       auth: true,
       authPage: 'LoginPage',
@@ -253,14 +253,14 @@ const routeConfiguration = () => {
         pageDataLoadingAPI.TransactionPage.loadData({ ...params, transactionRole: 'provider' }),
     },
     {
-      path: '/account',
+      path: '/:locale/account',
       name: 'AccountSettingsPage',
       auth: true,
       authPage: 'LoginPage',
       component: () => <NamedRedirect name="ContactDetailsPage" />,
     },
     {
-      path: '/account/contact-details',
+      path: '/:locale/account/contact-details',
       name: 'ContactDetailsPage',
       auth: true,
       authPage: 'LoginPage',
@@ -268,14 +268,14 @@ const routeConfiguration = () => {
       loadData: pageDataLoadingAPI.ContactDetailsPage.loadData,
     },
     {
-      path: '/account/change-password',
+      path: '/:locale/account/change-password',
       name: 'PasswordChangePage',
       auth: true,
       authPage: 'LoginPage',
       component: PasswordChangePage,
     },
     {
-      path: '/account/payments',
+      path: '/:locale/account/payments',
       name: 'StripePayoutPage',
       auth: true,
       authPage: 'LoginPage',
@@ -283,7 +283,7 @@ const routeConfiguration = () => {
       loadData: pageDataLoadingAPI.StripePayoutPage.loadData,
     },
     {
-      path: '/account/payments/:returnURLType',
+      path: '/:locale/account/payments/:returnURLType',
       name: 'StripePayoutOnboardingPage',
       auth: true,
       authPage: 'LoginPage',
@@ -291,7 +291,7 @@ const routeConfiguration = () => {
       loadData: pageDataLoadingAPI.StripePayoutPage.loadData,
     },
     {
-      path: '/account/payment-methods',
+      path: '/:locale/account/payment-methods',
       name: 'PaymentMethodsPage',
       auth: true,
       authPage: 'LoginPage',
@@ -299,7 +299,7 @@ const routeConfiguration = () => {
       loadData: pageDataLoadingAPI.PaymentMethodsPage.loadData,
     },
     {
-     path: '/account/delete-profile',
+     path: '/:locale/account/delete-profile',
      name: 'DeleteAccountPage',
      auth: true,
      authPage: 'LoginPage',
@@ -347,7 +347,7 @@ const routeConfiguration = () => {
       extraProps: { raw: true },
     },
     {
-      path: '/notfound',
+      path: '/:locale/notfound',
       name: 'NotFoundPage',
       component: props => <NotFoundPage {...props} />,
     },
@@ -356,7 +356,7 @@ const routeConfiguration = () => {
     //
     // The API expects that the application implements /reset-password endpoint
     {
-      path: '/reset-password',
+      path: '/:locale/reset-password',
       name: 'PasswordResetPage',
       component: PasswordResetPage ,
     },
@@ -365,7 +365,7 @@ const routeConfiguration = () => {
     //
     // The API expects that the application implements /verify-email endpoint
     {
-      path: '/verify-email',
+      path: '/:locale/verify-email',
       name: 'EmailVerificationPage',
       auth: true,
       authPage: 'LoginPage',
