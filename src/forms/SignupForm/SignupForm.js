@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
@@ -7,7 +7,11 @@ import classNames from 'classnames'
 import * as validators from '../../util/validators'
 import { Form, PrimaryButton, FieldTextInput } from '../../components'
 
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
+
 import css from './SignupForm.module.css'
+import { Field } from 'react-final-form'
 
 const KEY_CODE_ENTER = 13
 
@@ -33,6 +37,20 @@ const SignupFormComponent = (props) => (
         id: 'SignupForm.emailInvalid'
       })
       const emailValid = validators.emailFormatValid(emailInvalidMessage)
+
+      // phone number
+      const phoneLabel = intl.formatMessage({
+        id: 'SignupForm.phoneLabel'
+      })
+      const phonePlaceholder = intl.formatMessage({
+        id: 'SignupForm.phonePlaceholder'
+      })
+      const phoneRequiredMessage = intl.formatMessage({
+        id: 'SignupForm.phoneRequired'
+      })
+      const phoneRequired = validators.required(phoneRequiredMessage)
+
+      const [value, setValue] = useState()
 
       // password
       const passwordLabel = intl.formatMessage({
@@ -110,6 +128,10 @@ const SignupFormComponent = (props) => (
         </span>
       )
 
+      const PhoneAdapter = ({ input, meta, ...rest }) => (
+        <PhoneInput {...input} {...rest} value={input.value} onChange={(event, value) => input.onChange(value)} />
+      )
+
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           <div>
@@ -122,6 +144,40 @@ const SignupFormComponent = (props) => (
               placeholder={emailPlaceholder}
               validate={validators.composeValidators(emailRequired, emailValid)}
             />
+            {/* <PhoneInput
+              className={css.phone}
+              id={formId ? `${formId}.phone` : 'phone'}
+              name="phone"
+              labels={phoneLabel}
+              placeholder={phonePlaceholder}
+              value={value}
+              onChange={setValue}
+            /> */}
+            <div className={css.phone}>
+              <Field
+                id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
+                name="phoneNumber"
+                validate={phoneRequired}
+                placeholder={phonePlaceholder}>
+                {({ input, meta }) => {
+                  return (
+                    <>
+                      <label>{phoneLabel}</label>
+                      <PhoneInput {...input} />
+                    </>
+                  )
+                }}
+              </Field>
+            </div>
+
+            {/* <FieldPhoneNumberInput
+              className={css.phone}
+              id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
+              name="phoneNumber"
+              label={phoneLabel}
+              placeholder={phonePlaceholder}
+              validate={phoneRequired}
+            /> */}
             <div className={css.name}>
               <FieldTextInput
                 className={css.firstNameRoot}
