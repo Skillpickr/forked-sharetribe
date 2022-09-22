@@ -1,16 +1,24 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import css from './Toast.module.css'
+import classNames from 'classnames'
 
 class Toast extends Component {
-  
   render() {
+    setTimeout(() => {
+      this.props.onDismissClick()
+    }, 5000)
     return (
-      <li className={css.toast} style={{ backgroundColor: this.props.color }}>
-        <p className={css.toast__content}>{this.props.text}</p>
-        <button className={css.toast__dismiss} onClick={this.props.onDismissClick}>
+      <li
+        className={classNames(css.notification, css.toast, css.bottom__left)}
+        style={{ backgroundColor: this.props.color }}>
+        <button className={''} onClick={this.props.onDismissClick}>
           x
         </button>
+        <div>
+          <p className={css.notification__title}>{this.props.title}</p>
+          <p className={css.notification__message}>{this.props.text}</p>
+        </div>
       </li>
     )
   }
@@ -21,7 +29,7 @@ class Toast extends Component {
 }
 
 Toast.propTypes = {
-  color: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   onDismissClick: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired
 }

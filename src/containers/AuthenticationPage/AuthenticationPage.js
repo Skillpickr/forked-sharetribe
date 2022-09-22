@@ -35,6 +35,7 @@ import {
 import { ConfirmSignupForm, LoginForm, SignupForm } from '../../forms'
 import { TopbarContainer } from '../../containers'
 import { login, authenticationInProgress, signup, signupWithIdp } from '../../ducks/Auth.duck'
+import { addToast } from '../../ducks/toasts.duck'
 import { isScrollingDisabled } from '../../ducks/UI.duck'
 import { sendVerificationEmail } from '../../ducks/user.duck'
 import { manageDisableScrolling } from '../../ducks/UI.duck'
@@ -65,7 +66,6 @@ export class AuthenticationPageComponent extends Component {
       intl,
       isAuthenticated,
       location,
-      loginError,
       scrollingDisabled,
       signupError,
       submitLogin,
@@ -76,7 +76,8 @@ export class AuthenticationPageComponent extends Component {
       sendVerificationEmailInProgress,
       sendVerificationEmailError,
       onResendVerificationEmail,
-      onManageDisableScrolling
+      onManageDisableScrolling,
+      addNotification
     } = this.props
 
     const isConfirm = tab === 'confirm'
@@ -101,22 +102,6 @@ export class AuthenticationPageComponent extends Component {
       return <NamedRedirect name="LandingPage" />
     }
 
-    const loginErrorMessage = (
-      <div className={css.error}>
-        <FormattedMessage id="AuthenticationPage.loginFailed" />
-      </div>
-    )
-
-    const signupErrorMessage = (
-      <div className={css.error}>
-        {isSignupEmailTakenError(signupError) ? (
-          <FormattedMessage id="AuthenticationPage.signupFailedEmailAlreadyTaken" />
-        ) : (
-          <FormattedMessage id="AuthenticationPage.signupFailed" />
-        )}
-      </div>
-    )
-
     const confirmErrorMessage = confirmError ? (
       <div className={css.error}>
         {isSignupEmailTakenError(confirmError) ? (
@@ -126,12 +111,6 @@ export class AuthenticationPageComponent extends Component {
         )}
       </div>
     ) : null
-
-    // eslint-disable-next-line no-confusing-arrow
-    const errorMessage = (error, message) => (error ? message : null)
-    const loginOrSignupError = isLogin
-      ? errorMessage(loginError, loginErrorMessage)
-      : errorMessage(signupError, signupErrorMessage)
 
     const fromState = { state: from ? { from } : null }
 
@@ -165,7 +144,21 @@ export class AuthenticationPageComponent extends Component {
     const handleSubmitSignup = (values) => {
       const { fname, lname, ...rest } = values
       const params = { firstName: fname.trim(), lastName: lname.trim(), ...rest }
-      submitSignup(params)
+      let errorMessage = isSignupEmailTakenError(signupError)
+        ? intl.formatMessage({
+            id: 'AuthenticationPage.signupFailedEmailAlreadyTaken'
+          })
+        : intl.formatMessage({ id: 'AuthenticationPage.signupFailed' })
+      submitSignup(params, errorMessage)
+    }
+
+    const handleLoginSubmit = (values) => {
+      const { email, password } = values
+      const errorMessages = intl.formatMessage({
+        id: 'AuthenticationPage.loginFailed'
+      })
+      const params = { email: email, password: password }
+      submitLogin(params)
     }
 
     const handleSubmitConfirm = (values) => {
@@ -295,10 +288,9 @@ export class AuthenticationPageComponent extends Component {
     const authenticationForms = (
       <div className={css.content}>
         <LinkTabNavHorizontal className={css.tabs} tabs={tabs} />
-        {loginOrSignupError}
 
         {isLogin ? (
-          <LoginForm className={css.loginForm} onSubmit={submitLogin} inProgress={authInProgress} />
+          <LoginForm className={css.loginForm} onSubmit={handleLoginSubmit} inProgress={authInProgress} />
         ) : (
           <SignupForm
             className={css.signupForm}
@@ -450,7 +442,8 @@ AuthenticationPageComponent.propTypes = {
   location: shape({ state: object }).isRequired,
 
   // from injectIntl
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  addNotification: func.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -470,8 +463,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  submitLogin: ({ email, password }) => dispatch(login(email, password)),
-  submitSignup: (params) => dispatch(signup(params)),
+  submitLogin: ({ email, password }) => {
+    dispatch(login(email, password))
+  },
+  submitSignup: (params, messages) => dispatch(signup(params, messages)),
+  addNotification: (text, type) => dispatch(addToast({ text: text, type: type })),
   submitSingupWithIdp: (params) => dispatch(signupWithIdp(params)),
   onResendVerificationEmail: () => dispatch(sendVerificationEmail()),
   onManageDisableScrolling: (componentId, disableScrolling) =>
