@@ -160,7 +160,7 @@ export const authInfo = () => (dispatch, getState, sdk) => {
     })
 }
 
-export const login = (username, password) => (dispatch, getState, sdk) => {
+export const login = (username, password, messages) => (dispatch, getState, sdk) => {
   if (authenticationInProgress(getState())) {
     return Promise.reject(new Error('Login or logout already in progress'))
   }
@@ -174,6 +174,7 @@ export const login = (username, password) => (dispatch, getState, sdk) => {
     .then(() => dispatch(fetchCurrentUser()))
     .catch((e) => {
       dispatch(loginError(storableError(e)))
+      dispatch(addToast({ text: messages }))
     })
 }
 

@@ -154,10 +154,10 @@ export class AuthenticationPageComponent extends Component {
 
     const handleLoginSubmit = (values) => {
       const { email, password } = values
-      const errorMessages = intl.formatMessage({
+      const errorMessage = intl.formatMessage({
         id: 'AuthenticationPage.loginFailed'
       })
-      const params = { email: email, password: password }
+      const params = { email: email, password: password, messages: errorMessage }
       submitLogin(params)
     }
 
@@ -463,11 +463,10 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  submitLogin: ({ email, password }) => {
-    dispatch(login(email, password))
+  submitLogin: ({ email, password, messages }) => {
+    dispatch(login(email, password, messages))
   },
   submitSignup: (params, messages) => dispatch(signup(params, messages)),
-  addNotification: (text, type) => dispatch(addToast({ text: text, type: type })),
   submitSingupWithIdp: (params) => dispatch(signupWithIdp(params)),
   onResendVerificationEmail: () => dispatch(sendVerificationEmail()),
   onManageDisableScrolling: (componentId, disableScrolling) =>
