@@ -5,6 +5,7 @@ const defaultOptions = {
 }
 
 export default function createToast(options) {
+  // console.log('adToast', id)
   return {
     ...defaultOptions,
     ...options,

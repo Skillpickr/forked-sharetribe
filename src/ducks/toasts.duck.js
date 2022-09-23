@@ -4,9 +4,12 @@ import createToast from '../factories/createToast'
 
 export const ADD_TOAST = 'app/ADD_TOAST'
 export const REMOVE_TOAST = 'app/REMOVE_TOAST'
+export const REMOVE_ALL_TOASTS = 'app/REMOVE_ALL_TOASTS'
+
+const initialState = []
 
 // ================ Reducer ================ //
-export default function toasts(state = [], action) {
+export default function toasts(state = initialState, action) {
   const { payload, type } = action
 
   switch (type) {
@@ -16,6 +19,9 @@ export default function toasts(state = [], action) {
     case REMOVE_TOAST:
       return state.filter((toast) => toast.id !== payload)
 
+    case REMOVE_ALL_TOASTS:
+      return []
+
     default:
       return state
   }
@@ -24,14 +30,20 @@ export default function toasts(state = [], action) {
 
 export function addToast(options = {}) {
   return {
-    payload: createToast(options),
-    type: ADD_TOAST
+    type: ADD_TOAST,
+    payload: createToast(options)
   }
 }
 
 export function removeToast(id) {
   return {
-    payload: id,
-    type: REMOVE_TOAST
+    type: REMOVE_TOAST,
+    payload: id
+  }
+}
+
+export function removeAllToasts() {
+  return {
+    type: REMOVE_ALL_TOASTS
   }
 }

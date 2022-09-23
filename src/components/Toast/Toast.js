@@ -29,7 +29,7 @@ class Toast extends Component {
 }
 
 Toast.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   onDismissClick: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired
 }

@@ -35,7 +35,6 @@ import {
 import { ConfirmSignupForm, LoginForm, SignupForm } from '../../forms'
 import { TopbarContainer } from '../../containers'
 import { login, authenticationInProgress, signup, signupWithIdp } from '../../ducks/Auth.duck'
-import { addToast } from '../../ducks/toasts.duck'
 import { isScrollingDisabled } from '../../ducks/UI.duck'
 import { sendVerificationEmail } from '../../ducks/user.duck'
 import { manageDisableScrolling } from '../../ducks/UI.duck'
@@ -443,7 +442,7 @@ AuthenticationPageComponent.propTypes = {
 
   // from injectIntl
   intl: intlShape.isRequired,
-  addNotification: func.isRequired
+  addNotification: func
 }
 
 const mapStateToProps = (state) => {

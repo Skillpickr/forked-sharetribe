@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AuthenticationPageComponent matches snapshot 1`] = `
-<Page
+<Connect(Page)
   schema={
     Object {
       "@context": "http://schema.org",
@@ -119,11 +119,11 @@ exports[`AuthenticationPageComponent matches snapshot 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSingleColumn>
-</Page>
+</Connect(Page)>
 `;
 
 exports[`AuthenticationPageComponent with Facebook login matches snapshot 1`] = `
-<Page
+<Connect(Page)
   schema={
     Object {
       "@context": "http://schema.org",
@@ -282,11 +282,11 @@ exports[`AuthenticationPageComponent with Facebook login matches snapshot 1`] = 
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSingleColumn>
-</Page>
+</Connect(Page)>
 `;
 
 exports[`AuthenticationPageComponent with Google and Facebook login matches snapshot 1`] = `
-<Page
+<Connect(Page)
   schema={
     Object {
       "@context": "http://schema.org",
@@ -490,11 +490,11 @@ exports[`AuthenticationPageComponent with Google and Facebook login matches snap
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSingleColumn>
-</Page>
+</Connect(Page)>
 `;
 
 exports[`AuthenticationPageComponent with Google login matches snapshot 1`] = `
-<Page
+<Connect(Page)
   schema={
     Object {
       "@context": "http://schema.org",
@@ -672,5 +672,5 @@ exports[`AuthenticationPageComponent with Google login matches snapshot 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSingleColumn>
-</Page>
+</Connect(Page)>
 `;
