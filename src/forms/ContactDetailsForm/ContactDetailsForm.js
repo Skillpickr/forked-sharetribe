@@ -314,13 +314,13 @@ class ContactDetailsFormComponent extends Component {
                     }}
                   </Field>
                 </div>
-                <FieldPhoneNumberInput
+                {/* <FieldPhoneNumberInput
                   className={css.phone}
                   name="phoneNumber"
                   id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
                   label={phoneLabel}
                   placeholder={phonePlaceholder}
-                />
+                /> */}
               </div>
 
               <div className={confirmClasses}>
