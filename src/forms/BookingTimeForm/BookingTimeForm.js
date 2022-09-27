@@ -53,6 +53,7 @@ export class BookingTimeFormComponent extends Component {
   render() {
     const { rootClassName, className, price: unitPrice, ...rest } = this.props
     const classes = classNames(rootClassName || css.root, className)
+    console.log(unitPrice)
 
     if (!unitPrice) {
       return (
