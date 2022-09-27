@@ -9,6 +9,7 @@ const Skills = {
   photographer: 'photographer',
   dj: 'dj',
   musicianSoloist: 'musicianSoloist',
+  musicianGroup: 'musicianGroup',
 };
 
 export { Categories, Skills };
