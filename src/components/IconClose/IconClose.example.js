@@ -1,15 +1,15 @@
-import IconClose from './IconClose';
+import IconClose from './IconClose'
 
 export const Icon = {
   component: IconClose,
   props: {},
-  group: 'icons',
-};
+  group: 'icons'
+}
 
 export const IconSmall = {
   component: IconClose,
   props: {
-    size: 'small',
+    size: 'small'
   },
-  group: 'icons',
-};
+  group: 'icons'
+}

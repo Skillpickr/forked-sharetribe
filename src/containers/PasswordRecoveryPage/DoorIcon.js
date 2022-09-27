@@ -1,23 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import css from './DoorIcon.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import css from './DoorIcon.module.css'
 
-const DoorIcon = props => {
-  const { className } = props;
+const DoorIcon = (props) => {
+  const { className } = props
   return (
-    <svg
-      className={className}
-      width="52"
-      height="59"
-      viewBox="0 0 52 59"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className={className} width="52" height="59" viewBox="0 0 52 59" xmlns="http://www.w3.org/2000/svg">
       <g strokeWidth="2.5" fill="none" fillRule="evenodd" strokeLinejoin="round">
-        <path
-          className={css.strokeAndFill}
-          strokeLinecap="round"
-          d="M28.182 42.364H50V26H28.182z"
-        />
+        <path className={css.strokeAndFill} strokeLinecap="round" d="M28.182 42.364H50V26H28.182z" />
         <path d="M39.09 38v-4.364" stroke="#FFF" strokeLinecap="round" />
         <path
           className={css.stroke}
@@ -40,15 +30,15 @@ const DoorIcon = props => {
         />
       </g>
     </svg>
-  );
-};
+  )
+}
 
-DoorIcon.defaultProps = { className: null };
+DoorIcon.defaultProps = { className: null }
 
-const { string } = PropTypes;
+const { string } = PropTypes
 
 DoorIcon.propTypes = {
-  className: string,
-};
+  className: string
+}
 
-export default DoorIcon;
+export default DoorIcon

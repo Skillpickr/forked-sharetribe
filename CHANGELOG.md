@@ -17,6 +17,24 @@ https://github.com/sharetribe/flex-template-web/
 
 ## Upcoming version 2022-XX-XX
 
+## [v11.0.1] 2022-08-29
+
+### Updates from upstream (FTW-daily v9.0.1)
+- [fix] Use sharetribe-scripts v6.0.1. Fixes for
+
+  - GENERATE_SOURCEMAP = false
+  - async Redux Thunks
+
+  [#1546](https://github.com/sharetribe/ftw-daily/pull/1546)
+
+- [fix] Add cookie_flags and relax google analytics domain
+  [#1538](https://github.com/sharetribe/ftw-daily/pull/1538)
+- [fix] the import of customMediaQueries.css was somehow missed with these components:
+  FieldReviewRating, SearchFiltersSecondary and TopbarMobileMenu.
+  [#1537](https://github.com/sharetribe/ftw-daily/pull/1537)
+
+  [v11.0.1]: https://github.com/sharetribe/ftw-hourly/compare/v11.0.0...v11.0.1
+
 ## [v11.0.0] 2022-07-11
 
 This is a major release since it includes a major update to sharetribe-scripts aka our fork of
@@ -38,7 +56,7 @@ Read more from PR: https://github.com/sharetribe/ftw-daily/pull/1531
   touch swipes. [#1529](https://github.com/sharetribe/ftw-daily/pull/1529)
 - [fix] Fixing a small typo. [#1518](https://github.com/sharetribe/ftw-daily/pull/1518)
 
-[v11.0.0]: https://github.com/sharetribe/ftw-hourly/compare/v10.6.1...v11.0.0
+  [v11.0.0]: https://github.com/sharetribe/ftw-hourly/compare/v10.6.1...v11.0.0
 
 ## [v10.6.1] 2022-05-19
 
@@ -618,7 +636,7 @@ Update from upstream (first 3 bullets) and a couple of pending changes.
 - [fix] Fix `console.warn` functions. [#1252](https://github.com/sharetribe/ftw-daily/pull/1252)
 - [add] Add missing countries (e.g. MX and JP) to `StripeBankAccountTokenInput` validations.
   [#1250](https://github.com/sharetribe/ftw-daily/pull/1250)
-- [add] Add French and Spanish translations for Skillpickr
+- [add] Add French and Spanish translations for SkillPickr
   [#72](https://github.com/sharetribe/ftw-hourly/pull/72)
 - [fix] Fix bug in showing availability exceptions. This bug was introduced in v6.0.0.
   [#71](https://github.com/sharetribe/ftw-hourly/pull/71)
@@ -695,7 +713,7 @@ from Flex docs: https://www.sharetribe.com/docs/guides/how-to-set-up-csp-for-ftw
 ## [v5.0.0] 2019-11-21
 
 This release creates lots of changes to the default logic (only one listing aka teacher profile
-allowed), translations files (Saunatime is changed to Skillpickr), and it also adds
+allowed), translations files (Saunatime is changed to SkillPickr), and it also adds
 AvailabilityExceptions to EditListingAvailabilityPanel. If you have started with the original Flex
 Template for Web, you need to be extra careful when you switch to this release, since there are pull
 request that you might need to revert when you take update from upstream. (E.g. you might want to
@@ -705,7 +723,7 @@ allow multiple listings in your marketplace.)
   changed to "sessions") [#55](https://github.com/sharetribe/ftw-time/pull/55)
 - [fix] Reseting bookingStartDate picker didn't reset the current month.
   [#54](https://github.com/sharetribe/ftw-time/pull/54)
-- [change] Skillpickr UI tweaks.
+- [change] SkillPickr UI tweaks.
 
   - Change hard-coded "sauna" strings and rules tab in EditListingWizard.
   - Change font-size in Avatar.
@@ -754,7 +772,7 @@ allow multiple listings in your marketplace.)
   [#38](https://github.com/sharetribe/ftw-time/pull/38)
 - [change] Hide inbox tabs if user doesn't have a listing.
   [#37](https://github.com/sharetribe/ftw-time/pull/37)
-- [change] Change the logo, marketplace color and favicons from Saunatime to Skillpickr.
+- [change] Change the logo, marketplace color and favicons from Saunatime to SkillPickr.
   [#36](https://github.com/sharetribe/ftw-time/pull/36)
 - [change] Change the default locations used in `Topbar` and `Footer`.
   [#35](https://github.com/sharetribe/ftw-time/pull/35)

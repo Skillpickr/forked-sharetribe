@@ -32,8 +32,8 @@
  *         and tie them with correct extended data key
  *         (i.e. pub_<key> or meta_<key>).
  */
-import { Categories, Skills } from './util/category';
-import { CheckboxFieldsType, DropdownFieldsType } from './util/featuresFields';
+import { Categories, Skills } from './util/category'
+import { CheckboxFieldsType, DropdownFieldsType } from './util/featuresFields'
 
 export const filters = [
   {
@@ -62,9 +62,9 @@ export const filters = [
         { key: '60', label: '1 hour', shortLabel: '1h' },
         { key: '120', label: '2 hours', shortLabel: '2h' },
         { key: '240', label: '4 hours', shortLabel: '4h' },
-        { key: '480', label: '8 hours', shortLabel: '8h' },
-      ],
-    },
+        { key: '480', label: '8 hours', shortLabel: '8h' }
+      ]
+    }
   },
   {
     id: 'price',
@@ -79,8 +79,8 @@ export const filters = [
     config: {
       min: 0,
       max: 1000,
-      step: 5,
-    },
+      step: 5
+    }
   },
   {
     id: 'keyword',
@@ -93,7 +93,7 @@ export const filters = [
     // NOTE: If you are ordering search results by distance
     // the keyword search can't be used at the same time.
     // You can turn on/off ordering by distance from config.js file.
-    config: {},
+    config: {}
   },
   {
     id: 'category',
@@ -108,9 +108,9 @@ export const filters = [
         { key: Categories.creative, label: 'Creative' },
         { key: Categories.performance, label: 'Performance and Entertainment' },
         { key: Categories.audioProd, label: 'Audio Production' },
-        { key: Categories.knowledge, label: 'Knowledge' },
-      ],
-    },
+        { key: Categories.knowledge, label: 'Knowledge' }
+      ]
+    }
   },
   {
     id: 'skill',
@@ -124,10 +124,9 @@ export const filters = [
       options: [
         { key: Skills.photographer, label: 'Photographer' },
         { key: Skills.dj, label: 'DJ' },
-        { key: Skills.musicianSoloist, label: 'Musician' },
-        { key: Skills.musicianGroup, label: 'Band' },
-      ],
-    },
+        { key: Skills.musicianSoloist, label: 'Musician' }
+      ]
+    }
   },
   {
     id: CheckboxFieldsType.photographerTypeKey,
@@ -175,9 +174,9 @@ export const filters = [
         { key: 'film', label: 'Film camera photographer' },
         { key: 'astro', label: 'Astrophotographer' },
         { key: 'communication', label: 'Photographic communication' },
-        { key: 'food', label: 'Food photographer' },
-      ],
-    },
+        { key: 'food', label: 'Food photographer' }
+      ]
+    }
   },
   {
     id: CheckboxFieldsType.djTypeKey,
@@ -201,14 +200,14 @@ export const filters = [
         { key: 'mobile', label: 'Mobile DJ' },
         { key: 'turntablist', label: 'Turntablist' },
         { key: 'corporate', label: 'Corporate event DJ' },
-        { key: 'birthday', label: 'Birthday DJ' },
-      ],
-    },
+        { key: 'birthday', label: 'Birthday DJ' }
+      ]
+    }
   },
   {
     id: DropdownFieldsType.musicianSoloKey,
     label: 'Musician',
-    type: 'SelectSingleFilter',
+    type: 'SelectMultipleFilter',
     group: 'secondary',
     queryParamNames: ['pub_musicianSoloType'],
     config: {
@@ -349,9 +348,9 @@ export const filters = [
         { key: 'violist', label: 'Violist' },
         { key: 'viola', label: 'Viola da gamba' },
         { key: 'violin', label: 'Violinist' },
-        { key: 'xylophone', label: 'Xylophone' },
-      ],
-    },
+        { key: 'xylophone', label: 'Xylophone' }
+      ]
+    }
   },
   {
     id: CheckboxFieldsType.musicianGroupKey,
@@ -471,9 +470,9 @@ export const filters = [
         { key: '2000Band', label: '2000s era tribute band' },
         { key: 'abbaTributeBand', label: 'ABBA tribute band' },
         { key: 'beatlesTributeBand', label: 'Beatles tribute band' },
-        { key: 'queenTributeBand', label: 'Queen tribute band' },
-      ],
-    },
+        { key: 'queenTributeBand', label: 'Queen tribute band' }
+      ]
+    }
   },
   {
     id: CheckboxFieldsType.musicalGenre,
@@ -490,21 +489,36 @@ export const filters = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
+        { key: 'a-cappella ', label: 'A cappella' },
+        { key: 'blues', label: 'Blues' },
         { key: 'classical', label: 'Classical' },
         { key: 'ceremonial', label: 'Ceremonial Music' },
+        { key: 'children', label: "Children's Music" },
+        { key: 'disco', label: 'Disco' },
         { key: 'electronic', label: 'Electronic' },
         { key: 'folk', label: 'Folk' },
+        { key: 'funk', label: 'Funk' },
+        { key: 'gospel', label: 'Gospel' },
+        { key: 'heavy-metal', label: 'Heavy Metal' },
+        { key: 'hiphop', label: 'Hip Hop' },
         { key: 'jazz', label: 'Jazz' },
-        { key: 'other', label: 'Other' },
+        { key: 'latin', label: 'Latin' },
+        { key: 'metal', label: 'Metal' },
+        { key: 'middle-eastern', label: 'Middel Eastern' },
+        { key: 'neo-soul', label: 'Neo/Soul' },
+        { key: 'new age', label: 'New Age' },
         { key: 'pop', label: 'Pop' },
+        { key: 'r-b', label: 'R&B' },
+        { key: 'reggae', label: 'Reggae' },
         { key: 'rock', label: 'Rock' },
-        { key: 'world', label: 'World Music' },
-      ],
-    },
+        { key: 'ska', label: 'Ska' },
+        { key: 'world', label: 'World Music' }
+      ]
+    }
   },
   {
     id: CheckboxFieldsType.musicianTypeKey,
-    label: 'Musical Genre',
+    label: 'Type of musician',
     type: 'SelectMultipleFilter',
     group: 'secondary',
     queryParamNames: ['pub_musicianSoloType'],
@@ -521,9 +535,9 @@ export const filters = [
         { key: 'live', label: 'Live musician' },
         { key: 'private', label: 'Private events' },
         { key: 'corporate', label: 'Corporate events' },
-        { key: 'band', label: 'Band (Stand in)' },
-      ],
-    },
+        { key: 'band', label: 'Band (Stand in)' }
+      ]
+    }
   },
   {
     id: DropdownFieldsType.ownStudioKey,
@@ -533,9 +547,9 @@ export const filters = [
     config: {
       options: [
         { key: 'yes', label: 'Yes' },
-        { key: 'no', label: 'No' },
-      ],
-    },
+        { key: 'no', label: 'No' }
+      ]
+    }
   },
   {
     id: DropdownFieldsType.soundLightExpKey,
@@ -546,9 +560,9 @@ export const filters = [
       options: [
         { key: 'yes', label: 'Yes' },
         { key: 'no', label: 'No' },
-        { key: 'maybe', label: 'Willing to learn' },
-      ],
-    },
+        { key: 'maybe', label: 'Willing to learn' }
+      ]
+    }
   },
   {
     id: DropdownFieldsType.songRequestKey,
@@ -559,9 +573,9 @@ export const filters = [
       options: [
         { key: 'yes', label: 'Yes' },
         { key: 'no', label: 'No' },
-        { key: 'depends', label: 'Ask me - depends on the type of the event' },
-      ],
-    },
+        { key: 'depends', label: 'Ask me - depends on the type of the event' }
+      ]
+    }
   },
   {
     id: DropdownFieldsType.djGearForPlayingKey,
@@ -572,13 +586,13 @@ export const filters = [
       options: [
         {
           key: 'notIncluded',
-          label: 'Gear for playing is to be provided and is not included in price',
+          label: 'Gear for playing is to be provided and is not included in price'
         },
-        { key: 'included', label: 'All gear included in price' },
-      ],
-    },
-  },
-];
+        { key: 'included', label: 'All gear included in price' }
+      ]
+    }
+  }
+]
 
 export const sortConfig = {
   // Enable/disable the sorting control in the SearchPage
@@ -604,6 +618,6 @@ export const sortConfig = {
     // The relevance is only used for keyword search, but the
     // parameter isn't sent to the Marketplace API. The key is purely
     // for handling the internal state of the sorting dropdown.
-    { key: 'relevance', label: 'Relevance', longLabel: 'Relevance (Keyword search)' },
-  ],
-};
+    { key: 'relevance', label: 'Relevance', longLabel: 'Relevance (Keyword search)' }
+  ]
+}

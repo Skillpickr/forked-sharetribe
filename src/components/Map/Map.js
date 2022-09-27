@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { bool, number, object, string } from 'prop-types';
-import classNames from 'classnames';
-import { propTypes } from '../../util/types';
-import config from '../../config';
-import { StaticMap, DynamicMap, isMapsLibLoaded } from './MapboxMap';
+import React, { Component } from 'react'
+import { bool, number, object, string } from 'prop-types'
+import classNames from 'classnames'
+import { propTypes } from '../../util/types'
+import config from '../../config'
+import { StaticMap, DynamicMap, isMapsLibLoaded } from './MapboxMap'
 // import { StaticMap, DynamicMap, isMapsLibLoaded } from './GoogleMap';
 
-import css from './Map.module.css';
+import css from './Map.module.css'
 
 export class Map extends Component {
   render() {
@@ -19,21 +19,19 @@ export class Map extends Component {
       obfuscatedCenter,
       zoom,
       mapsConfig,
-      useStaticMap,
-    } = this.props;
-    const classes = classNames(rootClassName || css.root, className);
-    const mapClasses = mapRootClassName || css.mapRoot;
+      useStaticMap
+    } = this.props
+    const classes = classNames(rootClassName || css.root, className)
+    const mapClasses = mapRootClassName || css.mapRoot
 
     if (mapsConfig.fuzzy.enabled && !obfuscatedCenter) {
-      throw new Error(
-        'Map: obfuscatedCenter prop is required when config.maps.fuzzy.enabled === true'
-      );
+      throw new Error('Map: obfuscatedCenter prop is required when config.maps.fuzzy.enabled === true')
     }
     if (!mapsConfig.fuzzy.enabled && !center) {
-      throw new Error('Map: center prop is required when config.maps.fuzzy.enabled === false');
+      throw new Error('Map: center prop is required when config.maps.fuzzy.enabled === false')
     }
 
-    const location = mapsConfig.fuzzy.enabled ? obfuscatedCenter : center;
+    const location = mapsConfig.fuzzy.enabled ? obfuscatedCenter : center
 
     return !isMapsLibLoaded() ? (
       <div className={classes} />
@@ -48,7 +46,7 @@ export class Map extends Component {
         address={address}
         mapsConfig={mapsConfig}
       />
-    );
+    )
   }
 }
 
@@ -59,8 +57,8 @@ Map.defaultProps = {
   address: '',
   zoom: config.maps.fuzzy.enabled ? config.maps.fuzzy.defaultZoomLevel : 11,
   mapsConfig: config.maps,
-  useStaticMap: false,
-};
+  useStaticMap: false
+}
 
 Map.propTypes = {
   className: string,
@@ -71,7 +69,7 @@ Map.propTypes = {
   obfuscatedCenter: propTypes.latlng,
   zoom: number,
   mapsConfig: object,
-  useStaticMap: bool,
-};
+  useStaticMap: bool
+}
 
-export default Map;
+export default Map

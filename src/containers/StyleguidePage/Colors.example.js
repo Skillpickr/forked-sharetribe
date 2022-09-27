@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import css from './StyleguidePage.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import css from './StyleguidePage.module.css'
 
-const ColorCard = props => {
-  const { mpColor, name, usage } = props;
-  const colorClasses = mpColor || css.color;
+const ColorCard = (props) => {
+  const { mpColor, name, usage } = props
+  const colorClasses = mpColor || css.color
 
   return (
     <div className={css.colorCard}>
@@ -17,29 +17,29 @@ const ColorCard = props => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-const { string } = PropTypes;
+const { string } = PropTypes
 
 // Jest test strip off CSS classes (css is an empty object). Otherwise this could be required prop.
-const defaultProps = { mpColor: undefined };
+const defaultProps = { mpColor: undefined }
 // Create a real undefined value, not just injecting a hopefully undefined object.
-delete defaultProps.mpColor;
-ColorCard.defaultProps = defaultProps;
+delete defaultProps.mpColor
+ColorCard.defaultProps = defaultProps
 
 ColorCard.propTypes = {
   mpColor: string,
   name: string.isRequired,
-  usage: string.isRequired,
-};
+  usage: string.isRequired
+}
 
 const MarketplaceColors = () => {
   return (
     <div className={css.content}>
       <p className={css.spacing2x}>
-        Marketplace colors have three groups: branding color and its variations, action colors, and
-        grey palette for fine tuning UI elements.
+        Marketplace colors have three groups: branding color and its variations, action colors, and grey palette for
+        fine tuning UI elements.
       </p>
       <div className={css.colorsContainer}>
         <div className={css.colorsGroup}>
@@ -65,11 +65,7 @@ const MarketplaceColors = () => {
             name="--successColor"
             usage="e.g. color: var(--successColor);"
           />
-          <ColorCard
-            mpColor={css.failColorBackground}
-            name="--failColor"
-            usage="e.g. color: var(--failColor);"
-          />
+          <ColorCard mpColor={css.failColorBackground} name="--failColor" usage="e.g. color: var(--failColor);" />
           <ColorCard
             mpColor={css.attentionColorBackground}
             name="--attentionColor"
@@ -82,11 +78,7 @@ const MarketplaceColors = () => {
             name="--matterColorDark"
             usage="e.g. color: var(--matterColorDark);"
           />
-          <ColorCard
-            mpColor={css.matterColorBackground}
-            name="--matterColor"
-            usage="e.g. color: var(--matterColor);"
-          />
+          <ColorCard mpColor={css.matterColorBackground} name="--matterColor" usage="e.g. color: var(--matterColor);" />
           <ColorCard
             mpColor={css.matterColorAntiBackground}
             name="--matterColorAnti"
@@ -105,11 +97,11 @@ const MarketplaceColors = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const Colors = {
   component: MarketplaceColors,
   group: 'colors',
-  props: {},
-};
+  props: {}
+}

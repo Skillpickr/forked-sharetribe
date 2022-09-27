@@ -1,12 +1,12 @@
-import React from 'react';
-import { string } from 'prop-types';
-import classNames from 'classnames';
+import React from 'react'
+import { string } from 'prop-types'
+import classNames from 'classnames'
 
-import css from './IconEnquiry.module.css';
+import css from './IconEnquiry.module.css'
 
-const IconEnquiry = props => {
-  const { rootClassName, className } = props;
-  const classes = classNames(rootClassName || css.root, className);
+const IconEnquiry = (props) => {
+  const { rootClassName, className } = props
+  const classes = classNames(rootClassName || css.root, className)
   return (
     <svg className={classes} width="47" height="46" xmlns="http://www.w3.org/2000/svg">
       <g
@@ -14,8 +14,7 @@ const IconEnquiry = props => {
         fill="none"
         fillRule="evenodd"
         strokeLinecap="round"
-        strokeLinejoin="round"
-      >
+        strokeLinejoin="round">
         <path
           d="M37.522 17L45 22.22v19.933C45 43.724 43.744 45 42.196 45H4.804C3.256 45 2 43.724 2 42.153V22.22L9.478 17"
           strokeWidth="2"
@@ -26,17 +25,17 @@ const IconEnquiry = props => {
         />
       </g>
     </svg>
-  );
-};
+  )
+}
 
 IconEnquiry.defaultProps = {
   rootClassName: null,
-  className: null,
-};
+  className: null
+}
 
 IconEnquiry.propTypes = {
   rootClassName: string,
-  className: string,
-};
+  className: string
+}
 
-export default IconEnquiry;
+export default IconEnquiry

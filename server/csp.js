@@ -1,17 +1,17 @@
-const helmet = require('helmet');
+const helmet = require('helmet')
 
-const dev = process.env.REACT_APP_ENV === 'development';
-const self = "'self'";
-const unsafeInline = "'unsafe-inline'";
-const unsafeEval = "'unsafe-eval'";
-const data = 'data:';
-const blob = 'blob:';
-const devImagesMaybe = dev ? ['*.localhost:8000'] : [];
-const baseUrl = process.env.REACT_APP_SHARETRIBE_SDK_BASE_URL || 'https://flex-api.sharetribe.com';
+const dev = process.env.REACT_APP_ENV === 'development'
+const self = "'self'"
+const unsafeInline = "'unsafe-inline'"
+const unsafeEval = "'unsafe-eval'"
+const data = 'data:'
+const blob = 'blob:'
+const devImagesMaybe = dev ? ['*.localhost:8000'] : []
+const baseUrl = process.env.REACT_APP_SHARETRIBE_SDK_BASE_URL || 'https://flex-api.sharetribe.com'
 // Asset Delivery API is using a different domain than other Flex APIs
 // cdn.st-api.com
 // If assetCdnBaseUrl is used to initialize SDK (for proxy purposes), then that URL needs to be in CSP
-const assetCdnBaseUrl = process.env.REACT_APP_SHARETRIBE_SDK_ASSET_CDN_BASE_URL;
+const assetCdnBaseUrl = process.env.REACT_APP_SHARETRIBE_SDK_ASSET_CDN_BASE_URL
 
 // Default CSP whitelist.
 //
@@ -33,11 +33,11 @@ const defaultDirectives = {
 
     // Google Analytics
     'www.googletagmanager.com',
-    'www.google-analytics.com',
+    '*.google-analytics.com',
     'stats.g.doubleclick.net',
 
     'sentry.io',
-    '*.stripe.com',
+    '*.stripe.com'
   ],
   fontSrc: [self, data, 'assets-sharetribecom.sharetribe.com', 'fonts.gstatic.com'],
   frameSrc: [self, '*.stripe.com'],
@@ -65,7 +65,7 @@ const defaultDirectives = {
     'www.google-analytics.com',
     'stats.g.doubleclick.net',
 
-    '*.stripe.com',
+    '*.stripe.com'
   ],
   scriptSrc: [
     self,
@@ -76,10 +76,10 @@ const defaultDirectives = {
     'api.mapbox.com',
     'www.googletagmanager.com',
     '*.google-analytics.com',
-    'js.stripe.com',
+    'js.stripe.com'
   ],
-  styleSrc: [self, unsafeInline, 'fonts.googleapis.com', 'api.mapbox.com'],
-};
+  styleSrc: [self, unsafeInline, 'fonts.googleapis.com', 'api.mapbox.com']
+}
 
 /**
  * Middleware for creating a Content Security Policy
@@ -107,7 +107,7 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
   const customDirectives = {
     // Example: Add custom directive override
     // imgSrc: exampleImgSrc,
-  };
+  }
 
   // ================ END CUSTOM CSP URLs ================ //
 
@@ -116,14 +116,14 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
   // See Helmet's default directives:
   // https://github.com/helmetjs/helmet/blob/bdb09348c17c78698b0c94f0f6cc6b3968cd43f9/middlewares/content-security-policy/index.ts#L51
 
-  const directives = Object.assign({ reportUri: [reportUri] }, defaultDirectives, customDirectives);
+  const directives = Object.assign({ reportUri: [reportUri] }, defaultDirectives, customDirectives)
   if (enforceSsl) {
-    directives.blockAllMixedContent = [];
+    directives.blockAllMixedContent = []
   }
 
   // See: https://helmetjs.github.io/docs/csp/
   return helmet.contentSecurityPolicy({
     directives,
-    reportOnly,
-  });
-};
+    reportOnly
+  })
+}

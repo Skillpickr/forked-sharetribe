@@ -1,30 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import css from './Logo.module.css';
-import MobileLogoImage from './logo_transparent_background.png';
-import DesktopLogoImage from './logo_transparent_background.png';
-import config from '../../config';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import css from './Logo.module.css'
+import MobileLogoImage from './logo_transparent_background.png'
+import DesktopLogoImage from './logo_transparent_background.png'
+import config from '../../config'
 
-const Logo = props => {
-  const { className, format, ...rest } = props;
-  const isMobile = format !== 'desktop';
-  const classes = classNames(className, { [css.logoMobile]: isMobile });
-  const logoImage = isMobile ? MobileLogoImage : DesktopLogoImage;
+const Logo = (props) => {
+  const { className, format, ...rest } = props
+  const isMobile = format !== 'desktop'
+  const classes = classNames(className, { [css.logoMobile]: isMobile })
+  const logoImage = isMobile ? MobileLogoImage : DesktopLogoImage
 
-  return <img className={classes} src={logoImage} alt={config.siteTitle} {...rest} />;
-};
+  return <img className={classes} src={logoImage} alt={config.siteTitle} {...rest} />
+}
 
-const { oneOf, string } = PropTypes;
+const { oneOf, string } = PropTypes
 
 Logo.defaultProps = {
   className: null,
-  format: 'desktop',
-};
+  format: 'desktop'
+}
 
 Logo.propTypes = {
   className: string,
-  format: oneOf(['desktop', 'mobile']),
-};
+  format: oneOf(['desktop', 'mobile'])
+}
 
-export default Logo;
+export default Logo

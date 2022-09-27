@@ -1,7 +1,7 @@
-import { fakeIntl } from '../../util/test-data';
-import EditListingAvailabilityExceptionForm from './EditListingAvailabilityExceptionForm';
+import { fakeIntl } from '../../util/test-data'
+import EditListingAvailabilityExceptionForm from './EditListingAvailabilityExceptionForm'
 
-const WEEKDAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const WEEKDAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
 export const Example = {
   component: EditListingAvailabilityExceptionForm,
@@ -11,13 +11,13 @@ export const Example = {
     listingTitle: 'Yoga guru',
     weekdays: WEEKDAYS,
     onSubmit(values) {
-      console.log('submit with values:', values);
+      console.log('submit with values:', values)
     },
     fetchErrors: {},
     intl: fakeIntl,
     timeZone: 'Etc/UTC',
     updated: false,
-    updateInProgress: false,
+    updateInProgress: false
   },
-  group: 'forms',
-};
+  group: 'forms'
+}

@@ -1,11 +1,11 @@
 {
-    "name": "Skillpickr",
-    "short_name": "Skillpickr",
+    "name": "SkillPickr",
+    "short_name": "SkillPickr",
     "start_url": "/?source=pwa",
     "display": "standalone",
     "theme_color": "#fc6161",
     "background_color": "#FFFFFF",
-    "description": "A picture of your favorite pupperino",
+    "description": "SkillPickr Logo",
     "icons": [
     {
         "src": "/static/icons/android-icon-36x36.png",

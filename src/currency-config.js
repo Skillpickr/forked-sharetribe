@@ -16,19 +16,15 @@ export const subUnitDivisors = {
   NZD: 100,
   SEK: 100,
   SGD: 100,
-  USD: 100,
-};
+  USD: 100
+}
 
 // Currency formatting options.
 // See: https://github.com/yahoo/react-intl/wiki/API#formatnumber
-export const currencyConfiguration = currency => {
+export const currencyConfiguration = (currency) => {
   if (!subUnitDivisors[currency]) {
-    const currencies = Object.keys(subUnitDivisors);
-    throw new Error(
-      `Configuration missing for currency: ${currency}. Supported currencies: ${currencies.join(
-        ', '
-      )}.`
-    );
+    const currencies = Object.keys(subUnitDivisors)
+    throw new Error(`Configuration missing for currency: ${currency}. Supported currencies: ${currencies.join(', ')}.`)
   }
 
   return subUnitDivisors[currency] === 1
@@ -39,7 +35,7 @@ export const currencyConfiguration = currency => {
         useGrouping: true,
         // If the currency is not using subunits (like JPY), remove fractions.
         minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
+        maximumFractionDigits: 0
       }
     : {
         style: 'currency',
@@ -47,6 +43,6 @@ export const currencyConfiguration = currency => {
         currencyDisplay: 'symbol',
         useGrouping: true,
         minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      };
-};
+        maximumFractionDigits: 2
+      }
+}

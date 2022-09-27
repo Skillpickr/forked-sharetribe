@@ -1,62 +1,54 @@
-import React from 'react';
-import { string } from 'prop-types';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
-import classNames from 'classnames';
-import { twitterPageURL } from '../../util/urlHelpers';
-import config from '../../config';
+import React from 'react'
+import { string } from 'prop-types'
+import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
+import classNames from 'classnames'
+import { twitterPageURL } from '../../util/urlHelpers'
+import config from '../../config'
 import {
   IconSocialMediaFacebook,
   IconSocialMediaInstagram,
   IconSocialMediaTwitter,
   Logo,
   ExternalLink,
-  NamedLink,
-} from '../../components';
+  NamedLink
+} from '../../components'
 
-import css from './Footer.module.css';
+import css from './Footer.module.css'
 
-const renderSocialMediaLinks = intl => {
-  const { siteFacebookPage, siteInstagramPage, siteTwitterHandle } = config;
-  const siteTwitterPage = twitterPageURL(siteTwitterHandle);
+const renderSocialMediaLinks = (intl) => {
+  const { siteFacebookPage, siteInstagramPage, siteTwitterHandle } = config
+  const siteTwitterPage = twitterPageURL(siteTwitterHandle)
 
-  const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' });
-  const goToInsta = intl.formatMessage({ id: 'Footer.goToInstagram' });
-  const goToTwitter = intl.formatMessage({ id: 'Footer.goToTwitter' });
+  const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' })
+  const goToInsta = intl.formatMessage({ id: 'Footer.goToInstagram' })
+  const goToTwitter = intl.formatMessage({ id: 'Footer.goToTwitter' })
 
   const fbLink = siteFacebookPage ? (
     <ExternalLink key="linkToFacebook" href={siteFacebookPage} className={css.icon} title={goToFb}>
       <IconSocialMediaFacebook />
     </ExternalLink>
-  ) : null;
+  ) : null
 
   const twitterLink = siteTwitterPage ? (
-    <ExternalLink
-      key="linkToTwitter"
-      href={siteTwitterPage}
-      className={css.icon}
-      title={goToTwitter}
-    >
+    <ExternalLink key="linkToTwitter" href={siteTwitterPage} className={css.icon} title={goToTwitter}>
       <IconSocialMediaTwitter />
     </ExternalLink>
-  ) : null;
+  ) : null
 
   const instragramLink = siteInstagramPage ? (
-    <ExternalLink
-      key="linkToInstagram"
-      href={siteInstagramPage}
-      className={css.icon}
-      title={goToInsta}
-    >
+    <ExternalLink key="linkToInstagram" href={siteInstagramPage} className={css.icon} title={goToInsta}>
       <IconSocialMediaInstagram />
     </ExternalLink>
-  ) : null;
-  return [fbLink, twitterLink, instragramLink].filter(v => v != null);
-};
+  ) : null
+  return [fbLink, twitterLink, instragramLink].filter((v) => v != null)
+}
 
-const Footer = props => {
-  const { rootClassName, className, intl } = props;
-  const socialMediaLinks = renderSocialMediaLinks(intl);
-  const classes = classNames(rootClassName || css.root, className);
+const Footer = (props) => {
+  const { rootClassName, className, intl } = props
+  const socialMediaLinks = renderSocialMediaLinks(intl)
+  const classes = classNames(rootClassName || css.root, className)
+  const { siteHelpCenter } = config
+  const goToHC = intl.formatMessage({ id: 'Footer.goToHelpCenter' })
 
   return (
     <div className={classes}>
@@ -97,6 +89,11 @@ const Footer = props => {
                   <NamedLink name="PricingPage" className={css.link}>
                     <FormattedMessage id="Footer.toPricingPage" />
                   </NamedLink>
+                </li>
+                <li>
+                  <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
+                    <FormattedMessage id="Footer.toHelpCenter" />
+                  </ExternalLink>
                 </li>
                 {/* <li className={css.listItem}>
                   <NamedLink name="LandingPage" className={css.link}>
@@ -198,18 +195,18 @@ const Footer = props => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 Footer.defaultProps = {
   rootClassName: null,
-  className: null,
-};
+  className: null
+}
 
 Footer.propTypes = {
   rootClassName: string,
   className: string,
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-export default injectIntl(Footer);
+export default injectIntl(Footer)

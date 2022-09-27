@@ -1,35 +1,35 @@
-import React, { Component } from 'react';
-import { number, object, shape, string } from 'prop-types';
-import { circlePolyline } from '../../util/maps';
-import config from '../../config';
+import React, { Component } from 'react'
+import { number, object, shape, string } from 'prop-types'
+import { circlePolyline } from '../../util/maps'
+import config from '../../config'
 
 /**
  * DynamicGoogleMap uses Google Maps API.
  */
 class DynamicGoogleMap extends Component {
   constructor(props) {
-    super(props);
-    this.map = null;
-    this.mapContainer = null;
+    super(props)
+    this.map = null
+    this.mapContainer = null
 
-    this.initializeMap = this.initializeMap.bind(this);
+    this.initializeMap = this.initializeMap.bind(this)
   }
 
   componentDidMount(prevProps) {
     if (!this.map && this.mapContainer) {
-      this.initializeMap();
+      this.initializeMap()
     }
   }
 
   initializeMap() {
-    const { offsetHeight, offsetWidth } = this.mapContainer;
-    const hasDimensions = offsetHeight > 0 && offsetWidth > 0;
+    const { offsetHeight, offsetWidth } = this.mapContainer
+    const hasDimensions = offsetHeight > 0 && offsetWidth > 0
 
     if (hasDimensions) {
-      const { center, zoom, address, mapsConfig } = this.props;
-      const { enabled, url, anchorX, anchorY, width, height } = mapsConfig.customMarker;
-      const maps = window.google.maps;
-      const controlPosition = window.google.maps.ControlPosition.LEFT_TOP;
+      const { center, zoom, address, mapsConfig } = this.props
+      const { enabled, url, anchorX, anchorY, width, height } = mapsConfig.customMarker
+      const maps = window.google.maps
+      const controlPosition = window.google.maps.ControlPosition.LEFT_TOP
 
       const mapConfig = {
         center,
@@ -47,18 +47,18 @@ class DynamicGoogleMap extends Component {
         streetViewControl: false,
         // Zoom control position
         zoomControlOptions: {
-          position: controlPosition,
-        },
-      };
+          position: controlPosition
+        }
+      }
 
-      this.map = new maps.Map(this.mapContainer, mapConfig);
+      this.map = new maps.Map(this.mapContainer, mapConfig)
 
       if (mapsConfig.fuzzy.enabled) {
-        const GoogleLatLng = window.google.maps.LatLng;
+        const GoogleLatLng = window.google.maps.LatLng
         // Origin as object literal (LatLngLiteral)
-        const origin = { lat: center.lat, lng: center.lng };
-        const radius = mapsConfig.fuzzy.offset;
-        const path = circlePolyline(origin, radius).map(c => new GoogleLatLng(c[0], c[1]));
+        const origin = { lat: center.lat, lng: center.lng }
+        const radius = mapsConfig.fuzzy.offset
+        const path = circlePolyline(origin, radius).map((c) => new GoogleLatLng(c[0], c[1]))
 
         const circleProps = {
           options: {
@@ -67,15 +67,15 @@ class DynamicGoogleMap extends Component {
             strokeColor: mapsConfig.fuzzy.circleColor,
             strokeOpacity: 0.5,
             strokeWeight: 1,
-            clickable: false,
+            clickable: false
           },
           path,
-          map: this.map,
-        };
+          map: this.map
+        }
 
         // Add a circle. We use Polygon because the default Circle class is not round enough.
-        const Polygon = window.google.maps.Polygon;
-        new Polygon(circleProps);
+        const Polygon = window.google.maps.Polygon
+        new Polygon(circleProps)
       } else {
         const markerIcon = enabled
           ? {
@@ -85,28 +85,28 @@ class DynamicGoogleMap extends Component {
                 // The origin for this image is (0, 0).
                 origin: new window.google.maps.Point(0, 0),
                 size: new window.google.maps.Size(width, height),
-                anchor: new window.google.maps.Point(anchorX, anchorY),
-              },
+                anchor: new window.google.maps.Point(anchorX, anchorY)
+              }
             }
-          : {};
+          : {}
 
         new window.google.maps.Marker({
           position: center,
           map: this.map,
           title: address,
-          ...markerIcon,
-        });
+          ...markerIcon
+        })
       }
     }
   }
 
   render() {
-    const { containerClassName, mapClassName } = this.props;
+    const { containerClassName, mapClassName } = this.props
     return (
       <div className={containerClassName}>
-        <div className={mapClassName} ref={el => (this.mapContainer = el)} />
+        <div className={mapClassName} ref={(el) => (this.mapContainer = el)} />
       </div>
-    );
+    )
   }
 }
 
@@ -114,17 +114,17 @@ DynamicGoogleMap.defaultProps = {
   address: '',
   center: null,
   zoom: config.maps.fuzzy.enabled ? config.maps.fuzzy.defaultZoomLevel : 11,
-  mapsConfig: config.maps,
-};
+  mapsConfig: config.maps
+}
 
 DynamicGoogleMap.propTypes = {
   address: string,
   center: shape({
     lat: number.isRequired,
-    lng: number.isRequired,
+    lng: number.isRequired
   }).isRequired,
   zoom: number,
-  mapsConfig: object,
-};
+  mapsConfig: object
+}
 
-export default DynamicGoogleMap;
+export default DynamicGoogleMap

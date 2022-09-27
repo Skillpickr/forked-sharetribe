@@ -1,11 +1,9 @@
 {
-  "name": "Skillpickr",
+  "name": "SkillPickr",
   "description": "SkillPickr is a purpose driven startup, working on becoming an all in one solution for people living a creative multidisciplinary life.",
-  "keywords": [
-    "node",
-    "react"
-  ],
-  "repository": "https://github.com/Skillpickr/skillpickr-web",
+  "keywords": ["node", "react"],
+  "repository": "https://github.com/SkillPickr/SkillPickr-web",
+  "stack": "heroku-22",
   "env": {
     "REACT_APP_MAPBOX_ACCESS_TOKEN": {
       "description": "See: Integrating to map providers documentation https://github.com/sharetribe/ftw-hourly/blob/master/docs/map-providers.md"

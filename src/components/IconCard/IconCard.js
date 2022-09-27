@@ -1,31 +1,25 @@
-import React from 'react';
-import { string } from 'prop-types';
-import classNames from 'classnames';
+import React from 'react'
+import { string } from 'prop-types'
+import classNames from 'classnames'
 
-import css from './IconCard.module.css';
+import css from './IconCard.module.css'
 
-const BRAND_AMEX = 'amex';
-const BRAND_DINERS = 'diners';
-const BRAND_DISCOVERY = 'discovery';
-const BRAND_JCB = 'jcb';
-const BRAND_MASTERCARD = 'mastercard';
-const BRAND_UNIONPAY = 'unionpay';
-const BRAND_VISA = 'visa';
+const BRAND_AMEX = 'amex'
+const BRAND_DINERS = 'diners'
+const BRAND_DISCOVERY = 'discovery'
+const BRAND_JCB = 'jcb'
+const BRAND_MASTERCARD = 'mastercard'
+const BRAND_UNIONPAY = 'unionpay'
+const BRAND_VISA = 'visa'
 
-const IconCard = props => {
-  const { className, rootClassName, brand } = props;
-  const classes = classNames(rootClassName || css.root, className);
+const IconCard = (props) => {
+  const { className, rootClassName, brand } = props
+  const classes = classNames(rootClassName || css.root, className)
 
   switch (brand) {
     case BRAND_AMEX:
       return (
-        <svg
-          className={classes}
-          height="16"
-          viewBox="0 0 24 16"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg className={classes} height="16" viewBox="0 0 24 16" width="24" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
             <rect fill="#016fd0" height="16" rx="2" width="24" />
             <path
@@ -50,16 +44,10 @@ const IconCard = props => {
             </g>
           </g>
         </svg>
-      );
+      )
     case BRAND_DINERS:
       return (
-        <svg
-          className={classes}
-          width="24"
-          height="16"
-          viewBox="0 0 24 16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg className={classes} width="24" height="16" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg">
           <g fillRule="nonzero" fill="none">
             <path
               d="M21.9972 15.75h.0022c.955.0081 1.7387-.7727 1.7506-1.7458V2.0063c-.0038-.4706-.1911-.9201-.5203-1.2495a1.7197 1.7197 0 0 0-1.2325-.5067H2.0006C1.5411.246 1.0986.4283.7703.7568.441 1.0862.2538 1.5357.25 2.0043v11.9894c.0038.4706.1911.9201.5203 1.2495a1.7197 1.7197 0 0 0 1.2325.5067h19.9944zm-.001.5h-.0011.0021-.001z"
@@ -78,16 +66,10 @@ const IconCard = props => {
             />
           </g>
         </svg>
-      );
+      )
     case BRAND_DISCOVERY:
       return (
-        <svg
-          className={classes}
-          width="24"
-          height="16"
-          viewBox="0 0 24 16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg className={classes} width="24" height="16" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg">
           <g fillRule="nonzero" fill="none">
             <path
               d="M21.9972 15.75h.0022c.955.0081 1.7387-.7727 1.7506-1.7458V2.0063c-.0038-.4706-.1911-.9201-.5203-1.2495a1.7197 1.7197 0 0 0-1.2325-.5067H2.0006C1.5411.246 1.0986.4283.7703.7568.441 1.0862.2538 1.5357.25 2.0043v11.9894c.0038.4706.1911.9201.5203 1.2495a1.7197 1.7197 0 0 0 1.2325.5067h19.9944zm-.001.5h-.0011.0021-.001z"
@@ -110,16 +92,10 @@ const IconCard = props => {
             />
           </g>
         </svg>
-      );
+      )
     case BRAND_JCB:
       return (
-        <svg
-          className={classes}
-          height="16"
-          viewBox="0 0 23 16"
-          width="23"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg className={classes} height="16" viewBox="0 0 23 16" width="23" xmlns="http://www.w3.org/2000/svg">
           <g fill="none">
             <path
               d="M.2054 16h4.5178c1.0278 0 2.259-1.1947 2.259-2.1333V0h-4.518C1.4366 0 .2055 1.1947.2055 3.2z"
@@ -147,16 +123,10 @@ const IconCard = props => {
             />
           </g>
         </svg>
-      );
+      )
     case BRAND_MASTERCARD:
       return (
-        <svg
-          className={classes}
-          height="16"
-          viewBox="0 0 24 16"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg className={classes} height="16" viewBox="0 0 24 16" width="24" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
             <rect fill="#252525" height="16" rx="2" width="24" />
             <circle cx="9" cy="8" fill="#eb001b" r="5" />
@@ -167,16 +137,10 @@ const IconCard = props => {
             />
           </g>
         </svg>
-      );
+      )
     case BRAND_UNIONPAY:
       return (
-        <svg
-          className={classes}
-          height="16"
-          viewBox="0 0 24 16"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg className={classes} height="16" viewBox="0 0 24 16" width="24" xmlns="http://www.w3.org/2000/svg">
           <g fill="none">
             <path
               d="M4.5459 0h5.7938c.8087 0 1.3117.7257 1.123 1.619L8.7655 14.3675c-.1904.8902-1.0002 1.6165-1.8095 1.6165H1.1627c-.8076 0-1.3118-.7263-1.1231-1.6165L2.7381 1.619C2.9268.7257 3.7361 0 4.546 0"
@@ -196,16 +160,10 @@ const IconCard = props => {
             />
           </g>
         </svg>
-      );
+      )
     case BRAND_VISA:
       return (
-        <svg
-          className={classes}
-          width="24"
-          height="16"
-          viewBox="0 0 24 16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg className={classes} width="24" height="16" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg">
           <g fillRule="nonzero" fill="none">
             <rect
               strokeOpacity=".2"
@@ -224,16 +182,10 @@ const IconCard = props => {
             />
           </g>
         </svg>
-      );
+      )
     default:
       return (
-        <svg
-          className={classes}
-          width="29"
-          height="19"
-          viewBox="0 0 29 19"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg className={classes} width="29" height="19" viewBox="0 0 29 19" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
             <path
               d="M26.58 19H2.42A2.4004 2.4004 0 0 1 0 16.62V2.38A2.4 2.4 0 0 1 2.42 0h24.16A2.4004 2.4004 0 0 1 29 2.38v14.25c-.0165 1.3216-1.0984 2.3811-2.42 2.37zM10 5.83c0-.46-.35-.83-.78-.83H3.78c-.43 0-.78.37-.78.83v3.34c0 .46.35.83.78.83h5.44c.43 0 .78-.37.78-.83V5.83z"
@@ -245,20 +197,20 @@ const IconCard = props => {
             />
           </g>
         </svg>
-      );
+      )
   }
-};
+}
 
 IconCard.defaultProps = {
   className: null,
   rootClassName: null,
-  brand: 'default',
-};
+  brand: 'default'
+}
 
 IconCard.propTypes = {
   className: string,
   rootClassName: string,
-  brand: string,
-};
+  brand: string
+}
 
-export default IconCard;
+export default IconCard
