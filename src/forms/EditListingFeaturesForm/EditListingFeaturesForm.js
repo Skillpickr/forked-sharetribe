@@ -22,19 +22,25 @@ class PhotographerComponent extends React.Component {
 
 class DjComponent extends React.Component {
   render() {
-    return <h1>Hello you talented DJ</h1>
+    return <h2>Hello you talented DJ</h2>
   }
 }
 
 class DefaultComponent extends React.Component {
   render() {
-    return <h1>Please choose a profession</h1>
+    return <h2>Please choose a profession</h2>
   }
 }
 
 class MusicianComponent extends React.Component {
   render() {
-    return <h1>Hello you musical genius</h1>
+    return <h2>Hello you musical genius</h2>
+  }
+}
+
+class BandComponent extends React.Component {
+  render() {
+    return <h2>Hello you awesome band</h2>
   }
 }
 
@@ -280,6 +286,7 @@ const EditListingFeaturesFormComponent = (props) => (
           </FieldSelect>
         </div>
       )
+
       // ############### Music Soloist COMPONENT ###########################
 
       const musicSoloistKey = DropdownFieldsType.musicianSoloKey
@@ -344,6 +351,58 @@ const EditListingFeaturesFormComponent = (props) => (
         </div>
       )
 
+      // ############### Band COMPONENT ###########################
+      const bandTypeKey = DropdownFieldsType.musicianGroupKey
+      const bandTypeOptions = findOptionsForSelectFilter(bandTypeKey, filterConfig)
+      const bandComponent = (
+        <div>
+          <FieldCheckboxGroup
+            className={css.features}
+            id={bandTypeKey}
+            name={bandTypeKey}
+            options={bandTypeOptions}
+            label={photographerKeyMessage}
+            validate={composeValidators(required(requiredCheckbox))}
+          />
+
+          {/* <FieldSelect
+            className={css.features}
+            name={bandTypeKey}
+            id={bandTypeKey}
+            label={songRequestKeyMessage}
+            validate={required(requiredDropdown)}>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {(id) => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {bandTypeOptions.map((o) => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect> */}
+          <FieldTextInput
+            id="technicalRider"
+            name="technicalRider"
+            className={css.features}
+            type="textarea"
+            label={technicalRiderMessage}
+            placeholder={technicalRiderPlaceholderMessage}
+          />
+          <FieldTextInput
+            id="cateringRider"
+            name="cateringRider"
+            className={css.features}
+            type="textarea"
+            label={cateringRiderMessage}
+            placeholder={cateringRiderPlaceholderMessage}
+          />
+        </div>
+      )
+
       // ############### MAIN COMPONENT ###########################
       const skillKey = 'skill'
       const skillOptions = findOptionsForSelectFilter(skillKey, filterConfig)
@@ -366,13 +425,18 @@ const EditListingFeaturesFormComponent = (props) => (
           const opt = categoryOptions.find((element) => element.key === Categories.performance)
           category = opt.key
         }
+        if (skillSet.includes(Skills.musicianGroup)) {
+          const opt = categoryOptions.find((element) => element.key === Categories.performance)
+          category = opt.key
+        }
         props.parentCallback(category)
       }
 
       const components = {
         photographer: PhotographerComponent,
         dj: DjComponent,
-        musicianSoloist: MusicianComponent
+        musicianSoloist: MusicianComponent,
+        musicianGroup: BandComponent
       }
       const SelectedComponent = components[state]
 
@@ -410,6 +474,9 @@ const EditListingFeaturesFormComponent = (props) => (
 
           {/* Musician Soloist */}
           {state.includes(Skills.musicianSoloist) && musicianSoloistComponent}
+
+          {/* Bands */}
+          {state.includes(Skills.musicianGroup) && bandComponent}
 
           <Button
             className={css.submitButton}

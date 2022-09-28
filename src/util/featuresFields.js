@@ -13,7 +13,7 @@ const DropdownFieldsType = {
   soundLightExpKey: 'soundLightExp',
   djGearForPlayingKey: 'djGearForPlaying',
   songRequestKey: 'songRequest',
-  musicianGroupKey: 'musicGroupType'
+  musicianGroupKey: 'musicianGroupType'
 }
 
 export { InputFieldsType, CheckboxFieldsType, DropdownFieldsType }

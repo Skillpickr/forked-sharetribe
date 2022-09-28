@@ -60,6 +60,7 @@ class EditListingFeaturesPanel extends Component {
     const songRequest = publicData && publicData.songRequest
     const musicSoloistType = publicData && publicData.musicSoloistType
     const musicianType = publicData && publicData.musicianType
+    const musicianGroupType = publicData && publicData.musicianGroupType
     const musicalGenre = publicData && publicData.musicalGenre
     return {
       photographerType,
@@ -74,6 +75,7 @@ class EditListingFeaturesPanel extends Component {
       songRequest,
       musicSoloistType,
       musicianType,
+      musicianGroupType,
       musicalGenre,
       skill
     }
@@ -125,7 +127,8 @@ class EditListingFeaturesPanel extends Component {
         songRequest = [],
         musicSoloistType = '',
         musicianType = [],
-        musicalGenre = []
+        musicalGenre = [],
+        musicianGroupType = []
       } = values
       let category = this.state.category
       const updatedValues = {
@@ -144,7 +147,8 @@ class EditListingFeaturesPanel extends Component {
           category,
           musicSoloistType,
           musicianType,
-          musicalGenre
+          musicalGenre,
+          musicianGroupType
         }
       }
       onSubmit(updatedValues)

@@ -388,6 +388,12 @@ export class ListingPageComponent extends Component {
         genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicalGenre, filterConfig)
         Array.prototype.push.apply(selectedGenres, publicData.musicalGenre)
         selectedConfigGenreOptions = genreOptions.filter((o) => selectedGenres.find((s) => s === o.key))
+      } else if (optionConfig.key === Skills.musicianGroup) {
+        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicianTypeKey, filterConfig)
+        Array.prototype.push.apply(selectedSubOptions, publicData.musicianType)
+        genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicalGenre, filterConfig)
+        Array.prototype.push.apply(selectedGenres, publicData.musicalGenre)
+        selectedConfigGenreOptions = genreOptions.filter((o) => selectedGenres.find((s) => s === o.key))
       }
     } else null
     const selectedConfigSubOptions = subSkillOptions.filter((o) => selectedSubOptions.find((s) => s === o.key))

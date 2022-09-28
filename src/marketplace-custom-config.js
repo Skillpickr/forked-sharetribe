@@ -124,7 +124,8 @@ export const filters = [
       options: [
         { key: Skills.photographer, label: 'Photographer' },
         { key: Skills.dj, label: 'DJ' },
-        { key: Skills.musicianSoloist, label: 'Musician' }
+        { key: Skills.musicianSoloist, label: 'Musician' },
+        { key: Skills.musicianGroup, label: 'Band' }
       ]
     }
   },
@@ -353,7 +354,7 @@ export const filters = [
     }
   },
   {
-    id: CheckboxFieldsType.musicianGroupKey,
+    id: DropdownFieldsType.musicianGroupKey,
     label: 'Band',
     type: 'SelectMultipleFilter',
     group: 'secondary',
@@ -374,7 +375,7 @@ export const filters = [
         { key: 'discoFunkBand', label: 'Disco & Funk band' },
         { key: 'danceClubGroup', label: 'Dance & Ibiza Club group' },
         { key: 'festivalBand', label: 'Festival band' },
-        { key: 'folkBand', label: 'Folk-rock band' },
+        { key: 'folkRockBand', label: 'Folk-rock band' },
         { key: 'functionBand', label: 'Function band' },
         { key: 'hiphopBand', label: 'Hip hop group' },
         { key: 'indieBand', label: 'Indie band' },
@@ -389,8 +390,8 @@ export const filters = [
         { key: 'soulBand', label: 'Soul & Motown band' },
         { key: 'vintageBand', label: 'Vintage band' },
         { key: 'weddingBand', label: 'Wedding band' },
-        { key: 'stirngDuo', label: 'String duo' },
-        { key: 'stringtrio', label: 'String trio' },
+        { key: 'stringDuo', label: 'String duo' },
+        { key: 'stringTrio', label: 'String trio' },
         { key: 'stringQuartet', label: 'String quartet' },
         { key: 'stringEnsemble', label: 'String ensemble' },
         { key: 'electricStringEnsemble', label: 'Electric string ensemble' },
@@ -455,7 +456,7 @@ export const filters = [
         { key: 'skaBand', label: 'Ska band' },
         { key: 'caribbeanBand', label: 'Caribbean band' },
         { key: 'calypsoBand', label: 'Calypso band' },
-        { key: 'afrobeatBand', label: 'Afrobeat band' },
+        { key: 'afroBeatBand', label: 'Afrobeat band' },
         { key: 'africanEnsemble', label: 'African ensemble' },
         { key: 'classicalIndianEnsemble', label: 'Classical Indian ensemble' },
         { key: 'bollywoodEnsemble', label: 'Bollywood ensemble' },
@@ -468,9 +469,9 @@ export const filters = [
         { key: '1980Band', label: '1980s era tribute band' },
         { key: '1990Band', label: '1990s era tribute band' },
         { key: '2000Band', label: '2000s era tribute band' },
-        { key: 'abbaTributeBand', label: 'ABBA tribute band' },
-        { key: 'beatlesTributeBand', label: 'Beatles tribute band' },
-        { key: 'queenTributeBand', label: 'Queen tribute band' }
+        { key: 'abbaTributeBand', label: 'Tribute band - Abba' },
+        { key: 'beatlesTributeBand', label: 'Tribute band - Beatles' },
+        { key: 'queenTributeBand', label: 'Tribute band - Queen' }
       ]
     }
   },

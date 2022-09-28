@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { array, arrayOf, func, node, number, object, string } from 'prop-types'
 import classNames from 'classnames'
 import { injectIntl, intlShape } from '../../util/reactIntl'
 import { parseSelectFilterOptions } from '../../util/search'
-import { FieldCheckbox } from '../../components'
+import { FieldCheckbox, ShowMoreLink } from '../../components'
 
 import { FilterPopup, FilterPlain } from '../../components'
 import css from './SelectMultipleFilter.module.css'
@@ -13,10 +13,20 @@ import css from './SelectMultipleFilter.module.css'
 //       There's a mutation problem: formstate.dirty is not reliable with it.
 const GroupOfFieldCheckboxes = (props) => {
   const { id, className, name, options } = props
+  const [showMore, setShowMore] = useState(false)
+
+  const optionsSorted = [...options].sort((a, b) => (a.label > b.label ? 1 : -1))
+  const optionsForDisplay = showMore ? optionsSorted : optionsSorted.slice(0, 10)
+
+  let showClasses
+  if (options.length >= 10) {
+    showClasses = classNames(showMore ? css.expanded : css.collapsed)
+  }
+
   return (
     <fieldset className={className}>
-      <ul className={css.list}>
-        {options.map((option, index) => {
+      <ul className={classNames(css.list, showClasses)}>
+        {optionsForDisplay.map((option, index) => {
           const fieldId = `${id}.${option.key}`
           return (
             <li key={fieldId} className={css.item}>
@@ -25,6 +35,7 @@ const GroupOfFieldCheckboxes = (props) => {
           )
         })}
       </ul>
+      {options.length >= 10 && <ShowMoreLink isExpanded={showMore} onClick={() => setShowMore(!showMore)} />}
     </fieldset>
   )
 }
