@@ -364,26 +364,6 @@ const EditListingFeaturesFormComponent = (props) => (
             label={photographerKeyMessage}
             validate={composeValidators(required(requiredCheckbox))}
           />
-
-          {/* <FieldSelect
-            className={css.features}
-            name={bandTypeKey}
-            id={bandTypeKey}
-            label={songRequestKeyMessage}
-            validate={required(requiredDropdown)}>
-            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
-              {(id) => (
-                <option disabled value="">
-                  {id}
-                </option>
-              )}
-            </FormattedMessage>
-            {bandTypeOptions.map((o) => (
-              <option key={o.key} value={o.key}>
-                {o.label}
-              </option>
-            ))}
-          </FieldSelect> */}
           <FieldTextInput
             id="technicalRider"
             name="technicalRider"
