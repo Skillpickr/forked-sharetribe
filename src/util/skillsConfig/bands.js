@@ -2,11 +2,38 @@ import { CheckboxFieldsType, DropdownFieldsType } from '../featuresFields'
 
 export const bandConfig = [
   {
-    id: DropdownFieldsType.musicianGroupKey,
-    label: 'Band',
+    id: CheckboxFieldsType.musicianGroupTypeKey,
+    label: 'Events',
     type: 'SelectMultipleFilter',
     group: 'secondary',
     queryParamNames: ['pub_bandType'],
+    config: {
+      // Optional modes: 'has_all', 'has_any'
+      // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
+      searchMode: 'has_all',
+      // "key" is the option you see in Flex Console.
+      // "label" is set here for this web app's UI only.
+      // Note: label is not added through the translation files
+      // to make filter customizations a bit easier.
+      options: [
+        { key: 'ceremony', label: 'Ceremonial Events' },
+        { key: 'reception', label: 'Reception Events' },
+        { key: 'evening', label: 'Evening Events' },
+        { key: 'privateParty', label: 'Private Parties' },
+        { key: 'corporate', label: 'Corporate Parties' },
+        { key: 'wedding', label: 'Weddings' },
+        { key: 'birthday', label: 'Birthday parties' },
+        { key: 'christmas', label: 'Christmas parties' },
+        { key: 'newYear', label: 'New years Eve Parties' }
+      ]
+    }
+  },
+  {
+    id: CheckboxFieldsType.musicianGroupGenreKey,
+    label: 'Band Genre',
+    type: 'SelectMultipleFilter',
+    group: 'secondary',
+    queryParamNames: ['pub_bandGenre'],
     config: {
       // Optional modes: 'has_all', 'has_any'
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
@@ -37,7 +64,6 @@ export const bandConfig = [
         { key: 'rockNRollBand', label: 'Rock n roll band' },
         { key: 'soulBand', label: 'Soul & Motown band' },
         { key: 'vintageBand', label: 'Vintage band' },
-        { key: 'weddingBand', label: 'Wedding band' },
         { key: 'stringDuo', label: 'String duo' },
         { key: 'stringTrio', label: 'String trio' },
         { key: 'stringQuartet', label: 'String quartet' },

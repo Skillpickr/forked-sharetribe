@@ -385,14 +385,16 @@ export class ListingPageComponent extends Component {
       } else if (optionConfig.key === Skills.musicianSoloist) {
         subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicianTypeKey, filterConfig)
         Array.prototype.push.apply(selectedSubOptions, publicData.musicianType)
+
         genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicalGenre, filterConfig)
         Array.prototype.push.apply(selectedGenres, publicData.musicalGenre)
         selectedConfigGenreOptions = genreOptions.filter((o) => selectedGenres.find((s) => s === o.key))
       } else if (optionConfig.key === Skills.musicianGroup) {
-        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicianTypeKey, filterConfig)
-        Array.prototype.push.apply(selectedSubOptions, publicData.musicianType)
-        genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicalGenre, filterConfig)
-        Array.prototype.push.apply(selectedGenres, publicData.musicalGenre)
+        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicianGroupTypeKey, filterConfig)
+        Array.prototype.push.apply(selectedSubOptions, publicData.musicianGroupType)
+
+        genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicianGroupGenreKey, filterConfig)
+        Array.prototype.push.apply(selectedGenres, publicData.musicianGroupGenre)
         selectedConfigGenreOptions = genreOptions.filter((o) => selectedGenres.find((s) => s === o.key))
       }
     } else null
@@ -455,12 +457,13 @@ export class ListingPageComponent extends Component {
                     selectedSubOptions={selectedSubOptions}
                     selectedConfigSubOptions={selectedConfigSubOptions}
                   />
-                  {optionConfig.key === Skills.musicianSoloist && (
-                    <SectionGenresMaybe
-                      selectedGenres={selectedGenres}
-                      selectedConfigGenreOptions={selectedConfigGenreOptions}
-                    />
-                  )}
+                  {optionConfig.key === Skills.musicianSoloist ||
+                    (Skills.musicianGroup && (
+                      <SectionGenresMaybe
+                        selectedGenres={selectedGenres}
+                        selectedConfigGenreOptions={selectedConfigGenreOptions}
+                      />
+                    ))}
                   <SectionSpecificationsMaybe
                     soundLightExp={soundLightExperienceOptions}
                     ownStudio={ownStudioOptions}

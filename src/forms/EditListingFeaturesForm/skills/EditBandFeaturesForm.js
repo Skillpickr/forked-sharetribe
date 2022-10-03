@@ -18,8 +18,10 @@ class EditBandFeaturesComponent extends Component {
   render() {
     const { filterConfig, intl } = this.props
 
-    const bandTypeKey = DropdownFieldsType.musicianGroupKey
+    const bandTypeKey = CheckboxFieldsType.musicianGroupTypeKey
     const bandTypeOptions = findOptionsForSelectFilter(bandTypeKey, filterConfig)
+    const bandGenreKey = CheckboxFieldsType.musicianGroupGenreKey
+    const bandGenreOptions = findOptionsForSelectFilter(bandGenreKey, filterConfig)
 
     const requiredCheckbox = 'You need to check a box'
     const requiredDropdown = 'You need to select a field'
@@ -40,12 +42,21 @@ class EditBandFeaturesComponent extends Component {
 
     return (
       <div>
+        <h2>Hello you awesome band</h2>
         <FieldCheckboxGroup
           className={css.features}
           id={bandTypeKey}
           name={bandTypeKey}
           options={bandTypeOptions}
-          label={'test'}
+          label={'What type of events do you prefer?'}
+          validate={composeValidators(required(requiredCheckbox))}
+        />
+        <FieldCheckboxGroup
+          className={css.features}
+          id={bandGenreKey}
+          name={bandGenreKey}
+          options={bandGenreOptions}
+          label={'What type of genre do you play?'}
           validate={composeValidators(required(requiredCheckbox))}
         />
         <FieldTextInput

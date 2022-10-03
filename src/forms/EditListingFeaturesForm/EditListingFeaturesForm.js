@@ -95,6 +95,7 @@ const EditListingFeaturesFormComponent = (props) => (
         if (skillSet.includes(Skills.musicianGroup)) {
           const opt = categoryOptions.find((element) => element.key === Categories.performance)
           category = opt.key
+          console.log(category)
         }
         props.parentCallback(category)
       }

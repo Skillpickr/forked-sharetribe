@@ -60,6 +60,7 @@ class EditListingFeaturesPanel extends Component {
     const songRequest = publicData && publicData.songRequest
     const musicSoloistType = publicData && publicData.musicSoloistType
     const musicianType = publicData && publicData.musicianType
+    const musicianGroupGenre = publicData && publicData.musicianGroupGenre
     const musicianGroupType = publicData && publicData.musicianGroupType
     const musicalGenre = publicData && publicData.musicalGenre
     return {
@@ -75,8 +76,9 @@ class EditListingFeaturesPanel extends Component {
       songRequest,
       musicSoloistType,
       musicianType,
-      musicianGroupType,
+      musicianGroupGenre,
       musicalGenre,
+      musicianGroupType,
       skill
     }
   }
@@ -128,6 +130,7 @@ class EditListingFeaturesPanel extends Component {
         musicSoloistType = '',
         musicianType = [],
         musicalGenre = [],
+        musicianGroupGenre = [],
         musicianGroupType = []
       } = values
       let category = this.state.category
@@ -148,6 +151,7 @@ class EditListingFeaturesPanel extends Component {
           musicSoloistType,
           musicianType,
           musicalGenre,
+          musicianGroupGenre,
           musicianGroupType
         }
       }

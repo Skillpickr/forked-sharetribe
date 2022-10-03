@@ -126,6 +126,27 @@ const SectionSpecificationsMaybe = (props) => {
     </div>
   )
 
+  const bandComponent = (
+    <div>
+      {technicalRider && (
+        <div>
+          <p className={css.subTitle}>
+            <FormattedMessage id="ListingPage.technicalRider" />
+          </p>
+          <p className={css.description}>{technicalRider}</p>
+        </div>
+      )}
+      {cateringRider && (
+        <div>
+          <p className={css.subTitle}>
+            <FormattedMessage id="ListingPage.cateringRider" />
+          </p>
+          <p className={css.description}>{cateringRider}</p>
+        </div>
+      )}
+    </div>
+  )
+
   const [state] = useState(skillType)
 
   return homepageUrl || skillType ? (
@@ -148,6 +169,9 @@ const SectionSpecificationsMaybe = (props) => {
 
       {/* Musician */}
       {state.includes(Skills.musicianSoloist) && musicianComponent}
+
+      {/* Bands */}
+      {state.includes(Skills.musicianGroup) && bandComponent}
     </div>
   ) : null
 }
