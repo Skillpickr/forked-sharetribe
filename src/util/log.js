@@ -12,14 +12,14 @@ import { responseApiErrorInfo } from './errors'
 import { BrowserTracing } from '@sentry/tracing'
 import routeConfiguration from '../routeConfiguration'
 import { matchPath } from 'react-router-dom'
-
-import { history } from '../Routes'
+import { createBrowserHistory } from 'history'
 
 /**
  * Set up error handling. If a Sentry DSN is
  * provided a Sentry client will be installed.
  */
 export const setup = () => {
+  const history = createBrowserHistory()
   if (config.sentryDsn) {
     // Configures the Sentry client. Adds a handler for
     // any uncaught exception.

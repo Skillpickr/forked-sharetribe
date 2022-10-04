@@ -90,8 +90,6 @@ const setupLocale = () => {
   moment.locale(config.locale)
 }
 
-const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes)
-
 export const ClientApp = (props) => {
   const { store, hostedTranslations = {} } = props
   setupLocale()
@@ -131,7 +129,7 @@ export const ServerApp = (props) => {
 
 ServerApp.propTypes = { url: string.isRequired, context: any.isRequired, store: any.isRequired }
 
-export default Sentry.withProfiler(ServerApp)
+export default Sentry.withProfiler(ClientApp)
 /**
  * Render the given route.
  *

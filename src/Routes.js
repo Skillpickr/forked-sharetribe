@@ -12,8 +12,6 @@ import { canonicalRoutePath } from './util/routes'
 import routeConfiguration from './routeConfiguration'
 import { createBrowserHistory } from 'history'
 
-export const history = createBrowserHistory()
-
 const canShowComponent = (props) => {
   const { isAuthenticated, route } = props
   const { auth } = route
@@ -182,12 +180,10 @@ const Routes = (props, context) => {
   // That's why we pass-in props.routes instead of calling routeConfiguration here.
 
   return (
-    <Router history={history}>
-      <Switch>
-        {routes.map(toRouteComponent)}
-        <Route component={NotFoundPage} />
-      </Switch>
-    </Router>
+    <Switch>
+      {routes.map(toRouteComponent)}
+      <Route component={NotFoundPage} />
+    </Switch>
   )
 }
 
