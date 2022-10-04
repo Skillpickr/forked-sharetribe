@@ -20,6 +20,7 @@ import config from './config'
 
 // Flex template application uses English translations as default translations.
 import defaultMessages from './translations/en.json'
+import * as Sentry from '@sentry/react'
 
 // If you want to change the language of default (fallback) translations,
 // change the imports to match the wanted locale:
@@ -89,6 +90,8 @@ const setupLocale = () => {
   moment.locale(config.locale)
 }
 
+const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes)
+
 export const ClientApp = (props) => {
   const { store, hostedTranslations = {} } = props
   setupLocale()
@@ -128,6 +131,7 @@ export const ServerApp = (props) => {
 
 ServerApp.propTypes = { url: string.isRequired, context: any.isRequired, store: any.isRequired }
 
+export default Sentry.withProfiler(ServerApp)
 /**
  * Render the given route.
  *

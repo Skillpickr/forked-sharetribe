@@ -6,9 +6,14 @@
  *
  */
 
-import * as Sentry from '@sentry/browser'
+import * as Sentry from '@sentry/react'
 import config from '../config'
 import { responseApiErrorInfo } from './errors'
+import { BrowserTracing } from '@sentry/tracing'
+import routeConfiguration from '../routeConfiguration'
+import { matchPath } from 'react-router-dom'
+
+import { history } from '../Routes'
 
 /**
  * Set up error handling. If a Sentry DSN is
@@ -20,7 +25,13 @@ export const setup = () => {
     // any uncaught exception.
     Sentry.init({
       dsn: config.sentryDsn,
-      environment: config.env
+      environment: config.env,
+      integrations: [
+        new BrowserTracing({
+          routingInstrumentation: Sentry.reactRouterV5Instrumentation(history, routeConfiguration, matchPath)
+        })
+      ],
+      tracesSampleRate: process.env.REACT_APP_SENTRY_TRACE_SAMPLING
     })
   }
 }
