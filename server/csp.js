@@ -109,12 +109,12 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
     scriptSrc = [self],
     styleSrc = [self]
   } = defaultDirectives
-  const extendConnectSrc = connectSrc.concat('*.tawk.to', 'wss://*.tawk.to')
-  const extendFontSrc = fontSrc.concat('*.tawk.to', 'fonts.gstatic.com')
-  const extendFrameSrc = frameSrc.concat('*.tawk.to')
-  const extendImgSrc = imgSrc.concat('*.tawk.to', 'cdn.jsdelivr.net', 'tawk.link')
-  const extendScriptSrc = scriptSrc.concat('*.tawk.to', 'cdn.jsdelivr.net')
-  const extendStyleSrc = styleSrc.concat('*.tawk.to', 'fonts.googleapis.com', 'cdn.jsdelivr.net')
+  const extendConnectSrc = connectSrc.concat(['*.tawk.to', 'wss://*.tawk.to'])
+  const extendFontSrc = fontSrc.concat(['*.tawk.to', 'fonts.gstatic.com'])
+  const extendFrameSrc = frameSrc.concat(['*.tawk.to'])
+  const extendImgSrc = imgSrc.concat(['*.tawk.to', 'cdn.jsdelivr.net', 'tawk.link'])
+  const extendScriptSrc = scriptSrc.concat(['*.tawk.to', 'cdn.jsdelivr.net'])
+  const extendStyleSrc = styleSrc.concat(['*.tawk.to', 'fonts.googleapis.com', 'cdn.jsdelivr.net'])
 
   const customDirectives = {
     connectSrc: extendConnectSrc,
@@ -136,6 +136,7 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
   // https://github.com/helmetjs/helmet/blob/bdb09348c17c78698b0c94f0f6cc6b3968cd43f9/middlewares/content-security-policy/index.ts#L51
 
   const directives = Object.assign({ reportUri: [reportUri] }, defaultDirectives, customDirectives)
+  console.log(directives)
   if (enforceSsl) {
     directives.blockAllMixedContent = []
   }
