@@ -194,7 +194,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
             },
             "group": "secondary",
             "id": "bandType",
-            "label": "Events",
+            "label": "Type of band events",
             "queryParamNames": Array [
               "pub_bandType",
             ],
@@ -625,36 +625,6 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               "pub_bandGenre",
             ],
             "type": "SelectMultipleFilter",
-          },
-          Object {
-            "config": Object {
-              "options": Array [
-                Object {
-                  "key": "5",
-                  "label": "5",
-                },
-                Object {
-                  "key": "10",
-                  "label": "10",
-                },
-                Object {
-                  "key": "15",
-                  "label": "15",
-                },
-                Object {
-                  "key": "20",
-                  "label": "20",
-                },
-              ],
-              "searchMode": "has_all",
-            },
-            "group": "primary",
-            "id": "stagePlot",
-            "label": "StagePlot",
-            "queryParamNames": Array [
-              "pub_stagePlot",
-            ],
-            "type": "SelectSingleFilter",
           },
           Object {
             "config": Object {
@@ -1368,9 +1338,9 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               ],
               "searchMode": "has_all",
             },
-            "group": "secondary",
+            "group": "primary",
             "id": "musicianSoloType",
-            "label": "Musician",
+            "label": "Type of musician",
             "queryParamNames": Array [
               "pub_musicianSoloType",
             ],
