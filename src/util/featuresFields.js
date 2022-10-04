@@ -4,13 +4,13 @@ const CheckboxFieldsType = {
   photographerTypeKey: 'photographerType',
   djTypeKey: 'djType',
   musicianTypeKey: 'musicianType',
-  musicalGenre: 'musicalGenre',
-  musicianGroupGenreKey: 'musicianGroupGenre',
-  musicianGroupTypeKey: 'musicianGroupType'
+  musicianGenreKey: 'musicianGenre',
+  bandGenreKey: 'bandGenre',
+  bandTypeKey: 'bandType'
 }
 
 const DropdownFieldsType = {
-  musicianSoloKey: 'musicSoloistType',
+  musicianSoloKey: 'musicianSoloType',
   ownStudioKey: 'ownStudio',
   soundLightExpKey: 'soundLightExp',
   djGearForPlayingKey: 'djGearForPlaying',

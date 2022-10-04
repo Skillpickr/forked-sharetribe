@@ -18,9 +18,9 @@ class EditBandFeaturesComponent extends Component {
   render() {
     const { filterConfig, intl } = this.props
 
-    const bandTypeKey = CheckboxFieldsType.musicianGroupTypeKey
+    const bandTypeKey = CheckboxFieldsType.bandTypeKey
     const bandTypeOptions = findOptionsForSelectFilter(bandTypeKey, filterConfig)
-    const bandGenreKey = CheckboxFieldsType.musicianGroupGenreKey
+    const bandGenreKey = CheckboxFieldsType.bandGenreKey
     const bandGenreOptions = findOptionsForSelectFilter(bandGenreKey, filterConfig)
 
     const requiredCheckbox = 'You need to check a box'

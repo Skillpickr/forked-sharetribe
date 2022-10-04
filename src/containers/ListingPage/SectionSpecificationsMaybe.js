@@ -168,10 +168,10 @@ const SectionSpecificationsMaybe = (props) => {
       {state.includes(Skills.dj) && djComponent}
 
       {/* Musician */}
-      {state.includes(Skills.musicianSoloist) && musicianComponent}
+      {state.includes(Skills.musician) && musicianComponent}
 
       {/* Bands */}
-      {state.includes(Skills.musicianGroup) && bandComponent}
+      {state.includes(Skills.band) && bandComponent}
     </div>
   ) : null
 }

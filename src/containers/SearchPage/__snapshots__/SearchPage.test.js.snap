@@ -133,11 +133,11 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                   "label": "DJ",
                 },
                 Object {
-                  "key": "musicianSoloist",
+                  "key": "musician",
                   "label": "Musician",
                 },
                 Object {
-                  "key": "musicianGroup",
+                  "key": "band",
                   "label": "Band",
                 },
               ],
@@ -193,7 +193,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               "searchMode": "has_all",
             },
             "group": "secondary",
-            "id": "musicianGroupType",
+            "id": "bandType",
             "label": "Events",
             "queryParamNames": Array [
               "pub_bandType",
@@ -619,7 +619,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               "searchMode": "has_all",
             },
             "group": "secondary",
-            "id": "musicianGroupGenre",
+            "id": "bandGenre",
             "label": "Band Genre",
             "queryParamNames": Array [
               "pub_bandGenre",
@@ -1369,7 +1369,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               "searchMode": "has_all",
             },
             "group": "secondary",
-            "id": "musicSoloistType",
+            "id": "musicianSoloType",
             "label": "Musician",
             "queryParamNames": Array [
               "pub_musicianSoloType",
@@ -1479,10 +1479,10 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               "searchMode": "has_all",
             },
             "group": "secondary",
-            "id": "musicalGenre",
+            "id": "musicianGenre",
             "label": "Musical Genre",
             "queryParamNames": Array [
-              "pub_musicalGenre",
+              "pub_musicianGenre",
             ],
             "type": "SelectMultipleFilter",
           },

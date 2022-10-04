@@ -3,9 +3,9 @@ import { CheckboxFieldsType, DropdownFieldsType } from '../featuresFields'
 export const musicianConfig = [
   {
     id: DropdownFieldsType.musicianSoloKey,
-    label: 'Musician',
+    label: 'Type of musician',
     type: 'SelectMultipleFilter',
-    group: 'secondary',
+    group: 'primary',
     queryParamNames: ['pub_musicianSoloType'],
     config: {
       // Optional modes: 'has_all', 'has_any'
@@ -151,11 +151,11 @@ export const musicianConfig = [
   },
 
   {
-    id: CheckboxFieldsType.musicalGenre,
+    id: CheckboxFieldsType.musicianGenreKey,
     label: 'Musical Genre',
     type: 'SelectMultipleFilter',
     group: 'secondary',
-    queryParamNames: ['pub_musicalGenre'],
+    queryParamNames: ['pub_musicianGenre'],
     config: {
       // Optional modes: 'has_all', 'has_any'
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering

@@ -22,8 +22,8 @@ class EditMusicianFeaturesComponent extends Component {
     const musicSoloistOptions = findOptionsForSelectFilter(musicSoloistKey, filterConfig)
     const musicianTypeKey = CheckboxFieldsType.musicianTypeKey
     const musicianTypeOptions = findOptionsForSelectFilter(musicianTypeKey, filterConfig)
-    const musicalGenreKey = CheckboxFieldsType.musicalGenre
-    const musicalGenreOptions = findOptionsForSelectFilter(musicalGenreKey, filterConfig)
+    const musicianGenreKey = CheckboxFieldsType.musicianGenreKey
+    const musicianGenreOptions = findOptionsForSelectFilter(musicianGenreKey, filterConfig)
 
     const requiredCheckbox = 'You need to check a box'
     const requiredDropdown = 'You need to select a field'
@@ -36,8 +36,8 @@ class EditMusicianFeaturesComponent extends Component {
       id: 'EditListingFeaturesForm.musicianTypeKeyMessage'
     })
 
-    const musicalGenreKeyMessage = intl.formatMessage({
-      id: 'EditListingFeaturesForm.musicalGenreKeyMessage'
+    const musicianGenreKeyMessage = intl.formatMessage({
+      id: 'EditListingFeaturesForm.musicianGenreKeyMessage'
     })
 
     const technicalRiderMessage = intl.formatMessage({
@@ -86,10 +86,10 @@ class EditMusicianFeaturesComponent extends Component {
         />
         <FieldCheckboxGroup
           className={css.features}
-          id={musicalGenreKey}
-          name={musicalGenreKey}
-          options={musicalGenreOptions}
-          label={musicalGenreKeyMessage}
+          id={musicianGenreKey}
+          name={musicianGenreKey}
+          options={musicianGenreOptions}
+          label={musicianGenreKeyMessage}
           validate={composeValidators(required(requiredCheckbox))}
         />
         <FieldTextInput

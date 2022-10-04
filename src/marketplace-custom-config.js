@@ -127,8 +127,8 @@ const filterConfig = [
       options: [
         { key: Skills.photographer, label: 'Photographer' },
         { key: Skills.dj, label: 'DJ' },
-        { key: Skills.musicianSoloist, label: 'Musician' },
-        { key: Skills.musicianGroup, label: 'Band' }
+        { key: Skills.musician, label: 'Musician' },
+        { key: Skills.band, label: 'Band' }
       ]
     }
   }

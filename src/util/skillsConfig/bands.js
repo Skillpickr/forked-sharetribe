@@ -2,8 +2,8 @@ import { CheckboxFieldsType, DropdownFieldsType } from '../featuresFields'
 
 export const bandConfig = [
   {
-    id: CheckboxFieldsType.musicianGroupTypeKey,
-    label: 'Events',
+    id: CheckboxFieldsType.bandTypeKey,
+    label: 'Type of band events',
     type: 'SelectMultipleFilter',
     group: 'secondary',
     queryParamNames: ['pub_bandType'],
@@ -29,7 +29,7 @@ export const bandConfig = [
     }
   },
   {
-    id: CheckboxFieldsType.musicianGroupGenreKey,
+    id: CheckboxFieldsType.bandGenreKey,
     label: 'Band Genre',
     type: 'SelectMultipleFilter',
     group: 'secondary',
@@ -148,23 +148,23 @@ export const bandConfig = [
         { key: 'queenTributeBand', label: 'Tribute band - Queen' }
       ]
     }
-  },
-  {
-    id: 'stagePlot',
-    label: 'StagePlot',
-    type: 'SelectSingleFilter',
-    group: 'primary',
-    queryParamNames: ['pub_stagePlot'],
-    config: {
-      // Schema type is enum for SelectSingleFilter
-      // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
-      searchMode: 'has_all',
-      options: [
-        { key: '5', label: '5' },
-        { key: '10', label: '10' },
-        { key: '15', label: '15' },
-        { key: '20', label: '20' }
-      ]
-    }
   }
+  // {
+  //   id: 'stagePlot',
+  //   label: 'StagePlot',
+  //   type: 'SelectSingleFilter',
+  //   group: 'primary',
+  //   queryParamNames: ['pub_stagePlot'],
+  //   config: {
+  //     // Schema type is enum for SelectSingleFilter
+  //     // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
+  //     searchMode: 'has_all',
+  //     options: [
+  //       { key: '5', label: '5' },
+  //       { key: '10', label: '10' },
+  //       { key: '15', label: '15' },
+  //       { key: '20', label: '20' }
+  //     ]
+  //   }
+  // }
 ]

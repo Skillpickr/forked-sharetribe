@@ -84,7 +84,7 @@ const EditListingFeaturesFormComponent = (props) => (
           const opt = categoryOptions.find((element) => element.key === Categories.creative)
           category = opt.key
         }
-        if (skillSet.includes(Skills.musicianSoloist)) {
+        if (skillSet.includes(Skills.musician)) {
           const opt = categoryOptions.find((element) => element.key === Categories.performance)
           category = opt.key
         }
@@ -92,7 +92,7 @@ const EditListingFeaturesFormComponent = (props) => (
           const opt = categoryOptions.find((element) => element.key === Categories.performance)
           category = opt.key
         }
-        if (skillSet.includes(Skills.musicianGroup)) {
+        if (skillSet.includes(Skills.band)) {
           const opt = categoryOptions.find((element) => element.key === Categories.performance)
           category = opt.key
           console.log(category)
@@ -107,8 +107,8 @@ const EditListingFeaturesFormComponent = (props) => (
       // const components = {
       //   photographer: PhotographerComponent,
       //   dj: djComponent,
-      //   musicianSoloist: MusicianComponent,
-      //   musicianGroup: BandComponent
+      //   musician: MusicianComponent,
+      //   band: BandComponent
       // }
       // const SelectedComponent = components[state]
 
@@ -147,14 +147,10 @@ const EditListingFeaturesFormComponent = (props) => (
           {state.includes(Skills.dj) && <EditDJFeaturesComponent filterConfig={filterConfig} intl={intl} />}
 
           {/* Musician Soloist */}
-          {state.includes(Skills.musicianSoloist) && (
-            <EditMusicianFeaturesComponent filterConfig={filterConfig} intl={intl} />
-          )}
+          {state.includes(Skills.musician) && <EditMusicianFeaturesComponent filterConfig={filterConfig} intl={intl} />}
 
           {/* Bands */}
-          {state.includes(Skills.musicianGroup) && (
-            <EditBandFeaturesComponent filterConfig={filterConfig} intl={intl} />
-          )}
+          {state.includes(Skills.band) && <EditBandFeaturesComponent filterConfig={filterConfig} intl={intl} />}
 
           <Button
             className={css.submitButton}
