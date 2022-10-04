@@ -12,7 +12,7 @@ const SectionGenresMaybe = (props) => {
   return (
     <div className={css.sectionFeatures}>
       <h2 className={css.featuresTitle}>
-        <FormattedMessage id="ListingPage.musicalGenre" />
+        <FormattedMessage id="ListingPage.musicianGenre" />
       </h2>
       <PropertyGroup
         id="ListingPage.skillType"

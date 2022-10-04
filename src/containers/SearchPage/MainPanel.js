@@ -18,6 +18,8 @@ import {
 
 import FilterComponent from './FilterComponent'
 import { validFilterParams } from './SearchPage.helpers'
+import { Skills, Categories } from '../../util/category'
+import { CheckboxFieldsType, DropdownFieldsType } from '../../util/featuresFields'
 
 import css from './SearchPage.module.css'
 
@@ -163,11 +165,14 @@ class MainPanel extends Component {
     } = this.props
 
     const primaryFilters = filterConfig.filter((f) => f.group === 'primary')
+
     const secondaryFilters = filterConfig.filter((f) => f.group !== 'primary')
+
     const hasSecondaryFilters = !!(secondaryFilters && secondaryFilters.length > 0)
 
     // Selected aka active filters
     const selectedFilters = validFilterParams(urlQueryParams, filterConfig)
+
     const selectedFiltersCount = Object.keys(selectedFilters).length
 
     // Selected aka active secondary filters
@@ -221,6 +226,34 @@ class MainPanel extends Component {
 
     const classes = classNames(rootClassName || css.searchResultContainer, className)
 
+    const handlePrimaryFilters = (param) => {
+      if (param === Skills.musician) {
+        return primaryFilters
+      } else {
+        return primaryFilters.filter((f) => f.id !== DropdownFieldsType.musicianSoloKey)
+      }
+    }
+
+    let photoFilterIds = [CheckboxFieldsType.photographerTypeKey]
+    let djFilterIds = [CheckboxFieldsType.djTypeKey]
+    let musicianFilterIds = [CheckboxFieldsType.musicianGenreKey, CheckboxFieldsType.musicianTypeKey]
+    let bandFilterIds = [CheckboxFieldsType.bandGenreKey, CheckboxFieldsType.bandTypeKey]
+
+    const handleSecondaryFilters = (param) => {
+      switch (param) {
+        case Skills.photographer:
+          return secondaryFilters.filter((f) => photoFilterIds.includes(f.id))
+        case Skills.dj:
+          return secondaryFilters.filter((f) => djFilterIds.includes(f.id))
+        case Skills.musician:
+          return secondaryFilters.filter((f) => musicianFilterIds.includes(f.id))
+        case Skills.band:
+          return secondaryFilters.filter((f) => bandFilterIds.includes(f.id))
+        default:
+          return secondaryFilters
+      }
+    }
+
     return (
       <div className={classes}>
         <SearchFiltersPrimary
@@ -231,7 +264,7 @@ class MainPanel extends Component {
           searchInProgress={searchInProgress}
           searchListingsError={searchListingsError}
           {...propsForSecondaryFiltersToggle}>
-          {primaryFilters.map((config) => {
+          {handlePrimaryFilters(selectedFilters.pub_skill).map((config) => {
             return (
               <FilterComponent
                 key={`SearchFiltersPrimary.${config.id}`}
@@ -285,7 +318,7 @@ class MainPanel extends Component {
               cancelFilters={this.cancelFilters}
               resetAll={this.resetAll}
               onClosePanel={() => this.setState({ isSecondaryFiltersOpen: false })}>
-              {secondaryFilters.map((config) => {
+              {handleSecondaryFilters(selectedFilters.pub_skill).map((config) => {
                 return (
                   <FilterComponent
                     key={`SearchFiltersSecondary.${config.id}`}

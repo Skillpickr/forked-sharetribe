@@ -17,14 +17,14 @@ const SectionHeading = (props) => {
     listingSkill,
     skillOptions,
     onContactUser,
-    musicianSoloist,
+    musician,
     musicianSoloistOptions
   } = props
 
   const skill = getSkillInfo(skillOptions, listingSkill)
   let skillTitle = ''
-  if (musicianSoloist) {
-    const type = getSkillInfo(musicianSoloistOptions, musicianSoloist)
+  if (musician) {
+    const type = getSkillInfo(musicianSoloistOptions, musician)
     skillTitle = skill.label + ' • ' + type.label
   } else {
     skillTitle = skill.label
