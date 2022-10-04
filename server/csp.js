@@ -101,26 +101,29 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
   // https://content-security-policy.com/
 
   // Example: extend default img directive with custom domain
-  // const { imgSrc = [self] } = defaultDirectives;
-  // const exampleImgSrc = imgSrc.concat('my-custom-domain.example.com');
+  const {
+    connectSrc = [self],
+    fontSrc = [self],
+    frameSrc = [self],
+    imgSrc = [self],
+    scriptSrc = [self],
+    styleSrc = [self]
+  } = defaultDirectives
+  const extendConnectSrc = connectSrc.concat(['*.tawk.to', 'wss://*.tawk.to'])
+  const extendFontSrc = fontSrc.concat(['*.tawk.to', 'fonts.gstatic.com'])
+  const extendFrameSrc = frameSrc.concat(['*.tawk.to'])
+  const extendImgSrc = imgSrc.concat(['*.tawk.to', 'cdn.jsdelivr.net', 'tawk.link'])
+  const extendScriptSrc = scriptSrc.concat(['*.tawk.to', 'cdn.jsdelivr.net'])
+  const extendStyleSrc = styleSrc.concat(['*.tawk.to', 'fonts.googleapis.com', 'cdn.jsdelivr.net'])
 
   const customDirectives = {
-    // connectSrc: [
-    //   // Tawk
-    //   '*.tawk.to',
-    //   'wss://*.tawk.to'
-    // ],
-    // fontSrc: ['*.tawk.to', 'fonts.gstatic.com'],
-    // frameSrc: ['*.tawk.to'],
-    // imgSrc: [
-    //   // Tawk
-    //   '*.tawk.to',
-    //   'cdn.jsdelivr.net',
-    //   'tawk.link'
-    // ],
-    // scriptSrc: ['*.tawk.to', 'cdn.jsdelivr.net'],
-    // styleSrc: ['*.tawk.to', 'fonts.googleapis.com', 'cdn.jsdelivr.net'],
-    // formAction: ['*.tawk.to']
+    connectSrc: extendConnectSrc,
+    fontSrc: extendFontSrc,
+    frameSrc: extendFrameSrc,
+    imgSrc: extendImgSrc,
+    scriptSrc: extendScriptSrc,
+    styleSrc: extendStyleSrc,
+    formAction: ['*.tawk.to']
     // Example: Add custom directive override
     // imgSrc: exampleImgSrc,
   }
