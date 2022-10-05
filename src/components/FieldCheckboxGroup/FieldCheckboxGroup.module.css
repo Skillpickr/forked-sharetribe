@@ -1,7 +1,6 @@
 @import '../../styles/customMediaQueries.css';
 
 .root {
-  margin: 0;
   padding: 0;
   border: none;
 }
@@ -12,6 +11,7 @@
 
 .twoColumns {
   @media (--viewportMedium) {
+    -moz-columns: 2;
     columns: 2;
   }
 }
@@ -24,5 +24,63 @@
 
   @media (--viewportMedium) {
     padding: 4px 0;
+  }
+}
+
+.list.collapsed {
+  -webkit-animation: mask-collapsing 0.5s;
+  animation: mask-collapsing 0.5s;
+  -webkit-mask-image: linear-gradient(black 50%, transparent);
+  mask-image: linear-gradient(black 50%, transparent);
+}
+
+.list.expanded {
+  -webkit-animation: mask-expanding 0.5s;
+  animation: mask-expanding 0.5s;
+  -webkit-mask-image: linear-gradient(black 100%, transparent);
+  mask-image: linear-gradient(black 100%, transparent);
+}
+
+@-webkit-keyframes mask-collapsing {
+  from {
+    -webkit-mask-image: linear-gradient(black 100%, transparent);
+    mask-image: linear-gradient(black 100%, transparent);
+  }
+  to {
+    -webkit-mask-image: linear-gradient(black 50%, transparent);
+    mask-image: linear-gradient(black 50%, transparent);
+  }
+}
+
+@keyframes mask-collapsing {
+  from {
+    -webkit-mask-image: linear-gradient(black 100%, transparent);
+    mask-image: linear-gradient(black 100%, transparent);
+  }
+  to {
+    -webkit-mask-image: linear-gradient(black 50%, transparent);
+    mask-image: linear-gradient(black 50%, transparent);
+  }
+}
+
+@-webkit-keyframes mask-expanding {
+  from {
+    -webkit-mask-image: linear-gradient(black 50%, transparent);
+    mask-image: linear-gradient(black 50%, transparent);
+  }
+  to {
+    -webkit-mask-image: linear-gradient(black 100%, transparent);
+    mask-image: linear-gradient(black 100%, transparent);
+  }
+}
+
+@keyframes mask-expanding {
+  from {
+    -webkit-mask-image: linear-gradient(black 50%, transparent);
+    mask-image: linear-gradient(black 50%, transparent);
+  }
+  to {
+    -webkit-mask-image: linear-gradient(black 100%, transparent);
+    mask-image: linear-gradient(black 100%, transparent);
   }
 }

@@ -6,21 +6,32 @@
  *
  */
 
-import * as Sentry from '@sentry/browser'
+import * as Sentry from '@sentry/react'
 import config from '../config'
 import { responseApiErrorInfo } from './errors'
+import { BrowserTracing } from '@sentry/tracing'
+import routeConfiguration from '../routeConfiguration'
+import { matchPath } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 
 /**
  * Set up error handling. If a Sentry DSN is
  * provided a Sentry client will be installed.
  */
 export const setup = () => {
+  const history = createBrowserHistory()
   if (config.sentryDsn) {
     // Configures the Sentry client. Adds a handler for
     // any uncaught exception.
     Sentry.init({
       dsn: config.sentryDsn,
-      environment: config.env
+      environment: config.env,
+      integrations: [
+        new BrowserTracing({
+          routingInstrumentation: Sentry.reactRouterV5Instrumentation(history, routeConfiguration, matchPath)
+        })
+      ],
+      tracesSampleRate: process.env.REACT_APP_SENTRY_TRACE_SAMPLING
     })
   }
 }

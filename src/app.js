@@ -24,6 +24,7 @@ import 'moment/locale/fr'
 import defaultMessages from './translations/en.json'
 import frenchMessages from './translations/fr.json'
 import danishMessages from './translations/da.json'
+import * as Sentry from '@sentry/react'
 
 // If you want to change the language of default (fallback) translations,
 // change the imports to match the wanted locale:
@@ -146,6 +147,7 @@ export const ServerApp = (props) => {
 
 ServerApp.propTypes = { url: string.isRequired, context: any.isRequired, store: any.isRequired }
 
+export default Sentry.withProfiler(ClientApp)
 /**
  * Render the given route.
  *

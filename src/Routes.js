@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { arrayOf, bool, object, func, shape, string } from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { Switch, Route, withRouter } from 'react-router-dom'
+import { Switch, Route, withRouter, Router } from 'react-router-dom'
 import { NotFoundPage } from './containers'
 import { NamedRedirect, LoadableComponentErrorBoundary } from './components'
 import { locationChanged } from './ducks/Routing.duck'
@@ -10,6 +10,7 @@ import { propTypes } from './util/types'
 import * as log from './util/log'
 import { canonicalRoutePath } from './util/routes'
 import routeConfiguration from './routeConfiguration'
+import { createBrowserHistory } from 'history'
 
 const canShowComponent = (props) => {
   const { isAuthenticated, route } = props
@@ -177,6 +178,7 @@ const Routes = (props, context) => {
   // N.B. routes prop within React Router needs to stay the same,
   // so that React is is not rerendering page component.
   // That's why we pass-in props.routes instead of calling routeConfiguration here.
+
   return (
     <Switch>
       {routes.map(toRouteComponent)}
