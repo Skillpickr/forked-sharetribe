@@ -456,13 +456,12 @@ export class ListingPageComponent extends Component {
                     selectedSubOptions={selectedSubOptions}
                     selectedConfigSubOptions={selectedConfigSubOptions}
                   />
-                  {optionConfig.key === Skills.musician ||
-                    (Skills.band && (
-                      <SectionGenresMaybe
-                        selectedGenres={selectedGenres}
-                        selectedConfigGenreOptions={selectedConfigGenreOptions}
-                      />
-                    ))}
+                  {optionConfig.key === (Skills.musician || Skills.band) && (
+                    <SectionGenresMaybe
+                      selectedGenres={selectedGenres}
+                      selectedConfigGenreOptions={selectedConfigGenreOptions}
+                    />
+                  )}
                   <SectionSpecificationsMaybe
                     soundLightExp={soundLightExperienceOptions}
                     ownStudio={ownStudioOptions}
