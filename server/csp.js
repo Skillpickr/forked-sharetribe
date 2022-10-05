@@ -109,11 +109,11 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
     scriptSrc = [self],
     styleSrc = [self]
   } = defaultDirectives
-  const extendConnectSrc = connectSrc.concat(['*.tawk.to', 'wss://*.tawk.to'])
+  const extendConnectSrc = connectSrc.concat(['*.tawk.to', 'wss://*.tawk.to', '*.sentry.io'])
   const extendFontSrc = fontSrc.concat(['*.tawk.to', 'fonts.gstatic.com'])
   const extendFrameSrc = frameSrc.concat(['*.tawk.to'])
   const extendImgSrc = imgSrc.concat(['*.tawk.to', 'cdn.jsdelivr.net', 'tawk.link'])
-  const extendScriptSrc = scriptSrc.concat(['*.tawk.to', 'cdn.jsdelivr.net'])
+  const extendScriptSrc = scriptSrc.concat(['*.tawk.to', 'cdn.jsdelivr.net', 'https://browser.sentry-cdn.com'])
   const extendStyleSrc = styleSrc.concat(['*.tawk.to', 'fonts.googleapis.com', 'cdn.jsdelivr.net'])
 
   const customDirectives = {
