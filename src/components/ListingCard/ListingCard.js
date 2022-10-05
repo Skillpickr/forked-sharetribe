@@ -52,13 +52,13 @@ export const ListingCardComponent = (props) => {
   const skillOptions = findOptionsForSelectFilter('skill', filtersConfig)
   const skill = publicData ? getSkillInfo(skillOptions, publicData.skill) : null
 
-  const musicSoloistOptions = findOptionsForSelectFilter('musicSoloistType', filtersConfig)
-  const musicSoloistType = publicData ? getSkillInfo(musicSoloistOptions, publicData.musicSoloistType) : null
+  const musicSoloistOptions = findOptionsForSelectFilter('musicianSoloType', filtersConfig)
+  const musicianSoloType = publicData ? getSkillInfo(musicSoloistOptions, publicData.musicianSoloType) : null
 
   let skillTitle = ''
   if (skill) {
-    if (skill.key === Skills.musicianSoloist) {
-      skillTitle = skill.label + ' • ' + musicSoloistType.label
+    if (skill.key === Skills.musician) {
+      skillTitle = skill.label + ' • ' + musicianSoloType.label
     } else {
       skillTitle = skill.label
     }

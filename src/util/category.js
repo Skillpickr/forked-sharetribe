@@ -8,7 +8,7 @@ const Categories = {
 const Skills = {
   photographer: 'photographer',
   dj: 'dj',
-  musicianSoloist: 'musicianSoloist'
+  musician: 'musician',
+  band: 'band'
 }
-
 export { Categories, Skills }

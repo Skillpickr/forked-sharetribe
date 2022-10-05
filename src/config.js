@@ -86,7 +86,7 @@ const currencyConfig = currencyConfiguration(currency)
 
 // Listing minimum price in currency sub units, e.g. cents.
 // 0 means no restriction to the price
-const listingMinimumPriceSubUnits = 500
+const listingMinimumPriceSubUnits = 100
 
 // Sentry DSN (Data Source Name), a client key for authenticating calls to Sentry
 const sentryDsn = process.env.REACT_APP_SENTRY_DSN

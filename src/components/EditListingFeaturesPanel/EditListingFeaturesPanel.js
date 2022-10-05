@@ -58,9 +58,11 @@ class EditListingFeaturesPanel extends Component {
     const djGearForPlaying = publicData && publicData.djGearForPlaying
     const playingStyle = publicData && publicData.playingStyle
     const songRequest = publicData && publicData.songRequest
-    const musicSoloistType = publicData && publicData.musicSoloistType
+    const musicianSoloType = publicData && publicData.musicianSoloType
     const musicianType = publicData && publicData.musicianType
-    const musicalGenre = publicData && publicData.musicalGenre
+    const musicianGenre = publicData && publicData.musicianGenre
+    const bandGenre = publicData && publicData.bandGenre
+    const bandType = publicData && publicData.bandType
     return {
       photographerType,
       gear,
@@ -72,9 +74,11 @@ class EditListingFeaturesPanel extends Component {
       djGearForPlaying,
       playingStyle,
       songRequest,
-      musicSoloistType,
+      musicianSoloType,
       musicianType,
-      musicalGenre,
+      musicianGenre,
+      bandGenre,
+      bandType,
       skill
     }
   }
@@ -123,9 +127,11 @@ class EditListingFeaturesPanel extends Component {
         djGearForPlaying = [],
         playingStyle = '',
         songRequest = [],
-        musicSoloistType = '',
+        musicianSoloType = '',
         musicianType = [],
-        musicalGenre = []
+        musicianGenre = [],
+        bandGenre = [],
+        bandType = []
       } = values
       let category = this.state.category
       const updatedValues = {
@@ -142,9 +148,11 @@ class EditListingFeaturesPanel extends Component {
           playingStyle,
           songRequest,
           category,
-          musicSoloistType,
+          musicianSoloType,
           musicianType,
-          musicalGenre
+          musicianGenre,
+          bandGenre,
+          bandType
         }
       }
       onSubmit(updatedValues)
