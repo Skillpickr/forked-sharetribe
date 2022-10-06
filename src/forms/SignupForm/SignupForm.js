@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
 import { Form as FinalForm } from 'react-final-form'
 import classNames from 'classnames'
 import * as validators from '../../util/validators'
-import { Form, PrimaryButton, FieldTextInput } from '../../components'
+import { Form, PrimaryButton, FieldTextInput, InputLabel } from '../../components'
 
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
-
 import css from './SignupForm.module.css'
 import { Field } from 'react-final-form'
 
@@ -42,15 +41,15 @@ const SignupFormComponent = (props) => (
       const phoneLabel = intl.formatMessage({
         id: 'SignupForm.phoneLabel'
       })
+      const phoneLabelTooltip = intl.formatMessage({
+        id: 'SignupForm.phoneLabel.tooltip'
+      })
       const phonePlaceholder = intl.formatMessage({
         id: 'SignupForm.phonePlaceholder'
       })
       const phoneRequiredMessage = intl.formatMessage({
         id: 'SignupForm.phoneRequired'
       })
-      const phoneRequired = validators.required(phoneRequiredMessage)
-
-      const [value, setValue] = useState()
 
       // password
       const passwordLabel = intl.formatMessage({
@@ -105,6 +104,7 @@ const SignupFormComponent = (props) => (
       const lastNameRequiredMessage = intl.formatMessage({
         id: 'SignupForm.lastNameRequired'
       })
+
       const lastNameRequired = validators.required(lastNameRequiredMessage)
 
       const classes = classNames(rootClassName || css.root, className)
@@ -128,10 +128,6 @@ const SignupFormComponent = (props) => (
         </span>
       )
 
-      const PhoneAdapter = ({ input, meta, ...rest }) => (
-        <PhoneInput {...input} {...rest} value={input.value} onChange={(event, value) => input.onChange(value)} />
-      )
-
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           <div>
@@ -145,17 +141,20 @@ const SignupFormComponent = (props) => (
               validate={validators.composeValidators(emailRequired, emailValid)}
             />
             <div className={css.phone}>
-              <Field
-                id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
-                name="phoneNumber"
-                validate={phoneRequired}
-                placeholder={phonePlaceholder}>
+              <Field id={formId ? `${formId}.phoneNumber` : 'phoneNumber'} name="phoneNumber">
                 {({ input, meta }) => {
                   return (
-                    <>
-                      <label>{phoneLabel}</label>
-                      <PhoneInput {...input} />
-                    </>
+                    <div>
+                      <div>
+                        <InputLabel
+                          text={phoneLabel}
+                          id={formId ? `${formId}.phoneLabel` : 'phoneLabel'}
+                          tooltip={true}
+                          tooltipString={phoneLabelTooltip}></InputLabel>
+                      </div>
+
+                      <PhoneInput {...input} placeholder={phonePlaceholder} defaultCountry="DK" />
+                    </div>
                   )
                 }}
               </Field>

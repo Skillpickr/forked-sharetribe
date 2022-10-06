@@ -1,5 +1,6 @@
 @import '../assets/sanitize.css';
 @import './customMediaQueries.css';
+@import 'react-phone-number-input/style.css';
 
 /* ================ Custom Properties aka CSS variables ================ */
 
@@ -1117,4 +1118,8 @@ textarea {
   @media (--viewportMedium) {
     margin-top: 32px;
   }
+}
+
+.PhoneInputCountryIcon {
+  color: var(--marketplaceColorDark) !important;
 }

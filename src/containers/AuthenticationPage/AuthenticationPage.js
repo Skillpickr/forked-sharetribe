@@ -172,7 +172,7 @@ export class AuthenticationPageComponent extends Component {
         ...(newFirstName !== firstName && { firstName: newFirstName }),
         ...(newLastName !== lastName && { lastName: newLastName })
       }
-
+      
       // If the confirm form has any additional values, pass them forward as user's protected data
       const protectedData = !isEmpty(rest) ? { ...rest } : null
 

@@ -49,6 +49,9 @@ import routeConfiguration from './routeConfiguration'
 // App it self
 import { ClientApp, renderApp } from './app'
 
+// import your fontawesome library
+import './util/fontawesome'
+
 const render = (store, shouldHydrate) => {
   // If the server already loaded the auth information, render the app
   // immediately. Otherwise wait for the flag to be loaded and render

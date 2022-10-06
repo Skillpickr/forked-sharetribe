@@ -5,7 +5,9 @@ import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
 import { Form as FinalForm } from 'react-final-form'
 import classNames from 'classnames'
 import * as validators from '../../util/validators'
-import { Form, PrimaryButton, FieldTextInput } from '../../components'
+import { Form, PrimaryButton, FieldTextInput, InputLabel } from '../../components'
+import { Field } from 'react-final-form'
+import PhoneInput from 'react-phone-number-input'
 
 import css from './ConfirmSignupForm.module.css'
 
@@ -66,6 +68,18 @@ const ConfirmSignupFormComponent = (props) => (
       const lastNameRequiredMessage = intl.formatMessage({
         id: 'ConfirmSignupForm.lastNameRequired'
       })
+      const phoneLabel = intl.formatMessage({
+        id: 'ConfirmSignupForm.phoneLabel'
+      })
+      const phonePlaceholder = intl.formatMessage({
+        id: 'ConfirmSignupForm.phonePlaceholder'
+      })
+      const phoneRequiredMessage = intl.formatMessage({
+        id: 'ConfirmSignupForm.phoneRequired'
+      })
+      const phoneLabelTooltip = intl.formatMessage({
+        id: 'SignupForm.phoneLabel.tooltip'
+      })
       const lastNameRequired = validators.required(lastNameRequiredMessage)
 
       const classes = classNames(rootClassName || css.root, className)
@@ -95,8 +109,9 @@ const ConfirmSignupFormComponent = (props) => (
       }
 
       // Initial values from idp provider
-      const { email, firstName, lastName } = authInfo
+      const { email, firstName, lastName, phone } = authInfo
 
+      console.log('confirm', authInfo)
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           <div>
@@ -110,6 +125,25 @@ const ConfirmSignupFormComponent = (props) => (
               initialValue={email}
               validate={validators.composeValidators(emailRequired, emailValid)}
             />
+            <div className={css.phone}>
+              <Field id={formId ? `${formId}.phoneNumber` : 'phoneNumber'} name="phoneNumber">
+                {({ input, meta }) => {
+                  return (
+                    <div>
+                      <div>
+                        <InputLabel
+                          text={phoneLabel}
+                          id={formId ? `${formId}.phoneLabel` : 'phoneLabel'}
+                          tooltip={true}
+                          tooltipString={phoneLabelTooltip}></InputLabel>
+                      </div>
+
+                      <PhoneInput {...input} placeholder={phonePlaceholder} defaultCountry="DK" />
+                    </div>
+                  )
+                }}
+              </Field>
+            </div>
             <div className={css.name}>
               <FieldTextInput
                 className={css.firstNameRoot}
