@@ -8,8 +8,9 @@ import * as validators from '../../util/validators'
 import { Form, PrimaryButton, FieldTextInput, InputLabel } from '../../components'
 import { Field } from 'react-final-form'
 import PhoneInput from 'react-phone-number-input'
-
+import './ConfirmSignupForm.module.css'
 import css from './ConfirmSignupForm.module.css'
+import useGeoLocation from '../../util/ipGeoLocation'
 
 const KEY_CODE_ENTER = 13
 
@@ -111,7 +112,7 @@ const ConfirmSignupFormComponent = (props) => (
       // Initial values from idp provider
       const { email, firstName, lastName, phone } = authInfo
 
-      console.log('confirm', authInfo)
+      const location = useGeoLocation()
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           <div>
@@ -138,7 +139,7 @@ const ConfirmSignupFormComponent = (props) => (
                           tooltipString={phoneLabelTooltip}></InputLabel>
                       </div>
 
-                      <PhoneInput {...input} placeholder={phonePlaceholder} defaultCountry="DK" />
+                      <PhoneInput {...input} placeholder={phonePlaceholder} defaultCountry={location.country} />
                     </div>
                   )
                 }}

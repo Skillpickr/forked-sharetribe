@@ -26,7 +26,7 @@ class InputLabel extends Component {
         </label>
         {tooltip && (
           <Tooltip content={tooltipString} direction="top">
-            <FontAwesomeIcon icon="fa-solid fa-circle-question" className={css.icon} />
+            <FontAwesomeIcon icon={['fas', 'fa-circle-question']} className={css.icon} />
           </Tooltip>
         )}
       </div>

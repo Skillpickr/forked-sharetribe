@@ -32,10 +32,25 @@ exports[`SignupForm matches snapshot 1`] = `
     <div
       className="phone"
     >
-      Array [
-        <label>
-          SignupForm.phoneLabel
-        </label>,
+      <div>
+        <div>
+          <div>
+            <label
+              className="root"
+              htmlFor="phoneLabel"
+            >
+              SignupForm.phoneLabel
+            </label>
+            <button
+              className="inlineTextButtonRoot inlineTextButton Tooltip-Wrapper"
+              disabled={false}
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              type="button"
+            />
+          </div>
+        </div>
         <div
           className="PhoneInput"
         >
@@ -1841,11 +1856,12 @@ exports[`SignupForm matches snapshot 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
+            placeholder="SignupForm.phonePlaceholder"
             type="tel"
             value=""
           />
-        </div>,
-      ]
+        </div>
+      </div>
     </div>
     <div
       className="name"

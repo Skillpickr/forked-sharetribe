@@ -16,7 +16,7 @@ import {
 import { FieldPhoneNumberInput, Form, PrimaryButton, FieldTextInput } from '../../components'
 
 import css from './ContactDetailsForm.module.css'
-import 'react-phone-number-input/style.css'
+import './ContactDetailsForm.module.css'
 import PhoneInput from 'react-phone-number-input'
 import { Field } from 'react-final-form'
 

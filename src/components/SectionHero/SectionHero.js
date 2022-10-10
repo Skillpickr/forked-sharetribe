@@ -1,5 +1,5 @@
 import React, { useEffect, useState, setData } from 'react'
-import { string } from 'prop-types'
+import { string, object } from 'prop-types'
 import { FormattedMessage } from '../../util/reactIntl'
 import classNames from 'classnames'
 import { NamedLink } from '../../components'
@@ -8,29 +8,38 @@ import css from './SectionHero.module.css'
 import { userLocation } from '../../util/maps'
 import config from '../../config'
 import { stringify } from '../../util/urlHelpers'
+import Geocoder, { GeocoderAttribution, CURRENT_LOCATION_ID } from '../LocationAutocompleteInput/GeocoderMapbox'
 
 const SectionHero = (props) => {
-  const [mounted, setMounted] = useState(false)
+  const { location } = props
   const { rootClassName, className } = props.className
-  const [location, setLocation] = useState('')
+  const [mounted, setMounted] = useState(false)
+  const [ipLocation, setIpLocation] = useState('')
+
+  const userIpLocation = () => {
+    return userLocation()
+      .then((latlng) => {
+        if (latlng) {
+          setIpLocation({
+            address: '',
+            origin: latlng,
+            bounds: locationBounds(latlng, config.maps.search.currentLocationBoundsDistance)
+          })
+        }
+      }, setMounted(true))
+      .catch((error) => console.log(error))
+  }
 
   useEffect(() => {
-    setMounted(true)
-    userLocation().then((latlng) =>
-      setLocation({
-        address: '',
-        origin: latlng,
-        bounds: locationBounds(latlng, config.maps.search.currentLocationBoundsDistance)
-      })
-    )
+    userIpLocation()
   }, [])
 
   const classes = classNames(rootClassName || css.root, className)
 
-  // Use find the ip location of the client
+  // Use find the ip ipLocation of the client
   let urlString
-  if (location) {
-    const { origin, bounds } = location
+  if (ipLocation) {
+    const { origin, bounds } = ipLocation
     const originMaybe = config.sortSearchByDistance ? { origin } : {}
 
     const searchParams = {
@@ -40,6 +49,8 @@ const SectionHero = (props) => {
     const searchQuery = stringify(searchParams)
     const includeSearchQuery = searchQuery.length > 0 ? `?${searchQuery}` : ''
     urlString = includeSearchQuery
+  } else {
+    urlString = stringify(location)
   }
 
   return (
@@ -51,7 +62,7 @@ const SectionHero = (props) => {
         {/* <h2 className={classNames(css.heroSubTitle, { [css.heroSubTitleFEDelay]: mounted })}>
           <FormattedMessage id="SectionHero.subTitle" />
         </h2> */}
-        {location && (
+        {ipLocation && (
           <NamedLink
             name="SearchPage"
             to={{ search: urlString }}
@@ -64,11 +75,12 @@ const SectionHero = (props) => {
   )
 }
 
-SectionHero.defaultProps = { rootClassName: null, className: null }
+SectionHero.defaultProps = { rootClassName: null, className: null, location: '' }
 
 SectionHero.propTypes = {
   rootClassName: string,
-  className: string
+  className: string,
+  location: object
 }
 
 export default SectionHero

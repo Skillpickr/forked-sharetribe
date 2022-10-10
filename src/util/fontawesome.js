@@ -2,9 +2,10 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 // import your icons
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fas, faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
-  fas
+  fas,
+  faCircleQuestion
   // more icons go here
 )

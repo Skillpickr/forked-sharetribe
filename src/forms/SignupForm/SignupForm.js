@@ -7,11 +7,11 @@ import classNames from 'classnames'
 import * as validators from '../../util/validators'
 import { Form, PrimaryButton, FieldTextInput, InputLabel } from '../../components'
 
-import 'react-phone-number-input/style.css'
+import './SignupForm.module.css'
 import PhoneInput from 'react-phone-number-input'
 import css from './SignupForm.module.css'
 import { Field } from 'react-final-form'
-import useGeoLocation from 'react-ipgeolocation'
+import useGeoLocation from '../../util/ipGeoLocation'
 
 const KEY_CODE_ENTER = 13
 
