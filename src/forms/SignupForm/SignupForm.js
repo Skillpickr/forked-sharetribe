@@ -11,6 +11,7 @@ import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import css from './SignupForm.module.css'
 import { Field } from 'react-final-form'
+import useGeoLocation from 'react-ipgeolocation'
 
 const KEY_CODE_ENTER = 13
 
@@ -128,6 +129,8 @@ const SignupFormComponent = (props) => (
         </span>
       )
 
+      const location = useGeoLocation()
+
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           <div>
@@ -152,8 +155,7 @@ const SignupFormComponent = (props) => (
                           tooltip={true}
                           tooltipString={phoneLabelTooltip}></InputLabel>
                       </div>
-
-                      <PhoneInput {...input} placeholder={phonePlaceholder} defaultCountry="DK" />
+                      <PhoneInput {...input} placeholder={phonePlaceholder} defaultCountry={location.country} />
                     </div>
                   )
                 }}
