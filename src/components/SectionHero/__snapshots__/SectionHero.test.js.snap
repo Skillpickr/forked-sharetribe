@@ -14,19 +14,6 @@ exports[`SectionHero matches snapshot 1`] = `
         SectionHero.title
       </span>
     </h1>
-    <a
-      className="heroButton heroButtonFEDelay"
-      href="/s?address=Denmark&bounds=57.805252798942%2C15.2971743987523%2C54.5011797001343%2C7.9729991066846"
-      onClick={[Function]}
-      onMouseOver={[Function]}
-      onTouchStart={[Function]}
-      style={Object {}}
-      title={null}
-    >
-      <span>
-        SectionHero.browseButton
-      </span>
-    </a>
   </div>
 </div>
 `;

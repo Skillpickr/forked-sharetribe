@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StripePayoutPage matches snapshot with Stripe connected 1`] = `
-<Page
+<Connect(Page)
   scrollingDisabled={false}
   title="StripePayoutPage.title"
 >
@@ -98,11 +98,11 @@ exports[`StripePayoutPage matches snapshot with Stripe connected 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSideNavigation>
-</Page>
+</Connect(Page)>
 `;
 
 exports[`StripePayoutPage matches snapshot with Stripe not connected 1`] = `
-<Page
+<Connect(Page)
   scrollingDisabled={false}
   title="StripePayoutPage.title"
 >
@@ -189,11 +189,11 @@ exports[`StripePayoutPage matches snapshot with Stripe not connected 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSideNavigation>
-</Page>
+</Connect(Page)>
 `;
 
 exports[`StripePayoutPage matches snapshot with details submitted 1`] = `
-<Page
+<Connect(Page)
   scrollingDisabled={false}
   title="StripePayoutPage.title"
 >
@@ -290,5 +290,5 @@ exports[`StripePayoutPage matches snapshot with details submitted 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSideNavigation>
-</Page>
+</Connect(Page)>
 `;

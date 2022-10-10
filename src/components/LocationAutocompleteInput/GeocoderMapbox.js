@@ -21,7 +21,7 @@ const PLACE_TYPE_BOUNDS_DISTANCES = {
   'poi.landmark': 2000
 }
 
-const locationBounds = (latlng, distance) => {
+export const locationBounds = (latlng, distance) => {
   if (!latlng) {
     return null
   }

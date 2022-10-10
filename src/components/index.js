@@ -86,6 +86,7 @@ export { default as Menu } from './Menu/Menu';
 // Modal
 export { default as Modal } from './Modal/Modal';
 export { default as ModalInMobile } from './ModalInMobile/ModalInMobile';
+export { default as Toasts } from './Toast/Toasts';
 
 // Fields (for Final Form)
 export { default as FieldBirthdayInput } from './FieldBirthdayInput/FieldBirthdayInput';
@@ -181,3 +182,6 @@ export { default as Topbar } from './Topbar/Topbar';
 export { default as TopbarDesktop } from './TopbarDesktop/TopbarDesktop';
 export { default as TopbarMobileMenu } from './TopbarMobileMenu/TopbarMobileMenu';
 export { default as TransactionPanel } from './TransactionPanel/TransactionPanel';
+export { default as Tooltip } from './Tooltip/Tooltip';
+export { default as InputLabel } from './InputLabel/InputLabel';
+

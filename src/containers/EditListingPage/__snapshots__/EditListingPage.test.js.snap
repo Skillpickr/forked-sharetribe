@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EditListingPageComponent matches snapshot 1`] = `
-<Page
+<Connect(Page)
   scrollingDisabled={false}
   title="EditListingPage.titleCreateListing"
 >
@@ -80,5 +80,5 @@ exports[`EditListingPageComponent matches snapshot 1`] = `
     stripeAccountLinkError={null}
   />
   <injectIntl(Footer) />
-</Page>
+</Connect(Page)>
 `;

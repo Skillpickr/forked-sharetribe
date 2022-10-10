@@ -16,6 +16,9 @@ import {
 import { FieldPhoneNumberInput, Form, PrimaryButton, FieldTextInput } from '../../components'
 
 import css from './ContactDetailsForm.module.css'
+import './ContactDetailsForm.module.css'
+import PhoneInput from 'react-phone-number-input'
+import { Field } from 'react-final-form'
 
 const SHOW_EMAIL_SENT_TIMEOUT = 2000
 
@@ -296,13 +299,28 @@ class ContactDetailsFormComponent extends Component {
                   customErrorText={emailTouched ? null : emailTakenErrorText}
                 />
                 {emailVerifiedInfo}
-                <FieldPhoneNumberInput
+                <div className={css.phone}>
+                  <Field
+                    id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
+                    name="phoneNumber"
+                    placeholder={phonePlaceholder}>
+                    {({ input, meta }) => {
+                      return (
+                        <>
+                          <label>{phoneLabel}</label>
+                          <PhoneInput initialValueFormat="national" {...input} />
+                        </>
+                      )
+                    }}
+                  </Field>
+                </div>
+                {/* <FieldPhoneNumberInput
                   className={css.phone}
                   name="phoneNumber"
                   id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
                   label={phoneLabel}
                   placeholder={phonePlaceholder}
-                />
+                /> */}
               </div>
 
               <div className={confirmClasses}>

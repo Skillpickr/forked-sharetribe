@@ -52,7 +52,7 @@ const categoryLink = (title, subTitle, image, searchQuery, isComingSoon) => {
 const SectionCategories = (props) => {
   const { rootClassName, className, filterConfig } = props
 
-  // TODO: Change the categories to generic by inserting the const categories in the nelow return statement
+  // TODO: Change the categories to generic by inserting the const categories in the below return statement
   const classes = classNames(rootClassName || css.root, className)
   const categoryKey = 'category'
   const categoryList = findOptionsForSelectFilter(categoryKey, filterConfig)

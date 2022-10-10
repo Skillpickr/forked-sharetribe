@@ -39,7 +39,7 @@ const sortSearchByDistance = false
 //
 // In a way, 'processAlias' defines which transaction process (or processes)
 // this particular web application is able to handle.
-const bookingProcessAlias = 'skillpickr-hourly-process/release-1'
+const bookingProcessAlias = 'skillpickr-hourly-process/release-2'
 
 // The transaction line item code for the main unit type in bookings.
 //
@@ -141,7 +141,7 @@ const maps = {
 
     // Distance in meters for calculating the bounding box around the
     // current location.
-    currentLocationBoundsDistance: 1000,
+    currentLocationBoundsDistance: 5000,
 
     // Example location can be edited in the
     // `default-location-searches.js` file.
