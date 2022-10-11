@@ -116,7 +116,7 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
     '*.tawk.to',
     'cdn.jsdelivr.net',
     'tawk.link',
-    'https://purecatamphetamine.github.io/country-flag-icons'
+    'https://purecatamphetamine.github.io/country-flag-icons/*'
   ])
   const extendScriptSrc = scriptSrc.concat(['*.tawk.to', 'cdn.jsdelivr.net', 'https://browser.sentry-cdn.com'])
   const extendStyleSrc = styleSrc.concat(['*.tawk.to', 'fonts.googleapis.com', 'cdn.jsdelivr.net'])

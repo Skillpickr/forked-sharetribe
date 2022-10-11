@@ -9,7 +9,7 @@ exports[`LandingPage matches snapshot 1`] = `
     Array [
       Object {
         "height": 630,
-        "url": "skillpicker-facebook1200x630-01.jpg",
+        "url": "skillpickr-facebook1640x924.png",
         "width": 1200,
       },
     ]

@@ -110,7 +110,7 @@ const siteTitle = 'SkillPickr'
 const siteTwitterHandle = '@skillpickr'
 
 // Instagram page is used in SEO schema (http://schema.org/Organization)
-const siteInstagramPage = null
+const siteInstagramPage = 'https://www.instagram.com/skillpickr/'
 
 // Facebook page is used in SEO schema (http://schema.org/Organization)
 const siteFacebookPage = 'https://www.facebook.com/skillpickr/'

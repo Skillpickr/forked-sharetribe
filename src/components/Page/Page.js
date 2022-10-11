@@ -10,8 +10,8 @@ import { metaTagProps } from '../../util/seo'
 import { canonicalRoutePath } from '../../util/routes'
 import { CookieConsent } from '../../components'
 
-import facebookImage from '../../assets/skillpicker-facebook1200x630-01.jpg'
-import twitterImage from '../../assets/skillpicker-twitter600x314-01.jpg'
+import facebookImage from '../../assets/skillpickr-facebook1640x924.png'
+import twitterImage from '../../assets/skillpickr-facebook1640x924.png'
 import css from './Page.module.css'
 
 import { bindActionCreators } from 'redux'
@@ -168,7 +168,7 @@ class PageComponent extends Component {
         url: canonicalRootURL,
         name: siteTitle,
         sameAs: sameOrganizationAs,
-        logo: `${canonicalRootURL}/static/webapp-icon-192x192.png`,
+        logo: `${canonicalRootURL}/static/img/skillpickr-logo-black-499x499.jpeg`,
         address: config.address
       },
       {

@@ -20,8 +20,8 @@ import {
 } from '../../components'
 import { TopbarContainer } from '../../containers'
 
-import facebookImage from '../../assets/skillpicker-facebook1200x630-01.jpg'
-import twitterImage from '../../assets/skillpicker-twitter600x314-01.jpg'
+import facebookImage from '../../assets/skillpickr-facebook1640x924.png'
+import twitterImage from '../../assets/skillpickr-facebook1640x924.png'
 import css from './LandingPage.module.css'
 import SectionCategories from '../../components/SectionCategories/SectionCategories'
 
