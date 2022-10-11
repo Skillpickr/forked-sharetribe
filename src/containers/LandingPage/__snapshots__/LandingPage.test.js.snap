@@ -20,7 +20,7 @@ exports[`LandingPage matches snapshot 1`] = `
       "@type": "WebPage",
       "description": "LandingPage.schemaDescription",
       "image": Array [
-        "http://localhost:3000skillpicker-facebook1200x630-01.jpg",
+        "http://localhost:3000skillpickr-facebook1640x924.png",
       ],
       "name": "LandingPage.schemaTitle",
     }
@@ -31,7 +31,7 @@ exports[`LandingPage matches snapshot 1`] = `
     Array [
       Object {
         "height": 314,
-        "url": "http://localhost:3000skillpicker-twitter600x314-01.jpg",
+        "url": "http://localhost:3000skillpickr-facebook1640x924.png",
         "width": 600,
       },
     ]
