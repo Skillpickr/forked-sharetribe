@@ -57,9 +57,7 @@ const initialState = {
   currentUserHasOrders: null, // This is not fetched unless unverified emails exist
   currentUserHasOrdersError: null,
   sendVerificationEmailInProgress: false,
-  sendVerificationEmailError: null,
-  currentUserListing: null,
-  currentUserListingFetched: false
+  sendVerificationEmailError: null
 }
 
 export default function reducer(state = initialState, action = {}) {
@@ -82,20 +80,13 @@ export default function reducer(state = initialState, action = {}) {
         currentUserHasListings: false,
         currentUserHasListingsError: null,
         currentUserNotificationCount: 0,
-        currentUserNotificationCountError: null,
-        currentUserListing: null,
-        currentUserListingFetched: false
+        currentUserNotificationCountError: null
       }
 
     case FETCH_CURRENT_USER_HAS_LISTINGS_REQUEST:
       return { ...state, currentUserHasListingsError: null }
     case FETCH_CURRENT_USER_HAS_LISTINGS_SUCCESS:
-      return {
-        ...state,
-        currentUserHasListings: payload.hasListings,
-        currentUserListing: payload.listing,
-        currentUserListingFetched: true
-      }
+      return { ...state, currentUserHasListings: payload.hasListings }
     case FETCH_CURRENT_USER_HAS_LISTINGS_ERROR:
       console.error(payload) // eslint-disable-line
       return { ...state, currentUserHasListingsError: payload }
@@ -176,9 +167,9 @@ const fetchCurrentUserHasListingsRequest = () => ({
   type: FETCH_CURRENT_USER_HAS_LISTINGS_REQUEST
 })
 
-export const fetchCurrentUserHasListingsSuccess = (hasListings, listing) => ({
+export const fetchCurrentUserHasListingsSuccess = (hasListings) => ({
   type: FETCH_CURRENT_USER_HAS_LISTINGS_SUCCESS,
-  payload: { hasListings, listing }
+  payload: { hasListings }
 })
 
 const fetchCurrentUserHasListingsError = (e) => ({
@@ -236,6 +227,7 @@ export const sendVerificationEmailError = (e) => ({
 export const fetchCurrentUserHasListings = () => (dispatch, getState, sdk) => {
   dispatch(fetchCurrentUserHasListingsRequest())
   const { currentUser } = getState().user
+  console.log(currentUser)
 
   if (!currentUser) {
     dispatch(fetchCurrentUserHasListingsSuccess(false))
@@ -253,11 +245,11 @@ export const fetchCurrentUserHasListings = () => (dispatch, getState, sdk) => {
     .query(params)
     .then((response) => {
       const hasListings = response.data.data && response.data.data.length > 0
-      const listing = hasListings ? response.data.data[0] : null
 
-      const hasPublishedListings =
-        hasListings && ensureOwnListing(response.data.data[0]).attributes.state !== LISTING_STATE_DRAFT
-      dispatch(fetchCurrentUserHasListingsSuccess(!!hasPublishedListings, listing))
+      // const hasPublishedListings =
+      //   hasListings && ensureOwnListing(response.data.data).attributes.state !== LISTING_STATE_DRAFT
+      const hasPublishedListings = hasListings && ensureOwnListing(response.data.data)
+      dispatch(fetchCurrentUserHasListingsSuccess(!!hasPublishedListings))
     })
     .catch((e) => dispatch(fetchCurrentUserHasListingsError(storableError(e))))
 }
@@ -291,15 +283,29 @@ const NOTIFICATION_PAGE_SIZE = 100
 export const fetchCurrentUserNotifications = () => (dispatch, getState, sdk) => {
   dispatch(fetchCurrentUserNotificationsRequest())
 
-  const apiQueryParams = {
+  const apiSaleQueryParams = {
     only: 'sale',
     last_transitions: transitionsToRequested,
     page: 1,
     per_page: NOTIFICATION_PAGE_SIZE
   }
-
+  console.log(sdk)
   sdk.transactions
-    .query(apiQueryParams)
+    .query(apiSaleQueryParams)
+    .then((response) => {
+      const transactions = response.data.data
+      dispatch(fetchCurrentUserNotificationsSuccess(transactions))
+    })
+    .catch((e) => dispatch(fetchCurrentUserNotificationsError(storableError(e))))
+
+  const apiOrderQueryParams = {
+    only: 'order',
+    last_transitions: transitionsToRequested,
+    page: 1,
+    per_page: NOTIFICATION_PAGE_SIZE
+  }
+  sdk.transactions
+    .query(apiOrderQueryParams)
     .then((response) => {
       const transactions = response.data.data
       dispatch(fetchCurrentUserNotificationsSuccess(transactions))

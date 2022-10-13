@@ -34,7 +34,6 @@ export const InboxPageComponent = (props) => {
   const {
     unitType,
     currentUser,
-    currentUserListing,
     fetchInProgress,
     fetchOrdersOrSalesError,
     intl,
@@ -146,7 +145,7 @@ export const InboxPageComponent = (props) => {
           <h1 className={css.title}>
             <FormattedMessage id="InboxPage.title" />
           </h1>
-          {currentUserListing ? nav : <div className={css.navPlaceholder} />}
+          {nav}
         </LayoutWrapperSideNav>
         <LayoutWrapperMain>
           {error}
@@ -173,7 +172,6 @@ export const InboxPageComponent = (props) => {
 InboxPageComponent.defaultProps = {
   unitType: config.bookingUnitType,
   currentUser: null,
-  currentUserListing: null,
   currentUserHasOrders: null,
   fetchOrdersOrSalesError: null,
   pagination: null,
@@ -188,7 +186,6 @@ InboxPageComponent.propTypes = {
 
   unitType: propTypes.bookingUnitType,
   currentUser: propTypes.currentUser,
-  currentUserListing: propTypes.ownListing,
   fetchInProgress: bool.isRequired,
   fetchOrdersOrSalesError: propTypes.error,
   pagination: propTypes.pagination,
@@ -202,10 +199,9 @@ InboxPageComponent.propTypes = {
 
 const mapStateToProps = (state) => {
   const { fetchInProgress, fetchOrdersOrSalesError, pagination, transactionRefs } = state.InboxPage
-  const { currentUser, currentUserListing, currentUserNotificationCount: providerNotificationCount } = state.user
+  const { currentUser, currentUserNotificationCount: providerNotificationCount } = state.user
   return {
     currentUser,
-    currentUserListing,
     fetchInProgress,
     fetchOrdersOrSalesError,
     pagination,

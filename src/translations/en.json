@@ -657,6 +657,7 @@
   "PayoutDetailsForm.businessURLLabel": "Business URL",
   "PayoutDetailsForm.businessURLPlaceholder": "Business’s publicly available website",
   "PayoutDetailsForm.businessURLRequired": "Valid business URL is required",
+  "EditListingDescriptionForm.businessURLRequired": "Valid business URL is required",
   "PayoutDetailsForm.canadianProvinceLabel": "Province",
   "PayoutDetailsForm.canadianProvincePlaceholder": "Province",
   "PayoutDetailsForm.canadianProvinceRequired": "This field is required",

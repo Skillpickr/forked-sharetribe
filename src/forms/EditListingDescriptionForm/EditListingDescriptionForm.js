@@ -5,7 +5,7 @@ import { Form as FinalForm } from 'react-final-form'
 import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl'
 import classNames from 'classnames'
 import { propTypes } from '../../util/types'
-import { maxLength, required, composeValidators } from '../../util/validators'
+import { maxLength, required, composeValidators, validBusinessURL } from '../../util/validators'
 import { Form, Button, FieldTextInput } from '../../components'
 
 import css from './EditListingDescriptionForm.module.css'
@@ -92,6 +92,10 @@ const EditListingDescriptionFormComponent = (props) => (
         id: 'EditListingDescriptionForm.bonusPlaceholder'
       })
 
+      const urlValidateMessage = validBusinessURL(
+        intl.formatMessage({ id: 'EditListingDescriptionForm.businessURLRequired' })
+      )
+
       const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {}
       const errorMessageUpdateListing = updateListingError ? (
         <p className={css.error}>
@@ -169,6 +173,7 @@ const EditListingDescriptionFormComponent = (props) => (
             type="text"
             label={urlMessage}
             placeholder={urlPlaceholderMessage}
+            validate={urlValidateMessage}
           />
           <FieldTextInput
             id="bonus"

@@ -62,7 +62,7 @@ const GenericError = (props) => {
   )
 }
 
-const { arrayOf, bool, func, object, shape, string, array, number } = PropTypes
+const { bool } = PropTypes
 
 GenericError.propTypes = {
   show: bool.isRequired
@@ -149,9 +149,7 @@ class TopbarComponent extends Component {
       onResendVerificationEmail,
       sendVerificationEmailInProgress,
       sendVerificationEmailError,
-      showGenericError,
-      currentUserListing,
-      listings
+      showGenericError
     } = this.props
 
     const { mobilemenu, mobilesearch, address, origin, bounds } = parse(location.search, {
@@ -228,7 +226,6 @@ class TopbarComponent extends Component {
             notificationCount={notificationCount}
             onLogout={this.handleLogout}
             onSearchSubmit={this.handleSubmit}
-            listings={listings}
           />
         </div>
         <Modal
@@ -283,10 +280,10 @@ TopbarComponent.defaultProps = {
   currentUserHasOrders: null,
   currentPage: null,
   sendVerificationEmailError: null,
-  authScopes: [],
-  currentUserListing: null,
-  listings: null
+  authScopes: []
 }
+
+const { array, func, number, shape, string } = PropTypes
 
 TopbarComponent.propTypes = {
   className: string,
@@ -308,8 +305,6 @@ TopbarComponent.propTypes = {
   sendVerificationEmailInProgress: bool.isRequired,
   sendVerificationEmailError: propTypes.error,
   showGenericError: bool.isRequired,
-  currentUserListing: propTypes.ownListing,
-  listings: arrayOf(propTypes.ownListing),
 
   // These are passed from Page to keep Topbar rendering aware of location changes
   history: shape({

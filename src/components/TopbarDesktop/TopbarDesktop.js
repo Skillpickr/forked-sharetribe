@@ -27,7 +27,7 @@ import { txState } from '../../containers/InboxPage/tsState'
 import css from './TopbarDesktop.module.css'
 import config from '../../config'
 
-const TopbarDesktopComponent = (props) => {
+const TopbarDesktop = (props) => {
   const {
     className,
     currentUser,
@@ -39,16 +39,11 @@ const TopbarDesktopComponent = (props) => {
     isAuthenticated,
     onLogout,
     onSearchSubmit,
-    initialSearchFormValues,
-    listings,
-    unitType,
-    params,
-    fetchInProgress,
-    transactions,
-    fetchOrdersOrSalesError
+    initialSearchFormValues
   } = props
-
   const [mounted, setMounted] = useState(false)
+
+  console.log(currentUserHasListings)
 
   useEffect(() => {
     setMounted(true)
@@ -69,25 +64,25 @@ const TopbarDesktopComponent = (props) => {
   )
 
   const notificationDot = notificationCount > 0 ? <div className={css.notificationDot} /> : null
-  const { tab } = params
-  const isOrders = tab === 'orders'
-  const toTxItem = (tx) => {
-    const stateData = txState(intl, tx)
+  // const { tab } = params
+  // const isOrders = tab === 'orders'
+  // const toTxItem = (tx) => {
+  //   const stateData = txState(intl, tx)
 
-    // Render InboxItem only if the latest transition of the transaction is handled in the `txState` function.
-    return stateData ? (
-      <MenuItem key={tx.id.uuid} className={css.listItem}>
-        <InboxItem unitType={unitType} tx={tx} intl={intl} stateData={stateData} />
-      </MenuItem>
-    ) : null
-  }
+  //   // Render InboxItem only if the latest transition of the transaction is handled in the `txState` function.
+  //   return stateData ? (
+  //     <MenuItem key={tx.id.uuid} className={css.listItem}>
+  //       <InboxItem unitType={unitType} tx={tx} intl={intl} stateData={stateData} />
+  //     </MenuItem>
+  //   ) : null
+  // }
 
-  const noResults =
-    !fetchInProgress && transactions.length === 0 && !fetchOrdersOrSalesError ? (
-      <MenuItem key="noResults">
-        <FormattedMessage id={isOrders ? 'InboxPage.noOrdersFound' : 'InboxPage.noSalesFound'} />
-      </MenuItem>
-    ) : null
+  // const noResults =
+  //   !fetchInProgress && transactions.length === 0 && !fetchOrdersOrSalesError ? (
+  //     <MenuItem key="noResults">
+  //       <FormattedMessage id={isOrders ? 'InboxPage.noOrdersFound' : 'InboxPage.noSalesFound'} />
+  //     </MenuItem>
+  //   ) : null
   // TODO: notification menu needs to be loaded on app init
   const inboxLink = authenticatedOnClientSide ? (
     <div>
@@ -116,11 +111,13 @@ const TopbarDesktopComponent = (props) => {
           {notificationDot}
         </span>
       </NamedLink>
-      <NamedLink className={css.inboxLink} name="ManageListingsPage">
-        <span className={css.menuItemBorder} />
-        {/* <FormattedMessage id="TopbarDesktop.yourListingsLink" /> */}
-        <FontAwesomeIcon icon="fa-solid fa-piggy-bank" />{' '}
-      </NamedLink>
+      {currentUserHasListings && (
+        <NamedLink className={css.inboxLink} name="ManageListingsPage">
+          <span className={css.menuItemBorder} />
+          {/* <FormattedMessage id="TopbarDesktop.yourListingsLink" /> */}
+          <FontAwesomeIcon icon="fa-solid fa-piggy-bank" />{' '}
+        </NamedLink>
+      )}
     </div>
   ) : null
 
@@ -129,19 +126,16 @@ const TopbarDesktopComponent = (props) => {
     return currentPage === page || isAccountSettingsPage ? css.currentPage : null
   }
 
-  const firstNewListing =
-    listings.length === 0 ? (
-      <MenuItem key="FirstNewListingPage">
-        <NamedLink
-          className={classNames(css.yourListingsLink, currentPageClass('NewListingPage'))}
-          name="NewListingPage">
-          <span className={css.menuItemBorder} />
-          <FormattedMessage id="TopbarDesktop.createListing" />
-        </NamedLink>
-      </MenuItem>
-    ) : (
-      <MenuItem key={null}></MenuItem>
-    )
+  const firstNewListing = currentUserHasListings ? (
+    <MenuItem key={null}></MenuItem>
+  ) : (
+    <MenuItem key="FirstNewListingPage">
+      <NamedLink className={classNames(css.yourListingsLink, currentPageClass('NewListingPage'))} name="NewListingPage">
+        <span className={css.menuItemBorder} />
+        <FormattedMessage id="TopbarDesktop.createListing" />
+      </NamedLink>
+    </MenuItem>
+  )
 
   const profileMenu = authenticatedOnClientSide ? (
     <Menu useArrow={true}>
@@ -229,27 +223,18 @@ const TopbarDesktopComponent = (props) => {
   )
 }
 
-const { arrayOf, bool, func, object, shape, string, number } = PropTypes
+const { bool, func, object, number, string } = PropTypes
 
-TopbarDesktopComponent.defaultProps = {
-  unitType: config.bookingUnitType,
+TopbarDesktop.defaultProps = {
   rootClassName: null,
   className: null,
   currentUser: null,
   currentPage: null,
   notificationCount: 0,
-  initialSearchFormValues: {},
-  listings: null,
-  params: shape({
-    tab: string.isRequired
-  }).isRequired,
-  fetchInProgress: bool.isRequired,
-  fetchOrdersOrSalesError: propTypes.error,
-  transactions: arrayOf(propTypes.transaction).isRequired
+  initialSearchFormValues: {}
 }
 
-TopbarDesktopComponent.propTypes = {
-  unitType: propTypes.bookingUnitType,
+TopbarDesktop.propTypes = {
   rootClassName: string,
   className: string,
   currentUserHasListings: bool.isRequired,
@@ -260,20 +245,7 @@ TopbarDesktopComponent.propTypes = {
   notificationCount: number,
   onSearchSubmit: func.isRequired,
   initialSearchFormValues: object,
-  intl: intlShape.isRequired,
-  listings: arrayOf(propTypes.ownListing)
+  intl: intlShape.isRequired
 }
-
-const mapStateToProps = (state) => {
-  const { fetchInProgress, fetchOrdersOrSalesError, transactionRefs } = state.InboxPage
-  return {
-    fetchInProgress,
-    fetchOrdersOrSalesError,
-    scrollingDisabled: isScrollingDisabled(state),
-    transactions: getMarketplaceEntities(state, transactionRefs)
-  }
-}
-
-const TopbarDesktop = compose(connect(mapStateToProps), injectIntl)(TopbarDesktopComponent)
 
 export default TopbarDesktop

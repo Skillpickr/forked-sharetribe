@@ -27,7 +27,7 @@ const MenuItem = (props) => {
 MenuItem.defaultProps = {
   className: null,
   rootClassName: '',
-  MenuItem: null
+  children: null
 }
 
 const { node, string } = PropTypes

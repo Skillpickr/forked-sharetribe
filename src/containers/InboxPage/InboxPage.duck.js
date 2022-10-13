@@ -59,11 +59,11 @@ export default function checkoutPageReducer(state = initialState, action = {}) {
 // ================ Action creators ================ //
 
 const fetchOrdersOrSalesRequest = () => ({ type: FETCH_ORDERS_OR_SALES_REQUEST })
-export const fetchOrdersOrSalesSuccess = (response) => ({
+const fetchOrdersOrSalesSuccess = (response) => ({
   type: FETCH_ORDERS_OR_SALES_SUCCESS,
   payload: response
 })
-export const fetchOrdersOrSalesError = (e) => ({
+const fetchOrdersOrSalesError = (e) => ({
   type: FETCH_ORDERS_OR_SALES_ERROR,
   error: true,
   payload: e
@@ -93,7 +93,7 @@ export const loadData = (params, search) => (dispatch, getState, sdk) => {
   const apiQueryParams = {
     only: onlyFilter,
     lastTransitions: TRANSITIONS,
-    include: ['provider', 'provider.profileImage', 'customer', 'customer.profileImage', 'booking', 'listing'],
+    include: ['provider', 'provider.profileImage', 'customer', 'customer.profileImage', 'booking'],
     'fields.transaction': ['lastTransition', 'lastTransitionedAt', 'transitions', 'payinTotal', 'payoutTotal'],
     'fields.user': ['profile.displayName', 'profile.abbreviatedName'],
     'fields.image': ['variants.square-small', 'variants.square-small2x'],
