@@ -59,11 +59,11 @@ export default function checkoutPageReducer(state = initialState, action = {}) {
 // ================ Action creators ================ //
 
 const fetchOrdersOrSalesRequest = () => ({ type: FETCH_ORDERS_OR_SALES_REQUEST })
-const fetchOrdersOrSalesSuccess = (response) => ({
+export const fetchOrdersOrSalesSuccess = (response) => ({
   type: FETCH_ORDERS_OR_SALES_SUCCESS,
   payload: response
 })
-const fetchOrdersOrSalesError = (e) => ({
+export const fetchOrdersOrSalesError = (e) => ({
   type: FETCH_ORDERS_OR_SALES_ERROR,
   error: true,
   payload: e

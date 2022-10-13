@@ -26,13 +26,14 @@ const MenuItem = (props) => {
 
 MenuItem.defaultProps = {
   className: null,
-  rootClassName: ''
+  rootClassName: '',
+  MenuItem: null
 }
 
 const { node, string } = PropTypes
 
 MenuItem.propTypes = {
-  children: node.isRequired,
+  children: node,
   className: string,
   rootClassName: string
 }

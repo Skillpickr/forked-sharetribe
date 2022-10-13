@@ -1,15 +1,33 @@
 import React, { useState, useEffect } from 'react'
-import { bool, func, object, number, string } from 'prop-types'
-import { FormattedMessage, intlShape } from '../../util/reactIntl'
+import PropTypes from 'prop-types'
+import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl'
 import classNames from 'classnames'
 import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration'
 import { propTypes } from '../../util/types'
-import { Avatar, InlineTextButton, Logo, Menu, MenuLabel, MenuContent, MenuItem, NamedLink } from '../../components'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { getMarketplaceEntities } from '../../ducks/marketplaceData.duck'
+import { isScrollingDisabled } from '../../ducks/UI.duck'
+import {
+  Avatar,
+  InlineTextButton,
+  Logo,
+  Menu,
+  MenuLabel,
+  MenuContent,
+  MenuItem,
+  NamedLink,
+  InboxItem,
+  IconSpinner
+} from '../../components'
 import { TopbarSearchForm } from '../../forms'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { txState } from '../../containers/InboxPage/tsState'
 
 import css from './TopbarDesktop.module.css'
+import config from '../../config'
 
-const TopbarDesktop = (props) => {
+const TopbarDesktopComponent = (props) => {
   const {
     className,
     currentUser,
@@ -21,8 +39,15 @@ const TopbarDesktop = (props) => {
     isAuthenticated,
     onLogout,
     onSearchSubmit,
-    initialSearchFormValues
+    initialSearchFormValues,
+    listings,
+    unitType,
+    params,
+    fetchInProgress,
+    transactions,
+    fetchOrdersOrSalesError
   } = props
+
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -44,14 +69,59 @@ const TopbarDesktop = (props) => {
   )
 
   const notificationDot = notificationCount > 0 ? <div className={css.notificationDot} /> : null
+  const { tab } = params
+  const isOrders = tab === 'orders'
+  const toTxItem = (tx) => {
+    const stateData = txState(intl, tx)
 
+    // Render InboxItem only if the latest transition of the transaction is handled in the `txState` function.
+    return stateData ? (
+      <MenuItem key={tx.id.uuid} className={css.listItem}>
+        <InboxItem unitType={unitType} tx={tx} intl={intl} stateData={stateData} />
+      </MenuItem>
+    ) : null
+  }
+
+  const noResults =
+    !fetchInProgress && transactions.length === 0 && !fetchOrdersOrSalesError ? (
+      <MenuItem key="noResults">
+        <FormattedMessage id={isOrders ? 'InboxPage.noOrdersFound' : 'InboxPage.noSalesFound'} />
+      </MenuItem>
+    ) : null
+  // TODO: notification menu needs to be loaded on app init
   const inboxLink = authenticatedOnClientSide ? (
-    <NamedLink className={css.inboxLink} name="InboxPage" params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
-      <span className={css.inbox}>
-        <FormattedMessage id="TopbarDesktop.inbox" />
-        {notificationDot}
-      </span>
-    </NamedLink>
+    <div>
+      {/* <Menu>
+        <MenuLabel className={css.inboxLink}>
+          <FontAwesomeIcon icon="fa-solid fa-bell" />
+          {notificationDot}
+        </MenuLabel>
+        <MenuContent className={css.profileMenuContent}>
+          {!fetchInProgress ? (
+            transactions.map(toTxItem)
+          ) : (
+            <MenuItem key="isLoading">
+              <IconSpinner />
+            </MenuItem>
+          )}
+          {noResults}
+        </MenuContent>
+      </Menu> */}
+      <NamedLink
+        className={css.inboxLink}
+        name="InboxPage"
+        params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
+        <span className={css.inbox}>
+          <FontAwesomeIcon icon="fa-solid fa-bell" />
+          {notificationDot}
+        </span>
+      </NamedLink>
+      <NamedLink className={css.inboxLink} name="ManageListingsPage">
+        <span className={css.menuItemBorder} />
+        {/* <FormattedMessage id="TopbarDesktop.yourListingsLink" /> */}
+        <FontAwesomeIcon icon="fa-solid fa-piggy-bank" />{' '}
+      </NamedLink>
+    </div>
   ) : null
 
   const currentPageClass = (page) => {
@@ -59,20 +129,45 @@ const TopbarDesktop = (props) => {
     return currentPage === page || isAccountSettingsPage ? css.currentPage : null
   }
 
+  const firstNewListing =
+    listings.length === 0 ? (
+      <MenuItem key="FirstNewListingPage">
+        <NamedLink
+          className={classNames(css.yourListingsLink, currentPageClass('NewListingPage'))}
+          name="NewListingPage">
+          <span className={css.menuItemBorder} />
+          <FormattedMessage id="TopbarDesktop.createListing" />
+        </NamedLink>
+      </MenuItem>
+    ) : (
+      <MenuItem key={null}></MenuItem>
+    )
+
   const profileMenu = authenticatedOnClientSide ? (
-    <Menu>
+    <Menu useArrow={true}>
       <MenuLabel className={css.profileMenuLabel} isOpenClassName={css.profileMenuIsOpen}>
         <Avatar className={css.avatar} user={currentUser} disableProfileLink />
       </MenuLabel>
       <MenuContent className={css.profileMenuContent}>
-        <MenuItem key="ManageListingsPage">
+        {firstNewListing}
+        <MenuItem key="InboxPage">
+          <NamedLink
+            className={classNames(css.yourListingsLink, currentPageClass('InboxPage'))}
+            name="InboxPage"
+            params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
+            <span className={css.menuItemBorder} />
+            <FormattedMessage id="TopbarDesktop.inbox" />
+            {notificationDot}
+          </NamedLink>
+        </MenuItem>
+        {/* <MenuItem key="ManageListingsPage">
           <NamedLink
             className={classNames(css.yourListingsLink, currentPageClass('ManageListingsPage'))}
             name="ManageListingsPage">
             <span className={css.menuItemBorder} />
             <FormattedMessage id="TopbarDesktop.yourListingsLink" />
           </NamedLink>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem key="ProfileSettingsPage">
           <NamedLink
             className={classNames(css.profileSettingsLink, currentPageClass('ProfileSettingsPage'))}
@@ -99,13 +194,13 @@ const TopbarDesktop = (props) => {
     </Menu>
   ) : null
 
-  const signupLink = isAuthenticatedOrJustHydrated ? null : (
-    <NamedLink name="SignupPage" className={css.signupLink}>
-      <span className={css.signup}>
-        <FormattedMessage id="TopbarDesktop.signup" />
-      </span>
-    </NamedLink>
-  )
+  // const signupLink = isAuthenticatedOrJustHydrated ? null : (
+  //   <NamedLink name="SignupPage" className={css.signupLink}>
+  //     <span className={css.signup}>
+  //       <FormattedMessage id="TopbarDesktop.signup" />
+  //     </span>
+  //   </NamedLink>
+  // )
 
   const loginLink = isAuthenticatedOrJustHydrated ? null : (
     <NamedLink name="LoginPage" className={css.loginLink}>
@@ -121,29 +216,40 @@ const TopbarDesktop = (props) => {
         <Logo format="desktop" className={css.logo} alt={intl.formatMessage({ id: 'TopbarDesktop.logo' })} />
       </NamedLink>
       {search}
-      <NamedLink className={css.createListingLink} name="NewListingPage">
+      {/* <NamedLink className={css.createListingLink} name="NewListingPage">
         <span className={css.createListing}>
           <FormattedMessage id="TopbarDesktop.createListing" />
         </span>
-      </NamedLink>
+      </NamedLink> */}
       {inboxLink}
       {profileMenu}
-      {signupLink}
+      {/* {signupLink} */}
       {loginLink}
     </nav>
   )
 }
 
-TopbarDesktop.defaultProps = {
+const { arrayOf, bool, func, object, shape, string, number } = PropTypes
+
+TopbarDesktopComponent.defaultProps = {
+  unitType: config.bookingUnitType,
   rootClassName: null,
   className: null,
   currentUser: null,
   currentPage: null,
   notificationCount: 0,
-  initialSearchFormValues: {}
+  initialSearchFormValues: {},
+  listings: null,
+  params: shape({
+    tab: string.isRequired
+  }).isRequired,
+  fetchInProgress: bool.isRequired,
+  fetchOrdersOrSalesError: propTypes.error,
+  transactions: arrayOf(propTypes.transaction).isRequired
 }
 
-TopbarDesktop.propTypes = {
+TopbarDesktopComponent.propTypes = {
+  unitType: propTypes.bookingUnitType,
   rootClassName: string,
   className: string,
   currentUserHasListings: bool.isRequired,
@@ -154,7 +260,20 @@ TopbarDesktop.propTypes = {
   notificationCount: number,
   onSearchSubmit: func.isRequired,
   initialSearchFormValues: object,
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  listings: arrayOf(propTypes.ownListing)
 }
+
+const mapStateToProps = (state) => {
+  const { fetchInProgress, fetchOrdersOrSalesError, transactionRefs } = state.InboxPage
+  return {
+    fetchInProgress,
+    fetchOrdersOrSalesError,
+    scrollingDisabled: isScrollingDisabled(state),
+    transactions: getMarketplaceEntities(state, transactionRefs)
+  }
+}
+
+const TopbarDesktop = compose(connect(mapStateToProps), injectIntl)(TopbarDesktopComponent)
 
 export default TopbarDesktop

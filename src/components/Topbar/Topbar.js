@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { array, bool, func, number, shape, string } from 'prop-types'
+import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl'
 import pickBy from 'lodash/pickBy'
@@ -61,6 +61,8 @@ const GenericError = (props) => {
     </div>
   )
 }
+
+const { arrayOf, bool, func, object, shape, string, array, number } = PropTypes
 
 GenericError.propTypes = {
   show: bool.isRequired
@@ -147,7 +149,9 @@ class TopbarComponent extends Component {
       onResendVerificationEmail,
       sendVerificationEmailInProgress,
       sendVerificationEmailError,
-      showGenericError
+      showGenericError,
+      currentUserListing,
+      listings
     } = this.props
 
     const { mobilemenu, mobilesearch, address, origin, bounds } = parse(location.search, {
@@ -224,6 +228,7 @@ class TopbarComponent extends Component {
             notificationCount={notificationCount}
             onLogout={this.handleLogout}
             onSearchSubmit={this.handleSubmit}
+            listings={listings}
           />
         </div>
         <Modal
@@ -278,7 +283,9 @@ TopbarComponent.defaultProps = {
   currentUserHasOrders: null,
   currentPage: null,
   sendVerificationEmailError: null,
-  authScopes: []
+  authScopes: [],
+  currentUserListing: null,
+  listings: null
 }
 
 TopbarComponent.propTypes = {
@@ -301,6 +308,8 @@ TopbarComponent.propTypes = {
   sendVerificationEmailInProgress: bool.isRequired,
   sendVerificationEmailError: propTypes.error,
   showGenericError: bool.isRequired,
+  currentUserListing: propTypes.ownListing,
+  listings: arrayOf(propTypes.ownListing),
 
   // These are passed from Page to keep Topbar rendering aware of location changes
   history: shape({

@@ -30,7 +30,7 @@ const MenuContent = (props) => {
   ) : null
 
   React.Children.forEach(children, (child) => {
-    if (child.type !== MenuItem) {
+    if (child.type !== MenuItem || null) {
       throw new Error('All children of MenuContent must be MenuItems.')
     }
     if (child.key == null) {
@@ -60,7 +60,7 @@ const { bool, func, node, number, object, string } = PropTypes
 
 MenuContent.propTypes = {
   arrowPosition: number,
-  children: node.isRequired,
+  children: node,
   className: string,
   contentClassName: string,
   contentRef: func,

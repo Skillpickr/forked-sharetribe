@@ -1,5 +1,5 @@
 import React from 'react'
-import { array, bool, func, number, object, shape, string } from 'prop-types'
+import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -8,6 +8,7 @@ import { sendVerificationEmail, hasCurrentUserErrors } from '../../ducks/user.du
 import { logout, authenticationInProgress } from '../../ducks/Auth.duck'
 import { manageDisableScrolling } from '../../ducks/UI.duck'
 import { Topbar } from '../../components'
+import { closeListing, openListing, getOwnListingsById } from '../ManageListingsPage/ManageListingsPage.duck'
 
 export const TopbarContainerComponent = (props) => {
   const {
@@ -30,9 +31,9 @@ export const TopbarContainerComponent = (props) => {
     sendVerificationEmailInProgress,
     sendVerificationEmailError,
     onResendVerificationEmail,
+    listings,
     ...rest
   } = props
-
   return (
     <Topbar
       authInProgress={authInProgress}
@@ -54,10 +55,13 @@ export const TopbarContainerComponent = (props) => {
       sendVerificationEmailInProgress={sendVerificationEmailInProgress}
       sendVerificationEmailError={sendVerificationEmailError}
       showGenericError={hasGenericError}
+      listings={listings}
       {...rest}
     />
   )
 }
+
+const { arrayOf, bool, func, object, shape, string, array, number } = PropTypes
 
 TopbarContainerComponent.defaultProps = {
   currentPage: null,
@@ -67,7 +71,8 @@ TopbarContainerComponent.defaultProps = {
   notificationCount: 0,
   sendVerificationEmailError: null,
   currentUserListing: null,
-  authScopes: null
+  authScopes: null,
+  listings: []
 }
 
 TopbarContainerComponent.propTypes = {
@@ -88,6 +93,7 @@ TopbarContainerComponent.propTypes = {
   sendVerificationEmailError: propTypes.error,
   onResendVerificationEmail: func.isRequired,
   hasGenericError: bool.isRequired,
+  listings: arrayOf(propTypes.ownListing),
 
   // from withRouter
   history: shape({
@@ -111,7 +117,12 @@ const mapStateToProps = (state) => {
     sendVerificationEmailError
   } = state.user
   const hasGenericError = !!(logoutError || hasCurrentUserErrors(state))
+  const { currentPageResultIds } = state.ManageListingsPage
+  const listings = getOwnListingsById(state, currentPageResultIds)
+
   return {
+    currentPageResultIds,
+    listings,
     authInProgress: authenticationInProgress(state),
     currentUser,
     currentUserHasListings,
