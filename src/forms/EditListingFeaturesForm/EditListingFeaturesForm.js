@@ -7,7 +7,7 @@ import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl'
 import { findOptionsForSelectFilter } from '../../util/search'
 import { propTypes } from '../../util/types'
 import config from '../../config'
-import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '../../components'
+import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form, Alert } from '../../components'
 import { compose } from 'redux'
 import css from './EditListingFeaturesForm.module.css'
 import { Skills, Categories } from '../../util/category'
@@ -116,7 +116,11 @@ const EditListingFeaturesFormComponent = (props) => (
         <Form className={classes} onSubmit={handleSubmit}>
           {errorMessage}
           {errorMessageShowListing}
-
+          <Alert type="secondary">
+            <p>
+              Add some details about your concept. Fill out what you can for now - you’ll be able to edit this later.
+            </p>
+          </Alert>
           <FieldSelect
             className={css.features}
             name={name}

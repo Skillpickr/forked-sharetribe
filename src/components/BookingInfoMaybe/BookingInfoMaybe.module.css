@@ -1,0 +1,25 @@
+.bookingInfoWrapper {
+  composes: marketplaceTinyFontStyles from global;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  line-height: 14px;
+  margin-top: 2px;
+  padding-top: 2px;
+
+  @media (--viewportMedium) {
+    padding-top: 0px;
+    margin-top: 2px;
+    line-height: 16px;
+  }
+}
+
+.itemPrice {
+  &::before {
+    font-size: 10px;
+    margin: 0 6px;
+    display: inline-block;
+    content: '\25CF'; /* middot */
+  }
+}

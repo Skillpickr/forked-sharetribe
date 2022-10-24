@@ -16,11 +16,6 @@ exports[`ContactDetailsPage matches snapshot 1`] = `
       <withRouter(Connect(TopbarContainerComponent))
         currentPage="ManageListingsPage"
       />
-      <UserNav
-        className={null}
-        rootClassName={null}
-        selectedPageName="ManageListingsPage"
-      />
     </LayoutWrapperTopbar>
     <LayoutWrapperMain
       className={null}
@@ -29,6 +24,18 @@ exports[`ContactDetailsPage matches snapshot 1`] = `
       <div
         className="listingPanel"
       >
+        <NamedLink
+          className="createListingLink"
+          name="NewListingPage"
+        >
+          <span
+            className="createListing"
+          >
+            <MemoizedFormattedMessage
+              id="ManageListingsPage.createNewListing"
+            />
+          </span>
+        </NamedLink>
         <div
           className="listingCards"
         />

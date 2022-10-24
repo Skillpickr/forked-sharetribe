@@ -14,7 +14,8 @@ import {
   LayoutWrapperTopbar,
   LayoutWrapperMain,
   LayoutWrapperFooter,
-  Footer
+  Footer,
+  NamedLink
 } from '../../components'
 import { TopbarContainer } from '../../containers'
 
@@ -111,13 +112,18 @@ export class ManageListingsPageComponent extends Component {
         <LayoutSingleColumn>
           <LayoutWrapperTopbar>
             <TopbarContainer currentPage="ManageListingsPage" />
-            <UserNav selectedPageName="ManageListingsPage" />
+            {/* <UserNav selectedPageName="ManageListingsPage" /> */}
           </LayoutWrapperTopbar>
           <LayoutWrapperMain>
             {queryInProgress ? loadingResults : null}
             {queryListingsError ? queryError : null}
             <div className={css.listingPanel}>
               {heading}
+              <NamedLink className={css.createListingLink} name="NewListingPage">
+                <span className={css.createListing}>
+                  <FormattedMessage id="ManageListingsPage.createNewListing" />
+                </span>
+              </NamedLink>
               <div className={css.listingCards}>
                 {listings.map((l) => (
                   <ManageListingCard

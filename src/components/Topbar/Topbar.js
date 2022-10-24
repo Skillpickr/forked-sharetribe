@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { array, bool, func, number, shape, string } from 'prop-types'
+import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl'
 import pickBy from 'lodash/pickBy'
@@ -61,6 +61,8 @@ const GenericError = (props) => {
     </div>
   )
 }
+
+const { bool } = PropTypes
 
 GenericError.propTypes = {
   show: bool.isRequired
@@ -280,6 +282,8 @@ TopbarComponent.defaultProps = {
   sendVerificationEmailError: null,
   authScopes: []
 }
+
+const { array, func, number, shape, string } = PropTypes
 
 TopbarComponent.propTypes = {
   className: string,

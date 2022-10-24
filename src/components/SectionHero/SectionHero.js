@@ -1,4 +1,4 @@
-import React, { useEffect, useState, setData } from 'react'
+import React, { useEffect, useState } from 'react'
 import { string, object } from 'prop-types'
 import { FormattedMessage } from '../../util/reactIntl'
 import classNames from 'classnames'
@@ -8,7 +8,6 @@ import css from './SectionHero.module.css'
 import { userLocation } from '../../util/maps'
 import config from '../../config'
 import { stringify } from '../../util/urlHelpers'
-import Geocoder, { GeocoderAttribution, CURRENT_LOCATION_ID } from '../LocationAutocompleteInput/GeocoderMapbox'
 
 const SectionHero = (props) => {
   const { location } = props
@@ -32,6 +31,9 @@ const SectionHero = (props) => {
 
   useEffect(() => {
     userIpLocation()
+    return () => {
+      setIpLocation({})
+    }
   }, [])
 
   const classes = classNames(rootClassName || css.root, className)

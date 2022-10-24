@@ -21,17 +21,21 @@
 
   --marketplaceColorLight: #feb4b4;
   --marketplaceColorDark: #fa0e0e;
+  --marketplaceColorGradient: linear-gradient(94deg, rgba(254, 180, 180, 1) 0%, rgba(252, 97, 97, 0.5) 100%);
 
   /* Used with inline CSS SVGs */
   --marketplaceColorEncoded: %230095b3;
 
-  --successColor: #2ecc71;
+  --successColor: #44b044;
   --successColorDark: #239954;
-  --successColorLight: #f0fff6;
+  --successColorLight: #cfeccf;
+  --infoColor: #6184fc;
+  --infoColorDark: #239954;
+  --infoColorLight: #d7e0fe;
   --failColor: #ff0000;
   --failColorLight: #fff0f0;
-  --attentionColor: #ffaa00;
-  --attentionColorLight: #fff7f0;
+  --attentionColor: #fcaf61;
+  --attentionColorLight: #feebd7;
   --bannedColorLight: var(--marketplaceColorLight);
   --bannedColorDark: var(--marketplaceColor);
 
@@ -138,7 +142,7 @@
 
   /* ================ SectionHero ================ */
 
-  --SectionHero_desktopTitleMaxWidth: 625px;
+  --SectionHero_desktopTitleMaxWidth: 100%;
 
   /* ================ TabNav ================ */
   --TabNav_linkWidth: 240px;
@@ -618,7 +622,7 @@ textarea {
 
 .marketplaceHeroTitleFontStyles {
   font-weight: var(--fontWeightBold);
-  font-size: 36px;
+  font-size: 24px;
   line-height: 36px;
   letter-spacing: -0.7px;
   /* margin-top + n * line-height + margin-bottom => x * 6px */

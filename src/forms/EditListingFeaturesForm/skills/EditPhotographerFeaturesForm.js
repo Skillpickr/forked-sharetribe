@@ -13,6 +13,7 @@ import css from '../EditListingFeaturesForm.module.css'
 import { Skills, Categories } from '../../../util/category'
 import { CheckboxFieldsType, DropdownFieldsType } from '../../../util/featuresFields'
 import { required, composeValidators } from '../../../util/validators'
+import EditListingTitleForm from './EditListingTitleForm'
 
 class EditPhotographerFeaturesComponent extends Component {
   render() {
@@ -44,55 +45,61 @@ class EditPhotographerFeaturesComponent extends Component {
     })
     return (
       <div>
-        <h2>Hello you gifted Photographer</h2>
-        <FieldCheckboxGroup
-          className={css.features}
-          id={photographerKey}
-          name={photographerKey}
-          options={photographerOptions}
-          label={photographerKeyMessage}
-          validate={composeValidators(required(requiredCheckbox))}
-        />
-        <FieldSelect
-          className={css.features}
-          name={soundLightExpKey}
-          id={soundLightExpKey}
-          label={soundLightExpKeyMessage}>
-          <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
-            {(id) => (
-              <option disabled value="">
-                {id}
+        <div className={css.listingSectionContainer}>
+          <h2>Hello you gifted Photographer</h2>
+          <FieldCheckboxGroup
+            className={css.features}
+            id={photographerKey}
+            name={photographerKey}
+            options={photographerOptions}
+            label={photographerKeyMessage}
+            validate={composeValidators(required(requiredCheckbox))}
+          />
+        </div>
+        <EditListingTitleForm></EditListingTitleForm>
+        <div className={css.listingSectionContainer}>
+          <h2>Practical info</h2>
+          <FieldSelect
+            className={css.features}
+            name={soundLightExpKey}
+            id={soundLightExpKey}
+            label={soundLightExpKeyMessage}>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {(id) => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {soundLightExpOptions.map((o) => (
+              <option key={o.key} value={o.key}>
+                {o.label}
               </option>
-            )}
-          </FormattedMessage>
-          {soundLightExpOptions.map((o) => (
-            <option key={o.key} value={o.key}>
-              {o.label}
-            </option>
-          ))}
-        </FieldSelect>
-        <FieldSelect className={css.features} name={ownStudioKey} id={ownStudioKey} label={ownStudioKeyMessage}>
-          <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
-            {(id) => (
-              <option disabled value="">
-                {id}
+            ))}
+          </FieldSelect>
+          <FieldSelect className={css.features} name={ownStudioKey} id={ownStudioKey} label={ownStudioKeyMessage}>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {(id) => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {ownStudioOptions.map((o) => (
+              <option key={o.key} value={o.key}>
+                {o.label}
               </option>
-            )}
-          </FormattedMessage>
-          {ownStudioOptions.map((o) => (
-            <option key={o.key} value={o.key}>
-              {o.label}
-            </option>
-          ))}
-        </FieldSelect>
-        <FieldTextInput
-          id="gear"
-          name="gear"
-          className={css.features}
-          type="textarea"
-          label={gearMessage}
-          placeholder={gearMessagePlaceholder}
-        />
+            ))}
+          </FieldSelect>
+          <FieldTextInput
+            id="gear"
+            name="gear"
+            className={css.features}
+            type="textarea"
+            label={gearMessage}
+            placeholder={gearMessagePlaceholder}
+          />
+        </div>
       </div>
     )
   }

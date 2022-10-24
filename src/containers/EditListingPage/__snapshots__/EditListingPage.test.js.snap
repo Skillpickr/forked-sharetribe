@@ -20,6 +20,7 @@ exports[`EditListingPageComponent matches snapshot 1`] = `
   <withViewport(injectIntl(EditListingWizard))
     className="wizard"
     currentUser={null}
+    currentUserHasListings={false}
     errors={
       Object {
         "addExceptionError": null,

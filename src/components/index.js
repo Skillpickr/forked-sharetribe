@@ -50,6 +50,10 @@ export { default as ResponsiveImage } from './ResponsiveImage/ResponsiveImage';
 export { default as TimeRange } from './TimeRange/TimeRange';
 export { default as UserDisplayName } from './UserDisplayName/UserDisplayName';
 export { default as ValidationError } from './ValidationError/ValidationError';
+export { default as InboxItem } from './InboxItem/InboxItem';
+export { default as BookingInfoMaybe } from './BookingInfoMaybe/BookingInfoMaybe';
+export { default as Alert } from './Alert/Alert';
+export { default as QuoteTheDay } from './QuoteTheDay/QuoteTheDay';
 
 /**
  * Composite components
