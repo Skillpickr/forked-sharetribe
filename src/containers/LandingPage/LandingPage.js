@@ -16,7 +16,8 @@ import {
   LayoutWrapperTopbar,
   LayoutWrapperMain,
   LayoutWrapperFooter,
-  Footer
+  Footer,
+  QuoteTheDay
 } from '../../components'
 import { TopbarContainer } from '../../containers'
 
@@ -57,6 +58,7 @@ export const LandingPageComponent = (props) => {
           <TopbarContainer />
         </LayoutWrapperTopbar>
         <LayoutWrapperMain>
+          {/* <QuoteTheDay /> */}
           <div className={css.heroContainer}>
             <SectionHero className={css.hero} history={history} location={location} />
           </div>

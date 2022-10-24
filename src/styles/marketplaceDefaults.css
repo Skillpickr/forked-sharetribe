@@ -21,17 +21,21 @@
 
   --marketplaceColorLight: #feb4b4;
   --marketplaceColorDark: #fa0e0e;
+  --marketplaceColorGradient: linear-gradient(94deg, rgba(254, 180, 180, 1) 0%, rgba(252, 97, 97, 0.5) 100%);
 
   /* Used with inline CSS SVGs */
   --marketplaceColorEncoded: %230095b3;
 
-  --successColor: #2ecc71;
+  --successColor: #44b044;
   --successColorDark: #239954;
-  --successColorLight: #f0fff6;
+  --successColorLight: #cfeccf;
+  --infoColor: #6184fc;
+  --infoColorDark: #239954;
+  --infoColorLight: #d7e0fe;
   --failColor: #ff0000;
   --failColorLight: #fff0f0;
-  --attentionColor: #ffaa00;
-  --attentionColorLight: #fff7f0;
+  --attentionColor: #fcaf61;
+  --attentionColorLight: #feebd7;
   --bannedColorLight: var(--marketplaceColorLight);
   --bannedColorDark: var(--marketplaceColor);
 

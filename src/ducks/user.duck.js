@@ -227,7 +227,6 @@ export const sendVerificationEmailError = (e) => ({
 export const fetchCurrentUserHasListings = () => (dispatch, getState, sdk) => {
   dispatch(fetchCurrentUserHasListingsRequest())
   const { currentUser } = getState().user
-  console.log(currentUser)
 
   if (!currentUser) {
     dispatch(fetchCurrentUserHasListingsSuccess(false))
@@ -289,7 +288,6 @@ export const fetchCurrentUserNotifications = () => (dispatch, getState, sdk) => 
     page: 1,
     per_page: NOTIFICATION_PAGE_SIZE
   }
-  console.log(sdk)
   sdk.transactions
     .query(apiSaleQueryParams)
     .then((response) => {
