@@ -33,8 +33,43 @@ exports[`InboxPage matches snapshot 1`] = `
           id="InboxPage.title"
         />
       </h1>
-      <div
-        className="navPlaceholder"
+      <TabNav
+        className={null}
+        rootClassName="tabs"
+        tabClassName={null}
+        tabRootClassName="tab"
+        tabs={
+          Array [
+            Object {
+              "linkProps": Object {
+                "name": "InboxPage",
+                "params": Object {
+                  "tab": "orders",
+                },
+              },
+              "selected": true,
+              "text": <span>
+                <Memo(MemoizedFormattedMessage)
+                  id="InboxPage.ordersTabTitle"
+                />
+              </span>,
+            },
+            Object {
+              "linkProps": Object {
+                "name": "InboxPage",
+                "params": Object {
+                  "tab": "sales",
+                },
+              },
+              "selected": false,
+              "text": <span>
+                <Memo(MemoizedFormattedMessage)
+                  id="InboxPage.salesTabTitle"
+                />
+              </span>,
+            },
+          ]
+        }
       />
     </LayoutWrapperSideNav>
     <LayoutWrapperMain
