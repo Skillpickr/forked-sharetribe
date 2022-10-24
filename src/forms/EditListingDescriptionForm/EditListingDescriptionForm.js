@@ -6,9 +6,10 @@ import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl'
 import classNames from 'classnames'
 import { propTypes } from '../../util/types'
 import { maxLength, required, composeValidators, validBusinessURL } from '../../util/validators'
-import { Form, Button, FieldTextInput } from '../../components'
+import { Form, Button, FieldTextInput, Alert } from '../../components'
 
 import css from './EditListingDescriptionForm.module.css'
+import EditListingOtherInfoForm from '../EditListingFeaturesForm/skills/EditListingOtherInfoForm'
 
 const TITLE_MAX_LENGTH = 60
 
@@ -30,31 +31,6 @@ const EditListingDescriptionFormComponent = (props) => (
         fetchErrors
       } = formRenderProps
 
-      const titleMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.title' })
-      const titlePlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.titlePlaceholder'
-      })
-      const titleRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.titleRequired'
-      })
-      const maxLengthMessage = intl.formatMessage(
-        { id: 'EditListingDescriptionForm.maxLength' },
-        {
-          maxLength: TITLE_MAX_LENGTH
-        }
-      )
-
-      const descriptionMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.description'
-      })
-      const descriptionPlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.descriptionPlaceholder'
-      })
-      const maxLength60Message = maxLength(maxLengthMessage, TITLE_MAX_LENGTH)
-      const descriptionRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.descriptionRequired'
-      })
-
       const exprienceMessage = intl.formatMessage({
         id: 'EditListingDescriptionForm.experience'
       })
@@ -65,55 +41,30 @@ const EditListingDescriptionFormComponent = (props) => (
         id: 'EditListingDescriptionForm.experienceRequired'
       })
 
-      const trackMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.track'
-      })
-      const trackPlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.trackPlaceholder'
-      })
-      const trackRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.trackRequired'
-      })
-
-      const urlMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.url'
-      })
-      const urlPlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.urlPlaceholder'
-      })
-      const urlRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.urlRequired'
-      })
-
-      const bonusMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.bonus'
-      })
-      const bonusPlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.bonusPlaceholder'
-      })
-
-      const urlValidateMessage = validBusinessURL(
-        intl.formatMessage({ id: 'EditListingDescriptionForm.businessURLRequired' })
-      )
-
       const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {}
       const errorMessageUpdateListing = updateListingError ? (
-        <p className={css.error}>
-          <FormattedMessage id="EditListingDescriptionForm.updateFailed" />
-        </p>
+        <Alert type="error">
+          <p className={css.error}>
+            <FormattedMessage id="EditListingDescriptionForm.updateFailed" />
+          </p>
+        </Alert>
       ) : null
 
       // This error happens only on first tab (of EditListingWizard)
       const errorMessageCreateListingDraft = createListingDraftError ? (
-        <p className={css.error}>
-          <FormattedMessage id="EditListingDescriptionForm.createListingDraftError" />
-        </p>
+        <Alert type="error">
+          <p className={css.error}>
+            <FormattedMessage id="EditListingDescriptionForm.createListingDraftError" />
+          </p>
+        </Alert>
       ) : null
 
       const errorMessageShowListing = showListingsError ? (
-        <p className={css.error}>
-          <FormattedMessage id="EditListingDescriptionForm.showListingFailed" />
-        </p>
+        <Alert type="error">
+          <p className={css.error}>
+            <FormattedMessage id="EditListingDescriptionForm.showListingFailed" />
+          </p>
+        </Alert>
       ) : null
 
       const classes = classNames(css.root, className)
@@ -126,64 +77,24 @@ const EditListingDescriptionFormComponent = (props) => (
           {errorMessageCreateListingDraft}
           {errorMessageUpdateListing}
           {errorMessageShowListing}
-          <FieldTextInput
-            id="title"
-            name="title"
-            className={css.title}
+          <Alert type="secondary">
+            <p>
+              Don’t sweat it! You can just draft a version of your concept now and change it later. <br></br>So
+              let&apos;s get started and tell us about you and your artistic expertise.
+            </p>
+          </Alert>
+          {/* SHOP NAME */}
+          {/* We find creative artists often draw inspiration from what they sell, their style, pretty much anything goes. */}
+          {/* <FieldTextInput
+            id="shop"
+            name="shop"
+            className={css.description}
             type="text"
-            label={titleMessage}
-            placeholder={titlePlaceholderMessage}
-            maxLength={TITLE_MAX_LENGTH}
-            validate={composeValidators(required(titleRequiredMessage), maxLength60Message)}
-            autoFocus
-          />
-
-          <FieldTextInput
-            id="description"
-            name="description"
-            className={css.description}
-            type="textarea"
-            label={descriptionMessage}
-            placeholder={descriptionPlaceholderMessage}
-            validate={composeValidators(required(descriptionRequiredMessage))}
-          />
-
-          <FieldTextInput
-            id="experience"
-            name="experience"
-            className={css.description}
-            type="number"
             label={exprienceMessage}
             placeholder={experiencePlaceholderMessage}
             validate={composeValidators(required(experienceRequiredMessage))}
-          />
-          <FieldTextInput
-            id="track"
-            name="track"
-            className={css.description}
-            type="textarea"
-            label={trackMessage}
-            placeholder={trackPlaceholderMessage}
-            validate={composeValidators(required(trackRequiredMessage))}
-          />
-          <FieldTextInput
-            id="url"
-            name="url"
-            className={css.description}
-            type="text"
-            label={urlMessage}
-            placeholder={urlPlaceholderMessage}
-            validate={urlValidateMessage}
-          />
-          <FieldTextInput
-            id="bonus"
-            name="bonus"
-            className={css.description}
-            type="textarea"
-            label={bonusMessage}
-            placeholder={bonusPlaceholderMessage}
-          />
-
+          /> */}
+          <EditListingOtherInfoForm></EditListingOtherInfoForm>
           <Button
             className={css.submitButton}
             type="submit"

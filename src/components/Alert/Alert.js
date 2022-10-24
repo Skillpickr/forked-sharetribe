@@ -37,7 +37,6 @@ export default function Alert({ children, type, message }) {
     }
   }
 
-  console.log(handleIcon())
   return (
     <div className={classNames(css.alert, css[type], !isShow && css.hide)}>
       <div className={css.container}>

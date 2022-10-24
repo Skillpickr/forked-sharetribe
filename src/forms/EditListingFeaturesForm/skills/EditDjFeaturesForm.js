@@ -13,6 +13,8 @@ import css from '../EditListingFeaturesForm.module.css'
 import { Skills, Categories } from '../../../util/category'
 import { CheckboxFieldsType, DropdownFieldsType } from '../../../util/featuresFields'
 import { required, composeValidators } from '../../../util/validators'
+import EditListingTitleForm from './EditListingTitleForm'
+import EditListingOtherInfoForm from './EditListingOtherInfoForm'
 
 class EditDJFeaturesComponent extends Component {
   render() {
@@ -57,71 +59,79 @@ class EditDJFeaturesComponent extends Component {
     })
     return (
       <div>
-        <h2>Hello you talented DJ</h2>
-        <FieldCheckboxGroup
-          className={css.features}
-          id={djKey}
-          name={djKey}
-          options={djOptions}
-          label={djKeyMessage}
-          validate={composeValidators(required(requiredCheckbox))}
-        />
-        <FieldTextInput
-          id="technicalRider"
-          name="technicalRider"
-          className={css.features}
-          type="textarea"
-          label={technicalRiderMessage}
-          placeholder={technicalRiderPlaceholderMessage}
-        />
-        <FieldTextInput
-          id="cateringRider"
-          name="cateringRider"
-          className={css.features}
-          type="textarea"
-          label={cateringRiderMessage}
-          placeholder={cateringRiderPlaceholderMessage}
-        />
-        <FieldSelect
-          className={css.features}
-          name={djGearForPlayingKey}
-          id={djGearForPlayingKey}
-          label={djGearForPlayingKeyMessage}>
-          <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
-            {(id) => (
-              <option disabled value="">
-                {id}
+        <div className={css.listingSectionContainer}>
+          <h2>Hello you talented DJ</h2>
+          <FieldCheckboxGroup
+            className={css.features}
+            id={djKey}
+            name={djKey}
+            options={djOptions}
+            label={djKeyMessage}
+            validate={composeValidators(required(requiredCheckbox))}
+          />
+        </div>
+
+        <EditListingTitleForm></EditListingTitleForm>
+        <div className={css.listingSectionContainer}>
+          <h2>Practical info</h2>
+          <FieldTextInput
+            id="technicalRider"
+            name="technicalRider"
+            className={css.features}
+            type="textarea"
+            label={technicalRiderMessage}
+            placeholder={technicalRiderPlaceholderMessage}
+          />
+          <FieldTextInput
+            id="cateringRider"
+            name="cateringRider"
+            className={css.features}
+            type="textarea"
+            label={cateringRiderMessage}
+            placeholder={cateringRiderPlaceholderMessage}
+          />
+          <FieldSelect
+            className={css.features}
+            name={djGearForPlayingKey}
+            id={djGearForPlayingKey}
+            label={djGearForPlayingKeyMessage}>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {(id) => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {djGearForPlayingOptions.map((o) => (
+              <option key={o.key} value={o.key}>
+                {o.label}
               </option>
-            )}
-          </FormattedMessage>
-          {djGearForPlayingOptions.map((o) => (
-            <option key={o.key} value={o.key}>
-              {o.label}
-            </option>
-          ))}
-        </FieldSelect>
-        <FieldTextInput
-          id="playingStyle"
-          name="playingStyle"
-          className={css.features}
-          type="textarea"
-          label={playingStyleMessage}
-          placeholder={playingStylePlaceholderMessage}
-        />
-        <FieldSelect className={css.features} name={songRequestKey} id={songRequestKey} label={songRequestKeyMessage}>
-          <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
-            {(id) => (
-              <option disabled value="">
-                {id}
+            ))}
+          </FieldSelect>
+          <FieldTextInput
+            id="playingStyle"
+            name="playingStyle"
+            className={css.features}
+            type="textarea"
+            label={playingStyleMessage}
+            placeholder={playingStylePlaceholderMessage}
+          />
+          <FieldSelect className={css.features} name={songRequestKey} id={songRequestKey} label={songRequestKeyMessage}>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {(id) => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {songRequestOptions.map((o) => (
+              <option key={o.key} value={o.key}>
+                {o.label}
               </option>
-            )}
-          </FormattedMessage>
-          {songRequestOptions.map((o) => (
-            <option key={o.key} value={o.key}>
-              {o.label}
-            </option>
-          ))}
-        </FieldSelect>
+            ))}
+          </FieldSelect>
+        </div>
+        {/* <EditListingOtherInfoForm></EditListingOtherInfoForm> */}
       </div>
     )
   }

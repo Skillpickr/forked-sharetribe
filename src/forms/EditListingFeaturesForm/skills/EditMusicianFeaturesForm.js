@@ -13,6 +13,8 @@ import css from '../EditListingFeaturesForm.module.css'
 import { Skills, Categories } from '../../../util/category'
 import { CheckboxFieldsType, DropdownFieldsType } from '../../../util/featuresFields'
 import { required, composeValidators } from '../../../util/validators'
+import EditListingTitleForm from './EditListingTitleForm'
+import EditListingOtherInfoForm from './EditListingOtherInfoForm'
 
 class EditMusicianFeaturesComponent extends Component {
   render() {
@@ -56,58 +58,66 @@ class EditMusicianFeaturesComponent extends Component {
 
     return (
       <div>
-        <h2>Hello you musical genius</h2>
-        <FieldSelect
-          className={css.features}
-          name={musicSoloistKey}
-          id={musicSoloistKey}
-          label={musicSoloistKeyMessage}
-          validate={required(requiredDropdown)}>
-          <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
-            {(id) => (
-              <option disabled value="">
-                {id}
+        <div className={css.listingSectionContainer}>
+          <h2>Hello you musical genius</h2>
+          <FieldSelect
+            className={css.features}
+            name={musicSoloistKey}
+            id={musicSoloistKey}
+            label={musicSoloistKeyMessage}
+            validate={required(requiredDropdown)}>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {(id) => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {musicSoloistOptions.map((o) => (
+              <option key={o.key} value={o.key}>
+                {o.label}
               </option>
-            )}
-          </FormattedMessage>
-          {musicSoloistOptions.map((o) => (
-            <option key={o.key} value={o.key}>
-              {o.label}
-            </option>
-          ))}
-        </FieldSelect>
-        <FieldCheckboxGroup
-          className={css.features}
-          id={musicianTypeKey}
-          name={musicianTypeKey}
-          options={musicianTypeOptions}
-          label={musicianTypeKeyMessage}
-          validate={composeValidators(required(requiredCheckbox))}
-        />
-        <FieldCheckboxGroup
-          className={css.features}
-          id={musicianGenreKey}
-          name={musicianGenreKey}
-          options={musicianGenreOptions}
-          label={musicianGenreKeyMessage}
-          validate={composeValidators(required(requiredCheckbox))}
-        />
-        <FieldTextInput
-          id="technicalRider"
-          name="technicalRider"
-          className={css.features}
-          type="textarea"
-          label={technicalRiderMessage}
-          placeholder={technicalRiderPlaceholderMessage}
-        />
-        <FieldTextInput
-          id="cateringRider"
-          name="cateringRider"
-          className={css.features}
-          type="textarea"
-          label={cateringRiderMessage}
-          placeholder={cateringRiderPlaceholderMessage}
-        />
+            ))}
+          </FieldSelect>
+          <FieldCheckboxGroup
+            className={css.features}
+            id={musicianTypeKey}
+            name={musicianTypeKey}
+            options={musicianTypeOptions}
+            label={musicianTypeKeyMessage}
+            validate={composeValidators(required(requiredCheckbox))}
+          />
+          <FieldCheckboxGroup
+            className={css.features}
+            id={musicianGenreKey}
+            name={musicianGenreKey}
+            options={musicianGenreOptions}
+            label={musicianGenreKeyMessage}
+            validate={composeValidators(required(requiredCheckbox))}
+          />
+        </div>
+
+        <EditListingTitleForm></EditListingTitleForm>
+        <div className={css.listingSectionContainer}>
+          <h2>Practical info</h2>
+          <FieldTextInput
+            id="technicalRider"
+            name="technicalRider"
+            className={css.features}
+            type="textarea"
+            label={technicalRiderMessage}
+            placeholder={technicalRiderPlaceholderMessage}
+          />
+          <FieldTextInput
+            id="cateringRider"
+            name="cateringRider"
+            className={css.features}
+            type="textarea"
+            label={cateringRiderMessage}
+            placeholder={cateringRiderPlaceholderMessage}
+          />
+        </div>
+        {/* <EditListingOtherInfoForm></EditListingOtherInfoForm> */}
       </div>
     )
   }
