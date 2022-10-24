@@ -26,6 +26,7 @@ jobs:
   test:
     docker:
       - image: cimg/node:14.19
+    parallelism: 10
     steps:
       - checkout
       - restore_cache:
