@@ -77,33 +77,50 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
     </div>
   </form>
   <div>
-    <a
-      className="inboxLink"
-      href="/inbox/sales"
+    <button
+      className="inlineTextButtonRoot inlineTextButton Tooltip-Wrapper"
+      disabled={false}
       onClick={[Function]}
-      onMouseOver={[Function]}
-      onTouchStart={[Function]}
-      style={Object {}}
-      title={null}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
     >
-      <span
-        className="inbox"
-      />
-    </a>
-    <a
-      className="inboxLink"
-      href="/listings"
+      <a
+        className="inboxLink"
+        href="/inbox/sales"
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        onTouchStart={[Function]}
+        style={Object {}}
+        title={null}
+      >
+        <span
+          className="inbox"
+        />
+      </a>
+    </button>
+    <button
+      className="inlineTextButtonRoot inlineTextButton Tooltip-Wrapper"
+      disabled={false}
       onClick={[Function]}
-      onMouseOver={[Function]}
-      onTouchStart={[Function]}
-      style={Object {}}
-      title={null}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
     >
-      <span
-        className="menuItemBorder"
-      />
-       
-    </a>
+      <a
+        className="inboxLink"
+        href="/listings"
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        onTouchStart={[Function]}
+        style={Object {}}
+        title={null}
+      >
+        <span
+          className="inbox"
+        />
+      </a>
+    </button>
   </div>
   <div
     className="root"

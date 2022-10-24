@@ -18,7 +18,8 @@ import {
   MenuItem,
   NamedLink,
   InboxItem,
-  IconSpinner
+  IconSpinner,
+  Tooltip
 } from '../../components'
 import { TopbarSearchForm } from '../../forms'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -100,21 +101,26 @@ const TopbarDesktop = (props) => {
           {noResults}
         </MenuContent>
       </Menu> */}
-      <NamedLink
-        className={css.inboxLink}
-        name="InboxPage"
-        params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
-        <span className={css.inbox}>
-          <FontAwesomeIcon icon="fa-solid fa-bell" />
-          {notificationDot}
-        </span>
-      </NamedLink>
-      {currentUserHasListings && (
-        <NamedLink className={css.inboxLink} name="ManageListingsPage">
-          <span className={css.menuItemBorder} />
-          {/* <FormattedMessage id="TopbarDesktop.yourListingsLink" /> */}
-          <FontAwesomeIcon icon="fa-solid fa-piggy-bank" />{' '}
+      <Tooltip content={intl.formatMessage({ id: 'TopbarDesktop.notification' })} direction="bottom">
+        <NamedLink
+          className={css.inboxLink}
+          name="InboxPage"
+          params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
+          <span className={css.inbox}>
+            <FontAwesomeIcon icon="fa-solid fa-bell" size="xl" />
+            {notificationDot}
+          </span>
         </NamedLink>
+      </Tooltip>
+      {currentUserHasListings && (
+        <Tooltip content={intl.formatMessage({ id: 'TopbarDesktop.yourListingsLink' })} direction="bottom">
+          <NamedLink className={css.inboxLink} name="ManageListingsPage">
+            <span className={css.inbox}>
+              {/* <FormattedMessage id="TopbarDesktop.yourListingsLink" /> */}
+              <FontAwesomeIcon icon="fa-solid fa-piggy-bank" size="xl" />
+            </span>
+          </NamedLink>
+        </Tooltip>
       )}
     </div>
   ) : null
