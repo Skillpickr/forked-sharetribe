@@ -33,9 +33,10 @@ import { LoggingAnalyticsHandler, GoogleAnalyticsHandler } from './analytics/han
 import configureStore from './store'
 
 // Utils
-import { types as sdkTypes } from './util/sdkLoader'
+import { createInstance, types as sdkTypes } from './util/sdkLoader'
 import { matchPathname } from './util/routes'
 import * as sample from './util/sample'
+import * as apiUtils from './util/api'
 import * as log from './util/log'
 
 // Import relevant global duck files
@@ -50,7 +51,6 @@ import { ClientApp, renderApp } from './app'
 
 // import your fontawesome library
 import './util/fontawesome'
-import store, { sdk } from './store'
 
 const render = (store, shouldHydrate) => {
   // If the server already loaded the auth information, render the app
@@ -108,6 +108,23 @@ const setupAnalyticsHandlers = () => {
 if (typeof window !== 'undefined') {
   // set up logger with Sentry DSN client key and environment
   log.setup()
+
+  const baseUrl = config.sdk.baseUrl ? { baseUrl: config.sdk.baseUrl } : {}
+  const assetCdnBaseUrl = config.sdk.assetCdnBaseUrl ? { assetCdnBaseUrl: config.sdk.assetCdnBaseUrl } : {}
+
+  // eslint-disable-next-line no-underscore-dangle
+  const preloadedState = window.__PRELOADED_STATE__ || '{}'
+  const initialState = JSON.parse(preloadedState, sdkTypes.reviver)
+  const sdk = createInstance({
+    transitVerbose: config.sdk.transitVerbose,
+    clientId: config.sdk.clientId,
+    secure: config.usingSSL,
+    typeHandlers: apiUtils.typeHandlers,
+    ...baseUrl,
+    ...assetCdnBaseUrl
+  })
+  const analyticsHandlers = setupAnalyticsHandlers()
+  const store = configureStore(initialState, sdk, analyticsHandlers)
 
   require('./util/polyfills')
   render(store, !!window.__PRELOADED_STATE__)
