@@ -858,6 +858,11 @@ exports[`InboxPage matches snapshot 3`] = `
             Feb 16, 12:00 AM
           </span>
         </div>
+        <div
+          className="itemPrice"
+        >
+          10
+        </div>
       </div>
     </div>
     <div
@@ -912,8 +917,43 @@ exports[`InboxPage matches snapshot 4`] = `
           id="InboxPage.title"
         />
       </h1>
-      <div
-        className="navPlaceholder"
+      <TabNav
+        className={null}
+        rootClassName="tabs"
+        tabClassName={null}
+        tabRootClassName="tab"
+        tabs={
+          Array [
+            Object {
+              "linkProps": Object {
+                "name": "InboxPage",
+                "params": Object {
+                  "tab": "orders",
+                },
+              },
+              "selected": false,
+              "text": <span>
+                <Memo(MemoizedFormattedMessage)
+                  id="InboxPage.ordersTabTitle"
+                />
+              </span>,
+            },
+            Object {
+              "linkProps": Object {
+                "name": "InboxPage",
+                "params": Object {
+                  "tab": "sales",
+                },
+              },
+              "selected": true,
+              "text": <span>
+                <Memo(MemoizedFormattedMessage)
+                  id="InboxPage.salesTabTitle"
+                />
+              </span>,
+            },
+          ]
+        }
       />
     </LayoutWrapperSideNav>
     <LayoutWrapperMain
@@ -1308,6 +1348,11 @@ exports[`InboxPage matches snapshot 5`] = `
           >
             Feb 16, 12:00 AM
           </span>
+        </div>
+        <div
+          className="itemPrice"
+        >
+          9
         </div>
       </div>
     </div>

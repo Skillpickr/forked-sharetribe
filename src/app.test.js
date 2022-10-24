@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ClientApp } from './app'
-import configureStore from './store'
+import configureStore from './configStore'
 
 const jsdomScroll = window.scroll
 beforeAll(() => {
