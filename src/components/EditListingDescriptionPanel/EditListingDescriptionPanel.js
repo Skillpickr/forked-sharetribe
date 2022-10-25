@@ -27,13 +27,13 @@ const EditListingDescriptionPanel = (props) => {
 
   const classes = classNames(rootClassName || css.root, className)
   const currentListing = ensureOwnListing(listing)
-  const { publicData } = currentListing.attributes
+  const { description, title, publicData } = currentListing.attributes
 
   const experience = publicData && publicData.experience
   const track = publicData && publicData.track
   const url = publicData && publicData.url
   const bonus = publicData && publicData.bonus
-  const initialValues = { experience, track, url, bonus }
+  const initialValues = { title, description, experience, track, url, bonus }
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT
   const panelTitle = isPublished ? (
@@ -44,6 +44,8 @@ const EditListingDescriptionPanel = (props) => {
   ) : (
     <FormattedMessage id="EditListingDescriptionPanel.createListingTitle" />
   )
+  let newDate = new Date()
+  let displayDate = newDate.toLocaleString('en-GB', { timeZone: 'UTC' })
 
   return (
     <div className={classes}>
@@ -53,8 +55,17 @@ const EditListingDescriptionPanel = (props) => {
         initialValues={initialValues}
         saveActionMsg={submitButtonText}
         onSubmit={(values) => {
-          const { experience, track = '', url = '', bonus = '' } = values
+          const {
+            title = 'Initiated at ' + displayDate,
+            description = 'Still in draft',
+            experience,
+            track = '',
+            url = '',
+            bonus = ''
+          } = values
           const updateValues = {
+            title,
+            description,
             publicData: { experience, track, url, bonus }
           }
 
