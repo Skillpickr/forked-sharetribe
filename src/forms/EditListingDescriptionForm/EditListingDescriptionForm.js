@@ -31,14 +31,14 @@ const EditListingDescriptionFormComponent = (props) => (
         fetchErrors
       } = formRenderProps
 
-      const exprienceMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.experience'
+      const shopMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.shop'
       })
-      const experiencePlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.experiencePlaceholder'
+      const shopPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.shopPlaceholder'
       })
-      const experienceRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.experienceRequired'
+      const shopRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.shopRequired'
       })
 
       const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {}
@@ -90,9 +90,9 @@ const EditListingDescriptionFormComponent = (props) => (
             name="shop"
             className={css.description}
             type="text"
-            label={exprienceMessage}
-            placeholder={experiencePlaceholderMessage}
-            validate={composeValidators(required(experienceRequiredMessage))}
+            label={shopMessage}
+            placeholder={shopPlaceholderMessage}
+            validate={composeValidators(required(shopRequiredMessage))}
           /> */}
           <EditListingOtherInfoForm></EditListingOtherInfoForm>
           <Button

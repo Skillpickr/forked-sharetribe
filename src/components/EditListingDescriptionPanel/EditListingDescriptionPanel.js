@@ -27,13 +27,13 @@ const EditListingDescriptionPanel = (props) => {
 
   const classes = classNames(rootClassName || css.root, className)
   const currentListing = ensureOwnListing(listing)
-  const { description, title, publicData } = currentListing.attributes
+  const { publicData } = currentListing.attributes
 
   const experience = publicData && publicData.experience
   const track = publicData && publicData.track
   const url = publicData && publicData.url
   const bonus = publicData && publicData.bonus
-  const initialValues = { title, description, experience, track, url, bonus }
+  const initialValues = { experience, track, url, bonus }
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT
   const panelTitle = isPublished ? (
@@ -53,10 +53,8 @@ const EditListingDescriptionPanel = (props) => {
         initialValues={initialValues}
         saveActionMsg={submitButtonText}
         onSubmit={(values) => {
-          const { title, description, experience, track = '', url = '', bonus = '' } = values
+          const { experience, track = '', url = '', bonus = '' } = values
           const updateValues = {
-            title: title.trim(),
-            description,
             publicData: { experience, track, url, bonus }
           }
 
