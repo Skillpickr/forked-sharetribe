@@ -14,9 +14,7 @@ exports[`EditListingDescriptionForm matches snapshot 1`] = `
       className="container"
     >
       <p>
-        Don’t sweat it! You can just draft a version of your concept now and change it later. 
-        <br />
-        So let's get started and tell us about you and your artistic expertise.
+        Don’t sweat it! You can just draft a version of your concept now and change it later.
       </p>
     </div>
     <span
@@ -88,6 +86,27 @@ exports[`EditListingDescriptionForm matches snapshot 1`] = `
         onFocus={[Function]}
         placeholder="EditListingDescriptionForm.urlPlaceholder"
         type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="root description"
+    >
+      <label
+        htmlFor="bonus"
+      >
+        EditListingDescriptionForm.bonus
+      </label>
+      <textarea
+        className="input inputSuccess textarea"
+        id="bonus"
+        maxLength={5000}
+        name="bonus"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="EditListingDescriptionForm.bonusPlaceholder"
+        rows={1}
         value=""
       />
     </div>
