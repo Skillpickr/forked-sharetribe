@@ -19,6 +19,50 @@
   }
 }
 
+/* Create listing (CTA for providers) */
+.createListingLink {
+  border-bottom: 0px solid;
+  transition: var(--transitionStyleButton);
+
+  font-weight: var(--fontWeightMedium);
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0;
+
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0 12px 0 12px;
+  color: var(--marketplaceColor);
+  margin: 0 24px 24px 24px;
+
+  &:hover {
+    color: var(--marketplaceColorDark);
+    border-bottom: 4px solid var(--marketplaceColor);
+    border-radius: 0;
+    text-decoration: none;
+  }
+
+  @media (--viewportMedium) {
+    line-height: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.topbarDesktopLabel {
+  display: inline-block;
+  margin: 28px 0;
+  text-decoration: inherit;
+
+  @media (--viewportMedium) {
+    margin: 28px 0;
+  }
+}
+
+.createListing {
+  composes: topbarDesktopLabel;
+}
+
 .tab {
   display: flex;
   align-items: flex-end;
@@ -49,14 +93,14 @@
 }
 
 .title {
-  margin: 0 24px 24px 24px;
+  margin: 0 24px 0 24px;
 
   @media (--viewportMedium) {
-    margin: 0 24px 48px 24px;
+    margin: 0 24px 0 24px;
   }
 
   @media (--viewportLarge) {
-    margin: 0 36px 48px 36px;
+    margin: 0 36px 0 36px;
   }
 }
 

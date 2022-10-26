@@ -15,7 +15,7 @@ import css from './PricingPage.module.css'
 import image from './pricing.jpg'
 
 const PricingPage = () => {
-  const { siteTwitterHandle, siteFacebookPage } = config
+  const { siteTwitterHandle, siteFacebookPage, siteHelpCenter } = config
   const siteTwitterPage = twitterPageURL(siteTwitterHandle)
 
   // prettier-ignore
@@ -24,21 +24,20 @@ const PricingPage = () => {
       title="Pricing"
       schema={{
         '@context': 'http://schema.org',
-        '@type': 'PricingPage',
-        "description": 'SkillPickr Prices',
-        "name": 'Pricing Page',
-        "mainEntity": [
+        '@type': 'HowTo',
+        description: 'How much do SkillPickr charge?',
+        name: 'How much do SkillPickr charge?',
+        mainEntity: [
           {
-            "@type": "Question",
-            "name": "Question 1?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Answer: Lorem ipsum"
+            '@type': 'Question',
+            name: 'Question 1?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Answer: Lorem ipsum'
             }
           }
         ]
-      }}
-    >
+      }}>
       <LayoutSingleColumn>
         <LayoutWrapperTopbar>
           <TopbarContainer />
@@ -56,19 +55,32 @@ const PricingPage = () => {
             <div className={css.contentMain}>
               <h2>General</h2>
               <p>
-              It costs a commission fee for both seller and buyer when a booking is confirmed and a transaction is made. 
-              It is only when the booking request has been confirmed that SkillPickr will charge a commission fee. 
-              The commission fee is used to maintain and continue to develop SkillPickr as a tool, service and community to all lovers of creativity.  
-              Commission 
+                It costs a commission fee for both seller and buyer when a booking is confirmed and a transaction is
+                made. It is only when the booking request has been confirmed that SkillPickr will charge a commission
+                fee. The commission fee is used to maintain and continue to develop SkillPickr as a tool, service and
+                community to all lovers of creativity. Commission
               </p>
-              <p><strong>SkillPickr earner </strong></p>
-              <p>A commission of <strong>15%</strong> will be deducted from the total price once you have confirmed the booking 
+              <p>
+                <strong>SkillPickr earner </strong>
               </p>
-              <p><strong>SkillPickr flyer</strong></p>
-              <p>A commission of <strong>10%</strong> will be added to the total price once the SkillPickr earner has confirmed the booking</p>
+              <p>
+                A commission of <strong>15%</strong> will be deducted from the total price once you have confirmed the
+                booking
+              </p>
+              <p>
+                <strong>SkillPickr flyer</strong>
+              </p>
+              <p>
+                A commission of <strong>10%</strong> will be added to the total price once the SkillPickr earner has
+                confirmed the booking
+              </p>
 
-
-              <p><strong>For more information or help go look in our help center. For help center click here</strong></p>
+              <p>
+                <strong>
+                  For more information or help go look in our help center. For help center{' '}
+                  <ExternalLink href={siteHelpCenter}>Click Here</ExternalLink>.
+                </strong>
+              </p>
 
               {/* <h3 id="contact" className={css.subtitle}>
                 Contact
@@ -81,8 +93,7 @@ const PricingPage = () => {
                 marketplace idea to reality.
               </p> */}
               <p>
-                You can also checkout our{' '}
-                <ExternalLink href={siteFacebookPage}>Facebook</ExternalLink> and{' '}
+                You can also checkout our <ExternalLink href={siteFacebookPage}>Facebook</ExternalLink> and{' '}
                 <ExternalLink href={siteTwitterPage}>Twitter</ExternalLink>.
               </p>
             </div>
@@ -94,7 +105,7 @@ const PricingPage = () => {
         </LayoutWrapperFooter>
       </LayoutSingleColumn>
     </StaticPage>
-  );
+  )
 }
 
 export default PricingPage

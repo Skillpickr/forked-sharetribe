@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LandingPage matches snapshot 1`] = `
-<Page
+<Connect(Page)
   className="root"
   contentType="website"
   description="LandingPage.schemaDescription"
@@ -9,7 +9,7 @@ exports[`LandingPage matches snapshot 1`] = `
     Array [
       Object {
         "height": 630,
-        "url": "skillpicker-facebook1200x630-01.jpg",
+        "url": "skillpickr-facebook1640x924.png",
         "width": 1200,
       },
     ]
@@ -20,7 +20,7 @@ exports[`LandingPage matches snapshot 1`] = `
       "@type": "WebPage",
       "description": "LandingPage.schemaDescription",
       "image": Array [
-        "http://localhost:3000skillpicker-facebook1200x630-01.jpg",
+        "http://localhost:3000skillpickr-facebook1640x924.png",
       ],
       "name": "LandingPage.schemaTitle",
     }
@@ -31,7 +31,7 @@ exports[`LandingPage matches snapshot 1`] = `
     Array [
       Object {
         "height": 314,
-        "url": "http://localhost:3000skillpicker-twitter600x314-01.jpg",
+        "url": "http://localhost:3000skillpickr-facebook1640x924.png",
         "width": 600,
       },
     ]
@@ -185,8 +185,12 @@ exports[`LandingPage matches snapshot 1`] = `
                           "label": "DJ",
                         },
                         Object {
-                          "key": "musicianSoloist",
+                          "key": "musician",
                           "label": "Musician",
+                        },
+                        Object {
+                          "key": "band",
+                          "label": "Band",
                         },
                       ],
                     },
@@ -197,6 +201,482 @@ exports[`LandingPage matches snapshot 1`] = `
                       "pub_skill",
                     ],
                     "type": "SelectSingleFilter",
+                  },
+                  Object {
+                    "config": Object {
+                      "options": Array [
+                        Object {
+                          "key": "ceremony",
+                          "label": "Ceremonial Events",
+                        },
+                        Object {
+                          "key": "reception",
+                          "label": "Reception Events",
+                        },
+                        Object {
+                          "key": "evening",
+                          "label": "Evening Events",
+                        },
+                        Object {
+                          "key": "privateParty",
+                          "label": "Private Parties",
+                        },
+                        Object {
+                          "key": "corporate",
+                          "label": "Corporate Parties",
+                        },
+                        Object {
+                          "key": "wedding",
+                          "label": "Weddings",
+                        },
+                        Object {
+                          "key": "birthday",
+                          "label": "Birthday parties",
+                        },
+                        Object {
+                          "key": "christmas",
+                          "label": "Christmas parties",
+                        },
+                        Object {
+                          "key": "newYear",
+                          "label": "New years Eve Parties",
+                        },
+                      ],
+                      "searchMode": "has_all",
+                    },
+                    "group": "secondary",
+                    "id": "bandType",
+                    "label": "Type of band events",
+                    "queryParamNames": Array [
+                      "pub_bandType",
+                    ],
+                    "type": "SelectMultipleFilter",
+                  },
+                  Object {
+                    "config": Object {
+                      "options": Array [
+                        Object {
+                          "key": "acousticBand",
+                          "label": "Acoustic band",
+                        },
+                        Object {
+                          "key": "alternativeBand",
+                          "label": "Alternative band",
+                        },
+                        Object {
+                          "key": "blueBand",
+                          "label": "Blues band",
+                        },
+                        Object {
+                          "key": "coverBand",
+                          "label": "Cover band",
+                        },
+                        Object {
+                          "key": "discoFunkBand",
+                          "label": "Disco & Funk band",
+                        },
+                        Object {
+                          "key": "danceClubGroup",
+                          "label": "Dance & Ibiza Club group",
+                        },
+                        Object {
+                          "key": "festivalBand",
+                          "label": "Festival band",
+                        },
+                        Object {
+                          "key": "folkRockBand",
+                          "label": "Folk-rock band",
+                        },
+                        Object {
+                          "key": "functionBand",
+                          "label": "Function band",
+                        },
+                        Object {
+                          "key": "hiphopBand",
+                          "label": "Hip hop group",
+                        },
+                        Object {
+                          "key": "indieBand",
+                          "label": "Indie band",
+                        },
+                        Object {
+                          "key": "mumfordBand",
+                          "label": "Mumford folk band",
+                        },
+                        Object {
+                          "key": "originalArtist",
+                          "label": "Original artist",
+                        },
+                        Object {
+                          "key": "partyBand",
+                          "label": "Party band",
+                        },
+                        Object {
+                          "key": "popBand",
+                          "label": "Pop band",
+                        },
+                        Object {
+                          "key": "gospelBand",
+                          "label": "R&B / Gospel Soul band",
+                        },
+                        Object {
+                          "key": "roamingBand",
+                          "label": "Roaming band",
+                        },
+                        Object {
+                          "key": "rockBAnd",
+                          "label": "Rock band",
+                        },
+                        Object {
+                          "key": "rockNRollBand",
+                          "label": "Rock n roll band",
+                        },
+                        Object {
+                          "key": "soulBand",
+                          "label": "Soul & Motown band",
+                        },
+                        Object {
+                          "key": "vintageBand",
+                          "label": "Vintage band",
+                        },
+                        Object {
+                          "key": "stringDuo",
+                          "label": "String duo",
+                        },
+                        Object {
+                          "key": "stringTrio",
+                          "label": "String trio",
+                        },
+                        Object {
+                          "key": "stringQuartet",
+                          "label": "String quartet",
+                        },
+                        Object {
+                          "key": "stringEnsemble",
+                          "label": "String ensemble",
+                        },
+                        Object {
+                          "key": "electricStringEnsemble",
+                          "label": "Electric string ensemble",
+                        },
+                        Object {
+                          "key": "jazzBand",
+                          "label": "Jazz band",
+                        },
+                        Object {
+                          "key": "bigBand",
+                          "label": "Big band",
+                        },
+                        Object {
+                          "key": "gypsyBand",
+                          "label": "Gypsy jazz band",
+                        },
+                        Object {
+                          "key": "jazzFusionBand",
+                          "label": "Jazz fusion band",
+                        },
+                        Object {
+                          "key": "jazzDuo",
+                          "label": "Jazz duo",
+                        },
+                        Object {
+                          "key": "jazzTrio",
+                          "label": "Jazz trio",
+                        },
+                        Object {
+                          "key": "latinJazzBand",
+                          "label": "Latin jazz band",
+                        },
+                        Object {
+                          "key": "newOrleansBand",
+                          "label": "New Orleans band",
+                        },
+                        Object {
+                          "key": "swingJiveBand",
+                          "label": "Swing & Jive band",
+                        },
+                        Object {
+                          "key": "vintageJazzBand",
+                          "label": "Vintage jazz band",
+                        },
+                        Object {
+                          "key": "ratPackBand",
+                          "label": "Rat Pack jazz band",
+                        },
+                        Object {
+                          "key": "popDuo",
+                          "label": "Pop duo",
+                        },
+                        Object {
+                          "key": "popTrio",
+                          "label": "Pop trio",
+                        },
+                        Object {
+                          "key": "acousticDuo",
+                          "label": "Acoustic duo",
+                        },
+                        Object {
+                          "key": "acousticTrio",
+                          "label": "Acoustic trio",
+                        },
+                        Object {
+                          "key": "rockDuo",
+                          "label": "Rock duo",
+                        },
+                        Object {
+                          "key": "rockTrio",
+                          "label": "Rock trio",
+                        },
+                        Object {
+                          "key": "classicalDuo",
+                          "label": "Classical duo",
+                        },
+                        Object {
+                          "key": "classicalEnsemble",
+                          "label": "Classical ensemble",
+                        },
+                        Object {
+                          "key": "classicalTrio",
+                          "label": "Classical trio",
+                        },
+                        Object {
+                          "key": "fluteHarpDuo",
+                          "label": "Flute and harp duo",
+                        },
+                        Object {
+                          "key": "pianoTrio",
+                          "label": "Piano trio",
+                        },
+                        Object {
+                          "key": "saxophoneEnsemble",
+                          "label": "Saxophone ensemble",
+                        },
+                        Object {
+                          "key": "windEnsemble",
+                          "label": "Wind ensemble",
+                        },
+                        Object {
+                          "key": "orchestra",
+                          "label": "Orchestra",
+                        },
+                        Object {
+                          "key": "showChoir",
+                          "label": "Show choir",
+                        },
+                        Object {
+                          "key": "gospelChoir",
+                          "label": "Gospel choir",
+                        },
+                        Object {
+                          "key": "choir",
+                          "label": "Choir",
+                        },
+                        Object {
+                          "key": "carolSingers",
+                          "label": "Carol singers",
+                        },
+                        Object {
+                          "key": "aCapellaGroup",
+                          "label": "A cappella group",
+                        },
+                        Object {
+                          "key": "barbershopQuartet",
+                          "label": "Barbershop quartet",
+                        },
+                        Object {
+                          "key": "churchChoir",
+                          "label": "Church choir",
+                        },
+                        Object {
+                          "key": "earlyMusicVocalEnsemble",
+                          "label": "Early music vocal ensemble",
+                        },
+                        Object {
+                          "key": "singingWaiters",
+                          "label": "Singing waiters",
+                        },
+                        Object {
+                          "key": "musicalTheatreCompany",
+                          "label": "Musical theatre company",
+                        },
+                        Object {
+                          "key": "operaCompany",
+                          "label": "Opera company",
+                        },
+                        Object {
+                          "key": "pipeBand",
+                          "label": "Pipe band",
+                        },
+                        Object {
+                          "key": "ceilidhBand",
+                          "label": "Ceilidh band",
+                        },
+                        Object {
+                          "key": "folkBand",
+                          "label": "Folk band",
+                        },
+                        Object {
+                          "key": "celticFolkBand",
+                          "label": "Celtic folk band",
+                        },
+                        Object {
+                          "key": "bluegrassBand",
+                          "label": "Bluegrass band",
+                        },
+                        Object {
+                          "key": "countryBand",
+                          "label": "Country band",
+                        },
+                        Object {
+                          "key": "americanaBand",
+                          "label": "Americana band",
+                        },
+                        Object {
+                          "key": "brassBand",
+                          "label": "Brass band",
+                        },
+                        Object {
+                          "key": "brassQuintet",
+                          "label": "Brass quintet",
+                        },
+                        Object {
+                          "key": "balkanBrassBand",
+                          "label": "Balkan brass band",
+                        },
+                        Object {
+                          "key": "bavarianBand",
+                          "label": "Bavarian oompah band",
+                        },
+                        Object {
+                          "key": "marchingBand",
+                          "label": "Marching band",
+                        },
+                        Object {
+                          "key": "balkanBand",
+                          "label": "Balkan band",
+                        },
+                        Object {
+                          "key": "frenchGroup",
+                          "label": "French group",
+                        },
+                        Object {
+                          "key": "klezmerBand",
+                          "label": "Klezmer band",
+                        },
+                        Object {
+                          "key": "spanishFolkBand",
+                          "label": "Spanish folk band",
+                        },
+                        Object {
+                          "key": "mariachiBand",
+                          "label": "Mariachi band",
+                        },
+                        Object {
+                          "key": "cubanBand",
+                          "label": "Cuban band",
+                        },
+                        Object {
+                          "key": "brazilianBand",
+                          "label": "Brazilian band",
+                        },
+                        Object {
+                          "key": "sambaBand",
+                          "label": "Samba band",
+                        },
+                        Object {
+                          "key": "steelDrumBand",
+                          "label": "Steel drums band",
+                        },
+                        Object {
+                          "key": "reggaeBand",
+                          "label": "Reggae band",
+                        },
+                        Object {
+                          "key": "skaBand",
+                          "label": "Ska band",
+                        },
+                        Object {
+                          "key": "caribbeanBand",
+                          "label": "Caribbean band",
+                        },
+                        Object {
+                          "key": "calypsoBand",
+                          "label": "Calypso band",
+                        },
+                        Object {
+                          "key": "afroBeatBand",
+                          "label": "Afrobeat band",
+                        },
+                        Object {
+                          "key": "africanEnsemble",
+                          "label": "African ensemble",
+                        },
+                        Object {
+                          "key": "classicalIndianEnsemble",
+                          "label": "Classical Indian ensemble",
+                        },
+                        Object {
+                          "key": "bollywoodEnsemble",
+                          "label": "Bollywood ensemble",
+                        },
+                        Object {
+                          "key": "tradChineseEnsemble",
+                          "label": "Traditional Chinese ensemble",
+                        },
+                        Object {
+                          "key": "tradArabicEnsemble",
+                          "label": "Traditional Arabic ensemble",
+                        },
+                        Object {
+                          "key": "earlyMusicEnsemble",
+                          "label": "Early music ensemble",
+                        },
+                        Object {
+                          "key": "1950Band",
+                          "label": "1950s era tribute band",
+                        },
+                        Object {
+                          "key": "1960Band",
+                          "label": "1960s era tribute band",
+                        },
+                        Object {
+                          "key": "1970Band",
+                          "label": "1970s era tribute band",
+                        },
+                        Object {
+                          "key": "1980Band",
+                          "label": "1980s era tribute band",
+                        },
+                        Object {
+                          "key": "1990Band",
+                          "label": "1990s era tribute band",
+                        },
+                        Object {
+                          "key": "2000Band",
+                          "label": "2000s era tribute band",
+                        },
+                        Object {
+                          "key": "abbaTributeBand",
+                          "label": "Tribute band - Abba",
+                        },
+                        Object {
+                          "key": "beatlesTributeBand",
+                          "label": "Tribute band - Beatles",
+                        },
+                        Object {
+                          "key": "queenTributeBand",
+                          "label": "Tribute band - Queen",
+                        },
+                      ],
+                      "searchMode": "has_all",
+                    },
+                    "group": "secondary",
+                    "id": "bandGenre",
+                    "label": "Band Genre",
+                    "queryParamNames": Array [
+                      "pub_bandGenre",
+                    ],
+                    "type": "SelectMultipleFilter",
                   },
                   Object {
                     "config": Object {
@@ -344,47 +824,45 @@ exports[`LandingPage matches snapshot 1`] = `
                     "config": Object {
                       "options": Array [
                         Object {
-                          "key": "allround",
-                          "label": "All around DJ",
+                          "key": "yes",
+                          "label": "Yes",
                         },
                         Object {
-                          "key": "wedding",
-                          "label": "Wedding DJ",
-                        },
-                        Object {
-                          "key": "radio",
-                          "label": "Radio DJ",
-                        },
-                        Object {
-                          "key": "club",
-                          "label": "Club DJ",
-                        },
-                        Object {
-                          "key": "mobile",
-                          "label": "Mobile DJ",
-                        },
-                        Object {
-                          "key": "turntablist",
-                          "label": "Turntablist",
-                        },
-                        Object {
-                          "key": "corporate",
-                          "label": "Corporate event DJ",
-                        },
-                        Object {
-                          "key": "birthday",
-                          "label": "Birthday DJ",
+                          "key": "no",
+                          "label": "No",
                         },
                       ],
-                      "searchMode": "has_all",
                     },
                     "group": "secondary",
-                    "id": "djType",
-                    "label": "DJ",
+                    "id": "ownStudio",
                     "queryParamNames": Array [
-                      "pub_djType",
+                      "",
                     ],
-                    "type": "SelectMultipleFilter",
+                    "type": "",
+                  },
+                  Object {
+                    "config": Object {
+                      "options": Array [
+                        Object {
+                          "key": "yes",
+                          "label": "Yes",
+                        },
+                        Object {
+                          "key": "no",
+                          "label": "No",
+                        },
+                        Object {
+                          "key": "maybe",
+                          "label": "Willing to learn",
+                        },
+                      ],
+                    },
+                    "group": "secondary",
+                    "id": "soundLightExp",
+                    "queryParamNames": Array [
+                      "",
+                    ],
+                    "type": "",
                   },
                   Object {
                     "config": Object {
@@ -912,9 +1390,9 @@ exports[`LandingPage matches snapshot 1`] = `
                       ],
                       "searchMode": "has_all",
                     },
-                    "group": "secondary",
-                    "id": "musicSoloistType",
-                    "label": "Musician",
+                    "group": "primary",
+                    "id": "musicianSoloType",
+                    "label": "Type of musician",
                     "queryParamNames": Array [
                       "pub_musicianSoloType",
                     ],
@@ -1023,10 +1501,10 @@ exports[`LandingPage matches snapshot 1`] = `
                       "searchMode": "has_all",
                     },
                     "group": "secondary",
-                    "id": "musicalGenre",
+                    "id": "musicianGenre",
                     "label": "Musical Genre",
                     "queryParamNames": Array [
-                      "pub_musicalGenre",
+                      "pub_musicianGenre",
                     ],
                     "type": "SelectMultipleFilter",
                   },
@@ -1068,45 +1546,47 @@ exports[`LandingPage matches snapshot 1`] = `
                     "config": Object {
                       "options": Array [
                         Object {
-                          "key": "yes",
-                          "label": "Yes",
+                          "key": "allround",
+                          "label": "All around DJ",
                         },
                         Object {
-                          "key": "no",
-                          "label": "No",
+                          "key": "wedding",
+                          "label": "Wedding DJ",
+                        },
+                        Object {
+                          "key": "radio",
+                          "label": "Radio DJ",
+                        },
+                        Object {
+                          "key": "club",
+                          "label": "Club DJ",
+                        },
+                        Object {
+                          "key": "mobile",
+                          "label": "Mobile DJ",
+                        },
+                        Object {
+                          "key": "turntablist",
+                          "label": "Turntablist",
+                        },
+                        Object {
+                          "key": "corporate",
+                          "label": "Corporate event DJ",
+                        },
+                        Object {
+                          "key": "birthday",
+                          "label": "Birthday DJ",
                         },
                       ],
+                      "searchMode": "has_all",
                     },
                     "group": "secondary",
-                    "id": "ownStudio",
+                    "id": "djType",
+                    "label": "DJ",
                     "queryParamNames": Array [
-                      "",
+                      "pub_djType",
                     ],
-                    "type": "",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "yes",
-                          "label": "Yes",
-                        },
-                        Object {
-                          "key": "no",
-                          "label": "No",
-                        },
-                        Object {
-                          "key": "maybe",
-                          "label": "Willing to learn",
-                        },
-                      ],
-                    },
-                    "group": "secondary",
-                    "id": "soundLightExp",
-                    "queryParamNames": Array [
-                      "",
-                    ],
-                    "type": "",
+                    "type": "SelectMultipleFilter",
                   },
                   Object {
                     "config": Object {
@@ -1180,5 +1660,5 @@ exports[`LandingPage matches snapshot 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSingleColumn>
-</Page>
+</Connect(Page)>
 `;

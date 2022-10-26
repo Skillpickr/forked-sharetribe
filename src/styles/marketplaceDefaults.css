@@ -1,5 +1,6 @@
 @import '../assets/sanitize.css';
 @import './customMediaQueries.css';
+@import 'react-phone-number-input/style.css';
 
 /* ================ Custom Properties aka CSS variables ================ */
 
@@ -17,19 +18,24 @@
   /* ================ Colors ================ */
 
   --marketplaceColor: #fc6161;
+
   --marketplaceColorLight: #feb4b4;
   --marketplaceColorDark: #fa0e0e;
+  --marketplaceColorGradient: linear-gradient(94deg, rgba(254, 180, 180, 1) 0%, rgba(252, 97, 97, 0.5) 100%);
 
   /* Used with inline CSS SVGs */
   --marketplaceColorEncoded: %230095b3;
 
-  --successColor: #2ecc71;
+  --successColor: #44b044;
   --successColorDark: #239954;
-  --successColorLight: #f0fff6;
+  --successColorLight: #cfeccf;
+  --infoColor: #6184fc;
+  --infoColorDark: #239954;
+  --infoColorLight: #d7e0fe;
   --failColor: #ff0000;
   --failColorLight: #fff0f0;
-  --attentionColor: #ffaa00;
-  --attentionColorLight: #fff7f0;
+  --attentionColor: #fcaf61;
+  --attentionColorLight: #feebd7;
   --bannedColorLight: var(--marketplaceColorLight);
   --bannedColorDark: var(--marketplaceColor);
 
@@ -136,7 +142,7 @@
 
   /* ================ SectionHero ================ */
 
-  --SectionHero_desktopTitleMaxWidth: 625px;
+  --SectionHero_desktopTitleMaxWidth: 100%;
 
   /* ================ TabNav ================ */
   --TabNav_linkWidth: 240px;
@@ -159,6 +165,26 @@
   /* ================ ProfileSettingsForm ================ */
   --ProfileSettingsForm_avatarSize: 96px;
   --ProfileSettingsForm_avatarSizeDesktop: 240px;
+
+  /* ================ Phoneinput plugin ================ */
+
+  --PhoneInput-color--focus: #03b2cb;
+  --PhoneInputInternationalIconPhone-opacity: 0.8;
+  --PhoneInputInternationalIconGlobe-opacity: 0.65;
+  --PhoneInputCountrySelect-marginRight: 0.35em;
+  --PhoneInputCountrySelectArrow-width: 0.3em;
+  --PhoneInputCountrySelectArrow-marginLeft: var(--PhoneInputCountrySelect-marginRight);
+  --PhoneInputCountrySelectArrow-borderWidth: 1px;
+  --PhoneInputCountrySelectArrow-opacity: 0.45;
+  --PhoneInputCountrySelectArrow-color: currentColor;
+  --PhoneInputCountrySelectArrow-color--focus: var(--PhoneInput-color--focus);
+  --PhoneInputCountrySelectArrow-transform: rotate(45deg);
+  --PhoneInputCountryFlag-aspectRatio: 1.5;
+  --PhoneInputCountryFlag-height: 1em;
+  --PhoneInputCountryFlag-borderWidth: 1px;
+  --PhoneInputCountryFlag-borderColor: rgba(0, 0, 0, 0.5);
+  --PhoneInputCountryFlag-borderColor--focus: var(--PhoneInput-color--focus);
+  --PhoneInputCountryFlag-backgroundColor--loading: rgba(0, 0, 0, 0.1);
 }
 
 /* ================ Global element styles ================ */
@@ -596,7 +622,7 @@ textarea {
 
 .marketplaceHeroTitleFontStyles {
   font-weight: var(--fontWeightBold);
-  font-size: 36px;
+  font-size: 24px;
   line-height: 36px;
   letter-spacing: -0.7px;
   /* margin-top + n * line-height + margin-bottom => x * 6px */
@@ -1116,4 +1142,8 @@ textarea {
   @media (--viewportMedium) {
     margin-top: 32px;
   }
+}
+
+.PhoneInputCountryIcon {
+  color: var(--marketplaceColorDark) !important;
 }

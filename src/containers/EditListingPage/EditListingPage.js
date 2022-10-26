@@ -75,7 +75,8 @@ export const EditListingPageComponent = (props) => {
     allowOnlyOneListing,
     stripeAccountFetched,
     stripeAccount,
-    updateStripeAccountError
+    updateStripeAccountError,
+    currentUserHasListings
   } = props
 
   const { id, type, returnURLType } = params
@@ -223,6 +224,7 @@ export const EditListingPageComponent = (props) => {
           stripeAccount={stripeAccount}
           stripeAccountError={createStripeAccountError || updateStripeAccountError || fetchStripeAccountError}
           stripeAccountLinkError={getAccountLinkError}
+          currentUserHasListings={currentUserHasListings}
         />
         <Footer />
       </Page>
@@ -290,6 +292,7 @@ EditListingPageComponent.propTypes = {
   onUpdateListing: func.isRequired,
   onChange: func.isRequired,
   page: object.isRequired,
+  currentUserHasListings: bool.isRequired,
   params: shape({
     id: string.isRequired,
     slug: string.isRequired,
@@ -324,7 +327,7 @@ const mapStateToProps = (state) => {
     stripeAccountFetched
   } = state.stripeConnectAccount
 
-  const { currentUser, currentUserListing, currentUserListingFetched } = state.user
+  const { currentUser, currentUserListing, currentUserHasListings, currentUserListingFetched } = state.user
 
   const fetchInProgress = createStripeAccountInProgress
 
@@ -344,6 +347,7 @@ const mapStateToProps = (state) => {
     currentUser,
     currentUserListing,
     currentUserListingFetched,
+    currentUserHasListings,
     fetchInProgress,
     getOwnListing,
     page,

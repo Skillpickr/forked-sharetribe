@@ -8,129 +8,108 @@ exports[`EditListingDescriptionForm matches snapshot 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="root title"
+    className="alert secondary"
   >
-    <label
-      htmlFor="title"
+    <div
+      className="container"
     >
-      EditListingDescriptionForm.title
-    </label>
-    <input
-      autoFocus={true}
-      className="input"
-      id="title"
-      maxLength={60}
-      name="title"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="EditListingDescriptionForm.titlePlaceholder"
-      type="text"
-      value=""
-    />
+      <p>
+        Don’t sweat it! You can just draft a version of your concept now and change it later.
+      </p>
+    </div>
+    <span
+      className="closebtn"
+      onClick={[Function]}
+    >
+      ×
+    </span>
   </div>
-  <div
-    className="root description"
-  >
-    <label
-      htmlFor="description"
+  <div>
+    <h2>
+      Info about you as a creative artist
+    </h2>
+    <div
+      className="root description"
     >
-      EditListingDescriptionForm.description
-    </label>
-    <textarea
-      className="input textarea"
-      id="description"
-      maxLength={5000}
-      name="description"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="EditListingDescriptionForm.descriptionPlaceholder"
-      rows={1}
-      value=""
-    />
-  </div>
-  <div
-    className="root description"
-  >
-    <label
-      htmlFor="experience"
+      <label
+        htmlFor="experience"
+      >
+        EditListingDescriptionForm.experience
+      </label>
+      <input
+        className="input"
+        id="experience"
+        name="experience"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="EditListingDescriptionForm.experiencePlaceholder"
+        type="number"
+        value=""
+      />
+    </div>
+    <div
+      className="root description"
     >
-      EditListingDescriptionForm.experience
-    </label>
-    <input
-      className="input"
-      id="experience"
-      name="experience"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="EditListingDescriptionForm.experiencePlaceholder"
-      type="number"
-      value=""
-    />
-  </div>
-  <div
-    className="root description"
-  >
-    <label
-      htmlFor="track"
+      <label
+        htmlFor="track"
+      >
+        EditListingDescriptionForm.track
+      </label>
+      <textarea
+        className="input textarea"
+        id="track"
+        maxLength={5000}
+        name="track"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="EditListingDescriptionForm.trackPlaceholder"
+        rows={1}
+        value=""
+      />
+    </div>
+    <div
+      className="root description"
     >
-      EditListingDescriptionForm.track
-    </label>
-    <textarea
-      className="input textarea"
-      id="track"
-      maxLength={5000}
-      name="track"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="EditListingDescriptionForm.trackPlaceholder"
-      rows={1}
-      value=""
-    />
-  </div>
-  <div
-    className="root description"
-  >
-    <label
-      htmlFor="url"
+      <label
+        htmlFor="url"
+      >
+        EditListingDescriptionForm.url
+      </label>
+      <input
+        className="input"
+        id="url"
+        name="url"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="EditListingDescriptionForm.urlPlaceholder"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="root description"
     >
-      EditListingDescriptionForm.url
-    </label>
-    <input
-      className="input inputSuccess"
-      id="url"
-      name="url"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="EditListingDescriptionForm.urlPlaceholder"
-      type="text"
-      value=""
-    />
-  </div>
-  <div
-    className="root description"
-  >
-    <label
-      htmlFor="bonus"
-    >
-      EditListingDescriptionForm.bonus
-    </label>
-    <textarea
-      className="input inputSuccess textarea"
-      id="bonus"
-      maxLength={5000}
-      name="bonus"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder="EditListingDescriptionForm.bonusPlaceholder"
-      rows={1}
-      value=""
-    />
+      <label
+        htmlFor="bonus"
+      >
+        EditListingDescriptionForm.bonus
+      </label>
+      <textarea
+        className="input inputSuccess textarea"
+        id="bonus"
+        maxLength={5000}
+        name="bonus"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="EditListingDescriptionForm.bonusPlaceholder"
+        rows={1}
+        value=""
+      />
+    </div>
   </div>
   <button
     className="root submitButton"

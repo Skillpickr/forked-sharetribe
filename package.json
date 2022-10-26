@@ -1,15 +1,20 @@
 {
-  "name": "app",
-  "version": "11.0.1",
+  "name": "SkillPickr",
+  "version": "1.3.0",
   "private": true,
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/runtime": "^7.17.9",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@loadable/component": "^5.15.2",
     "@loadable/server": "^5.15.2",
     "@mapbox/polyline": "^1.1.1",
     "@sentry/browser": "^6.19.7",
     "@sentry/node": "^6.19.7",
+    "@sentry/react": "^7.14.1",
+    "@sentry/tracing": "^7.14.1",
     "array-includes": "^3.1.5",
     "array.prototype.find": "^2.2.0",
     "autosize": "^5.0.1",
@@ -30,6 +35,7 @@
     "final-form-arrays": "^3.0.2",
     "full-icu": "^1.4.0",
     "helmet": "^4.6.0",
+    "history": "^5.3.0",
     "jose": "4.8.1",
     "jstimezonedetect": "^1.0.7",
     "lodash": "^4.17.21",
@@ -54,8 +60,10 @@
     "react-image-gallery": "^1.0.9",
     "react-intl": "^5.25.1",
     "react-moment-proptypes": "^1.8.1",
+    "react-phone-number-input": "^3.2.11",
     "react-redux": "^7.2.8",
     "react-router-dom": "^5.3.2",
+    "react-tooltip": "^4.2.21",
     "react-with-direction": "^1.4.0",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
@@ -132,5 +140,10 @@
   },
   "engines": {
     "node": ">=14.15.0"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-phone-number-input)"
+    ]
   }
 }

@@ -4,25 +4,13 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
 import classNames from 'classnames'
-import {
-  txIsAccepted,
-  txIsCanceled,
-  txIsDeclined,
-  txIsEnquired,
-  txIsRequested,
-  txHasBeenDelivered,
-  txIsPaymentExpired,
-  txIsPaymentPending
-} from '../../util/transaction'
+
 import { propTypes, DATE_TYPE_DATETIME } from '../../util/types'
 import { createSlug, stringify } from '../../util/urlHelpers'
 import { ensureCurrentUser, ensureListing } from '../../util/data'
 import { getMarketplaceEntities } from '../../ducks/marketplaceData.duck'
 import { isScrollingDisabled } from '../../ducks/UI.duck'
 import {
-  Avatar,
-  BookingTimeInfo,
-  NamedLink,
   NotificationBadge,
   Page,
   PaginationLinks,
@@ -34,248 +22,18 @@ import {
   LayoutWrapperFooter,
   Footer,
   IconSpinner,
-  UserDisplayName
+  InboxItem
 } from '../../components'
 import { TopbarContainer, NotFoundPage } from '../../containers'
 import config from '../../config'
+import { txState } from './tsState'
 
 import css from './InboxPage.module.css'
-
-const formatDate = (intl, date) => {
-  return {
-    short: intl.formatDate(date, {
-      month: 'short',
-      day: 'numeric'
-    }),
-    long: `${intl.formatDate(date)} ${intl.formatTime(date)}`
-  }
-}
-
-// Translated name of the state of the given transaction
-export const txState = (intl, tx, type) => {
-  const isOrder = type === 'order'
-
-  if (txIsEnquired(tx)) {
-    return {
-      nameClassName: isOrder ? css.nameNotEmphasized : css.nameEmphasized,
-      bookingClassName: css.bookingActionNeeded,
-      lastTransitionedAtClassName: css.lastTransitionedAtEmphasized,
-      stateClassName: css.stateActionNeeded,
-      state: intl.formatMessage({
-        id: 'InboxPage.stateEnquiry'
-      })
-    }
-  } else if (txIsRequested(tx)) {
-    const requested = isOrder
-      ? {
-          nameClassName: css.nameNotEmphasized,
-          bookingClassName: css.bookingNoActionNeeded,
-          lastTransitionedAtClassName: css.lastTransitionedAtEmphasized,
-          stateClassName: css.stateActionNeeded,
-          state: intl.formatMessage({
-            id: 'InboxPage.stateRequested'
-          })
-        }
-      : {
-          nameClassName: css.nameEmphasized,
-          bookingClassName: css.bookingActionNeeded,
-          lastTransitionedAtClassName: css.lastTransitionedAtEmphasized,
-          stateClassName: css.stateActionNeeded,
-          state: intl.formatMessage({
-            id: 'InboxPage.statePending'
-          })
-        }
-
-    return requested
-  } else if (txIsPaymentPending(tx)) {
-    return {
-      nameClassName: isOrder ? css.nameNotEmphasized : css.nameEmphasized,
-      bookingClassName: css.bookingNoActionNeeded,
-      lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
-      stateClassName: isOrder ? css.stateActionNeeded : css.stateNoActionNeeded,
-      state: intl.formatMessage({
-        id: 'InboxPage.statePendingPayment'
-      })
-    }
-  } else if (txIsPaymentExpired(tx)) {
-    return {
-      nameClassName: css.nameNotEmphasized,
-      bookingClassName: css.bookingNoActionNeeded,
-      lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
-      stateClassName: css.stateNoActionNeeded,
-      state: intl.formatMessage({
-        id: 'InboxPage.stateExpired'
-      })
-    }
-  } else if (txIsDeclined(tx)) {
-    return {
-      nameClassName: css.nameNotEmphasized,
-      bookingClassName: css.bookingNoActionNeeded,
-      lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
-      stateClassName: css.stateNoActionNeeded,
-      state: intl.formatMessage({
-        id: 'InboxPage.stateDeclined'
-      })
-    }
-  } else if (txIsAccepted(tx)) {
-    return {
-      nameClassName: css.nameNotEmphasized,
-      bookingClassName: css.bookingNoActionNeeded,
-      lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
-      stateClassName: css.stateSucces,
-      state: intl.formatMessage({
-        id: 'InboxPage.stateAccepted'
-      })
-    }
-  } else if (txIsCanceled(tx)) {
-    return {
-      nameClassName: css.nameNotEmphasized,
-      bookingClassName: css.bookingNoActionNeeded,
-      lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
-      stateClassName: css.stateNoActionNeeded,
-      state: intl.formatMessage({
-        id: 'InboxPage.stateCanceled'
-      })
-    }
-  } else if (txHasBeenDelivered(tx)) {
-    return {
-      nameClassName: css.nameNotEmphasized,
-      bookingClassName: css.bookingNoActionNeeded,
-      lastTransitionedAtClassName: css.lastTransitionedAtNotEmphasized,
-      stateClassName: css.stateNoActionNeeded,
-      state: intl.formatMessage({
-        id: 'InboxPage.stateDelivered'
-      })
-    }
-  } else {
-    console.warn('This transition is unknown:', tx.attributes.lastTransition)
-    return null
-  }
-}
-
-// Functional component as internal helper to print BookingTimeInfo if that is needed
-const BookingInfoMaybe = (props) => {
-  const { bookingClassName, isOrder, intl, tx, unitType } = props
-  const isEnquiry = txIsEnquired(tx)
-
-  if (isEnquiry) {
-    return null
-  }
-  const listingAttributes = ensureListing(tx.listing).attributes
-  const timeZone = listingAttributes.availabilityPlan ? listingAttributes.availabilityPlan.timezone : 'Etc/UTC'
-
-  // If you want to show the booking price after the booking time on InboxPage you can
-  // add the price after the BookingTimeInfo component. You can get the price by uncommenting
-  // sthe following lines:
-
-  // const bookingPrice = isOrder ? tx.attributes.payinTotal : tx.attributes.payoutTotal;
-  // const price = bookingPrice ? formatMoney(intl, bookingPrice) : null;
-
-  // Remember to also add formatMoney function from 'util/currency.js' and add this after BookingTimeInfo:
-  // <div className={css.itemPrice}>{price}</div>
-
-  return (
-    <div className={classNames(css.bookingInfoWrapper, bookingClassName)}>
-      <BookingTimeInfo
-        bookingClassName={bookingClassName}
-        isOrder={isOrder}
-        intl={intl}
-        tx={tx}
-        unitType={unitType}
-        dateType={DATE_TYPE_DATETIME}
-        timeZone={timeZone}
-      />
-    </div>
-  )
-}
-
-BookingInfoMaybe.propTypes = {
-  intl: intlShape.isRequired,
-  isOrder: bool.isRequired,
-  tx: propTypes.transaction.isRequired,
-  unitType: propTypes.bookingUnitType.isRequired
-}
-
-const createListingLink = (listing, otherUser, searchParams = {}, className = '') => {
-  const listingId = listing.id && listing.id.uuid
-  const label = listing.attributes.title
-  const listingDeleted = listing.attributes.deleted
-
-  if (!listingDeleted) {
-    const params = { id: listingId, slug: createSlug(label) }
-    const to = { search: stringify(searchParams) }
-    return (
-      <NamedLink className={className} name="ListingPage" params={params} to={to}>
-        <Avatar user={otherUser} disableProfileLink />
-      </NamedLink>
-    )
-  } else {
-    return <FormattedMessage id="TransactionPanel.deletedListingOrderTitle" />
-  }
-}
-
-export const InboxItem = (props) => {
-  const { unitType, type, tx, intl, stateData } = props
-  const { customer, provider, listing } = tx
-  const isOrder = type === 'order'
-
-  const otherUser = isOrder ? provider : customer
-  const otherUserDisplayName = <UserDisplayName user={otherUser} intl={intl} />
-  const isOtherUserBanned = otherUser.attributes.banned
-
-  const isSaleNotification = !isOrder && txIsRequested(tx)
-  const rowNotificationDot = isSaleNotification ? <div className={css.notificationDot} /> : null
-  const lastTransitionedAt = formatDate(intl, tx.attributes.lastTransitionedAt)
-
-  const linkClasses = classNames(css.itemLink, {
-    [css.bannedUserLink]: isOtherUserBanned
-  })
-
-  const listingLink = listing ? createListingLink(listing, otherUser) : null
-
-  return (
-    <div className={css.item}>
-      <div className={css.itemAvatar}>{isOrder && listing ? listingLink : <Avatar user={otherUser} />}</div>
-      <NamedLink
-        className={linkClasses}
-        name={isOrder ? 'OrderDetailsPage' : 'SaleDetailsPage'}
-        params={{ id: tx.id.uuid }}>
-        <div className={css.rowNotificationDot}>{rowNotificationDot}</div>
-        <div className={css.itemInfo}>
-          <div className={classNames(css.itemUsername, stateData.nameClassName)}>{otherUserDisplayName}</div>
-          <BookingInfoMaybe
-            bookingClassName={stateData.bookingClassName}
-            intl={intl}
-            isOrder={isOrder}
-            tx={tx}
-            unitType={unitType}
-          />
-        </div>
-        <div className={css.itemState}>
-          <div className={classNames(css.stateName, stateData.stateClassName)}>{stateData.state}</div>
-          <div
-            className={classNames(css.lastTransitionedAt, stateData.lastTransitionedAtClassName)}
-            title={lastTransitionedAt.long}>
-            {lastTransitionedAt.short}
-          </div>
-        </div>
-      </NamedLink>
-    </div>
-  )
-}
-
-InboxItem.propTypes = {
-  unitType: propTypes.bookingUnitType.isRequired,
-  type: oneOf(['order', 'sale']).isRequired,
-  tx: propTypes.transaction.isRequired,
-  intl: intlShape.isRequired
-}
 
 export const InboxPageComponent = (props) => {
   const {
     unitType,
     currentUser,
-    currentUserListing,
     fetchInProgress,
     fetchOrdersOrSalesError,
     intl,
@@ -387,7 +145,7 @@ export const InboxPageComponent = (props) => {
           <h1 className={css.title}>
             <FormattedMessage id="InboxPage.title" />
           </h1>
-          {currentUserListing ? nav : <div className={css.navPlaceholder} />}
+          {nav}
         </LayoutWrapperSideNav>
         <LayoutWrapperMain>
           {error}
@@ -414,7 +172,6 @@ export const InboxPageComponent = (props) => {
 InboxPageComponent.defaultProps = {
   unitType: config.bookingUnitType,
   currentUser: null,
-  currentUserListing: null,
   currentUserHasOrders: null,
   fetchOrdersOrSalesError: null,
   pagination: null,
@@ -429,7 +186,6 @@ InboxPageComponent.propTypes = {
 
   unitType: propTypes.bookingUnitType,
   currentUser: propTypes.currentUser,
-  currentUserListing: propTypes.ownListing,
   fetchInProgress: bool.isRequired,
   fetchOrdersOrSalesError: propTypes.error,
   pagination: propTypes.pagination,
@@ -443,10 +199,9 @@ InboxPageComponent.propTypes = {
 
 const mapStateToProps = (state) => {
   const { fetchInProgress, fetchOrdersOrSalesError, pagination, transactionRefs } = state.InboxPage
-  const { currentUser, currentUserListing, currentUserNotificationCount: providerNotificationCount } = state.user
+  const { currentUser, currentUserNotificationCount: providerNotificationCount } = state.user
   return {
     currentUser,
-    currentUserListing,
     fetchInProgress,
     fetchOrdersOrSalesError,
     pagination,

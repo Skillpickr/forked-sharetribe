@@ -29,25 +29,6 @@ import EditListingWizardTab, {
 } from './EditListingWizardTab'
 import css from './EditListingWizard.module.css'
 
-// Show availability calendar only if environment variable availabilityEnabled is true
-const availabilityMaybe = config.enableAvailability ? [AVAILABILITY] : []
-
-// You can reorder these panels.
-// Note 1: You need to change save button translations for new listing flow
-// Note 2: Ensure that draft listing is created after the first panel
-// and listing publishing happens after last panel.
-// Note 3: in FTW-hourly template we don't use the POLICY tab so it's commented out.
-// If you want to add a free text field to your listings you can enable the POLICY tab
-export const TABS = [
-  DESCRIPTION,
-  FEATURES,
-  //POLICY,
-  LOCATION,
-  PRICING,
-  ...availabilityMaybe,
-  PHOTOS
-]
-
 // Tabs are horizontal in small screens
 const MAX_HORIZONTAL_NAV_SCREEN_WIDTH = 1023
 
@@ -105,23 +86,6 @@ const tabCompleted = (tab, listing) => {
     default:
       return false
   }
-}
-
-/**
- * Check which wizard tabs are active and which are not yet available. Tab is active if previous
- * tab is completed. In edit mode all tabs are active.
- *
- * @param isNew flag if a new listing is being created or an old one being edited
- * @param listing data to be checked
- *
- * @return object containing activity / editability of different tabs of this wizard
- */
-const tabsActive = (isNew, listing) => {
-  return TABS.reduce((acc, tab) => {
-    const previousTabIndex = TABS.findIndex((t) => t === tab) - 1
-    const isActive = previousTabIndex >= 0 ? !isNew || tabCompleted(TABS[previousTabIndex], listing) : true
-    return { ...acc, [tab]: isActive }
-  }, {})
 }
 
 const scrollToTab = (tabPrefix, tabId) => {
@@ -267,9 +231,47 @@ class EditListingWizard extends Component {
       stripeAccount,
       stripeAccountError,
       stripeAccountLinkError,
+      currentUserHasListings,
       currentUser,
       ...rest
     } = this.props
+
+    // TODO: add a shop to the create listing
+    const publicProfileMaybe = currentUserHasListings ? [] : [DESCRIPTION]
+    const availabilityMaybe = config.enableAvailability ? [AVAILABILITY] : []
+
+    // You can reorder these panels.
+    // Note 1: You need to change save button translations for new listing flow
+    // Note 2: Ensure that draft listing is created after the first panel
+    // and listing publishing happens after last panel.
+    // Note 3: in FTW-hourly template we don't use the POLICY tab so it's commented out.
+    // If you want to add a free text field to your listings you can enable the POLICY tab
+    const TABS = [
+      FEATURES,
+      DESCRIPTION,
+      //POLICY,
+      LOCATION,
+      PRICING,
+      ...availabilityMaybe,
+      PHOTOS
+    ]
+
+    /**
+     * Check which wizard tabs are active and which are not yet available. Tab is active if previous
+     * tab is completed. In edit mode all tabs are active.
+     *
+     * @param isNew flag if a new listing is being created or an old one being edited
+     * @param listing data to be checked
+     *
+     * @return object containing activity / editability of different tabs of this wizard
+     */
+    const tabsActive = (isNew, listing) => {
+      return TABS.reduce((acc, tab) => {
+        const previousTabIndex = TABS.findIndex((t) => t === tab) - 1
+        const isActive = previousTabIndex >= 0 ? !isNew || tabCompleted(TABS[previousTabIndex], listing) : true
+        return { ...acc, [tab]: isActive }
+      }, {})
+    }
 
     const selectedTab = params.tab
     const isNewListingFlow = [LISTING_PAGE_PARAM_TYPE_NEW, LISTING_PAGE_PARAM_TYPE_DRAFT].includes(params.type)
@@ -462,10 +464,11 @@ EditListingWizard.propTypes = {
     id: string.isRequired,
     slug: string.isRequired,
     type: oneOf(LISTING_PAGE_PARAM_TYPES).isRequired,
-    tab: oneOf(TABS).isRequired
+    tab: string.isRequired
   }).isRequired,
   stripeAccount: object,
   stripeAccountFetched: bool,
+  currentUserHasListings: bool.isRequired,
 
   // We cannot use propTypes.listing since the listing might be a draft.
   listing: shape({

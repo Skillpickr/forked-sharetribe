@@ -76,40 +76,52 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
       />
     </div>
   </form>
-  <a
-    className="createListingLink"
-    href="/l/new"
-    onClick={[Function]}
-    onMouseOver={[Function]}
-    onTouchStart={[Function]}
-    style={Object {}}
-    title={null}
-  >
-    <span
-      className="createListing"
+  <div>
+    <button
+      className="inlineTextButtonRoot inlineTextButton Tooltip-Wrapper"
+      disabled={false}
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
     >
-      <span>
-        TopbarDesktop.createListing
-      </span>
-    </span>
-  </a>
-  <a
-    className="inboxLink"
-    href="/inbox/sales"
-    onClick={[Function]}
-    onMouseOver={[Function]}
-    onTouchStart={[Function]}
-    style={Object {}}
-    title={null}
-  >
-    <span
-      className="inbox"
+      <a
+        className="inboxLink"
+        href="/inbox/sales"
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        onTouchStart={[Function]}
+        style={Object {}}
+        title={null}
+      >
+        <span
+          className="inbox"
+        />
+      </a>
+    </button>
+    <button
+      className="inlineTextButtonRoot inlineTextButton Tooltip-Wrapper"
+      disabled={false}
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
     >
-      <span>
-        TopbarDesktop.inbox
-      </span>
-    </span>
-  </a>
+      <a
+        className="inboxLink"
+        href="/listings"
+        onClick={[Function]}
+        onMouseOver={[Function]}
+        onTouchStart={[Function]}
+        style={Object {}}
+        title={null}
+      >
+        <span
+          className="inbox"
+        />
+      </a>
+    </button>
+  </div>
   <div
     className="root"
     onBlur={[Function]}
@@ -144,10 +156,14 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
         <li
           className="root"
           role="menuitem"
+        />
+        <li
+          className="root"
+          role="menuitem"
         >
           <a
             className="yourListingsLink"
-            href="/listings"
+            href="/inbox/sales"
             onClick={[Function]}
             onMouseOver={[Function]}
             onTouchStart={[Function]}
@@ -158,7 +174,7 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
               className="menuItemBorder"
             />
             <span>
-              TopbarDesktop.yourListingsLink
+              TopbarDesktop.inbox
             </span>
           </a>
         </li>

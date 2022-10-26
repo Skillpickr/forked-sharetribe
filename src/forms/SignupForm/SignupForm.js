@@ -5,9 +5,13 @@ import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
 import { Form as FinalForm } from 'react-final-form'
 import classNames from 'classnames'
 import * as validators from '../../util/validators'
-import { Form, PrimaryButton, FieldTextInput } from '../../components'
+import { Form, PrimaryButton, FieldTextInput, InputLabel } from '../../components'
 
+import './SignupForm.module.css'
+import PhoneInput from 'react-phone-number-input'
 import css from './SignupForm.module.css'
+import { Field } from 'react-final-form'
+import useGeoLocation from '../../util/ipGeoLocation'
 
 const KEY_CODE_ENTER = 13
 
@@ -33,6 +37,20 @@ const SignupFormComponent = (props) => (
         id: 'SignupForm.emailInvalid'
       })
       const emailValid = validators.emailFormatValid(emailInvalidMessage)
+
+      // phone number
+      const phoneLabel = intl.formatMessage({
+        id: 'SignupForm.phoneLabel'
+      })
+      const phoneLabelTooltip = intl.formatMessage({
+        id: 'SignupForm.phoneLabel.tooltip'
+      })
+      const phonePlaceholder = intl.formatMessage({
+        id: 'SignupForm.phonePlaceholder'
+      })
+      const phoneRequiredMessage = intl.formatMessage({
+        id: 'SignupForm.phoneRequired'
+      })
 
       // password
       const passwordLabel = intl.formatMessage({
@@ -87,6 +105,7 @@ const SignupFormComponent = (props) => (
       const lastNameRequiredMessage = intl.formatMessage({
         id: 'SignupForm.lastNameRequired'
       })
+
       const lastNameRequired = validators.required(lastNameRequiredMessage)
 
       const classes = classNames(rootClassName || css.root, className)
@@ -110,6 +129,8 @@ const SignupFormComponent = (props) => (
         </span>
       )
 
+      const location = useGeoLocation()
+
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           <div>
@@ -122,6 +143,24 @@ const SignupFormComponent = (props) => (
               placeholder={emailPlaceholder}
               validate={validators.composeValidators(emailRequired, emailValid)}
             />
+            <div className={css.phone}>
+              <Field id={formId ? `${formId}.phoneNumber` : 'phoneNumber'} name="phoneNumber">
+                {({ input, meta }) => {
+                  return (
+                    <div>
+                      <div>
+                        <InputLabel
+                          text={phoneLabel}
+                          id={formId ? `${formId}.phoneLabel` : 'phoneLabel'}
+                          tooltip={true}
+                          tooltipString={phoneLabelTooltip}></InputLabel>
+                      </div>
+                      <PhoneInput {...input} placeholder={phonePlaceholder} defaultCountry={location.country} />
+                    </div>
+                  )
+                }}
+              </Field>
+            </div>
             <div className={css.name}>
               <FieldTextInput
                 className={css.firstNameRoot}

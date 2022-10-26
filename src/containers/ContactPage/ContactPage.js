@@ -21,39 +21,39 @@ const AboutPage = () => {
   // prettier-ignore
   return (
     <StaticPage
-      title="Contact"
+      title="Contact | SkillPickr"
       schema={{
         '@context': 'http://schema.org',
-        '@type': 'ContactPAge',
-        "description": 'Contact SkillPickr',
-        "name": 'Contact page',
-      }}
-    >
+        '@type': 'ContactPage',
+        description: 'Do you have feedback, questions or something else ? We would love to hear from you!',
+        name: 'Contact page'
+      }}>
       <LayoutSingleColumn>
         <LayoutWrapperTopbar>
           <TopbarContainer />
         </LayoutWrapperTopbar>
 
         <LayoutWrapperMain className={css.staticPageWrapper}>
-          <h1 className={css.pageTitle}>SkillPickr - Passion led us here</h1>
+          <h1 className={css.pageTitle}>SkillPickr - Contact</h1>
           <img className={css.coverImage} src={image} alt="My first ice cream." />
 
           <div className={css.contentWrapper}>
             <div className={css.contentSide}>
-              <p>SkillPickr is a purpose driven startup, working on becoming an all in one solution for people living a creative multidisciplinary life.</p>
+              <p>
+                SkillPickr is a purpose driven startup, working on becoming an all in one solution for people living a
+                creative multidisciplinary life.
+              </p>
             </div>
 
             <div className={css.contentMain}>
               <h2 className={css.subtitle}>Contact</h2>
 
-
-
-              <p>Do you have feedback, questions or something else ? We would love to hear from you! 
-                Please send us an email to <a href="mailto:hello@skillpickr.com">hello@skillpickr.com</a>. 
-                We will get back to you as soon as possible. 
-                The waiting time for a response can be up to 72 hours, but we always intend to respond earlier. 
-                If you need us to get in touch with you by phone, please let us know by email. Remember to include your phone number and we will call you as soon as possible.
-
+              <p>
+                Do you have feedback, questions or something else ? We would love to hear from you! Please send us an
+                email to <a href="mailto:hello@skillpickr.com">hello@skillpickr.com</a>. We will get back to you as soon
+                as possible. The waiting time for a response can be up to 72 hours, but we always intend to respond
+                earlier. If you need us to get in touch with you by phone, please let us know by email. Remember to
+                include your phone number and we will call you as soon as possible.
               </p>
 
               {/* <h3 id="contact" className={css.subtitle}>
@@ -67,8 +67,7 @@ const AboutPage = () => {
                 marketplace idea to reality.
               </p> */}
               <p>
-                You can also checkout our{' '}
-                <ExternalLink href={siteFacebookPage}>Facebook</ExternalLink> and{' '}
+                You can also checkout our <ExternalLink href={siteFacebookPage}>Facebook</ExternalLink> and{' '}
                 <ExternalLink href={siteTwitterPage}>Twitter</ExternalLink>.
               </p>
             </div>
@@ -80,7 +79,7 @@ const AboutPage = () => {
         </LayoutWrapperFooter>
       </LayoutSingleColumn>
     </StaticPage>
-  );
+  )
 }
 
 export default AboutPage

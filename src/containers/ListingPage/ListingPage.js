@@ -206,7 +206,7 @@ export class ListingPageComponent extends Component {
     const params = { slug: listingSlug, ...rawParams }
 
     const listingType = isDraftVariant ? LISTING_PAGE_PARAM_TYPE_DRAFT : LISTING_PAGE_PARAM_TYPE_EDIT
-    const listingTab = isDraftVariant ? 'photos' : 'description'
+    const listingTab = isDraftVariant ? 'photos' : 'features'
 
     const isApproved = currentListing.id && currentListing.attributes.state !== LISTING_STATE_PENDING_APPROVAL
 
@@ -382,11 +382,18 @@ export class ListingPageComponent extends Component {
       } else if (optionConfig.key === Skills.dj) {
         subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.djTypeKey, filterConfig)
         Array.prototype.push.apply(selectedSubOptions, publicData.djType)
-      } else if (optionConfig.key === Skills.musicianSoloist) {
+      } else if (optionConfig.key === Skills.musician) {
         subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicianTypeKey, filterConfig)
         Array.prototype.push.apply(selectedSubOptions, publicData.musicianType)
-        genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicalGenre, filterConfig)
-        Array.prototype.push.apply(selectedGenres, publicData.musicalGenre)
+        genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.musicianGenreKey, filterConfig)
+        Array.prototype.push.apply(selectedGenres, publicData.musicianGenre)
+        selectedConfigGenreOptions = genreOptions.filter((o) => selectedGenres.find((s) => s === o.key))
+      } else if (optionConfig.key === Skills.band) {
+        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.bandTypeKey, filterConfig)
+        Array.prototype.push.apply(selectedSubOptions, publicData.bandType)
+
+        genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.bandGenreKey, filterConfig)
+        Array.prototype.push.apply(selectedGenres, publicData.bandGenre)
         selectedConfigGenreOptions = genreOptions.filter((o) => selectedGenres.find((s) => s === o.key))
       }
     } else null
@@ -439,7 +446,7 @@ export class ListingPageComponent extends Component {
                     onContactUser={this.onContactUser}
                     listingSkill={publicData ? publicData.skill : null}
                     skillOptions={skillOptions}
-                    musicianSoloist={publicData ? publicData.musicSoloistType : null}
+                    musician={publicData ? publicData.musicianSoloType : null}
                     musicianSoloistOptions={musicSoloistOptions}
                   />
                   <SectionDescriptionMaybe description={description} />
@@ -449,7 +456,7 @@ export class ListingPageComponent extends Component {
                     selectedSubOptions={selectedSubOptions}
                     selectedConfigSubOptions={selectedConfigSubOptions}
                   />
-                  {optionConfig.key === Skills.musicianSoloist && (
+                  {optionConfig.key === (Skills.musician || Skills.band) && (
                     <SectionGenresMaybe
                       selectedGenres={selectedGenres}
                       selectedConfigGenreOptions={selectedConfigGenreOptions}

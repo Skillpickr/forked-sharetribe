@@ -1,0 +1,83 @@
+@import '../../styles/customMediaQueries.css';
+
+/* The alert message box */
+.alert {
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.alert svg {
+  color: white;
+  padding: 1rem;
+  border: 1px solid white;
+  border-radius: 1rem;
+  margin: 0.5rem;
+}
+
+.container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.error {
+  border-color: var(--marketplaceColor);
+}
+.error svg {
+  background-color: var(--marketplaceColor);
+}
+
+.success {
+  border-color: var(--successColor);
+}
+.success svg {
+  background-color: var(--successColor);
+}
+
+.warning {
+  border-color: var(--attentionColor);
+}
+.warning svg {
+  background-color: var(--attentionColor);
+}
+.primary {
+  border-color: var(--infoColor);
+}
+.primary svg {
+  background-color: var(--infoColor);
+}
+
+.secondary {
+  border-color: var(--matterColorAnti);
+}
+.secondary svg {
+  background-color: var(--matterColorAnti);
+}
+
+.info {
+  color: #055160;
+  background-color: #cff4fc;
+  border-color: #b6effb;
+}
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+.hide {
+  display: none;
+}

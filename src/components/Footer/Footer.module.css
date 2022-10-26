@@ -119,12 +119,14 @@
 
 .logo {
   width: 200px;
+  -o-object-fit: contain;
   object-fit: contain;
+  -o-object-position: left center;
   object-position: left center;
   height: 27px;
 }
 
-img {
+.logo img {
   width: 200px;
 }
 
