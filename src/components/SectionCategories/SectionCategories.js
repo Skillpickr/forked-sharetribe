@@ -80,7 +80,7 @@ const SectionCategories = (props) => {
         {/* {categories} */}
         {categoryLink(
           'Performance & Entertainment',
-          '(e.g. DJ, Musicians)',
+          '(e.g. DJ, Musicians, Bands)',
           performanceImage,
           '?pub_category=performance',
           false

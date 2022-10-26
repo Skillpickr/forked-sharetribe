@@ -15,7 +15,7 @@ import css from './PricingPage.module.css'
 import image from './pricing.jpg'
 
 const PricingPage = () => {
-  const { siteTwitterHandle, siteFacebookPage } = config
+  const { siteTwitterHandle, siteFacebookPage, siteHelpCenter } = config
   const siteTwitterPage = twitterPageURL(siteTwitterHandle)
 
   // prettier-ignore
@@ -76,7 +76,10 @@ const PricingPage = () => {
               </p>
 
               <p>
-                <strong>For more information or help go look in our help center. For help center click here</strong>
+                <strong>
+                  For more information or help go look in our help center. For help center{' '}
+                  <ExternalLink href={siteHelpCenter}>Click Here</ExternalLink>.
+                </strong>
               </p>
 
               {/* <h3 id="contact" className={css.subtitle}>

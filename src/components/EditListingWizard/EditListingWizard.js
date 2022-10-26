@@ -247,8 +247,8 @@ class EditListingWizard extends Component {
     // Note 3: in FTW-hourly template we don't use the POLICY tab so it's commented out.
     // If you want to add a free text field to your listings you can enable the POLICY tab
     const TABS = [
-      DESCRIPTION,
       FEATURES,
+      DESCRIPTION,
       //POLICY,
       LOCATION,
       PRICING,

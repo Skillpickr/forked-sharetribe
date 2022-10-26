@@ -5,8 +5,7 @@ import { Form as FinalForm } from 'react-final-form'
 import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl'
 import classNames from 'classnames'
 import { propTypes } from '../../util/types'
-import { maxLength, required, composeValidators, validBusinessURL } from '../../util/validators'
-import { Form, Button, FieldTextInput, Alert } from '../../components'
+import { Form, Button, Alert } from '../../components'
 
 import css from './EditListingDescriptionForm.module.css'
 import EditListingOtherInfoForm from '../EditListingFeaturesForm/skills/EditListingOtherInfoForm'
@@ -78,10 +77,7 @@ const EditListingDescriptionFormComponent = (props) => (
           {errorMessageUpdateListing}
           {errorMessageShowListing}
           <Alert type="secondary">
-            <p>
-              Don’t sweat it! You can just draft a version of your concept now and change it later. <br></br>So
-              let&apos;s get started and tell us about you and your artistic expertise.
-            </p>
+            <p>Don’t sweat it! You can just draft a version of your concept now and change it later.</p>
           </Alert>
           {/* SHOP NAME */}
           {/* We find creative artists often draw inspiration from what they sell, their style, pretty much anything goes. */}

@@ -82,14 +82,14 @@ class EditListingOtherInfoForm extends Component {
           placeholder={urlPlaceholderMessage}
           validate={urlValidateMessage}
         />
-        {/* <FieldTextInput
+        <FieldTextInput
           id="bonus"
           name="bonus"
           className={css.description}
           type="textarea"
           label={bonusMessage}
           placeholder={bonusPlaceholderMessage}
-        /> */}
+        />
       </div>
     )
   }

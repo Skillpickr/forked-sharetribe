@@ -13,5 +13,7 @@
   border-bottom-color: var(--failColor);
 }
 
-.textarea {
+textarea {
+  height: 90px;
+  padding: 4px;
 }

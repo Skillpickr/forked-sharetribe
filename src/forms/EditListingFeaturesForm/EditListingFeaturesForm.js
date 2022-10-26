@@ -118,7 +118,8 @@ const EditListingFeaturesFormComponent = (props) => (
           {errorMessageShowListing}
           <Alert type="secondary">
             <p>
-              Add some details about your concept. Fill out what you can for now - you’ll be able to edit this later.
+              Let&apos;s get started and tell us about you and your artistic expertise. Add some details about your
+              concept. Fill out what you can for now - you’ll be able to edit this later.
             </p>
           </Alert>
           <FieldSelect
