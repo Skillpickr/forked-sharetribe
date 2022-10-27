@@ -8,12 +8,25 @@ exports[`SectionHero matches snapshot 1`] = `
     className="heroContent"
   >
     <h1
-      className="heroMainTitle heroMainTitleFEDelay"
+      className="heroMainTitle"
     >
       <span>
         SectionHero.title
       </span>
     </h1>
+    <a
+      className="heroButton"
+      href="/s"
+      onClick={[Function]}
+      onMouseOver={[Function]}
+      onTouchStart={[Function]}
+      style={Object {}}
+      title={null}
+    >
+      <span>
+        SectionHero.browseButton
+      </span>
+    </a>
   </div>
 </div>
 `;
