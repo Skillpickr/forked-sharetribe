@@ -61,7 +61,8 @@ exports.sitemapStructure = () => {
       '/': ['get'],
       '/signup': ['get'],
       '/login': ['get'],
-      '/s': ['get'],
+      '/s?pub_category=performance': ['get'],
+      '/s?pub_category=creative': ['get'],
       '/about': ['get'],
       '/pricing': ['get'],
       '/contact': ['get'],
@@ -85,7 +86,11 @@ exports.sitemapStructure = () => {
         changefreq: 'always',
         priority: 1.0
       },
-      '/s': {
+      '/s?pub_category=performance': {
+        changefreq: 'always',
+        priority: 1.0
+      },
+      '/s?pub_category=creative': {
         changefreq: 'always',
         priority: 1.0
       },
