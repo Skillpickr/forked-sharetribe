@@ -23,9 +23,10 @@ const SectionHero = (props) => {
             address: '',
             origin: latlng,
             bounds: locationBounds(latlng, config.maps.search.currentLocationBoundsDistance)
-          })
+          }),
+            setMounted(true)
         }
-      }, setMounted(true))
+      })
       .catch((error) => console.log(error))
   }
 
@@ -52,8 +53,10 @@ const SectionHero = (props) => {
     const includeSearchQuery = searchQuery.length > 0 ? `?${searchQuery}` : ''
     urlString = includeSearchQuery
   } else {
-    urlString = stringify(location)
+    urlString = ''
   }
+
+  console.log(urlString)
 
   return (
     <div className={classes}>
@@ -64,14 +67,13 @@ const SectionHero = (props) => {
         {/* <h2 className={classNames(css.heroSubTitle, { [css.heroSubTitleFEDelay]: mounted })}>
           <FormattedMessage id="SectionHero.subTitle" />
         </h2> */}
-        {ipLocation && (
-          <NamedLink
-            name="SearchPage"
-            to={{ search: urlString }}
-            className={classNames(css.heroButton, { [css.heroButtonFEDelay]: mounted })}>
-            <FormattedMessage id="SectionHero.browseButton" />
-          </NamedLink>
-        )}
+
+        <NamedLink
+          name="SearchPage"
+          to={{ search: urlString }}
+          className={classNames(css.heroButton, { [css.heroButtonFEDelay]: mounted })}>
+          <FormattedMessage id="SectionHero.browseButton" />
+        </NamedLink>
       </div>
     </div>
   )
