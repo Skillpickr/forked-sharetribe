@@ -210,6 +210,7 @@ export class ProfilePageComponent extends Component {
         siteTitle: config.siteTitle
       }
     )
+    console.log(profileUser)
 
     return (
       <Page
@@ -218,7 +219,8 @@ export class ProfilePageComponent extends Component {
         schema={{
           '@context': 'http://schema.org',
           '@type': 'ProfilePage',
-          name: schemaTitle
+          name: schemaTitle,
+          description: profileUser.attributes.profile.bio
         }}>
         <LayoutSideNavigation>
           <LayoutWrapperTopbar>
