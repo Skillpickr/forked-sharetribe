@@ -24,9 +24,9 @@ const AboutPage = () => {
       title="About Us | SkillPickr"
       schema={{
         '@context': 'http://schema.org',
-        '@type': 'Organization',
+        '@type': ['Organization', 'WepPage'],
         url: 'https://skillpickr.com',
-        logo: 'https://github.com/Skillpickr/public/blob/main/skillpickr-logo-black-499x499.jpeg',
+        logo: 'https://github.com/Skillpickr/public/blob/c179bac2e57f0e605e8df4fa2eb2487d13f0a642/skillpickr-logo-black-499x499.jpeg',
         description:
           'SkillPickr is a purpose driven startup, working on becoming an all in one solution for people living a creative multidisciplinary life.',
         name: 'About page'

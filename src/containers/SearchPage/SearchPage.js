@@ -154,49 +154,52 @@ export class SearchPageComponent extends Component {
     return (
       <Page scrollingDisabled={scrollingDisabled} description={description} title={title} schema={schema}>
         <TopbarContainer className={topbarClasses} currentPage="SearchPage" currentSearchParams={urlQueryParams} />
-        <div className={css.container}>
-          <MainPanel
-            urlQueryParams={validQueryParams}
-            listings={listings}
-            searchInProgress={searchInProgress}
-            searchListingsError={searchListingsError}
-            searchParamsAreInSync={searchParamsAreInSync}
-            onActivateListing={onActivateListing}
-            onManageDisableScrolling={onManageDisableScrolling}
-            onOpenModal={this.onOpenMobileModal}
-            onCloseModal={this.onCloseMobileModal}
-            onMapIconClick={onMapIconClick}
-            pagination={pagination}
-            searchParamsForPagination={parse(location.search)}
-            showAsModalMaxWidth={MODAL_BREAKPOINT}
-            history={history}
-          />
-          <ModalInMobile
-            className={css.mapPanel}
-            id="SearchPage.map"
-            isModalOpenOnMobile={this.state.isSearchMapOpenOnMobile}
-            onClose={() => this.setState({ isSearchMapOpenOnMobile: false })}
-            showAsModalMaxWidth={MODAL_BREAKPOINT}
-            onManageDisableScrolling={onManageDisableScrolling}>
-            <div className={css.mapWrapper}>
-              {shouldShowSearchMap ? (
-                <SearchMap
-                  reusableContainerClassName={css.map}
-                  activeListingId={activeListingId}
-                  bounds={bounds}
-                  center={origin}
-                  isSearchMapOpenOnMobile={this.state.isSearchMapOpenOnMobile}
-                  location={location}
-                  listings={mapListings || []}
-                  onMapMoveEnd={this.onMapMoveEnd}
-                  onCloseAsModal={() => {
-                    onManageDisableScrolling('SearchPage.map', false)
-                  }}
-                  messages={intl.messages}
-                />
-              ) : null}
-            </div>
-          </ModalInMobile>
+        <div className={css.page}>
+          <h1 className="">Search Results</h1>
+          <div className={css.container}>
+            <MainPanel
+              urlQueryParams={validQueryParams}
+              listings={listings}
+              searchInProgress={searchInProgress}
+              searchListingsError={searchListingsError}
+              searchParamsAreInSync={searchParamsAreInSync}
+              onActivateListing={onActivateListing}
+              onManageDisableScrolling={onManageDisableScrolling}
+              onOpenModal={this.onOpenMobileModal}
+              onCloseModal={this.onCloseMobileModal}
+              onMapIconClick={onMapIconClick}
+              pagination={pagination}
+              searchParamsForPagination={parse(location.search)}
+              showAsModalMaxWidth={MODAL_BREAKPOINT}
+              history={history}
+            />
+            <ModalInMobile
+              className={css.mapPanel}
+              id="SearchPage.map"
+              isModalOpenOnMobile={this.state.isSearchMapOpenOnMobile}
+              onClose={() => this.setState({ isSearchMapOpenOnMobile: false })}
+              showAsModalMaxWidth={MODAL_BREAKPOINT}
+              onManageDisableScrolling={onManageDisableScrolling}>
+              <div className={css.mapWrapper}>
+                {shouldShowSearchMap ? (
+                  <SearchMap
+                    reusableContainerClassName={css.map}
+                    activeListingId={activeListingId}
+                    bounds={bounds}
+                    center={origin}
+                    isSearchMapOpenOnMobile={this.state.isSearchMapOpenOnMobile}
+                    location={location}
+                    listings={mapListings || []}
+                    onMapMoveEnd={this.onMapMoveEnd}
+                    onCloseAsModal={() => {
+                      onManageDisableScrolling('SearchPage.map', false)
+                    }}
+                    messages={intl.messages}
+                  />
+                ) : null}
+              </div>
+            </ModalInMobile>
+          </div>
         </div>
       </Page>
     )
