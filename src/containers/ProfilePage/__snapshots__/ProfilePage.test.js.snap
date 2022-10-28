@@ -6,6 +6,7 @@ exports[`ProfilePage matches snapshot 1`] = `
     Object {
       "@context": "http://schema.org",
       "@type": "ProfilePage",
+      "description": undefined,
       "name": "ProfilePage.schemaTitle",
     }
   }
