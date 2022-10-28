@@ -48,10 +48,15 @@ export const LandingPageComponent = (props) => {
       twitterImages={[{ url: `${config.canonicalRootURL}${twitterImage}`, width: 600, height: 314 }]}
       schema={{
         '@context': 'http://schema.org',
-        '@type': 'WebPage',
+        '@type': ['WebPage', 'SoftwareApplication'],
         description: schemaDescription,
         name: schemaTitle,
-        image: [schemaImage]
+        applicationCategory: 'BusinessApplication',
+        image: [schemaImage],
+        offers: {
+          '@type': 'Offer',
+          price: '0'
+        }
       }}>
       <LayoutSingleColumn>
         <LayoutWrapperTopbar>

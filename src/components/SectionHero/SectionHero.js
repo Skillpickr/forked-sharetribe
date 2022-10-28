@@ -56,8 +56,6 @@ const SectionHero = (props) => {
     urlString = ''
   }
 
-  console.log(urlString)
-
   return (
     <div className={classes}>
       <div className={css.heroContent}>

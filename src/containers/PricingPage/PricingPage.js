@@ -24,19 +24,8 @@ const PricingPage = () => {
       title="Pricing"
       schema={{
         '@context': 'http://schema.org',
-        '@type': 'HowTo',
-        description: 'How much do SkillPickr charge?',
+        '@type': 'WebPage',
         name: 'How much do SkillPickr charge?',
-        mainEntity: [
-          {
-            '@type': 'Question',
-            name: 'Question 1?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Answer: Lorem ipsum'
-            }
-          }
-        ]
       }}>
       <LayoutSingleColumn>
         <LayoutWrapperTopbar>
