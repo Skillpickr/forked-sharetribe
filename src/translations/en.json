@@ -1127,7 +1127,7 @@
   "TopbarMobileMenu.newListingLink": "Start earning on SkillPickr",
   "TopbarMobileMenu.profileSettingsLink": "Profile",
   "TopbarMobileMenu.signupLink": "Sign in",
-  "TopbarMobileMenu.signupOrLogin": "{signup} or {login}",
+  "TopbarMobileMenu.signupOrLogin": "{login}",
   "TopbarMobileMenu.unauthorizedGreeting": "Hello there,{lineBreak}would you like to {signupOrLogin}?",
   "TopbarMobileMenu.yourListingsLink": "Your public profile",
   "TopbarSearchForm.placeholder": "Search by locating a skill you need",
