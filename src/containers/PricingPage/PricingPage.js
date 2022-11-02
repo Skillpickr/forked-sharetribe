@@ -53,7 +53,7 @@ const PricingPage = () => {
                 <strong>SkillPickr earner </strong>
               </p>
               <p>
-                A commission of <strong>15%</strong> will be deducted from the total price once you have confirmed the
+                A commission of <strong>10%</strong> will be deducted from the total price once you have confirmed the
                 booking
               </p>
               <p>
