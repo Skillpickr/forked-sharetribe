@@ -10,6 +10,7 @@ import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration'
 import { propTypes } from '../../util/types'
 import { ensureCurrentUser } from '../../util/data'
 import { AvatarLarge, InlineTextButton, NamedLink, NotificationBadge } from '../../components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import css from './TopbarMobileMenu.module.css'
 
@@ -74,15 +75,15 @@ const TopbarMobileMenu = (props) => {
   }
 
   const listingOrNot = currentUserHasListings ? (
-    <NamedLink className={css.navigationLink} name="ManageListingsPage">
-      <span className={css.inbox}>
-        <FormattedMessage id="TopbarDesktop.yourListingsLink" />
-      </span>
+    <NamedLink className={css.createNewListingLink} name="ManageListingsPage">
+      <FontAwesomeIcon icon="fa-solid fa-piggy-bank" size="xl" className={css.icon} />
+      <FormattedMessage id="TopbarDesktop.yourListingsLink" />
     </NamedLink>
   ) : (
-    <NamedLink className={classNames(css.navigationLink, currentPageClass('NewListingPage'))} name="NewListingPage">
-      <span className={css.menuItemBorder} />
-      <FormattedMessage id="TopbarDesktop.createListing" />
+    <NamedLink
+      className={classNames(css.createNewListingLink, currentPageClass('NewListingPage'))}
+      name="NewListingPage">
+      <FormattedMessage id="TopbarMobileMenu.newListingLink" />
     </NamedLink>
   )
 
@@ -103,7 +104,6 @@ const TopbarMobileMenu = (props) => {
           <FormattedMessage id="TopbarMobileMenu.inboxLink" />
           {notificationCountBadge}
         </NamedLink>
-        {listingOrNot}
 
         <NamedLink
           className={classNames(css.navigationLink, currentPageClass('ProfileSettingsPage'))}
@@ -117,9 +117,10 @@ const TopbarMobileMenu = (props) => {
         </NamedLink>
       </div>
       <div className={css.footer}>
-        <NamedLink className={css.createNewListingLink} name="NewListingPage">
+        {listingOrNot}
+        {/* <NamedLink className={css.createNewListingLink} name="NewListingPage">
           <FormattedMessage id="TopbarMobileMenu.newListingLink" />
-        </NamedLink>
+        </NamedLink> */}
       </div>
     </div>
   )
