@@ -49,6 +49,14 @@ const AboutPage = () => {
             </div>
 
             <div className={css.contentMain}>
+              <p>
+                The need for a space supporting artistic creative people is why Cæcilie and Allan, former PM and UI
+                Specialist, founded SkillPickr in Feb 2022. <br/> One place to brand, organize, keep track of jobs, payments
+                and earn money for artistic people living a creative multidisciplinary life does not exist and for the
+                customer, finding them is a time consuming and fragmented experience. SkillPickr is a global online
+                tooling marketplace and community nurturing, inspiring and encouraging creative minds is SkillPickr’s
+                mission.{' '}
+              </p>
               <h2 className={css.subtitle}>Purpose</h2>
               <h3>WHY</h3>
               <p>
