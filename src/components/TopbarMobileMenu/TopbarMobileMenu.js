@@ -9,7 +9,7 @@ import classNames from 'classnames'
 import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration'
 import { propTypes } from '../../util/types'
 import { ensureCurrentUser } from '../../util/data'
-import { AvatarLarge, InlineTextButton, NamedLink, NotificationBadge, OwnListingLink } from '../../components'
+import { AvatarLarge, InlineTextButton, NamedLink, NotificationBadge } from '../../components'
 
 import css from './TopbarMobileMenu.module.css'
 
@@ -73,6 +73,19 @@ const TopbarMobileMenu = (props) => {
     return currentPage === page || isAccountSettingsPage ? css.currentPage : null
   }
 
+  const listingOrNot = currentUserHasListings ? (
+    <NamedLink className={css.navigationLink} name="ManageListingsPage">
+      <span className={css.inbox}>
+        <FormattedMessage id="TopbarDesktop.yourListingsLink" />
+      </span>
+    </NamedLink>
+  ) : (
+    <NamedLink className={classNames(css.navigationLink, currentPageClass('NewListingPage'))} name="NewListingPage">
+      <span className={css.menuItemBorder} />
+      <FormattedMessage id="TopbarDesktop.createListing" />
+    </NamedLink>
+  )
+
   return (
     <div className={css.root}>
       <AvatarLarge className={css.avatar} user={currentUser} />
@@ -90,11 +103,8 @@ const TopbarMobileMenu = (props) => {
           <FormattedMessage id="TopbarMobileMenu.inboxLink" />
           {notificationCountBadge}
         </NamedLink>
-        <OwnListingLink
-          listing={currentUserListing}
-          listingFetched={currentUserListingFetched}
-          className={css.navigationLink}
-        />
+        {listingOrNot}
+
         <NamedLink
           className={classNames(css.navigationLink, currentPageClass('ProfileSettingsPage'))}
           name="ProfileSettingsPage">
