@@ -57,12 +57,15 @@
 }
 
 /* Mobile only social media links */
-.someLiksMobile {
+.someLinksMobile {
   margin-bottom: 24px;
 
   @media (--viewportMedium) {
     display: none;
   }
+}
+.someLinks {
+  margin-bottom: 24px;
 }
 
 .icon {
@@ -154,8 +157,20 @@
 
 /* Desktop and Mobile: links to more information */
 .infoLinks {
-  order: 2;
-  //flex-basis: 165px;
+  order: 3;
+  /* flex-basis: 165px; */
+  margin-right: 24px;
+  margin-bottom: 24px;
+
+  @media (--viewportMedium) {
+    padding-top: 2px;
+    margin-right: 12px;
+  }
+}
+
+.aboutUs {
+  order: 4;
+  /* flex-basis: 165px; */
   margin-right: 24px;
   margin-bottom: 24px;
 
@@ -202,8 +217,8 @@
 
 /* Desktop and Mobile: searches - first column */
 .searches {
-  order: 3;
-  flex-basis: 165px;
+  order: 2;
+  /* flex-basis: 165px; */
   margin-right: 24px;
   margin-bottom: 24px;
 
@@ -306,9 +321,9 @@
 
   background-color: var(--matterColorLight);
 
-  @media (--viewportMedium) {
+  /* @media (--viewportMedium) {
     display: none;
-  }
+  } */
 }
 
 .organizationCopyrightMobile {
@@ -330,9 +345,9 @@
 }
 
 .tosAndPrivacyMobile {
-  flex-basis: 172px;
+  flex-basis: 200px;
 }
 
 .privacy {
-  margin-right: 24px;
+  margin-right: 16px;
 }

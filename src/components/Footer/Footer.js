@@ -47,14 +47,17 @@ const Footer = (props) => {
   const { rootClassName, className, intl } = props
   const socialMediaLinks = renderSocialMediaLinks(intl)
   const classes = classNames(rootClassName || css.root, className)
-  const { siteHelpCenter } = config
+  const { siteHelpCenter, sitePricingHelpCenter } = config
   const goToHC = intl.formatMessage({ id: 'Footer.goToHelpCenter' })
+  const goToHCPricing = intl.formatMessage({ id: 'Footer.goToHelpCenter' })
 
   return (
     <div className={classes}>
       <div className={css.topBorderWrapper}>
         <div className={css.content}>
-          <div className={css.someLiksMobile}>{socialMediaLinks}</div>
+          {/* <div className={css.someLinksMobile}>{socialMediaLinks}</div> */}
+          <div className={css.someLinks}>{socialMediaLinks}</div>
+
           <div className={css.links}>
             <div className={css.organization} id="organization">
               <NamedLink name="LandingPage" className={css.logoLink}>
@@ -63,100 +66,121 @@ const Footer = (props) => {
                 </span>
               </NamedLink>
               <div className={css.organizationInfo}>
-                <p className={css.organizationDescription}>
-                  <FormattedMessage id="Footer.organizationDescription" />
-                </p>
-                <p className={css.organizationCopyright}>
-                  <NamedLink name="LandingPage" className={css.copyrightLink}>
-                    <FormattedMessage id="Footer.copyright" />
-                  </NamedLink>
-                </p>
+                <ul className={css.list}>
+                  <li className={css.listItem}>
+                    <p className={css.link}>
+                      <strong>About us</strong>
+                    </p>
+                  </li>
+                </ul>
               </div>
             </div>
             <div className={css.infoLinks}>
               <ul className={css.list}>
                 <li className={css.listItem}>
+                  <p className={css.link}>
+                    <strong>Sell</strong>
+                  </p>
+                </li>
+                <li className={css.listItem}>
                   <NamedLink name="NewListingPage" className={css.link}>
                     <FormattedMessage id="Footer.toNewListingPage" />
                   </NamedLink>
                 </li>
+
                 <li className={css.listItem}>
-                  <NamedLink name="AboutPage" className={css.link}>
-                    <FormattedMessage id="Footer.toAboutPage" />
-                  </NamedLink>
-                </li>
-                <li className={css.listItem}>
-                  <NamedLink name="PricingPage" className={css.link}>
+                  <ExternalLink
+                    key="linkToPricing"
+                    href={sitePricingHelpCenter}
+                    className={css.link}
+                    title={goToHCPricing}>
                     <FormattedMessage id="Footer.toPricingPage" />
-                  </NamedLink>
+                  </ExternalLink>
                 </li>
                 <li>
                   <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
                     <FormattedMessage id="Footer.toHelpCenter" />
                   </ExternalLink>
                 </li>
+
                 {/* <li className={css.listItem}>
-                  <NamedLink name="LandingPage" className={css.link}>
-                    <FormattedMessage id="Footer.toFAQPage" />
-                  </NamedLink>
-                </li>
-                <li className={css.listItem}>
-                  <NamedLink name="LandingPage" className={css.link}>
-                    <FormattedMessage id="Footer.toHelpPage" />
-                  </NamedLink>
-                </li> */}
-                <li className={css.listItem}>
                   <NamedLink name="ContactPage" className={css.link}>
                     <FormattedMessage id="Footer.toContactPage" />
                   </NamedLink>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className={css.searches}>
               <ul className={css.list}>
                 <li className={css.listItem}>
-                  {/* <NamedLink
-                    name="SearchPage"
-                    to={{
-                      search:
-                        '?address=Copenhagen%2C%20Capital%20RegionDenmark%2C%20Denmark&bounds=55.727852%2C12.822593%2C55.588413%2C12.499474',
-                    }}
-                    className={css.link}
-                  >
-                    <FormattedMessage id="Footer.searchCopenhagen" />
-                  </NamedLink>
+                  <p className={css.link}>
+                    <strong>Categories</strong>
+                  </p>
                 </li>
                 <li className={css.listItem}>
-                  <NamedLink
-                    name="SearchPage"
-                    to={{
-                      search:
-                        '?address=Odense%2C%20RegionSouthern%20Denmark%2C%20Denmark&bounds=55.482592%2C10.576854%2C55.288122%2C10.221037',
-                    }}
-                    className={css.link}
-                  >
-                    <FormattedMessage id="Footer.searchOdense" />
-                  </NamedLink>  */}
+                  {' '}
+                  <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
+                    Performance & Entertainment
+                  </ExternalLink>
+                </li>
+                <li className={css.listItem}>
+                  {' '}
+                  <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
+                    Creatives
+                  </ExternalLink>
+                </li>
+                <li className={css.listItem}>
+                  {' '}
+                  <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
+                    Knowledge (coming soon)
+                  </ExternalLink>{' '}
+                </li>
+                <li className={css.listItem}>
+                  {' '}
+                  <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
+                    Audio Production (coming soon)
+                  </ExternalLink>
+                </li>
+                <li className={css.listItem}>
+                  <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
+                    <FormattedMessage id="Footer.toHelpCenter" />
+                  </ExternalLink>
                 </li>
               </ul>
             </div>
-            {/* <div className={css.searchesExtra}>
+            <div className={css.aboutUs}>
               <ul className={css.list}>
                 <li className={css.listItem}>
-                   <NamedLink
-                    name="SearchPage"
-                    to={{
-                      search:
-                        '?address=Aarhus%2C%20Central%20Denmark%20Region%2C%20Denmark&bounds=56.240905%2C10.255086%2C56.117521%2C10.114294',
-                    }}
-                    className={css.link}
-                  >
-                    <FormattedMessage id="Footer.searchAarhus" />
-                  </NamedLink> 
+                  <p className={css.link}>
+                    <strong>About us</strong>
+                  </p>
+                </li>
+                <li className={css.listItem}>
+                  {' '}
+                  <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
+                    Team
+                  </ExternalLink>
+                </li>
+                <li className={css.listItem}>
+                  {' '}
+                  <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
+                    Purpose
+                  </ExternalLink>
+                </li>
+                <li className={css.listItem}>
+                  {' '}
+                  <ExternalLink key="linkToHelpCenter" href={siteHelpCenter} className={css.link} title={goToHC}>
+                    Guiding Principles
+                  </ExternalLink>{' '}
+                </li>
+                <li className={css.listItem}>
+                  <NamedLink name="AboutPage" className={css.link}>
+                    <FormattedMessage id="Footer.toAboutPage" />
+                  </NamedLink>
                 </li>
               </ul>
-            </div> */}
-            <div className={css.extraLinks}>
+            </div>
+            {/* <div className={css.extraLinks}>
               <div className={css.someLinks}>{socialMediaLinks}</div>
               <div className={css.legalMatters}>
                 <ul className={css.tosAndPrivacy}>
@@ -177,7 +201,7 @@ const Footer = (props) => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className={css.copyrightAndTermsMobile}>
             <NamedLink name="LandingPage" className={css.organizationCopyrightMobile}>
@@ -187,8 +211,11 @@ const Footer = (props) => {
               <NamedLink name="PrivacyPolicyPage" className={css.privacy}>
                 <FormattedMessage id="Footer.privacy" />
               </NamedLink>
-              <NamedLink name="TermsOfServicePage" className={css.terms}>
+              <NamedLink name="TermsOfServicePage" className={css.privacy}>
                 <FormattedMessage id="Footer.terms" />
+              </NamedLink>
+              <NamedLink name="CookiePolicyPage" className={css.terms}>
+                <FormattedMessage id="Footer.cookiePolicy" />
               </NamedLink>
             </div>
           </div>

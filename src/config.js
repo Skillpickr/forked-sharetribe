@@ -116,6 +116,7 @@ const siteInstagramPage = 'https://www.instagram.com/skillpickr/'
 const siteFacebookPage = 'https://www.facebook.com/skillpickr/'
 
 const siteHelpCenter = 'https://skillpickr.tawk.help/'
+const sitePricingHelpCenter = 'https://skillpickr.tawk.help/article/how-much-does-it-cost'
 // Social logins & SSO
 
 // Note: Facebook app id is also used for tracking:
@@ -239,6 +240,7 @@ const config = {
   siteInstagramPage,
   siteTwitterHandle,
   siteHelpCenter,
+  sitePricingHelpCenter,
   facebookAppId,
   sentryDsn,
   usingSSL,
