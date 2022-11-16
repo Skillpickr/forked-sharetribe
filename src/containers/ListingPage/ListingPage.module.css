@@ -495,7 +495,7 @@
   margin-bottom: 0;
 
   /* Preserve newlines, but collapse other whitespace */
-  white-space: ;
+  white-space: pre-line;
   white-space @media (--viewportMedium) {
     margin-top: 0;
     margin-bottom: 0;
