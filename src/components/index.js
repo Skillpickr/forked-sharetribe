@@ -157,6 +157,7 @@ export { default as SortBy } from './SortBy/SortBy';
 export { default as StripeConnectAccountStatusBox } from './StripeConnectAccountStatusBox/StripeConnectAccountStatusBox';
 export { default as StripePaymentAddress } from './StripePaymentAddress/StripePaymentAddress';
 export { default as UserCard } from './UserCard/UserCard';
+export {  IntroLetters } from './IntroLetters/IntroLetters';
 
 //////////////////////////////////////////////
 // Page sections and modal content wrappers //
@@ -169,6 +170,9 @@ export { default as ReviewModal } from './ReviewModal/ReviewModal';
 export { default as PrivacyPolicy } from './PrivacyPolicy/PrivacyPolicy';
 export { default as TermsOfService } from './TermsOfService/TermsOfService';
 export { default as CookiePolicy } from './CookiePolicy/CookiePolicy';
+export { default as GuidingPrincipals } from './GuidingPrincipals/GuidingPrincipals';
+export { default as Purpose } from './Purpose/Purpose';
+export { default as Teams } from './Teams/Teams';
 export { default as EditListingAvailabilityPanel } from './EditListingAvailabilityPanel/EditListingAvailabilityPanel';
 export { default as EditListingDescriptionPanel } from './EditListingDescriptionPanel/EditListingDescriptionPanel';
 export { default as EditListingFeaturesPanel } from './EditListingFeaturesPanel/EditListingFeaturesPanel';

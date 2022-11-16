@@ -1,0 +1,49 @@
+.signedImage {
+  /* Layout - image will take space defined by aspect ratio wrapper */
+  width: 50%;
+  height: auto;
+}
+
+.signupLink {
+  border-bottom: 0px solid;
+  transition: var(--transitionStyleButton);
+
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0 12px 0 12px;
+
+  &:hover {
+    color: var(--matterColorDark);
+    border-bottom: 4px solid var(--marketplaceColor);
+    border-radius: 0;
+    text-decoration: none;
+  }
+}
+
+.signup {
+  display: inline-block;
+  margin: 28px 0;
+  text-decoration: inherit;
+
+  @media (--viewportMedium) {
+    margin: 28px 0;
+  }
+}
+
+.signedContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+}
+.profileImage {
+  width: 30%;
+}
+
+.profileImage img {
+  width: 100%;
+}
+
+.signed {
+  width: 70%;
+  margin-left: 24px;
+}

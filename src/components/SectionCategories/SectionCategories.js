@@ -78,15 +78,9 @@ const SectionCategories = (props) => {
       </div>
       <div className={css.categories}>
         {/* {categories} */}
-        {categoryLink(
-          'Performance & Entertainment',
-          '(e.g. DJ, Musicians, Bands)',
-          performanceImage,
-          '?pub_category=performance',
-          false
-        )}
+        {categoryLink('Performance & Entertainment', '', performanceImage, '?pub_category=performance', false)}
         {/* {categoryLink('Performance & Entertainment',performanceImage,'?pub_category=p-and-e',true)} */}
-        {categoryLink('Creative', '(e.g. Photographer)', creativeImage, '?pub_category=creative', false)}
+        {categoryLink('Creative', '', creativeImage, '?pub_category=creative', false)}
         {/* {categoryLink('Creative', creativeImage, '?pub_category=creative', false)} */}
       </div>
       <div className={css.categories}>

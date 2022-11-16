@@ -11,7 +11,10 @@ import { NamedRedirect } from './components';
 const pageDataLoadingAPI = getPageDataLoadingAPI();
 
 const AboutPage = loadable(() => import(/* webpackChunkName: "AboutPage" */ './containers/AboutPage/AboutPage'));
-const PricingPage = loadable(() => import(/* webpackChunkName: "PricingPage" */ './containers/PricingPage/PricingPage'));
+const WelcomePage = loadable(() => import(/* webpackChunkName: "AboutPage" */ './containers/WelcomePage/WelcomePage'));
+const GuidingPrincipalsPage = loadable(() => import(/* webpackChunkName: "GuidingPrincipalsPage" */ './containers/GuidingPrincipalsPage/GuidingPrincipalsPage'));
+const PurposePage = loadable(() => import(/* webpackChunkName: "PurposePage" */ './containers/PurposePage/PurposePage'));
+const TeamsPage = loadable(() => import(/* webpackChunkName: "TeamsPage" */ './containers/TeamsPage/TeamsPage'));
 const ContactPage = loadable(() => import(/* webpackChunkName: "ContactPage" */ './containers/ContactPage/ContactPage'));
 const AuthenticationPage = loadable(() => import(/* webpackChunkName: "AuthenticationPage" */ './containers/AuthenticationPage/AuthenticationPage'));
 const CheckoutPage = loadable(() => import(/* webpackChunkName: "CheckoutPage" */ './containers/CheckoutPage/CheckoutPage'));
@@ -74,9 +77,24 @@ const routeConfiguration = () => {
       component: AboutPage,
     },
     {
-      path: '/pricing',
-      name: 'PricingPage',
-      component: PricingPage,
+      path: '/welcome',
+      name: 'WelcomePage',
+      component: WelcomePage,
+    },
+    {
+      path: '/teams',
+      name: 'TeamsPage',
+      component: TeamsPage,
+    },
+        {
+      path: '/purpose',
+      name: 'PurposePage',
+      component: PurposePage,
+    },
+        {
+      path: '/guiding-principals',
+      name: 'GuidingPrincipalsPage',
+      component: GuidingPrincipalsPage,
     },
     {
       path: '/contact',
