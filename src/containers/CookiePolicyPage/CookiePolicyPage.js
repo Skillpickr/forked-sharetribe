@@ -25,9 +25,9 @@ const CookiePolicyPageComponent = (props) => {
   const tabs = [
     {
       text: intl.formatMessage({ id: 'CookiePolicyPage.privacyTabTitle' }),
-      selected: true,
+      selected: false,
       linkProps: {
-        name: 'CookiePolicyPage'
+        name: 'PrivacyPolicyPage'
       }
     },
     {

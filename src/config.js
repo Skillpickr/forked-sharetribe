@@ -116,6 +116,8 @@ const siteInstagramPage = 'https://www.instagram.com/skillpickr/'
 const siteFacebookPage = 'https://www.facebook.com/skillpickr/'
 
 const siteHelpCenter = 'https://skillpickr.tawk.help/'
+const sitePricingHelpCenter = 'https://skillpickr.tawk.help/article/how-much-does-it-cost'
+const siteHowSPWorks = 'https://skillpickr.tawk.help/article/how-skillpickr-works'
 // Social logins & SSO
 
 // Note: Facebook app id is also used for tracking:
@@ -141,7 +143,7 @@ const maps = {
 
     // Distance in meters for calculating the bounding box around the
     // current location.
-    currentLocationBoundsDistance: 5000,
+    currentLocationBoundsDistance: 1000,
 
     // Example location can be edited in the
     // `default-location-searches.js` file.
@@ -239,6 +241,8 @@ const config = {
   siteInstagramPage,
   siteTwitterHandle,
   siteHelpCenter,
+  siteHowSPWorks,
+  sitePricingHelpCenter,
   facebookAppId,
   sentryDsn,
   usingSSL,

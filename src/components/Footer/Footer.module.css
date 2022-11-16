@@ -57,12 +57,15 @@
 }
 
 /* Mobile only social media links */
-.someLiksMobile {
+.someLinksMobile {
   margin-bottom: 24px;
 
   @media (--viewportMedium) {
     display: none;
   }
+}
+.someLinks {
+  margin-bottom: 24px;
 }
 
 .icon {
@@ -154,8 +157,20 @@
 
 /* Desktop and Mobile: links to more information */
 .infoLinks {
-  order: 2;
-  //flex-basis: 165px;
+  order: 3;
+  /* flex-basis: 165px; */
+  margin-right: 24px;
+  margin-bottom: 24px;
+
+  @media (--viewportMedium) {
+    padding-top: 2px;
+    margin-right: 12px;
+  }
+}
+
+.aboutUs {
+  order: 4;
+  /* flex-basis: 165px; */
   margin-right: 24px;
   margin-bottom: 24px;
 
@@ -202,8 +217,8 @@
 
 /* Desktop and Mobile: searches - first column */
 .searches {
-  order: 3;
-  flex-basis: 165px;
+  order: 2;
+  /* flex-basis: 165px; */
   margin-right: 24px;
   margin-bottom: 24px;
 
@@ -290,13 +305,15 @@
 /* Mobile: copyright mark and legal links for mobile */
 .copyrightAndTermsMobile {
   /* Positioning */
-  position: absolute;
+
+  position: fixed;
+  z-index: 2000;
   bottom: 0;
   left: 0;
   right: 0;
 
   /* Dimensions */
-  height: 60px;
+  height: 50px;
   padding: 0 24px 18px 24px;
 
   /* Layout */
@@ -307,7 +324,7 @@
   background-color: var(--matterColorLight);
 
   @media (--viewportMedium) {
-    display: none;
+    padding: 0 100px 18px 100px;
   }
 }
 
@@ -330,9 +347,9 @@
 }
 
 .tosAndPrivacyMobile {
-  flex-basis: 172px;
+  flex-basis: 200px;
 }
 
 .privacy {
-  margin-right: 24px;
+  margin-right: 16px;
 }
