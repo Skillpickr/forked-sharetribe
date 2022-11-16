@@ -305,13 +305,15 @@
 /* Mobile: copyright mark and legal links for mobile */
 .copyrightAndTermsMobile {
   /* Positioning */
-  position: absolute;
+
+  position: fixed;
+  z-index: 2000;
   bottom: 0;
   left: 0;
   right: 0;
 
   /* Dimensions */
-  height: 60px;
+  height: 50px;
   padding: 0 24px 18px 24px;
 
   /* Layout */
@@ -321,9 +323,9 @@
 
   background-color: var(--matterColorLight);
 
-  /* @media (--viewportMedium) {
-    display: none;
-  } */
+  @media (--viewportMedium) {
+    padding: 0 100px 18px 100px;
+  }
 }
 
 .organizationCopyrightMobile {

@@ -50,12 +50,12 @@ const AboutPage = () => {
 
             <div className={css.contentMain}>
               <p>
-                The need for a space supporting artistic creative people is why Cæcilie and Allan, former PM and UI
-                Specialist, founded SkillPickr in Feb 2022. <br/> One place to brand, organize, keep track of jobs, payments
-                and earn money for artistic people living a creative multidisciplinary life does not exist and for the
-                customer, finding them is a time consuming and fragmented experience. SkillPickr is a global online
-                tooling marketplace and community nurturing, inspiring and encouraging creative minds is SkillPickr’s
-                mission.{' '}
+                Find, book and support available artistic creative souls near you. One place to brand, organize, keep
+                track of jobs, payments and earn money for artistic people living a creative multidisciplinary life does
+                not exist and for the customer, finding them is a time consuming and fragmented experience That is why
+                Cæcilie, former PM and musician together with Allan, also former musician and UI specialist, launched
+                SkillPickr in May 2022 with the mission to become a global online tooling marketplace and a community
+                nurturing, inspiring and encouraging creative souls
               </p>
               <h2 className={css.subtitle}>Purpose</h2>
               <h3>WHY</h3>
@@ -107,20 +107,6 @@ const AboutPage = () => {
               </blockquote>
               <br></br>
 
-              {/* <h3 id="contact" className={css.subtitle}>
-                Contact
-              </h3>
-              <p>
-                SkillPickr is brought to you by{' '}
-                <ExternalLink href="http://sharetribe.com">Sharetribe</ExternalLink>. Sharetribe
-                offers anyone a possibility to create a marketplace without restricting your own
-                creativity. Do not hesitate to reach out and learn how to best turn your
-                marketplace idea to reality.
-              </p> */}
-              <p>
-                You can also checkout our <ExternalLink href={siteFacebookPage}>Facebook</ExternalLink> and{' '}
-                <ExternalLink href={siteTwitterPage}>Twitter</ExternalLink>.
-              </p>
             </div>
           </div>
         </LayoutWrapperMain>

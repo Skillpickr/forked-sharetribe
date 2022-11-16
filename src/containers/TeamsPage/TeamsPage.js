@@ -12,41 +12,41 @@ import {
   LayoutWrapperSideNav,
   LayoutWrapperTopbar,
   LayoutWrapperFooter,
-  GuidingPrincipals,
+  Teams,
   Footer
 } from '../../components'
 import config from '../../config'
 
-import css from './GuidingPrincipalsPage.module.css'
+import css from './TeamsPage.module.css'
 
-const PrivacyPolicyPageComponent = (props) => {
+const TeamsPageComponent = (props) => {
   const { scrollingDisabled, intl } = props
 
   const tabs = [
     {
-      text: intl.formatMessage({ id: 'GuidingPrincipalsPage.teamTabTitle' }),
-      selected: false,
+      text: intl.formatMessage({ id: 'TeamsPage.teamTabTitle' }),
+      selected: true,
       linkProps: {
         name: 'TeamsPage'
       }
     },
     {
-      text: intl.formatMessage({ id: 'GuidingPrincipalsPage.purposeTabTitle' }),
+      text: intl.formatMessage({ id: 'TeamsPage.purposeTabTitle' }),
       selected: false,
       linkProps: {
         name: 'PurposePage'
       }
     },
     {
-      text: intl.formatMessage({ id: 'GuidingPrincipalsPage.GPTabTitle' }),
-      selected: true,
+      text: intl.formatMessage({ id: 'TeamsPage.GPTabTitle' }),
+      selected: false,
       linkProps: {
         name: 'GuidingPrincipalsPage'
       }
     }
   ]
   const siteTitle = config.siteTitle
-  const schemaTitle = intl.formatMessage({ id: 'GuidingPrincipalsPage.schemaTitle' }, { siteTitle })
+  const schemaTitle = intl.formatMessage({ id: 'TeamsPage.schemaTitle' }, { siteTitle })
   const schema = {
     '@context': 'http://schema.org',
     '@type': 'WebPage',
@@ -56,15 +56,15 @@ const PrivacyPolicyPageComponent = (props) => {
     <Page title={schemaTitle} scrollingDisabled={scrollingDisabled} schema={schema}>
       <LayoutSideNavigation>
         <LayoutWrapperTopbar>
-          <TopbarContainer currentPage="GuidingPrincipalsPage" />
+          <TopbarContainer currentPage="TeamsPage" />
         </LayoutWrapperTopbar>
         <LayoutWrapperSideNav tabs={tabs} />
         <LayoutWrapperMain>
           <div className={css.content}>
             <h1 className={css.heading}>
-              <FormattedMessage id="GuidingPrincipalsPage.heading" />
+              <FormattedMessage id="TeamsPage.heading" />
             </h1>
-            <GuidingPrincipals />
+            <Teams />
           </div>
         </LayoutWrapperMain>
         <LayoutWrapperFooter>
@@ -77,7 +77,7 @@ const PrivacyPolicyPageComponent = (props) => {
 
 const { bool } = PropTypes
 
-PrivacyPolicyPageComponent.propTypes = {
+TeamsPageComponent.propTypes = {
   scrollingDisabled: bool.isRequired,
 
   // from injectIntl
@@ -90,6 +90,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const GuidingPrincipalsPage = compose(connect(mapStateToProps), injectIntl)(PrivacyPolicyPageComponent)
+const TeamsPage = compose(connect(mapStateToProps), injectIntl)(TeamsPageComponent)
 
-export default GuidingPrincipalsPage
+export default TeamsPage

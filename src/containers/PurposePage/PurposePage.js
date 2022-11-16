@@ -12,34 +12,34 @@ import {
   LayoutWrapperSideNav,
   LayoutWrapperTopbar,
   LayoutWrapperFooter,
-  GuidingPrincipals,
+  Purpose,
   Footer
 } from '../../components'
 import config from '../../config'
 
-import css from './GuidingPrincipalsPage.module.css'
+import css from './PurposePage.module.css'
 
-const PrivacyPolicyPageComponent = (props) => {
+const PurposePageComponent = (props) => {
   const { scrollingDisabled, intl } = props
 
   const tabs = [
     {
-      text: intl.formatMessage({ id: 'GuidingPrincipalsPage.teamTabTitle' }),
+      text: intl.formatMessage({ id: 'PurposePage.teamTabTitle' }),
       selected: false,
       linkProps: {
         name: 'TeamsPage'
       }
     },
     {
-      text: intl.formatMessage({ id: 'GuidingPrincipalsPage.purposeTabTitle' }),
-      selected: false,
+      text: intl.formatMessage({ id: 'PurposePage.purposeTabTitle' }),
+      selected: true,
       linkProps: {
         name: 'PurposePage'
       }
     },
     {
-      text: intl.formatMessage({ id: 'GuidingPrincipalsPage.GPTabTitle' }),
-      selected: true,
+      text: intl.formatMessage({ id: 'PurposePage.GPTabTitle' }),
+      selected: false,
       linkProps: {
         name: 'GuidingPrincipalsPage'
       }
@@ -56,15 +56,15 @@ const PrivacyPolicyPageComponent = (props) => {
     <Page title={schemaTitle} scrollingDisabled={scrollingDisabled} schema={schema}>
       <LayoutSideNavigation>
         <LayoutWrapperTopbar>
-          <TopbarContainer currentPage="GuidingPrincipalsPage" />
+          <TopbarContainer currentPage="PurposePage" />
         </LayoutWrapperTopbar>
         <LayoutWrapperSideNav tabs={tabs} />
         <LayoutWrapperMain>
           <div className={css.content}>
             <h1 className={css.heading}>
-              <FormattedMessage id="GuidingPrincipalsPage.heading" />
+              <FormattedMessage id="PurposePage.heading" />
             </h1>
-            <GuidingPrincipals />
+            <Purpose />
           </div>
         </LayoutWrapperMain>
         <LayoutWrapperFooter>
@@ -77,7 +77,7 @@ const PrivacyPolicyPageComponent = (props) => {
 
 const { bool } = PropTypes
 
-PrivacyPolicyPageComponent.propTypes = {
+PurposePageComponent.propTypes = {
   scrollingDisabled: bool.isRequired,
 
   // from injectIntl
@@ -90,6 +90,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const GuidingPrincipalsPage = compose(connect(mapStateToProps), injectIntl)(PrivacyPolicyPageComponent)
+const PurposePage = compose(connect(mapStateToProps), injectIntl)(PurposePageComponent)
 
-export default GuidingPrincipalsPage
+export default PurposePage
