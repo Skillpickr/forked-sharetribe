@@ -71,19 +71,22 @@ export class IntroLetters extends Component {
     return (
       <React.Fragment>
         <div className={css.background}>
-          <IntroText className="header">
+          {/* <IntroText className="header">
             {this.props.text.split('').map((v, index) => (
               <span className="letter" key={index}>
                 {v}
               </span>
             ))}
-          </IntroText>
+          </IntroText> */}
+
           <IntroQ className="introQ">
-            <h2>Til SkillPickr søger vi lige nu i hele landet;</h2>
-            <h3>
-              DJ’s, Fotografer, Musikere såsom bands, trioer, duoer, solister, sangere, instrumentalister m.m. - Alle
-              stile, typer og niveauer er velkommen.
-            </h3>
+            <h2>Til SkillPickr søger vi som sagt, lige nu i hele landet</h2>
+            <ul>
+              <li>DJ&apos;s</li>
+              <li>Fotografer</li>
+              <li>Musikere såsom bands, trioer, duoer, solister, sangere, instrumentalister m.m.</li>
+            </ul>
+            <h2>Alle stile, typer og niveauer er velkommen.</h2>
             <h3>
               Er du nysgerrig på at vide mere, så læs videre nedenfor eller gå videre til
               <NamedLink name="SignupPage" className={css.signupLink}>
