@@ -1,11 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProfilePage matches snapshot 1`] = `
-<Page
+<Connect(Page)
   schema={
     Object {
       "@context": "http://schema.org",
       "@type": "ProfilePage",
+      "description": undefined,
       "name": "ProfilePage.schemaTitle",
     }
   }
@@ -144,5 +145,5 @@ exports[`ProfilePage matches snapshot 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSideNavigation>
-</Page>
+</Connect(Page)>
 `;

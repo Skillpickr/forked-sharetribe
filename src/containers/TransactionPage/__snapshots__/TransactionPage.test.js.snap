@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TransactionPage - Order matches snapshot 1`] = `
-<Page
+<Connect(Page)
   scrollingDisabled={false}
   title="TransactionPage.title"
 >
@@ -227,11 +227,11 @@ exports[`TransactionPage - Order matches snapshot 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSingleColumn>
-</Page>
+</Connect(Page)>
 `;
 
 exports[`TransactionPage - Sale matches snapshot 1`] = `
-<Page
+<Connect(Page)
   scrollingDisabled={false}
   title="TransactionPage.title"
 >
@@ -456,5 +456,5 @@ exports[`TransactionPage - Sale matches snapshot 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSingleColumn>
-</Page>
+</Connect(Page)>
 `;

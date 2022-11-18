@@ -141,6 +141,8 @@
   composes: topbarDesktopLabel;
 }
 
+.links {
+}
 /* Inbox */
 .inboxLink {
   border-bottom: 0px solid;
@@ -152,7 +154,7 @@
   letter-spacing: 0;
 
   height: 100%;
-  padding: 0 12px 0 12px;
+  padding: 18px 12px;
   margin-top: 0;
   margin-bottom: 0;
   color: var(--matterColor);
@@ -174,6 +176,13 @@
 .inbox {
   composes: topbarDesktopLabel;
   position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 16px 0;
+  box-sizing: border-box;
 }
 
 .notificationDot {

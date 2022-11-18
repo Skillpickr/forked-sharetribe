@@ -39,7 +39,7 @@ const sortSearchByDistance = false
 //
 // In a way, 'processAlias' defines which transaction process (or processes)
 // this particular web application is able to handle.
-const bookingProcessAlias = 'skillpickr-hourly-process/release-1'
+const bookingProcessAlias = 'skillpickr-hourly-process/release-2'
 
 // The transaction line item code for the main unit type in bookings.
 //
@@ -110,12 +110,14 @@ const siteTitle = 'SkillPickr'
 const siteTwitterHandle = '@skillpickr'
 
 // Instagram page is used in SEO schema (http://schema.org/Organization)
-const siteInstagramPage = null
+const siteInstagramPage = 'https://www.instagram.com/skillpickr/'
 
 // Facebook page is used in SEO schema (http://schema.org/Organization)
 const siteFacebookPage = 'https://www.facebook.com/skillpickr/'
 
 const siteHelpCenter = 'https://skillpickr.tawk.help/'
+const sitePricingHelpCenter = 'https://skillpickr.tawk.help/article/how-much-does-it-cost'
+const siteHowSPWorks = 'https://skillpickr.tawk.help/article/how-skillpickr-works'
 // Social logins & SSO
 
 // Note: Facebook app id is also used for tracking:
@@ -239,6 +241,8 @@ const config = {
   siteInstagramPage,
   siteTwitterHandle,
   siteHelpCenter,
+  siteHowSPWorks,
+  sitePricingHelpCenter,
   facebookAppId,
   sentryDsn,
   usingSSL,

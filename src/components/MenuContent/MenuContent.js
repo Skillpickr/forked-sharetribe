@@ -60,7 +60,7 @@ const { bool, func, node, number, object, string } = PropTypes
 
 MenuContent.propTypes = {
   arrowPosition: number,
-  children: node.isRequired,
+  children: node,
   className: string,
   contentClassName: string,
   contentRef: func,

@@ -274,9 +274,9 @@ class ProfileSettingsFormComponent extends Component {
                 </div>
               </div>
               <div className={classNames(css.sectionContainer, css.lastSection)}>
-                <h3 className={css.sectionTitle}>
+                {/* <h3 className={css.sectionTitle}>
                   <FormattedMessage id="ProfileSettingsForm.bioHeading" />
-                </h3>
+                </h3> */}
                 <FieldTextInput type="textarea" id="bio" name="bio" label={bioLabel} placeholder={bioPlaceholder} />
                 <p className={css.bioInfo}>
                   <FormattedMessage id="ProfileSettingsForm.bioInfo" />

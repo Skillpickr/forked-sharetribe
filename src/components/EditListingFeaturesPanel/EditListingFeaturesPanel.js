@@ -7,6 +7,7 @@ import { LISTING_STATE_DRAFT } from '../../util/types'
 import { ensureListing } from '../../util/data'
 import { EditListingFeaturesForm } from '../../forms'
 import { ListingLink } from '../../components'
+import { ensureOwnListing } from '../../util/data'
 
 import css from './EditListingFeaturesPanel.module.css'
 
@@ -29,7 +30,7 @@ class EditListingFeaturesPanel extends Component {
 
   getCurrentListing() {
     const { listing } = this.props
-    const currentListing = ensureListing(listing)
+    const currentListing = ensureOwnListing(listing)
     return currentListing
   }
 
@@ -46,7 +47,7 @@ class EditListingFeaturesPanel extends Component {
   }
 
   getInitialValues() {
-    const { publicData } = this.getCurrentListing().attributes
+    const { publicData, description, title } = this.getCurrentListing().attributes
     const skill = publicData && publicData.skill
     const gear = publicData && publicData.gear
     const soundLightExp = publicData && publicData.soundLightExp
@@ -63,7 +64,10 @@ class EditListingFeaturesPanel extends Component {
     const musicianGenre = publicData && publicData.musicianGenre
     const bandGenre = publicData && publicData.bandGenre
     const bandType = publicData && publicData.bandType
+
     return {
+      title,
+      description,
       photographerType,
       gear,
       soundLightExp,
@@ -116,6 +120,8 @@ class EditListingFeaturesPanel extends Component {
 
     const handleSubmit = (values) => {
       const {
+        title,
+        description,
         skill = [],
         photographerType = [],
         gear = '',
@@ -135,6 +141,8 @@ class EditListingFeaturesPanel extends Component {
       } = values
       let category = this.state.category
       const updatedValues = {
+        title: title.trim(),
+        description,
         publicData: {
           skill,
           photographerType,

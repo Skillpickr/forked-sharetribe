@@ -52,7 +52,7 @@ const categoryLink = (title, subTitle, image, searchQuery, isComingSoon) => {
 const SectionCategories = (props) => {
   const { rootClassName, className, filterConfig } = props
 
-  // TODO: Change the categories to generic by inserting the const categories in the nelow return statement
+  // TODO: Change the categories to generic by inserting the const categories in the below return statement
   const classes = classNames(rootClassName || css.root, className)
   const categoryKey = 'category'
   const categoryList = findOptionsForSelectFilter(categoryKey, filterConfig)
@@ -78,15 +78,9 @@ const SectionCategories = (props) => {
       </div>
       <div className={css.categories}>
         {/* {categories} */}
-        {categoryLink(
-          'Performance & Entertainment',
-          '(e.g. DJ, Musicians)',
-          performanceImage,
-          '?pub_category=performance',
-          false
-        )}
+        {categoryLink('Performance & Entertainment', '', performanceImage, '?pub_category=performance', false)}
         {/* {categoryLink('Performance & Entertainment',performanceImage,'?pub_category=p-and-e',true)} */}
-        {categoryLink('Creative', '(e.g. Photographer)', creativeImage, '?pub_category=creative', false)}
+        {categoryLink('Creative', '', creativeImage, '?pub_category=creative', false)}
         {/* {categoryLink('Creative', creativeImage, '?pub_category=creative', false)} */}
       </div>
       <div className={css.categories}>

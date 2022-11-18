@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContactDetailsPage matches snapshot 1`] = `
-<Page
+<Connect(Page)
   scrollingDisabled={false}
   title="ManageListingsPage.title"
 >
@@ -16,11 +16,6 @@ exports[`ContactDetailsPage matches snapshot 1`] = `
       <withRouter(Connect(TopbarContainerComponent))
         currentPage="ManageListingsPage"
       />
-      <UserNav
-        className={null}
-        rootClassName={null}
-        selectedPageName="ManageListingsPage"
-      />
     </LayoutWrapperTopbar>
     <LayoutWrapperMain
       className={null}
@@ -29,6 +24,18 @@ exports[`ContactDetailsPage matches snapshot 1`] = `
       <div
         className="listingPanel"
       >
+        <NamedLink
+          className="createListingLink"
+          name="NewListingPage"
+        >
+          <span
+            className="createListing"
+          >
+            <MemoizedFormattedMessage
+              id="ManageListingsPage.createNewListing"
+            />
+          </span>
+        </NamedLink>
         <div
           className="listingCards"
         />
@@ -41,5 +48,5 @@ exports[`ContactDetailsPage matches snapshot 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSingleColumn>
-</Page>
+</Connect(Page)>
 `;

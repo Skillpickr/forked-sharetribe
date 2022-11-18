@@ -39,7 +39,7 @@ const TermsOfServicePageComponent = (props) => {
     },
     {
       text: intl.formatMessage({ id: 'TermsOfServicePage.cookieTabTitle' }),
-      selected: true,
+      selected: false,
       linkProps: {
         name: 'CookiePolicyPage'
       }

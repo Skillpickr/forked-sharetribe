@@ -3,6 +3,7 @@ import { clearCurrentUser, fetchCurrentUser } from './user.duck'
 import { createUserWithIdp } from '../util/api'
 import { storableError } from '../util/errors'
 import * as log from '../util/log'
+import { addToast } from './toasts.duck'
 
 const authenticated = (authInfo) => authInfo && authInfo.isAnonymous === false
 
@@ -159,7 +160,7 @@ export const authInfo = () => (dispatch, getState, sdk) => {
     })
 }
 
-export const login = (username, password) => (dispatch, getState, sdk) => {
+export const login = (username, password, messages) => (dispatch, getState, sdk) => {
   if (authenticationInProgress(getState())) {
     return Promise.reject(new Error('Login or logout already in progress'))
   }
@@ -171,7 +172,10 @@ export const login = (username, password) => (dispatch, getState, sdk) => {
     .login({ username, password })
     .then(() => dispatch(loginSuccess()))
     .then(() => dispatch(fetchCurrentUser()))
-    .catch((e) => dispatch(loginError(storableError(e))))
+    .catch((e) => {
+      dispatch(loginError(storableError(e)))
+      dispatch(addToast({ text: messages }))
+    })
 }
 
 export const logout = () => (dispatch, getState, sdk) => {
@@ -190,11 +194,15 @@ export const logout = () => (dispatch, getState, sdk) => {
       dispatch(clearCurrentUser())
       log.clearUserId()
       dispatch(userLogout())
+      dispatch(addToast({ text: 'You are logged out' }))
     })
-    .catch((e) => dispatch(logoutError(storableError(e))))
+    .catch((e) => {
+      dispatch(logoutError(storableError(e)))
+      dispatch(addToast({ text: 'Something went wrong when loggin out' }))
+    })
 }
 
-export const signup = (params) => (dispatch, getState, sdk) => {
+export const signup = (params, messages) => (dispatch, getState, sdk) => {
   if (authenticationInProgress(getState())) {
     return Promise.reject(new Error('Login or logout already in progress'))
   }
@@ -218,6 +226,7 @@ export const signup = (params) => (dispatch, getState, sdk) => {
         firstName: params.firstName,
         lastName: params.lastName
       })
+      dispatch(addToast({ text: messages }))
     })
 }
 

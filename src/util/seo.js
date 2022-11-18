@@ -147,7 +147,7 @@ export const metaTagProps = (tagData) => {
     {
       name: 'keywords',
       content:
-        'SkillPickr, photographer, dj, musician, for hire, hyr, fest,  musik, music, wedding, company, event, skills, pick'
+        'SkillPickr, photographer, dj, musician, for hire, hyr, fest,  musik, music, wedding, company, event, skills, pick, skillpikr, skillpicr, skilpick, skilpicr, skills, skil, skilpikr, skillpickr'
     }
   ]
 

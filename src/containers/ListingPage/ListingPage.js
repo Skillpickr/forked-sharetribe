@@ -206,7 +206,7 @@ export class ListingPageComponent extends Component {
     const params = { slug: listingSlug, ...rawParams }
 
     const listingType = isDraftVariant ? LISTING_PAGE_PARAM_TYPE_DRAFT : LISTING_PAGE_PARAM_TYPE_EDIT
-    const listingTab = isDraftVariant ? 'photos' : 'description'
+    const listingTab = isDraftVariant ? 'photos' : 'features'
 
     const isApproved = currentListing.id && currentListing.attributes.state !== LISTING_STATE_PENDING_APPROVAL
 
@@ -456,13 +456,12 @@ export class ListingPageComponent extends Component {
                     selectedSubOptions={selectedSubOptions}
                     selectedConfigSubOptions={selectedConfigSubOptions}
                   />
-                  {optionConfig.key === Skills.musician ||
-                    (Skills.band && (
-                      <SectionGenresMaybe
-                        selectedGenres={selectedGenres}
-                        selectedConfigGenreOptions={selectedConfigGenreOptions}
-                      />
-                    ))}
+                  {optionConfig.key === (Skills.musician || Skills.band) && (
+                    <SectionGenresMaybe
+                      selectedGenres={selectedGenres}
+                      selectedConfigGenreOptions={selectedConfigGenreOptions}
+                    />
+                  )}
                   <SectionSpecificationsMaybe
                     soundLightExp={soundLightExperienceOptions}
                     ownStudio={ownStudioOptions}

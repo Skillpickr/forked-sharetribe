@@ -16,12 +16,13 @@ import {
   LayoutWrapperTopbar,
   LayoutWrapperMain,
   LayoutWrapperFooter,
-  Footer
+  Footer,
+  QuoteTheDay
 } from '../../components'
 import { TopbarContainer } from '../../containers'
 
-import facebookImage from '../../assets/skillpicker-facebook1200x630-01.jpg'
-import twitterImage from '../../assets/skillpicker-twitter600x314-01.jpg'
+import facebookImage from '../../assets/skillpickr-facebook1640x924.png'
+import twitterImage from '../../assets/skillpickr-facebook1640x924.png'
 import css from './LandingPage.module.css'
 import SectionCategories from '../../components/SectionCategories/SectionCategories'
 
@@ -47,16 +48,22 @@ export const LandingPageComponent = (props) => {
       twitterImages={[{ url: `${config.canonicalRootURL}${twitterImage}`, width: 600, height: 314 }]}
       schema={{
         '@context': 'http://schema.org',
-        '@type': 'WebPage',
+        '@type': ['WebPage', 'SoftwareApplication'],
         description: schemaDescription,
         name: schemaTitle,
-        image: [schemaImage]
+        applicationCategory: 'BusinessApplication',
+        image: [schemaImage],
+        offers: {
+          '@type': 'Offer',
+          price: '0'
+        }
       }}>
       <LayoutSingleColumn>
         <LayoutWrapperTopbar>
           <TopbarContainer />
         </LayoutWrapperTopbar>
         <LayoutWrapperMain>
+          {/* <QuoteTheDay /> */}
           <div className={css.heroContainer}>
             <SectionHero className={css.hero} history={history} location={location} />
           </div>

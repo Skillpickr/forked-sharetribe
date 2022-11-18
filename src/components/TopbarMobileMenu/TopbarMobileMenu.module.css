@@ -18,6 +18,10 @@
   margin-bottom: 180px;
 }
 
+.icon {
+  margin-right: 8px;
+}
+
 .footer {
   position: fixed;
   bottom: 0;

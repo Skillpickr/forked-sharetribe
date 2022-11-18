@@ -27,6 +27,12 @@
   }
 }
 
+.listStyle li {
+  list-style: disc;
+  padding-left: 4px;
+  margin-left: 16px;
+}
+
 .lastUpdated {
   composes: marketplaceBodyFontStyles from global;
   margin-top: 0;

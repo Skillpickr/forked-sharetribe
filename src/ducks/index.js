@@ -15,6 +15,7 @@ import paymentMethods from './paymentMethods.duck'
 import stripe from './stripe.duck'
 import stripeConnectAccount from './stripeConnectAccount.duck'
 import user from './user.duck'
+import toasts from './toasts.duck'
 
 export {
   Auth,
@@ -27,5 +28,6 @@ export {
   paymentMethods,
   stripe,
   stripeConnectAccount,
-  user
+  user,
+  toasts
 }

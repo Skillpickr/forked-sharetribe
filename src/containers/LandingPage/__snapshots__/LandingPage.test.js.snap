@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LandingPage matches snapshot 1`] = `
-<Page
+<Connect(Page)
   className="root"
   contentType="website"
   description="LandingPage.schemaDescription"
@@ -9,7 +9,7 @@ exports[`LandingPage matches snapshot 1`] = `
     Array [
       Object {
         "height": 630,
-        "url": "skillpicker-facebook1200x630-01.jpg",
+        "url": "skillpickr-facebook1640x924.png",
         "width": 1200,
       },
     ]
@@ -17,12 +17,20 @@ exports[`LandingPage matches snapshot 1`] = `
   schema={
     Object {
       "@context": "http://schema.org",
-      "@type": "WebPage",
+      "@type": Array [
+        "WebPage",
+        "SoftwareApplication",
+      ],
+      "applicationCategory": "BusinessApplication",
       "description": "LandingPage.schemaDescription",
       "image": Array [
-        "http://localhost:3000skillpicker-facebook1200x630-01.jpg",
+        "http://localhost:3000skillpickr-facebook1640x924.png",
       ],
       "name": "LandingPage.schemaTitle",
+      "offers": Object {
+        "@type": "Offer",
+        "price": "0",
+      },
     }
   }
   scrollingDisabled={false}
@@ -31,7 +39,7 @@ exports[`LandingPage matches snapshot 1`] = `
     Array [
       Object {
         "height": 314,
-        "url": "http://localhost:3000skillpicker-twitter600x314-01.jpg",
+        "url": "http://localhost:3000skillpickr-facebook1640x924.png",
         "width": 600,
       },
     ]
@@ -1660,5 +1668,5 @@ exports[`LandingPage matches snapshot 1`] = `
       <injectIntl(Footer) />
     </LayoutWrapperFooter>
   </LayoutSingleColumn>
-</Page>
+</Connect(Page)>
 `;
