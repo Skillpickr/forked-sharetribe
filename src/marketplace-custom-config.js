@@ -37,6 +37,11 @@ import { bandConfig } from './util/skillsConfig/bands'
 import { photographerConfig } from './util/skillsConfig/photographer'
 import { musicianConfig } from './util/skillsConfig/musician'
 import { djConfig } from './util/skillsConfig/dj'
+import { createIntl } from 'react-intl'
+
+import { messagesInLocale, setupLocale } from './intl'
+
+const intl = createIntl({ setupLocale, messagesInLocale })
 
 const filterConfig = [
   {
@@ -127,7 +132,7 @@ const filterConfig = [
       options: [
         { key: Skills.photographer, label: 'Photographer' },
         { key: Skills.dj, label: 'DJ' },
-        { key: Skills.musician, label: 'Musician' },
+        { key: Skills.musician, label: intl.formatMessage({ id: 'ActivityFeed.today' }) },
         { key: Skills.band, label: 'Band' }
       ]
     }
