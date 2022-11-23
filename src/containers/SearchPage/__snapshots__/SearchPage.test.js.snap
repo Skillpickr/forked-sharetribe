@@ -42,26 +42,26 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 "options": Array [
                   Object {
                     "key": "0",
-                    "label": "Dates",
+                    "label": "Any Length",
                   },
                   Object {
                     "key": "60",
-                    "label": "1 time",
+                    "label": "1 hour",
                     "shortLabel": "1h",
                   },
                   Object {
                     "key": "120",
-                    "label": "2 timer",
+                    "label": "2 hour",
                     "shortLabel": "2h",
                   },
                   Object {
                     "key": "240",
-                    "label": "4 timer",
+                    "label": "4 hour",
                     "shortLabel": "4h",
                   },
                   Object {
                     "key": "480",
-                    "label": "8 timer",
+                    "label": "8 hour",
                     "shortLabel": "8h",
                   },
                 ],
@@ -69,7 +69,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               },
               "group": "primary",
               "id": "dates-length",
-              "label": "Datoer",
+              "label": "Dates",
               "queryParamNames": Array [
                 "dates",
                 "minDuration",
@@ -84,7 +84,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               },
               "group": "primary",
               "id": "price",
-              "label": "Pris",
+              "label": "Price",
               "queryParamNames": Array [
                 "price",
               ],
@@ -94,7 +94,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               "config": Object {},
               "group": "primary",
               "id": "keyword",
-              "label": "Søgeord",
+              "label": "Keyword",
               "queryParamNames": Array [
                 "keywords",
               ],
@@ -109,21 +109,21 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                   },
                   Object {
                     "key": "performance",
-                    "label": "Kreative",
+                    "label": "Creative",
                   },
                   Object {
                     "key": "audio-prod",
-                    "label": "Lyd Production",
+                    "label": "Audio Production",
                   },
                   Object {
                     "key": "knowledge",
-                    "label": "Viden",
+                    "label": "Knowledge",
                   },
                 ],
               },
               "group": "primary",
               "id": "category",
-              "label": "Kategori",
+              "label": "Category",
               "queryParamNames": Array [
                 "pub_category",
               ],
@@ -134,7 +134,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 "options": Array [
                   Object {
                     "key": "photographer",
-                    "label": "Fotografer",
+                    "label": "Photographer",
                   },
                   Object {
                     "key": "dj",
@@ -142,7 +142,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                   },
                   Object {
                     "key": "musician",
-                    "label": "Musiker",
+                    "label": "Musician",
                   },
                   Object {
                     "key": "band",
@@ -152,7 +152,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               },
               "group": "primary",
               "id": "skill",
-              "label": "Færdighed",
+              "label": "Skill",
               "queryParamNames": Array [
                 "pub_skill",
               ],
@@ -1625,24 +1625,24 @@ exports[`SearchPageComponent matches snapshot 1`] = `
             "options": Array [
               Object {
                 "key": "createdAt",
-                "label": "Nyeste",
+                "label": "Newest",
               },
               Object {
                 "key": "-createdAt",
-                "label": "Ældste",
+                "label": "Oldest",
               },
               Object {
                 "key": "-price",
-                "label": "Laveste pris",
+                "label": "Lowest Price",
               },
               Object {
                 "key": "price",
-                "label": "Højeste pris",
+                "label": "Highest Price",
               },
               Object {
                 "key": "relevance",
-                "label": "Relevans",
-                "longLabel": "Relevans (Søgeord)",
+                "label": "Relevance",
+                "longLabel": "Relevance (Keyword search)",
               },
             ],
             "queryParamName": "sort",
