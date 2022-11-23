@@ -8,11 +8,12 @@ const SectionGenresMaybe = (props) => {
   // Component's props should include all the possible options (from config)
   // and listing's publicData
   const { selectedGenres, selectedConfigGenreOptions } = props
+  const count = selectedGenres.length
 
   return (
     <div className={css.sectionFeatures}>
       <h2 className={css.featuresTitle}>
-        <FormattedMessage id="ListingPage.musicianGenre" />
+        <FormattedMessage id="ListingPage.musicianGenre" values={{ count }} />
       </h2>
       <PropertyGroup
         id="ListingPage.skillType"

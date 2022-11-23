@@ -194,7 +194,7 @@ exports[`LandingPage matches snapshot 1`] = `
                         },
                         Object {
                           "key": "musician",
-                          "label": "Musician",
+                          "label": "ActivityFeed.today",
                         },
                         Object {
                           "key": "band",

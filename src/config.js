@@ -1,4 +1,3 @@
-import * as custom from './marketplace-custom-config.js'
 import defaultLocationSearches from './default-location-searches'
 import { defaultMCC, stripePublishableKey, stripeCountryDetails } from './stripe-config'
 import { currencyConfiguration } from './currency-config'
@@ -246,8 +245,7 @@ const config = {
   facebookAppId,
   sentryDsn,
   usingSSL,
-  maps,
-  custom
+  maps
 }
 
 export default config

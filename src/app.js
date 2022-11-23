@@ -25,6 +25,7 @@ import defaultMessages from './translations/en.json'
 import frenchMessages from './translations/fr.json'
 import danishMessages from './translations/da.json'
 import * as Sentry from '@sentry/react'
+import { messagesInLocale } from './intl'
 
 // If you want to change the language of default (fallback) translations,
 // change the imports to match the wanted locale:
@@ -53,16 +54,16 @@ import * as Sentry from '@sentry/react'
 // if (process.env.REACT_APP_LANGUAGE === 'da') {
 //   messagesInLocale = danishMessages
 // }
-function messagesInLocale() {
-  switch (process.env.REACT_APP_LANGUAGE) {
-    case 'da':
-      return danishMessages
-    case 'fr':
-      return frenchMessages
-    default:
-      return defaultMessages
-  }
-}
+// function messagesInLocale() {
+//   switch (process.env.REACT_APP_LANGUAGE) {
+//     case 'da':
+//       return danishMessages
+//     case 'fr':
+//       return frenchMessages
+//     default:
+//       return defaultMessages
+//   }
+// }
 
 // If translation key is missing from `messagesInLocale` (e.g. fr.json),
 // corresponding key will be added to messages from `defaultMessages` (en.json)

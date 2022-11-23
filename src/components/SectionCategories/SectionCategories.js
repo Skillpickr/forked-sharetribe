@@ -15,6 +15,7 @@ import performanceImage from './images/performance.jpg'
 import mediaImage from './images/media.jpg'
 import { findOptionsForSelectFilter } from '../../util/search'
 import config from '../../config'
+import * as custom from '../../marketplace-custom-config.js'
 
 //Knowledge Photo by mentatdgt from Pexels
 // Media Photo by Lê Minh from Pexels
@@ -102,7 +103,7 @@ SectionCategories.propTypes = {
 }
 
 SectionCategories.defaultProps = {
-  filterConfig: config.custom.filters
+  filterConfig: custom.filters
 }
 
 export default SectionCategories

@@ -54,7 +54,10 @@ class EditListingOtherInfoForm extends Component {
 
     return (
       <div>
-        <h2>Info about you as a creative artist</h2>
+        <h2>
+          <FormattedMessage id="EditListingDescriptionForm.greeting" />
+          
+        </h2>
         <FieldTextInput
           id="experience"
           name="experience"

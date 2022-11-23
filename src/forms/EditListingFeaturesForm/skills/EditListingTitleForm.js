@@ -41,7 +41,10 @@ class EditListingTitleForm extends Component {
 
     return (
       <div className={css.listingSectionContainer}>
-        <h2>Tell the world all about your concept and why they’ll love it.</h2>
+        <h2>
+          <FormattedMessage id="EditListingFeaturesForm.title.greeting" />
+          
+        </h2>
         <FieldTextInput
           id="title"
           name="title"

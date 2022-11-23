@@ -77,7 +77,7 @@ const EditListingDescriptionFormComponent = (props) => (
           {errorMessageUpdateListing}
           {errorMessageShowListing}
           <Alert type="secondary">
-            <p>Don’t sweat it! You can just draft a version of your concept now and change it later.</p>
+            <FormattedMessage id="EditListingDescriptionForm.guide.credentials" />
           </Alert>
           {/* SHOP NAME */}
           {/* We find creative artists often draw inspiration from what they sell, their style, pretty much anything goes. */}
