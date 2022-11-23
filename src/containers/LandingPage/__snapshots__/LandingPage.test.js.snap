@@ -94,26 +94,26 @@ exports[`LandingPage matches snapshot 1`] = `
                       "options": Array [
                         Object {
                           "key": "0",
-                          "label": "Any length",
+                          "label": "Dates",
                         },
                         Object {
                           "key": "60",
-                          "label": "1 hour",
+                          "label": "1 time",
                           "shortLabel": "1h",
                         },
                         Object {
                           "key": "120",
-                          "label": "2 hours",
+                          "label": "2 timer",
                           "shortLabel": "2h",
                         },
                         Object {
                           "key": "240",
-                          "label": "4 hours",
+                          "label": "4 timer",
                           "shortLabel": "4h",
                         },
                         Object {
                           "key": "480",
-                          "label": "8 hours",
+                          "label": "8 timer",
                           "shortLabel": "8h",
                         },
                       ],
@@ -121,7 +121,7 @@ exports[`LandingPage matches snapshot 1`] = `
                     },
                     "group": "primary",
                     "id": "dates-length",
-                    "label": "Dates",
+                    "label": "Datoer",
                     "queryParamNames": Array [
                       "dates",
                       "minDuration",
@@ -136,7 +136,7 @@ exports[`LandingPage matches snapshot 1`] = `
                     },
                     "group": "primary",
                     "id": "price",
-                    "label": "Price",
+                    "label": "Pris",
                     "queryParamNames": Array [
                       "price",
                     ],
@@ -146,7 +146,7 @@ exports[`LandingPage matches snapshot 1`] = `
                     "config": Object {},
                     "group": "primary",
                     "id": "keyword",
-                    "label": "Keyword",
+                    "label": "Søgeord",
                     "queryParamNames": Array [
                       "keywords",
                     ],
@@ -157,25 +157,25 @@ exports[`LandingPage matches snapshot 1`] = `
                       "options": Array [
                         Object {
                           "key": "creative",
-                          "label": "Creative",
+                          "label": "Performance & Entertainment",
                         },
                         Object {
                           "key": "performance",
-                          "label": "Performance and Entertainment",
+                          "label": "Kreative",
                         },
                         Object {
                           "key": "audio-prod",
-                          "label": "Audio Production",
+                          "label": "Lyd Production",
                         },
                         Object {
                           "key": "knowledge",
-                          "label": "Knowledge",
+                          "label": "Viden",
                         },
                       ],
                     },
                     "group": "primary",
                     "id": "category",
-                    "label": "Category",
+                    "label": "Kategori",
                     "queryParamNames": Array [
                       "pub_category",
                     ],
@@ -186,7 +186,7 @@ exports[`LandingPage matches snapshot 1`] = `
                       "options": Array [
                         Object {
                           "key": "photographer",
-                          "label": "Photographer",
+                          "label": "Fotografer",
                         },
                         Object {
                           "key": "dj",
@@ -194,7 +194,7 @@ exports[`LandingPage matches snapshot 1`] = `
                         },
                         Object {
                           "key": "musician",
-                          "label": "ActivityFeed.today",
+                          "label": "Musiker",
                         },
                         Object {
                           "key": "band",
@@ -204,7 +204,7 @@ exports[`LandingPage matches snapshot 1`] = `
                     },
                     "group": "primary",
                     "id": "skill",
-                    "label": "Skill",
+                    "label": "Færdighed",
                     "queryParamNames": Array [
                       "pub_skill",
                     ],

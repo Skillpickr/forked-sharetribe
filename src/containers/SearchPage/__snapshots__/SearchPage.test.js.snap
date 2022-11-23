@@ -42,26 +42,26 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 "options": Array [
                   Object {
                     "key": "0",
-                    "label": "Any length",
+                    "label": "Dates",
                   },
                   Object {
                     "key": "60",
-                    "label": "1 hour",
+                    "label": "1 time",
                     "shortLabel": "1h",
                   },
                   Object {
                     "key": "120",
-                    "label": "2 hours",
+                    "label": "2 timer",
                     "shortLabel": "2h",
                   },
                   Object {
                     "key": "240",
-                    "label": "4 hours",
+                    "label": "4 timer",
                     "shortLabel": "4h",
                   },
                   Object {
                     "key": "480",
-                    "label": "8 hours",
+                    "label": "8 timer",
                     "shortLabel": "8h",
                   },
                 ],
@@ -69,7 +69,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               },
               "group": "primary",
               "id": "dates-length",
-              "label": "Dates",
+              "label": "Datoer",
               "queryParamNames": Array [
                 "dates",
                 "minDuration",
@@ -84,7 +84,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               },
               "group": "primary",
               "id": "price",
-              "label": "Price",
+              "label": "Pris",
               "queryParamNames": Array [
                 "price",
               ],
@@ -94,7 +94,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               "config": Object {},
               "group": "primary",
               "id": "keyword",
-              "label": "Keyword",
+              "label": "Søgeord",
               "queryParamNames": Array [
                 "keywords",
               ],
@@ -105,25 +105,25 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 "options": Array [
                   Object {
                     "key": "creative",
-                    "label": "Creative",
+                    "label": "Performance & Entertainment",
                   },
                   Object {
                     "key": "performance",
-                    "label": "Performance and Entertainment",
+                    "label": "Kreative",
                   },
                   Object {
                     "key": "audio-prod",
-                    "label": "Audio Production",
+                    "label": "Lyd Production",
                   },
                   Object {
                     "key": "knowledge",
-                    "label": "Knowledge",
+                    "label": "Viden",
                   },
                 ],
               },
               "group": "primary",
               "id": "category",
-              "label": "Category",
+              "label": "Kategori",
               "queryParamNames": Array [
                 "pub_category",
               ],
@@ -134,7 +134,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 "options": Array [
                   Object {
                     "key": "photographer",
-                    "label": "Photographer",
+                    "label": "Fotografer",
                   },
                   Object {
                     "key": "dj",
@@ -142,7 +142,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                   },
                   Object {
                     "key": "musician",
-                    "label": "ActivityFeed.today",
+                    "label": "Musiker",
                   },
                   Object {
                     "key": "band",
@@ -152,7 +152,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               },
               "group": "primary",
               "id": "skill",
-              "label": "Skill",
+              "label": "Færdighed",
               "queryParamNames": Array [
                 "pub_skill",
               ],
@@ -1625,24 +1625,24 @@ exports[`SearchPageComponent matches snapshot 1`] = `
             "options": Array [
               Object {
                 "key": "createdAt",
-                "label": "Newest",
+                "label": "Nyeste",
               },
               Object {
                 "key": "-createdAt",
-                "label": "Oldest",
+                "label": "Ældste",
               },
               Object {
                 "key": "-price",
-                "label": "Lowest price",
+                "label": "Laveste pris",
               },
               Object {
                 "key": "price",
-                "label": "Highest price",
+                "label": "Højeste pris",
               },
               Object {
                 "key": "relevance",
-                "label": "Relevance",
-                "longLabel": "Relevance (Keyword search)",
+                "label": "Relevans",
+                "longLabel": "Relevans (Søgeord)",
               },
             ],
             "queryParamName": "sort",
