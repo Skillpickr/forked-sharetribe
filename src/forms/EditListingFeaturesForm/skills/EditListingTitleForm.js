@@ -43,7 +43,6 @@ class EditListingTitleForm extends Component {
       <div className={css.listingSectionContainer}>
         <h2>
           <FormattedMessage id="EditListingFeaturesForm.title.greeting" />
-          
         </h2>
         <FieldTextInput
           id="title"

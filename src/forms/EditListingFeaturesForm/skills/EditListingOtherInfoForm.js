@@ -56,7 +56,6 @@ class EditListingOtherInfoForm extends Component {
       <div>
         <h2>
           <FormattedMessage id="EditListingDescriptionForm.greeting" />
-          
         </h2>
         <FieldTextInput
           id="experience"
