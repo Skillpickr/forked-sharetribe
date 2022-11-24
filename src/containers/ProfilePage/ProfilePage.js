@@ -210,7 +210,6 @@ export class ProfilePageComponent extends Component {
         siteTitle: config.siteTitle
       }
     )
-    console.log(profileUser)
 
     return (
       <Page

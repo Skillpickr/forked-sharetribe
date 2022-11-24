@@ -25,6 +25,8 @@ const i18n = {
   firstDayOfWeek: 1
 }
 
+const supportedLanguages = ['US', 'DK']
+
 // Should search results be ordered by distance to origin.
 // NOTE: If this is set to true add parameter 'origin' to every location in default-location-searches.js
 // Without the 'origin' parameter, search will not work correctly
@@ -245,7 +247,8 @@ const config = {
   facebookAppId,
   sentryDsn,
   usingSSL,
-  maps
+  maps,
+  supportedLanguages
 }
 
 export default config

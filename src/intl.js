@@ -5,7 +5,7 @@ import config from './config'
 
 export function messagesInLocale() {
   switch (config.locale) {
-    case 'da-DK':
+    case 'da':
       return danishMessages
     case 'fr':
       return frenchMessages

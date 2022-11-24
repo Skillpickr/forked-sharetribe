@@ -19,7 +19,8 @@ import {
   NamedLink,
   InboxItem,
   IconSpinner,
-  Tooltip
+  Tooltip,
+  Button
 } from '../../components'
 import { TopbarSearchForm } from '../../forms'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -40,6 +41,7 @@ const TopbarDesktop = (props) => {
     isAuthenticated,
     onLogout,
     onSearchSubmit,
+    onLanguageSwitch,
     initialSearchFormValues
   } = props
   const [mounted, setMounted] = useState(false)
@@ -115,6 +117,11 @@ const TopbarDesktop = (props) => {
           </span>
         </NamedLink>
       </Tooltip>
+    </div>
+  ) : null
+
+  const listingManagerLink = authenticatedOnClientSide ? (
+    <div>
       {currentUserHasListings && (
         <Tooltip content={intl.formatMessage({ id: 'TopbarDesktop.yourListingsLink' })} direction="bottom">
           <NamedLink className={css.inboxLink} name="ManageListingsPage">
@@ -147,7 +154,9 @@ const TopbarDesktop = (props) => {
   const profileMenu = authenticatedOnClientSide ? (
     <Menu useArrow={true}>
       <MenuLabel className={css.profileMenuLabel} isOpenClassName={css.profileMenuIsOpen}>
-        <Avatar className={css.avatar} user={currentUser} disableProfileLink />
+        <Tooltip content={intl.formatMessage({ id: 'TopbarDesktop.yourProfileLink' })} direction="bottom">
+          <Avatar className={css.avatar} user={currentUser} disableProfileLink />
+        </Tooltip>
       </MenuLabel>
       <MenuContent className={css.profileMenuContent}>
         {firstNewListing}
@@ -222,8 +231,16 @@ const TopbarDesktop = (props) => {
           <FormattedMessage id="TopbarDesktop.createListing" />
         </span>
       </NamedLink> */}
-      {inboxLink}
+      {listingManagerLink}
+      <Tooltip content={intl.formatMessage({ id: 'TopbarDesktop.yourSwitchLanguageLink' })} direction="bottom">
+        <a className={css.inboxLink} onClick={onLanguageSwitch}>
+          <span className={css.inbox}>
+            <FontAwesomeIcon icon="fa-solid fa-globe" size="xl" />
+          </span>
+        </a>
+      </Tooltip>
       {profileMenu}
+      {inboxLink}
       {/* {signupLink} */}
       {loginLink}
     </nav>
@@ -251,6 +268,7 @@ TopbarDesktop.propTypes = {
   onLogout: func.isRequired,
   notificationCount: number,
   onSearchSubmit: func.isRequired,
+  onLanguageSwitch: func,
   initialSearchFormValues: object,
   intl: intlShape.isRequired
 }
