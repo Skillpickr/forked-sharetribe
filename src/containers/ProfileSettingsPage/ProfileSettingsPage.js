@@ -14,7 +14,8 @@ import {
   LayoutWrapperMain,
   LayoutWrapperFooter,
   Footer,
-  NamedLink
+  NamedLink,
+  Alert
 } from '../../components'
 import { ProfileSettingsForm } from '../../forms'
 import { TopbarContainer } from '../../containers'
@@ -102,12 +103,21 @@ export class ProfileSettingsPageComponent extends Component {
                 <h1 className={css.heading}>
                   <FormattedMessage id="ProfileSettingsPage.heading" />
                 </h1>
+
                 {user.id ? (
                   <NamedLink className={css.profileLink} name="ProfilePage" params={{ id: user.id.uuid }}>
                     <FormattedMessage id="ProfileSettingsPage.viewProfileLink" />
                   </NamedLink>
                 ) : null}
               </div>
+              <Alert type="secondary">
+                <div>
+                  <FormattedMessage id="ProfileSettingsPage.guide" />
+                  <NamedLink name="NewListingPage">
+                    <FormattedMessage id="ProfileSettingsPage.guide.click" />
+                  </NamedLink>
+                </div>
+              </Alert>
               {profileSettingsForm}
             </div>
           </LayoutWrapperMain>

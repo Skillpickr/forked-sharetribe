@@ -3,6 +3,7 @@ import { array, bool, func, number, object, shape, string } from 'prop-types'
 import classNames from 'classnames'
 import omit from 'lodash/omit'
 import config from '../../config'
+import * as custom from '../../marketplace-custom-config.js'
 import routeConfiguration from '../../routeConfiguration'
 import { FormattedMessage } from '../../util/reactIntl'
 import { createResourceLocatorString } from '../../util/routes'
@@ -364,8 +365,8 @@ MainPanel.defaultProps = {
   resultsCount: 0,
   pagination: null,
   searchParamsForPagination: {},
-  filterConfig: config.custom.filters,
-  sortConfig: config.custom.sortConfig
+  filterConfig: custom.filters,
+  sortConfig: custom.sortConfig
 }
 
 MainPanel.propTypes = {

@@ -9,7 +9,7 @@ import { LINE_ITEM_NIGHT, LINE_ITEM_DAY, propTypes } from '../../util/types'
 import * as validators from '../../util/validators'
 import { formatMoney } from '../../util/currency'
 import { types as sdkTypes } from '../../util/sdkLoader'
-import { Button, Form, FieldCurrencyInput } from '../../components'
+import { Button, Form, FieldCurrencyInput, Alert } from '../../components'
 import css from './EditListingPricingForm.module.css'
 
 const { Money } = sdkTypes
@@ -79,6 +79,9 @@ export const EditListingPricingFormComponent = (props) => (
 
       return (
         <Form onSubmit={handleSubmit} className={classes}>
+          <Alert type="secondary">
+            <FormattedMessage id="EditListingPricingForm.guide"></FormattedMessage>
+          </Alert>
           {updateListingError ? (
             <p className={css.error}>
               <FormattedMessage id="EditListingPricingForm.updateFailed" />

@@ -6,10 +6,13 @@ import pickBy from 'lodash/pickBy'
 import classNames from 'classnames'
 import config from '../../config'
 import routeConfiguration from '../../routeConfiguration'
+import { canonicalRoutePath } from '../../util/routes'
+import getSupportedCountryCodes from '../../translations/supportedCountries'
 import { withViewport } from '../../util/contextHelpers'
 import { parse, stringify } from '../../util/urlHelpers'
 import { createResourceLocatorString, pathByRouteName } from '../../util/routes'
 import { propTypes } from '../../util/types'
+
 import {
   Button,
   LimitedAccessBanner,
@@ -18,9 +21,14 @@ import {
   ModalMissingInformation,
   NamedLink,
   TopbarDesktop,
-  TopbarMobileMenu
+  TopbarMobileMenu,
+  InlineTextButton,
+  ExternalLink
 } from '../../components'
 import { TopbarSearchForm } from '../../forms'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { useLocation } from 'react-router-dom'
 
 import MenuIcon from './MenuIcon'
 import SearchIcon from './SearchIcon'
@@ -71,10 +79,13 @@ GenericError.propTypes = {
 class TopbarComponent extends Component {
   constructor(props) {
     super(props)
+    this.state = { isLanguageSwitcherModalOpen: false, langIsActive: false }
     this.handleMobileMenuOpen = this.handleMobileMenuOpen.bind(this)
     this.handleMobileMenuClose = this.handleMobileMenuClose.bind(this)
     this.handleMobileSearchOpen = this.handleMobileSearchOpen.bind(this)
     this.handleMobileSearchClose = this.handleMobileSearchClose.bind(this)
+    this.handleLanguageSwitcherModalOpen = this.handleLanguageSwitcherModalOpen.bind(this)
+    this.handleLanguageSwitcherModalClose = this.handleLanguageSwitcherModalClose.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
   }
@@ -93,6 +104,10 @@ class TopbarComponent extends Component {
 
   handleMobileSearchClose() {
     redirectToURLWithoutModalState(this.props, 'mobilesearch')
+  }
+
+  handleLanguageSwitcherModalClose() {
+    this.setState({ isLanguageSwitcherModalOpen: false })
   }
 
   handleSubmit(values) {
@@ -127,6 +142,10 @@ class TopbarComponent extends Component {
     })
   }
 
+  handleLanguageSwitcherModalOpen() {
+    this.setState({ isLanguageSwitcherModalOpen: true })
+  }
+
   render() {
     const {
       className,
@@ -151,6 +170,10 @@ class TopbarComponent extends Component {
       sendVerificationEmailError,
       showGenericError
     } = this.props
+    const canonicalPath = canonicalRoutePath(routeConfiguration(), location)
+    const countryCodes = getSupportedCountryCodes(config.locale)
+
+    const countryCodesDisplayed = countryCodes.filter(({ code }) => config.supportedLanguages.includes(code))
 
     const { mobilemenu, mobilesearch, address, origin, bounds } = parse(location.search, {
       latlng: ['origin'],
@@ -207,12 +230,20 @@ class TopbarComponent extends Component {
           <NamedLink className={css.home} name="LandingPage" title={intl.formatMessage({ id: 'Topbar.logoIcon' })}>
             <Logo format="mobile" />
           </NamedLink>
-          <Button
-            rootClassName={css.searchMenu}
-            onClick={this.handleMobileSearchOpen}
-            title={intl.formatMessage({ id: 'Topbar.searchIcon' })}>
-            <SearchIcon className={css.searchMenuIcon} />
-          </Button>
+          <div className={css.mobileRightIcons}>
+            <Button
+              rootClassName={css.searchMenu}
+              onClick={this.handleLanguageSwitcherModalOpen}
+              title={intl.formatMessage({ id: 'Topbar.searchIcon' })}>
+              <FontAwesomeIcon icon="fa-solid fa-globe" size="xl" />
+            </Button>
+            <Button
+              rootClassName={css.searchMenu}
+              onClick={this.handleMobileSearchOpen}
+              title={intl.formatMessage({ id: 'Topbar.searchIcon' })}>
+              <SearchIcon className={css.searchMenuIcon} />
+            </Button>
+          </div>
         </div>
         <div className={css.desktop}>
           <TopbarDesktop
@@ -226,6 +257,7 @@ class TopbarComponent extends Component {
             notificationCount={notificationCount}
             onLogout={this.handleLogout}
             onSearchSubmit={this.handleSubmit}
+            onLanguageSwitch={this.handleLanguageSwitcherModalOpen}
           />
         </div>
         <Modal
@@ -235,6 +267,33 @@ class TopbarComponent extends Component {
           usePortal
           onManageDisableScrolling={onManageDisableScrolling}>
           {authInProgress ? null : mobileMenu}
+        </Modal>
+        <Modal
+          id="TopbarSwitchLanguage"
+          isOpen={this.state.isLanguageSwitcherModalOpen}
+          onClose={this.handleLanguageSwitcherModalClose}
+          usePortal
+          onManageDisableScrolling={onManageDisableScrolling}>
+          <div className={css}>
+            <ul className={css.langContainer}>
+              {countryCodesDisplayed.map((country) => {
+                return (
+                  <li key={country.code} className={css.langItem}>
+                    <ExternalLink
+                      className={classNames(css.langLink, {
+                        [css.langIsActive]: country.locale === config.locale
+                      })}
+                      href={'https://www.skillpickr.' + country.domain + canonicalPath}>
+                      <div>
+                        <strong>{country.language}</strong>
+                      </div>
+                      <div className={css.langItemP}>{country.country}</div>
+                    </ExternalLink>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
         </Modal>
         <Modal
           id="TopbarMobileSearch"

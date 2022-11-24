@@ -81,8 +81,10 @@ const Footer = (props) => {
             <div className={css.infoLinks}>
               <ul className={css.list}>
                 <li className={css.listItem}>
-                  <p className={css.link}>
-                    <strong>Sell</strong>
+                  <p className={css.linkTitle}>
+                    <strong>
+                      <FormattedMessage id="Footer.sell.title" />
+                    </strong>
                   </p>
                 </li>
                 <li className={css.listItem}>
@@ -116,8 +118,10 @@ const Footer = (props) => {
             <div className={css.searches}>
               <ul className={css.list}>
                 <li className={css.listItem}>
-                  <p className={css.link}>
-                    <strong>Categories</strong>
+                  <p className={css.linkTitle}>
+                    <strong>
+                      <FormattedMessage id="Footer.categories.title" />
+                    </strong>
                   </p>
                 </li>
                 <li className={css.listItem}>
@@ -127,7 +131,7 @@ const Footer = (props) => {
                     to={{ search: '?pub_category=performance' }}
                     className={css.link}
                     title={'Explore all skills related to Performance & Entertainment'}>
-                    Performance & Entertainment
+                    <FormattedMessage id="Footer.toPerformance" />
                   </NamedLink>
                 </li>
                 <li className={css.listItem}>
@@ -137,7 +141,7 @@ const Footer = (props) => {
                     to={{ search: '?pub_category=creative' }}
                     className={css.link}
                     title={'Explore all skills related to other Creative Artists'}>
-                    Creative
+                    <FormattedMessage id="Footer.toCreative" />
                   </NamedLink>
                 </li>
                 {/* <li className={css.listItem}>
@@ -154,7 +158,7 @@ const Footer = (props) => {
                 </li> */}
                 <li className={css.listItem}>
                   <ExternalLink key="linkToHelpCenter" href={siteHowSPWorks} className={css.link}>
-                    How SkillPickr Works
+                    <FormattedMessage id="Footer.toBuyerHelpCenter" />
                   </ExternalLink>
                 </li>
               </ul>
@@ -162,8 +166,10 @@ const Footer = (props) => {
             <div className={css.aboutUs}>
               <ul className={css.list}>
                 <li className={css.listItem}>
-                  <p className={css.link}>
-                    <strong>About us</strong>
+                  <p className={css.linkTitle}>
+                    <strong>
+                      <FormattedMessage id="Footer.aboutUs.title" />
+                    </strong>
                   </p>
                 </li>
                 <li className={css.listItem}>

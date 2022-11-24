@@ -7,12 +7,13 @@ import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl'
 import { findOptionsForSelectFilter } from '../../util/search'
 import { propTypes } from '../../util/types'
 import config from '../../config'
-import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form, Alert } from '../../components'
+import * as custom from '../../marketplace-custom-config.js'
+
+import { Button, FieldSelect, Form, Alert } from '../../components'
 import { compose } from 'redux'
 import css from './EditListingFeaturesForm.module.css'
 import { Skills, Categories } from '../../util/category'
-import { CheckboxFieldsType, DropdownFieldsType } from '../../util/featuresFields'
-import { required, composeValidators } from '../../util/validators'
+import { required } from '../../util/validators'
 import EditPhotographerFeaturesComponent from './skills/EditPhotographerFeaturesForm'
 import EditDJFeaturesComponent from './skills/EditDjFeaturesForm'
 import EditMusicianFeaturesComponent from './skills/EditMusicianFeaturesForm'
@@ -116,10 +117,7 @@ const EditListingFeaturesFormComponent = (props) => (
           {errorMessage}
           {errorMessageShowListing}
           <Alert type="secondary">
-            <p>
-              Let&apos;s get started and tell us about you and your artistic expertise. Add some details about your
-              concept. Fill out what you can for now - you’ll be able to edit this later.
-            </p>
+            <FormattedMessage id="EditListingFeaturesForm.guide" />
           </Alert>
           <FieldSelect
             className={css.features}
@@ -174,7 +172,7 @@ EditListingFeaturesFormComponent.defaultProps = {
   rootClassName: null,
   className: null,
   fetchErrors: null,
-  filterConfig: config.custom.filters,
+  filterConfig: custom.filters,
   skill: ''
 }
 

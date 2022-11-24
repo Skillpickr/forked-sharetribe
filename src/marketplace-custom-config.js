@@ -37,11 +37,24 @@ import { bandConfig } from './util/skillsConfig/bands'
 import { photographerConfig } from './util/skillsConfig/photographer'
 import { musicianConfig } from './util/skillsConfig/musician'
 import { djConfig } from './util/skillsConfig/dj'
+import { createIntl, createIntlCache } from 'react-intl'
+import config from './config'
+
+import { messagesInLocale } from './intl'
+
+const cache = createIntlCache()
+const intl = createIntl(
+  {
+    locale: config.locale,
+    messages: messagesInLocale()
+  },
+  cache
+)
 
 const filterConfig = [
   {
     id: 'dates-length',
-    label: 'Dates',
+    label: intl.formatMessage({ id: 'MarketplaceConfig.dates.label' }),
     type: 'BookingDateRangeLengthFilter',
     group: 'primary',
     // Note: BookingDateRangeFilter is fixed filter,
@@ -61,17 +74,17 @@ const filterConfig = [
 
       // Options for the minimum duration of the booking
       options: [
-        { key: '0', label: 'Any length' },
-        { key: '60', label: '1 hour', shortLabel: '1h' },
-        { key: '120', label: '2 hours', shortLabel: '2h' },
-        { key: '240', label: '4 hours', shortLabel: '4h' },
-        { key: '480', label: '8 hours', shortLabel: '8h' }
+        { key: '0', label: intl.formatMessage({ id: 'MarketplaceConfig.dates.anyLength' }) },
+        { key: '60', label: intl.formatMessage({ id: 'MarketplaceConfig.dates.oneHour' }), shortLabel: '1h' },
+        { key: '120', label: intl.formatMessage({ id: 'MarketplaceConfig.dates.twoHour' }), shortLabel: '2h' },
+        { key: '240', label: intl.formatMessage({ id: 'MarketplaceConfig.dates.fourHour' }), shortLabel: '4h' },
+        { key: '480', label: intl.formatMessage({ id: 'MarketplaceConfig.dates.eightHour' }), shortLabel: '8h' }
       ]
     }
   },
   {
     id: 'price',
-    label: 'Price',
+    label: intl.formatMessage({ id: 'MarketplaceConfig.price.label' }),
     type: 'PriceFilter',
     group: 'primary',
     // Note: PriceFilter is fixed filter,
@@ -87,7 +100,7 @@ const filterConfig = [
   },
   {
     id: 'keyword',
-    label: 'Keyword',
+    label: intl.formatMessage({ id: 'MarketplaceConfig.keyword.label' }),
     type: 'KeywordFilter',
     group: 'primary',
     // Note: KeywordFilter is fixed filter,
@@ -100,7 +113,7 @@ const filterConfig = [
   },
   {
     id: 'category',
-    label: 'Category',
+    label: intl.formatMessage({ id: 'MarketplaceConfig.category.label' }),
     type: '',
     group: 'primary',
     queryParamNames: ['pub_category'],
@@ -108,16 +121,16 @@ const filterConfig = [
       // Schema type is enum for SelectSingleFilter
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       options: [
-        { key: Categories.creative, label: 'Creative' },
-        { key: Categories.performance, label: 'Performance and Entertainment' },
-        { key: Categories.audioProd, label: 'Audio Production' },
-        { key: Categories.knowledge, label: 'Knowledge' }
+        { key: Categories.creative, label: intl.formatMessage({ id: 'MarketplaceConfig.category.performance' }) },
+        { key: Categories.performance, label: intl.formatMessage({ id: 'MarketplaceConfig.category.creative' }) },
+        { key: Categories.audioProd, label: intl.formatMessage({ id: 'MarketplaceConfig.category.audioProd' }) },
+        { key: Categories.knowledge, label: intl.formatMessage({ id: 'MarketplaceConfig.category.knowledge' }) }
       ]
     }
   },
   {
     id: 'skill',
-    label: 'Skill',
+    label: intl.formatMessage({ id: 'MarketplaceConfig.skill.label' }),
     type: 'SelectSingleFilter',
     group: 'primary',
     queryParamNames: ['pub_skill'],
@@ -125,10 +138,10 @@ const filterConfig = [
       // Schema type is enum for SelectSingleFilter
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       options: [
-        { key: Skills.photographer, label: 'Photographer' },
-        { key: Skills.dj, label: 'DJ' },
-        { key: Skills.musician, label: 'Musician' },
-        { key: Skills.band, label: 'Band' }
+        { key: Skills.photographer, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.photographer' }) },
+        { key: Skills.dj, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.dj' }) },
+        { key: Skills.musician, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.musician' }) },
+        { key: Skills.band, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.band' }) }
       ]
     }
   }
@@ -151,14 +164,18 @@ export const sortConfig = {
   conflictingFilters: ['keyword'],
 
   options: [
-    { key: 'createdAt', label: 'Newest' },
-    { key: '-createdAt', label: 'Oldest' },
-    { key: '-price', label: 'Lowest price' },
-    { key: 'price', label: 'Highest price' },
+    { key: 'createdAt', label: intl.formatMessage({ id: 'MarketplaceConfig.sort.newest' }) },
+    { key: '-createdAt', label: intl.formatMessage({ id: 'MarketplaceConfig.sort.oldest' }) },
+    { key: '-price', label: intl.formatMessage({ id: 'MarketplaceConfig.sort.lowest' }) },
+    { key: 'price', label: intl.formatMessage({ id: 'MarketplaceConfig.sort.highest' }) },
 
     // The relevance is only used for keyword search, but the
     // parameter isn't sent to the Marketplace API. The key is purely
     // for handling the internal state of the sorting dropdown.
-    { key: 'relevance', label: 'Relevance', longLabel: 'Relevance (Keyword search)' }
+    {
+      key: 'relevance',
+      label: intl.formatMessage({ id: 'MarketplaceConfig.sort.relevance' }),
+      longLabel: intl.formatMessage({ id: 'MarketplaceConfig.sort.relevanceLong' })
+    }
   ]
 }

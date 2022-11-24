@@ -5,6 +5,7 @@ import { convertUnitToSubUnit, unitDivisor } from '../../util/currency'
 import { formatDateStringToTz, getExclusiveEndDateWithTz } from '../../util/dates'
 import { parse } from '../../util/urlHelpers'
 import config from '../../config'
+import * as custom from '../../marketplace-custom-config.js'
 
 // Pagination page size might need to be dynamic on responsive page layouts
 // Current design has max 3 columns 12 is divisible by 2 and 3
@@ -148,7 +149,7 @@ export const searchListings = (searchParams) => (dispatch, getState, sdk) => {
 
     // Find configs for 'dates-length' filter
     // (type: BookingDateRangeLengthFilter)
-    const filterConfigs = config.custom.filters
+    const filterConfigs = custom.filters
     const idOfBookingDateRangeLengthFilter = 'dates-length'
     const dateLengthFilterConfig = filterConfigs.find((f) => f.id === idOfBookingDateRangeLengthFilter)
     // Extract time zone

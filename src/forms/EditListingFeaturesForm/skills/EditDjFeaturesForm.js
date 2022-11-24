@@ -7,6 +7,8 @@ import { intlShape, injectIntl, FormattedMessage } from '../../../util/reactIntl
 import { findOptionsForSelectFilter } from '../../../util/search'
 import { propTypes } from '../../../util/types'
 import config from '../../../config'
+import * as custom from '../../../marketplace-custom-config.js'
+
 import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Form } from '../../../components'
 import { compose } from 'redux'
 import css from '../EditListingFeaturesForm.module.css'
@@ -73,7 +75,9 @@ class EditDJFeaturesComponent extends Component {
 
         <EditListingTitleForm></EditListingTitleForm>
         <div className={css.listingSectionContainer}>
-          <h2>Practical info</h2>
+          <h2>
+            <FormattedMessage id="EditListingFeaturesForm.practicalInfo.greeting" />
+          </h2>
           <FieldTextInput
             id="technicalRider"
             name="technicalRider"
@@ -137,7 +141,7 @@ class EditDJFeaturesComponent extends Component {
   }
 }
 EditDJFeaturesComponent.defaultProps = {
-  filterConfig: config.custom.filters
+  filterConfig: custom.filters
 }
 EditDJFeaturesComponent.propTypes = {
   filterConfig: propTypes.filterConfig,

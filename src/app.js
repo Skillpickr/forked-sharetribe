@@ -17,10 +17,15 @@ import configureStore from './store'
 import routeConfiguration from './routeConfiguration'
 import Routes from './Routes'
 import config from './config'
+import 'moment/locale/da'
+import 'moment/locale/fr'
 
 // Flex template application uses English translations as default translations.
 import defaultMessages from './translations/en.json'
+import frenchMessages from './translations/fr.json'
+import danishMessages from './translations/da.json'
 import * as Sentry from '@sentry/react'
+import { messagesInLocale } from './intl'
 
 // If you want to change the language of default (fallback) translations,
 // change the imports to match the wanted locale:
@@ -44,7 +49,21 @@ import * as Sentry from '@sentry/react'
 // If you are using a non-english locale, point `messagesInLocale` to correct .json file.
 // Remove "const messagesInLocale" and add import for the correct locale:
 // import messagesInLocale from './translations/fr.json';
-const messagesInLocale = {}
+// let messagesInLocale
+
+// if (process.env.REACT_APP_LANGUAGE === 'da') {
+//   messagesInLocale = danishMessages
+// }
+// function messagesInLocale() {
+//   switch (process.env.REACT_APP_LANGUAGE) {
+//     case 'da':
+//       return danishMessages
+//     case 'fr':
+//       return frenchMessages
+//     default:
+//       return defaultMessages
+//   }
+// }
 
 // If translation key is missing from `messagesInLocale` (e.g. fr.json),
 // corresponding key will be added to messages from `defaultMessages` (en.json)
@@ -75,7 +94,7 @@ const addMissingTranslations = (sourceLangTranslations, targetLangTranslations) 
 const isTestEnv = process.env.NODE_ENV === 'test'
 const localeMessages = isTestEnv
   ? mapValues(defaultMessages, (val, key) => key)
-  : addMissingTranslations(defaultMessages, messagesInLocale)
+  : addMissingTranslations(defaultMessages, messagesInLocale())
 
 const setupLocale = () => {
   if (isTestEnv) {
