@@ -215,6 +215,22 @@
   }
 }
 
+.linkTitle {
+  /* Font */
+  composes: h5 from global;
+  line-height: 20px;
+  color: var(--matterColor);
+  transition: var(--transitionStyleButton);
+
+  margin-top: 0;
+  margin-bottom: 12px;
+
+  @media (--viewportMedium) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
 /* Desktop and Mobile: searches - first column */
 .searches {
   order: 2;

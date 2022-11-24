@@ -1,4 +1,3 @@
-import * as custom from './marketplace-custom-config.js'
 import defaultLocationSearches from './default-location-searches'
 import { defaultMCC, stripePublishableKey, stripeCountryDetails } from './stripe-config'
 import { currencyConfiguration } from './currency-config'
@@ -15,7 +14,7 @@ const appCdnAssets = {
 
 // If you want to change the language, remember to also change the
 // locale data and the messages in the app.js file.
-const locale = 'en'
+const locale = process.env.REACT_APP_LANGUAGE
 const i18n = {
   /*
     0: Sunday
@@ -25,6 +24,8 @@ const i18n = {
   */
   firstDayOfWeek: 1
 }
+
+const supportedLanguages = ['US', 'DK']
 
 // Should search results be ordered by distance to origin.
 // NOTE: If this is set to true add parameter 'origin' to every location in default-location-searches.js
@@ -247,7 +248,7 @@ const config = {
   sentryDsn,
   usingSSL,
   maps,
-  custom
+  supportedLanguages
 }
 
 export default config

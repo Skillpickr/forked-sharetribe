@@ -10,6 +10,7 @@ import { richText } from '../../util/richText'
 import { findOptionsForSelectFilter } from '../../util/search'
 import { createSlug } from '../../util/urlHelpers'
 import config from '../../config'
+import * as custom from '../../marketplace-custom-config.js'
 import { NamedLink, ResponsiveImage } from '../../components'
 
 import css from './ListingCard.module.css'
@@ -120,7 +121,7 @@ ListingCardComponent.defaultProps = {
   className: null,
   rootClassName: null,
   renderSizes: null,
-  filtersConfig: config.custom.filters,
+  filtersConfig: custom.filters,
   setActiveListing: () => null
 }
 

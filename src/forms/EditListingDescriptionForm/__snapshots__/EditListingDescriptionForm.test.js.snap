@@ -13,9 +13,9 @@ exports[`EditListingDescriptionForm matches snapshot 1`] = `
     <div
       className="container"
     >
-      <p>
-        Don’t sweat it! You can just draft a version of your concept now and change it later.
-      </p>
+      <span>
+        EditListingDescriptionForm.guide.credentials
+      </span>
     </div>
     <span
       className="closebtn"
@@ -26,7 +26,9 @@ exports[`EditListingDescriptionForm matches snapshot 1`] = `
   </div>
   <div>
     <h2>
-      Info about you as a creative artist
+      <span>
+        EditListingDescriptionForm.greeting
+      </span>
     </h2>
     <div
       className="root description"

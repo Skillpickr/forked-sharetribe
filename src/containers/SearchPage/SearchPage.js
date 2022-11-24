@@ -8,6 +8,8 @@ import debounce from 'lodash/debounce'
 import unionWith from 'lodash/unionWith'
 import classNames from 'classnames'
 import config from '../../config'
+import * as custom from '../../marketplace-custom-config.js'
+
 import routeConfiguration from '../../routeConfiguration'
 import { createResourceLocatorString, pathByRouteName } from '../../util/routes'
 import { parse, stringify } from '../../util/urlHelpers'
@@ -213,8 +215,8 @@ SearchPageComponent.defaultProps = {
   searchListingsError: null,
   searchParams: {},
   tab: 'listings',
-  filterConfig: config.custom.filters,
-  sortConfig: config.custom.sortConfig,
+  filterConfig: custom.filters,
+  sortConfig: custom.sortConfig,
   activeListingId: null
 }
 

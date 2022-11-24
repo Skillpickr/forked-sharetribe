@@ -3,6 +3,7 @@ import { string, bool } from 'prop-types'
 import { intlShape, injectIntl } from '../../util/reactIntl'
 
 import config from '../../config'
+import * as custom from '../../marketplace-custom-config.js'
 
 import SortByPlain from './SortByPlain'
 import SortByPopup from './SortByPopup'
@@ -10,9 +11,9 @@ import SortByPopup from './SortByPopup'
 const SortBy = (props) => {
   const { sort, showAsPopup, isConflictingFilterActive, intl, ...rest } = props
 
-  const { relevanceKey, queryParamName } = config.custom.sortConfig
+  const { relevanceKey, queryParamName } = custom.sortConfig
 
-  const options = config.custom.sortConfig.options.map((option) => {
+  const options = custom.sortConfig.options.map((option) => {
     const isRelevance = option.key === relevanceKey
     return {
       ...option,

@@ -1,19 +1,16 @@
-import React, { useState, Component } from 'react'
-import { bool, func, shape, string } from 'prop-types'
-import classNames from 'classnames'
-import { Form as FinalForm } from 'react-final-form'
-import { intlShape, injectIntl, FormattedMessage } from '../../../util/reactIntl'
+import React, { Component } from 'react'
+import { intlShape, injectIntl } from '../../../util/reactIntl'
 import { findOptionsForSelectFilter } from '../../../util/search'
 import { propTypes } from '../../../util/types'
 import config from '../../../config'
+import * as custom from '../../../marketplace-custom-config.js'
+
 import { Button, FieldCheckboxGroup, FieldSelect, FieldTextInput, Alert } from '../../../components'
 import { compose } from 'redux'
 import css from '../EditListingFeaturesForm.module.css'
-import { Skills, Categories } from '../../../util/category'
 import { CheckboxFieldsType, DropdownFieldsType } from '../../../util/featuresFields'
 import { required, composeValidators } from '../../../util/validators'
 import EditListingTitleForm from './EditListingTitleForm'
-import EditListingOtherInfoForm from './EditListingOtherInfoForm'
 
 class EditBandFeaturesComponent extends Component {
   render() {
@@ -87,7 +84,7 @@ class EditBandFeaturesComponent extends Component {
   }
 }
 EditBandFeaturesComponent.defaultProps = {
-  filterConfig: config.custom.filters
+  filterConfig: custom.filters
 }
 EditBandFeaturesComponent.propTypes = {
   filterConfig: propTypes.filterConfig,

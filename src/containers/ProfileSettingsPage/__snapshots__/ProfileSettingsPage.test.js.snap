@@ -42,6 +42,22 @@ exports[`ContactDetailsPage matches snapshot 1`] = `
             />
           </h1>
         </div>
+        <Alert
+          type="secondary"
+        >
+          <div>
+            <MemoizedFormattedMessage
+              id="ProfileSettingsPage.guide"
+            />
+            <NamedLink
+              name="NewListingPage"
+            >
+              <MemoizedFormattedMessage
+                id="ProfileSettingsPage.guide.click"
+              />
+            </NamedLink>
+          </div>
+        </Alert>
       </div>
     </LayoutWrapperMain>
     <LayoutWrapperFooter

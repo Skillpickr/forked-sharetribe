@@ -42,7 +42,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 "options": Array [
                   Object {
                     "key": "0",
-                    "label": "Any length",
+                    "label": "Any Length",
                   },
                   Object {
                     "key": "60",
@@ -51,17 +51,17 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                   },
                   Object {
                     "key": "120",
-                    "label": "2 hours",
+                    "label": "2 hour",
                     "shortLabel": "2h",
                   },
                   Object {
                     "key": "240",
-                    "label": "4 hours",
+                    "label": "4 hour",
                     "shortLabel": "4h",
                   },
                   Object {
                     "key": "480",
-                    "label": "8 hours",
+                    "label": "8 hour",
                     "shortLabel": "8h",
                   },
                 ],
@@ -105,11 +105,11 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 "options": Array [
                   Object {
                     "key": "creative",
-                    "label": "Creative",
+                    "label": "Performance & Entertainment",
                   },
                   Object {
                     "key": "performance",
-                    "label": "Performance and Entertainment",
+                    "label": "Creative",
                   },
                   Object {
                     "key": "audio-prod",
@@ -1633,11 +1633,11 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               },
               Object {
                 "key": "-price",
-                "label": "Lowest price",
+                "label": "Lowest Price",
               },
               Object {
                 "key": "price",
-                "label": "Highest price",
+                "label": "Highest Price",
               },
               Object {
                 "key": "relevance",
