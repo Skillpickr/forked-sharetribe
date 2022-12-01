@@ -42,6 +42,7 @@ export const UPLOAD_IMAGE_SUCCESS = 'app/EditListingPage/UPLOAD_IMAGE_SUCCESS'
 export const UPLOAD_IMAGE_ERROR = 'app/EditListingPage/UPLOAD_IMAGE_ERROR'
 
 export const UPDATE_IMAGE_ORDER = 'app/EditListingPage/UPDATE_IMAGE_ORDER'
+export const SET_THUMBNAIL = 'app/EditListingPage/SET_THUMBNAIL'
 
 export const REMOVE_LISTING_IMAGE = 'app/EditListingPage/REMOVE_LISTING_IMAGE'
 
@@ -77,6 +78,7 @@ const initialState = {
   images: {},
   imageOrder: [],
   removedImageIds: [],
+  thumbnailImageId: '',
   fetchExceptionsError: null,
   fetchExceptionsInProgress: false,
   availabilityExceptions: [],
@@ -200,6 +202,16 @@ export default function reducer(state = initialState, action = {}) {
     case UPDATE_IMAGE_ORDER:
       return { ...state, imageOrder: payload.imageOrder }
 
+    case SET_THUMBNAIL: {
+      const id = payload.imageId
+      console.log('thumnail payload', id)
+
+      const images = omit(state.images, id)
+      console.log('images', images)
+
+      return { ...state }
+    }
+
     case REMOVE_LISTING_IMAGE: {
       const id = payload.imageId
 
@@ -305,6 +317,11 @@ export const clearUpdatedTab = () => ({
 export const updateImageOrder = (imageOrder) => ({
   type: UPDATE_IMAGE_ORDER,
   payload: { imageOrder }
+})
+
+export const setThumbnailImage = (imageId) => ({
+  type: SET_THUMBNAIL,
+  payload: { imageId }
 })
 
 export const removeListingImage = (imageId) => ({

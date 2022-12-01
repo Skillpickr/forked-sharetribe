@@ -7,13 +7,20 @@
  *   <input type="file" accept="images/*" onChange={handleChange} />
  * </AddImages>
  */
-import React from 'react'
+
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { ImageFromFile, ResponsiveImage, IconSpinner } from '../../components'
 
 import css from './AddImages.module.css'
 import RemoveImageButton from './RemoveImageButton'
+import { DndContext, closestCenter, MouseSensor, TouchSensor, DragOverlay, useSensor, useSensors } from '@dnd-kit/core'
+import { SortableContext, rectSortingStrategy } from '@dnd-kit/sortable'
+
+import { Grid } from './Grid'
+import SortablePhoto from './SortablePhoto'
+import Photo from './Photo'
 
 const ThumbnailWrapper = (props) => {
   const { className, image, savedImageAltText, onRemoveImage } = props
@@ -73,9 +80,74 @@ ThumbnailWrapper.propTypes = {
 const AddImages = (props) => {
   const { children, className, thumbnailClassName, images, savedImageAltText, onRemoveImage } = props
   const classes = classNames(css.root, className)
+  const [activeId, setActiveId] = useState(null)
+  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor))
+
+  function handleDragStart(event) {
+    setActiveId(event.active.id)
+  }
+
+  function moveArray(arr, oldIndex, newIndex) {
+    if (newIndex >= arr.length) {
+      var k = newIndex - arr.length + 1
+      while (k--) {
+        arr.push(undefined)
+      }
+    }
+    arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0])
+    return arr
+  }
+
+  function handleDragEnd(event) {
+    const { active, over } = event
+
+    if (active.id !== over.id) {
+      moveArray(images, images.indexOf(active.id), images.indexOf(over.id))
+    }
+
+    setActiveId(null)
+  }
+
+  function handleDragCancel() {
+    setActiveId(null)
+  }
+
   return (
     <div className={classes}>
-      {images.map((image, index) => {
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onDragCancel={handleDragCancel}>
+        <SortableContext items={images} strategy={rectSortingStrategy}>
+          <Grid columns={3}>
+            {images.map((image, index) => (
+              <SortablePhoto
+                image={image}
+                index={index}
+                key={image.id.uuid || image.id}
+                className={thumbnailClassName}
+                savedImageAltText={savedImageAltText}
+                onRemoveImage={onRemoveImage}
+              />
+            ))}
+          </Grid>
+        </SortableContext>
+
+        <DragOverlay adjustScale={true}>
+          {activeId ? (
+            <Photo
+              className={thumbnailClassName}
+              image={activeId}
+              index={images.indexOf(activeId)}
+              savedImageAltText={savedImageAltText}
+              onRemoveImage={onRemoveImage}
+            />
+          ) : null}
+        </DragOverlay>
+      </DndContext>
+      {/* {images.map((image, index) => {
         return (
           <ThumbnailWrapper
             image={image}
@@ -86,7 +158,7 @@ const AddImages = (props) => {
             onRemoveImage={onRemoveImage}
           />
         )
-      })}
+      })} */}
       {children}
     </div>
   )

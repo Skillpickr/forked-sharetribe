@@ -30,6 +30,7 @@ import {
   requestImageUpload,
   updateImageOrder,
   removeListingImage,
+  setThumbnailImage,
   clearUpdatedTab,
   savePayoutDetails
 } from './EditListingPage.duck'
@@ -63,6 +64,7 @@ export const EditListingPageComponent = (props) => {
     onUpdateListing,
     onImageUpload,
     onRemoveListingImage,
+    onSetListingThumbnail,
     onManageDisableScrolling,
     onPayoutDetailsFormSubmit,
     onPayoutDetailsFormChange,
@@ -210,6 +212,7 @@ export const EditListingPageComponent = (props) => {
           onImageUpload={onImageUpload}
           onUpdateImageOrder={onUpdateImageOrder}
           onRemoveImage={onRemoveListingImage}
+          onSetThumbnail={onSetListingThumbnail}
           onChange={onChange}
           currentUser={currentUser}
           onManageDisableScrolling={onManageDisableScrolling}
@@ -289,6 +292,7 @@ EditListingPageComponent.propTypes = {
   onPayoutDetailsFormSubmit: func.isRequired,
   onUpdateImageOrder: func.isRequired,
   onRemoveListingImage: func.isRequired,
+  onSetListingThumbnail: func.isRequired,
   onUpdateListing: func.isRequired,
   onChange: func.isRequired,
   page: object.isRequired,
@@ -369,6 +373,7 @@ const mapDispatchToProps = (dispatch) => ({
   onGetStripeConnectAccountLink: (params) => dispatch(getStripeConnectAccountLink(params)),
   onUpdateImageOrder: (imageOrder) => dispatch(updateImageOrder(imageOrder)),
   onRemoveListingImage: (imageId) => dispatch(removeListingImage(imageId)),
+  onSetListingThumbnail: (imageId) => dispatch(setThumbnailImage(imageId)),
   onChange: () => dispatch(clearUpdatedTab())
 })
 

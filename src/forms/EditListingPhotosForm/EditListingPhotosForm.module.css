@@ -14,7 +14,7 @@
   margin: 0;
 }
 
-.thumbnail {
+/* .thumbnail {
   margin: 24px 0 0 0;
 
   @media (--viewportLarge) {
@@ -25,7 +25,7 @@
       margin: 0 0 24px 0;
     }
   }
-}
+} */
 
 .addImageWrapper {
   float: left;

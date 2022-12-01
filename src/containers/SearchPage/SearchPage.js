@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { array, bool, func, oneOf, object, shape, string } from 'prop-types'
-import { injectIntl, intlShape } from '../../util/reactIntl'
+import { injectIntl, intlShape, FormattedMessage } from '../../util/reactIntl'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withRouter } from 'react-router-dom'
@@ -157,7 +157,9 @@ export class SearchPageComponent extends Component {
       <Page scrollingDisabled={scrollingDisabled} description={description} title={title} schema={schema}>
         <TopbarContainer className={topbarClasses} currentPage="SearchPage" currentSearchParams={urlQueryParams} />
         <div className={css.page}>
-          <h1 className="">Search Results</h1>
+          <h1 className="">
+            <FormattedMessage id="SearchPage.heading" />
+          </h1>
           <div className={css.container}>
             <MainPanel
               urlQueryParams={validQueryParams}

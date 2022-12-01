@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { LISTING_STATE_DRAFT } from '../../util/types'
 import { EditListingPhotosForm } from '../../forms'
 import { ensureOwnListing } from '../../util/data'
-import { ListingLink } from '../../components'
+import { ListingLink, Alert } from '../../components'
 
 import css from './EditListingPhotosPanel.module.css'
 
@@ -26,7 +26,8 @@ class EditListingPhotosPanel extends Component {
       updateInProgress,
       onChange,
       onSubmit,
-      onRemoveImage
+      onRemoveImage,
+      onSetThumbnail
     } = this.props
 
     const rootClass = rootClassName || css.root
@@ -46,6 +47,9 @@ class EditListingPhotosPanel extends Component {
     return (
       <div className={classes}>
         <h1 className={css.title}>{panelTitle}</h1>
+        <Alert type="secondary">
+          <FormattedMessage id="EditListingPhotosPanel.guide.selectPhoto" />
+        </Alert>
         <EditListingPhotosForm
           className={css.form}
           disabled={disabled}
@@ -61,6 +65,7 @@ class EditListingPhotosPanel extends Component {
           onChange={onChange}
           onUpdateImageOrder={onUpdateImageOrder}
           onRemoveImage={onRemoveImage}
+          onSetThumbnail={onSetThumbnail}
           saveActionMsg={submitButtonText}
           updated={panelUpdated}
           updateInProgress={updateInProgress}
@@ -96,7 +101,8 @@ EditListingPhotosPanel.propTypes = {
   submitButtonText: string.isRequired,
   panelUpdated: bool.isRequired,
   updateInProgress: bool.isRequired,
-  onRemoveImage: func.isRequired
+  onRemoveImage: func.isRequired,
+  onSetThumbnail: func.isRequired
 }
 
 export default EditListingPhotosPanel
