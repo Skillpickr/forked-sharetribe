@@ -16,13 +16,9 @@ const Photo = React.forwardRef(
     const inlineStyles = {
       opacity: faded ? '0.2' : '1',
       transformOrigin: '0 0',
-      height: index === 0 ? 410 : 200,
+      height: index === 0 ? 'auto' : '100%',
       gridRowStart: index === 0 ? 'span 2' : null,
       gridColumnStart: index === 0 ? 'span 2' : null,
-      // backgroundSize: 'cover',
-      // backgroundImage: `url("${image}")`,
-      // backgroundPosition: 'center',
-      // backgroundColor: 'grey',
       curser: 'pointer',
       ...style
     }
@@ -38,7 +34,12 @@ const Photo = React.forwardRef(
       ) : null
 
       return (
-        <ImageFromFile id={image.id} className={className} rootClassName={css.thumbnail} file={image.file}>
+        <ImageFromFile
+          id={image.id}
+          className={className}
+          rootClassName={css.thumbnail}
+          style={inlineStyles}
+          file={image.file}>
           {removeButton}
           {uploadingOverlay}
         </ImageFromFile>

@@ -1,3 +1,5 @@
+@import '../../styles/customMediaQueries.css';
+
 .root {
   width: 100%;
   min-height: 120px;
@@ -20,6 +22,28 @@
   height: 33px;
 }
 
+.gridItem {
+  composes: button buttonFont buttonText buttonBorders from global;
+  position: relative;
+  top: -50%;
+  right: -50%;
+  transform: translate(-50%, -25%);
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  background-color: rgba(211, 211, 211, 0.8);
+  padding: 16px;
+  border-radius: 25px;
+  background-color: rgba;
+  cursor: pointer;
+  margin: 0;
+}
+
+.coverPhotoText {
+  composes: h4 from global;
+  text-align: center;
+}
+
 .thumbnail {
   display: block;
   float: left;
@@ -28,7 +52,6 @@
   margin: 0;
   overflow: hidden;
   background-color: var(--matterColorNegative); /* Loading BG color */
-  cursor: pointer;
 }
 
 .threeToTwoWrapper {

@@ -82,7 +82,6 @@ const EditListingWizardTab = (props) => {
     onImageUpload,
     onUpdateImageOrder,
     onRemoveImage,
-    onSetThumbnail,
     onChange,
     onManageDisableScrolling,
     updatedTab,
@@ -258,7 +257,6 @@ const EditListingWizardTab = (props) => {
           images={images}
           onImageUpload={onImageUpload}
           onRemoveImage={onRemoveImage}
-          onSetThumbnail={onSetThumbnail}
           onSubmit={(values) => {
             onCompleteEditListingWizardTab(tab, values)
           }}
@@ -325,7 +323,6 @@ EditListingWizardTab.propTypes = {
   onImageUpload: func.isRequired,
   onUpdateImageOrder: func.isRequired,
   onRemoveImage: func.isRequired,
-  onSetThumbnail: func.isRequired,
   onChange: func.isRequired,
   updatedTab: string,
   updateInProgress: bool.isRequired,

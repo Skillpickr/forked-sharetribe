@@ -12,6 +12,8 @@
 .imagesField {
   flex-shrink: 0;
   margin: 0;
+  display: inline-grid;
+  justify-items: center;
 }
 
 /* .thumbnail {
@@ -44,13 +46,14 @@
 
   @media (--viewportLarge) {
     width: calc(50% - 12px);
-    margin: 0 0 24px 0;
+    margin: 40px 0 24px 0;
   }
 }
 
 /* Firefox doesn't support image aspect ratio inside flexbox */
 .aspectRatioWrapper {
   padding-bottom: calc(100% * (2 / 3));
+  display: block;
 }
 
 .addImage {
@@ -67,6 +70,8 @@
   justify-content: center;
   align-items: center;
   margin-top: 0;
+  margin-right: auto;
+  margin-left: auto;
 
   /* Colors */
   background-color: var(--matterColorLight);
@@ -139,6 +144,7 @@
   color: var(--matterColorAnti);
   margin-top: 24px;
   margin-bottom: 60px;
+  text-align: center;
 
   @media (--viewportLarge) {
     margin-top: 0;
