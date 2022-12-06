@@ -128,7 +128,6 @@ export class SearchPageComponent extends Component {
     // like mapSearch, page or origin (origin depends on config.sortSearchByDistance)
     const urlQueryParams = pickSearchParamsOnly(searchInURL, filterConfig, sortConfig)
 
-
     // Page transition might initially use values from previous search
     const urlQueryString = stringify(urlQueryParams)
     const paramsQueryString = stringify(pickSearchParamsOnly(searchParams, filterConfig, sortConfig))
