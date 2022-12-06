@@ -62,7 +62,6 @@ export const LandingPageComponent = (props) => {
   const schemaTitle = intl.formatMessage({ id: 'LandingPage.schemaTitle' }, { siteTitle })
   const schemaDescription = intl.formatMessage({ id: 'LandingPage.schemaDescription' })
   const schemaImage = `${config.canonicalRootURL}${facebookImage}`
-  console.log('user', currentUser)
   return (
     <Page
       className={css.root}

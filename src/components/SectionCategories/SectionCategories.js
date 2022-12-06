@@ -69,7 +69,7 @@ const SectionCategories = (props) => {
   ) : (
     <FormattedMessage id="SectionCategories.title" />
   )
-  console.log(displayUserName)
+
   return (
     <div className={classes}>
       <div className={css.background}>

@@ -14,11 +14,11 @@ afterAll(() => {
 })
 
 describe('Application - JSDOM environment', () => {
-  it('renders in the client without crashing', async () => {
+  it('renders in the client without crashing', () => {
     window.google = { maps: {} }
-    const store = await configureStore()
+    const store = configureStore()
     const div = document.createElement('div')
-    await ReactDOM.render(<ClientApp store={store} />, div)
+    ReactDOM.render(<ClientApp store={store} />, div)
     delete window.google
   })
 })

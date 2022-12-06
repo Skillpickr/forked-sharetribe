@@ -55,7 +55,6 @@ export class EditListingPhotosFormComponent extends Component {
             invalid,
             onImageUploadHandler,
             onRemoveImage,
-            onSetThumbnail,
             disabled,
             ready,
             saveActionMsg,
@@ -144,8 +143,7 @@ export class EditListingPhotosFormComponent extends Component {
                 savedImageAltText={intl.formatMessage({
                   id: 'EditListingPhotosForm.savedImageAltText'
                 })}
-                onRemoveImage={onRemoveImage}
-                onSetThumbnail={onSetThumbnail}>
+                onRemoveImage={onRemoveImage}>
                 <Field
                   id="addImage"
                   name="addImage"
@@ -235,8 +233,7 @@ EditListingPhotosFormComponent.propTypes = {
   ready: bool.isRequired,
   updated: bool.isRequired,
   updateInProgress: bool.isRequired,
-  onRemoveImage: func.isRequired,
-  onSetThumbnail: func.isRequired
+  onRemoveImage: func.isRequired
 }
 
 export default compose(injectIntl)(EditListingPhotosFormComponent)
