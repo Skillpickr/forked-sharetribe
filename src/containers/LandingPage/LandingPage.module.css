@@ -9,21 +9,21 @@
 .heroContainer {
   display: flex;
   flex-direction: column;
-  min-height: 300px;
-  height: 67.5vh;
+  /* min-height: 300px; */
+  /* height: 67.5vh; */
   max-height: 600px;
   padding: 0;
 
   @media (--viewportMedium) {
-    min-height: 500px;
-    height: 70vh;
+    /* min-height: 500px; */
+    /* height: 70vh; */
     max-height: none;
   }
 
   @media (--viewportLarge) {
     max-height: 800px;
-    min-height: 600px;
-    height: calc(70vh - var(--topbarHeightDesktop));
+    /* min-height: 600px; */
+    /* height: calc(70vh - var(--topbarHeightDesktop)); */
   }
 }
 
@@ -93,7 +93,7 @@
 }
 
 /* A bar on top of light sections */
-.section:nth-of-type(2n) .sectionContent::before {
+.section .sectionContent::before {
   background: var(--marketplaceColor);
   content: '';
   display: block;

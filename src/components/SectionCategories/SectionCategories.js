@@ -43,7 +43,7 @@ const categoryLink = (title, image, searchQuery, isComingSoon) => {
 }
 
 const SectionCategories = (props) => {
-  const { rootClassName, className, filterConfig } = props
+  const { rootClassName, className, filterConfig, user } = props
 
   // TODO: Change the categories to generic by inserting the const categories in the below return statement
   const classes = classNames(rootClassName || css.root, className)
@@ -63,13 +63,17 @@ const SectionCategories = (props) => {
       }
     }
   }
-
+  const displayUserName = user ? user.attributes.profile.firstName : null
+  const displayHeading = user ? (
+    <FormattedMessage id="SectionCategories.titleWithName" values={{ displayName: displayUserName }} />
+  ) : (
+    <FormattedMessage id="SectionCategories.title" />
+  )
+  console.log(displayUserName)
   return (
     <div className={classes}>
       <div className={css.background}>
-        <div className={css.title}>
-          <FormattedMessage id="SectionCategories.title" />
-        </div>
+        <div className={css.title}>{displayHeading}</div>
         <div className={css.categories}>
           {/* {categories} */}
           {categoryLink('Performance & Entertainment', performanceImage, '?pub_category=performance', false)}

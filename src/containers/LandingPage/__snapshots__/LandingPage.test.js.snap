@@ -63,1567 +63,1582 @@ exports[`LandingPage matches snapshot 1`] = `
         className="sections"
       >
         <section
-          className="section"
+          className="sectionContentFirstChild"
         >
+          <SectionCategories
+            filterConfig={
+              Array [
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "0",
+                        "label": "Any Length",
+                      },
+                      Object {
+                        "key": "60",
+                        "label": "1 hour",
+                        "shortLabel": "1h",
+                      },
+                      Object {
+                        "key": "120",
+                        "label": "2 hour",
+                        "shortLabel": "2h",
+                      },
+                      Object {
+                        "key": "240",
+                        "label": "4 hour",
+                        "shortLabel": "4h",
+                      },
+                      Object {
+                        "key": "480",
+                        "label": "8 hour",
+                        "shortLabel": "8h",
+                      },
+                    ],
+                    "searchTimeZone": "Etc/UTC",
+                  },
+                  "group": "primary",
+                  "id": "dates-length",
+                  "label": "Dates",
+                  "queryParamNames": Array [
+                    "dates",
+                    "minDuration",
+                  ],
+                  "type": "BookingDateRangeLengthFilter",
+                },
+                Object {
+                  "config": Object {
+                    "max": 1000,
+                    "min": 0,
+                    "step": 5,
+                  },
+                  "group": "primary",
+                  "id": "price",
+                  "label": "Price",
+                  "queryParamNames": Array [
+                    "price",
+                  ],
+                  "type": "PriceFilter",
+                },
+                Object {
+                  "config": Object {},
+                  "group": "primary",
+                  "id": "keyword",
+                  "label": "Keyword",
+                  "queryParamNames": Array [
+                    "keywords",
+                  ],
+                  "type": "KeywordFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "creative",
+                        "label": "Performance & Entertainment",
+                      },
+                      Object {
+                        "key": "performance",
+                        "label": "Creative",
+                      },
+                      Object {
+                        "key": "audio-prod",
+                        "label": "Audio Production",
+                      },
+                      Object {
+                        "key": "knowledge",
+                        "label": "Knowledge",
+                      },
+                    ],
+                  },
+                  "group": "primary",
+                  "id": "category",
+                  "label": "Category",
+                  "queryParamNames": Array [
+                    "pub_category",
+                  ],
+                  "type": "",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "photographer",
+                        "label": "Photographer",
+                      },
+                      Object {
+                        "key": "dj",
+                        "label": "DJ",
+                      },
+                      Object {
+                        "key": "musician",
+                        "label": "Musician",
+                      },
+                      Object {
+                        "key": "band",
+                        "label": "Band",
+                      },
+                    ],
+                  },
+                  "group": "primary",
+                  "id": "skill",
+                  "label": "Skill",
+                  "queryParamNames": Array [
+                    "pub_skill",
+                  ],
+                  "type": "SelectSingleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "ceremony",
+                        "label": "Ceremonial Events",
+                      },
+                      Object {
+                        "key": "reception",
+                        "label": "Reception Events",
+                      },
+                      Object {
+                        "key": "evening",
+                        "label": "Evening Events",
+                      },
+                      Object {
+                        "key": "privateParty",
+                        "label": "Private Parties",
+                      },
+                      Object {
+                        "key": "corporate",
+                        "label": "Corporate Parties",
+                      },
+                      Object {
+                        "key": "wedding",
+                        "label": "Weddings",
+                      },
+                      Object {
+                        "key": "birthday",
+                        "label": "Birthday parties",
+                      },
+                      Object {
+                        "key": "christmas",
+                        "label": "Christmas parties",
+                      },
+                      Object {
+                        "key": "newYear",
+                        "label": "New years Eve Parties",
+                      },
+                    ],
+                    "searchMode": "has_all",
+                  },
+                  "group": "secondary",
+                  "id": "bandType",
+                  "label": "Type of band events",
+                  "queryParamNames": Array [
+                    "pub_bandType",
+                  ],
+                  "type": "SelectMultipleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "acousticBand",
+                        "label": "Acoustic band",
+                      },
+                      Object {
+                        "key": "alternativeBand",
+                        "label": "Alternative band",
+                      },
+                      Object {
+                        "key": "blueBand",
+                        "label": "Blues band",
+                      },
+                      Object {
+                        "key": "coverBand",
+                        "label": "Cover band",
+                      },
+                      Object {
+                        "key": "discoFunkBand",
+                        "label": "Disco & Funk band",
+                      },
+                      Object {
+                        "key": "danceClubGroup",
+                        "label": "Dance & Ibiza Club group",
+                      },
+                      Object {
+                        "key": "festivalBand",
+                        "label": "Festival band",
+                      },
+                      Object {
+                        "key": "folkRockBand",
+                        "label": "Folk-rock band",
+                      },
+                      Object {
+                        "key": "functionBand",
+                        "label": "Function band",
+                      },
+                      Object {
+                        "key": "hiphopBand",
+                        "label": "Hip hop group",
+                      },
+                      Object {
+                        "key": "indieBand",
+                        "label": "Indie band",
+                      },
+                      Object {
+                        "key": "mumfordBand",
+                        "label": "Mumford folk band",
+                      },
+                      Object {
+                        "key": "originalArtist",
+                        "label": "Original artist",
+                      },
+                      Object {
+                        "key": "partyBand",
+                        "label": "Party band",
+                      },
+                      Object {
+                        "key": "popBand",
+                        "label": "Pop band",
+                      },
+                      Object {
+                        "key": "gospelBand",
+                        "label": "R&B / Gospel Soul band",
+                      },
+                      Object {
+                        "key": "roamingBand",
+                        "label": "Roaming band",
+                      },
+                      Object {
+                        "key": "rockBAnd",
+                        "label": "Rock band",
+                      },
+                      Object {
+                        "key": "rockNRollBand",
+                        "label": "Rock n roll band",
+                      },
+                      Object {
+                        "key": "soulBand",
+                        "label": "Soul & Motown band",
+                      },
+                      Object {
+                        "key": "vintageBand",
+                        "label": "Vintage band",
+                      },
+                      Object {
+                        "key": "stringDuo",
+                        "label": "String duo",
+                      },
+                      Object {
+                        "key": "stringTrio",
+                        "label": "String trio",
+                      },
+                      Object {
+                        "key": "stringQuartet",
+                        "label": "String quartet",
+                      },
+                      Object {
+                        "key": "stringEnsemble",
+                        "label": "String ensemble",
+                      },
+                      Object {
+                        "key": "electricStringEnsemble",
+                        "label": "Electric string ensemble",
+                      },
+                      Object {
+                        "key": "jazzBand",
+                        "label": "Jazz band",
+                      },
+                      Object {
+                        "key": "bigBand",
+                        "label": "Big band",
+                      },
+                      Object {
+                        "key": "gypsyBand",
+                        "label": "Gypsy jazz band",
+                      },
+                      Object {
+                        "key": "jazzFusionBand",
+                        "label": "Jazz fusion band",
+                      },
+                      Object {
+                        "key": "jazzDuo",
+                        "label": "Jazz duo",
+                      },
+                      Object {
+                        "key": "jazzTrio",
+                        "label": "Jazz trio",
+                      },
+                      Object {
+                        "key": "latinJazzBand",
+                        "label": "Latin jazz band",
+                      },
+                      Object {
+                        "key": "newOrleansBand",
+                        "label": "New Orleans band",
+                      },
+                      Object {
+                        "key": "swingJiveBand",
+                        "label": "Swing & Jive band",
+                      },
+                      Object {
+                        "key": "vintageJazzBand",
+                        "label": "Vintage jazz band",
+                      },
+                      Object {
+                        "key": "ratPackBand",
+                        "label": "Rat Pack jazz band",
+                      },
+                      Object {
+                        "key": "popDuo",
+                        "label": "Pop duo",
+                      },
+                      Object {
+                        "key": "popTrio",
+                        "label": "Pop trio",
+                      },
+                      Object {
+                        "key": "acousticDuo",
+                        "label": "Acoustic duo",
+                      },
+                      Object {
+                        "key": "acousticTrio",
+                        "label": "Acoustic trio",
+                      },
+                      Object {
+                        "key": "rockDuo",
+                        "label": "Rock duo",
+                      },
+                      Object {
+                        "key": "rockTrio",
+                        "label": "Rock trio",
+                      },
+                      Object {
+                        "key": "classicalDuo",
+                        "label": "Classical duo",
+                      },
+                      Object {
+                        "key": "classicalEnsemble",
+                        "label": "Classical ensemble",
+                      },
+                      Object {
+                        "key": "classicalTrio",
+                        "label": "Classical trio",
+                      },
+                      Object {
+                        "key": "fluteHarpDuo",
+                        "label": "Flute and harp duo",
+                      },
+                      Object {
+                        "key": "pianoTrio",
+                        "label": "Piano trio",
+                      },
+                      Object {
+                        "key": "saxophoneEnsemble",
+                        "label": "Saxophone ensemble",
+                      },
+                      Object {
+                        "key": "windEnsemble",
+                        "label": "Wind ensemble",
+                      },
+                      Object {
+                        "key": "orchestra",
+                        "label": "Orchestra",
+                      },
+                      Object {
+                        "key": "showChoir",
+                        "label": "Show choir",
+                      },
+                      Object {
+                        "key": "gospelChoir",
+                        "label": "Gospel choir",
+                      },
+                      Object {
+                        "key": "choir",
+                        "label": "Choir",
+                      },
+                      Object {
+                        "key": "carolSingers",
+                        "label": "Carol singers",
+                      },
+                      Object {
+                        "key": "aCapellaGroup",
+                        "label": "A cappella group",
+                      },
+                      Object {
+                        "key": "barbershopQuartet",
+                        "label": "Barbershop quartet",
+                      },
+                      Object {
+                        "key": "churchChoir",
+                        "label": "Church choir",
+                      },
+                      Object {
+                        "key": "earlyMusicVocalEnsemble",
+                        "label": "Early music vocal ensemble",
+                      },
+                      Object {
+                        "key": "singingWaiters",
+                        "label": "Singing waiters",
+                      },
+                      Object {
+                        "key": "musicalTheatreCompany",
+                        "label": "Musical theatre company",
+                      },
+                      Object {
+                        "key": "operaCompany",
+                        "label": "Opera company",
+                      },
+                      Object {
+                        "key": "pipeBand",
+                        "label": "Pipe band",
+                      },
+                      Object {
+                        "key": "ceilidhBand",
+                        "label": "Ceilidh band",
+                      },
+                      Object {
+                        "key": "folkBand",
+                        "label": "Folk band",
+                      },
+                      Object {
+                        "key": "celticFolkBand",
+                        "label": "Celtic folk band",
+                      },
+                      Object {
+                        "key": "bluegrassBand",
+                        "label": "Bluegrass band",
+                      },
+                      Object {
+                        "key": "countryBand",
+                        "label": "Country band",
+                      },
+                      Object {
+                        "key": "americanaBand",
+                        "label": "Americana band",
+                      },
+                      Object {
+                        "key": "brassBand",
+                        "label": "Brass band",
+                      },
+                      Object {
+                        "key": "brassQuintet",
+                        "label": "Brass quintet",
+                      },
+                      Object {
+                        "key": "balkanBrassBand",
+                        "label": "Balkan brass band",
+                      },
+                      Object {
+                        "key": "bavarianBand",
+                        "label": "Bavarian oompah band",
+                      },
+                      Object {
+                        "key": "marchingBand",
+                        "label": "Marching band",
+                      },
+                      Object {
+                        "key": "balkanBand",
+                        "label": "Balkan band",
+                      },
+                      Object {
+                        "key": "frenchGroup",
+                        "label": "French group",
+                      },
+                      Object {
+                        "key": "klezmerBand",
+                        "label": "Klezmer band",
+                      },
+                      Object {
+                        "key": "spanishFolkBand",
+                        "label": "Spanish folk band",
+                      },
+                      Object {
+                        "key": "mariachiBand",
+                        "label": "Mariachi band",
+                      },
+                      Object {
+                        "key": "cubanBand",
+                        "label": "Cuban band",
+                      },
+                      Object {
+                        "key": "brazilianBand",
+                        "label": "Brazilian band",
+                      },
+                      Object {
+                        "key": "sambaBand",
+                        "label": "Samba band",
+                      },
+                      Object {
+                        "key": "steelDrumBand",
+                        "label": "Steel drums band",
+                      },
+                      Object {
+                        "key": "reggaeBand",
+                        "label": "Reggae band",
+                      },
+                      Object {
+                        "key": "skaBand",
+                        "label": "Ska band",
+                      },
+                      Object {
+                        "key": "caribbeanBand",
+                        "label": "Caribbean band",
+                      },
+                      Object {
+                        "key": "calypsoBand",
+                        "label": "Calypso band",
+                      },
+                      Object {
+                        "key": "afroBeatBand",
+                        "label": "Afrobeat band",
+                      },
+                      Object {
+                        "key": "africanEnsemble",
+                        "label": "African ensemble",
+                      },
+                      Object {
+                        "key": "classicalIndianEnsemble",
+                        "label": "Classical Indian ensemble",
+                      },
+                      Object {
+                        "key": "bollywoodEnsemble",
+                        "label": "Bollywood ensemble",
+                      },
+                      Object {
+                        "key": "tradChineseEnsemble",
+                        "label": "Traditional Chinese ensemble",
+                      },
+                      Object {
+                        "key": "tradArabicEnsemble",
+                        "label": "Traditional Arabic ensemble",
+                      },
+                      Object {
+                        "key": "earlyMusicEnsemble",
+                        "label": "Early music ensemble",
+                      },
+                      Object {
+                        "key": "1950Band",
+                        "label": "1950s era tribute band",
+                      },
+                      Object {
+                        "key": "1960Band",
+                        "label": "1960s era tribute band",
+                      },
+                      Object {
+                        "key": "1970Band",
+                        "label": "1970s era tribute band",
+                      },
+                      Object {
+                        "key": "1980Band",
+                        "label": "1980s era tribute band",
+                      },
+                      Object {
+                        "key": "1990Band",
+                        "label": "1990s era tribute band",
+                      },
+                      Object {
+                        "key": "2000Band",
+                        "label": "2000s era tribute band",
+                      },
+                      Object {
+                        "key": "abbaTributeBand",
+                        "label": "Tribute band - Abba",
+                      },
+                      Object {
+                        "key": "beatlesTributeBand",
+                        "label": "Tribute band - Beatles",
+                      },
+                      Object {
+                        "key": "queenTributeBand",
+                        "label": "Tribute band - Queen",
+                      },
+                    ],
+                    "searchMode": "has_all",
+                  },
+                  "group": "secondary",
+                  "id": "bandGenre",
+                  "label": "Band Genre",
+                  "queryParamNames": Array [
+                    "pub_bandGenre",
+                  ],
+                  "type": "SelectMultipleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "animal",
+                        "label": "Animal photographer",
+                      },
+                      Object {
+                        "key": "boudoir",
+                        "label": "Boudoir photographer",
+                      },
+                      Object {
+                        "key": "concert",
+                        "label": "Concert photographer",
+                      },
+                      Object {
+                        "key": "sports",
+                        "label": "Sports photographer",
+                      },
+                      Object {
+                        "key": "fine-art",
+                        "label": "Fine art photographer",
+                      },
+                      Object {
+                        "key": "architecture",
+                        "label": "Architecture photographer",
+                      },
+                      Object {
+                        "key": "street",
+                        "label": "Street photographer",
+                      },
+                      Object {
+                        "key": "real-estate",
+                        "label": "Real estate photographer",
+                      },
+                      Object {
+                        "key": "wedding",
+                        "label": "Wedding photographer",
+                      },
+                      Object {
+                        "key": "birthday",
+                        "label": "Birthday photographer",
+                      },
+                      Object {
+                        "key": "medical",
+                        "label": "Medical photographer",
+                      },
+                      Object {
+                        "key": "coperate",
+                        "label": "Coperate event photographer",
+                      },
+                      Object {
+                        "key": "vehicle",
+                        "label": "Vehicle photographer",
+                      },
+                      Object {
+                        "key": "product",
+                        "label": "Product digital photographer",
+                      },
+                      Object {
+                        "key": "travel",
+                        "label": "Travel photographer",
+                      },
+                      Object {
+                        "key": "journalism",
+                        "label": "Photojournalist",
+                      },
+                      Object {
+                        "key": "aerial",
+                        "label": "Aerial (drone) photographer",
+                      },
+                      Object {
+                        "key": "stock",
+                        "label": "Stock photographer",
+                      },
+                      Object {
+                        "key": "nature",
+                        "label": "Nature photographer",
+                      },
+                      Object {
+                        "key": "family",
+                        "label": "Family photographer",
+                      },
+                      Object {
+                        "key": "child",
+                        "label": "Baby and child photographer",
+                      },
+                      Object {
+                        "key": "newborn",
+                        "label": "Newborn photographer",
+                      },
+                      Object {
+                        "key": "school",
+                        "label": "School photographer",
+                      },
+                      Object {
+                        "key": "portrait",
+                        "label": "Portrait photographer",
+                      },
+                      Object {
+                        "key": "branding",
+                        "label": "Branding photographer",
+                      },
+                      Object {
+                        "key": "press",
+                        "label": "Press photographer",
+                      },
+                      Object {
+                        "key": "macro",
+                        "label": "Macro photographer",
+                      },
+                      Object {
+                        "key": "micro",
+                        "label": "Micro photographer",
+                      },
+                      Object {
+                        "key": "film",
+                        "label": "Film camera photographer",
+                      },
+                      Object {
+                        "key": "astro",
+                        "label": "Astrophotographer",
+                      },
+                      Object {
+                        "key": "communication",
+                        "label": "Photographic communication",
+                      },
+                      Object {
+                        "key": "food",
+                        "label": "Food photographer",
+                      },
+                    ],
+                    "searchMode": "has_all",
+                  },
+                  "group": "secondary",
+                  "id": "photographerType",
+                  "label": "Photographer",
+                  "queryParamNames": Array [
+                    "pub_photographerType",
+                  ],
+                  "type": "SelectMultipleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "yes",
+                        "label": "Yes",
+                      },
+                      Object {
+                        "key": "no",
+                        "label": "No",
+                      },
+                    ],
+                  },
+                  "group": "secondary",
+                  "id": "ownStudio",
+                  "queryParamNames": Array [
+                    "",
+                  ],
+                  "type": "",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "yes",
+                        "label": "Yes",
+                      },
+                      Object {
+                        "key": "no",
+                        "label": "No",
+                      },
+                      Object {
+                        "key": "maybe",
+                        "label": "Willing to learn",
+                      },
+                    ],
+                  },
+                  "group": "secondary",
+                  "id": "soundLightExp",
+                  "queryParamNames": Array [
+                    "",
+                  ],
+                  "type": "",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "accordion",
+                        "label": "Accordionist",
+                      },
+                      Object {
+                        "key": "sax-alto",
+                        "label": "Alto Saxophonist",
+                      },
+                      Object {
+                        "key": "bagpiper",
+                        "label": "Bagpiper",
+                      },
+                      Object {
+                        "key": "balaika",
+                        "label": "Balalaika",
+                      },
+                      Object {
+                        "key": "bandeneon",
+                        "label": "Bandoneon",
+                      },
+                      Object {
+                        "key": "banjo",
+                        "label": "Banjo",
+                      },
+                      Object {
+                        "key": "horn-baritone",
+                        "label": "Baritone horn",
+                      },
+                      Object {
+                        "key": "sax-baritone",
+                        "label": "Baritone Saxophonist",
+                      },
+                      Object {
+                        "key": "basson-baroque",
+                        "label": "Baroque Bassoonist",
+                      },
+                      Object {
+                        "key": "cello-baroque",
+                        "label": "Baroque Cellist",
+                      },
+                      Object {
+                        "key": "bass-double-baroque",
+                        "label": "Baroque double Bassist",
+                      },
+                      Object {
+                        "key": "flute-baroque",
+                        "label": "Baroque Flautist",
+                      },
+                      Object {
+                        "key": "oboe-baroque",
+                        "label": "Baroque Oboist",
+                      },
+                      Object {
+                        "key": "trumphet-baroque",
+                        "label": "Baroque Trumpeter",
+                      },
+                      Object {
+                        "key": "viola-baroque",
+                        "label": "Baroque Violist",
+                      },
+                      Object {
+                        "key": "violin-baroque",
+                        "label": "Baroque Violinist",
+                      },
+                      Object {
+                        "key": "clarinette-bass",
+                        "label": "Bass Clarinettist",
+                      },
+                      Object {
+                        "key": "flue-bass",
+                        "label": "Bass Flautist",
+                      },
+                      Object {
+                        "key": "guitar-bass",
+                        "label": "Bass Guitarist",
+                      },
+                      Object {
+                        "key": "sax-bass",
+                        "label": "Bass Saxophonist",
+                      },
+                      Object {
+                        "key": "trombone-bass",
+                        "label": "Bass Trombonist",
+                      },
+                      Object {
+                        "key": "bassoon",
+                        "label": "Bassoonist",
+                      },
+                      Object {
+                        "key": "beatbox",
+                        "label": "Beatboxing",
+                      },
+                      Object {
+                        "key": "bodhran",
+                        "label": "Bodhran",
+                      },
+                      Object {
+                        "key": "bouzouki",
+                        "label": "Bouzouki",
+                      },
+                      Object {
+                        "key": "cajon",
+                        "label": "Cajon",
+                      },
+                      Object {
+                        "key": "cavaquinho",
+                        "label": "Cavaquinho",
+                      },
+                      Object {
+                        "key": "ceilidh-caller",
+                        "label": "Ceilidh caller",
+                      },
+                      Object {
+                        "key": "celeste",
+                        "label": "Celeste",
+                      },
+                      Object {
+                        "key": "cello",
+                        "label": "Cellist",
+                      },
+                      Object {
+                        "key": "harp-celtic",
+                        "label": "Celtic Harpist",
+                      },
+                      Object {
+                        "key": "flute-china",
+                        "label": "Chinese Flautist",
+                      },
+                      Object {
+                        "key": "cittern",
+                        "label": "Cittern",
+                      },
+                      Object {
+                        "key": "clarinet",
+                        "label": "Clarinettist",
+                      },
+                      Object {
+                        "key": "guitar-classic",
+                        "label": "Classical Guitarist",
+                      },
+                      Object {
+                        "key": "clavichord",
+                        "label": "Clavichord",
+                      },
+                      Object {
+                        "key": "clavinet",
+                        "label": "Clavinet",
+                      },
+                      Object {
+                        "key": "composer",
+                        "label": "Composer",
+                      },
+                      Object {
+                        "key": "concertina",
+                        "label": "Concertina",
+                      },
+                      Object {
+                        "key": "conductor",
+                        "label": "Conductor",
+                      },
+                      Object {
+                        "key": "sax-contra",
+                        "label": "Contrabass Saxophonist",
+                      },
+                      Object {
+                        "key": "bassoon-contra",
+                        "label": "ContraBassoonist",
+                      },
+                      Object {
+                        "key": "anglais",
+                        "label": "Cor anglais",
+                      },
+                      Object {
+                        "key": "cornet",
+                        "label": "Cornettist",
+                      },
+                      Object {
+                        "key": "dhol",
+                        "label": "Dhol",
+                      },
+                      Object {
+                        "key": "didgeridoo",
+                        "label": "Didgeridoo",
+                      },
+                      Object {
+                        "key": "djembe",
+                        "label": "Djembe",
+                      },
+                      Object {
+                        "key": "bass-double",
+                        "label": "Double Bassist",
+                      },
+                      Object {
+                        "key": "drum",
+                        "label": "Drummer",
+                      },
+                      Object {
+                        "key": "cello-electic",
+                        "label": "Electric Cellist",
+                      },
+                      Object {
+                        "key": "guitar-electric",
+                        "label": "Electric Guitarist",
+                      },
+                      Object {
+                        "key": "violin-electric",
+                        "label": "Electric Violinist",
+                      },
+                      Object {
+                        "key": "euphonium",
+                        "label": "Euphoniumist",
+                      },
+                      Object {
+                        "key": "fiddler",
+                        "label": "Fiddler",
+                      },
+                      Object {
+                        "key": "horn-flugel",
+                        "label": "Flugelhorn",
+                      },
+                      Object {
+                        "key": "flute",
+                        "label": "Flautist",
+                      },
+                      Object {
+                        "key": "piano-forte",
+                        "label": "FortePianist",
+                      },
+                      Object {
+                        "key": "horn-french",
+                        "label": "French horn",
+                      },
+                      Object {
+                        "key": "glockenspiel",
+                        "label": "Glockenspiel",
+                      },
+                      Object {
+                        "key": "guitar",
+                        "label": "Guitarist",
+                      },
+                      Object {
+                        "key": "dulcimer-hammer",
+                        "label": "Hammered dulcimer",
+                      },
+                      Object {
+                        "key": "organ-hammond",
+                        "label": "Hammond Organist",
+                      },
+                      Object {
+                        "key": "harmonica",
+                        "label": "Harmonica",
+                      },
+                      Object {
+                        "key": "harp",
+                        "label": "Harpist",
+                      },
+                      Object {
+                        "key": "hapsichord",
+                        "label": "Harpsichordist",
+                      },
+                      Object {
+                        "key": "hurdy-gurdy",
+                        "label": "Hurdy-gurdy",
+                      },
+                      Object {
+                        "key": "perc-indian",
+                        "label": "Indian Percussionist",
+                      },
+                      Object {
+                        "key": "flute-irish",
+                        "label": "Irish Flautist",
+                      },
+                      Object {
+                        "key": "keyboard",
+                        "label": "Keyboardist",
+                      },
+                      Object {
+                        "key": "keytar",
+                        "label": "Keytar",
+                      },
+                      Object {
+                        "key": "kora",
+                        "label": "Kora",
+                      },
+                      Object {
+                        "key": "guitar-lapsteel",
+                        "label": "Lap steel Guitarist",
+                      },
+                      Object {
+                        "key": "lute",
+                        "label": "Lutist",
+                      },
+                      Object {
+                        "key": "mandolin",
+                        "label": "Mandolin",
+                      },
+                      Object {
+                        "key": "marimba",
+                        "label": "Marimba",
+                      },
+                      Object {
+                        "key": "harp-medieval",
+                        "label": "Medieval Harpist",
+                      },
+                      Object {
+                        "key": "melodeon",
+                        "label": "Melodeon",
+                      },
+                      Object {
+                        "key": "melodica",
+                        "label": "Melodica",
+                      },
+                      Object {
+                        "key": "director-musical",
+                        "label": "Musical director",
+                      },
+                      Object {
+                        "key": "horn-natural",
+                        "label": "Natural horn",
+                      },
+                      Object {
+                        "key": "oboe",
+                        "label": "Oboist",
+                      },
+                      Object {
+                        "key": "singer-opera",
+                        "label": "Opera singer",
+                      },
+                      Object {
+                        "key": "orchestrator",
+                        "label": "Orchestrator",
+                      },
+                      Object {
+                        "key": "organ",
+                        "label": "Organist",
+                      },
+                      Object {
+                        "key": "oud",
+                        "label": "Oud",
+                      },
+                      Object {
+                        "key": "perc",
+                        "label": "Percussionist",
+                      },
+                      Object {
+                        "key": "piano",
+                        "label": "Pianist",
+                      },
+                      Object {
+                        "key": "piccolo",
+                        "label": "Piccoloist",
+                      },
+                      Object {
+                        "key": "rapper",
+                        "label": "Rapper",
+                      },
+                      Object {
+                        "key": "sackbut",
+                        "label": "Sackbut",
+                      },
+                      Object {
+                        "key": "saxophone",
+                        "label": "Saxophonist",
+                      },
+                      Object {
+                        "key": "singer",
+                        "label": "Singer",
+                      },
+                      Object {
+                        "key": "singer-alto",
+                        "label": "Singer (alto)",
+                      },
+                      Object {
+                        "key": "singer-baritone",
+                        "label": "Singer (baritone)",
+                      },
+                      Object {
+                        "key": "singer-bass",
+                        "label": "Singer (bass)",
+                      },
+                      Object {
+                        "key": "singer-contraælto",
+                        "label": "Singer (contralto)",
+                      },
+                      Object {
+                        "key": "singer-countertenor",
+                        "label": "Singer (countertenor)",
+                      },
+                      Object {
+                        "key": "singer-mezzo",
+                        "label": "Singer (mezzo soprano)",
+                      },
+                      Object {
+                        "key": "singer-oktav",
+                        "label": "Singer (oktavist)",
+                      },
+                      Object {
+                        "key": "singer-soprano",
+                        "label": "Singer (soprano)",
+                      },
+                      Object {
+                        "key": "signer-tenor",
+                        "label": "Singer (tenor)",
+                      },
+                      Object {
+                        "key": "singer-guitar",
+                        "label": "Singing guitarist",
+                      },
+                      Object {
+                        "key": "singer-piano",
+                        "label": "Singing pianist",
+                      },
+                      Object {
+                        "key": "sitar",
+                        "label": "Sitar",
+                      },
+                      Object {
+                        "key": "guitar-slide",
+                        "label": "Slide Guitarist",
+                      },
+                      Object {
+                        "key": "drum-snare",
+                        "label": "Snare drum",
+                      },
+                      Object {
+                        "key": "sax-sopranino",
+                        "label": "Sopranino Saxophonist",
+                      },
+                      Object {
+                        "key": "sax-soprano",
+                        "label": "Soprano Saxophonist",
+                      },
+                      Object {
+                        "key": "sax-soprillo",
+                        "label": "Soprillo Saxophonist",
+                      },
+                      Object {
+                        "key": "sousaphone",
+                        "label": "Sousaphone",
+                      },
+                      Object {
+                        "key": "guitar-spanish",
+                        "label": "Spanish Guitarist",
+                      },
+                      Object {
+                        "key": "drum-steel",
+                        "label": "Steel Drummer",
+                      },
+                      Object {
+                        "key": "synth",
+                        "label": "Synthesiser",
+                      },
+                      Object {
+                        "key": "tambura",
+                        "label": "Tambura",
+                      },
+                      Object {
+                        "key": "horn-tenor",
+                        "label": "Tenor horn",
+                      },
+                      Object {
+                        "key": "sax-tenor",
+                        "label": "Tenor Saxophonist",
+                      },
+                      Object {
+                        "key": "theorbo",
+                        "label": "Theorbo",
+                      },
+                      Object {
+                        "key": "timpani",
+                        "label": "Timpanist",
+                      },
+                      Object {
+                        "key": "whistle-tin",
+                        "label": "Tin whistle",
+                      },
+                      Object {
+                        "key": "trombone",
+                        "label": "Trombonist",
+                      },
+                      Object {
+                        "key": "trumpet",
+                        "label": "Trumpeter",
+                      },
+                      Object {
+                        "key": "tuba",
+                        "label": "Tuba",
+                      },
+                      Object {
+                        "key": "pipe-uilleann",
+                        "label": "Uilleann pipes",
+                      },
+                      Object {
+                        "key": "ukulele",
+                        "label": "Ukulelist",
+                      },
+                      Object {
+                        "key": "vibraphone",
+                        "label": "Vibraphone",
+                      },
+                      Object {
+                        "key": "viol",
+                        "label": "Viol",
+                      },
+                      Object {
+                        "key": "violist",
+                        "label": "Violist",
+                      },
+                      Object {
+                        "key": "viola",
+                        "label": "Viola da gamba",
+                      },
+                      Object {
+                        "key": "violin",
+                        "label": "Violinist",
+                      },
+                      Object {
+                        "key": "xylophone",
+                        "label": "Xylophone",
+                      },
+                    ],
+                    "searchMode": "has_all",
+                  },
+                  "group": "primary",
+                  "id": "musicianSoloType",
+                  "label": "Type of musician",
+                  "queryParamNames": Array [
+                    "pub_musicianSoloType",
+                  ],
+                  "type": "SelectMultipleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "a-cappella ",
+                        "label": "A cappella",
+                      },
+                      Object {
+                        "key": "blues",
+                        "label": "Blues",
+                      },
+                      Object {
+                        "key": "classical",
+                        "label": "Classical",
+                      },
+                      Object {
+                        "key": "ceremonial",
+                        "label": "Ceremonial Music",
+                      },
+                      Object {
+                        "key": "children",
+                        "label": "Children's Music",
+                      },
+                      Object {
+                        "key": "disco",
+                        "label": "Disco",
+                      },
+                      Object {
+                        "key": "electronic",
+                        "label": "Electronic",
+                      },
+                      Object {
+                        "key": "folk",
+                        "label": "Folk",
+                      },
+                      Object {
+                        "key": "funk",
+                        "label": "Funk",
+                      },
+                      Object {
+                        "key": "gospel",
+                        "label": "Gospel",
+                      },
+                      Object {
+                        "key": "heavy-metal",
+                        "label": "Heavy Metal",
+                      },
+                      Object {
+                        "key": "hiphop",
+                        "label": "Hip Hop",
+                      },
+                      Object {
+                        "key": "jazz",
+                        "label": "Jazz",
+                      },
+                      Object {
+                        "key": "latin",
+                        "label": "Latin",
+                      },
+                      Object {
+                        "key": "metal",
+                        "label": "Metal",
+                      },
+                      Object {
+                        "key": "middle-eastern",
+                        "label": "Middel Eastern",
+                      },
+                      Object {
+                        "key": "neo-soul",
+                        "label": "Neo/Soul",
+                      },
+                      Object {
+                        "key": "new age",
+                        "label": "New Age",
+                      },
+                      Object {
+                        "key": "pop",
+                        "label": "Pop",
+                      },
+                      Object {
+                        "key": "r-b",
+                        "label": "R&B",
+                      },
+                      Object {
+                        "key": "reggae",
+                        "label": "Reggae",
+                      },
+                      Object {
+                        "key": "rock",
+                        "label": "Rock",
+                      },
+                      Object {
+                        "key": "ska",
+                        "label": "Ska",
+                      },
+                      Object {
+                        "key": "world",
+                        "label": "World Music",
+                      },
+                    ],
+                    "searchMode": "has_all",
+                  },
+                  "group": "secondary",
+                  "id": "musicianGenre",
+                  "label": "Musical Genre",
+                  "queryParamNames": Array [
+                    "pub_musicianGenre",
+                  ],
+                  "type": "SelectMultipleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "studio",
+                        "label": "Studio musician",
+                      },
+                      Object {
+                        "key": "live",
+                        "label": "Live musician",
+                      },
+                      Object {
+                        "key": "private",
+                        "label": "Private events",
+                      },
+                      Object {
+                        "key": "corporate",
+                        "label": "Corporate events",
+                      },
+                      Object {
+                        "key": "band",
+                        "label": "Band (Stand in)",
+                      },
+                    ],
+                    "searchMode": "has_all",
+                  },
+                  "group": "secondary",
+                  "id": "musicianType",
+                  "label": "Type of musician",
+                  "queryParamNames": Array [
+                    "pub_musicianSoloType",
+                  ],
+                  "type": "SelectMultipleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "allround",
+                        "label": "All around DJ",
+                      },
+                      Object {
+                        "key": "wedding",
+                        "label": "Wedding DJ",
+                      },
+                      Object {
+                        "key": "radio",
+                        "label": "Radio DJ",
+                      },
+                      Object {
+                        "key": "club",
+                        "label": "Club DJ",
+                      },
+                      Object {
+                        "key": "mobile",
+                        "label": "Mobile DJ",
+                      },
+                      Object {
+                        "key": "turntablist",
+                        "label": "Turntablist",
+                      },
+                      Object {
+                        "key": "corporate",
+                        "label": "Corporate event DJ",
+                      },
+                      Object {
+                        "key": "birthday",
+                        "label": "Birthday DJ",
+                      },
+                    ],
+                    "searchMode": "has_all",
+                  },
+                  "group": "secondary",
+                  "id": "djType",
+                  "label": "DJ",
+                  "queryParamNames": Array [
+                    "pub_djType",
+                  ],
+                  "type": "SelectMultipleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "yes",
+                        "label": "Yes",
+                      },
+                      Object {
+                        "key": "no",
+                        "label": "No",
+                      },
+                      Object {
+                        "key": "depends",
+                        "label": "Ask me - depends on the type of the event",
+                      },
+                    ],
+                  },
+                  "group": "secondary",
+                  "id": "songRequest",
+                  "queryParamNames": Array [
+                    "",
+                  ],
+                  "type": "",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "notIncluded",
+                        "label": "Gear for playing is to be provided and is not included in price",
+                      },
+                      Object {
+                        "key": "included",
+                        "label": "All gear included in price",
+                      },
+                    ],
+                  },
+                  "group": "secondary",
+                  "id": "djGearForPlaying",
+                  "queryParamNames": Array [
+                    "",
+                  ],
+                  "type": "",
+                },
+              ]
+            }
+            user={null}
+          />
           <div
-            className="sectionContentFirstChild"
+            className="heroContainer"
           >
-            <SectionCategories
-              filterConfig={
-                Array [
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "0",
-                          "label": "Any Length",
-                        },
-                        Object {
-                          "key": "60",
-                          "label": "1 hour",
-                          "shortLabel": "1h",
-                        },
-                        Object {
-                          "key": "120",
-                          "label": "2 hour",
-                          "shortLabel": "2h",
-                        },
-                        Object {
-                          "key": "240",
-                          "label": "4 hour",
-                          "shortLabel": "4h",
-                        },
-                        Object {
-                          "key": "480",
-                          "label": "8 hour",
-                          "shortLabel": "8h",
-                        },
-                      ],
-                      "searchTimeZone": "Etc/UTC",
-                    },
-                    "group": "primary",
-                    "id": "dates-length",
-                    "label": "Dates",
-                    "queryParamNames": Array [
-                      "dates",
-                      "minDuration",
-                    ],
-                    "type": "BookingDateRangeLengthFilter",
-                  },
-                  Object {
-                    "config": Object {
-                      "max": 1000,
-                      "min": 0,
-                      "step": 5,
-                    },
-                    "group": "primary",
-                    "id": "price",
-                    "label": "Price",
-                    "queryParamNames": Array [
-                      "price",
-                    ],
-                    "type": "PriceFilter",
-                  },
-                  Object {
-                    "config": Object {},
-                    "group": "primary",
-                    "id": "keyword",
-                    "label": "Keyword",
-                    "queryParamNames": Array [
-                      "keywords",
-                    ],
-                    "type": "KeywordFilter",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "creative",
-                          "label": "Performance & Entertainment",
-                        },
-                        Object {
-                          "key": "performance",
-                          "label": "Creative",
-                        },
-                        Object {
-                          "key": "audio-prod",
-                          "label": "Audio Production",
-                        },
-                        Object {
-                          "key": "knowledge",
-                          "label": "Knowledge",
-                        },
-                      ],
-                    },
-                    "group": "primary",
-                    "id": "category",
-                    "label": "Category",
-                    "queryParamNames": Array [
-                      "pub_category",
-                    ],
-                    "type": "",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "photographer",
-                          "label": "Photographer",
-                        },
-                        Object {
-                          "key": "dj",
-                          "label": "DJ",
-                        },
-                        Object {
-                          "key": "musician",
-                          "label": "Musician",
-                        },
-                        Object {
-                          "key": "band",
-                          "label": "Band",
-                        },
-                      ],
-                    },
-                    "group": "primary",
-                    "id": "skill",
-                    "label": "Skill",
-                    "queryParamNames": Array [
-                      "pub_skill",
-                    ],
-                    "type": "SelectSingleFilter",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "ceremony",
-                          "label": "Ceremonial Events",
-                        },
-                        Object {
-                          "key": "reception",
-                          "label": "Reception Events",
-                        },
-                        Object {
-                          "key": "evening",
-                          "label": "Evening Events",
-                        },
-                        Object {
-                          "key": "privateParty",
-                          "label": "Private Parties",
-                        },
-                        Object {
-                          "key": "corporate",
-                          "label": "Corporate Parties",
-                        },
-                        Object {
-                          "key": "wedding",
-                          "label": "Weddings",
-                        },
-                        Object {
-                          "key": "birthday",
-                          "label": "Birthday parties",
-                        },
-                        Object {
-                          "key": "christmas",
-                          "label": "Christmas parties",
-                        },
-                        Object {
-                          "key": "newYear",
-                          "label": "New years Eve Parties",
-                        },
-                      ],
-                      "searchMode": "has_all",
-                    },
-                    "group": "secondary",
-                    "id": "bandType",
-                    "label": "Type of band events",
-                    "queryParamNames": Array [
-                      "pub_bandType",
-                    ],
-                    "type": "SelectMultipleFilter",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "acousticBand",
-                          "label": "Acoustic band",
-                        },
-                        Object {
-                          "key": "alternativeBand",
-                          "label": "Alternative band",
-                        },
-                        Object {
-                          "key": "blueBand",
-                          "label": "Blues band",
-                        },
-                        Object {
-                          "key": "coverBand",
-                          "label": "Cover band",
-                        },
-                        Object {
-                          "key": "discoFunkBand",
-                          "label": "Disco & Funk band",
-                        },
-                        Object {
-                          "key": "danceClubGroup",
-                          "label": "Dance & Ibiza Club group",
-                        },
-                        Object {
-                          "key": "festivalBand",
-                          "label": "Festival band",
-                        },
-                        Object {
-                          "key": "folkRockBand",
-                          "label": "Folk-rock band",
-                        },
-                        Object {
-                          "key": "functionBand",
-                          "label": "Function band",
-                        },
-                        Object {
-                          "key": "hiphopBand",
-                          "label": "Hip hop group",
-                        },
-                        Object {
-                          "key": "indieBand",
-                          "label": "Indie band",
-                        },
-                        Object {
-                          "key": "mumfordBand",
-                          "label": "Mumford folk band",
-                        },
-                        Object {
-                          "key": "originalArtist",
-                          "label": "Original artist",
-                        },
-                        Object {
-                          "key": "partyBand",
-                          "label": "Party band",
-                        },
-                        Object {
-                          "key": "popBand",
-                          "label": "Pop band",
-                        },
-                        Object {
-                          "key": "gospelBand",
-                          "label": "R&B / Gospel Soul band",
-                        },
-                        Object {
-                          "key": "roamingBand",
-                          "label": "Roaming band",
-                        },
-                        Object {
-                          "key": "rockBAnd",
-                          "label": "Rock band",
-                        },
-                        Object {
-                          "key": "rockNRollBand",
-                          "label": "Rock n roll band",
-                        },
-                        Object {
-                          "key": "soulBand",
-                          "label": "Soul & Motown band",
-                        },
-                        Object {
-                          "key": "vintageBand",
-                          "label": "Vintage band",
-                        },
-                        Object {
-                          "key": "stringDuo",
-                          "label": "String duo",
-                        },
-                        Object {
-                          "key": "stringTrio",
-                          "label": "String trio",
-                        },
-                        Object {
-                          "key": "stringQuartet",
-                          "label": "String quartet",
-                        },
-                        Object {
-                          "key": "stringEnsemble",
-                          "label": "String ensemble",
-                        },
-                        Object {
-                          "key": "electricStringEnsemble",
-                          "label": "Electric string ensemble",
-                        },
-                        Object {
-                          "key": "jazzBand",
-                          "label": "Jazz band",
-                        },
-                        Object {
-                          "key": "bigBand",
-                          "label": "Big band",
-                        },
-                        Object {
-                          "key": "gypsyBand",
-                          "label": "Gypsy jazz band",
-                        },
-                        Object {
-                          "key": "jazzFusionBand",
-                          "label": "Jazz fusion band",
-                        },
-                        Object {
-                          "key": "jazzDuo",
-                          "label": "Jazz duo",
-                        },
-                        Object {
-                          "key": "jazzTrio",
-                          "label": "Jazz trio",
-                        },
-                        Object {
-                          "key": "latinJazzBand",
-                          "label": "Latin jazz band",
-                        },
-                        Object {
-                          "key": "newOrleansBand",
-                          "label": "New Orleans band",
-                        },
-                        Object {
-                          "key": "swingJiveBand",
-                          "label": "Swing & Jive band",
-                        },
-                        Object {
-                          "key": "vintageJazzBand",
-                          "label": "Vintage jazz band",
-                        },
-                        Object {
-                          "key": "ratPackBand",
-                          "label": "Rat Pack jazz band",
-                        },
-                        Object {
-                          "key": "popDuo",
-                          "label": "Pop duo",
-                        },
-                        Object {
-                          "key": "popTrio",
-                          "label": "Pop trio",
-                        },
-                        Object {
-                          "key": "acousticDuo",
-                          "label": "Acoustic duo",
-                        },
-                        Object {
-                          "key": "acousticTrio",
-                          "label": "Acoustic trio",
-                        },
-                        Object {
-                          "key": "rockDuo",
-                          "label": "Rock duo",
-                        },
-                        Object {
-                          "key": "rockTrio",
-                          "label": "Rock trio",
-                        },
-                        Object {
-                          "key": "classicalDuo",
-                          "label": "Classical duo",
-                        },
-                        Object {
-                          "key": "classicalEnsemble",
-                          "label": "Classical ensemble",
-                        },
-                        Object {
-                          "key": "classicalTrio",
-                          "label": "Classical trio",
-                        },
-                        Object {
-                          "key": "fluteHarpDuo",
-                          "label": "Flute and harp duo",
-                        },
-                        Object {
-                          "key": "pianoTrio",
-                          "label": "Piano trio",
-                        },
-                        Object {
-                          "key": "saxophoneEnsemble",
-                          "label": "Saxophone ensemble",
-                        },
-                        Object {
-                          "key": "windEnsemble",
-                          "label": "Wind ensemble",
-                        },
-                        Object {
-                          "key": "orchestra",
-                          "label": "Orchestra",
-                        },
-                        Object {
-                          "key": "showChoir",
-                          "label": "Show choir",
-                        },
-                        Object {
-                          "key": "gospelChoir",
-                          "label": "Gospel choir",
-                        },
-                        Object {
-                          "key": "choir",
-                          "label": "Choir",
-                        },
-                        Object {
-                          "key": "carolSingers",
-                          "label": "Carol singers",
-                        },
-                        Object {
-                          "key": "aCapellaGroup",
-                          "label": "A cappella group",
-                        },
-                        Object {
-                          "key": "barbershopQuartet",
-                          "label": "Barbershop quartet",
-                        },
-                        Object {
-                          "key": "churchChoir",
-                          "label": "Church choir",
-                        },
-                        Object {
-                          "key": "earlyMusicVocalEnsemble",
-                          "label": "Early music vocal ensemble",
-                        },
-                        Object {
-                          "key": "singingWaiters",
-                          "label": "Singing waiters",
-                        },
-                        Object {
-                          "key": "musicalTheatreCompany",
-                          "label": "Musical theatre company",
-                        },
-                        Object {
-                          "key": "operaCompany",
-                          "label": "Opera company",
-                        },
-                        Object {
-                          "key": "pipeBand",
-                          "label": "Pipe band",
-                        },
-                        Object {
-                          "key": "ceilidhBand",
-                          "label": "Ceilidh band",
-                        },
-                        Object {
-                          "key": "folkBand",
-                          "label": "Folk band",
-                        },
-                        Object {
-                          "key": "celticFolkBand",
-                          "label": "Celtic folk band",
-                        },
-                        Object {
-                          "key": "bluegrassBand",
-                          "label": "Bluegrass band",
-                        },
-                        Object {
-                          "key": "countryBand",
-                          "label": "Country band",
-                        },
-                        Object {
-                          "key": "americanaBand",
-                          "label": "Americana band",
-                        },
-                        Object {
-                          "key": "brassBand",
-                          "label": "Brass band",
-                        },
-                        Object {
-                          "key": "brassQuintet",
-                          "label": "Brass quintet",
-                        },
-                        Object {
-                          "key": "balkanBrassBand",
-                          "label": "Balkan brass band",
-                        },
-                        Object {
-                          "key": "bavarianBand",
-                          "label": "Bavarian oompah band",
-                        },
-                        Object {
-                          "key": "marchingBand",
-                          "label": "Marching band",
-                        },
-                        Object {
-                          "key": "balkanBand",
-                          "label": "Balkan band",
-                        },
-                        Object {
-                          "key": "frenchGroup",
-                          "label": "French group",
-                        },
-                        Object {
-                          "key": "klezmerBand",
-                          "label": "Klezmer band",
-                        },
-                        Object {
-                          "key": "spanishFolkBand",
-                          "label": "Spanish folk band",
-                        },
-                        Object {
-                          "key": "mariachiBand",
-                          "label": "Mariachi band",
-                        },
-                        Object {
-                          "key": "cubanBand",
-                          "label": "Cuban band",
-                        },
-                        Object {
-                          "key": "brazilianBand",
-                          "label": "Brazilian band",
-                        },
-                        Object {
-                          "key": "sambaBand",
-                          "label": "Samba band",
-                        },
-                        Object {
-                          "key": "steelDrumBand",
-                          "label": "Steel drums band",
-                        },
-                        Object {
-                          "key": "reggaeBand",
-                          "label": "Reggae band",
-                        },
-                        Object {
-                          "key": "skaBand",
-                          "label": "Ska band",
-                        },
-                        Object {
-                          "key": "caribbeanBand",
-                          "label": "Caribbean band",
-                        },
-                        Object {
-                          "key": "calypsoBand",
-                          "label": "Calypso band",
-                        },
-                        Object {
-                          "key": "afroBeatBand",
-                          "label": "Afrobeat band",
-                        },
-                        Object {
-                          "key": "africanEnsemble",
-                          "label": "African ensemble",
-                        },
-                        Object {
-                          "key": "classicalIndianEnsemble",
-                          "label": "Classical Indian ensemble",
-                        },
-                        Object {
-                          "key": "bollywoodEnsemble",
-                          "label": "Bollywood ensemble",
-                        },
-                        Object {
-                          "key": "tradChineseEnsemble",
-                          "label": "Traditional Chinese ensemble",
-                        },
-                        Object {
-                          "key": "tradArabicEnsemble",
-                          "label": "Traditional Arabic ensemble",
-                        },
-                        Object {
-                          "key": "earlyMusicEnsemble",
-                          "label": "Early music ensemble",
-                        },
-                        Object {
-                          "key": "1950Band",
-                          "label": "1950s era tribute band",
-                        },
-                        Object {
-                          "key": "1960Band",
-                          "label": "1960s era tribute band",
-                        },
-                        Object {
-                          "key": "1970Band",
-                          "label": "1970s era tribute band",
-                        },
-                        Object {
-                          "key": "1980Band",
-                          "label": "1980s era tribute band",
-                        },
-                        Object {
-                          "key": "1990Band",
-                          "label": "1990s era tribute band",
-                        },
-                        Object {
-                          "key": "2000Band",
-                          "label": "2000s era tribute band",
-                        },
-                        Object {
-                          "key": "abbaTributeBand",
-                          "label": "Tribute band - Abba",
-                        },
-                        Object {
-                          "key": "beatlesTributeBand",
-                          "label": "Tribute band - Beatles",
-                        },
-                        Object {
-                          "key": "queenTributeBand",
-                          "label": "Tribute band - Queen",
-                        },
-                      ],
-                      "searchMode": "has_all",
-                    },
-                    "group": "secondary",
-                    "id": "bandGenre",
-                    "label": "Band Genre",
-                    "queryParamNames": Array [
-                      "pub_bandGenre",
-                    ],
-                    "type": "SelectMultipleFilter",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "animal",
-                          "label": "Animal photographer",
-                        },
-                        Object {
-                          "key": "boudoir",
-                          "label": "Boudoir photographer",
-                        },
-                        Object {
-                          "key": "concert",
-                          "label": "Concert photographer",
-                        },
-                        Object {
-                          "key": "sports",
-                          "label": "Sports photographer",
-                        },
-                        Object {
-                          "key": "fine-art",
-                          "label": "Fine art photographer",
-                        },
-                        Object {
-                          "key": "architecture",
-                          "label": "Architecture photographer",
-                        },
-                        Object {
-                          "key": "street",
-                          "label": "Street photographer",
-                        },
-                        Object {
-                          "key": "real-estate",
-                          "label": "Real estate photographer",
-                        },
-                        Object {
-                          "key": "wedding",
-                          "label": "Wedding photographer",
-                        },
-                        Object {
-                          "key": "birthday",
-                          "label": "Birthday photographer",
-                        },
-                        Object {
-                          "key": "medical",
-                          "label": "Medical photographer",
-                        },
-                        Object {
-                          "key": "coperate",
-                          "label": "Coperate event photographer",
-                        },
-                        Object {
-                          "key": "vehicle",
-                          "label": "Vehicle photographer",
-                        },
-                        Object {
-                          "key": "product",
-                          "label": "Product digital photographer",
-                        },
-                        Object {
-                          "key": "travel",
-                          "label": "Travel photographer",
-                        },
-                        Object {
-                          "key": "journalism",
-                          "label": "Photojournalist",
-                        },
-                        Object {
-                          "key": "aerial",
-                          "label": "Aerial (drone) photographer",
-                        },
-                        Object {
-                          "key": "stock",
-                          "label": "Stock photographer",
-                        },
-                        Object {
-                          "key": "nature",
-                          "label": "Nature photographer",
-                        },
-                        Object {
-                          "key": "family",
-                          "label": "Family photographer",
-                        },
-                        Object {
-                          "key": "child",
-                          "label": "Baby and child photographer",
-                        },
-                        Object {
-                          "key": "newborn",
-                          "label": "Newborn photographer",
-                        },
-                        Object {
-                          "key": "school",
-                          "label": "School photographer",
-                        },
-                        Object {
-                          "key": "portrait",
-                          "label": "Portrait photographer",
-                        },
-                        Object {
-                          "key": "branding",
-                          "label": "Branding photographer",
-                        },
-                        Object {
-                          "key": "press",
-                          "label": "Press photographer",
-                        },
-                        Object {
-                          "key": "macro",
-                          "label": "Macro photographer",
-                        },
-                        Object {
-                          "key": "micro",
-                          "label": "Micro photographer",
-                        },
-                        Object {
-                          "key": "film",
-                          "label": "Film camera photographer",
-                        },
-                        Object {
-                          "key": "astro",
-                          "label": "Astrophotographer",
-                        },
-                        Object {
-                          "key": "communication",
-                          "label": "Photographic communication",
-                        },
-                        Object {
-                          "key": "food",
-                          "label": "Food photographer",
-                        },
-                      ],
-                      "searchMode": "has_all",
-                    },
-                    "group": "secondary",
-                    "id": "photographerType",
-                    "label": "Photographer",
-                    "queryParamNames": Array [
-                      "pub_photographerType",
-                    ],
-                    "type": "SelectMultipleFilter",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "yes",
-                          "label": "Yes",
-                        },
-                        Object {
-                          "key": "no",
-                          "label": "No",
-                        },
-                      ],
-                    },
-                    "group": "secondary",
-                    "id": "ownStudio",
-                    "queryParamNames": Array [
-                      "",
-                    ],
-                    "type": "",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "yes",
-                          "label": "Yes",
-                        },
-                        Object {
-                          "key": "no",
-                          "label": "No",
-                        },
-                        Object {
-                          "key": "maybe",
-                          "label": "Willing to learn",
-                        },
-                      ],
-                    },
-                    "group": "secondary",
-                    "id": "soundLightExp",
-                    "queryParamNames": Array [
-                      "",
-                    ],
-                    "type": "",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "accordion",
-                          "label": "Accordionist",
-                        },
-                        Object {
-                          "key": "sax-alto",
-                          "label": "Alto Saxophonist",
-                        },
-                        Object {
-                          "key": "bagpiper",
-                          "label": "Bagpiper",
-                        },
-                        Object {
-                          "key": "balaika",
-                          "label": "Balalaika",
-                        },
-                        Object {
-                          "key": "bandeneon",
-                          "label": "Bandoneon",
-                        },
-                        Object {
-                          "key": "banjo",
-                          "label": "Banjo",
-                        },
-                        Object {
-                          "key": "horn-baritone",
-                          "label": "Baritone horn",
-                        },
-                        Object {
-                          "key": "sax-baritone",
-                          "label": "Baritone Saxophonist",
-                        },
-                        Object {
-                          "key": "basson-baroque",
-                          "label": "Baroque Bassoonist",
-                        },
-                        Object {
-                          "key": "cello-baroque",
-                          "label": "Baroque Cellist",
-                        },
-                        Object {
-                          "key": "bass-double-baroque",
-                          "label": "Baroque double Bassist",
-                        },
-                        Object {
-                          "key": "flute-baroque",
-                          "label": "Baroque Flautist",
-                        },
-                        Object {
-                          "key": "oboe-baroque",
-                          "label": "Baroque Oboist",
-                        },
-                        Object {
-                          "key": "trumphet-baroque",
-                          "label": "Baroque Trumpeter",
-                        },
-                        Object {
-                          "key": "viola-baroque",
-                          "label": "Baroque Violist",
-                        },
-                        Object {
-                          "key": "violin-baroque",
-                          "label": "Baroque Violinist",
-                        },
-                        Object {
-                          "key": "clarinette-bass",
-                          "label": "Bass Clarinettist",
-                        },
-                        Object {
-                          "key": "flue-bass",
-                          "label": "Bass Flautist",
-                        },
-                        Object {
-                          "key": "guitar-bass",
-                          "label": "Bass Guitarist",
-                        },
-                        Object {
-                          "key": "sax-bass",
-                          "label": "Bass Saxophonist",
-                        },
-                        Object {
-                          "key": "trombone-bass",
-                          "label": "Bass Trombonist",
-                        },
-                        Object {
-                          "key": "bassoon",
-                          "label": "Bassoonist",
-                        },
-                        Object {
-                          "key": "beatbox",
-                          "label": "Beatboxing",
-                        },
-                        Object {
-                          "key": "bodhran",
-                          "label": "Bodhran",
-                        },
-                        Object {
-                          "key": "bouzouki",
-                          "label": "Bouzouki",
-                        },
-                        Object {
-                          "key": "cajon",
-                          "label": "Cajon",
-                        },
-                        Object {
-                          "key": "cavaquinho",
-                          "label": "Cavaquinho",
-                        },
-                        Object {
-                          "key": "ceilidh-caller",
-                          "label": "Ceilidh caller",
-                        },
-                        Object {
-                          "key": "celeste",
-                          "label": "Celeste",
-                        },
-                        Object {
-                          "key": "cello",
-                          "label": "Cellist",
-                        },
-                        Object {
-                          "key": "harp-celtic",
-                          "label": "Celtic Harpist",
-                        },
-                        Object {
-                          "key": "flute-china",
-                          "label": "Chinese Flautist",
-                        },
-                        Object {
-                          "key": "cittern",
-                          "label": "Cittern",
-                        },
-                        Object {
-                          "key": "clarinet",
-                          "label": "Clarinettist",
-                        },
-                        Object {
-                          "key": "guitar-classic",
-                          "label": "Classical Guitarist",
-                        },
-                        Object {
-                          "key": "clavichord",
-                          "label": "Clavichord",
-                        },
-                        Object {
-                          "key": "clavinet",
-                          "label": "Clavinet",
-                        },
-                        Object {
-                          "key": "composer",
-                          "label": "Composer",
-                        },
-                        Object {
-                          "key": "concertina",
-                          "label": "Concertina",
-                        },
-                        Object {
-                          "key": "conductor",
-                          "label": "Conductor",
-                        },
-                        Object {
-                          "key": "sax-contra",
-                          "label": "Contrabass Saxophonist",
-                        },
-                        Object {
-                          "key": "bassoon-contra",
-                          "label": "ContraBassoonist",
-                        },
-                        Object {
-                          "key": "anglais",
-                          "label": "Cor anglais",
-                        },
-                        Object {
-                          "key": "cornet",
-                          "label": "Cornettist",
-                        },
-                        Object {
-                          "key": "dhol",
-                          "label": "Dhol",
-                        },
-                        Object {
-                          "key": "didgeridoo",
-                          "label": "Didgeridoo",
-                        },
-                        Object {
-                          "key": "djembe",
-                          "label": "Djembe",
-                        },
-                        Object {
-                          "key": "bass-double",
-                          "label": "Double Bassist",
-                        },
-                        Object {
-                          "key": "drum",
-                          "label": "Drummer",
-                        },
-                        Object {
-                          "key": "cello-electic",
-                          "label": "Electric Cellist",
-                        },
-                        Object {
-                          "key": "guitar-electric",
-                          "label": "Electric Guitarist",
-                        },
-                        Object {
-                          "key": "violin-electric",
-                          "label": "Electric Violinist",
-                        },
-                        Object {
-                          "key": "euphonium",
-                          "label": "Euphoniumist",
-                        },
-                        Object {
-                          "key": "fiddler",
-                          "label": "Fiddler",
-                        },
-                        Object {
-                          "key": "horn-flugel",
-                          "label": "Flugelhorn",
-                        },
-                        Object {
-                          "key": "flute",
-                          "label": "Flautist",
-                        },
-                        Object {
-                          "key": "piano-forte",
-                          "label": "FortePianist",
-                        },
-                        Object {
-                          "key": "horn-french",
-                          "label": "French horn",
-                        },
-                        Object {
-                          "key": "glockenspiel",
-                          "label": "Glockenspiel",
-                        },
-                        Object {
-                          "key": "guitar",
-                          "label": "Guitarist",
-                        },
-                        Object {
-                          "key": "dulcimer-hammer",
-                          "label": "Hammered dulcimer",
-                        },
-                        Object {
-                          "key": "organ-hammond",
-                          "label": "Hammond Organist",
-                        },
-                        Object {
-                          "key": "harmonica",
-                          "label": "Harmonica",
-                        },
-                        Object {
-                          "key": "harp",
-                          "label": "Harpist",
-                        },
-                        Object {
-                          "key": "hapsichord",
-                          "label": "Harpsichordist",
-                        },
-                        Object {
-                          "key": "hurdy-gurdy",
-                          "label": "Hurdy-gurdy",
-                        },
-                        Object {
-                          "key": "perc-indian",
-                          "label": "Indian Percussionist",
-                        },
-                        Object {
-                          "key": "flute-irish",
-                          "label": "Irish Flautist",
-                        },
-                        Object {
-                          "key": "keyboard",
-                          "label": "Keyboardist",
-                        },
-                        Object {
-                          "key": "keytar",
-                          "label": "Keytar",
-                        },
-                        Object {
-                          "key": "kora",
-                          "label": "Kora",
-                        },
-                        Object {
-                          "key": "guitar-lapsteel",
-                          "label": "Lap steel Guitarist",
-                        },
-                        Object {
-                          "key": "lute",
-                          "label": "Lutist",
-                        },
-                        Object {
-                          "key": "mandolin",
-                          "label": "Mandolin",
-                        },
-                        Object {
-                          "key": "marimba",
-                          "label": "Marimba",
-                        },
-                        Object {
-                          "key": "harp-medieval",
-                          "label": "Medieval Harpist",
-                        },
-                        Object {
-                          "key": "melodeon",
-                          "label": "Melodeon",
-                        },
-                        Object {
-                          "key": "melodica",
-                          "label": "Melodica",
-                        },
-                        Object {
-                          "key": "director-musical",
-                          "label": "Musical director",
-                        },
-                        Object {
-                          "key": "horn-natural",
-                          "label": "Natural horn",
-                        },
-                        Object {
-                          "key": "oboe",
-                          "label": "Oboist",
-                        },
-                        Object {
-                          "key": "singer-opera",
-                          "label": "Opera singer",
-                        },
-                        Object {
-                          "key": "orchestrator",
-                          "label": "Orchestrator",
-                        },
-                        Object {
-                          "key": "organ",
-                          "label": "Organist",
-                        },
-                        Object {
-                          "key": "oud",
-                          "label": "Oud",
-                        },
-                        Object {
-                          "key": "perc",
-                          "label": "Percussionist",
-                        },
-                        Object {
-                          "key": "piano",
-                          "label": "Pianist",
-                        },
-                        Object {
-                          "key": "piccolo",
-                          "label": "Piccoloist",
-                        },
-                        Object {
-                          "key": "rapper",
-                          "label": "Rapper",
-                        },
-                        Object {
-                          "key": "sackbut",
-                          "label": "Sackbut",
-                        },
-                        Object {
-                          "key": "saxophone",
-                          "label": "Saxophonist",
-                        },
-                        Object {
-                          "key": "singer",
-                          "label": "Singer",
-                        },
-                        Object {
-                          "key": "singer-alto",
-                          "label": "Singer (alto)",
-                        },
-                        Object {
-                          "key": "singer-baritone",
-                          "label": "Singer (baritone)",
-                        },
-                        Object {
-                          "key": "singer-bass",
-                          "label": "Singer (bass)",
-                        },
-                        Object {
-                          "key": "singer-contraælto",
-                          "label": "Singer (contralto)",
-                        },
-                        Object {
-                          "key": "singer-countertenor",
-                          "label": "Singer (countertenor)",
-                        },
-                        Object {
-                          "key": "singer-mezzo",
-                          "label": "Singer (mezzo soprano)",
-                        },
-                        Object {
-                          "key": "singer-oktav",
-                          "label": "Singer (oktavist)",
-                        },
-                        Object {
-                          "key": "singer-soprano",
-                          "label": "Singer (soprano)",
-                        },
-                        Object {
-                          "key": "signer-tenor",
-                          "label": "Singer (tenor)",
-                        },
-                        Object {
-                          "key": "singer-guitar",
-                          "label": "Singing guitarist",
-                        },
-                        Object {
-                          "key": "singer-piano",
-                          "label": "Singing pianist",
-                        },
-                        Object {
-                          "key": "sitar",
-                          "label": "Sitar",
-                        },
-                        Object {
-                          "key": "guitar-slide",
-                          "label": "Slide Guitarist",
-                        },
-                        Object {
-                          "key": "drum-snare",
-                          "label": "Snare drum",
-                        },
-                        Object {
-                          "key": "sax-sopranino",
-                          "label": "Sopranino Saxophonist",
-                        },
-                        Object {
-                          "key": "sax-soprano",
-                          "label": "Soprano Saxophonist",
-                        },
-                        Object {
-                          "key": "sax-soprillo",
-                          "label": "Soprillo Saxophonist",
-                        },
-                        Object {
-                          "key": "sousaphone",
-                          "label": "Sousaphone",
-                        },
-                        Object {
-                          "key": "guitar-spanish",
-                          "label": "Spanish Guitarist",
-                        },
-                        Object {
-                          "key": "drum-steel",
-                          "label": "Steel Drummer",
-                        },
-                        Object {
-                          "key": "synth",
-                          "label": "Synthesiser",
-                        },
-                        Object {
-                          "key": "tambura",
-                          "label": "Tambura",
-                        },
-                        Object {
-                          "key": "horn-tenor",
-                          "label": "Tenor horn",
-                        },
-                        Object {
-                          "key": "sax-tenor",
-                          "label": "Tenor Saxophonist",
-                        },
-                        Object {
-                          "key": "theorbo",
-                          "label": "Theorbo",
-                        },
-                        Object {
-                          "key": "timpani",
-                          "label": "Timpanist",
-                        },
-                        Object {
-                          "key": "whistle-tin",
-                          "label": "Tin whistle",
-                        },
-                        Object {
-                          "key": "trombone",
-                          "label": "Trombonist",
-                        },
-                        Object {
-                          "key": "trumpet",
-                          "label": "Trumpeter",
-                        },
-                        Object {
-                          "key": "tuba",
-                          "label": "Tuba",
-                        },
-                        Object {
-                          "key": "pipe-uilleann",
-                          "label": "Uilleann pipes",
-                        },
-                        Object {
-                          "key": "ukulele",
-                          "label": "Ukulelist",
-                        },
-                        Object {
-                          "key": "vibraphone",
-                          "label": "Vibraphone",
-                        },
-                        Object {
-                          "key": "viol",
-                          "label": "Viol",
-                        },
-                        Object {
-                          "key": "violist",
-                          "label": "Violist",
-                        },
-                        Object {
-                          "key": "viola",
-                          "label": "Viola da gamba",
-                        },
-                        Object {
-                          "key": "violin",
-                          "label": "Violinist",
-                        },
-                        Object {
-                          "key": "xylophone",
-                          "label": "Xylophone",
-                        },
-                      ],
-                      "searchMode": "has_all",
-                    },
-                    "group": "primary",
-                    "id": "musicianSoloType",
-                    "label": "Type of musician",
-                    "queryParamNames": Array [
-                      "pub_musicianSoloType",
-                    ],
-                    "type": "SelectMultipleFilter",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "a-cappella ",
-                          "label": "A cappella",
-                        },
-                        Object {
-                          "key": "blues",
-                          "label": "Blues",
-                        },
-                        Object {
-                          "key": "classical",
-                          "label": "Classical",
-                        },
-                        Object {
-                          "key": "ceremonial",
-                          "label": "Ceremonial Music",
-                        },
-                        Object {
-                          "key": "children",
-                          "label": "Children's Music",
-                        },
-                        Object {
-                          "key": "disco",
-                          "label": "Disco",
-                        },
-                        Object {
-                          "key": "electronic",
-                          "label": "Electronic",
-                        },
-                        Object {
-                          "key": "folk",
-                          "label": "Folk",
-                        },
-                        Object {
-                          "key": "funk",
-                          "label": "Funk",
-                        },
-                        Object {
-                          "key": "gospel",
-                          "label": "Gospel",
-                        },
-                        Object {
-                          "key": "heavy-metal",
-                          "label": "Heavy Metal",
-                        },
-                        Object {
-                          "key": "hiphop",
-                          "label": "Hip Hop",
-                        },
-                        Object {
-                          "key": "jazz",
-                          "label": "Jazz",
-                        },
-                        Object {
-                          "key": "latin",
-                          "label": "Latin",
-                        },
-                        Object {
-                          "key": "metal",
-                          "label": "Metal",
-                        },
-                        Object {
-                          "key": "middle-eastern",
-                          "label": "Middel Eastern",
-                        },
-                        Object {
-                          "key": "neo-soul",
-                          "label": "Neo/Soul",
-                        },
-                        Object {
-                          "key": "new age",
-                          "label": "New Age",
-                        },
-                        Object {
-                          "key": "pop",
-                          "label": "Pop",
-                        },
-                        Object {
-                          "key": "r-b",
-                          "label": "R&B",
-                        },
-                        Object {
-                          "key": "reggae",
-                          "label": "Reggae",
-                        },
-                        Object {
-                          "key": "rock",
-                          "label": "Rock",
-                        },
-                        Object {
-                          "key": "ska",
-                          "label": "Ska",
-                        },
-                        Object {
-                          "key": "world",
-                          "label": "World Music",
-                        },
-                      ],
-                      "searchMode": "has_all",
-                    },
-                    "group": "secondary",
-                    "id": "musicianGenre",
-                    "label": "Musical Genre",
-                    "queryParamNames": Array [
-                      "pub_musicianGenre",
-                    ],
-                    "type": "SelectMultipleFilter",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "studio",
-                          "label": "Studio musician",
-                        },
-                        Object {
-                          "key": "live",
-                          "label": "Live musician",
-                        },
-                        Object {
-                          "key": "private",
-                          "label": "Private events",
-                        },
-                        Object {
-                          "key": "corporate",
-                          "label": "Corporate events",
-                        },
-                        Object {
-                          "key": "band",
-                          "label": "Band (Stand in)",
-                        },
-                      ],
-                      "searchMode": "has_all",
-                    },
-                    "group": "secondary",
-                    "id": "musicianType",
-                    "label": "Type of musician",
-                    "queryParamNames": Array [
-                      "pub_musicianSoloType",
-                    ],
-                    "type": "SelectMultipleFilter",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "allround",
-                          "label": "All around DJ",
-                        },
-                        Object {
-                          "key": "wedding",
-                          "label": "Wedding DJ",
-                        },
-                        Object {
-                          "key": "radio",
-                          "label": "Radio DJ",
-                        },
-                        Object {
-                          "key": "club",
-                          "label": "Club DJ",
-                        },
-                        Object {
-                          "key": "mobile",
-                          "label": "Mobile DJ",
-                        },
-                        Object {
-                          "key": "turntablist",
-                          "label": "Turntablist",
-                        },
-                        Object {
-                          "key": "corporate",
-                          "label": "Corporate event DJ",
-                        },
-                        Object {
-                          "key": "birthday",
-                          "label": "Birthday DJ",
-                        },
-                      ],
-                      "searchMode": "has_all",
-                    },
-                    "group": "secondary",
-                    "id": "djType",
-                    "label": "DJ",
-                    "queryParamNames": Array [
-                      "pub_djType",
-                    ],
-                    "type": "SelectMultipleFilter",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "yes",
-                          "label": "Yes",
-                        },
-                        Object {
-                          "key": "no",
-                          "label": "No",
-                        },
-                        Object {
-                          "key": "depends",
-                          "label": "Ask me - depends on the type of the event",
-                        },
-                      ],
-                    },
-                    "group": "secondary",
-                    "id": "songRequest",
-                    "queryParamNames": Array [
-                      "",
-                    ],
-                    "type": "",
-                  },
-                  Object {
-                    "config": Object {
-                      "options": Array [
-                        Object {
-                          "key": "notIncluded",
-                          "label": "Gear for playing is to be provided and is not included in price",
-                        },
-                        Object {
-                          "key": "included",
-                          "label": "All gear included in price",
-                        },
-                      ],
-                    },
-                    "group": "secondary",
-                    "id": "djGearForPlaying",
-                    "queryParamNames": Array [
-                      "",
-                    ],
-                    "type": "",
-                  },
-                ]
+            <SectionHero
+              className="hero"
+              history={
+                Object {
+                  "push": [Function],
+                }
               }
+              location={
+                Object {
+                  "search": "",
+                }
+              }
+              rootClassName={null}
             />
           </div>
         </section>
@@ -1677,24 +1692,6 @@ exports[`LandingPage matches snapshot 1`] = `
             />
           </div>
         </section>
-      </div>
-      <div
-        className="heroContainer"
-      >
-        <SectionHero
-          className="hero"
-          history={
-            Object {
-              "push": [Function],
-            }
-          }
-          location={
-            Object {
-              "search": "",
-            }
-          }
-          rootClassName={null}
-        />
       </div>
     </LayoutWrapperMain>
     <LayoutWrapperFooter

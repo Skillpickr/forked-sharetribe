@@ -52,13 +52,7 @@ export const LandingPageComponent = (props) => {
     scrollingDisabled,
     currentUserListing,
     currentUserListingFetched,
-    mapListings,
-    filterConfig,
-    sortConfig,
-    searchInProgress,
-    searchParams,
-    pagination,
-    onActivateListing
+    currentUser
   } = props
 
   // Schema for search engines (helps them to understand what this page is about)
@@ -68,45 +62,7 @@ export const LandingPageComponent = (props) => {
   const schemaTitle = intl.formatMessage({ id: 'LandingPage.schemaTitle' }, { siteTitle })
   const schemaDescription = intl.formatMessage({ id: 'LandingPage.schemaDescription' })
   const schemaImage = `${config.canonicalRootURL}${facebookImage}`
-  const [mounted, setMounted] = useState(false)
-  const [ipLocation, setIpLocation] = useState('')
-
-  const userIpLocation = () => {
-    return userLocation()
-      .then((latlng) => {
-        if (latlng) {
-          setIpLocation({
-            address: '',
-            origin: latlng,
-            bounds: locationBounds(latlng, config.maps.search.currentLocationBoundsDistance)
-          }),
-            setMounted(true)
-        }
-      })
-      .catch((error) => console.log(error))
-  }
-
-  useEffect(() => {
-    userIpLocation()
-    return () => {
-      setIpLocation({})
-    }
-  }, [])
-
-  const { mapSearch, page, ...searchInURL } = parse(location.search, {
-    latlng: ['origin'],
-    latlngBounds: ['bounds']
-  })
-  const urlQueryParams = pickSearchParamsOnly(searchInURL, filterConfig, sortConfig)
-
-  console.log(urlQueryParams)
-  const urlQueryString = stringify(urlQueryParams)
-  const paramsQueryString = stringify(pickSearchParamsOnly(searchParams, filterConfig, sortConfig))
-  const searchParamsAreInSync = urlQueryString === paramsQueryString
-
-  const listingsAreLoaded = !searchInProgress && searchParamsAreInSync
-
-  console.log('listings', listings)
+  console.log('user', currentUser)
   return (
     <Page
       className={css.root}
@@ -135,11 +91,12 @@ export const LandingPageComponent = (props) => {
         <LayoutWrapperMain>
           {/* <QuoteTheDay /> */}
           <div className={css.sections}>
-            <section className={css.section}>
-              <div className={css.sectionContentFirstChild}>
-                <SectionCategories />
-                {/* <SectionLocations /> */}
+            <section className={css.sectionContentFirstChild}>
+              <SectionCategories user={currentUser} />
+              <div className={css.heroContainer}>
+                <SectionHero className={css.hero} history={history} location={location} />
               </div>
+              {/* <SectionLocations /> */}
             </section>
             <section className={css.section}>
               <div className={css.sectionContent}>
@@ -151,7 +108,7 @@ export const LandingPageComponent = (props) => {
             </section>
             <section className={css.section}>
               <div className={css.sectionContent}>
-                <SectionTopArtists listings={listings} intl={intl} />
+                {listings != null && <SectionTopArtists listings={listings} intl={intl} />}
               </div>
             </section>
             <section className={css.section}>
@@ -159,10 +116,6 @@ export const LandingPageComponent = (props) => {
                 <SectionBecome />
               </div>
             </section>
-          </div>
-
-          <div className={css.heroContainer}>
-            <SectionHero className={css.hero} history={history} location={location} />
           </div>
         </LayoutWrapperMain>
         <LayoutWrapperFooter>
@@ -175,62 +128,33 @@ export const LandingPageComponent = (props) => {
 
 LandingPageComponent.defaultProps = {
   listings: [],
-  mapListings: [],
   currentUserListing: null,
   currentUserListingFetched: false,
-  searchParams: {},
-  filterConfig: custom.filters,
-  sortConfig: custom.sortConfig,
-  pagination: null,
-  activeListingId: null
+  currentUser: null
 }
 
 LandingPageComponent.propTypes = {
   listings: array,
-  mapListings: array,
   scrollingDisabled: bool.isRequired,
   currentUserListing: propTypes.ownListing,
   currentUserListingFetched: bool,
-  onSearchMapListings: func.isRequired,
-  searchParams: object,
-  filterConfig: propTypes.filterConfig,
-  sortConfig: propTypes.sortConfig,
-  // from withRouter
-  history: object.isRequired,
-  location: object.isRequired,
+  currentUser: propTypes.currentUser,
 
   // from injectIntl
   intl: intlShape.isRequired
 }
 
 const mapStateToProps = (state) => {
-  const { currentUserListing, currentUserListingFetched } = state.user
-  const {
-    currentPageResultIds,
-    pagination,
-    searchInProgress,
-    searchListingsError,
-    searchParams,
-    searchMapListingIds,
-    activeListingId
-  } = state.SearchPage
+  const { currentUserListing, currentUserListingFetched, currentUser } = state.user
+  const { currentPageResultIds } = state.SearchPage
   const pageListings = getListingsById(state, currentPageResultIds)
 
-  const mapListings = getListingsById(
-    state,
-    unionWith(currentPageResultIds, searchMapListingIds, (id1, id2) => id1.uuid === id2.uuid)
-  )
   return {
     scrollingDisabled: isScrollingDisabled(state),
     currentUserListing,
     currentUserListingFetched,
     listings: pageListings,
-    mapListings,
-    pagination,
-    searchInProgress,
-    searchListingsError,
-    searchParams,
-    activeListingId
+    currentUser
   }
 }
 

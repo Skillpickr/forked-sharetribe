@@ -70,7 +70,7 @@ const routeConfiguration = () => {
       path: '/',
       name: 'LandingPage',
       component: LandingPage,
-                  loadData: pageDataLoadingAPI.SearchPage.loadData,
+      loadData: pageDataLoadingAPI.SearchPage.loadData,
 
     },
     {
