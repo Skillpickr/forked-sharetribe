@@ -9,10 +9,10 @@ import { NamedLink } from '..'
 
 import css from './SectionCategories.module.css'
 
-import creativeImage from './images/creative.jpg'
-import knowledgeImage from './images/knowledge.jpg'
-import performanceImage from './images/performance.jpg'
-import mediaImage from './images/media.jpg'
+import creativeImage from './images/creative_Fotor.jpg'
+import knowledgeImage from './images/knowledge_Fotor.jpg'
+import performanceImage from './images/performance_Fotor.jpg'
+import mediaImage from './images/media_Fotor.jpg'
 import { findOptionsForSelectFilter } from '../../util/search'
 import config from '../../config'
 import * as custom from '../../marketplace-custom-config.js'
@@ -30,21 +30,13 @@ class CategoryImage extends Component {
 }
 const LazyImage = lazyLoadWithDimensions(CategoryImage)
 
-const categoryLink = (title, subTitle, image, searchQuery, isComingSoon) => {
+const categoryLink = (title, image, searchQuery, isComingSoon) => {
   const nameText = <span className={css.categoryName}>{title}</span>
-  const subText = <span className={css.categoryName}>{subTitle}</span>
   return (
     <NamedLink name="SearchPage" to={{ search: searchQuery }} className={css.category} disabled={isComingSoon}>
-      <div className={css.imageWrapper}>
-        <div className={css.aspectWrapper}>
-          <LazyImage src={image} alt={title} className={css.categoryImage} />
-        </div>
-      </div>
       <div className={classNames(css.linkText, { [css.comingSoon]: isComingSoon })}>
+        <img src={image} alt={title} className={css.profilePic} />
         <FormattedMessage id="SectionCategories.categories" values={{ category: nameText }} />
-        <p>
-          <FormattedMessage id="SectionCategories.subCategories" values={{ subCategory: subText }} />
-        </p>
       </div>
     </NamedLink>
   )
@@ -74,20 +66,22 @@ const SectionCategories = (props) => {
 
   return (
     <div className={classes}>
-      <div className={css.title}>
-        <FormattedMessage id="SectionCategories.title" />
+      <div className={css.background}>
+        <div className={css.title}>
+          <FormattedMessage id="SectionCategories.title" />
+        </div>
+        <div className={css.categories}>
+          {/* {categories} */}
+          {categoryLink('Performance & Entertainment', performanceImage, '?pub_category=performance', false)}
+          {/* {categoryLink('Performance & Entertainment',performanceImage,'?pub_category=p-and-e',true)} */}
+          {categoryLink('Creative', creativeImage, '?pub_category=creative', false)}
+          {/* {categoryLink('Creative', creativeImage, '?pub_category=creative', false)} */}
+          {categoryLink('Knowledge', knowledgeImage, '?pub_category=knowledge', true)}
+          {categoryLink('Audio Production', mediaImage, '?pub_category=audio-prod', true)}
+        </div>
       </div>
-      <div className={css.categories}>
-        {/* {categories} */}
-        {categoryLink('Performance & Entertainment', '', performanceImage, '?pub_category=performance', false)}
-        {/* {categoryLink('Performance & Entertainment',performanceImage,'?pub_category=p-and-e',true)} */}
-        {categoryLink('Creative', '', creativeImage, '?pub_category=creative', false)}
-        {/* {categoryLink('Creative', creativeImage, '?pub_category=creative', false)} */}
-      </div>
-      <div className={css.categories}>
-        {categoryLink('Knowledge', '', knowledgeImage, '?pub_category=knowledge', true)}
-        {categoryLink('Audio Production', '', mediaImage, '?pub_category=audio-prod', true)}
-      </div>
+
+      <div className={css.categories}></div>
     </div>
   )
 }

@@ -255,6 +255,11 @@ class MainPanel extends Component {
       }
     }
 
+    console.log('listings', listings)
+    console.log('pagination', listingsAreLoaded ? pagination : null)
+    console.log('search', location.search)
+    console.log('setactivelisting', onActivateListing)
+
     return (
       <div className={classes}>
         <SearchFiltersPrimary

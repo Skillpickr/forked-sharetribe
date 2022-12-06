@@ -49,6 +49,7 @@
 
 .section {
   overflow: auto;
+  margin-top: 100px;
 }
 
 /* Square corners for the last section if it's even */
@@ -60,9 +61,9 @@
 
 /* Every other section has a light background */
 .section:nth-of-type(2n) {
-  background-color: var(--matterColorLight);
+  /* background-color: var(--marketplaceColorLight); */
   @media (--viewportMedium) {
-    border-radius: 4px;
+    border-radius: 0px;
   }
 }
 
