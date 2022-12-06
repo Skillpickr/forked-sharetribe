@@ -60,27 +60,9 @@ exports[`LandingPage matches snapshot 1`] = `
       rootClassName={null}
     >
       <div
-        className="heroContainer"
-      >
-        <SectionHero
-          className="hero"
-          history={
-            Object {
-              "push": [Function],
-            }
-          }
-          location={
-            Object {
-              "search": "",
-            }
-          }
-          rootClassName={null}
-        />
-      </div>
-      <ul
         className="sections"
       >
-        <li
+        <section
           className="section"
         >
           <div
@@ -1644,8 +1626,8 @@ exports[`LandingPage matches snapshot 1`] = `
               }
             />
           </div>
-        </li>
-        <li
+        </section>
+        <section
           className="section"
         >
           <div
@@ -1658,8 +1640,62 @@ exports[`LandingPage matches snapshot 1`] = `
               rootClassName={null}
             />
           </div>
-        </li>
-      </ul>
+        </section>
+        <section
+          className="section"
+        >
+          <div
+            className="sectionContent"
+          >
+            <SectionTopArtists
+              className={null}
+              intl={
+                Object {
+                  "formatDate": [Function],
+                  "formatMessage": [Function],
+                  "formatNumber": [Function],
+                  "formatPlural": [Function],
+                  "formatRelativeTime": [Function],
+                  "formatTime": [Function],
+                  "now": [Function],
+                }
+              }
+              listings={Array []}
+              rootClassName={null}
+            />
+          </div>
+        </section>
+        <section
+          className="section"
+        >
+          <div
+            className="sectionContent"
+          >
+            <SectionBecome
+              className={null}
+              rootClassName={null}
+            />
+          </div>
+        </section>
+      </div>
+      <div
+        className="heroContainer"
+      >
+        <SectionHero
+          className="hero"
+          history={
+            Object {
+              "push": [Function],
+            }
+          }
+          location={
+            Object {
+              "search": "",
+            }
+          }
+          rootClassName={null}
+        />
+      </div>
     </LayoutWrapperMain>
     <LayoutWrapperFooter
       className={null}
