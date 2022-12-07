@@ -60,7 +60,7 @@ const SectionWhatIs = (props) => {
       <h3 className={css.helpText}>
         <FormattedMessage id="SectionWhatIs.haveQuestion" />
       </h3>
-      <ExternalLink className={css.helpButton} href={siteHelpCenter} >
+      <ExternalLink className={css.helpButton} href={siteHelpCenter}>
         <FormattedMessage id="SectionWhatIs.goToHelpCenter" />
       </ExternalLink>
 
