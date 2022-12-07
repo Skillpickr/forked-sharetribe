@@ -28,7 +28,9 @@ exports[`SearchPageComponent matches snapshot 1`] = `
     <h1
       className=""
     >
-      Search Results
+      <MemoizedFormattedMessage
+        id="SearchPage.heading"
+      />
     </h1>
     <div
       className="container"
@@ -1679,5 +1681,6 @@ exports[`SearchPageComponent matches snapshot 1`] = `
       </withViewport(ModalInMobileComponent)>
     </div>
   </div>
+  <BackToTop />
 </Connect(Page)>
 `;

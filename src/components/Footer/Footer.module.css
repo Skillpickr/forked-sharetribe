@@ -2,9 +2,6 @@
 
 .root {
   position: relative;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: var(--matterColorNegative);
 
   width: 100%;
   padding: 24px 24px 42px 24px;
@@ -18,6 +15,11 @@
     padding: 0 0 81px 0;
     border-top: none;
   }
+  background-color: var(--marketplaceColor);
+}
+
+.footerImage {
+  width: 100%;
 }
 
 /* Wrapper to limit the top border in desktop
@@ -32,7 +34,7 @@
 
     border-top-style: solid;
     border-top-width: 1px;
-    border-top-color: var(--matterColorNegative);
+    border-top-color: var(--marketplaceColor);
   }
 }
 
@@ -66,6 +68,11 @@
 }
 .someLinks {
   margin-bottom: 24px;
+  padding-left: 0px;
+
+  @media (--viewportMedium) {
+    padding-left: 8px;
+  }
 }
 
 .icon {
@@ -146,15 +153,17 @@
 }
 
 .copyrightLink {
-  color: var(--matterColor);
+  color: var(--matterColorLight);
   transition: var(--transitionStyleButton);
 
   &:hover {
-    color: var(--marketplaceColor);
+    color: var(--matterColor);
     text-decoration: none;
   }
 }
-
+.footer {
+  background-color: white;
+}
 /* Desktop and Mobile: links to more information */
 .infoLinks {
   order: 3;
@@ -198,14 +207,14 @@
   /* Font */
   composes: h5 from global;
   line-height: 20px;
-  color: var(--matterColor);
+  color: var(--matterColorLight);
   transition: var(--transitionStyleButton);
 
   margin-top: 0;
   margin-bottom: 12px;
 
   &:hover {
-    color: var(--marketplaceColor);
+    color: var(--matterColor);
     text-decoration: none;
   }
 
@@ -219,7 +228,7 @@
   /* Font */
   composes: h5 from global;
   line-height: 20px;
-  color: var(--matterColor);
+  color: var(--matterColorLight);
   transition: var(--transitionStyleButton);
 
   margin-top: 0;
