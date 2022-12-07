@@ -1,4 +1,17 @@
 import { CheckboxFieldsType, DropdownFieldsType } from '../featuresFields'
+import config from '../../config'
+import { createIntl, createIntlCache } from 'react-intl'
+
+import { messagesInLocale } from '../../intl'
+
+const cache = createIntlCache()
+const intl = createIntl(
+  {
+    locale: config.locale,
+    messages: messagesInLocale()
+  },
+  cache
+)
 
 export const djConfig = [
   {
@@ -34,9 +47,9 @@ export const djConfig = [
     queryParamNames: [''],
     config: {
       options: [
-        { key: 'yes', label: 'Yes' },
-        { key: 'no', label: 'No' },
-        { key: 'depends', label: 'Ask me - depends on the type of the event' }
+        { key: 'yes', label: intl.formatMessage({ id: 'MarketplaceConfig.songRequest.yes' }) },
+        { key: 'no', label: intl.formatMessage({ id: 'MarketplaceConfig.songRequest.no' }) },
+        { key: 'depends', label: intl.formatMessage({ id: 'MarketplaceConfig.songRequest.askMe' }) }
       ]
     }
   },
@@ -47,11 +60,8 @@ export const djConfig = [
     queryParamNames: [''],
     config: {
       options: [
-        {
-          key: 'notIncluded',
-          label: 'Gear for playing is to be provided and is not included in price'
-        },
-        { key: 'included', label: 'All gear included in price' }
+        { key: 'notIncluded', label: intl.formatMessage({ id: 'MarketplaceConfig.djGearForPlayingKey.provided' }) },
+        { key: 'included', label: intl.formatMessage({ id: 'MarketplaceConfig.djGearForPlayingKey.included' }) }
       ]
     }
   }
