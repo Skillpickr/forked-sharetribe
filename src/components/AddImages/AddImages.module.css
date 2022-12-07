@@ -52,6 +52,7 @@
   margin: 0;
   overflow: hidden;
   background-color: var(--matterColorNegative); /* Loading BG color */
+  height: 100%;
 }
 
 .threeToTwoWrapper {
@@ -104,6 +105,13 @@
   -o-object-fit: cover;
   object-fit: cover;
   border-radius: var(--borderRadius);
+}
+
+.uploadInfo {
+  composes: marketplaceTinyFontStyles from global;
+  color: var(--matterColor);
+  text-align: center;
+  /* Remove default margins from font */
 }
 
 .thumbnailLoading {

@@ -31,11 +31,58 @@ const AddImages = (props) => {
   const [items, setItems] = useState(images)
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor))
 
-  useEffect(() => {
-    setItems([...images])
-  }, [images])
+  // useEffect(() => {
+  //   setItems([...images])
+  //   return () => {
+  //     images === items
+  //   }
+  // }, [images])
 
-  console.log('activeID', activeId)
+  // function handleDragStart(event) {
+  //   setActiveId(event.active.id)
+  // }
+
+  // function handleDragEnd(event) {
+  //   const { active, over } = event
+
+  //   if (active.id !== over.id) {
+  //     setItems((items) => {
+  //       const oldIndex = items.indexOf(active.id)
+  //       const newIndex = items.indexOf(over.id)
+
+  //       return arrayMove(items, oldIndex, newIndex)
+  //     })
+  //   }
+  //   setActiveId(null)
+  // }
+
+  function handleDragCancel() {
+    setActiveId(null)
+  }
+  function handleDragStart(event) {
+    setActiveId(event.active.id)
+  }
+
+  function moveArray(arr, oldIndex, newIndex) {
+    if (newIndex >= arr.length) {
+      var k = newIndex - arr.length + 1
+      while (k--) {
+        arr.push(undefined)
+      }
+    }
+    arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0])
+    return arr
+  }
+
+  function handleDragEnd(event) {
+    const { active, over } = event
+
+    if (active.id !== over.id) {
+      moveArray(images, images.indexOf(active.id), images.indexOf(over.id))
+    }
+
+    setActiveId(null)
+  }
 
   return (
     <div className={classes}>
@@ -45,9 +92,9 @@ const AddImages = (props) => {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onDragCancel={handleDragCancel}>
-        <SortableContext items={items} strategy={rectSortingStrategy}>
+        <SortableContext items={images} strategy={rectSortingStrategy}>
           <Grid columns={2}>
-            {items.map((image, index) => (
+            {images.map((image, index) => (
               <SortablePhoto
                 image={image}
                 index={index}
@@ -61,36 +108,12 @@ const AddImages = (props) => {
         </SortableContext>
 
         <DragOverlay adjustScale={true}>
-          {activeId ? (
-            <Photo image={activeId} index={items.indexOf(activeId)} savedImageAltText={savedImageAltText} />
-          ) : null}
+          {activeId ? <Photo image={activeId} savedImageAltText={'Moving Picture'} /> : null}
         </DragOverlay>
       </DndContext>
       {children}
     </div>
   )
-  function handleDragStart(event) {
-    setActiveId(event.active.id)
-  }
-
-  function handleDragEnd(event) {
-    const { active, over } = event
-
-    if (active.id !== over.id) {
-      setItems((items) => {
-        const oldIndex = items.indexOf(active.id)
-        const newIndex = items.indexOf(over.id)
-
-        return arrayMove(items, oldIndex, newIndex)
-      })
-    }
-
-    setActiveId(null)
-  }
-
-  function handleDragCancel() {
-    setActiveId(null)
-  }
 }
 
 AddImages.defaultProps = { className: null, thumbnailClassName: null, images: [] }

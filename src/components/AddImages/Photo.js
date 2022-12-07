@@ -34,14 +34,12 @@ const Photo = React.forwardRef(
       ) : null
 
       return (
-        <ImageFromFile
-          id={image.id}
-          className={className}
-          rootClassName={css.thumbnail}
-          style={inlineStyles}
-          file={image.file}>
+        <ImageFromFile id={image.id} className={className} rootClassName={css.thumbnail} file={image.file}>
           {removeButton}
           {uploadingOverlay}
+          <p className={css.uploadInfo}>
+            In Draft Mode <br /> (Save before you drag)
+          </p>
         </ImageFromFile>
       )
     } else {

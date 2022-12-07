@@ -22,19 +22,23 @@ const SortablePhoto = (props) => {
     paddingRight: index === 0 ? 16 : null
   }
 
+  const inlineStyles = {}
+
   return (
-    <div className={thumbnailClassName} index={index} style={style}>
+    <div className={thumbnailClassName} style={style} {...attributes}>
       {index === 0 && <h4 className={customCSS.coverPhotoText}>Thumbnail</h4>}
       <Photo
         ref={setNodeRef}
         {...props}
-        {...attributes}
+        style={inlineStyles}
         savedImageAltText={savedImageAltText}
         onRemoveImage={onRemoveImage}
       />
-      <button className={customCSS.gridItem} {...listeners} {...attributes}>
-        <FontAwesomeIcon icon="fa-solid fa-up-down-left-right" size="2x" />
-      </button>
+      {!image.file && (
+        <button className={customCSS.gridItem} {...listeners}>
+          <FontAwesomeIcon icon="fa-solid fa-up-down-left-right" size="2x" />
+        </button>
+      )}
     </div>
   )
 }
