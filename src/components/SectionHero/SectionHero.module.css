@@ -77,7 +77,7 @@
 }
 
 .heroMainTitle {
-  composes: marketplaceHeroTitleFontStyles from global;
+  composes: h2 from global;
   color: var(--matterColorDark);
   composes: animation;
   text-align: center;

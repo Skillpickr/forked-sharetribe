@@ -33,26 +33,39 @@ const priceData = (price, intl) => {
   return {}
 }
 const SectionTopArtists = (props) => {
-  const { rootClassName, className, listings, intl } = props
+  const { rootClassName, className, listings, intl, setActiveListing } = props
   const classes = classNames(rootClassName || css.root, className)
 
   return (
     <div className={classes}>
       <div className={css.sectionTitle}>
-        <h2 className={css.title}>Featured Listings</h2>
-        <p className={css.textMuted}>Hover and checkout a listing</p>
+        <h2 className={css.title}>
+          <FormattedMessage id="SectionTopArtists.heading" />
+        </h2>
+        <p className={css.textMuted}>
+          <FormattedMessage id="SectionTopArtists.teaser" />
+        </p>
       </div>
       <div className={css.slider}>
         <div className={css.slideTrack}>
           {listings?.map((listing, index) => {
-            return <SectionTopArtistsCard listing={listing} key={index} intl={intl} />
+            return (
+              <SectionTopArtistsCard listing={listing} key={index} intl={intl} setActiveListing={setActiveListing} />
+            )
           })}
         </div>
       </div>
       <div className={css.slider2}>
         <div className={css.slideTrack}>
           {listings?.map((listing, index) => {
-            return <SectionTopArtistsCard listing={listing} key={index * 15} intl={intl} />
+            return (
+              <SectionTopArtistsCard
+                listing={listing}
+                key={index * 15}
+                intl={intl}
+                setActiveListing={setActiveListing}
+              />
+            )
           })}
         </div>
       </div>

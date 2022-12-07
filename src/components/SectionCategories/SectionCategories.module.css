@@ -1,7 +1,7 @@
 @import '../../styles/customMediaQueries.css';
 
 .title {
-  composes: h1 from global;
+  composes: marketplaceHeroTitleFontStyles from global;
   margin-top: 0;
   margin-bottom: 0;
   text-align: center;

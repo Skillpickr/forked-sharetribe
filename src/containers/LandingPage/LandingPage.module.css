@@ -61,7 +61,7 @@
 
 /* Every other section has a light background */
 .section:nth-of-type(2n) {
-  /* background-color: var(--marketplaceColorLight); */
+  background-color: white;
   @media (--viewportMedium) {
     border-radius: 0px;
   }

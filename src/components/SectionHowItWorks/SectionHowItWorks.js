@@ -18,7 +18,7 @@ const SectionHowItWorks = (props) => {
         <h2 className={css.title}>
           <FormattedMessage id="SectionHowItWorks.titleLineOne" />
         </h2>
-        <p className={css}>
+        <p className={css.textMuted}>
           <FormattedMessage id="SectionHowItWorks.titleLineTwo" />
         </p>
       </div>
@@ -32,7 +32,8 @@ const SectionHowItWorks = (props) => {
               css.textCenter,
               css.features,
               css.featurePrimary,
-              css.featureClean
+              css.featureClean,
+              css.p2
             )}>
             <div className={classNames(css.icons, css.mxAuto)}>
               <div className={classNames(css.mb0, css.dBlock, css.roundedMd, css.mt4)}>
@@ -58,7 +59,8 @@ const SectionHowItWorks = (props) => {
               css.textCenter,
               css.features,
               css.featurePrimary,
-              css.featureClean
+              css.featureClean,
+              css.p2
             )}>
             <div className={classNames(css.icons, css.mxAuto)}>
               <div className={classNames(css.mb0, css.dBlock, css.roundedMd, css.mt4)}>
@@ -85,7 +87,8 @@ const SectionHowItWorks = (props) => {
               css.textCenter,
               css.features,
               css.featurePrimary,
-              css.featureClean
+              css.featureClean,
+              css.p2
             )}>
             <div className={classNames(css.icons, css.mxAuto)}>
               <div className={classNames(css.mb0, css.dBlock, css.roundedMd, css.mt4)}>

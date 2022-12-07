@@ -33,7 +33,7 @@ const priceData = (price, intl) => {
   return {}
 }
 const SectionTopArtistsCard = (props) => {
-  const { className, rootClassName, intl, listing, filtersConfig } = props
+  const { className, rootClassName, intl, listing, filtersConfig, setActiveListing } = props
   const classes = classNames(rootClassName || css.root, className)
   const currentListing = ensureListing(listing)
   const id = currentListing.id.uuid
@@ -64,7 +64,10 @@ const SectionTopArtistsCard = (props) => {
   const unitTranslationKey = isNightly ? 'ListingCard.perNight' : isDaily ? 'ListingCard.perDay' : 'ListingCard.perUnit'
 
   return (
-    <div className={classNames(css.slide, css.mx2)}>
+    <div
+      className={classNames(css.slide, css.mx2)}
+      onMouseEnter={() => setActiveListing(currentListing.id)}
+      onMouseLeave={() => setActiveListing(null)}>
       <div className={classNames(css.card, css.nftItems, css.nftPrimary)}>
         <div className={css.nftImage}>
           <ResponsiveImage
@@ -76,6 +79,7 @@ const SectionTopArtistsCard = (props) => {
           />
           <div className={css.bidBtn}>
             <NamedLink className={css.artistButton} name="ListingPage" params={{ id, slug }}>
+              {' '}
               Se Mere
             </NamedLink>
             <div className={classes}>

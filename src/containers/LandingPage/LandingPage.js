@@ -9,16 +9,6 @@ import { propTypes } from '../../util/types'
 import config from '../../config'
 import unionWith from 'lodash/unionWith'
 import { searchMapListings, setActiveListing } from '../SearchPage/SearchPage.duck'
-import { parse, stringify } from '../../util/urlHelpers'
-import {
-  pickSearchParamsOnly,
-  validURLParamsForExtendedData,
-  validFilterParams,
-  createSearchResultSchema
-} from '../SearchPage/SearchPage.helpers'
-import * as custom from '../../marketplace-custom-config.js'
-import { userLocation } from '../../util/maps'
-import { locationBounds } from '../../components/LocationAutocompleteInput/GeocoderMapbox'
 
 import {
   Page,
@@ -52,7 +42,8 @@ export const LandingPageComponent = (props) => {
     scrollingDisabled,
     currentUserListing,
     currentUserListingFetched,
-    currentUser
+    currentUser,
+    onActivateListing
   } = props
 
   // Schema for search engines (helps them to understand what this page is about)
@@ -99,7 +90,9 @@ export const LandingPageComponent = (props) => {
             </section>
             <section className={css.section}>
               <div className={css.sectionContent}>
-                {listings != null && <SectionTopArtists listings={listings} intl={intl} />}
+                {listings != null && (
+                  <SectionTopArtists listings={listings} intl={intl} setActiveListing={onActivateListing} />
+                )}
               </div>
             </section>
             <section className={css.section}>
@@ -112,7 +105,7 @@ export const LandingPageComponent = (props) => {
             </section>
             <section className={css.section}>
               <div className={css.sectionContent}>
-                <SectionBecome />
+                <SectionBecome currentUser={currentUser} />
               </div>
             </section>
           </div>
@@ -138,6 +131,7 @@ LandingPageComponent.propTypes = {
   currentUserListing: propTypes.ownListing,
   currentUserListingFetched: bool,
   currentUser: propTypes.currentUser,
+  onActivateListing: func.isRequired,
 
   // from injectIntl
   intl: intlShape.isRequired
@@ -145,7 +139,7 @@ LandingPageComponent.propTypes = {
 
 const mapStateToProps = (state) => {
   const { currentUserListing, currentUserListingFetched, currentUser } = state.user
-  const { currentPageResultIds } = state.SearchPage
+  const { currentPageResultIds, searchMapListingIds } = state.SearchPage
   const pageListings = getListingsById(state, currentPageResultIds)
 
   return {
@@ -158,7 +152,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onSearchMapListings: (searchParams) => dispatch(searchMapListings(searchParams))
+  onSearchMapListings: (searchParams) => dispatch(searchMapListings(searchParams)),
+  onActivateListing: (listingId) => dispatch(setActiveListing(listingId))
 })
 
 // Note: it is important that the withRouter HOC is **outside** the
