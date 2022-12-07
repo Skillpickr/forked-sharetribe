@@ -1686,8 +1686,21 @@ exports[`LandingPage matches snapshot 1`] = `
           <div
             className="sectionContent"
           >
+            <SectionWhatIs
+              className={null}
+              rootClassName={null}
+            />
+          </div>
+        </section>
+        <section
+          className="section"
+        >
+          <div
+            className="sectionContent"
+          >
             <SectionBecome
               className={null}
+              currentUser={null}
               rootClassName={null}
             />
           </div>

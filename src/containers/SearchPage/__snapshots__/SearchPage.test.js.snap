@@ -1681,5 +1681,6 @@ exports[`SearchPageComponent matches snapshot 1`] = `
       </withViewport(ModalInMobileComponent)>
     </div>
   </div>
+  <BackToTop />
 </Connect(Page)>
 `;

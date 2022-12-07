@@ -6118,19 +6118,23 @@ footer .foot-subscribe input::-ms-input-placeholder {
   color: #adb5bd;
 }
 
-footer .footer-subscribe input::-webkit-input-placeholder, footer .foot-subscribe input::-webkit-input-placeholder {
+footer .footer-subscribe input::-webkit-input-placeholder,
+footer .foot-subscribe input::-webkit-input-placeholder {
   color: #adb5bd;
 }
 
-footer .footer-subscribe input::-moz-placeholder, footer .foot-subscribe input::-moz-placeholder {
+footer .footer-subscribe input::-moz-placeholder,
+footer .foot-subscribe input::-moz-placeholder {
   color: #adb5bd;
 }
 
-footer .footer-subscribe input:-ms-input-placeholder, footer .foot-subscribe input:-ms-input-placeholder {
+footer .footer-subscribe input:-ms-input-placeholder,
+footer .foot-subscribe input:-ms-input-placeholder {
   color: #adb5bd;
 }
 
-footer .footer-subscribe input::-ms-input-placeholder, footer .foot-subscribe input::-ms-input-placeholder {
+footer .footer-subscribe input::-ms-input-placeholder,
+footer .foot-subscribe input::-ms-input-placeholder {
   color: #adb5bd;
 }
 
