@@ -1,0 +1,71 @@
+@import '../../styles/customMediaQueries.css';
+
+.container {
+  margin: 40px 0px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, var(--marketplaceColor) 0%, var(--marketplaceColorLight) 100%);
+  box-shadow: 0 0 3px rgb(60 72 88 / 15%) !important;
+  padding: 40px;
+  @media (--viewportMedium) {
+    flex-direction: row;
+    padding: 60px;
+  }
+}
+
+.columnLeft {
+  padding: 16px;
+  width: 100%;
+  text-align: center;
+  @media (--viewportMedium) {
+    width: 70%;
+    text-align: left;
+  }
+}
+.columnRight {
+  padding: 16px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  @media (--viewportMedium) {
+    width: 30%;
+    text-align: left;
+  }
+}
+
+.title {
+  composes: h2 from global;
+  letter-spacing: 0.5px;
+  color: white;
+  font-size: 28px;
+  @media (max-width: 768px) {
+  }
+}
+.teaser {
+  composes: h3 from global;
+  line-height: 1.5;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.text {
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.7) !important;
+  margin-bottom: 0 !important;
+  line-height: 1.6;
+  font-size: 16px;
+  letter-spacing: 0.25px;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(to right, #1066e7 0%, #ffa432 100%);
+}
+
+.becomeButton {
+  composes: button buttonFont buttonText buttonBorders buttonColors from global;
+
+  @media (--viewportMedium) {
+    display: block;
+    width: 260px;
+  }
+}

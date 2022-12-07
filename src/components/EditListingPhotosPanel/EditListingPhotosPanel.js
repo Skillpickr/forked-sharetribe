@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { LISTING_STATE_DRAFT } from '../../util/types'
 import { EditListingPhotosForm } from '../../forms'
 import { ensureOwnListing } from '../../util/data'
-import { ListingLink } from '../../components'
+import { ListingLink, Alert } from '../../components'
 
 import css from './EditListingPhotosPanel.module.css'
 
@@ -46,6 +46,9 @@ class EditListingPhotosPanel extends Component {
     return (
       <div className={classes}>
         <h1 className={css.title}>{panelTitle}</h1>
+        <Alert type="secondary">
+          <FormattedMessage id="EditListingPhotosPanel.guide.selectPhoto" />
+        </Alert>
         <EditListingPhotosForm
           className={css.form}
           disabled={disabled}
