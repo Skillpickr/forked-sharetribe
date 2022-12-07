@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from '../../util/reactIntl'
 import classNames from 'classnames'
+import config from '../../config'
 
 import { NamedLink, Button, PrimaryButton, SecondaryButton, ExternalLink } from '../../components'
 
@@ -10,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SectionWhatIs = (props) => {
   const { rootClassName, className } = props
-
+  const { siteHelpCenter } = config
   const readOurStory = (
     <NamedLink name="AboutPage">
       <FormattedMessage id="SectionWhatIs.goToAbout" />
@@ -59,9 +60,10 @@ const SectionWhatIs = (props) => {
       <h3 className={css.helpText}>
         <FormattedMessage id="SectionWhatIs.haveQuestion" />
       </h3>
-      <ExternalLink className={css.helpButton}>
+      <ExternalLink className={css.helpButton} href={siteHelpCenter} >
         <FormattedMessage id="SectionWhatIs.goToHelpCenter" />
       </ExternalLink>
+
       {/* TODO: Make newsletter */}
     </div>
   )

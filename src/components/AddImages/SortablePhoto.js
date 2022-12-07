@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import Photo from './Photo'
 import customCSS from './AddImages.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FormattedMessage } from 'react-intl'
 
 const SortablePhoto = (props) => {
   const { thumbnailClassName, savedImageAltText, onRemoveImage, image, index } = props
@@ -26,7 +27,11 @@ const SortablePhoto = (props) => {
 
   return (
     <div className={thumbnailClassName} style={style} {...attributes}>
-      {index === 0 && <h4 className={customCSS.coverPhotoText}>Thumbnail</h4>}
+      {index === 0 && (
+        <h4 className={customCSS.coverPhotoText}>
+          <FormattedMessage id="SortablePhoto.thumbnail.heading" />
+        </h4>
+      )}
       <Photo
         ref={setNodeRef}
         {...props}
