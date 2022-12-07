@@ -16,7 +16,7 @@ import { parse, stringify } from '../../util/urlHelpers'
 import { propTypes } from '../../util/types'
 import { getListingsById } from '../../ducks/marketplaceData.duck'
 import { manageDisableScrolling, isScrollingDisabled } from '../../ducks/UI.duck'
-import { SearchMap, ModalInMobile, Page } from '../../components'
+import { SearchMap, ModalInMobile, Page, BackToTop } from '../../components'
 import { TopbarContainer } from '../../containers'
 
 import { searchMapListings, setActiveListing } from './SearchPage.duck'
@@ -205,6 +205,7 @@ export class SearchPageComponent extends Component {
             </ModalInMobile>
           </div>
         </div>
+        <BackToTop />
       </Page>
     )
   }

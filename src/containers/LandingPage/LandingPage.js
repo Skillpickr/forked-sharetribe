@@ -17,6 +17,7 @@ import {
   SectionLocations,
   SectionBecome,
   SectionTopArtists,
+  SectionWhatIs,
   LayoutSingleColumn,
   LayoutWrapperTopbar,
   LayoutWrapperMain,
@@ -101,6 +102,11 @@ export const LandingPageComponent = (props) => {
                   currentUserListing={currentUserListing}
                   currentUserListingFetched={currentUserListingFetched}
                 />
+              </div>
+            </section>
+            <section className={css.section}>
+              <div className={css.sectionContent}>
+                <SectionWhatIs />
               </div>
             </section>
             <section className={css.section}>
