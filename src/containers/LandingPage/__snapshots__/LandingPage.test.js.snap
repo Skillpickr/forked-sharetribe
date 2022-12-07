@@ -1648,20 +1648,6 @@ exports[`LandingPage matches snapshot 1`] = `
           <div
             className="sectionContent"
           >
-            <SectionHowItWorks
-              className={null}
-              currentUserListing={null}
-              currentUserListingFetched={false}
-              rootClassName={null}
-            />
-          </div>
-        </section>
-        <section
-          className="section"
-        >
-          <div
-            className="sectionContent"
-          >
             <SectionTopArtists
               className={null}
               intl={
@@ -1676,6 +1662,20 @@ exports[`LandingPage matches snapshot 1`] = `
                 }
               }
               listings={Array []}
+              rootClassName={null}
+            />
+          </div>
+        </section>
+        <section
+          className="section"
+        >
+          <div
+            className="sectionContent"
+          >
+            <SectionHowItWorks
+              className={null}
+              currentUserListing={null}
+              currentUserListingFetched={false}
               rootClassName={null}
             />
           </div>

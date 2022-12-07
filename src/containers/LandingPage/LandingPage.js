@@ -99,15 +99,15 @@ export const LandingPageComponent = (props) => {
             </section>
             <section className={css.section}>
               <div className={css.sectionContent}>
-                <SectionHowItWorks
-                  currentUserListing={currentUserListing}
-                  currentUserListingFetched={currentUserListingFetched}
-                />
+                {listings != null && <SectionTopArtists listings={listings} intl={intl} />}
               </div>
             </section>
             <section className={css.section}>
               <div className={css.sectionContent}>
-                {listings != null && <SectionTopArtists listings={listings} intl={intl} />}
+                <SectionHowItWorks
+                  currentUserListing={currentUserListing}
+                  currentUserListingFetched={currentUserListingFetched}
+                />
               </div>
             </section>
             <section className={css.section}>
