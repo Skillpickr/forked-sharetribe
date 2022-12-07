@@ -1,5 +1,17 @@
 import { CheckboxFieldsType, DropdownFieldsType } from '../featuresFields'
+import config from '../../config'
+import { createIntl, createIntlCache } from 'react-intl'
 
+import { messagesInLocale } from '../../intl'
+
+const cache = createIntlCache()
+const intl = createIntl(
+  {
+    locale: config.locale,
+    messages: messagesInLocale()
+  },
+  cache
+)
 export const photographerConfig = [
   {
     id: CheckboxFieldsType.photographerTypeKey,
@@ -58,8 +70,8 @@ export const photographerConfig = [
     queryParamNames: [''],
     config: {
       options: [
-        { key: 'yes', label: 'Yes' },
-        { key: 'no', label: 'No' }
+        { key: 'yes', label: intl.formatMessage({ id: 'MarketplaceConfig.ownStudioKey.yes' }) },
+        { key: 'no', label: intl.formatMessage({ id: 'MarketplaceConfig.ownStudioKey.no' }) }
       ]
     }
   },
@@ -70,9 +82,9 @@ export const photographerConfig = [
     queryParamNames: [''],
     config: {
       options: [
-        { key: 'yes', label: 'Yes' },
-        { key: 'no', label: 'No' },
-        { key: 'maybe', label: 'Willing to learn' }
+        { key: 'yes', label: intl.formatMessage({ id: 'MarketplaceConfig.soundLightExpKey.yes' }) },
+        { key: 'no', label: intl.formatMessage({ id: 'MarketplaceConfig.soundLightExpKey.no' }) },
+        { key: 'maybe', label: intl.formatMessage({ id: 'MarketplaceConfig.soundLightExpKey.maybe' }) }
       ]
     }
   }

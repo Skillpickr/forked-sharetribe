@@ -3,7 +3,7 @@
 .root {
   /* Fixed on top of everything */
   position: fixed;
-  bottom: 0;
+  bottom: 50px;
   z-index: 1000;
 
   /* Dimensions */
