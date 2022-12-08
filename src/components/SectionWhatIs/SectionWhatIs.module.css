@@ -46,6 +46,20 @@
   }
 }
 
+.helpText {
+  text-align: center;
+}
+
+.helpButton {
+  composes: button buttonFont buttonText buttonBordersSecondary buttonColorsSecondary from global;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /*********************************/
 /*         INDEX                 */
 /*================================
@@ -5589,6 +5603,46 @@ footer .footer-subscribe input,
 footer .foot-subscribe input {
   padding: 9px 20px;
   padding-right: 48px !important;
+}
+
+footer .footer-subscribe input::-webkit-input-placeholder,
+footer .foot-subscribe input::-webkit-input-placeholder {
+  color: #adb5bd;
+}
+
+footer .footer-subscribe input::-moz-placeholder,
+footer .foot-subscribe input::-moz-placeholder {
+  color: #adb5bd;
+}
+
+footer .footer-subscribe input:-ms-input-placeholder,
+footer .foot-subscribe input:-ms-input-placeholder {
+  color: #adb5bd;
+}
+
+footer .footer-subscribe input::-ms-input-placeholder,
+footer .foot-subscribe input::-ms-input-placeholder {
+  color: #adb5bd;
+}
+
+footer .footer-subscribe input::-webkit-input-placeholder,
+footer .foot-subscribe input::-webkit-input-placeholder {
+  color: #adb5bd;
+}
+
+footer .footer-subscribe input::-moz-placeholder,
+footer .foot-subscribe input::-moz-placeholder {
+  color: #adb5bd;
+}
+
+footer .footer-subscribe input:-ms-input-placeholder,
+footer .foot-subscribe input:-ms-input-placeholder {
+  color: #adb5bd;
+}
+
+footer .footer-subscribe input::-ms-input-placeholder,
+footer .foot-subscribe input::-ms-input-placeholder {
+  color: #adb5bd;
 }
 
 footer .footer-subscribe input::-webkit-input-placeholder,

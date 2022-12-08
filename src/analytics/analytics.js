@@ -14,6 +14,5 @@ export const createMiddleware = (handlers) => (store) => (next) => (action) => {
       handler.trackPageView(canonicalPath, previousPath)
     })
   }
-
   next(action)
 }

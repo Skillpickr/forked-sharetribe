@@ -450,7 +450,7 @@ export class ListingPageComponent extends Component {
                     musician={publicData ? publicData.musicianSoloType : null}
                     musicianSoloistOptions={musicSoloistOptions}
                   />
-                  <SectionDescriptionMaybe description={description} />
+                  <SectionDescriptionMaybe description={description} richTitle={richTitle} />
 
                   <SectionFeaturesMaybe
                     optionLabel={optionLabel}

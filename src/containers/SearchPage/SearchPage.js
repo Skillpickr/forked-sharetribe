@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { array, bool, func, oneOf, object, shape, string } from 'prop-types'
-import { injectIntl, intlShape } from '../../util/reactIntl'
+import { injectIntl, intlShape, FormattedMessage } from '../../util/reactIntl'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withRouter } from 'react-router-dom'
@@ -16,7 +16,7 @@ import { parse, stringify } from '../../util/urlHelpers'
 import { propTypes } from '../../util/types'
 import { getListingsById } from '../../ducks/marketplaceData.duck'
 import { manageDisableScrolling, isScrollingDisabled } from '../../ducks/UI.duck'
-import { SearchMap, ModalInMobile, Page } from '../../components'
+import { SearchMap, ModalInMobile, Page, BackToTop } from '../../components'
 import { TopbarContainer } from '../../containers'
 
 import { searchMapListings, setActiveListing } from './SearchPage.duck'
@@ -157,7 +157,9 @@ export class SearchPageComponent extends Component {
       <Page scrollingDisabled={scrollingDisabled} description={description} title={title} schema={schema}>
         <TopbarContainer className={topbarClasses} currentPage="SearchPage" currentSearchParams={urlQueryParams} />
         <div className={css.page}>
-          <h1 className="">Search Results</h1>
+          <h1 className="">
+            <FormattedMessage id="SearchPage.heading" />
+          </h1>
           <div className={css.container}>
             <MainPanel
               urlQueryParams={validQueryParams}
@@ -203,6 +205,7 @@ export class SearchPageComponent extends Component {
             </ModalInMobile>
           </div>
         </div>
+        <BackToTop />
       </Page>
     )
   }

@@ -1,0 +1,19 @@
+@import '../../styles/customMediaQueries.css';
+
+.backToTop {
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  left: 50%;
+  transition: all 0.5s ease;
+
+  line-height: 34px;
+  text-align: center;
+  background: var(--marketplaceColor);
+  padding: 16px;
+  color: #fff;
+  border-radius: 50rem !important;
+  z-index: 2001;
+  transform: translateX(-50%);
+  cursor: pointer;
+}

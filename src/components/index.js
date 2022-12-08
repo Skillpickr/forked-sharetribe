@@ -183,13 +183,17 @@ export { default as EditListingPricingPanel } from './EditListingPricingPanel/Ed
 export { default as EditListingWizard } from './EditListingWizard/EditListingWizard';
 export { default as Footer } from './Footer/Footer';
 export { default as SectionHero } from './SectionHero/SectionHero';
+export { default as SectionBecome } from './SectionBecome/SectionBecome';
 export { default as SectionHowItWorks } from './SectionHowItWorks/SectionHowItWorks';
+export { default as SectionWhatIs } from './SectionWhatIs/SectionWhatIs';
 export { default as SectionLocations } from './SectionLocations/SectionLocations';
-export { default as SectionThumbnailLinks } from './SectionThumbnailLinks/SectionThumbnailLinks';
+export { default as SectionTopArtists } from './SectionTopArtists/SectionTopArtists';
+export { default as SectionThumbnailLinks } from './SectionTopArtists/SectionTopArtists';
 export { default as Topbar } from './Topbar/Topbar';
 export { default as TopbarDesktop } from './TopbarDesktop/TopbarDesktop';
 export { default as TopbarMobileMenu } from './TopbarMobileMenu/TopbarMobileMenu';
 export { default as TransactionPanel } from './TransactionPanel/TransactionPanel';
 export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as InputLabel } from './InputLabel/InputLabel';
+export { default as BackToTop } from './BackToTop/BackToTop';
 
