@@ -474,6 +474,8 @@
   "InboxPage.statePendingPayment": "Afventer Betaling",
   "InboxPage.stateRequested": "Anmodet",
   "InboxPage.title": "Indbakke",
+  "InquirySwitcher.button": "Send os en mail",
+  "InquirySwitcher.message": "Kan du ikke finde hvad du søger efter? {breakline} {breakline} Kontakt os og vi vil finde det for dig",
   "KeywordFilter.filterText": "Filtrer resultater af",
   "KeywordFilter.labelSelected": "\"{labelText}\"",
   "KeywordFilter.placeholder": "Indtast et nøgleord ...",

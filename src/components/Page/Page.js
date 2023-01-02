@@ -16,7 +16,7 @@ import css from './Page.module.css'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Toasts } from '../../components'
+import { Toasts, InquirySwitcher } from '../../components'
 import { addToast } from '../../ducks/toasts.duck'
 
 const preventDefault = (e) => {
@@ -221,6 +221,7 @@ class PageComponent extends Component {
           }}>
           {children}
           <Toasts />
+          <InquirySwitcher />
         </div>
       </div>
     )

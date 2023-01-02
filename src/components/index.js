@@ -157,14 +157,14 @@ export { default as SortBy } from './SortBy/SortBy';
 export { default as StripeConnectAccountStatusBox } from './StripeConnectAccountStatusBox/StripeConnectAccountStatusBox';
 export { default as StripePaymentAddress } from './StripePaymentAddress/StripePaymentAddress';
 export { default as UserCard } from './UserCard/UserCard';
-export {  IntroLetters } from './IntroLetters/IntroLetters';
+export { IntroLetters } from './IntroLetters/IntroLetters';
 
 //////////////////////////////////////////////
 // Page sections and modal content wrappers //
 //////////////////////////////////////////////
 
 export { default as LayoutWrapperAccountSettingsSideNav } from './LayoutWrapperAccountSettingsSideNav/LayoutWrapperAccountSettingsSideNav';
-export {default as LoadableComponentErrorBoundary } from './LoadableComponentErrorBoundary/LoadableComponentErrorBoundary'
+export { default as LoadableComponentErrorBoundary } from './LoadableComponentErrorBoundary/LoadableComponentErrorBoundary'
 export { default as ModalMissingInformation } from './ModalMissingInformation/ModalMissingInformation';
 export { default as ReviewModal } from './ReviewModal/ReviewModal';
 export { default as PrivacyPolicy } from './PrivacyPolicy/PrivacyPolicy';
@@ -196,4 +196,6 @@ export { default as TransactionPanel } from './TransactionPanel/TransactionPanel
 export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as InputLabel } from './InputLabel/InputLabel';
 export { default as BackToTop } from './BackToTop/BackToTop';
+export { default as InquirySwitcher } from './InquirySwitcher/InquirySwitcher';
+
 
