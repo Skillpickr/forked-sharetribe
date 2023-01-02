@@ -9,8 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const ExternalLink = (props) => {
   const { children, ...rest } = props
   const spanStyle = {
-    marginLeft: '8px',
-  };
+    marginLeft: '8px'
+  }
   return (
     <a {...rest} target="_blank" rel="noopener noreferrer">
       {children}
