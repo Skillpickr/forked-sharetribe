@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-// import toggleSwitcher from '../StyleSwitcher'
 import { ExternalLink } from '../../components'
 
 import css from './InquirySwitcher.module.css'
 import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FormattedMessage } from 'react-intl'
+
 const InquirySwitcher = () => {
   let switchElement = document.getElementById('style-switcher')
   const [showComponent, setShowComponent] = useState(false)
@@ -58,13 +58,12 @@ const InquirySwitcher = () => {
                     </li>
                 </ul> */}
 
-        <h6 className="title text-center pt-3 mb-0 border-top">
+        <h6 className="title">
           <FormattedMessage id="InquirySwitcher.message" values={{ breakline: <br /> }} />
         </h6>
-        <ul className="text-center list-unstyled mb-0">
-          <li className="d-grid">
+        <ul>
+          <li>
             <ExternalLink
-              className="btn btn-sm btn-block btn-primary rtl-version t-rtl-light mt-2"
               onClick={(e) => {
                 e.preventDefault()
               }}
@@ -84,15 +83,11 @@ const InquirySwitcher = () => {
                     <li><a href="https://1.envato.market/superex" target="_blank" className="btn btn-sm btn-block btn-warning mt-2 w-100">Download</a></li>
                 </ul> */}
       </div>
-      <div className="bottom p-0">
-        {/* <a href="" className="settings bg-white title-bg-dark shadow d-flex align-items-center justify-content-center"> */}
+      <div className="bottom">
         <a href="" className={classNames(css.settings, css.shadow)}>
-          {/* <p>Forespørg</p> */}
           <FontAwesomeIcon icon="paper-plane" />
-          {/* <i className="mdi mdi-cog mdi-24px position-absolute mdi-spin text-primary"></i> */}
         </a>
       </div>
-      {/* end Style switcher  */}
     </div>
   )
 }
