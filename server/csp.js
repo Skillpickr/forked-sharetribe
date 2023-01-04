@@ -118,7 +118,13 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
     'tawk.link',
     'https://purecatamphetamine.github.io/country-flag-icons/*'
   ])
-  const extendScriptSrc = scriptSrc.concat(['*.tawk.to', 'cdn.jsdelivr.net', 'https://browser.sentry-cdn.com', 'www.facebook.com', 'connect.facebook.net'])
+  const extendScriptSrc = scriptSrc.concat([
+    '*.tawk.to',
+    'cdn.jsdelivr.net',
+    'https://browser.sentry-cdn.com',
+    'www.facebook.com',
+    'connect.facebook.net'
+  ])
   const extendStyleSrc = styleSrc.concat(['*.tawk.to', 'fonts.googleapis.com', 'cdn.jsdelivr.net'])
 
   const customDirectives = {
