@@ -193,9 +193,6 @@ export { default as Topbar } from './Topbar/Topbar';
 export { default as TopbarDesktop } from './TopbarDesktop/TopbarDesktop';
 export { default as TopbarMobileMenu } from './TopbarMobileMenu/TopbarMobileMenu';
 export { default as TransactionPanel } from './TransactionPanel/TransactionPanel';
-export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as InputLabel } from './InputLabel/InputLabel';
 export { default as BackToTop } from './BackToTop/BackToTop';
 export { default as InquirySwitcher } from './InquirySwitcher/InquirySwitcher';
-
-

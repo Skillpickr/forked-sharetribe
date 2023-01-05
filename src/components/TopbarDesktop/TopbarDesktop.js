@@ -28,6 +28,8 @@ import { txState } from '../../containers/InboxPage/tsState'
 
 import css from './TopbarDesktop.module.css'
 import config from '../../config'
+import ReactTooltip from 'react-tooltip';
+
 
 const TopbarDesktop = (props) => {
   const {
@@ -106,31 +108,43 @@ const TopbarDesktop = (props) => {
           {noResults}
         </MenuContent>
       </Menu> */}
-      <Tooltip content={intl.formatMessage({ id: 'TopbarDesktop.notification' })} direction="bottom">
-        <NamedLink
-          className={css.inboxLink}
-          name="InboxPage"
-          params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
-          <span className={css.inbox}>
-            <FontAwesomeIcon icon="fa-solid fa-bell" size="xl" />
-            {notificationDot}
-          </span>
-        </NamedLink>
-      </Tooltip>
+      <NamedLink
+        tooltipId="notificationTooltip"
+        className={css.inboxLink}
+        name="InboxPage"
+        params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
+        <span className={css.inbox}>
+          <FontAwesomeIcon icon="fa-solid fa-bell" size="xl" />
+          {notificationDot}
+        </span>
+      </NamedLink>
+      <ReactTooltip id="notificationTooltip" type="dark" effect="solid">
+        <span>
+          <FormattedMessage id='TopbarDesktop.notification'></FormattedMessage>
+        </span>
+      </ReactTooltip>
     </div>
   ) : null
 
   const listingManagerLink = authenticatedOnClientSide ? (
     <div>
-      {currentUserHasListings && (
-        <Tooltip content={intl.formatMessage({ id: 'TopbarDesktop.yourListingsLink' })} direction="bottom">
-          <NamedLink className={css.inboxLink} name="ManageListingsPage">
-            <span className={css.inbox}>
-              {/* <FormattedMessage id="TopbarDesktop.yourListingsLink" /> */}
-              <FontAwesomeIcon icon="fa-solid fa-piggy-bank" size="xl" />
-            </span>
-          </NamedLink>
-        </Tooltip>
+      {currentUserHasListings && (<div>
+        <NamedLink
+          tooltipId="yourListingsLink"
+          className={css.inboxLink}
+          name="ManageListingsPage">
+          <span className={css.inbox}>
+            {/* <FormattedMessage id="TopbarDesktop.yourListingsLink" /> */}
+            <FontAwesomeIcon icon="fa-solid fa-rectangle-list" size="xl" />
+          </span>
+        </NamedLink>
+        <ReactTooltip id="yourListingsLink" type="dark" effect="solid">
+          <span>
+            <FormattedMessage id='TopbarDesktop.yourListingsLink'></FormattedMessage>
+          </span>
+        </ReactTooltip>
+      </div>
+
       )}
     </div>
   ) : null
@@ -151,13 +165,16 @@ const TopbarDesktop = (props) => {
     </MenuItem>
   )
 
-  const profileMenu = authenticatedOnClientSide ? (
+  const profileMenu = authenticatedOnClientSide ? (<div>
     <Menu useArrow={true}>
-      <MenuLabel className={css.profileMenuLabel} isOpenClassName={css.profileMenuIsOpen}>
-        <Tooltip content={intl.formatMessage({ id: 'TopbarDesktop.yourProfileLink' })} direction="bottom">
-          <Avatar className={css.avatar} user={currentUser} disableProfileLink />
-        </Tooltip>
+      <MenuLabel className={css.profileMenuLabel} isOpenClassName={css.profileMenuIsOpen} tooltipId="yourProfileLinkContainer">
+        <Avatar className={css.avatar} user={currentUser} disableProfileLink />
       </MenuLabel>
+      <ReactTooltip id="yourProfileLinkContainer" type="dark" effect="solid">
+        <span>
+          <FormattedMessage id='TopbarDesktop.yourProfileLink'></FormattedMessage>
+        </span>
+      </ReactTooltip>
       <MenuContent className={css.profileMenuContent}>
         {firstNewListing}
         <MenuItem key="InboxPage">
@@ -202,6 +219,9 @@ const TopbarDesktop = (props) => {
         </MenuItem>
       </MenuContent>
     </Menu>
+
+  </div>
+
   ) : null
 
   // const signupLink = isAuthenticatedOrJustHydrated ? null : (
@@ -232,13 +252,21 @@ const TopbarDesktop = (props) => {
         </span>
       </NamedLink> */}
       {listingManagerLink}
-      <Tooltip content={intl.formatMessage({ id: 'TopbarDesktop.yourSwitchLanguageLink' })} direction="bottom">
-        <a className={css.inboxLink} onClick={onLanguageSwitch}>
-          <span className={css.inbox}>
-            <FontAwesomeIcon icon="fa-solid fa-globe" size="xl" />
-          </span>
-        </a>
-      </Tooltip>
+      <ReactTooltip id="yourSwitchLanguageLink" type="dark" effect="solid">
+        <span>
+          <FormattedMessage id='TopbarDesktop.yourSwitchLanguageLink'></FormattedMessage>
+        </span>
+      </ReactTooltip>
+      <a className={css.loginLink} onClick={onLanguageSwitch} data-tip data-for="yourSwitchLanguageLinkContainer">
+        <span className={css.inbox}>
+          <FontAwesomeIcon icon="fa-solid fa-globe" size="xl" />
+        </span>
+      </a>
+      <ReactTooltip id="yourSwitchLanguageLinkContainer" type="dark" effect="solid">
+        <span>
+          <FormattedMessage id='TopbarDesktop.yourSwitchLanguageLink'></FormattedMessage>
+        </span>
+      </ReactTooltip>
       {profileMenu}
       {inboxLink}
       {/* {signupLink} */}

@@ -76,7 +76,7 @@ const TopbarMobileMenu = (props) => {
 
   const listingOrNot = currentUserHasListings ? (
     <NamedLink className={css.createNewListingLink} name="ManageListingsPage">
-      <FontAwesomeIcon icon="fa-solid fa-piggy-bank" size="xl" className={css.icon} />
+      <FontAwesomeIcon icon="fa-solid fa-rectangle-list" size="xl" className={css.icon} />
       <FormattedMessage id="TopbarDesktop.yourListingsLink" />
     </NamedLink>
   ) : (

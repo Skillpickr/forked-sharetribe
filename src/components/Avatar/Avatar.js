@@ -76,6 +76,7 @@ export const AvatarComponent = (props) => {
           variants={AVATAR_IMAGE_VARIANTS}
           sizes={renderSizes}
         />
+
       </NamedLink>
     )
   } else if (hasProfileImage) {

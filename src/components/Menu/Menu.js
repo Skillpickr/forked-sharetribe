@@ -22,6 +22,7 @@ import classNames from 'classnames'
 
 import { MenuContent, MenuLabel } from '../../components'
 import css from './Menu.module.css'
+import ReactTooltip from 'react-tooltip';
 
 const KEY_CODE_ESCAPE = 27
 const CONTENT_PLACEMENT_OFFSET = 0
@@ -144,9 +145,9 @@ class Menu extends Component {
   }
 
   prepareChildren() {
-    if (React.Children.count(this.props.children) !== 2) {
-      throw new Error('Menu needs to have two children: MenuLabel and MenuContent.')
-    }
+    // if (React.Children.count(this.props.children) !== 2) {
+    //   throw new Error('Menu needs to have two children: MenuLabel and MenuContent.')
+    // }
 
     return React.Children.map(this.props.children, (child) => {
       const { isOpen: isOpenProp, onToggleActive } = this.props
@@ -158,6 +159,11 @@ class Menu extends Component {
         return React.cloneElement(child, {
           isOpen,
           onToggleActive: this.toggleOpen
+        })
+      } if (child.type === ReactTooltip) {
+        // MenuLabel needs toggleOpen function
+        // We pass that directly  so that component user doesn't need to worry about that
+        return React.cloneElement(child, {
         })
       } else if (child.type === MenuContent) {
         // MenuContent needs some styling data (width, arrowPosition, and isOpen info)
@@ -174,7 +180,7 @@ class Menu extends Component {
           style: { ...child.props.style, ...positionStyles }
         })
       } else {
-        throw new Error('Menu has an unknown child. Only MenuLabel and MenuContent are allowed.')
+        throw new Error('Menu has an unknown child. Only MenuLabel, ReactTooltip and MenuContent are allowed.')
       }
     })
   }
@@ -191,6 +197,7 @@ class Menu extends Component {
         onBlur={this.onBlur}
         tabIndex={0}
         onKeyDown={this.onKeyDown}
+        data-tip
         ref={(c) => {
           this.menu = c
         }}>
@@ -207,7 +214,7 @@ Menu.defaultProps = {
   contentPosition: CONTENT_TO_RIGHT,
   isOpen: null,
   onToggleActive: null,
-  useArrow: true
+  useArrow: true,
 }
 
 const { bool, func, node, number, string } = PropTypes

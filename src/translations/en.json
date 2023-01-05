@@ -475,7 +475,7 @@
   "InboxPage.stateRequested": "Requested",
   "InboxPage.title": "Inbox",
   "InquirySwitcher.button": "Send us a mail",
-  "InquirySwitcher.message": "Can't find what you are looking for? {breakline} Get in touch with us and we will find it for you",
+  "InquirySwitcher.message": "Can't find what you are looking for? {breakline} {breakline} Get in touch with us and we will find it for you",
   "KeywordFilter.filterText": "Filter results by",
   "KeywordFilter.labelSelected": "\"{labelText}\"",
   "KeywordFilter.placeholder": "Enter a keyword…",

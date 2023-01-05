@@ -4,4 +4,10 @@
 
 .icon {
   color: red;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.container {
+  max-width: 500px;
 }

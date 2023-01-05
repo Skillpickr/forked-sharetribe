@@ -43,7 +43,7 @@ export const NamedLinkComponent = (props) => {
   const active = match.url && match.url === pathname
 
   // <a> element props
-  const { className, style, activeClassName } = props
+  const { className, style, activeClassName, tooltipId } = props
   const aElemProps = {
     className: classNames(className, { [activeClassName]: active }),
     style,
@@ -51,13 +51,13 @@ export const NamedLinkComponent = (props) => {
   }
   if (disabled) {
     return (
-      <Link onClick={(e) => e.preventDefault()} to={{}} {...aElemProps}>
+      <Link data-tip data-for={tooltipId} onClick={(e) => e.preventDefault()} to={{}} {...aElemProps}>
         {children}
       </Link>
     )
   }
   return (
-    <Link onMouseOver={onOver} onTouchStart={onOver} to={{ pathname, ...to }} {...aElemProps}>
+    <Link data-tip data-for={tooltipId} onMouseOver={onOver} onTouchStart={onOver} to={{ pathname, ...to }} {...aElemProps}>
       {children}
     </Link>
   )
