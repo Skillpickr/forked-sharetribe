@@ -3,12 +3,15 @@
 exports[`Menu matches snapshot 1`] = `
 <div
   className="root"
+  data-tip={true}
   onBlur={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}
 >
   <button
     className="root"
+    data-for=""
+    data-tip={true}
     onBlur={[Function]}
     onClick={[Function]}
   >

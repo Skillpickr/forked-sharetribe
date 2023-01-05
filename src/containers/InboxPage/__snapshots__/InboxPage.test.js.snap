@@ -803,6 +803,7 @@ exports[`InboxPage matches snapshot 3`] = `
   >
     <a
       className="root"
+      data-tip={true}
       href="/u/provider-user-id"
       onClick={[Function]}
       onMouseOver={[Function]}
@@ -819,6 +820,7 @@ exports[`InboxPage matches snapshot 3`] = `
   </div>
   <a
     className="itemLink"
+    data-tip={true}
     href="/order/order-1/details"
     onClick={[Function]}
     onMouseOver={[Function]}
@@ -1290,6 +1292,7 @@ exports[`InboxPage matches snapshot 5`] = `
   >
     <a
       className="root"
+      data-tip={true}
       href="/u/customer-user-id"
       onClick={[Function]}
       onMouseOver={[Function]}
@@ -1306,6 +1309,7 @@ exports[`InboxPage matches snapshot 5`] = `
   </div>
   <a
     className="itemLink"
+    data-tip={true}
     href="/sale/sale-1/details"
     onClick={[Function]}
     onMouseOver={[Function]}

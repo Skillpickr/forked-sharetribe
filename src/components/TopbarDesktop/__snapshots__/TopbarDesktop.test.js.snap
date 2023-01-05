@@ -6,6 +6,7 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
 >
   <a
     className="logoLink NamedLink_active"
+    data-tip={true}
     href="/"
     onClick={[Function]}
     onMouseOver={[Function]}
@@ -77,16 +78,11 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
     </div>
   </form>
   <div>
-    <button
-      className="inlineTextButtonRoot inlineTextButton Tooltip-Wrapper"
-      disabled={false}
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      type="button"
-    >
+    <div>
       <a
         className="inboxLink"
+        data-for="yourListingsLink"
+        data-tip={true}
         href="/listings"
         onClick={[Function]}
         onMouseOver={[Function]}
@@ -98,42 +94,424 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
           className="inbox"
         />
       </a>
-    </button>
+      <div
+        className="__react_component_tooltip t98a893a9-a2c3-4da7-b930-8dc00331050d place-top type-dark"
+        data-id="tooltip"
+        id="yourListingsLink"
+      >
+        <style
+          aria-hidden="true"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "
+  	.t98a893a9-a2c3-4da7-b930-8dc00331050d {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+	    border-radius: undefinedpx;
+	    padding: 8px 21px;
+  	}
+
+  	.t98a893a9-a2c3-4da7-b930-8dc00331050d.place-top {
+        margin-top: -10px;
+    }
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-top::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: 2;
+        width: 20px;
+        height: 12px;
+    }
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-top::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -6px;
+        transform: rotate(135deg);
+    }
+
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-bottom {
+        margin-top: 10px;
+    }
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-bottom::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 18px;
+        height: 10px;
+    }
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-bottom::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        top: -6px;
+        left: 50%;
+        margin-left: -6px;
+        transform: rotate(45deg);
+    }
+
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-left {
+        margin-left: -10px;
+    }
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-left::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 10px;
+        height: 18px;
+    }
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-left::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        right: -6px;
+        top: 50%;
+        margin-top: -6px;
+        transform: rotate(45deg);
+    }
+
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-right {
+        margin-left: 10px;
+    }
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-right::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 10px;
+        height: 18px;
+    }
+    .t98a893a9-a2c3-4da7-b930-8dc00331050d.place-right::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        left: -6px;
+        top: 50%;
+        margin-top: -6px;
+        transform: rotate(-135deg);
+    }
+  ",
+            }
+          }
+        />
+        <span>
+          <span>
+            TopbarDesktop.yourListingsLink
+          </span>
+        </span>
+      </div>
+    </div>
   </div>
-  <button
-    className="inlineTextButtonRoot inlineTextButton Tooltip-Wrapper"
-    disabled={false}
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    type="button"
-  >
-    <a
-      className="inboxLink"
-    >
-      <span
-        className="inbox"
-      />
-    </a>
-  </button>
   <div
-    className="root"
-    onBlur={[Function]}
-    onKeyDown={[Function]}
-    tabIndex={0}
+    className="__react_component_tooltip t63c11e09-1480-46e6-947c-30a80556a0be place-top type-dark"
+    data-id="tooltip"
+    id="yourSwitchLanguageLink"
   >
-    <button
-      className="root profileMenuLabel"
+    <style
+      aria-hidden="true"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "
+  	.t63c11e09-1480-46e6-947c-30a80556a0be {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+	    border-radius: undefinedpx;
+	    padding: 8px 21px;
+  	}
+
+  	.t63c11e09-1480-46e6-947c-30a80556a0be.place-top {
+        margin-top: -10px;
+    }
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-top::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: 2;
+        width: 20px;
+        height: 12px;
+    }
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-top::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -6px;
+        transform: rotate(135deg);
+    }
+
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-bottom {
+        margin-top: 10px;
+    }
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-bottom::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 18px;
+        height: 10px;
+    }
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-bottom::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        top: -6px;
+        left: 50%;
+        margin-left: -6px;
+        transform: rotate(45deg);
+    }
+
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-left {
+        margin-left: -10px;
+    }
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-left::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 10px;
+        height: 18px;
+    }
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-left::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        right: -6px;
+        top: 50%;
+        margin-top: -6px;
+        transform: rotate(45deg);
+    }
+
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-right {
+        margin-left: 10px;
+    }
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-right::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 10px;
+        height: 18px;
+    }
+    .t63c11e09-1480-46e6-947c-30a80556a0be.place-right::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        left: -6px;
+        top: 50%;
+        margin-top: -6px;
+        transform: rotate(-135deg);
+    }
+  ",
+        }
+      }
+    />
+    <span>
+      <span>
+        TopbarDesktop.yourSwitchLanguageLink
+      </span>
+    </span>
+  </div>
+  <a
+    className="loginLink"
+    data-for="yourSwitchLanguageLinkContainer"
+    data-tip={true}
+  >
+    <span
+      className="inbox"
+    />
+  </a>
+  <div
+    className="__react_component_tooltip tf0b92bc8-94b5-42f4-a388-f99f38442e7f place-top type-dark"
+    data-id="tooltip"
+    id="yourSwitchLanguageLinkContainer"
+  >
+    <style
+      aria-hidden="true"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "
+  	.tf0b92bc8-94b5-42f4-a388-f99f38442e7f {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+	    border-radius: undefinedpx;
+	    padding: 8px 21px;
+  	}
+
+  	.tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-top {
+        margin-top: -10px;
+    }
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-top::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: 2;
+        width: 20px;
+        height: 12px;
+    }
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-top::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -6px;
+        transform: rotate(135deg);
+    }
+
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-bottom {
+        margin-top: 10px;
+    }
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-bottom::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 18px;
+        height: 10px;
+    }
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-bottom::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        top: -6px;
+        left: 50%;
+        margin-left: -6px;
+        transform: rotate(45deg);
+    }
+
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-left {
+        margin-left: -10px;
+    }
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-left::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 10px;
+        height: 18px;
+    }
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-left::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        right: -6px;
+        top: 50%;
+        margin-top: -6px;
+        transform: rotate(45deg);
+    }
+
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-right {
+        margin-left: 10px;
+    }
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-right::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 10px;
+        height: 18px;
+    }
+    .tf0b92bc8-94b5-42f4-a388-f99f38442e7f.place-right::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        left: -6px;
+        top: 50%;
+        margin-top: -6px;
+        transform: rotate(-135deg);
+    }
+  ",
+        }
+      }
+    />
+    <span>
+      <span>
+        TopbarDesktop.yourSwitchLanguageLink
+      </span>
+    </span>
+  </div>
+  <div>
+    <div
+      className="root"
+      data-tip={true}
       onBlur={[Function]}
-      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
     >
       <button
-        className="inlineTextButtonRoot inlineTextButton Tooltip-Wrapper"
-        disabled={false}
+        className="root profileMenuLabel"
+        data-for="yourProfileLinkContainer"
+        data-tip={true}
+        onBlur={[Function]}
         onClick={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        type="button"
       >
         <div
           className="root avatar"
@@ -144,128 +522,386 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
           />
         </div>
       </button>
-    </button>
-    <div
-      className="root profileMenuContent isClosed"
-      style={
-        Object {
-          "left": "-10000px",
-        }
-      }
-    >
-      <ul
-        className="content"
+      <div
+        className="__react_component_tooltip t9d9e18b1-c38a-4246-b799-336fc6a0a787 place-top type-dark"
+        data-id="tooltip"
+        id="yourProfileLinkContainer"
       >
-        <li
-          className="root"
-          role="menuitem"
+        <style
+          aria-hidden="true"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "
+  	.t9d9e18b1-c38a-4246-b799-336fc6a0a787 {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+	    border-radius: undefinedpx;
+	    padding: 8px 21px;
+  	}
+
+  	.t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-top {
+        margin-top: -10px;
+    }
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-top::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: 2;
+        width: 20px;
+        height: 12px;
+    }
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-top::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -6px;
+        transform: rotate(135deg);
+    }
+
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-bottom {
+        margin-top: 10px;
+    }
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-bottom::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 18px;
+        height: 10px;
+    }
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-bottom::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        top: -6px;
+        left: 50%;
+        margin-left: -6px;
+        transform: rotate(45deg);
+    }
+
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-left {
+        margin-left: -10px;
+    }
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-left::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 10px;
+        height: 18px;
+    }
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-left::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        right: -6px;
+        top: 50%;
+        margin-top: -6px;
+        transform: rotate(45deg);
+    }
+
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-right {
+        margin-left: 10px;
+    }
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-right::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 10px;
+        height: 18px;
+    }
+    .t9d9e18b1-c38a-4246-b799-336fc6a0a787.place-right::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        left: -6px;
+        top: 50%;
+        margin-top: -6px;
+        transform: rotate(-135deg);
+    }
+  ",
+            }
+          }
         />
-        <li
-          className="root"
-          role="menuitem"
+        <span>
+          <span>
+            TopbarDesktop.yourProfileLink
+          </span>
+        </span>
+      </div>
+      <div
+        className="root profileMenuContent isClosed"
+        style={
+          Object {
+            "left": "-10000px",
+          }
+        }
+      >
+        <ul
+          className="content"
         >
-          <a
-            className="yourListingsLink"
-            href="/inbox/sales"
-            onClick={[Function]}
-            onMouseOver={[Function]}
-            onTouchStart={[Function]}
-            style={Object {}}
-            title={null}
+          <li
+            className="root"
+            role="menuitem"
+          />
+          <li
+            className="root"
+            role="menuitem"
           >
-            <span
-              className="menuItemBorder"
-            />
-            <span>
-              TopbarDesktop.inbox
-            </span>
-          </a>
-        </li>
-        <li
-          className="root"
-          role="menuitem"
-        >
-          <a
-            className="profileSettingsLink"
-            href="/profile-settings"
-            onClick={[Function]}
-            onMouseOver={[Function]}
-            onTouchStart={[Function]}
-            style={Object {}}
-            title={null}
+            <a
+              className="yourListingsLink"
+              data-tip={true}
+              href="/inbox/sales"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              onTouchStart={[Function]}
+              style={Object {}}
+              title={null}
+            >
+              <span
+                className="menuItemBorder"
+              />
+              <span>
+                TopbarDesktop.inbox
+              </span>
+            </a>
+          </li>
+          <li
+            className="root"
+            role="menuitem"
           >
-            <span
-              className="menuItemBorder"
-            />
-            <span>
-              TopbarDesktop.profileSettingsLink
-            </span>
-          </a>
-        </li>
-        <li
-          className="root"
-          role="menuitem"
-        >
-          <a
-            className="yourListingsLink"
-            href="/account"
-            onClick={[Function]}
-            onMouseOver={[Function]}
-            onTouchStart={[Function]}
-            style={Object {}}
-            title={null}
+            <a
+              className="profileSettingsLink"
+              data-tip={true}
+              href="/profile-settings"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              onTouchStart={[Function]}
+              style={Object {}}
+              title={null}
+            >
+              <span
+                className="menuItemBorder"
+              />
+              <span>
+                TopbarDesktop.profileSettingsLink
+              </span>
+            </a>
+          </li>
+          <li
+            className="root"
+            role="menuitem"
           >
-            <span
-              className="menuItemBorder"
-            />
-            <span>
-              TopbarDesktop.accountSettingsLink
-            </span>
-          </a>
-        </li>
-        <li
-          className="root"
-          role="menuitem"
-        >
-          <button
-            className="logoutButton inlineTextButton"
-            disabled={false}
-            onClick={[Function]}
+            <a
+              className="yourListingsLink"
+              data-tip={true}
+              href="/account"
+              onClick={[Function]}
+              onMouseOver={[Function]}
+              onTouchStart={[Function]}
+              style={Object {}}
+              title={null}
+            >
+              <span
+                className="menuItemBorder"
+              />
+              <span>
+                TopbarDesktop.accountSettingsLink
+              </span>
+            </a>
+          </li>
+          <li
+            className="root"
+            role="menuitem"
           >
-            <span
-              className="menuItemBorder"
-            />
-            <span>
-              TopbarDesktop.logout
-            </span>
-          </button>
-        </li>
-      </ul>
+            <button
+              className="logoutButton inlineTextButton"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <span
+                className="menuItemBorder"
+              />
+              <span>
+                TopbarDesktop.logout
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div>
-    <button
-      className="inlineTextButtonRoot inlineTextButton Tooltip-Wrapper"
-      disabled={false}
+    <a
+      className="inboxLink"
+      data-for="notificationTooltip"
+      data-tip={true}
+      href="/inbox/sales"
       onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      type="button"
+      onMouseOver={[Function]}
+      onTouchStart={[Function]}
+      style={Object {}}
+      title={null}
     >
-      <a
-        className="inboxLink"
-        href="/inbox/sales"
-        onClick={[Function]}
-        onMouseOver={[Function]}
-        onTouchStart={[Function]}
-        style={Object {}}
-        title={null}
-      >
-        <span
-          className="inbox"
-        />
-      </a>
-    </button>
+      <span
+        className="inbox"
+      />
+    </a>
+    <div
+      className="__react_component_tooltip t50c5d4cc-a0de-41a9-b751-5ae20921831a place-top type-dark"
+      data-id="tooltip"
+      id="notificationTooltip"
+    >
+      <style
+        aria-hidden="true"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "
+  	.t50c5d4cc-a0de-41a9-b751-5ae20921831a {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+	    border-radius: undefinedpx;
+	    padding: 8px 21px;
+  	}
+
+  	.t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-top {
+        margin-top: -10px;
+    }
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-top::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: 2;
+        width: 20px;
+        height: 12px;
+    }
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-top::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -6px;
+        transform: rotate(135deg);
+    }
+
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-bottom {
+        margin-top: 10px;
+    }
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-bottom::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 18px;
+        height: 10px;
+    }
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-bottom::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        top: -6px;
+        left: 50%;
+        margin-left: -6px;
+        transform: rotate(45deg);
+    }
+
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-left {
+        margin-left: -10px;
+    }
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-left::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 10px;
+        height: 18px;
+    }
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-left::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        right: -6px;
+        top: 50%;
+        margin-top: -6px;
+        transform: rotate(45deg);
+    }
+
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-right {
+        margin-left: 10px;
+    }
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-right::before {
+        content: \\"\\";
+        background-color: inherit;
+        position: absolute;
+        z-index: -1;
+        width: 10px;
+        height: 18px;
+    }
+    .t50c5d4cc-a0de-41a9-b751-5ae20921831a.place-right::after {
+        content: \\"\\";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-top-right-radius: undefinedpx;
+        border: 1px solid transparent;
+        background-color: #222;
+        z-index: -2;
+        left: -6px;
+        top: 50%;
+        margin-top: -6px;
+        transform: rotate(-135deg);
+    }
+  ",
+          }
+        }
+      />
+      <span>
+        <span>
+          TopbarDesktop.notification
+        </span>
+      </span>
+    </div>
   </div>
 </nav>
 `;

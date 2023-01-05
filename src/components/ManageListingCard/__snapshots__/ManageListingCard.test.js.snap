@@ -67,6 +67,7 @@ exports[`ManageListingCard matches snapshot 1`] = `
             isOpenClassName="listingMenuIsOpen"
             onToggleActive={null}
             rootClassName=""
+            tooltipId=""
           >
             <div
               className="iconWrapper"

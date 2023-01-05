@@ -16,6 +16,7 @@ exports[`SectionHero matches snapshot 1`] = `
     </h2>
     <a
       className="heroButton"
+      data-tip={true}
       href="/s"
       onClick={[Function]}
       onMouseOver={[Function]}
