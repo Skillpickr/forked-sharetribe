@@ -9,8 +9,7 @@ import classNames from 'classnames'
 import css from './InputLabel.module.css'
 // import Tooltip from '../Tooltip/Tooltip'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ReactTooltip from 'react-tooltip';
-
+import ReactTooltip from 'react-tooltip'
 
 class InputLabel extends Component {
   constructor(props) {
@@ -26,14 +25,13 @@ class InputLabel extends Component {
         <label className={classes} htmlFor={id}>
           {text}
         </label>
-        {tooltip && (<div className={css.icon}>
-          <FontAwesomeIcon data-tip data-for={"input-label-tooltip" + id} icon={['fas', 'fa-circle-question']} />
-          <ReactTooltip id={"input-label-tooltip" + id} type="light" effect="solid">
-            <p className={css.container}>
-              {tooltipString}
-            </p>
-          </ReactTooltip>
-        </div>
+        {tooltip && (
+          <div className={css.icon}>
+            <FontAwesomeIcon data-tip data-for={'input-label-tooltip' + id} icon={['fas', 'fa-circle-question']} />
+            <ReactTooltip id={'input-label-tooltip' + id} type="light" effect="solid">
+              <p className={css.container}>{tooltipString}</p>
+            </ReactTooltip>
+          </div>
         )}
       </div>
     )

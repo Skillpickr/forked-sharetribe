@@ -22,7 +22,7 @@ import classNames from 'classnames'
 
 import { MenuContent, MenuLabel } from '../../components'
 import css from './Menu.module.css'
-import ReactTooltip from 'react-tooltip';
+import ReactTooltip from 'react-tooltip'
 
 const KEY_CODE_ESCAPE = 27
 const CONTENT_PLACEMENT_OFFSET = 0
@@ -160,11 +160,11 @@ class Menu extends Component {
           isOpen,
           onToggleActive: this.toggleOpen
         })
-      } if (child.type === ReactTooltip) {
+      }
+      if (child.type === ReactTooltip) {
         // MenuLabel needs toggleOpen function
         // We pass that directly  so that component user doesn't need to worry about that
-        return React.cloneElement(child, {
-        })
+        return React.cloneElement(child, {})
       } else if (child.type === MenuContent) {
         // MenuContent needs some styling data (width, arrowPosition, and isOpen info)
         // We pass those directly so that component user doesn't need to worry about those.
@@ -214,7 +214,7 @@ Menu.defaultProps = {
   contentPosition: CONTENT_TO_RIGHT,
   isOpen: null,
   onToggleActive: null,
-  useArrow: true,
+  useArrow: true
 }
 
 const { bool, func, node, number, string } = PropTypes

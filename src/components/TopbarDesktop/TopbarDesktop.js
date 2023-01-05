@@ -28,8 +28,7 @@ import { txState } from '../../containers/InboxPage/tsState'
 
 import css from './TopbarDesktop.module.css'
 import config from '../../config'
-import ReactTooltip from 'react-tooltip';
-
+import ReactTooltip from 'react-tooltip'
 
 const TopbarDesktop = (props) => {
   const {
@@ -120,7 +119,7 @@ const TopbarDesktop = (props) => {
       </NamedLink>
       <ReactTooltip id="notificationTooltip" type="dark" effect="solid">
         <span>
-          <FormattedMessage id='TopbarDesktop.notification'></FormattedMessage>
+          <FormattedMessage id="TopbarDesktop.notification"></FormattedMessage>
         </span>
       </ReactTooltip>
     </div>
@@ -128,23 +127,20 @@ const TopbarDesktop = (props) => {
 
   const listingManagerLink = authenticatedOnClientSide ? (
     <div>
-      {currentUserHasListings && (<div>
-        <NamedLink
-          tooltipId="yourListingsLink"
-          className={css.inboxLink}
-          name="ManageListingsPage">
-          <span className={css.inbox}>
-            {/* <FormattedMessage id="TopbarDesktop.yourListingsLink" /> */}
-            <FontAwesomeIcon icon="fa-solid fa-rectangle-list" size="xl" />
-          </span>
-        </NamedLink>
-        <ReactTooltip id="yourListingsLink" type="dark" effect="solid">
-          <span>
-            <FormattedMessage id='TopbarDesktop.yourListingsLink'></FormattedMessage>
-          </span>
-        </ReactTooltip>
-      </div>
-
+      {currentUserHasListings && (
+        <div>
+          <NamedLink tooltipId="yourListingsLink" className={css.inboxLink} name="ManageListingsPage">
+            <span className={css.inbox}>
+              {/* <FormattedMessage id="TopbarDesktop.yourListingsLink" /> */}
+              <FontAwesomeIcon icon="fa-solid fa-rectangle-list" size="xl" />
+            </span>
+          </NamedLink>
+          <ReactTooltip id="yourListingsLink" type="dark" effect="solid">
+            <span>
+              <FormattedMessage id="TopbarDesktop.yourListingsLink"></FormattedMessage>
+            </span>
+          </ReactTooltip>
+        </div>
       )}
     </div>
   ) : null
@@ -165,29 +161,33 @@ const TopbarDesktop = (props) => {
     </MenuItem>
   )
 
-  const profileMenu = authenticatedOnClientSide ? (<div>
-    <Menu useArrow={true}>
-      <MenuLabel className={css.profileMenuLabel} isOpenClassName={css.profileMenuIsOpen} tooltipId="yourProfileLinkContainer">
-        <Avatar className={css.avatar} user={currentUser} disableProfileLink />
-      </MenuLabel>
-      <ReactTooltip id="yourProfileLinkContainer" type="dark" effect="solid">
-        <span>
-          <FormattedMessage id='TopbarDesktop.yourProfileLink'></FormattedMessage>
-        </span>
-      </ReactTooltip>
-      <MenuContent className={css.profileMenuContent}>
-        {firstNewListing}
-        <MenuItem key="InboxPage">
-          <NamedLink
-            className={classNames(css.yourListingsLink, currentPageClass('InboxPage'))}
-            name="InboxPage"
-            params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
-            <span className={css.menuItemBorder} />
-            <FormattedMessage id="TopbarDesktop.inbox" />
-            {notificationDot}
-          </NamedLink>
-        </MenuItem>
-        {/* <MenuItem key="ManageListingsPage">
+  const profileMenu = authenticatedOnClientSide ? (
+    <div>
+      <Menu useArrow={true}>
+        <MenuLabel
+          className={css.profileMenuLabel}
+          isOpenClassName={css.profileMenuIsOpen}
+          tooltipId="yourProfileLinkContainer">
+          <Avatar className={css.avatar} user={currentUser} disableProfileLink />
+        </MenuLabel>
+        <ReactTooltip id="yourProfileLinkContainer" type="dark" effect="solid">
+          <span>
+            <FormattedMessage id="TopbarDesktop.yourProfileLink"></FormattedMessage>
+          </span>
+        </ReactTooltip>
+        <MenuContent className={css.profileMenuContent}>
+          {firstNewListing}
+          <MenuItem key="InboxPage">
+            <NamedLink
+              className={classNames(css.yourListingsLink, currentPageClass('InboxPage'))}
+              name="InboxPage"
+              params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
+              <span className={css.menuItemBorder} />
+              <FormattedMessage id="TopbarDesktop.inbox" />
+              {notificationDot}
+            </NamedLink>
+          </MenuItem>
+          {/* <MenuItem key="ManageListingsPage">
           <NamedLink
             className={classNames(css.yourListingsLink, currentPageClass('ManageListingsPage'))}
             name="ManageListingsPage">
@@ -195,33 +195,31 @@ const TopbarDesktop = (props) => {
             <FormattedMessage id="TopbarDesktop.yourListingsLink" />
           </NamedLink>
         </MenuItem> */}
-        <MenuItem key="ProfileSettingsPage">
-          <NamedLink
-            className={classNames(css.profileSettingsLink, currentPageClass('ProfileSettingsPage'))}
-            name="ProfileSettingsPage">
-            <span className={css.menuItemBorder} />
-            <FormattedMessage id="TopbarDesktop.profileSettingsLink" />
-          </NamedLink>
-        </MenuItem>
-        <MenuItem key="AccountSettingsPage">
-          <NamedLink
-            className={classNames(css.yourListingsLink, currentPageClass('AccountSettingsPage'))}
-            name="AccountSettingsPage">
-            <span className={css.menuItemBorder} />
-            <FormattedMessage id="TopbarDesktop.accountSettingsLink" />
-          </NamedLink>
-        </MenuItem>
-        <MenuItem key="logout">
-          <InlineTextButton rootClassName={css.logoutButton} onClick={onLogout}>
-            <span className={css.menuItemBorder} />
-            <FormattedMessage id="TopbarDesktop.logout" />
-          </InlineTextButton>
-        </MenuItem>
-      </MenuContent>
-    </Menu>
-
-  </div>
-
+          <MenuItem key="ProfileSettingsPage">
+            <NamedLink
+              className={classNames(css.profileSettingsLink, currentPageClass('ProfileSettingsPage'))}
+              name="ProfileSettingsPage">
+              <span className={css.menuItemBorder} />
+              <FormattedMessage id="TopbarDesktop.profileSettingsLink" />
+            </NamedLink>
+          </MenuItem>
+          <MenuItem key="AccountSettingsPage">
+            <NamedLink
+              className={classNames(css.yourListingsLink, currentPageClass('AccountSettingsPage'))}
+              name="AccountSettingsPage">
+              <span className={css.menuItemBorder} />
+              <FormattedMessage id="TopbarDesktop.accountSettingsLink" />
+            </NamedLink>
+          </MenuItem>
+          <MenuItem key="logout">
+            <InlineTextButton rootClassName={css.logoutButton} onClick={onLogout}>
+              <span className={css.menuItemBorder} />
+              <FormattedMessage id="TopbarDesktop.logout" />
+            </InlineTextButton>
+          </MenuItem>
+        </MenuContent>
+      </Menu>
+    </div>
   ) : null
 
   // const signupLink = isAuthenticatedOrJustHydrated ? null : (
@@ -254,7 +252,7 @@ const TopbarDesktop = (props) => {
       {listingManagerLink}
       <ReactTooltip id="yourSwitchLanguageLink" type="dark" effect="solid">
         <span>
-          <FormattedMessage id='TopbarDesktop.yourSwitchLanguageLink'></FormattedMessage>
+          <FormattedMessage id="TopbarDesktop.yourSwitchLanguageLink"></FormattedMessage>
         </span>
       </ReactTooltip>
       <a className={css.loginLink} onClick={onLanguageSwitch} data-tip data-for="yourSwitchLanguageLinkContainer">
@@ -264,7 +262,7 @@ const TopbarDesktop = (props) => {
       </a>
       <ReactTooltip id="yourSwitchLanguageLinkContainer" type="dark" effect="solid">
         <span>
-          <FormattedMessage id='TopbarDesktop.yourSwitchLanguageLink'></FormattedMessage>
+          <FormattedMessage id="TopbarDesktop.yourSwitchLanguageLink"></FormattedMessage>
         </span>
       </ReactTooltip>
       {profileMenu}

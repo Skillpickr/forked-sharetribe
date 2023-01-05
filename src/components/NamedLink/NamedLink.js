@@ -57,7 +57,13 @@ export const NamedLinkComponent = (props) => {
     )
   }
   return (
-    <Link data-tip data-for={tooltipId} onMouseOver={onOver} onTouchStart={onOver} to={{ pathname, ...to }} {...aElemProps}>
+    <Link
+      data-tip
+      data-for={tooltipId}
+      onMouseOver={onOver}
+      onTouchStart={onOver}
+      to={{ pathname, ...to }}
+      {...aElemProps}>
       {children}
     </Link>
   )

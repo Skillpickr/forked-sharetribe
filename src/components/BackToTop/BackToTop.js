@@ -29,7 +29,6 @@ const BackToTop = () => {
     return () => window.removeEventListener('scroll', toggleVisibility)
   }, [])
 
-  console.log(isVisible)
   return (
     <div>
       {isVisible && (

@@ -33,10 +33,12 @@ const InquirySwitcher = () => {
   }
 
   const toggleSwitcher = (e) => {
-    if (switchEl.current.style.left === '-189px') {
-      switchEl.current.style.left = '0px'
-    } else {
-      switchEl.current.style.left = '-189px'
+    if (switchEl) {
+      if (switchEl.current.style.left === '-189px') {
+        switchEl.current.style.left = '0px'
+      } else {
+        switchEl.current.style.left = '-189px'
+      }
     }
   }
 
