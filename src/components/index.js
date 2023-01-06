@@ -76,6 +76,7 @@ export { default as ReviewRating } from './ReviewRating/ReviewRating';
 // Layout helpers
 export { default as LayoutWrapperFooter } from './LayoutWrapperFooter/LayoutWrapperFooter';
 export { default as LayoutWrapperMain } from './LayoutWrapperMain/LayoutWrapperMain';
+export { default as LayoutWrapperHero } from './LayoutWrapperHero/LayoutWrapperHero';
 export { default as LayoutWrapperSideNav } from './LayoutWrapperSideNav/LayoutWrapperSideNav';
 export { default as LayoutWrapperTopbar } from './LayoutWrapperTopbar/LayoutWrapperTopbar';
 export { default as LayoutSideNavigation } from './LayoutSideNavigation/LayoutSideNavigation';
@@ -173,6 +174,7 @@ export { default as CookiePolicy } from './CookiePolicy/CookiePolicy';
 export { default as GuidingPrincipals } from './GuidingPrincipals/GuidingPrincipals';
 export { default as Purpose } from './Purpose/Purpose';
 export { default as Teams } from './Teams/Teams';
+export { default as Hero } from './Hero/Hero';
 export { default as EditListingAvailabilityPanel } from './EditListingAvailabilityPanel/EditListingAvailabilityPanel';
 export { default as EditListingDescriptionPanel } from './EditListingDescriptionPanel/EditListingDescriptionPanel';
 export { default as EditListingFeaturesPanel } from './EditListingFeaturesPanel/EditListingFeaturesPanel';

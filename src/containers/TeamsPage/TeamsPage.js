@@ -10,14 +10,21 @@ import {
   LayoutSideNavigation,
   LayoutWrapperMain,
   LayoutWrapperSideNav,
+  LayoutWrapperHero,
   LayoutWrapperTopbar,
   LayoutWrapperFooter,
+  LayoutSingleColumn,
   Teams,
+  Hero,
   Footer
 } from '../../components'
 import config from '../../config'
 
+import classNames from 'classnames'
+
 import css from './TeamsPage.module.css'
+import bg1 from './bg1.jpg'
+
 
 const TeamsPageComponent = (props) => {
   const { scrollingDisabled, intl } = props
@@ -56,16 +63,14 @@ const TeamsPageComponent = (props) => {
     <Page title={schemaTitle} scrollingDisabled={scrollingDisabled} schema={schema}>
       <LayoutSideNavigation>
         <LayoutWrapperTopbar>
-          <TopbarContainer currentPage="TeamsPage" />
+          <TopbarContainer currentPag="TeamsPage" />
         </LayoutWrapperTopbar>
+        <LayoutWrapperHero>
+          <Hero image={bg1} title={"SkillPickr"} subTitle={""} />
+        </LayoutWrapperHero>
         <LayoutWrapperSideNav tabs={tabs} />
-        <LayoutWrapperMain>
-          <div className={css.content}>
-            <h1 className={css.heading}>
-              <FormattedMessage id="TeamsPage.heading" />
-            </h1>
-            <Teams />
-          </div>
+        <LayoutWrapperMain >
+          <Teams />
         </LayoutWrapperMain>
         <LayoutWrapperFooter>
           <Footer />

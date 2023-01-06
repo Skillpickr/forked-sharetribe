@@ -1,5 +1,11 @@
-@import '../../styles/customMediaQueries.css';
-
+/* Template Name: Superex - NFT Marketplace HTML Template
+   Author: Shreethemes
+   E-mail: support@shreethemes.in
+   Website: https://shreethemes.in
+   Created: February 2022
+   Version: 1.5.0
+   File Description: Main Css file of the template
+*/
 /*********************************/
 /*         INDEX                 */
 /*================================
@@ -33,34 +39,6 @@
 .display-6 {
   line-height: 1.3;
 }
-.mx2 {
-  margin-right: 0.5rem !important;
-  margin-left: 0.5rem !important;
-}
-
-.p2 {
-  padding: 0.5rem !important;
-}
-
-::-moz-selection {
-  background: rgba(16, 102, 231, 0.9);
-  color: #ffffff;
-}
-
-::-moz-selection {
-  background: rgba(16, 102, 231, 0.9);
-  color: #ffffff;
-}
-
-::selection {
-  background: rgba(16, 102, 231, 0.9);
-  color: #ffffff;
-}
-
-a {
-  text-decoration: none !important;
-  transition: all 0.5s ease;
-}
 
 p {
   line-height: 1.6;
@@ -69,8 +47,391 @@ p {
 /*********************************/
 /*         Bootstrap-custom      */
 /*===============================*/
-.textMuted {
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1140px !important;
+  }
+}
+
+.display-1 {
+  font-size: 80px !important;
+}
+
+.display-2 {
+  font-size: 72px !important;
+}
+
+.display-3 {
+  font-size: 64px !important;
+}
+
+.display-4 {
+  font-size: 56px !important;
+}
+
+.display-5 {
+  font-size: 48px !important;
+}
+
+.display-6 {
+  font-size: 40px !important;
+}
+
+.bg-primary {
+  background-color: var(--marketplaceColor) !important;
+}
+
+.bg-soft-primary {
+  background-color: rgba(16, 102, 231, 0.05) !important;
+  color: var(--marketplaceColor) !important;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(to right, var(--marketplaceColor) 0%, #ffa432 100%);
+}
+
+.text-primary {
+  color: var(--marketplaceColor) !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-gradient-primary {
+  background: linear-gradient(to right, var(--marketplaceColor) 0%, #ffa432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.text-primary:hover,
+a.text-primary:focus {
+  color: #0e5bcf !important;
+}
+
+.bg-secondary {
+  background-color: var(--marketplaceColorLight) !important;
+}
+
+.bg-soft-secondary {
+  background-color: rgba(90, 109, 144, 0.05) !important;
+  color: var(--marketplaceColorLight) !important;
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(to right, var(--marketplaceColorLight) 0%, #ffa432 100%);
+}
+
+.text-secondary {
+  color: var(--marketplaceColorLight) !important;
+}
+
+.text-gradient-secondary {
+  background: linear-gradient(to right, var(--marketplaceColorLight) 0%, #ffa432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.text-secondary:hover,
+a.text-secondary:focus {
+  color: #506180 !important;
+}
+
+.bg-success {
+  background-color: #1cb59f !important;
+}
+
+.bg-soft-success {
+  background-color: rgba(28, 181, 159, 0.05) !important;
+  color: #1cb59f !important;
+}
+
+.bg-gradient-success {
+  background: linear-gradient(to right, #1cb59f 0%, #ffa432 100%);
+}
+
+.text-success {
+  color: #1cb59f !important;
+}
+
+.text-gradient-success {
+  background: linear-gradient(to right, #1cb59f 0%, #ffa432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.text-success:hover,
+a.text-success:focus {
+  color: #199f8c !important;
+}
+
+.bg-warning {
+  background-color: #fa693e !important;
+}
+
+.bg-soft-warning {
+  background-color: rgba(250, 105, 62, 0.05) !important;
+  color: #fa693e !important;
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(to right, #fa693e 0%, #ffa432 100%);
+}
+
+.text-warning {
+  color: #fa693e !important;
+}
+
+.text-gradient-warning {
+  background: linear-gradient(to right, #fa693e 0%, #ffa432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.text-warning:hover,
+a.text-warning:focus {
+  color: #f95625 !important;
+}
+
+.bg-info {
+  background-color: #17a2b8 !important;
+}
+
+.bg-soft-info {
+  background-color: rgba(23, 162, 184, 0.05) !important;
+  color: #17a2b8 !important;
+}
+
+.bg-gradient-info {
+  background: linear-gradient(to right, #17a2b8 0%, #ffa432 100%);
+}
+
+.text-info {
+  color: #17a2b8 !important;
+}
+
+.text-gradient-info {
+  background: linear-gradient(to right, #17a2b8 0%, #ffa432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.text-info:hover,
+a.text-info:focus {
+  color: #148ea1 !important;
+}
+
+.bg-danger {
+  background-color: #d93030 !important;
+}
+
+.bg-soft-danger {
+  background-color: rgba(217, 48, 48, 0.05) !important;
+  color: #d93030 !important;
+}
+
+.bg-gradient-danger {
+  background: linear-gradient(to right, #d93030 0%, #ffa432 100%);
+}
+
+.text-danger {
+  color: #d93030 !important;
+}
+
+.text-gradient-danger {
+  background: linear-gradient(to right, #d93030 0%, #ffa432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.text-danger:hover,
+a.text-danger:focus {
+  color: #ca2525 !important;
+}
+
+.bg-dark {
+  background-color: #3c4858 !important;
+}
+
+.bg-soft-dark {
+  background-color: rgba(60, 72, 88, 0.05) !important;
+  color: #3c4858 !important;
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(to right, #3c4858 0%, #ffa432 100%);
+}
+
+.text-dark {
+  color: #3c4858 !important;
+}
+
+.text-gradient-dark {
+  background: linear-gradient(to right, #3c4858 0%, #ffa432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.text-dark:hover,
+a.text-dark:focus {
+  color: #323c49 !important;
+}
+
+.bg-muted {
+  background-color: #8492a6 !important;
+}
+
+.bg-soft-muted {
+  background-color: rgba(132, 146, 166, 0.05) !important;
   color: #8492a6 !important;
+}
+
+.bg-gradient-muted {
+  background: linear-gradient(to right, #8492a6 0%, #ffa432 100%);
+}
+
+.text-muted {
+  color: #8492a6 !important;
+}
+
+.text-gradient-muted {
+  background: linear-gradient(to right, #8492a6 0%, #ffa432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.text-muted:hover,
+a.text-muted:focus {
+  color: #75859b !important;
+}
+
+.bg-light {
+  background-color: #f8f9fc !important;
+}
+
+.bg-soft-light {
+  background-color: rgba(248, 249, 252, 0.05) !important;
+  color: #f8f9fc !important;
+}
+
+.bg-gradient-light {
+  background: linear-gradient(to right, #f8f9fc 0%, #ffa432 100%);
+}
+
+.text-light {
+  color: #f8f9fc !important;
+}
+
+.text-gradient-light {
+  background: linear-gradient(to right, #f8f9fc 0%, #ffa432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.text-light:hover,
+a.text-light:focus {
+  color: #e6eaf4 !important;
+}
+
+.bg-footer {
+  background-color: #202942 !important;
+}
+
+.bg-soft-footer {
+  background-color: rgba(32, 41, 66, 0.05) !important;
+  color: #202942 !important;
+}
+
+.bg-gradient-footer {
+  background: linear-gradient(to right, #202942 0%, #ffa432 100%);
+}
+
+.text-footer {
+  color: #202942 !important;
+}
+
+.text-gradient-footer {
+  background: linear-gradient(to right, #202942 0%, #ffa432 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a.text-footer:hover,
+a.text-footer:focus {
+  color: #181e30 !important;
+}
+
+.d-flex .flex-1 {
+  flex: 1;
+}
+
+.bg-black {
+  background: #161c2d !important;
+}
+
+video:focus {
+  outline: none;
+}
+
+.list-inline-item:not(:last-child) {
+  margin-right: 0px;
+  margin-bottom: 5px;
+}
+
+.rounded {
+  border-radius: 6px !important;
+}
+
+.rounded-top {
+  border-top-left-radius: 6px !important;
+  border-top-right-radius: 6px !important;
+}
+
+.rounded-left {
+  border-top-left-radius: 6px !important;
+  border-bottom-left-radius: 6px !important;
+}
+
+.rounded-bottom {
+  border-bottom-left-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+}
+
+.rounded-right {
+  border-top-right-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+}
+
+.rounded-md {
+  border-radius: 10px !important;
+}
+
+.rounded-lg {
+  border-radius: 30px !important;
+}
+
+.border {
+  border: 1px solid #e9ecef !important;
+}
+
+.border-top {
+  border-top: 1px solid #e9ecef !important;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e9ecef !important;
+}
+
+.border-left {
+  border-left: 1px solid #e9ecef !important;
+}
+
+.border-right {
+  border-right: 1px solid #e9ecef !important;
+}
+
+.img-thumbnail {
+  padding: 2px;
 }
 
 .small,
@@ -81,16 +442,275 @@ small {
 .card {
   background: transparent;
   border: 0;
-  border-radius: 10px !important;
-  box-shadow: 0 0 3px rgb(60 72 88 / 15%) !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  margin-bottom: 1rem !important;
-  overflow: hidden !important;
+}
+
+.card .card-body {
+  padding: 1.5rem;
+}
+
+.card .card-img {
+  position: relative;
+}
+
+.rounded-pill {
+  border-radius: 50rem !important;
+}
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.list-inline-item {
+  display: inline-block;
+}
+
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+}
+
+.section-two {
+  padding: 60px 0;
+  position: relative;
+}
+
+/* Square corners for the last section if it's even */
+.section:nth-of-type(2n):last-of-type {
+  @media (--viewportMedium) {
+    border-radius: 4px 4px 0 0;
+  }
+}
+
+/* Every other section has a light background */
+.section:nth-of-type(2n) {
+  background-color: white;
+  @media (--viewportMedium) {
+    border-radius: 0px;
+  }
+}
+
+.section-content {
+  margin: var(--LandingPage_sectionMarginTop) 24px 51px 24px;
+
+  @media (--viewportMedium) {
+    max-width: 100%;
+    margin: var(--LandingPage_sectionMarginTopMedium) 24px 60px 24px;
+  }
+
+  @media (--viewportLarge) {
+    max-width: 1128px;
+    padding: 0 36px 0 36px;
+    margin: var(--LandingPage_sectionMarginTopLarge) auto 93px auto;
+  }
+
+  @media (--viewportXLarge) {
+    max-width: 1056px;
+    padding: 0;
+  }
+}
+
+.section-content-first-child {
+  composes: section-content;
+  margin-top: 3vh;
+}
+
+/* A bar on top of light sections */
+.section::after {
+  background: var(--marketplaceColor);
+  content: '';
+  display: block;
+  width: 109px;
+  height: 6px;
+
+  /* Place the bar on top of .section-content top margin */
+  position: relative;
+  bottom: calc(-1 * var(--LandingPage_sectionMarginTop));
+
+  @media (--viewportMedium) {
+    width: 192px;
+    height: 8px;
+    bottom: calc(-1 * var(--LandingPage_sectionMarginTopMedium));
+  }
+
+  @media (--viewportLarge) {
+    bottom: calc(-1 * var(--LandingPage_sectionMarginTopLarge));
+  }
+}
+
+.section-title .title {
+  font-size: 28px !important;
+}
+
+@media (max-width: 768px) {
+  .section-title .title {
+    font-size: 24px !important;
+  }
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.card {
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
+  background-color: transparent;
+  background-clip: border-box;
+  border-radius: 0.25rem;
+}
+
+.card .card-img .card-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  background: linear-gradient(to bottom, transparent 0%, transparent 25%, transparent 35%, rgba(22, 28, 45, 0.9) 100%);
+  transition: all 0.5s ease;
+}
+
+.text-dark {
+  color: #3c4858 !important;
+}
+
+.card:hover .card-img .card-overlay {
+  opacity: 1;
+}
+
+.fw-semibold {
+  font-weight: 500 !important;
+}
+
+.fw-bold {
+  font-weight: 700 !important;
+}
+
+.opacity-05 {
+  opacity: 0.05;
+}
+
+.opacity-075 {
+  opacity: 0.075;
+}
+
+.opacity-1 {
+  opacity: 0.1;
+}
+
+.opacity-2 {
+  opacity: 0.2;
+}
+
+.opacity-3 {
+  opacity: 0.3;
+}
+
+.opacity-4 {
+  opacity: 0.4;
+}
+
+.opacity-5 {
+  opacity: 0.5;
+}
+
+.opacity-6 {
+  opacity: 0.6;
+}
+
+.opacity-7 {
+  opacity: 0.7;
+}
+
+.opacity-8 {
+  opacity: 0.8;
+}
+
+.opacity-9 {
+  opacity: 0.9;
+}
+
+.opacity-10 {
+  opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+  .display-1 {
+    font-size: 56px !important;
+  }
+  .display-2 {
+    font-size: 50px !important;
+  }
+  .display-3 {
+    font-size: 42px !important;
+  }
+  .display-4 {
+    font-size: 36px !important;
+  }
+  .display-5 {
+    font-size: 34px !important;
+  }
+  .display-6 {
+    font-size: 32px !important;
+  }
+}
+
+.ms-n3 {
+  margin-left: -16px;
+}
+
+.mt-n3 {
+  margin-top: -16px;
+}
+
+.mt-n4 {
+  margin-top: -24px;
+}
+
+.mt-n5 {
+  margin-top: -48px;
+}
+
+.mt-n80 {
+  margin-top: -80px;
+}
+
+.z-index-1 {
+  z-index: 1;
+}
+
+.z-index-0 {
+  z-index: 0;
+}
+
+.z-index-m-1 {
+  z-index: -1;
+}
+
+.modal .modal-dialog .modal-content .modal-header button.btn-close {
+  background: none;
+}
+
+.modal .modal-dialog .modal-content button.btn-close {
+  background: none;
+}
+
+.modal .modal-dialog.modal-sm {
+  max-width: 450px;
 }
 
 /*********************************/
@@ -1908,21 +2528,7 @@ button:not(:disabled) {
 /*********************************/
 /*         Helpers               */
 /*===============================*/
-.section {
-  padding: 100px 0;
-  position: relative;
-}
 
-@media (max-width: 768px) {
-  .section {
-    padding: 60px 0;
-  }
-}
-
-.section-two {
-  padding: 60px 0;
-  position: relative;
-}
 
 .bg-overlay {
   background-color: rgba(60, 72, 88, 0.65);
@@ -2011,44 +2617,36 @@ button:not(:disabled) {
   );
 }
 
-.titleHeading {
+.title-heading {
   line-height: 26px;
 }
 
-.titleHeading .heading {
+.title-heading .heading {
   font-size: 45px !important;
   letter-spacing: 1px;
 }
 
-.titleHeading .heading.sub-heading {
+.title-heading .heading.sub-heading {
   font-size: 32px !important;
 }
 
 @media (max-width: 768px) {
-  .titleHeading .heading.sub-heading {
+  .title-heading .heading.sub-heading {
     font-size: 26px !important;
   }
 }
 
 @media (max-width: 768px) {
-  .titleHeading .heading {
+  .title-heading .heading {
     font-size: 36px !important;
   }
 }
 
-.titleHeading .para-desc {
+.title-heading .para-desc {
   font-size: 17px;
 }
 
-.sectionTitle .title {
-  font-size: 28px !important;
-}
 
-@media (max-width: 768px) {
-  .sectionTitle .title {
-    font-size: 24px !important;
-  }
-}
 
 .para-desc {
   max-width: 600px;
@@ -2369,6 +2967,10 @@ button:not(:disabled) {
 .ribbon.ribbon-footer span:after {
   border-right-color: #0f131f;
   border-top-color: #0f131f;
+}
+
+.logo-50 {
+  width: 50%;
 }
 
 .ribbon {
@@ -3815,284 +4417,275 @@ button:not(:disabled) {
 /*********************************/
 /*         Explore Items         */
 /*===============================*/
-.nftItems.nftPrimary .title:hover,
-.nftItems.nftPrimary .creator-name:hover {
+.nft-items.nft-primary .title:hover,
+.nft-items.nft-primary .creator-name:hover {
   color: var(--marketplaceColor) !important;
 }
 
-.nftItems.nftPrimary .rate {
+.nft-items.nft-primary .rate {
   color: var(--marketplaceColor) !important;
 }
 
-.nftItems.nftPrimary .btn {
+.nft-items.nft-primary .btn {
   background-color: var(--marketplaceColor) !important;
   border: 1px solid var(--marketplaceColor) !important;
   color: #ffffff !important;
   box-shadow: 0 3px 5px 0 rgba(16, 102, 231, 0.1);
 }
 
-.nftItems.nftPrimary .btn:hover,
-.nftItems.nftPrimary .btn:focus,
-.nftItems.nftPrimary .btn:active,
-.nftItems.nftPrimary .btn.active,
-.nftItems.nftPrimary .btn.focus {
+.nft-items.nft-primary .btn:hover,
+.nft-items.nft-primary .btn:focus,
+.nft-items.nft-primary .btn:active,
+.nft-items.nft-primary .btn.active,
+.nft-items.nft-primary .btn.focus {
   background-color: var(--marketplaceColorDark) !important;
   border-color: var(--marketplaceColorDark) !important;
   color: #ffffff !important;
 }
 
-.nftItems.nft-secondary .title:hover,
-.nftItems.nft-secondary .creator-name:hover {
+.nft-items.nft-secondary .title:hover,
+.nft-items.nft-secondary .creator-name:hover {
   color: var(--marketplaceColorLight) !important;
 }
 
-.nftItems.nft-secondary .rate {
+.nft-items.nft-secondary .rate {
   color: var(--marketplaceColorLight) !important;
 }
 
-.nftItems.nft-secondary .btn {
+.nft-items.nft-secondary .btn {
   background-color: var(--marketplaceColorLight) !important;
   border: 1px solid var(--marketplaceColorLight) !important;
   color: #ffffff !important;
   box-shadow: 0 3px 5px 0 rgba(90, 109, 144, 0.1);
 }
 
-.nftItems.nft-secondary .btn:hover,
-.nftItems.nft-secondary .btn:focus,
-.nftItems.nft-secondary .btn:active,
-.nftItems.nft-secondary .btn.active,
-.nftItems.nft-secondary .btn.focus {
+.nft-items.nft-secondary .btn:hover,
+.nft-items.nft-secondary .btn:focus,
+.nft-items.nft-secondary .btn:active,
+.nft-items.nft-secondary .btn.active,
+.nft-items.nft-secondary .btn.focus {
   background-color: #465571 !important;
   border-color: #465571 !important;
   color: #ffffff !important;
 }
 
-.nftItems.nft-success .title:hover,
-.nftItems.nft-success .creator-name:hover {
+.nft-items.nft-success .title:hover,
+.nft-items.nft-success .creator-name:hover {
   color: #1cb59f !important;
 }
 
-.nftItems.nft-success .rate {
+.nft-items.nft-success .rate {
   color: #1cb59f !important;
 }
 
-.nftItems.nft-success .btn {
+.nft-items.nft-success .btn {
   background-color: #1cb59f !important;
   border: 1px solid #1cb59f !important;
   color: #ffffff !important;
   box-shadow: 0 3px 5px 0 rgba(28, 181, 159, 0.1);
 }
 
-.nftItems.nft-success .btn:hover,
-.nftItems.nft-success .btn:focus,
-.nftItems.nft-success .btn:active,
-.nftItems.nft-success .btn.active,
-.nftItems.nft-success .btn.focus {
+.nft-items.nft-success .btn:hover,
+.nft-items.nft-success .btn:focus,
+.nft-items.nft-success .btn:active,
+.nft-items.nft-success .btn.active,
+.nft-items.nft-success .btn.focus {
   background-color: #158978 !important;
   border-color: #158978 !important;
   color: #ffffff !important;
 }
 
-.nftItems.nft-warning .title:hover,
-.nftItems.nft-warning .creator-name:hover {
+.nft-items.nft-warning .title:hover,
+.nft-items.nft-warning .creator-name:hover {
   color: #fa693e !important;
 }
 
-.nftItems.nft-warning .rate {
+.nft-items.nft-warning .rate {
   color: #fa693e !important;
 }
 
-.nftItems.nft-warning .btn {
+.nft-items.nft-warning .btn {
   background-color: #fa693e !important;
   border: 1px solid #fa693e !important;
   color: #ffffff !important;
   box-shadow: 0 3px 5px 0 rgba(250, 105, 62, 0.1);
 }
 
-.nftItems.nft-warning .btn:hover,
-.nftItems.nft-warning .btn:focus,
-.nftItems.nft-warning .btn:active,
-.nftItems.nft-warning .btn.active,
-.nftItems.nft-warning .btn.focus {
+.nft-items.nft-warning .btn:hover,
+.nft-items.nft-warning .btn:focus,
+.nft-items.nft-warning .btn:active,
+.nft-items.nft-warning .btn.active,
+.nft-items.nft-warning .btn.focus {
   background-color: #f9420c !important;
   border-color: #f9420c !important;
   color: #ffffff !important;
 }
 
-.nftItems.nft-info .title:hover,
-.nftItems.nft-info .creator-name:hover {
+.nft-items.nft-info .title:hover,
+.nft-items.nft-info .creator-name:hover {
   color: #17a2b8 !important;
 }
 
-.nftItems.nft-info .rate {
+.nft-items.nft-info .rate {
   color: #17a2b8 !important;
 }
 
-.nftItems.nft-info .btn {
+.nft-items.nft-info .btn {
   background-color: #17a2b8 !important;
   border: 1px solid #17a2b8 !important;
   color: #ffffff !important;
   box-shadow: 0 3px 5px 0 rgba(23, 162, 184, 0.1);
 }
 
-.nftItems.nft-info .btn:hover,
-.nftItems.nft-info .btn:focus,
-.nftItems.nft-info .btn:active,
-.nftItems.nft-info .btn.active,
-.nftItems.nft-info .btn.focus {
+.nft-items.nft-info .btn:hover,
+.nft-items.nft-info .btn:focus,
+.nft-items.nft-info .btn:active,
+.nft-items.nft-info .btn.active,
+.nft-items.nft-info .btn.focus {
   background-color: #117a8b !important;
   border-color: #117a8b !important;
   color: #ffffff !important;
 }
 
-.nftItems.nft-danger .title:hover,
-.nftItems.nft-danger .creator-name:hover {
+.nft-items.nft-danger .title:hover,
+.nft-items.nft-danger .creator-name:hover {
   color: #d93030 !important;
 }
 
-.nftItems.nft-danger .rate {
+.nft-items.nft-danger .rate {
   color: #d93030 !important;
 }
 
-.nftItems.nft-danger .btn {
+.nft-items.nft-danger .btn {
   background-color: #d93030 !important;
   border: 1px solid #d93030 !important;
   color: #ffffff !important;
   box-shadow: 0 3px 5px 0 rgba(217, 48, 48, 0.1);
 }
 
-.nftItems.nft-danger .btn:hover,
-.nftItems.nft-danger .btn:focus,
-.nftItems.nft-danger .btn:active,
-.nftItems.nft-danger .btn.active,
-.nftItems.nft-danger .btn.focus {
+.nft-items.nft-danger .btn:hover,
+.nft-items.nft-danger .btn:focus,
+.nft-items.nft-danger .btn:active,
+.nft-items.nft-danger .btn.active,
+.nft-items.nft-danger .btn.focus {
   background-color: #b52121 !important;
   border-color: #b52121 !important;
   color: #ffffff !important;
 }
 
-.nftItems.nft-dark .title:hover,
-.nftItems.nft-dark .creator-name:hover {
+.nft-items.nft-dark .title:hover,
+.nft-items.nft-dark .creator-name:hover {
   color: #3c4858 !important;
 }
 
-.nftItems.nft-dark .rate {
+.nft-items.nft-dark .rate {
   color: #3c4858 !important;
 }
 
-.nftItems.nft-dark .btn {
+.nft-items.nft-dark .btn {
   background-color: #3c4858 !important;
   border: 1px solid #3c4858 !important;
   color: #ffffff !important;
   box-shadow: 0 3px 5px 0 rgba(60, 72, 88, 0.1);
 }
 
-.nftItems.nft-dark .btn:hover,
-.nftItems.nft-dark .btn:focus,
-.nftItems.nft-dark .btn:active,
-.nftItems.nft-dark .btn.active,
-.nftItems.nft-dark .btn.focus {
+.nft-items.nft-dark .btn:hover,
+.nft-items.nft-dark .btn:focus,
+.nft-items.nft-dark .btn:active,
+.nft-items.nft-dark .btn.active,
+.nft-items.nft-dark .btn.focus {
   background-color: #272f3a !important;
   border-color: #272f3a !important;
   color: #ffffff !important;
 }
 
-.nftItems.nft-muted .title:hover,
-.nftItems.nft-muted .creator-name:hover {
+.nft-items.nft-muted .title:hover,
+.nft-items.nft-muted .creator-name:hover {
   color: #8492a6 !important;
 }
 
-.nftItems.nft-muted .rate {
+.nft-items.nft-muted .rate {
   color: #8492a6 !important;
 }
 
-.nftItems.nft-muted .btn {
+.nft-items.nft-muted .btn {
   background-color: #8492a6 !important;
   border: 1px solid #8492a6 !important;
   color: #ffffff !important;
   box-shadow: 0 3px 5px 0 rgba(132, 146, 166, 0.1);
 }
 
-.nftItems.nft-muted .btn:hover,
-.nftItems.nft-muted .btn:focus,
-.nftItems.nft-muted .btn:active,
-.nftItems.nft-muted .btn.active,
-.nftItems.nft-muted .btn.focus {
+.nft-items.nft-muted .btn:hover,
+.nft-items.nft-muted .btn:focus,
+.nft-items.nft-muted .btn:active,
+.nft-items.nft-muted .btn.active,
+.nft-items.nft-muted .btn.focus {
   background-color: #68788f !important;
   border-color: #68788f !important;
   color: #ffffff !important;
 }
 
-.nftItems.nft-light .title:hover,
-.nftItems.nft-light .creator-name:hover {
+.nft-items.nft-light .title:hover,
+.nft-items.nft-light .creator-name:hover {
   color: #f8f9fc !important;
 }
 
-.nftItems.nft-light .rate {
+.nft-items.nft-light .rate {
   color: #f8f9fc !important;
 }
 
-.nftItems.nft-light .btn {
+.nft-items.nft-light .btn {
   background-color: #f8f9fc !important;
   border: 1px solid #f8f9fc !important;
   color: #ffffff !important;
   box-shadow: 0 3px 5px 0 rgba(248, 249, 252, 0.1);
 }
 
-.nftItems.nft-light .btn:hover,
-.nftItems.nft-light .btn:focus,
-.nftItems.nft-light .btn:active,
-.nftItems.nft-light .btn.active,
-.nftItems.nft-light .btn.focus {
+.nft-items.nft-light .btn:hover,
+.nft-items.nft-light .btn:focus,
+.nft-items.nft-light .btn:active,
+.nft-items.nft-light .btn.active,
+.nft-items.nft-light .btn.focus {
   background-color: #d4daed !important;
   border-color: #d4daed !important;
   color: #ffffff !important;
 }
 
-.nftItems.nftFooter .title:hover,
-.nftItems.nftFooter .creator-name:hover {
+.nft-items.nft-footer .title:hover,
+.nft-items.nft-footer .creator-name:hover {
   color: #202942 !important;
 }
 
-.nftItems.nftFooter .rate {
+.nft-items.nft-footer .rate {
   color: #202942 !important;
 }
 
-.nftItems.nftFooter .btn {
+.nft-items.nft-footer .btn {
   background-color: #202942 !important;
   border: 1px solid #202942 !important;
   color: #ffffff !important;
   box-shadow: 0 3px 5px 0 rgba(32, 41, 66, 0.1);
 }
 
-.nftItems.nftFooter .btn:hover,
-.nftItems.nftFooter .btn:focus,
-.nftItems.nftFooter .btn:active,
-.nftItems.nftFooter .btn.active,
-.nftItems.nftFooter .btn.focus {
+.nft-items.nft-footer .btn:hover,
+.nft-items.nft-footer .btn:focus,
+.nft-items.nft-footer .btn:active,
+.nft-items.nft-footer .btn.active,
+.nft-items.nft-footer .btn.focus {
   background-color: #0f131f !important;
   border-color: #0f131f !important;
   color: #ffffff !important;
 }
 
-.imgFluid {
-  max-width: 100%;
-  height: auto;
-}
-
-.nftItems {
-  transition: all 0.5s ease;
-}
-.nftItems .nftImage {
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.nftItems .nftImage img {
+.nft-items {
   transition: all 0.5s ease;
 }
 
-.nftItems .nftImage .icons {
+.nft-items .nft-image img {
+  transition: all 0.5s ease;
+}
+
+.nft-items .nft-image .icons {
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -4103,103 +4696,10 @@ button:not(:disabled) {
   transition: all 0.5s ease;
 }
 
-.info {
-  display: flex;
-  flex-direction: row;
-  padding: 16px 8px 8px 8px;
-  background-color: white;
-  text-align: left;
-}
-
-.price {
-  /* Layout */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  flex-shrink: 0;
-  margin-right: 18px;
-}
-
-.priceValue {
-  /* Font */
-  composes: h2 from global;
-  color: var(--marketplaceColor);
-
-  /* Remove default margins from font */
-  margin-top: 0;
-  margin-bottom: 0;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.perUnit {
-  /* Font */
-  composes: marketplaceTinyFontStyles from global;
-  color: var(--matterColor);
-
-  /* Remove default margins from font */
-  margin-top: 0;
-  margin-bottom: 0;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.mainInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  flex-shrink: 0;
-}
-
-.title {
-  /* Font */
-  composes: h3 from global;
-  color: var(--matterColor);
-
-  /* Remove default margins from font */
-  margin-top: 0;
-  margin-bottom: 0;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.skillInfo {
-  /* Font */
-  composes: marketplaceTinyFontStyles from global;
-  color: var(--matterColor);
-
-  /* Remove default margins from font */
-  margin-top: 0;
-  margin-bottom: 0;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.artistButton {
-  composes: button buttonFont buttonText buttonBorders buttonColors from global;
-
-  @media (--viewportMedium) {
-    /* display: block;
-    width: 100px; */
-  }
-}
-
-.nftItems .nftImage .bidBtn {
+.nft-items .nft-image .bid-btn {
   position: absolute;
-  bottom: 0;
-  /* transform: translateY(-50%); */
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
   right: 0;
   text-align: center;
@@ -4207,12 +4707,12 @@ button:not(:disabled) {
   transition: all 0.5s ease;
 }
 
-.nftItems .nftImage:hover .icons,
-.nftItems .nftImage:hover .bidBtn {
+.nft-items .nft-image:hover .icons,
+.nft-items .nft-image:hover .bid-btn {
   opacity: 1;
 }
 
-.nftItems .like-icon {
+.nft-items .like-icon {
   width: 36px;
   height: 36px;
   background-color: #ffffff;
@@ -4222,49 +4722,39 @@ button:not(:disabled) {
   justify-content: center;
 }
 
-.icon {
-  background: rgba(16, 102, 231, 0.1);
-  background-color: rgba(16, 102, 231, 0.1) !important;
-  color: var(--marketplaceColor) !important;
-  border-radius: 10px !important;
-  font-size: 30px !important;
-  line-height: 1.5;
-  font-weight: 600;
-}
-
-.nftItems .like-icon .icon {
+.nft-items .like-icon .icon {
   -webkit-text-stroke: 1px #3c4858;
   -webkit-text-fill-color: transparent;
 }
 
-.nftItems .like-icon .icon:hover,
-.nftItems .like-icon .icon:focus {
+.nft-items .like-icon .icon:hover,
+.nft-items .like-icon .icon:focus {
   -webkit-text-stroke: #d93030;
   -webkit-text-fill-color: #d93030;
 }
 
-.nftItems .content .img-group {
+.nft-items .content .img-group {
   position: absolute;
   top: -18px;
 }
 
-.nftItems:hover {
+.nft-items:hover {
   margin-top: -5px;
 }
 
-.nftItems:hover.nftPMarginMinus {
+.nft-items:hover.nft-margin-minus {
   margin-top: 0 !important;
 }
 
-.nftItems:hover .nftImage img {
+.nft-items:hover .nft-image img {
   transform: scale(1.1);
 }
 
-.nftItems:hover.img-skewed {
+.nft-items:hover.img-skewed {
   margin-top: 0 !important;
 }
 
-.nftItems.nft-auction:hover {
+.nft-items.nft-auction:hover {
   margin-top: 0 !important;
   box-shadow: 0 5px 13px rgba(60, 72, 88, 0.2) !important;
 }
@@ -4601,8 +5091,8 @@ button:not(:disabled) {
   top: 0;
 }
 
-.slider .slideTrack,
-.slider2 .slideTrack {
+.slider .slide-track,
+.slider2 .slide-track {
   -webkit-animation: scroll 60s linear infinite;
   animation: scroll 60s linear infinite;
   display: flex;
@@ -4615,7 +5105,7 @@ button:not(:disabled) {
   width: 360px;
 }
 
-.slider2 .slideTrack {
+.slider2 .slide-track {
   -webkit-animation: scroll 54s linear infinite;
   animation: scroll 54s linear infinite;
   width: calc(360px * 12);
@@ -5878,263 +6368,19 @@ footer .foot-subscribe input::-ms-input-placeholder {
   color: #adb5bd;
 }
 
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
+footer .footer-subscribe input::-webkit-input-placeholder, footer .foot-subscribe input::-webkit-input-placeholder {
   color: #adb5bd;
 }
 
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
+footer .footer-subscribe input::-moz-placeholder, footer .foot-subscribe input::-moz-placeholder {
   color: #adb5bd;
 }
 
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
+footer .footer-subscribe input:-ms-input-placeholder, footer .foot-subscribe input:-ms-input-placeholder {
   color: #adb5bd;
 }
 
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-webkit-input-placeholder,
-footer .foot-subscribe input::-webkit-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-moz-placeholder,
-footer .foot-subscribe input::-moz-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input:-ms-input-placeholder,
-footer .foot-subscribe input:-ms-input-placeholder {
-  color: #adb5bd;
-}
-
-footer .footer-subscribe input::-ms-input-placeholder,
-footer .foot-subscribe input::-ms-input-placeholder {
+footer .footer-subscribe input::-ms-input-placeholder, footer .foot-subscribe input::-ms-input-placeholder {
   color: #adb5bd;
 }
 

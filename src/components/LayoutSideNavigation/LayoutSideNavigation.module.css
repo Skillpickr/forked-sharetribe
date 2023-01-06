@@ -20,10 +20,10 @@
   /* When side nav is shown as a column, Topbar's box-shadow should be visible */
   z-index: calc(var(--zIndexTopbar) - 1);
 
-  @media (--viewportLarge) {
+  /* @media (--viewportLarge) {
     flex-direction: row;
     justify-content: center;
-  }
+  } */
 }
 
 .layoutWrapperMain {
@@ -39,14 +39,14 @@
      * Calculate right padding to match Footer right border
      * and left padding together with border should be 60px.
      */
-    padding: 112px 36px 82px 59px;
+    padding: 0 36px 82px 59px;
     background-color: var(--matterColorLight);
     border-left-width: 1px;
     border-left-style: solid;
     border-left-color: var(--matterColorNegative);
   }
 
-  @media (--viewportLargeWithPaddings) {
+  /* @media (--viewportLargeWithPaddings) {
     padding: 112px calc((100% - 1056px) / 2) 82px 59px;
-  }
+  } */
 }

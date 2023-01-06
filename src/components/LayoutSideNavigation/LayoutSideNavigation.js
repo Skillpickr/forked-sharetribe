@@ -12,6 +12,7 @@ import {
   LayoutWrapperSideNav,
   LayoutWrapperAccountSettingsSideNav,
   LayoutWrapperMain,
+  LayoutWrapperHero,
   LayoutWrapperFooter
 } from '../../components'
 
@@ -19,9 +20,9 @@ import css from './LayoutSideNavigation.module.css'
 
 const prepareChildren = (children) => {
   const childrenCount = React.Children.count(children)
-  if (!(childrenCount === 3 || childrenCount === 4)) {
+  if (!(childrenCount === 3 || childrenCount === 4 || childrenCount === 5)) {
     throw new Error(
-      `Menu needs to have 3 - 4 children:
+      `Menu needs to have 3 - 5 children:
       LayoutWrapperTopbar, LayoutWrapperSideNav, and LayoutWrapperMain,
       and optionally LayoutWrapperFooter.`
     )
@@ -40,12 +41,18 @@ const prepareChildren = (children) => {
         rootClassName: css.layoutWrapperMain
       })
       childrenMap.layoutWrapperMain = childWithAddedCSS
-    } else if (child.type === LayoutWrapperFooter) {
+    } else if (child.type === LayoutWrapperHero) {
+      const childWithAddedCSS = React.cloneElement(child, {
+        rootClassName: css.layoutWrapperHero
+      })
+      childrenMap.layoutWrapperHero = childWithAddedCSS
+    }
+    else if (child.type === LayoutWrapperFooter) {
       childrenMap.layoutWrapperFooter = child
     } else {
       throw new Error(
         `LayoutSideNavigation has an unknown child.
-      Only LayoutWrapperTopbar, LayoutWrapperSideNav, LayoutWrapperMain, LayoutWrapperFooter are allowed.`
+      Only LayoutWrapperTopbar, LayoutWrapperSideNav, LayoutWrapperMain, LayoutWrapperHero, LayoutWrapperFooter are allowed.`
       )
     }
   })
@@ -64,6 +71,7 @@ const LayoutSideNavigation = (props) => {
   return (
     <div className={classes}>
       {preparedChildren.layoutWrapperTopbar}
+      {preparedChildren.layoutWrapperHero}
       <div className={containerClasses}>
         {preparedChildren.layoutWrapperSideNav}
         {preparedChildren.layoutWrapperMain}

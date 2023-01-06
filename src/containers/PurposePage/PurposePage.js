@@ -10,14 +10,18 @@ import {
   LayoutSideNavigation,
   LayoutWrapperMain,
   LayoutWrapperSideNav,
+  LayoutWrapperHero,
   LayoutWrapperTopbar,
   LayoutWrapperFooter,
   Purpose,
+  Hero,
   Footer
 } from '../../components'
 import config from '../../config'
 
 import css from './PurposePage.module.css'
+import bg1 from '../TeamsPage/bg1.jpg'
+
 
 const PurposePageComponent = (props) => {
   const { scrollingDisabled, intl } = props
@@ -58,6 +62,9 @@ const PurposePageComponent = (props) => {
         <LayoutWrapperTopbar>
           <TopbarContainer currentPage="PurposePage" />
         </LayoutWrapperTopbar>
+        <LayoutWrapperHero>
+          <Hero image={bg1} title={"SkillPickr"} subTitle={"The online marketplace where anything is possible and all are welcome"} />
+        </LayoutWrapperHero>
         <LayoutWrapperSideNav tabs={tabs} />
         <LayoutWrapperMain>
           <div className={css.content}>

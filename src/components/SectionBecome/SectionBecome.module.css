@@ -58,7 +58,7 @@
 }
 
 .bg-gradient-primary {
-  background: linear-gradient(to right, #1066e7 0%, #ffa432 100%);
+  background: linear-gradient(to right, var(--marketplaceColor) 0%, #ffa432 100%);
 }
 
 .becomeButton {

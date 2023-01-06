@@ -25,7 +25,7 @@ import { loadableReady } from '@loadable/component'
 // Import default styles before other CSS-related modules are imported
 // This ensures that the styles in marketplaceDefaults.css are included
 // as first ones in the final build CSS build file.
-import './styles/marketplaceDefaults.css'
+import './styles/marketplaceDefaults.scss'
 
 // Configs and store setup
 import config from './config'

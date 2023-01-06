@@ -5,14 +5,15 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   fas,
   faCircleQuestion,
-  faCircleExclamation,
-  faTriangleExclamation,
   faMagnifyingGlass
 } from '@fortawesome/free-solid-svg-icons'
 
+import { fab } from '@fortawesome/free-brands-svg-icons'
+
 library.add(
   fas,
+  fab,
   faCircleQuestion,
-  faMagnifyingGlass
+  faMagnifyingGlass,
   // more icons go here
 )
