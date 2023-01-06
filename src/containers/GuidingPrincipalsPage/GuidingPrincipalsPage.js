@@ -22,7 +22,6 @@ import config from '../../config'
 import css from './GuidingPrincipalsPage.module.css'
 import bg1 from '../TeamsPage/bg1.jpg'
 
-
 const PrivacyPolicyPageComponent = (props) => {
   const { scrollingDisabled, intl } = props
 
@@ -63,7 +62,11 @@ const PrivacyPolicyPageComponent = (props) => {
           <TopbarContainer currentPage="GuidingPrincipalsPage" />
         </LayoutWrapperTopbar>
         <LayoutWrapperHero>
-          <Hero image={bg1} title={"SkillPickr"} subTitle={"All-in-one solution for people living a creative multidisciplinary life"} />
+          <Hero
+            image={bg1}
+            title={'SkillPickr'}
+            subTitle={'All-in-one solution for people living a creative multidisciplinary life'}
+          />
         </LayoutWrapperHero>
         <LayoutWrapperSideNav tabs={tabs} />
         <LayoutWrapperMain>

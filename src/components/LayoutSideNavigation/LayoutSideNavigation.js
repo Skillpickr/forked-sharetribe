@@ -46,8 +46,7 @@ const prepareChildren = (children) => {
         rootClassName: css.layoutWrapperHero
       })
       childrenMap.layoutWrapperHero = childWithAddedCSS
-    }
-    else if (child.type === LayoutWrapperFooter) {
+    } else if (child.type === LayoutWrapperFooter) {
       childrenMap.layoutWrapperFooter = child
     } else {
       throw new Error(

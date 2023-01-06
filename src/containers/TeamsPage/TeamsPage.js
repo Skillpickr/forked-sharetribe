@@ -25,7 +25,6 @@ import classNames from 'classnames'
 import css from './TeamsPage.module.css'
 import bg1 from './bg1.jpg'
 
-
 const TeamsPageComponent = (props) => {
   const { scrollingDisabled, intl } = props
 
@@ -66,10 +65,14 @@ const TeamsPageComponent = (props) => {
           <TopbarContainer currentPag="TeamsPage" />
         </LayoutWrapperTopbar>
         <LayoutWrapperHero>
-          <Hero image={bg1} title={"SkillPickr"} subTitle={"All-in-one solution for people living a creative multidisciplinary life"} />
+          <Hero
+            image={bg1}
+            title={'SkillPickr'}
+            subTitle={'All-in-one solution for people living a creative multidisciplinary life'}
+          />
         </LayoutWrapperHero>
         <LayoutWrapperSideNav tabs={tabs} />
-        <LayoutWrapperMain >
+        <LayoutWrapperMain>
           <Teams />
         </LayoutWrapperMain>
         <LayoutWrapperFooter>

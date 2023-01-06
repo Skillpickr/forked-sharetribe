@@ -32,31 +32,30 @@ const Teams = (props) => {
       image: client01,
       name: 'Cæcilie Fundal Månsson',
       position: 'CEO & CO-Founder',
-      linkedin: "https://www.linkedin.com/in/caeciliefundalmaansson/",
-      email: "cfm@skillpickr.com",
-      phone: "+4522462408",
+      linkedin: 'https://www.linkedin.com/in/caeciliefundalmaansson/',
+      email: 'cfm@skillpickr.com',
+      phone: '+4522462408',
       description: cilleDescription
     },
     {
       image: client02,
       name: 'Allan Asp Christensen',
       position: 'CTO & CO-Founder',
-      linkedin: "https://www.linkedin.com/in/allanaspchristensen/",
-      email: "aac@skillpickr.com",
-      phone: "+4520778329",
+      linkedin: 'https://www.linkedin.com/in/allanaspchristensen/',
+      email: 'aac@skillpickr.com',
+      phone: '+4520778329',
       description: allanDescription
     },
     {
       image: client03,
       name: 'Antonio Rosado',
       position: 'Business Coach & CO-Founder',
-      linkedin: "https://www.linkedin.com/in/antoniohanckerosado/",
-      email: "",
-      phone: "",
+      linkedin: 'https://www.linkedin.com/in/antoniohanckerosado/',
+      email: '',
+      phone: '',
       description: antonioDescription
-    },
+    }
   ]
-
 
   // prettier-ignore
   return (
@@ -215,7 +214,6 @@ const { string } = PropTypes
 Teams.propTypes = {
   rootClassName: string,
   className: string,
-  intl: intlShape.isRequired,
-
+  intl: intlShape.isRequired
 }
 export default compose(injectIntl)(Teams)
