@@ -31,7 +31,7 @@ const Teams = (props) => {
     {
       image: client01,
       name: 'Cæcilie Fundal Månsson',
-      position: 'CEO & Co-Founeder',
+      position: 'CEO & CO-Founder',
       linkedin: "https://www.linkedin.com/in/caeciliefundalmaansson/",
       email: "cfm@skillpickr.com",
       phone: "+4522462408",
@@ -40,7 +40,7 @@ const Teams = (props) => {
     {
       image: client02,
       name: 'Allan Asp Christensen',
-      position: 'CTO & Co-Founder',
+      position: 'CTO & CO-Founder',
       linkedin: "https://www.linkedin.com/in/allanaspchristensen/",
       email: "aac@skillpickr.com",
       phone: "+4520778329",
@@ -49,7 +49,7 @@ const Teams = (props) => {
     {
       image: client03,
       name: 'Antonio Rosado',
-      position: 'Business Coach & Co-Founder',
+      position: 'Business Coach & CO-Founder',
       linkedin: "https://www.linkedin.com/in/antoniohanckerosado/",
       email: "",
       phone: "",
@@ -61,9 +61,8 @@ const Teams = (props) => {
   // prettier-ignore
   return (
     <div className={classes}>
-      {/* Start Section */}
       <section className="section">
-        <div className="container ">
+        {/* <div className="container ">
           <h1 className="title text-center">
             <FormattedMessage id="TeamsPage.heading" />
           </h1>
@@ -73,30 +72,24 @@ const Teams = (props) => {
                 <img src={about} className="img-fluid rounded shadow" alt="" />
               </div>
             </div>
-            {/*end col*/}
-
             <div className="xl mt4 pt2">
               <div className="section-title ms-lg-5">
                 <h6 className="text-primary fw-normal">
                   <FormattedMessage id="Teams.mission.title" />
-
                 </h6>
                 <h2 className="title mb4">
                   <FormattedMessage id="Teams.mission.subTitle" values={{ breakline: <br /> }} />
-
                 </h2>
                 <p className="text-muted mb0">
                   <FormattedMessage id="Teams.mission.text" />
                 </p>
               </div>
             </div>
-            {/*end col*/}
           </div>
-          {/*end row*/}
-        </div>
-        {/*end container*/}
+        </div> */}
 
-        <div className="container  section-content">
+
+        {/* <div className="container  section-content">
           <div className="row xs-justify-center">
             <div className="xl">
               <div className="row">
@@ -113,10 +106,7 @@ const Teams = (props) => {
                       Trading volume
                     </span>
                   </div>
-                  {/*end counter box*/}
                 </div>
-                {/*end col*/}
-
                 <div className="sm">
                   <div className="counter-box position-relative text-center">
                     <h4 className="mb0 display-5 fw-bold title-dark mt2">
@@ -128,10 +118,7 @@ const Teams = (props) => {
                       Listings created
                     </span>
                   </div>
-                  {/*end counter box*/}
                 </div>
-                {/*end col*/}
-
                 <div className="sm">
                   <div className="counter-box position-relative text-center">
                     <h4 className="mb0 display-5 fw-bold title-dark mt2">
@@ -144,33 +131,26 @@ const Teams = (props) => {
                       Total users
                     </span>
                   </div>
-                  {/*end counter box*/}
                 </div>
-                {/*end col*/}
               </div>
-              {/*end row*/}
             </div>
-            {/*end col*/}
           </div>
-          {/*end row*/}
-        </div >
-        {/*end container*/}
+        </div > */}
 
-        <div div className="container  section-content" >
+        <div div className="container" >
           <div className="row xs-justify-center">
             <div className="md">
               <div className="section-title text-center mb4 pb2">
-                <h2 className="title mb4">
+                <h1 className="mb4">
                   <FormattedMessage id="Teams.founding.title" />
-                </h2>
+                </h1>
                 <p className="text-muted para-desc mb0 mx-auto">
-                  <FormattedMessage id="Teams.founding.text" values={{ breakline: <br /> }} />
+                  <FormattedMessage id="Teams.mission.text" />
+                  {/* <FormattedMessage id="Teams.founding.text" values={{ breakline: <br /> }} /> */}
                 </p>
               </div>
             </div>
-            {/*end col*/}
           </div>
-          {/*end row*/}
 
           <div className="row">
             {clientRecord?.map(client => (
@@ -188,26 +168,28 @@ const Teams = (props) => {
                         <a href={client?.linkedin} className="btn btn-sm btn-pills btn-icon" target="_blank" rel="noreferrer">
                           <FontAwesomeIcon icon="fa-brands fa-linkedin" />                        </a>
                       </li>
-                      {client?.email && <li className="list-inline-item">
-                        <a href={"mailto:" + client.email} className="btn btn-sm btn-pills btn-icon">
-                          <FontAwesomeIcon icon="fa-solid fa-envelope" />                        </a>
-                      </li>}
-                      {client?.phone && <li className="list-inline-item">
-                        <a href={"tel:" + client.phone} className="btn btn-sm btn-pills btn-icon">
-                          <FontAwesomeIcon icon="fa-solid fa-phone" />                        </a>
-                      </li>}
                     </ul>
                     {/*end icon*/}
                   </div>
 
                   <div className="content mt3">
-                    <a href="" className="text-dark h6 mb0 title d-block">
+                    <p className="text-dark h6 mb0 title d-block">
                       {client?.name}
-                    </a>
+                    </p>
                     <small className="text-muted mb0 fw-normal">
                       {client?.position}
                     </small>
-                    <p className="text-muted mb0">{client?.description}</p>
+                    <ul className="list-unstyled team-social mb0">
+                      {client?.email && <li className="list-inline-item">
+                        <a href={"mailto:" + client.email} className="btn btn-sm btn-pills btn-icon">
+                          <FontAwesomeIcon icon="fa-solid fa-envelope" />                        </a>
+                      </li>}
+                      {client?.phone && <li className="list-inline-item ml2">
+                        <a href={"tel:" + client.phone} className="btn btn-sm btn-pills btn-icon">
+                          <FontAwesomeIcon icon="fa-solid fa-phone" />                        </a>
+                      </li>}
+                    </ul>
+                    {/* <p className="text-muted mb0">{client?.description}</p> */}
                   </div>
                 </div>
               </div>

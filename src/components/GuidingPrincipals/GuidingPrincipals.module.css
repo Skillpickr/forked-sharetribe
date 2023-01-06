@@ -1,6 +1,7 @@
 @import '../../styles/customMediaQueries.css';
 
 .root {
+  background-color: white;
   & p {
     font-weight: var(--fontWeightMedium);
     font-size: 15px;

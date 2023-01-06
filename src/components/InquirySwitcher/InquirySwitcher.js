@@ -16,7 +16,7 @@ const InquirySwitcher = () => {
       toggleSwitcher(true)
       clearTimeout(toRef)
       // it is good practice to clear the timeout (but I am not sure why)
-    }, 100000)
+    }, 10000)
   })
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const InquirySwitcher = () => {
       const toRef = setTimeout(() => {
         setShowComponent(false)
         clearTimeout(toRef)
-      }, 10000)
+      }, 20000)
     }
   }, [showComponent])
 

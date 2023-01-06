@@ -63,14 +63,11 @@ const PrivacyPolicyPageComponent = (props) => {
           <TopbarContainer currentPage="GuidingPrincipalsPage" />
         </LayoutWrapperTopbar>
         <LayoutWrapperHero>
-          <Hero image={bg1} title={"SkillPickr"} subTitle={"The online marketplace where anything is possible and all are welcome"} />
+          <Hero image={bg1} title={"SkillPickr"} subTitle={"All-in-one solution for people living a creative multidisciplinary life"} />
         </LayoutWrapperHero>
         <LayoutWrapperSideNav tabs={tabs} />
         <LayoutWrapperMain>
           <div className={css.content}>
-            <h1 className={css.heading}>
-              <FormattedMessage id="GuidingPrincipalsPage.heading" />
-            </h1>
             <GuidingPrincipals />
           </div>
         </LayoutWrapperMain>

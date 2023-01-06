@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--matterColorLight);
 }
 
 /* Container for side and content */
@@ -33,6 +34,23 @@
   flex-direction: column;
 
   padding: 24px;
+  margin: var(--LandingPage_sectionMarginTop) 24px 51px 24px;
+
+  @media (--viewportMedium) {
+    max-width: 100%;
+    margin: var(--LandingPage_sectionMarginTopMedium) 24px 60px 24px;
+  }
+
+  @media (--viewportLarge) {
+    max-width: 1128px;
+    padding: 0 36px 0 36px;
+    margin: var(--LandingPage_sectionMarginTopLarge) auto 93px auto;
+  }
+
+  @media (--viewportXLarge) {
+    max-width: 1056px;
+    padding: 0;
+  }
 
   @media (--viewportLarge) {
     /**
@@ -40,10 +58,9 @@
      * and left padding together with border should be 60px.
      */
     padding: 0 36px 82px 59px;
-    background-color: var(--matterColorLight);
-    border-left-width: 1px;
+    /* border-left-width: 1px;
     border-left-style: solid;
-    border-left-color: var(--matterColorNegative);
+    border-left-color: var(--matterColorNegative); */
   }
 
   /* @media (--viewportLargeWithPaddings) {

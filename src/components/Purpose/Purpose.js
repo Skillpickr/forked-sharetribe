@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import css from './Purpose.module.css'
+import { FormattedMessage } from 'react-intl'
 
 const Purpose = (props) => {
   const { rootClassName, className } = props
@@ -11,28 +12,23 @@ const Purpose = (props) => {
   // prettier-ignore
   return (
     <div className={classes}>
-      <p className={css.lastUpdated}>Last updated: November 15, 2022</p>
-      <h3>WHY</h3>
-      <p>
-        Simply because we love and believe in people whose attitudes and approaches to problems and challenges bear the
-        mark of creativity - of courage, of talent, of innovative problem solving{' '}
-      </p>
+      {/* <p className={css.lastUpdated}>Last updated: November 15, 2022</p> */}
+      <h1 className="title text-center">
+        <FormattedMessage id="PurposePage.heading" />
+      </h1>
+      <div className="text-muted para-desc mb0 mx-auto">
+        <h3><FormattedMessage id="Purpose.why.title" /></h3>
+        <p>
+          <FormattedMessage id="Purpose.why.text" />     </p>
 
-      <h3>HOW</h3>
-      <p>
-        By offering a large space for anyone to unleash their skills or passion and empower them to live a multi
-        disciplinary creative life. By nurturing, inspiring and encouraging creative minds, help them find work with
-        more ease and turn their skills into successful business. By making it easy for people to get in touch and book
-        the skills of creative minds without speed bumps.
-      </p>
+        <h3><FormattedMessage id="Purpose.how.title" /></h3>
+        <p>
+          <FormattedMessage id="Purpose.how.text" />      </p>
 
-      <h3>WHAT</h3>
-      <p>
-        Based on a global tooling marketplace we work to support people living a multidisciplinary creative life by
-        building tools that optimize their productivity, processes and workflow. This we do to help all creatives evolve
-        their skill and make their business thrive, regardless of what level they are on. The marketplace also reduces
-        the friction between users, saving time and money finding the right match.
-      </p>
+        <h3><FormattedMessage id="Purpose.what.title" /></h3>
+        <p>
+          <FormattedMessage id="Purpose.what.text" />      </p>
+      </div>
     </div>
   )
 }

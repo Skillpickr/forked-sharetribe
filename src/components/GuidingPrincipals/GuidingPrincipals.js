@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import css from './GuidingPrincipals.module.css'
+import { FormattedMessage } from 'react-intl'
 
 const GuidingPrincipals = (props) => {
   const { rootClassName, className } = props
@@ -11,22 +12,24 @@ const GuidingPrincipals = (props) => {
   // prettier-ignore
   return (
     <div className={classes}>
-      <p className={css.lastUpdated}>Last updated: November 15, 2022</p>
-      <p>At SkillPickr, our guiding principles serve as our commitment to continue working passionately toward:</p>
-      <h3> Sincerity</h3>
-      <p>Because without sincerity there is no credibility, trust or growth</p>
-      <h3>Curiosity </h3>
-      <p>
-        Because curiosity is key! Things happen when we start to pay attention to what is happening with curiosity and
-        as a bonus, curiosity is interrelated with inner motivation and innovation
-      </p>
-      <h3>Self-discipline</h3>
-      <p>Because we want to succeed!</p>
-      <h3>Respect</h3>
-      <p>
-        Because it is such a good starting point for all kinds of relationships. It is also a gift and when given or
-        received, something good comes along
-      </p>
+      <h1 className="title text-center">
+        <FormattedMessage id="GuidingPrincipalsPage.heading" />
+      </h1>
+      {/* <p className={css.lastUpdated}>Last updated: November 15, 2022</p> */}
+      <div className="text-muted para-desc mb0 mx-auto">
+
+        <p><FormattedMessage id="GuidingPrincipals.text" /></p>
+        <h2 className="mt4"> <FormattedMessage id="GuidingPrincipals.sincerity.title" /></h2>
+        <p><FormattedMessage id="GuidingPrincipals.sincerity.text" /></p>
+        <h2><FormattedMessage id="GuidingPrincipals.curiosity.title" /></h2>
+        <p><FormattedMessage id="GuidingPrincipals.curiosity.text" />
+        </p>
+        <h2><FormattedMessage id="GuidingPrincipals.discipline.title" /></h2>
+        <p><FormattedMessage id="GuidingPrincipals.discipline.text" /></p>
+        <h2><FormattedMessage id="GuidingPrincipals.respect.title" /></h2>
+        <p><FormattedMessage id="GuidingPrincipals.respect.text" />
+        </p>
+      </div>
 
     </div>
   )
