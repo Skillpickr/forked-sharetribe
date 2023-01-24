@@ -50,9 +50,14 @@ class EditListingFeaturesPanel extends Component {
     const { publicData, description, title } = this.getCurrentListing().attributes
     const skill = publicData && publicData.skill
     const gear = publicData && publicData.gear
+    const ownStudio = publicData && publicData.ownStudio
     const soundLightExp = publicData && publicData.soundLightExp
     const photographerType = publicData && publicData.photographerType
-    const ownStudio = publicData && publicData.ownStudio
+    const videographerType = publicData && publicData.videographerType
+    const videoInteractiveService = publicData && publicData.videoInteractiveService
+    const videoToPhotoService = publicData && publicData.videoToPhotoService
+    const photoToVideoService = publicData && publicData.photoToVideoService
+    const editingService = publicData && publicData.editingService
     const djType = publicData && publicData.djType
     const technicalRider = publicData && publicData.technicalRider
     const cateringRider = publicData && publicData.cateringRider
@@ -69,6 +74,11 @@ class EditListingFeaturesPanel extends Component {
       title,
       description,
       photographerType,
+      videographerType,
+      videoInteractiveService,
+      videoToPhotoService,
+      editingService,
+      photoToVideoService,
       gear,
       soundLightExp,
       ownStudio,
@@ -124,7 +134,12 @@ class EditListingFeaturesPanel extends Component {
         description,
         skill = [],
         photographerType = [],
+        videographerType = [],
         gear = '',
+        photoToVideoService = [],
+        videoInteractiveService = [],
+        videoToPhotoService = [],
+        editingService = [],
         soundLightExp = [],
         ownStudio = [],
         djType = [],
@@ -146,6 +161,11 @@ class EditListingFeaturesPanel extends Component {
         publicData: {
           skill,
           photographerType,
+          videographerType,
+          videoInteractiveService,
+          videoToPhotoService,
+          editingService,
+          photoToVideoService,
           gear,
           soundLightExp,
           ownStudio,

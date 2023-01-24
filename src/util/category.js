@@ -7,6 +7,7 @@ const Categories = {
 
 const Skills = {
   photographer: 'photographer',
+  videographer: 'videographer',
   dj: 'dj',
   musician: 'musician',
   band: 'band'

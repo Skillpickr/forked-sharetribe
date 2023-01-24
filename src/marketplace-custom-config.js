@@ -34,7 +34,9 @@
  */
 import { Categories, Skills } from './util/category'
 import { bandConfig } from './util/skillsConfig/bands'
+import { sharedConfig } from './util/skillsConfig/shared'
 import { photographerConfig } from './util/skillsConfig/photographer'
+import { videographerConfig } from './util/skillsConfig/videographer'
 import { musicianConfig } from './util/skillsConfig/musician'
 import { djConfig } from './util/skillsConfig/dj'
 import { createIntl, createIntlCache } from 'react-intl'
@@ -139,6 +141,7 @@ const filterConfig = [
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       options: [
         { key: Skills.photographer, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.photographer' }) },
+        { key: Skills.videographer, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.videographer' }) },
         { key: Skills.dj, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.dj' }) },
         { key: Skills.musician, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.musician' }) },
         { key: Skills.band, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.band' }) }
@@ -146,7 +149,14 @@ const filterConfig = [
     }
   }
 ]
-export const filters = filterConfig.concat(bandConfig, photographerConfig, musicianConfig, djConfig)
+export const filters = filterConfig.concat(
+  sharedConfig,
+  bandConfig,
+  photographerConfig,
+  videographerConfig,
+  musicianConfig,
+  djConfig
+)
 
 export const sortConfig = {
   // Enable/disable the sorting control in the SearchPage

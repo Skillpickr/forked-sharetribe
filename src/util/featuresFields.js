@@ -2,6 +2,7 @@ const InputFieldsType = {}
 
 const CheckboxFieldsType = {
   photographerTypeKey: 'photographerType',
+  videographerTypeKey: 'videographerType',
   djTypeKey: 'djType',
   musicianTypeKey: 'musicianType',
   musicianGenreKey: 'musicianGenre',
@@ -14,7 +15,11 @@ const DropdownFieldsType = {
   ownStudioKey: 'ownStudio',
   soundLightExpKey: 'soundLightExp',
   djGearForPlayingKey: 'djGearForPlaying',
-  songRequestKey: 'songRequest'
+  songRequestKey: 'songRequest',
+  photoToVideoServiceKey: 'photoToVideoService',
+  videoToPhotoServiceKey: 'videoToPhotoService',
+  videoInteractiveKey: 'videoInteractiveService',
+  editingServiceKey: 'editingService'
 }
 
 export { InputFieldsType, CheckboxFieldsType, DropdownFieldsType }

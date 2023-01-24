@@ -236,6 +236,7 @@ class MainPanel extends Component {
     }
 
     let photoFilterIds = [CheckboxFieldsType.photographerTypeKey]
+    let videoFilterIds = [CheckboxFieldsType.videographerTypeKey]
     let djFilterIds = [CheckboxFieldsType.djTypeKey]
     let musicianFilterIds = [CheckboxFieldsType.musicianGenreKey, CheckboxFieldsType.musicianTypeKey]
     let bandFilterIds = [CheckboxFieldsType.bandGenreKey, CheckboxFieldsType.bandTypeKey]
@@ -244,6 +245,8 @@ class MainPanel extends Component {
       switch (param) {
         case Skills.photographer:
           return secondaryFilters.filter((f) => photoFilterIds.includes(f.id))
+        case Skills.videographer:
+          return secondaryFilters.filter((f) => videoFilterIds.includes(f.id))
         case Skills.dj:
           return secondaryFilters.filter((f) => djFilterIds.includes(f.id))
         case Skills.musician:

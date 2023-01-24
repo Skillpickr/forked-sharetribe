@@ -17,29 +17,42 @@ import { CheckboxFieldsType, DropdownFieldsType } from '../../../util/featuresFi
 import { required, composeValidators } from '../../../util/validators'
 import EditListingTitleForm from './EditListingTitleForm'
 
-class EditPhotographerFeaturesComponent extends Component {
+class EditVideographerFeaturesComponent extends Component {
   render() {
     const { filterConfig, intl } = this.props
 
-    const photographerKey = CheckboxFieldsType.photographerTypeKey
-    const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig)
+    const videographerKey = CheckboxFieldsType.videographerTypeKey
+    const videographerOptions = findOptionsForSelectFilter(videographerKey, filterConfig)
     const ownStudioKey = DropdownFieldsType.ownStudioKey
     const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig)
 
     const soundLightExpKey = DropdownFieldsType.soundLightExpKey
     const soundLightExpOptions = findOptionsForSelectFilter(soundLightExpKey, filterConfig)
-    const editingServiceKey = DropdownFieldsType.editingServiceKey
-    const editingServiceOptions = findOptionsForSelectFilter(editingServiceKey, filterConfig)
+    const interactiveExpKey = DropdownFieldsType.videoInteractiveKey
+    const interactiveExpOptions = findOptionsForSelectFilter(interactiveExpKey, filterConfig)
+    const editExpKey = DropdownFieldsType.editingServiceKey
+    const editExpOptions = findOptionsForSelectFilter(editExpKey, filterConfig)
+    const videoToPhotoServiceKey = DropdownFieldsType.videoToPhotoServiceKey
+    const photoServiceOptions = findOptionsForSelectFilter(videoToPhotoServiceKey, filterConfig)
 
     const requiredCheckbox = 'You need to check a box'
-    const photographerKeyMessage = intl.formatMessage({
-      id: 'EditListingFeaturesForm.photographerKeyMessage'
+    const videographerKeyMessage = intl.formatMessage({
+      id: 'EditListingFeaturesForm.videographerKeyMessage'
+    })
+    const videographerTitleKeyMessage = intl.formatMessage({
+      id: 'EditListingFeaturesForm.videographerTitle'
     })
     const ownStudioKeyMessage = intl.formatMessage({
       id: 'EditListingFeaturesForm.ownStudioKeyMessage'
     })
-    const editingServiceKeyMessage = intl.formatMessage({
+    const interactiveKeyMessage = intl.formatMessage({
+      id: 'EditListingFeaturesForm.interactiveKeyMessage'
+    })
+    const editMessage = intl.formatMessage({
       id: 'EditListingFeaturesForm.editingServiceKeyMessage'
+    })
+    const photoServiceMessage = intl.formatMessage({
+      id: 'EditListingFeaturesForm.videoToPhotoKeyMessage'
     })
     const gearMessage = intl.formatMessage({
       id: 'EditListingFeaturesForm.gear'
@@ -55,14 +68,14 @@ class EditPhotographerFeaturesComponent extends Component {
       <div>
         <div className={css.listingSectionContainer}>
           <h2>
-            <FormattedMessage id="EditListingFeaturesForm.photographerTitle" />
+            <FormattedMessage id="EditListingFeaturesForm.videographerTitle" />
           </h2>
           <FieldCheckboxGroup
             className={css.features}
-            id={photographerKey}
-            name={photographerKey}
-            options={photographerOptions}
-            label={photographerKeyMessage}
+            id={videographerKey}
+            name={videographerKey}
+            options={videographerOptions}
+            label={videographerKeyMessage}
             validate={composeValidators(required(requiredCheckbox))}
           />
         </div>
@@ -105,9 +118,9 @@ class EditPhotographerFeaturesComponent extends Component {
           </FieldSelect>
           <FieldSelect
             className={css.features}
-            name={editingServiceKey}
-            id={editingServiceKey}
-            label={editingServiceKeyMessage}>
+            name={interactiveExpKey}
+            id={interactiveExpKey}
+            label={interactiveKeyMessage}>
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {(id) => (
                 <option disabled value="">
@@ -115,7 +128,39 @@ class EditPhotographerFeaturesComponent extends Component {
                 </option>
               )}
             </FormattedMessage>
-            {editingServiceOptions.map((o) => (
+            {interactiveExpOptions.map((o) => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          <FieldSelect className={css.features} name={editExpKey} id={editExpKey} label={editMessage}>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {(id) => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {editExpOptions.map((o) => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
+          <FieldSelect
+            className={css.features}
+            name={videoToPhotoServiceKey}
+            id={videoToPhotoServiceKey}
+            label={photoServiceMessage}>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {(id) => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {photoServiceOptions.map((o) => (
               <option key={o.key} value={o.key}>
                 {o.label}
               </option>
@@ -134,12 +179,12 @@ class EditPhotographerFeaturesComponent extends Component {
     )
   }
 }
-EditPhotographerFeaturesComponent.defaultProps = {
+EditVideographerFeaturesComponent.defaultProps = {
   filterConfig: custom.filters
 }
-EditPhotographerFeaturesComponent.propTypes = {
+EditVideographerFeaturesComponent.propTypes = {
   filterConfig: propTypes.filterConfig,
   intl: intlShape.isRequired
 }
 
-export default injectIntl(EditPhotographerFeaturesComponent)
+export default injectIntl(EditVideographerFeaturesComponent)
