@@ -7,7 +7,9 @@ import {
   IconSocialMediaFacebook,
   IconSocialMediaInstagram,
   IconSocialMediaTwitter,
-  ExternalLink
+  ExternalLink,
+  Button,
+  Modal
 } from '../../components'
 import { locationBounds } from '../LocationAutocompleteInput/GeocoderMapbox'
 import css from './SectionHero.module.css'
@@ -17,42 +19,13 @@ import { stringify } from '../../util/urlHelpers'
 import { twitterPageURL } from '../../util/urlHelpers'
 import { propTypes } from '../../util/types'
 
-const renderSocialMediaLinks = (intl) => {
-  const { siteFacebookPage, siteInstagramPage, siteTwitterHandle } = config
-  const siteTwitterPage = twitterPageURL(siteTwitterHandle)
-
-  const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' })
-  const goToInsta = intl.formatMessage({ id: 'Footer.goToInstagram' })
-  const goToTwitter = intl.formatMessage({ id: 'Footer.goToTwitter' })
-
-  const fbLink = siteFacebookPage ? (
-    <ExternalLink key="linkToFacebook" href={siteFacebookPage} className={css.icon} title={goToFb}>
-      <IconSocialMediaFacebook />
-    </ExternalLink>
-  ) : null
-
-  const twitterLink = siteTwitterPage ? (
-    <ExternalLink key="linkToTwitter" href={siteTwitterPage} className={css.icon} title={goToTwitter}>
-      <IconSocialMediaTwitter />
-    </ExternalLink>
-  ) : null
-
-  const instragramLink = siteInstagramPage ? (
-    <ExternalLink key="linkToInstagram" href={siteInstagramPage} className={css.icon} title={goToInsta}>
-      <IconSocialMediaInstagram />
-    </ExternalLink>
-  ) : null
-  return [fbLink, instragramLink].filter((v) => v != null)
-}
-
 const SectionHero = (props) => {
-  const { locationm, intl, currentUser } = props
+  const { locationm, intl, currentUser, onManageDisableScrolling } = props
+  console.log(onManageDisableScrolling)
   const { rootClassName, className } = props.className
   const [mounted, setMounted] = useState(false)
   const [ipLocation, setIpLocation] = useState('')
-  const socialMediaLinks = renderSocialMediaLinks(intl)
   const { siteFacebookPage, siteInstagramPage, siteTwitterHandle } = config
-  const siteTwitterPage = twitterPageURL(siteTwitterHandle)
 
   const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' })
   const goToInsta = intl.formatMessage({ id: 'Footer.goToInstagram' })
@@ -108,7 +81,12 @@ const SectionHero = (props) => {
       <FormattedMessage id="SectionHero.signUp" />
     </NamedLink>
   )
+  const [isOpen, setOpen] = useState(false)
+  const [video, setVideo] = useState('https://www.loom.com/embed/131bb7185a86438cb035484934fcd79e')
 
+  const handleOpen = () => {
+    setOpen(true)
+  }
   return (
     <div className={classes}>
       <div className={css.heroContent}>
@@ -123,27 +101,46 @@ const SectionHero = (props) => {
             <NamedLink name="SearchPage" to={{ search: urlString }} className={classNames(css.heroButton)}>
               <FormattedMessage id="SectionHero.browseButton" />
             </NamedLink>
-            <span className={classNames(css.heroMainTitle)}>
-              <strong>
-                {' '}
-                <FormattedMessage id="SectionHero.or" />
-              </strong>
-            </span>
+
             {signupButton}
+
+            <Button onClick={handleOpen} className={classNames(css.heroButton)}>
+              <FormattedMessage id="SectionHero.introductionVideo" />
+            </Button>
           </div>
         </div>
-        <personalbar className={css.someLinks}>
+        <div className={css.someLinks}>
           <FormattedMessage id="SectionHero.followUs" />
           <ExternalLink key="linkToInstagram" href={siteInstagramPage} className={css.icon} title={goToInsta} noIcon>
-            <IconSocialMediaInstagram classNames={css.insta}/>
+            <IconSocialMediaInstagram classNames={css.insta} />
           </ExternalLink>
           <FormattedMessage id="SectionHero.or" />
           <ExternalLink key="linkToFacebook" href={siteFacebookPage} className={css.icon} title={goToFb} noIcon>
             <IconSocialMediaFacebook />
           </ExternalLink>
           <FormattedMessage id="SectionHero.latestUpdate" />
-        </personalbar>
+        </div>
       </div>
+
+      {onManageDisableScrolling ? (
+        <Modal
+          id="SectionHero.introductionVideo"
+          {...props}
+          isOpen={isOpen}
+          onClose={() => {
+            setOpen(false)
+          }}
+          onManageDisableScrolling={onManageDisableScrolling}>
+          {isOpen && (
+            <iframe
+              src={video}
+              style={{ marginTop: 72, width: '100%', height: '100%', minHeight: 400 }}
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowFullScreen></iframe>
+          )}
+        </Modal>
+      ) : null}
     </div>
   )
 }

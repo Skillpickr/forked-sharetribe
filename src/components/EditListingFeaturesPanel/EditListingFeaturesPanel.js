@@ -125,7 +125,7 @@ class EditListingFeaturesPanel extends Component {
     )
 
     const handleCallback = (childData) => {
-      if(this.state.category !== childData){
+      if (this.state.category !== childData) {
         this.setState({ category: childData })
       }
       // this.setState(prevState => ({
@@ -135,15 +135,15 @@ class EditListingFeaturesPanel extends Component {
       //   }))
     }
 
-      //       console.log("ChildData: ", childData.currentTarget.value);
-      //   let { category } = this.state;
-      //   category = childData
+    //       console.log("ChildData: ", childData.currentTarget.value);
+    //   let { category } = this.state;
+    //   category = childData
 
-      //   this.setState(state => ({
-      //     ...state,
-      //     ...category
-      //   }));
-      // console.log("Category : ", category)
+    //   this.setState(state => ({
+    //     ...state,
+    //     ...category
+    //   }));
+    // console.log("Category : ", category)
 
     const handleSubmit = (values) => {
       const {

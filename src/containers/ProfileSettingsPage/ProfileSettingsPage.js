@@ -110,6 +110,9 @@ export class ProfileSettingsPageComponent extends Component {
                   </NamedLink>
                 ) : null}
               </div>
+              {/* <iframe
+                src="https://www.loom.com/embed/131bb7185a86438cb035484934fcd79e"
+                style={{ width: '100%', height: "100%", minHeight: 400 }}></iframe> */}
               <Alert type="secondary">
                 <div>
                   <FormattedMessage id="ProfileSettingsPage.guide" />
@@ -118,6 +121,14 @@ export class ProfileSettingsPageComponent extends Component {
                   </NamedLink>
                 </div>
               </Alert>
+              {/* <iframe
+                src="https://www.loom.com/embed/131bb7185a86438cb035484934fcd79e"
+                frameBorder="0"
+                // webkitallowfullscreen
+                // mozallowfullscreen
+                allowFullScreen={true}
+                allow="autoplay; encrypted-media"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe> */}
               {profileSettingsForm}
             </div>
           </LayoutWrapperMain>
