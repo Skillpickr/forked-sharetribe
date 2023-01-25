@@ -7,16 +7,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //
 // See: https://mathiasbynens.github.io/rel-noopener/
 const ExternalLink = (props) => {
-  const { children, ...rest } = props
+  const { children, noIcon, ...rest } = props
   const spanStyle = {
     marginLeft: '8px'
   }
   return (
     <a {...rest} target="_blank" rel="noopener noreferrer">
       {children}
-      <span style={spanStyle}>
-        <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" />
-      </span>
+      {!noIcon && (
+        <span style={spanStyle}>
+          <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" />
+        </span>
+      )}
     </a>
   )
 }

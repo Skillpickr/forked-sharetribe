@@ -27,6 +27,19 @@
   }
 }
 
+.heroSubTitle {
+  composes: h2 from global;
+  text-align: center;
+  color: var(--matterColorLight);
+  margin: 16px 0 32px 0;
+  /* composes: animation; */
+
+  @media (--viewportMedium) {
+    max-width: var(--SectionHero_desktopTitleMaxWidth);
+    margin: 0 0 47px 0;
+  }
+}
+
 .background {
   height: 100%;
   background: linear-gradient(90deg, var(--marketplaceColor) 50%, var(--marketplaceColorDark) 50%);

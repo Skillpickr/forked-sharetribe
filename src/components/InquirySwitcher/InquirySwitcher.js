@@ -19,14 +19,14 @@ const InquirySwitcher = () => {
     }, 10000)
   })
 
-  useEffect(() => {
-    if (showComponent) {
-      const toRef = setTimeout(() => {
-        setShowComponent(false)
-        clearTimeout(toRef)
-      }, 20000)
-    }
-  }, [showComponent])
+  // useEffect(() => {
+  //   if (showComponent) {
+  //     const toRef = setTimeout(() => {
+  //       setShowComponent(false)
+  //       clearTimeout(toRef)
+  //     }, 20000)
+  //   }
+  // }, [showComponent])
 
   const switcherStyle = {
     left: '-189px'

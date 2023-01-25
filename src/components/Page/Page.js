@@ -107,7 +107,7 @@ class PageComponent extends Component {
     const canonicalPath = canonicalRoutePath(routeConfiguration(), location, shouldReturnPathOnly)
     const canonicalUrl = `${canonicalRootURL}${canonicalPath}`
 
-    console.log('test', canonicalPath)
+    // console.log('test', canonicalPath)
 
     const siteTitle = config.siteTitle
     const schemaTitle = intl.formatMessage({ id: 'Page.schemaTitle' }, { siteTitle })

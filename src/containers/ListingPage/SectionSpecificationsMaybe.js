@@ -48,7 +48,6 @@ const SectionSpecificationsMaybe = (props) => {
   const selectedEditingService = publicData && publicData.editingService ? publicData.editingService : null
   const editingServiceConfig = editingService.find((o) => o.key === selectedEditingService)
   const editingServiceLabel = editingServiceConfig ? editingServiceConfig.label : null
-  console.log(editingServiceLabel)
 
   // Photographer
 

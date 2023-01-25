@@ -85,7 +85,7 @@ export const LandingPageComponent = (props) => {
             <section className={css.sectionContentFirstChild}>
               <SectionCategories user={currentUser} />
               <div className={css.heroContainer}>
-                <SectionHero className={css.hero} history={history} location={location} />
+                <SectionHero className={css.hero} history={history} location={location} currentUser={currentUser}/>
               </div>
               {/* <SectionLocations /> */}
             </section>

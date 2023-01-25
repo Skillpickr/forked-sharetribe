@@ -125,8 +125,25 @@ class EditListingFeaturesPanel extends Component {
     )
 
     const handleCallback = (childData) => {
-      this.setState({ category: childData })
+      if(this.state.category !== childData){
+        this.setState({ category: childData })
+      }
+      // this.setState(prevState => ({
+      //             // object that we want to update
+      //         ...prevState,    // keep all other key-value pairs
+      //         category: childData      // update the value of specific key
+      //   }))
     }
+
+      //       console.log("ChildData: ", childData.currentTarget.value);
+      //   let { category } = this.state;
+      //   category = childData
+
+      //   this.setState(state => ({
+      //     ...state,
+      //     ...category
+      //   }));
+      // console.log("Category : ", category)
 
     const handleSubmit = (values) => {
       const {
