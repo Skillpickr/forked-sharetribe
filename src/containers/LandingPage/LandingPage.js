@@ -9,6 +9,7 @@ import { propTypes } from '../../util/types'
 import config from '../../config'
 import unionWith from 'lodash/unionWith'
 import { searchMapListings, setActiveListing } from '../SearchPage/SearchPage.duck'
+import { manageDisableScrolling } from '../../ducks/UI.duck'
 
 import {
   Page,
@@ -44,7 +45,8 @@ export const LandingPageComponent = (props) => {
     currentUserListing,
     currentUserListingFetched,
     currentUser,
-    onActivateListing
+    onActivateListing,
+    onManageDisableScrolling
   } = props
 
   // Schema for search engines (helps them to understand what this page is about)
@@ -85,7 +87,13 @@ export const LandingPageComponent = (props) => {
             <section className={css.sectionContentFirstChild}>
               <SectionCategories user={currentUser} />
               <div className={css.heroContainer}>
-                <SectionHero className={css.hero} history={history} location={location} />
+                <SectionHero
+                  className={css.hero}
+                  history={history}
+                  location={location}
+                  currentUser={currentUser}
+                  onManageDisableScrolling={onManageDisableScrolling}
+                />
               </div>
               {/* <SectionLocations /> */}
             </section>
@@ -138,6 +146,7 @@ LandingPageComponent.propTypes = {
   currentUserListingFetched: bool,
   currentUser: propTypes.currentUser,
   onActivateListing: func.isRequired,
+  onManageDisableScrolling: func.isRequired,
 
   // from injectIntl
   intl: intlShape.isRequired
@@ -159,7 +168,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onSearchMapListings: (searchParams) => dispatch(searchMapListings(searchParams)),
-  onActivateListing: (listingId) => dispatch(setActiveListing(listingId))
+  onActivateListing: (listingId) => dispatch(setActiveListing(listingId)),
+  onManageDisableScrolling: (componentId, disableScrolling) =>
+    dispatch(manageDisableScrolling(componentId, disableScrolling))
 })
 
 // Note: it is important that the withRouter HOC is **outside** the

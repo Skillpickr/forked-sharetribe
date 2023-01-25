@@ -24,9 +24,12 @@
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid var(--matterColorNegative);
+  justify-content: center;
+  align-items: flex-start;
 
   @media (--viewportLarge) {
-    flex-direction: column;
+    align-items: center;
+    /* flex-direction: column; */
     border-bottom: none;
   }
 }
@@ -36,7 +39,7 @@
   flex-shrink: 0;
 
   @media (--viewportLarge) {
-    margin: 0 96px 44px 0;
+    /* margin: 0 96px 44px 0; */
   }
 }
 

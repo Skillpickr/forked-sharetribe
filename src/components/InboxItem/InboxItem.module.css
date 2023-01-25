@@ -140,6 +140,18 @@
   padding: 0;
 }
 
+@-webkit-keyframes loadingSpinnerFadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes loadingSpinnerFadeIn {
   0% {
     opacity: 0;
@@ -161,8 +173,11 @@
   opacity: 0;
 
   /* animation shorthand property doesn't work with local scope of CSS Modules */
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
+  -webkit-animation-name: loadingSpinnerFadeIn;
   animation-name: loadingSpinnerFadeIn;
+  -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
 
@@ -254,6 +269,7 @@
   @media (--viewportMedium) {
     margin-top: 0;
     margin-bottom: 0;
+    margin-right: 100px;
   }
 
   color: var(--matterColor);

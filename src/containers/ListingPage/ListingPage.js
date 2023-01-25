@@ -359,6 +359,19 @@ export class ListingPageComponent extends Component {
     const ownStudioOptions = findOptionsForSelectFilter(DropdownFieldsType.ownStudioKey, filterConfig)
     const djGearForPlayingOptions = findOptionsForSelectFilter(DropdownFieldsType.djGearForPlayingKey, filterConfig)
     const songRequestOptions = findOptionsForSelectFilter(DropdownFieldsType.songRequestKey, filterConfig)
+    const photoToVideoServiceOptions = findOptionsForSelectFilter(
+      DropdownFieldsType.photoToVideoServiceKey,
+      filterConfig
+    )
+    const videoToPhotoServiceOptions = findOptionsForSelectFilter(
+      DropdownFieldsType.videoToPhotoServiceKey,
+      filterConfig
+    )
+    const videoInteractiveServiceOptions = findOptionsForSelectFilter(
+      DropdownFieldsType.videoInteractiveKey,
+      filterConfig
+    )
+    const editingServiceOptions = findOptionsForSelectFilter(DropdownFieldsType.editingServiceKey, filterConfig)
     const selectedOption = publicData && publicData.skill ? publicData.skill : null
 
     // Don't return anything if public data doesn't contain view field
@@ -380,6 +393,9 @@ export class ListingPageComponent extends Component {
       if (optionConfig.key === Skills.photographer) {
         subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.photographerTypeKey, filterConfig)
         Array.prototype.push.apply(selectedSubOptions, publicData.photographerType)
+      } else if (optionConfig.key === Skills.videographer) {
+        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.videographerTypeKey, filterConfig)
+        Array.prototype.push.apply(selectedSubOptions, publicData.videographerType)
       } else if (optionConfig.key === Skills.dj) {
         subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.djTypeKey, filterConfig)
         Array.prototype.push.apply(selectedSubOptions, publicData.djType)
@@ -468,6 +484,10 @@ export class ListingPageComponent extends Component {
                     ownStudio={ownStudioOptions}
                     djGearForPlaying={djGearForPlayingOptions}
                     songRequest={songRequestOptions}
+                    photoToVideoService={photoToVideoServiceOptions}
+                    videoToPhotoService={videoToPhotoServiceOptions}
+                    videoInteractiveService={videoInteractiveServiceOptions}
+                    editingService={editingServiceOptions}
                     skillType={optionConfig.key}
                     publicData={publicData}></SectionSpecificationsMaybe>
                   <SectionBonusMaybe publicData={publicData}></SectionBonusMaybe>

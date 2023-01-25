@@ -65,15 +65,24 @@ const SectionCategories = (props) => {
   }
   const displayUserName = user ? user.attributes.profile.firstName : null
   const displayHeading = user ? (
-    <FormattedMessage id="SectionCategories.titleWithName" values={{ displayName: displayUserName }} />
+    <div>
+      <h1 className={css.title}>
+        <FormattedMessage id="SectionCategories.titleWithName" values={{ displayName: displayUserName }} />
+      </h1>
+      <h2 className={classNames(css.heroSubTitle)}>
+        <FormattedMessage id="SectionHero.subTitle" />
+      </h2>
+    </div>
   ) : (
-    <FormattedMessage id="SectionCategories.title" />
+    <h1 className={css.title}>
+      <FormattedMessage id="SectionCategories.title" />
+    </h1>
   )
 
   return (
     <div className={classes}>
       <div className={css.background}>
-        <div className={css.title}>{displayHeading}</div>
+        {displayHeading}
         <div className={css.categories}>
           {/* {categories} */}
           {categoryLink('Performance & Entertainment', performanceImage, '?pub_category=performance', false)}
@@ -81,7 +90,7 @@ const SectionCategories = (props) => {
           {categoryLink('Creative', creativeImage, '?pub_category=creative', false)}
           {/* {categoryLink('Creative', creativeImage, '?pub_category=creative', false)} */}
           {categoryLink('Knowledge', knowledgeImage, '?pub_category=knowledge', true)}
-          {categoryLink('Audio Production', mediaImage, '?pub_category=audio-prod', true)}
+          {categoryLink('Media Production', mediaImage, '?pub_category=audio-prod', true)}
         </div>
       </div>
 

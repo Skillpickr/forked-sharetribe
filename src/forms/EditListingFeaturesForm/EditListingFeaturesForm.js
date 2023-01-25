@@ -15,6 +15,7 @@ import css from './EditListingFeaturesForm.module.css'
 import { Skills, Categories } from '../../util/category'
 import { required } from '../../util/validators'
 import EditPhotographerFeaturesComponent from './skills/EditPhotographerFeaturesForm'
+import EditVideographerFeaturesComponent from './skills/EditVideographerFeaturesForm'
 import EditDJFeaturesComponent from './skills/EditDjFeaturesForm'
 import EditMusicianFeaturesComponent from './skills/EditMusicianFeaturesForm'
 import EditBandFeaturesComponent from './skills/EditBandFeaturesForm'
@@ -85,6 +86,10 @@ const EditListingFeaturesFormComponent = (props) => (
           const opt = categoryOptions.find((element) => element.key === Categories.creative)
           category = opt.key
         }
+        if (skillSet.includes(Skills.videographer)) {
+          const opt = categoryOptions.find((element) => element.key === Categories.creative)
+          category = opt.key
+        }
         if (skillSet.includes(Skills.musician)) {
           const opt = categoryOptions.find((element) => element.key === Categories.performance)
           category = opt.key
@@ -138,11 +143,14 @@ const EditListingFeaturesFormComponent = (props) => (
           </FieldSelect>
           {/* {SelectedComponent ? <SelectedComponent /> : <DefaultComponent />} */}
 
-          {/* Videographer */}
-
           {/* Photographer */}
           {state.includes(Skills.photographer) && (
             <EditPhotographerFeaturesComponent filterConfig={filterConfig} intl={intl} />
+          )}
+
+          {/* Videographer */}
+          {state.includes(Skills.videographer) && (
+            <EditVideographerFeaturesComponent filterConfig={filterConfig} intl={intl} />
           )}
 
           {/* DJ */}

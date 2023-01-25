@@ -168,6 +168,10 @@ exports[`LandingPage matches snapshot 1`] = `
                         "label": "Photographer",
                       },
                       Object {
+                        "key": "videographer",
+                        "label": "Videographer",
+                      },
+                      Object {
                         "key": "dj",
                         "label": "DJ",
                       },
@@ -188,6 +192,70 @@ exports[`LandingPage matches snapshot 1`] = `
                     "pub_skill",
                   ],
                   "type": "SelectSingleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "yes",
+                        "label": "Yes",
+                      },
+                      Object {
+                        "key": "no",
+                        "label": "No",
+                      },
+                    ],
+                  },
+                  "group": "secondary",
+                  "id": "ownStudio",
+                  "queryParamNames": Array [
+                    "",
+                  ],
+                  "type": "",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "yes",
+                        "label": "Yes",
+                      },
+                      Object {
+                        "key": "no",
+                        "label": "No",
+                      },
+                      Object {
+                        "key": "maybe",
+                        "label": "Willing to learn",
+                      },
+                    ],
+                  },
+                  "group": "secondary",
+                  "id": "soundLightExp",
+                  "queryParamNames": Array [
+                    "",
+                  ],
+                  "type": "",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "yes",
+                        "label": "Yes",
+                      },
+                      Object {
+                        "key": "no",
+                        "label": "No",
+                      },
+                    ],
+                  },
+                  "group": "secondary",
+                  "id": "editingService",
+                  "queryParamNames": Array [
+                    "",
+                  ],
+                  "type": "",
                 },
                 Object {
                   "config": Object {
@@ -821,7 +889,97 @@ exports[`LandingPage matches snapshot 1`] = `
                     ],
                   },
                   "group": "secondary",
-                  "id": "ownStudio",
+                  "id": "photoToVideoService",
+                  "queryParamNames": Array [
+                    "",
+                  ],
+                  "type": "",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "brand",
+                        "label": "Brand documentary",
+                      },
+                      Object {
+                        "key": "brandAwareness",
+                        "label": "Brand Awareness Videos",
+                      },
+                      Object {
+                        "key": "Event",
+                        "label": "Event Videography",
+                      },
+                      Object {
+                        "key": "product",
+                        "label": "Product videos",
+                      },
+                      Object {
+                        "key": "documentary",
+                        "label": "Documentary films",
+                      },
+                      Object {
+                        "key": "wedding",
+                        "label": "Wedding Videography",
+                      },
+                      Object {
+                        "key": "Drone",
+                        "label": "Drone videography",
+                      },
+                      Object {
+                        "key": "promotional",
+                        "label": "Promotional videos",
+                      },
+                      Object {
+                        "key": "tutorial",
+                        "label": "Tutorial videos",
+                      },
+                      Object {
+                        "key": "review",
+                        "label": "Review videos",
+                      },
+                      Object {
+                        "key": "testimonial",
+                        "label": "Testimonial videos",
+                      },
+                      Object {
+                        "key": "b2b",
+                        "label": "Business to Busines (B2B) videos",
+                      },
+                      Object {
+                        "key": "realEstate",
+                        "label": "Real Estate videography",
+                      },
+                      Object {
+                        "key": "advertisement",
+                        "label": "Advertisement Videography",
+                      },
+                    ],
+                    "searchMode": "has_all",
+                  },
+                  "group": "secondary",
+                  "id": "videographerType",
+                  "label": "Videographer",
+                  "queryParamNames": Array [
+                    "pub_videographerType",
+                  ],
+                  "type": "SelectMultipleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "yes",
+                        "label": "Yes",
+                      },
+                      Object {
+                        "key": "no",
+                        "label": "No",
+                      },
+                    ],
+                  },
+                  "group": "secondary",
+                  "id": "videoToPhotoService",
                   "queryParamNames": Array [
                     "",
                   ],
@@ -838,14 +996,10 @@ exports[`LandingPage matches snapshot 1`] = `
                         "key": "no",
                         "label": "No",
                       },
-                      Object {
-                        "key": "maybe",
-                        "label": "Willing to learn",
-                      },
                     ],
                   },
                   "group": "secondary",
-                  "id": "soundLightExp",
+                  "id": "videoInteractiveService",
                   "queryParamNames": Array [
                     "",
                   ],
@@ -1626,8 +1780,9 @@ exports[`LandingPage matches snapshot 1`] = `
           <div
             className="heroContainer"
           >
-            <SectionHero
+            <injectIntl(SectionHero)
               className="hero"
+              currentUser={null}
               history={
                 Object {
                   "push": [Function],
@@ -1638,7 +1793,7 @@ exports[`LandingPage matches snapshot 1`] = `
                   "search": "",
                 }
               }
-              rootClassName={null}
+              onManageDisableScrolling={[Function]}
             />
           </div>
         </section>

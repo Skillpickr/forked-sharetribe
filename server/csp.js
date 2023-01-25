@@ -109,9 +109,15 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
     scriptSrc = [self],
     styleSrc = [self]
   } = defaultDirectives
-  const extendConnectSrc = connectSrc.concat(['*.tawk.to', 'wss://*.tawk.to', '*.sentry.io', 'https://api.country.is/'])
+  const extendConnectSrc = connectSrc.concat([
+    '*.tawk.to',
+    'wss://*.tawk.to',
+    '*.sentry.io',
+    'https://api.country.is/',
+    'www.loom.com'
+  ])
   const extendFontSrc = fontSrc.concat(['*.tawk.to', 'fonts.gstatic.com'])
-  const extendFrameSrc = frameSrc.concat(['*.tawk.to', 'www.facebook.com'])
+  const extendFrameSrc = frameSrc.concat(['*.tawk.to', 'www.facebook.com', 'www.loom.com'])
   const extendImgSrc = imgSrc.concat([
     '*.tawk.to',
     'cdn.jsdelivr.net',
@@ -125,7 +131,7 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
     'www.facebook.com',
     'connect.facebook.net'
   ])
-  const extendStyleSrc = styleSrc.concat(['*.tawk.to', 'fonts.googleapis.com', 'cdn.jsdelivr.net'])
+  const extendStyleSrc = styleSrc.concat(['*.tawk.to', 'fonts.googleapis.com', 'cdn.jsdelivr.net', "'unsafe-inline'"])
 
   const customDirectives = {
     connectSrc: extendConnectSrc,

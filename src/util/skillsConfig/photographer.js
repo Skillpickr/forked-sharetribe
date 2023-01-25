@@ -63,8 +63,10 @@ export const photographerConfig = [
       ]
     }
   },
+
   {
-    id: DropdownFieldsType.ownStudioKey,
+    // Do you Provide Video services as well?
+    id: DropdownFieldsType.photoToVideoServiceKey,
     type: '',
     group: 'secondary',
     queryParamNames: [''],
@@ -72,19 +74,6 @@ export const photographerConfig = [
       options: [
         { key: 'yes', label: intl.formatMessage({ id: 'MarketplaceConfig.ownStudioKey.yes' }) },
         { key: 'no', label: intl.formatMessage({ id: 'MarketplaceConfig.ownStudioKey.no' }) }
-      ]
-    }
-  },
-  {
-    id: DropdownFieldsType.soundLightExpKey,
-    type: '',
-    group: 'secondary',
-    queryParamNames: [''],
-    config: {
-      options: [
-        { key: 'yes', label: intl.formatMessage({ id: 'MarketplaceConfig.soundLightExpKey.yes' }) },
-        { key: 'no', label: intl.formatMessage({ id: 'MarketplaceConfig.soundLightExpKey.no' }) },
-        { key: 'maybe', label: intl.formatMessage({ id: 'MarketplaceConfig.soundLightExpKey.maybe' }) }
       ]
     }
   }
