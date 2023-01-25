@@ -25,7 +25,7 @@
   flex-direction: row;
   border-bottom: 1px solid var(--matterColorNegative);
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 
   @media (--viewportLarge) {
     align-items: center;
