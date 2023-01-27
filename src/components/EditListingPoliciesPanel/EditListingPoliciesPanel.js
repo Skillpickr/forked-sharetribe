@@ -6,6 +6,7 @@ import { LISTING_STATE_DRAFT } from '../../util/types'
 import { ensureOwnListing } from '../../util/data'
 import { ListingLink } from '../../components'
 import { EditListingPoliciesForm } from '../../forms'
+import { propTypes } from '../../util/types'
 
 import css from './EditListingPoliciesPanel.module.css'
 
@@ -21,12 +22,14 @@ const EditListingPoliciesPanel = (props) => {
     submitButtonText,
     panelUpdated,
     updateInProgress,
-    errors
+    errors,
+    currentUser
   } = props
 
   const classes = classNames(rootClassName || css.root, className)
   const currentListing = ensureOwnListing(listing)
   const { publicData } = currentListing.attributes
+  const userName = currentUser.attributes.profile.firstName
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT
   const panelTitle = isPublished ? (
@@ -35,9 +38,9 @@ const EditListingPoliciesPanel = (props) => {
       values={{ listingTitle: <ListingLink listing={listing} /> }}
     />
   ) : (
-    <FormattedMessage id="EditListingPoliciesPanel.createListingTitle" />
+    <FormattedMessage id="EditListingPoliciesPanel.createListingTitle" values={{ firstName: userName }} />
   )
-
+  // console.log(listing)
   return (
     <div className={classes}>
       <h1 className={css.title}>{panelTitle}</h1>
@@ -46,11 +49,9 @@ const EditListingPoliciesPanel = (props) => {
         publicData={publicData}
         initialValues={{ rules: publicData.rules }}
         onSubmit={(values) => {
-          const { rules = '' } = values
           const updateValues = {
-            publicData: {
-              rules
-            }
+            title: 'draft',
+            description: 'draft'
           }
           onSubmit(updateValues)
         }}
@@ -61,6 +62,7 @@ const EditListingPoliciesPanel = (props) => {
         updated={panelUpdated}
         updateInProgress={updateInProgress}
         fetchErrors={errors}
+        currentUser={currentUser}
       />
     </div>
   )
@@ -75,6 +77,7 @@ EditListingPoliciesPanel.defaultProps = {
 }
 
 EditListingPoliciesPanel.propTypes = {
+  currentUser: propTypes.currentUser,
   className: string,
   rootClassName: string,
 

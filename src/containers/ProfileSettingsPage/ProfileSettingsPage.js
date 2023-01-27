@@ -115,10 +115,19 @@ export class ProfileSettingsPageComponent extends Component {
                 style={{ width: '100%', height: "100%", minHeight: 400 }}></iframe> */}
               <Alert type="secondary">
                 <div>
-                  <FormattedMessage id="ProfileSettingsPage.guide" />
-                  <NamedLink name="NewListingPage">
-                    <FormattedMessage id="ProfileSettingsPage.guide.click" />
-                  </NamedLink>
+                  <p>
+                    <FormattedMessage id="ProfileSettingsPage.guide" />
+                  </p>
+                  <div className={css.block}>
+                    <p>
+                      <strong>
+                        <FormattedMessage id="ProfileSettingsPage.guide.cta" />
+                      </strong>
+                    </p>
+                    <NamedLink name="NewListingPage" className={css.heroButton}>
+                      <FormattedMessage id="ProfileSettingsPage.guide.click" />
+                    </NamedLink>
+                  </div>
                 </div>
               </Alert>
               {/* <iframe

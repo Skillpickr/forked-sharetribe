@@ -5,7 +5,7 @@ import { Form as FinalForm } from 'react-final-form'
 import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl'
 import classNames from 'classnames'
 import { propTypes } from '../../util/types'
-import { Form, Button, FieldTextInput } from '../../components'
+import { Form, Button, FieldTextInput, Alert } from '../../components'
 
 import css from './EditListingPoliciesForm.module.css'
 
@@ -52,18 +52,36 @@ export const EditListingPoliciesFormComponent = (props) => (
       const submitDisabled = invalid || disabled || submitInProgress
 
       return (
-        <Form className={classes} onSubmit={handleSubmit}>
+        <form className={classes} onSubmit={handleSubmit}>
           {errorMessage}
           {errorMessageShowListing}
-
-          <FieldTextInput
+          <Alert>
+            <div>
+              <p>
+                <FormattedMessage id="EditListingPoliciesPanel.createListingDescription" />
+              </p>
+              <p>
+                <FormattedMessage id="EditListingPoliciesPanel.createListingDescriptionTwo" />
+              </p>
+              <p>
+                <FormattedMessage id="EditListingPoliciesPanel.createListingDescriptionThree" />
+              </p>
+            </div>
+          </Alert>
+          {/* <FieldTextInput
             id="rules"
             name="rules"
             className={css.policy}
             type="textarea"
             label={rulesLabelMessage}
             placeholder={rulesPlaceholderMessage}
-          />
+          /> */}
+          <iframe
+            src={'https://www.loom.com/embed/577c359098014aa8a1876678e5f9a1b5'}
+            style={{ marginTop: 72, width: '100%', height: '100%', minHeight: 400 }}
+            webkitallowfullscreen="true"
+            mozallowfullscreen="true"
+            allowFullScreen></iframe>
 
           <Button
             className={css.submitButton}
@@ -73,7 +91,7 @@ export const EditListingPoliciesFormComponent = (props) => (
             ready={submitReady}>
             {saveActionMsg}
           </Button>
-        </Form>
+        </form>
       )
     }}
   />
@@ -81,10 +99,12 @@ export const EditListingPoliciesFormComponent = (props) => (
 
 EditListingPoliciesFormComponent.defaultProps = {
   selectedPlace: null,
-  updateError: null
+  updateError: null,
+  currentUser: null
 }
 
 EditListingPoliciesFormComponent.propTypes = {
+  currentUser: propTypes.currentUser,
   intl: intlShape.isRequired,
   onSubmit: func.isRequired,
   saveActionMsg: string.isRequired,

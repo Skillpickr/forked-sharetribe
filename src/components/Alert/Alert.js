@@ -40,13 +40,13 @@ export default function Alert({ children, type, message }) {
   return (
     <div className={classNames(css.alert, css[type], !isShow && css.hide)}>
       <div className={css.container}>
-        <FontAwesomeIcon icon={handleIcon(type)} className={classNames(css[type])} size="2x" />
+        {/* <FontAwesomeIcon icon={handleIcon(type)} className={classNames(css[type])} size="2x" /> */}
         {children ? renderElAlert() : <p>{message}</p>}
       </div>
 
-      <span className={css.closebtn} onClick={handleClose}>
+      {/* <span className={css.closebtn} onClick={handleClose}>
         &times;
-      </span>
+      </span> */}
     </div>
   )
 }

@@ -122,7 +122,11 @@ const EditListingFeaturesFormComponent = (props) => (
           {errorMessage}
           {errorMessageShowListing}
           <Alert type="secondary">
-            <FormattedMessage id="EditListingFeaturesForm.guide" />
+            <div>
+              <p>
+                <FormattedMessage id="EditListingFeaturesForm.guide" />
+              </p>
+            </div>
           </Alert>
           <FieldSelect
             className={css.features}

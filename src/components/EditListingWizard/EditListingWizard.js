@@ -22,7 +22,7 @@ import EditListingWizardTab, {
   AVAILABILITY,
   DESCRIPTION,
   FEATURES,
-  POLICY,
+  INTRODUCTION,
   LOCATION,
   PRICING,
   PHOTOS
@@ -41,7 +41,7 @@ const tabLabel = (intl, tab) => {
     key = 'EditListingWizard.tabLabelDescription'
   } else if (tab === FEATURES) {
     key = 'EditListingWizard.tabLabelFeatures'
-  } else if (tab === POLICY) {
+  } else if (tab === INTRODUCTION) {
     key = 'EditListingWizard.tabLabelPolicy'
   } else if (tab === LOCATION) {
     key = 'EditListingWizard.tabLabelLocation'
@@ -70,11 +70,11 @@ const tabCompleted = (tab, listing) => {
 
   switch (tab) {
     case DESCRIPTION:
-      return !!(description && title)
+      return !!(publicData && publicData.url && publicData.experience)
     case FEATURES:
-      return !!(publicData && publicData.skill)
-    case POLICY:
-      return !!(publicData && typeof publicData.rules !== 'undefined')
+      return !!(publicData && publicData.skill && title && description)
+    case INTRODUCTION:
+      return !!publicData
     case LOCATION:
       return !!(geolocation && publicData && publicData.location && publicData.location.address)
     case PRICING:
@@ -244,17 +244,9 @@ class EditListingWizard extends Component {
     // Note 1: You need to change save button translations for new listing flow
     // Note 2: Ensure that draft listing is created after the first panel
     // and listing publishing happens after last panel.
-    // Note 3: in FTW-hourly template we don't use the POLICY tab so it's commented out.
-    // If you want to add a free text field to your listings you can enable the POLICY tab
-    const TABS = [
-      FEATURES,
-      DESCRIPTION,
-      //POLICY,
-      LOCATION,
-      PRICING,
-      ...availabilityMaybe,
-      PHOTOS
-    ]
+    // Note 3: in FTW-hourly template we don't use the INTRODUCTION tab so it's commented out.
+    // If you want to add a free text field to your listings you can enable the INTRODUCTION tab
+    const TABS = [INTRODUCTION, FEATURES, DESCRIPTION, LOCATION, PRICING, ...availabilityMaybe, PHOTOS]
 
     /**
      * Check which wizard tabs are active and which are not yet available. Tab is active if previous
@@ -372,6 +364,7 @@ class EditListingWizard extends Component {
                 handlePublishListing={this.handlePublishListing}
                 fetchInProgress={fetchInProgress}
                 onManageDisableScrolling={onManageDisableScrolling}
+                currentUser={currentUser}
               />
             )
           })}

@@ -12,7 +12,20 @@
     margin: 55px auto 56px auto;
   }
 }
+.block {
+  display: flex;
+  align-items: center;
+}
+.heroButton {
+  composes: button buttonFont buttonText buttonBorders buttonColors from global;
+  margin-left: 16px;
 
+  margin-top: 16px;
+  @media (--viewportMedium) {
+    display: block;
+    width: 260px;
+  }
+}
 .headingContainer {
   display: flex;
   flex-direction: row;
@@ -20,6 +33,8 @@
 
 .heading {
   margin-right: 24px;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   hyphens: auto;
 }
 

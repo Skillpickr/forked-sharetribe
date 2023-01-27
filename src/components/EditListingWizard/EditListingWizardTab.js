@@ -25,13 +25,13 @@ import css from './EditListingWizard.module.css'
 export const AVAILABILITY = 'availability'
 export const DESCRIPTION = 'description'
 export const FEATURES = 'features'
-export const POLICY = 'policy'
+export const INTRODUCTION = 'introduction'
 export const LOCATION = 'location'
 export const PRICING = 'pricing'
 export const PHOTOS = 'photos'
 
 // EditListingWizardTab component supports these tabs
-export const SUPPORTED_TABS = [DESCRIPTION, FEATURES, POLICY, LOCATION, PRICING, AVAILABILITY, PHOTOS]
+export const SUPPORTED_TABS = [DESCRIPTION, FEATURES, INTRODUCTION, LOCATION, PRICING, AVAILABILITY, PHOTOS]
 
 const pathParamsToNextTab = (params, tab, marketplaceTabs) => {
   const nextTabIndex = marketplaceTabs.findIndex((s) => s === tab) + 1
@@ -88,9 +88,9 @@ const EditListingWizardTab = (props) => {
     updateInProgress,
     intl,
     fetchExceptionsInProgress,
-    availabilityExceptions
+    availabilityExceptions,
+    currentUser
   } = props
-
   const { type } = params
   const isNewURI = type === LISTING_PAGE_PARAM_TYPE_NEW
   const isDraftURI = type === LISTING_PAGE_PARAM_TYPE_DRAFT
@@ -103,6 +103,7 @@ const EditListingWizardTab = (props) => {
 
   const onCompleteEditListingWizardTab = (tab, updateValues, passThrownErrors = false) => {
     // Normalize images for API call
+
     const { images: updatedImages, ...otherValues } = updateValues
     const imageProperty = typeof updatedImages !== 'undefined' ? { images: imageIds(updatedImages) } : {}
     const updateValuesWithImages = { ...otherValues, ...imageProperty }
@@ -182,17 +183,18 @@ const EditListingWizardTab = (props) => {
         />
       )
     }
-    case POLICY: {
+    case INTRODUCTION: {
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewPolicies'
         : 'EditListingWizard.saveEditPolicies'
       return (
         <EditListingPoliciesPanel
-          {...panelProps(POLICY)}
+          {...panelProps(INTRODUCTION)}
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
           onSubmit={(values) => {
             onCompleteEditListingWizardTab(tab, values)
           }}
+          currentUser={currentUser}
         />
       )
     }
@@ -272,10 +274,12 @@ const EditListingWizardTab = (props) => {
 EditListingWizardTab.defaultProps = {
   listing: null,
   updatedTab: null,
-  availabilityExceptions: []
+  availabilityExceptions: [],
+  currentUser: null
 }
 
 EditListingWizardTab.propTypes = {
+  currentUser: propTypes.currentUser,
   params: shape({
     id: string.isRequired,
     slug: string.isRequired,

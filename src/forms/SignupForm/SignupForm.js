@@ -51,6 +51,7 @@ const SignupFormComponent = (props) => (
       const phoneRequiredMessage = intl.formatMessage({
         id: 'SignupForm.phoneRequired'
       })
+      const phoneRequired = validators.required(phoneRequiredMessage)
 
       // password
       const passwordLabel = intl.formatMessage({
@@ -144,7 +145,10 @@ const SignupFormComponent = (props) => (
               validate={validators.composeValidators(emailRequired, emailValid)}
             />
             <div className={css.phone}>
-              <Field id={formId ? `${formId}.phoneNumber` : 'phoneNumber'} name="phoneNumber">
+              <Field
+                id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
+                name="phoneNumber"
+                validate={validators.composeValidators(phoneRequired)}>
                 {({ input, meta }) => {
                   return (
                     <div>
