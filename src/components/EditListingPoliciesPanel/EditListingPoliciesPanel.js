@@ -50,8 +50,8 @@ const EditListingPoliciesPanel = (props) => {
         initialValues={{ rules: publicData.rules }}
         onSubmit={(values) => {
           const updateValues = {
-            title: 'draft',
-            description: 'draft'
+            title: 'Write a title',
+            description: 'write a description'
           }
           onSubmit(updateValues)
         }}

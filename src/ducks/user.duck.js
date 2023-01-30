@@ -244,10 +244,9 @@ export const fetchCurrentUserHasListings = () => (dispatch, getState, sdk) => {
     .query(params)
     .then((response) => {
       const hasListings = response.data.data && response.data.data.length > 0
-
-      // const hasPublishedListings =
-      //   hasListings && ensureOwnListing(response.data.data).attributes.state !== LISTING_STATE_DRAFT
-      const hasPublishedListings = hasListings && ensureOwnListing(response.data.data)
+      // const hasPublishedListings = hasListings && ensureOwnListing(response.data.data)
+      const hasPublishedListings =
+        hasListings && ensureOwnListing(response.data.data[0]).attributes.state !== LISTING_STATE_DRAFT
       dispatch(fetchCurrentUserHasListingsSuccess(!!hasPublishedListings))
     })
     .catch((e) => dispatch(fetchCurrentUserHasListingsError(storableError(e))))

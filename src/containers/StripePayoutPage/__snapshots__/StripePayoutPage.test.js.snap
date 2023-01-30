@@ -42,6 +42,20 @@ exports[`StripePayoutPage matches snapshot with Stripe connected 1`] = `
             id="StripePayoutPage.heading"
           />
         </h1>
+        <Alert>
+          <div>
+            <p>
+              <MemoizedFormattedMessage
+                id="PaymentMethodsPage.alert"
+              />
+            </p>
+            <p>
+              <MemoizedFormattedMessage
+                id="PaymentMethodsPage.alert2"
+              />
+            </p>
+          </div>
+        </Alert>
         <injectIntl(StripeConnectAccountFormComponent)
           currentUser={
             Object {
@@ -143,6 +157,20 @@ exports[`StripePayoutPage matches snapshot with Stripe not connected 1`] = `
             id="StripePayoutPage.heading"
           />
         </h1>
+        <Alert>
+          <div>
+            <p>
+              <MemoizedFormattedMessage
+                id="PaymentMethodsPage.alert"
+              />
+            </p>
+            <p>
+              <MemoizedFormattedMessage
+                id="PaymentMethodsPage.alert2"
+              />
+            </p>
+          </div>
+        </Alert>
         <injectIntl(StripeConnectAccountFormComponent)
           currentUser={
             Object {
@@ -234,6 +262,20 @@ exports[`StripePayoutPage matches snapshot with details submitted 1`] = `
             id="StripePayoutPage.heading"
           />
         </h1>
+        <Alert>
+          <div>
+            <p>
+              <MemoizedFormattedMessage
+                id="PaymentMethodsPage.alert"
+              />
+            </p>
+            <p>
+              <MemoizedFormattedMessage
+                id="PaymentMethodsPage.alert2"
+              />
+            </p>
+          </div>
+        </Alert>
         <injectIntl(StripeConnectAccountFormComponent)
           currentUser={
             Object {

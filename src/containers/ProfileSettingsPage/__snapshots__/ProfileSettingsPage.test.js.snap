@@ -51,25 +51,6 @@ exports[`ContactDetailsPage matches snapshot 1`] = `
                 id="ProfileSettingsPage.guide"
               />
             </p>
-            <div
-              className="block"
-            >
-              <p>
-                <strong>
-                  <MemoizedFormattedMessage
-                    id="ProfileSettingsPage.guide.cta"
-                  />
-                </strong>
-              </p>
-              <NamedLink
-                className="heroButton"
-                name="NewListingPage"
-              >
-                <MemoizedFormattedMessage
-                  id="ProfileSettingsPage.guide.click"
-                />
-              </NamedLink>
-            </div>
           </div>
         </Alert>
       </div>

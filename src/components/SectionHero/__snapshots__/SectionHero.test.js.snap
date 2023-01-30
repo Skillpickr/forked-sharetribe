@@ -27,6 +27,15 @@ exports[`SectionHero matches snapshot 1`] = `
             SectionHero.browseButton
           </span>
         </a>
+        <button
+          className="root heroButton"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <span>
+            SectionHero.introductionVideo
+          </span>
+        </button>
         <a
           className="heroButton"
           data-tip={true}
@@ -41,15 +50,6 @@ exports[`SectionHero matches snapshot 1`] = `
             SectionHero.signUp
           </span>
         </a>
-        <button
-          className="root heroButton"
-          disabled={false}
-          onClick={[Function]}
-        >
-          <span>
-            SectionHero.introductionVideo
-          </span>
-        </button>
       </div>
     </div>
     <div
@@ -88,5 +88,8 @@ exports[`SectionHero matches snapshot 1`] = `
       </span>
     </div>
   </div>
+  <p>
+    For at se velkomst video igen, klik her
+  </p>
 </div>
 `;

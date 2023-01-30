@@ -67,8 +67,7 @@ const tabLabel = (intl, tab) => {
 const tabCompleted = (tab, listing, user) => {
   const { availabilityPlan, description, geolocation, price, title, id, publicData } = listing.attributes
   const images = listing.images
-  console.log('user ', user)
-  console.log('listing ', listing)
+
   switch (tab) {
     case INTRODUCTION:
       return !!(publicData && title)
