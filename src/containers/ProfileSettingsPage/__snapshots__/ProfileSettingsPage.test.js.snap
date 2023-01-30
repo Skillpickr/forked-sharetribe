@@ -46,16 +46,30 @@ exports[`ContactDetailsPage matches snapshot 1`] = `
           type="secondary"
         >
           <div>
-            <MemoizedFormattedMessage
-              id="ProfileSettingsPage.guide"
-            />
-            <NamedLink
-              name="NewListingPage"
-            >
+            <p>
               <MemoizedFormattedMessage
-                id="ProfileSettingsPage.guide.click"
+                id="ProfileSettingsPage.guide"
               />
-            </NamedLink>
+            </p>
+            <div
+              className="block"
+            >
+              <p>
+                <strong>
+                  <MemoizedFormattedMessage
+                    id="ProfileSettingsPage.guide.cta"
+                  />
+                </strong>
+              </p>
+              <NamedLink
+                className="heroButton"
+                name="NewListingPage"
+              >
+                <MemoizedFormattedMessage
+                  id="ProfileSettingsPage.guide.click"
+                />
+              </NamedLink>
+            </div>
           </div>
         </Alert>
       </div>

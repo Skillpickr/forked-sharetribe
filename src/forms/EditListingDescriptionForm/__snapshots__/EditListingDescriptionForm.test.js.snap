@@ -17,12 +17,6 @@ exports[`EditListingDescriptionForm matches snapshot 1`] = `
         EditListingDescriptionForm.guide.credentials
       </span>
     </div>
-    <span
-      className="closebtn"
-      onClick={[Function]}
-    >
-      ×
-    </span>
   </div>
   <div>
     <h2>

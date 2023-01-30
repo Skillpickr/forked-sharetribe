@@ -9,7 +9,8 @@ import { ensureCurrentUser } from '../../util/data'
 import { propTypes } from '../../util/types'
 import * as validators from '../../util/validators'
 import { isUploadImageOverLimitError } from '../../util/errors'
-import { Form, Avatar, Button, ImageFromFile, IconSpinner, FieldTextInput } from '../../components'
+import { Form, Avatar, Button, ImageFromFile, IconSpinner, FieldTextInput, NamedLink } from '../../components'
+import { useHistory } from 'react-router-dom'
 
 import css from './ProfileSettingsForm.module.css'
 
@@ -59,6 +60,7 @@ class ProfileSettingsFormComponent extends Component {
             updateProfileError,
             uploadImageError,
             uploadInProgress,
+            isCreateListingOpen,
             form,
             values
           } = fieldRenderProps
@@ -173,6 +175,9 @@ class ProfileSettingsFormComponent extends Component {
           const pristineSinceLastSubmit = submittedOnce && isEqual(values, this.submittedValues)
           const submitDisabled = invalid || pristine || pristineSinceLastSubmit || uploadInProgress || submitInProgress
 
+          const history = useHistory()
+          const handleClick = () => history.push(`/l/new`)
+
           return (
             <Form
               className={classes}
@@ -283,14 +288,38 @@ class ProfileSettingsFormComponent extends Component {
                 </p>
               </div>
               {submitError}
-              <Button
-                className={css.submitButton}
-                type="submit"
-                inProgress={submitInProgress}
-                disabled={submitDisabled}
-                ready={pristineSinceLastSubmit}>
-                <FormattedMessage id="ProfileSettingsForm.saveChanges" />
-              </Button>
+              <div>
+                {user.profileImage && user.attributes.profile.bio && (
+                  <p>
+                    <strong>Fedt mand! Du har opdateret din profil. Du er nu klar til at flashe din skills</strong>
+                  </p>
+                )}
+
+                <div className={css.block}>
+                  {/* <p>
+                      <strong>
+                      <FormattedMessage id="ProfileSettingsPage.guide.cta" />
+                      </strong>
+                    </p> */}
+                  <Button
+                    className={css.submitButton}
+                    type="submit"
+                    inProgress={submitInProgress}
+                    disabled={submitDisabled}
+                    ready={pristineSinceLastSubmit}>
+                    <FormattedMessage id="ProfileSettingsForm.saveChanges" />
+                  </Button>
+
+                  <Button
+                    className={css.heroButton}
+                    disabled={isCreateListingOpen()}
+                    onClick={(e) => {
+                      e.preventDefault, handleClick()
+                    }}>
+                    <FormattedMessage id="ProfileSettingsPage.guide.click" />
+                  </Button>
+                </div>
+              </div>
             </Form>
           )
         }}

@@ -124,6 +124,8 @@ class EditListingFeaturesPanel extends Component {
       <FormattedMessage id="EditListingFeaturesPanel.createListingTitle" />
     )
 
+
+
     const handleCallback = (childData) => {
       if (this.state.category !== childData) {
         this.setState({ category: childData })

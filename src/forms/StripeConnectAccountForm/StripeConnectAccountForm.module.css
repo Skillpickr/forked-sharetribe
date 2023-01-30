@@ -53,7 +53,6 @@
 .termsText {
   composes: marketplaceModalHelperText from global;
   margin-bottom: 12px;
-  text-align: center;
 
   @media (--viewportMedium) {
     margin-bottom: 16px;

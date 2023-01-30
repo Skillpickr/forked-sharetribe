@@ -20,7 +20,8 @@ import {
   Footer,
   Page,
   StripeConnectAccountStatusBox,
-  UserNav
+  UserNav,
+  Alert
 } from '../../components'
 import { StripeConnectAccountForm } from '../../forms'
 import { TopbarContainer } from '..'
@@ -144,6 +145,16 @@ export const StripePayoutPageComponent = (props) => {
             <h1 className={css.title}>
               <FormattedMessage id="StripePayoutPage.heading" />
             </h1>
+            <Alert>
+              <div>
+                <p>
+                  <FormattedMessage id="PaymentMethodsPage.alert" />
+                </p>
+                <p>
+                  <FormattedMessage id="PaymentMethodsPage.alert2" />
+                </p>
+              </div>
+            </Alert>
             {!currentUserLoaded ? (
               <FormattedMessage id="StripePayoutPage.loadingData" />
             ) : returnedAbnormallyFromStripe && !getAccountLinkError ? (

@@ -17,12 +17,6 @@ exports[`EditListingPricingForm matches snapshot 1`] = `
         EditListingPricingForm.guide
       </span>
     </div>
-    <span
-      className="closebtn"
-      onClick={[Function]}
-    >
-      ×
-    </span>
   </div>
   <div
     className="priceInput"

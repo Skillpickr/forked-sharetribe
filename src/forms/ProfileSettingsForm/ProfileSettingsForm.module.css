@@ -191,6 +191,7 @@
   height: var(--ProfileSettingsForm_avatarSize);
 
   /* Image fitted to container */
+  -o-object-fit: cover;
   object-fit: cover;
   background-color: var(--matterColorNegative); /* Loading BG color */
   border-radius: calc(var(--ProfileSettingsForm_avatarSize) / 2);
@@ -293,10 +294,18 @@
   margin-top: 11px;
 
   @media (--viewportMedium) {
-    margin-top: 16px;
   }
 }
 
 .submitButton {
-  margin-top: 24px;
+}
+
+.heroButton {
+  margin-left: 16px;
+  @media (--viewportMedium) {
+  }
+}
+.block {
+  margin-top: 16px;
+  display: flex;
 }

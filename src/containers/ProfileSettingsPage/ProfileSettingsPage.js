@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { bool, func, object, shape, string } from 'prop-types'
+
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
@@ -15,7 +16,8 @@ import {
   LayoutWrapperFooter,
   Footer,
   NamedLink,
-  Alert
+  Alert,
+  Button
 } from '../../components'
 import { ProfileSettingsForm } from '../../forms'
 import { TopbarContainer } from '../../containers'
@@ -66,6 +68,12 @@ export class ProfileSettingsPageComponent extends Component {
           : profile
 
       onUpdateProfile(updatedValues)
+      isDisabled()
+    }
+
+    const isDisabled = () => {
+      const isDis = user.profileImage && user.attributes.profile.bio ? false : true
+      return isDis
     }
 
     const user = ensureCurrentUser(currentUser)
@@ -84,11 +92,13 @@ export class ProfileSettingsPageComponent extends Component {
         updateInProgress={updateInProgress}
         uploadImageError={uploadImageError}
         updateProfileError={updateProfileError}
+        isCreateListingOpen={isDisabled}
         onSubmit={handleSubmit}
       />
     ) : null
 
     const title = intl.formatMessage({ id: 'ProfileSettingsPage.title' })
+    console.log(user)
 
     return (
       <Page className={css.root} title={title} scrollingDisabled={scrollingDisabled}>
@@ -118,16 +128,6 @@ export class ProfileSettingsPageComponent extends Component {
                   <p>
                     <FormattedMessage id="ProfileSettingsPage.guide" />
                   </p>
-                  <div className={css.block}>
-                    <p>
-                      <strong>
-                        <FormattedMessage id="ProfileSettingsPage.guide.cta" />
-                      </strong>
-                    </p>
-                    <NamedLink name="NewListingPage" className={css.heroButton}>
-                      <FormattedMessage id="ProfileSettingsPage.guide.click" />
-                    </NamedLink>
-                  </div>
                 </div>
               </Alert>
               {/* <iframe

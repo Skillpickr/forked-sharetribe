@@ -82,8 +82,7 @@ const SectionHero = (props) => {
     } else if (currentUser) {
       return (
         <NamedLink name="ProfileSettingsPage" className={classNames(css.heroButton)}>
-          Færdiggør Profil
-          {/* <FormattedMessage id="SectionHero.createListing" /> */}
+          <FormattedMessage id="SectionHero.finishProfile" />
         </NamedLink>
       )
     } else {
@@ -106,25 +105,30 @@ const SectionHero = (props) => {
     setOpenCreateListingVideo(true)
   }
 
-  const introductionButton =
-    currentUser && currentUser.profileImage ? (
-      <Button onClick={handleOpenCreateListingVideo} className={classNames(css.heroButton)}>
-        <FormattedMessage id="SectionHero.introductionSeller" />
-      </Button>
-    ) : (
-      <Button onClick={handleOpenIntroduction} className={classNames(css.heroButton)}>
-        <FormattedMessage id="SectionHero.introductionVideo" />
-      </Button>
-    )
-
-  console.log(currentUser)
+  const introductionButton = () => {
+    if (currentUser == null) {
+      return (
+        <Button onClick={handleOpenIntroduction} className={classNames(css.heroButton)}>
+          <FormattedMessage id="SectionHero.introductionVideo" />
+        </Button>
+      )
+    } else if (currentUser && currentUser.profileImage) {
+      return (
+        <Button onClick={handleOpenCreateListingVideo} className={classNames(css.heroButton)}>
+          <FormattedMessage id="SectionHero.introductionSeller" />
+        </Button>
+      )
+    } else {
+      return null
+    }
+  }
   return (
     <div className={classes}>
       <div className={css.heroContent}>
         <div className={classNames({ [css.heroMainTitleFEDelay]: mounted })}>
-          <h2 className={classNames(css.heroMainTitle)}>
+          {/* <h2 className={classNames(css.heroMainTitle)}>
             <FormattedMessage id="SectionHero.title" />
-          </h2>
+          </h2> */}
           {/* <h2 className={classNames(css.heroSubTitle, { [css.heroSubTitleFEDelay]: mounted })}>
           <FormattedMessage id="SectionHero.subTitle" />
           </h2> */}
@@ -133,8 +137,8 @@ const SectionHero = (props) => {
               <FormattedMessage id="SectionHero.browseButton" />
             </NamedLink>
 
+            {introductionButton()}
             {signupButton()}
-            {introductionButton}
             {/* <Button onClick={handleOpen} className={classNames(css.heroButton)}>
               <FormattedMessage id="SectionHero.introductionVideo" />
             </Button> */}
@@ -152,6 +156,12 @@ const SectionHero = (props) => {
           <FormattedMessage id="SectionHero.latestUpdate" />
         </div>
       </div>
+      <p>
+        For at se velkomst video igen, klik her
+        {/* <Button onClick={handleOpenIntroduction}>
+          <FormattedMessage id="SectionHero.introductionVideo" />
+        </Button> */}
+      </p>
 
       {onManageDisableScrolling ? (
         <Modal
@@ -166,8 +176,6 @@ const SectionHero = (props) => {
             <iframe
               src={'https://www.loom.com/embed/ff36c037d9d64cfea4729d083890d92c'}
               style={{ marginTop: 72, width: '100%', height: '100%', minHeight: 400 }}
-              webkitallowfullscreen
-              mozallowfullscreen
               allowFullScreen></iframe>
           )}
         </Modal>

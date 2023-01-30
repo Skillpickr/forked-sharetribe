@@ -64,17 +64,18 @@ const tabLabel = (intl, tab) => {
  *
  * @return true if tab / step is completed.
  */
-const tabCompleted = (tab, listing) => {
-  const { availabilityPlan, description, geolocation, price, title, publicData } = listing.attributes
+const tabCompleted = (tab, listing, user) => {
+  const { availabilityPlan, description, geolocation, price, title, id, publicData } = listing.attributes
   const images = listing.images
-
+  console.log('user ', user)
+  console.log('listing ', listing)
   switch (tab) {
-    case DESCRIPTION:
-      return !!(publicData && publicData.url && publicData.experience)
+    case INTRODUCTION:
+      return !!(publicData && title)
     case FEATURES:
       return !!(publicData && publicData.skill && title && description)
-    case INTRODUCTION:
-      return !!publicData
+    case DESCRIPTION:
+      return !!(publicData && publicData.url && publicData.experience)
     case LOCATION:
       return !!(geolocation && publicData && publicData.location && publicData.location.address)
     case PRICING:
@@ -237,7 +238,7 @@ class EditListingWizard extends Component {
     } = this.props
 
     // TODO: add a shop to the create listing
-    const publicProfileMaybe = currentUserHasListings ? [] : [DESCRIPTION]
+    // const publicProfileMaybe = currentUserHasListings ? [] : [DESCRIPTION]
     const availabilityMaybe = config.enableAvailability ? [AVAILABILITY] : []
 
     // You can reorder these panels.
@@ -257,10 +258,10 @@ class EditListingWizard extends Component {
      *
      * @return object containing activity / editability of different tabs of this wizard
      */
-    const tabsActive = (isNew, listing) => {
+    const tabsActive = (isNew, listing, user) => {
       return TABS.reduce((acc, tab) => {
         const previousTabIndex = TABS.findIndex((t) => t === tab) - 1
-        const isActive = previousTabIndex >= 0 ? !isNew || tabCompleted(TABS[previousTabIndex], listing) : true
+        const isActive = previousTabIndex >= 0 ? !isNew || tabCompleted(TABS[previousTabIndex], listing, user) : true
         return { ...acc, [tab]: isActive }
       }, {})
     }
@@ -270,7 +271,7 @@ class EditListingWizard extends Component {
     const rootClasses = rootClassName || css.root
     const classes = classNames(rootClasses, className)
     const currentListing = ensureListing(listing)
-    const tabsStatus = tabsActive(isNewListingFlow, currentListing)
+    const tabsStatus = tabsActive(isNewListingFlow, currentListing, currentUser)
 
     // If selectedTab is not active, redirect to the beginning of wizard
     if (!tabsStatus[selectedTab]) {

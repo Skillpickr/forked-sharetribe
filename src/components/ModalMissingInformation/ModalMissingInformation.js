@@ -52,6 +52,7 @@ class ModalMissingInformation extends Component {
     const pathChanged = newLocation.pathname !== this.props.location.pathname
     const notRemindedYet = !this.state.showMissingInformationReminder && !this.state.hasSeenMissingInformationReminder
 
+
     // Is the reminder already shown on current page
     const showOnPathChange = notRemindedYet || pathChanged
 

@@ -2,6 +2,7 @@
 
 exports[`EditListingPoliciesForm matches snapshot 1`] = `
 <ReactFinalForm
+  currentUser={null}
   disabled={false}
   dispatch={[Function]}
   intl={

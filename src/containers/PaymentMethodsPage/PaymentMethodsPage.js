@@ -17,7 +17,8 @@ import {
   LayoutWrapperFooter,
   Footer,
   Page,
-  UserNav
+  UserNav,
+  Alert
 } from '../../components'
 import { TopbarContainer } from '../../containers'
 import { PaymentMethodsForm } from '../../forms'
@@ -161,6 +162,11 @@ const PaymentMethodsPageComponent = (props) => {
             <h1 className={css.title}>
               <FormattedMessage id="PaymentMethodsPage.heading" />
             </h1>
+            <Alert>
+              <p>
+                <FormattedMessage id="PaymentMethodsPage.alert" />
+              </p>
+            </Alert>
             {!stripeCustomerFetched ? null : (
               <>
                 {showCardDetails ? (

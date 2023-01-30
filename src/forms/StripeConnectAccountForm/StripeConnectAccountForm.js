@@ -20,6 +20,7 @@ import {
   Form,
   StripeBankAccountTokenInputField
 } from '../../components'
+import { useHistory } from 'react-router-dom'
 
 import css from './StripeConnectAccountForm.module.css'
 
@@ -93,6 +94,12 @@ const CreateStripeAccountFields = (props) => {
       <h3 className={css.subTitle}>
         <FormattedMessage id="StripeConnectAccountForm.accountTypeTitle" />
       </h3>
+      <p className={css.termsText}>
+        <FormattedMessage id="StripeConnectAccountForm.alert3"></FormattedMessage>
+      </p>
+      <p className={css.termsText}>
+        <FormattedMessage id="StripeConnectAccountForm.alert4"></FormattedMessage>
+      </p>
       <div className={css.radioButtonRow}>
         <FieldRadioButton
           id="individual"
@@ -209,6 +216,8 @@ const StripeConnectAccountFormComponent = (props) => {
   const [showCardUpdateInput, setShowCardUpdateInput] = useState(false)
   const { onSubmit, ...restOfProps } = props
   const isUpdate = props.stripeConnected
+  const history = useHistory()
+  const handleClick = () => history.push(`/l/new`)
 
   return (
     <FinalForm
@@ -313,6 +322,14 @@ const StripeConnectAccountFormComponent = (props) => {
                 disabled={submitDisabled}
                 ready={ready}>
                 {submitButtonText || <FormattedMessage id="StripeConnectAccountForm.submitButtonText" />}
+              </Button>
+              {/* Tilføj knap til listing */}
+              <Button
+                className={css.heroButton}
+                onClick={(e) => {
+                  e.preventDefault, handleClick()
+                }}>
+                <FormattedMessage id="ProfileSettingsPage.guide.click" />
               </Button>
             </>
           ) : null
