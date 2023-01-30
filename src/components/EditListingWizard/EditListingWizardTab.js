@@ -23,7 +23,7 @@ import {
 import css from './EditListingWizard.module.css'
 
 export const AVAILABILITY = 'availability'
-export const DESCRIPTION = 'description'
+export const CREDENTIALS = 'credentials'
 export const FEATURES = 'features'
 export const INTRODUCTION = 'introduction'
 export const LOCATION = 'location'
@@ -31,7 +31,7 @@ export const PRICING = 'pricing'
 export const PHOTOS = 'photos'
 
 // EditListingWizardTab component supports these tabs
-export const SUPPORTED_TABS = [DESCRIPTION, FEATURES, INTRODUCTION, LOCATION, PRICING, AVAILABILITY, PHOTOS]
+export const SUPPORTED_TABS = [INTRODUCTION, FEATURES, CREDENTIALS, LOCATION, PRICING, AVAILABILITY, PHOTOS]
 
 const pathParamsToNextTab = (params, tab, marketplaceTabs) => {
   const nextTabIndex = marketplaceTabs.findIndex((s) => s === tab) + 1
@@ -155,13 +155,13 @@ const EditListingWizardTab = (props) => {
   }
 
   switch (tab) {
-    case DESCRIPTION: {
+    case CREDENTIALS: {
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewDescription'
         : 'EditListingWizard.saveEditDescription'
       return (
         <EditListingDescriptionPanel
-          {...panelProps(DESCRIPTION)}
+          {...panelProps(CREDENTIALS)}
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
           onSubmit={(values) => {
             onCompleteEditListingWizardTab(tab, values)

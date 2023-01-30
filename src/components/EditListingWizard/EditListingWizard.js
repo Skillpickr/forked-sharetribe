@@ -20,7 +20,7 @@ import { StripeConnectAccountForm } from '../../forms'
 
 import EditListingWizardTab, {
   AVAILABILITY,
-  DESCRIPTION,
+  CREDENTIALS,
   FEATURES,
   INTRODUCTION,
   LOCATION,
@@ -37,7 +37,7 @@ const STRIPE_ONBOARDING_RETURN_URL_FAILURE = 'failure'
 
 const tabLabel = (intl, tab) => {
   let key = null
-  if (tab === DESCRIPTION) {
+  if (tab === CREDENTIALS) {
     key = 'EditListingWizard.tabLabelDescription'
   } else if (tab === FEATURES) {
     key = 'EditListingWizard.tabLabelFeatures'
@@ -74,7 +74,7 @@ const tabCompleted = (tab, listing, user) => {
       return !!(publicData && title)
     case FEATURES:
       return !!(publicData && publicData.skill && title && description)
-    case DESCRIPTION:
+    case CREDENTIALS:
       return !!(publicData && publicData.url && publicData.experience)
     case LOCATION:
       return !!(geolocation && publicData && publicData.location && publicData.location.address)
@@ -247,7 +247,7 @@ class EditListingWizard extends Component {
     // and listing publishing happens after last panel.
     // Note 3: in FTW-hourly template we don't use the INTRODUCTION tab so it's commented out.
     // If you want to add a free text field to your listings you can enable the INTRODUCTION tab
-    const TABS = [INTRODUCTION, FEATURES, DESCRIPTION, LOCATION, PRICING, ...availabilityMaybe, PHOTOS]
+    const TABS = [INTRODUCTION, FEATURES, CREDENTIALS, LOCATION, PRICING, ...availabilityMaybe, PHOTOS]
 
     /**
      * Check which wizard tabs are active and which are not yet available. Tab is active if previous
