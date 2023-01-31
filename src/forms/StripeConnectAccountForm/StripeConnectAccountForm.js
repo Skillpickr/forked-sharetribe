@@ -324,13 +324,6 @@ const StripeConnectAccountFormComponent = (props) => {
                 {submitButtonText || <FormattedMessage id="StripeConnectAccountForm.submitButtonText" />}
               </Button>
               {/* Tilføj knap til listing */}
-              <Button
-                className={css.heroButton}
-                onClick={(e) => {
-                  e.preventDefault, handleClick()
-                }}>
-                <FormattedMessage id="ProfileSettingsPage.guide.click" />
-              </Button>
             </>
           ) : null
 

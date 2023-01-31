@@ -3,6 +3,8 @@ import { func, node, object, string } from 'prop-types'
 import { Field } from 'react-final-form'
 import classNames from 'classnames'
 import { ValidationError } from '../../components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ReactTooltip from 'react-tooltip'
 
 import css from './FieldSelect.module.css'
 
@@ -21,7 +23,20 @@ const handleChange = (propsOnChange, inputOnChange) => (event) => {
 }
 
 const FieldSelectComponent = (props) => {
-  const { rootClassName, className, selectClassName, id, label, input, meta, children, onChange, ...rest } = props
+  const {
+    rootClassName,
+    className,
+    selectClassName,
+    id,
+    label,
+    input,
+    meta,
+    children,
+    onChange,
+    tooltip,
+    tooltipString,
+    ...rest
+  } = props
 
   if (label && !id) {
     throw new Error('id required when a label is given')
@@ -50,7 +65,19 @@ const FieldSelectComponent = (props) => {
   const classes = classNames(rootClassName || css.root, className)
   return (
     <div className={classes}>
-      {label ? <label htmlFor={id}>{label}</label> : null}
+      {label ? (
+        <div className={css.flex}>
+          <label htmlFor={id}>{label}</label>
+          {tooltip && (
+            <div className={css.icon}>
+              <FontAwesomeIcon data-tip data-for={'input-label-tooltip' + id} icon={['fas', 'fa-circle-question']} />
+              <ReactTooltip id={'input-label-tooltip' + id} type="light" effect="solid">
+                <p className={css.container}>{tooltipString}</p>
+              </ReactTooltip>
+            </div>
+          )}
+        </div>
+      ) : null}
       <select {...selectProps}>{children}</select>
       <ValidationError fieldMeta={meta} />
     </div>

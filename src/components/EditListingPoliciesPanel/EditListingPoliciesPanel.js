@@ -40,7 +40,6 @@ const EditListingPoliciesPanel = (props) => {
   ) : (
     <FormattedMessage id="EditListingPoliciesPanel.createListingTitle" values={{ firstName: userName }} />
   )
-  // console.log(listing)
   return (
     <div className={classes}>
       <h1 className={css.title}>{panelTitle}</h1>

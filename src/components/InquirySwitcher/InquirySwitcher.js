@@ -8,16 +8,16 @@ import { FormattedMessage } from 'react-intl'
 
 const InquirySwitcher = () => {
   const switchEl = useRef(null)
-  const [showComponent, setShowComponent] = useState(true)
+  const [showComponent, setShowComponent] = useState('0px')
 
-  useEffect(() => {
-    const toRef = setTimeout(() => {
-      setShowComponent(true)
-      toggleSwitcher(true)
-      clearTimeout(toRef)
-      // it is good practice to clear the timeout (but I am not sure why)
-    }, 10000)
-  })
+  // useEffect(() => {
+  //   const toRef = setTimeout(() => {
+  //     setShowComponent(true)
+  //     toggleSwitcher(true)
+  //     clearTimeout(toRef)
+  //     // it is good practice to clear the timeout (but I am not sure why)
+  //   }, 10000)
+  // })
 
   // useEffect(() => {
   //   if (showComponent) {
@@ -29,7 +29,7 @@ const InquirySwitcher = () => {
   // }, [showComponent])
 
   const switcherStyle = {
-    left: '-189px'
+    left: '0px'
   }
 
   const toggleSwitcher = (e) => {

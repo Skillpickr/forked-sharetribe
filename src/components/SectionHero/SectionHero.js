@@ -122,6 +122,11 @@ const SectionHero = (props) => {
       return null
     }
   }
+  const videoLink = (
+    <ExternalLink href="https://www.loom.com/embed/ff36c037d9d64cfea4729d083890d92c">
+      <FormattedMessage id="SectionHero.watchVideoButton" />
+    </ExternalLink>
+  )
   return (
     <div className={classes}>
       <div className={css.heroContent}>
@@ -156,12 +161,11 @@ const SectionHero = (props) => {
           <FormattedMessage id="SectionHero.latestUpdate" />
         </div>
       </div>
-      <p>
-        For at se velkomst video igen, klik her
-        {/* <Button onClick={handleOpenIntroduction}>
-          <FormattedMessage id="SectionHero.introductionVideo" />
-        </Button> */}
-      </p>
+      {currentUser && (
+        <p>
+          <FormattedMessage id="SectionHero.watchVideo" values={{ videoLink }} />
+        </p>
+      )}
 
       {onManageDisableScrolling ? (
         <Modal

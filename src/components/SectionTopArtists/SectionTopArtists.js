@@ -35,6 +35,13 @@ const priceData = (price, intl) => {
 const SectionTopArtists = (props) => {
   const { rootClassName, className, listings, intl, setActiveListing } = props
   const classes = classNames(rootClassName || css.root, className)
+  const randomSlide = (rand) => {
+    return rand.sort(() => {
+      return 0.5 - Math.random()
+    })
+  }
+  // console.log(listings)
+  // console.log('random', randomSlide(listings))
 
   return (
     <div className={classes}>
@@ -59,12 +66,7 @@ const SectionTopArtists = (props) => {
         <div className={css.slideTrack}>
           {listings?.map((listing, index) => {
             return (
-              <SectionTopArtistsCard
-                listing={listing}
-                key={index * 15}
-                intl={intl}
-                setActiveListing={setActiveListing}
-              />
+              <SectionTopArtistsCard listing={listing} key={index} intl={intl} setActiveListing={setActiveListing} />
             )
           })}
         </div>

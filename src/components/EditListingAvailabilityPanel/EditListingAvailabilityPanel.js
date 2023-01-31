@@ -13,7 +13,8 @@ import {
   InlineTextButton,
   ListingLink,
   Modal,
-  TimeRange
+  TimeRange,
+  Alert
 } from '../../components'
 import { EditListingAvailabilityPlanForm, EditListingAvailabilityExceptionForm } from '../../forms'
 
@@ -225,6 +226,9 @@ const EditListingAvailabilityPanel = (props) => {
         )}
       </h1>
 
+      <Alert type="secondary">
+        <FormattedMessage id="EditListingAvailabilityPanel.guide"></FormattedMessage>
+      </Alert>
       <section className={css.section}>
         <header className={css.sectionHeader}>
           <h2 className={css.sectionTitle}>

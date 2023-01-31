@@ -136,6 +136,14 @@ export class EditListingPhotosFormComponent extends Component {
                   <FormattedMessage id="EditListingPhotosForm.updateFailed" />
                 </p>
               ) : null}
+              <Button
+                className={css.submitButton}
+                type="submit"
+                inProgress={submitInProgress}
+                disabled={submitDisabled}
+                ready={submitReady}>
+                {saveActionMsg}
+              </Button>
               <AddImages
                 className={css.imagesField}
                 images={images}

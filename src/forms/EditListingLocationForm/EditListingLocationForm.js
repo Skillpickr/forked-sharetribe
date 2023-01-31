@@ -6,7 +6,7 @@ import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl'
 import classNames from 'classnames'
 import { propTypes } from '../../util/types'
 import { autocompleteSearchRequired, autocompletePlaceSelected, composeValidators } from '../../util/validators'
-import { Form, LocationAutocompleteInputField, Button, FieldTextInput } from '../../components'
+import { Form, LocationAutocompleteInputField, Button, FieldTextInput, Alert } from '../../components'
 
 import css from './EditListingLocationForm.module.css'
 
@@ -76,6 +76,9 @@ export const EditListingLocationFormComponent = (props) => (
         <Form className={classes} onSubmit={handleSubmit}>
           {errorMessage}
           {errorMessageShowListing}
+          <Alert type="secondary">
+            <FormattedMessage id="EditListingLocationForm.guide"></FormattedMessage>
+          </Alert>
           <LocationAutocompleteInputField
             className={css.locationAddress}
             inputClassName={css.locationAutocompleteInput}

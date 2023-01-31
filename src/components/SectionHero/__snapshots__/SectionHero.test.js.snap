@@ -88,8 +88,5 @@ exports[`SectionHero matches snapshot 1`] = `
       </span>
     </div>
   </div>
-  <p>
-    For at se velkomst video igen, klik her
-  </p>
 </div>
 `;

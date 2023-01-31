@@ -28,3 +28,16 @@
 .selectError {
   border-bottom-color: var(--failColor);
 }
+.icon {
+  color: red;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.container {
+  max-width: 500px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}

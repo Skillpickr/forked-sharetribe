@@ -49,7 +49,11 @@ class EditPhotographerFeaturesComponent extends Component {
     })
 
     const soundLightExpKeyMessage = intl.formatMessage({
-      id: 'EditListingFeaturesForm.soundLightExpKeyMessage'
+      id: 'EditListingFeaturesForm.photoToVideoKeyMessage'
+    })
+
+    const soundLightExpLabelTooltip = intl.formatMessage({
+      id: 'EditListingFeaturesForm.soundLightExpKeyTooltip'
     })
     return (
       <div>

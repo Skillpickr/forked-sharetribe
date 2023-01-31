@@ -6,7 +6,15 @@ import arrayMutators from 'final-form-arrays'
 import { FieldArray } from 'react-final-form-arrays'
 import classNames from 'classnames'
 import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
-import { Form, InlineTextButton, IconClose, PrimaryButton, FieldSelect, FieldTimeZoneSelect } from '../../components'
+import {
+  Form,
+  InlineTextButton,
+  IconClose,
+  PrimaryButton,
+  FieldSelect,
+  FieldTimeZoneSelect,
+  Alert
+} from '../../components'
 
 import css from './EditListingAvailabilityPlanForm.module.css'
 
@@ -122,6 +130,7 @@ const DailyPlan = (props) => {
 
   return (
     <div className={classNames(css.weekDay, hasEntries ? css.hasEntries : null)}>
+
       <div className={css.dayOfWeek}>
         <FormattedMessage id={`EditListingAvailabilityPlanForm.dayOfWeek.${dayOfWeek}`} />
       </div>

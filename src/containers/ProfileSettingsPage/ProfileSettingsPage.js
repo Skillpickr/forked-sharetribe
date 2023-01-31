@@ -98,7 +98,7 @@ export class ProfileSettingsPageComponent extends Component {
     ) : null
 
     const title = intl.formatMessage({ id: 'ProfileSettingsPage.title' })
-    console.log(user)
+    // console.log(user)
 
     return (
       <Page className={css.root} title={title} scrollingDisabled={scrollingDisabled}>
