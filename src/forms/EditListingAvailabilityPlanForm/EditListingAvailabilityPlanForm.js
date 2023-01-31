@@ -130,11 +130,9 @@ const DailyPlan = (props) => {
 
   return (
     <div className={classNames(css.weekDay, hasEntries ? css.hasEntries : null)}>
-
       <div className={css.dayOfWeek}>
         <FormattedMessage id={`EditListingAvailabilityPlanForm.dayOfWeek.${dayOfWeek}`} />
       </div>
-
       <FieldArray name={dayOfWeek}>
         {({ fields }) => {
           return (
@@ -147,7 +145,6 @@ const DailyPlan = (props) => {
                 // Pick available end hours
                 const pickUnreservedEndHours = (h) => !getEntryEndTimes(index).includes(h)
                 const availableEndHours = ALL_END_HOURS.filter(pickUnreservedEndHours)
-
                 return (
                   <div className={css.fieldWrapper} key={name}>
                     <div className={css.formRow}>
