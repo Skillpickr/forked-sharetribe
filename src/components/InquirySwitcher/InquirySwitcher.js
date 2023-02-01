@@ -7,71 +7,61 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FormattedMessage } from 'react-intl'
 
 const InquirySwitcher = () => {
-  const switchEl = useRef(null)
-  const [showComponent, setShowComponent] = useState('0px')
+  const [showComponent, setShowComponent] = useState(true)
 
-  // useEffect(() => {
-  //   const toRef = setTimeout(() => {
-  //     setShowComponent(true)
-  //     toggleSwitcher(true)
-  //     clearTimeout(toRef)
-  //     // it is good practice to clear the timeout (but I am not sure why)
-  //   }, 10000)
-  // })
+  useEffect(() => {
+    const data = window.localStorage.getItem('SHOW_INQUIRY')
+    if (data !== null) setShowComponent(JSON.parse(data))
+  }, [])
 
-  // useEffect(() => {
-  //   if (showComponent) {
-  //     const toRef = setTimeout(() => {
-  //       setShowComponent(false)
-  //       clearTimeout(toRef)
-  //     }, 20000)
-  //   }
-  // }, [showComponent])
+  useEffect(() => {
+    window.localStorage.setItem('SHOW_INQUIRY', JSON.stringify(showComponent))
+  }, [showComponent])
 
   const switcherStyle = {
-    left: '0px'
-  }
-
-  const toggleSwitcher = (e) => {
-    if (switchEl) {
-      if (switchEl.current.style.left === '-189px') {
-        switchEl.current.style.left = '0px'
-      } else {
-        switchEl.current.style.left = '-189px'
-      }
-    }
+    left: showComponent
   }
 
   return (
-    <div
-      ref={switchEl}
-      className={css.styleSwitcher}
-      onClick={(e) => {
-        e.preventDefault()
-        toggleSwitcher()
-      }}
-      style={switcherStyle}>
-      {/* Style switcher  */}
+    <div className={css.container}>
+      {showComponent && (
+        <div
+          className={css.styleSwitcher}
+          onClick={(e) => {
+            e.preventDefault()
+            setShowComponent(!showComponent)
+          }}
+          style={switcherStyle}>
+          {/* Style switcher  */}
+
+          <div>
+            <h6>
+              <FormattedMessage id="InquirySwitcher.message" values={{ breakline: <br /> }} />
+            </h6>
+            <ul>
+              <li>
+                <ExternalLink
+                  onClick={(e) => {
+                    e.preventDefault()
+                  }}
+                  key="linkToEmail"
+                  href="mailto:hello@skillpickr.com"
+                  title="Send en mail">
+                  <FormattedMessage id="InquirySwitcher.button" />
+                </ExternalLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
       <div>
-        <h6>
-          <FormattedMessage id="InquirySwitcher.message" values={{ breakline: <br /> }} />
-        </h6>
-        <ul>
-          <li>
-            <ExternalLink
-              onClick={(e) => {
-                e.preventDefault()
-              }}
-              key="linkToEmail"
-              href="mailto:hello@skillpickr.com"
-              title="Send en mail">
-              <FormattedMessage id="InquirySwitcher.button" />
-            </ExternalLink>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <a href="" className={classNames(css.settings, css.shadow)}>
+        <a
+          href=""
+          className={classNames(css.settings, css.shadow)}
+          onClick={(e) => {
+            e.preventDefault()
+            setShowComponent(!showComponent)
+          }}>
           <FontAwesomeIcon icon="paper-plane" />
         </a>
       </div>
