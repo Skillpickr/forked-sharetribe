@@ -118,7 +118,12 @@ module.exports = (reportUri, enforceSsl, reportOnly) => {
   ])
   const extendFontSrc = fontSrc.concat(['*.tawk.to', 'fonts.gstatic.com'])
   const extendFrameSrc = frameSrc.concat(['*.tawk.to', 'www.facebook.com', 'www.loom.com'])
-  const extendImgSrc = imgSrc.concat(['*.tawk.to', 'cdn.jsdelivr.net', 'tawk.link', '*.purecatamphetamine.github.io'])
+  const extendImgSrc = imgSrc.concat([
+    '*.tawk.to',
+    'cdn.jsdelivr.net',
+    'tawk.link',
+    'https://purecatamphetamine.github.io'
+  ])
   const extendScriptSrc = scriptSrc.concat([
     '*.tawk.to',
     'cdn.jsdelivr.net',

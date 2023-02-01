@@ -1984,6 +1984,11 @@ exports[`SignupForm matches snapshot 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             placeholder="SignupForm.phonePlaceholder"
+            rules={
+              Object {
+                "required": true,
+              }
+            }
             type="tel"
             value=""
           />
