@@ -3,7 +3,8 @@ import { intlShape, injectIntl, FormattedMessage } from '../../../util/reactIntl
 import { FieldTextInput, Form } from '../../../components'
 
 import css from '../EditListingFeaturesForm.module.css'
-import { maxLength, required, composeValidators, validBusinessURL } from '../../../util/validators'
+// import { maxLength, required, composeValidators, validBusinessURL } from '../../../util/validators'
+import * as validators from '../../../util/validators'
 
 const TITLE_MAX_LENGTH = 60
 
@@ -47,10 +48,11 @@ class EditListingOtherInfoForm extends Component {
     const bonusPlaceholderMessage = intl.formatMessage({
       id: 'EditListingDescriptionForm.bonusPlaceholder'
     })
-
-    const urlValidateMessage = validBusinessURL(
-      intl.formatMessage({ id: 'EditListingDescriptionForm.businessURLRequired' })
-    )
+    const urlValidateMessage = intl.formatMessage({
+      id: 'EditListingDescriptionForm.businessURLRequired'
+    })
+    const urlValidate = validators.validBusinessURL(urlValidateMessage)
+    const urlRequired = validators.required(urlRequiredMessage)
 
     return (
       <div>
@@ -64,7 +66,7 @@ class EditListingOtherInfoForm extends Component {
           type="number"
           label={exprienceMessage}
           placeholder={experiencePlaceholderMessage}
-          validate={composeValidators(required(experienceRequiredMessage))}
+          validate={validators.composeValidators(validators.required(experienceRequiredMessage))}
         />
         <FieldTextInput
           id="track"
@@ -73,7 +75,7 @@ class EditListingOtherInfoForm extends Component {
           type="textarea"
           label={trackMessage}
           placeholder={trackPlaceholderMessage}
-          validate={composeValidators(required(trackRequiredMessage))}
+          validate={validators.composeValidators(validators.required(trackRequiredMessage))}
         />
         <FieldTextInput
           id="url"
@@ -82,7 +84,8 @@ class EditListingOtherInfoForm extends Component {
           type="text"
           label={urlMessage}
           placeholder={urlPlaceholderMessage}
-          validate={urlValidateMessage}
+          // validate={urlValidateMessage}
+          validate={validators.composeValidators(urlRequired, urlValidate)}
         />
         <FieldTextInput
           id="bonus"

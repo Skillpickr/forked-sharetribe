@@ -141,13 +141,14 @@ export const validBusinessURL = (message) => (value) => {
   const disallowedChars = /[^-A-Za-z0-9+&@#/%?=~_|!:,.;()]/
   const protocolTokens = value.split(':')
   const includesProtocol = protocolTokens.length > 1
-  const usesHttpProtocol = includesProtocol && !!protocolTokens[0].match(/^(https?)/)
+  const usesHttpProtocol = includesProtocol && !protocolTokens[0].match(/^(https?)/)
 
   const invalidCharacters = !!value.match(disallowedChars)
-  const invalidProtocol = !(usesHttpProtocol || !includesProtocol)
+  const invalidProtocol = !(usesHttpProtocol || !!includesProtocol)
   // Stripe checks against example.com
   const isExampleDotCom = !!value.match(/^(https?:\/\/example\.com|example\.com)/)
   const isLocalhost = !!value.match(/^(https?:\/\/localhost($|:|\/)|localhost($|:|\/))/)
+
   return invalidCharacters || invalidProtocol || isExampleDotCom || isLocalhost ? message : VALID
 }
 
