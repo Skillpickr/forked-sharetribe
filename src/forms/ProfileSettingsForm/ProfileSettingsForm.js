@@ -291,7 +291,9 @@ class ProfileSettingsFormComponent extends Component {
               <div>
                 {user.profileImage && user.attributes.profile.bio && (
                   <p>
-                    <strong><FormattedMessage id="ProfileSettingsForm.success" /> </strong>
+                    <strong>
+                      <FormattedMessage id="ProfileSettingsForm.success" />{' '}
+                    </strong>
                   </p>
                 )}
 
