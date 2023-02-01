@@ -291,7 +291,7 @@ class ProfileSettingsFormComponent extends Component {
               <div>
                 {user.profileImage && user.attributes.profile.bio && (
                   <p>
-                    <strong>Fedt mand! Du har opdateret din profil. Du er nu klar til at flashe din skills</strong>
+                    <strong><FormattedMessage id="ProfileSettingsForm.success" /> </strong>
                   </p>
                 )}
 

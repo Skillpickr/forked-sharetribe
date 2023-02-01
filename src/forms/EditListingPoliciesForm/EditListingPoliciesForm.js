@@ -55,7 +55,7 @@ export const EditListingPoliciesFormComponent = (props) => (
         <form className={classes} onSubmit={handleSubmit}>
           {errorMessage}
           {errorMessageShowListing}
-          <Alert>
+          <Alert type="secondary">
             <div>
               <p>
                 <FormattedMessage id="EditListingPoliciesPanel.createListingDescription" />
