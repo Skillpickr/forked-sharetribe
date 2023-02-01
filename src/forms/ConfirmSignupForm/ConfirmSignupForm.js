@@ -112,6 +112,8 @@ const ConfirmSignupFormComponent = (props) => (
       // Initial values from idp provider
       const { email, firstName, lastName, phone } = authInfo
 
+      const phoneRequired = validators.required(phoneRequiredMessage)
+
       const location = useGeoLocation()
       return (
         <Form className={classes} onSubmit={handleSubmit}>
@@ -127,7 +129,10 @@ const ConfirmSignupFormComponent = (props) => (
               validate={validators.composeValidators(emailRequired, emailValid)}
             />
             <div className={css.phone}>
-              <Field id={formId ? `${formId}.phoneNumber` : 'phoneNumber'} name="phoneNumber">
+              <Field
+                id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
+                name="phoneNumber"
+                validate={validators.composeValidators(phoneRequired)}>
                 {({ input, meta }) => {
                   return (
                     <div>
@@ -136,10 +141,16 @@ const ConfirmSignupFormComponent = (props) => (
                           text={phoneLabel}
                           id={formId ? `${formId}.phoneLabel` : 'phoneLabel'}
                           tooltip={true}
-                          tooltipString={phoneLabelTooltip}></InputLabel>
+                          tooltipString={phoneLabelTooltip}
+                        />
                       </div>
-
-                      <PhoneInput {...input} placeholder={phonePlaceholder} defaultCountry={location.country} />
+                      <PhoneInput
+                        {...input}
+                        placeholder={phonePlaceholder}
+                        defaultCountry={location.country}
+                        rules={{ required: true }}
+                      />
+                      {meta.touched && meta.error && <p style={{ color: 'red' }}>{meta.error}</p>}
                     </div>
                   )
                 }}

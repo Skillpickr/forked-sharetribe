@@ -32,8 +32,6 @@ const InquirySwitcher = () => {
             setShowComponent(!showComponent)
           }}
           style={switcherStyle}>
-          {/* Style switcher  */}
-
           <div>
             <h6>
               <FormattedMessage id="InquirySwitcher.message" values={{ breakline: <br /> }} />

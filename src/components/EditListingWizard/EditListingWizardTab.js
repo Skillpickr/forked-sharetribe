@@ -248,14 +248,22 @@ const EditListingWizardTab = (props) => {
       )
     }
     case PHOTOS: {
-      const submitButtonTranslationKey = isNewListingFlow
-        ? 'EditListingWizard.saveNewPhotos'
-        : 'EditListingWizard.saveEditPhotos'
+      const submitButtonTranslationKey = () => {
+        const stripeConnected = currentListing.author.attributes.stripeConnected
+        if (isNewListingFlow) {
+          if (stripeConnected) {
+            return 'EditListingWizard.publish'
+          }
+          return 'EditListingWizard.saveNewPhotos'
+        } else {
+          return 'EditListingWizard.saveEditPhotos'
+        }
+      }
 
       return (
         <EditListingPhotosPanel
           {...panelProps(PHOTOS)}
-          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
+          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey() })}
           images={images}
           onImageUpload={onImageUpload}
           onRemoveImage={onRemoveImage}

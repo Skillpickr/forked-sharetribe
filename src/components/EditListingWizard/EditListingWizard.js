@@ -377,8 +377,8 @@ class EditListingWizard extends Component {
           usePortal>
           <div className={css.modalPayoutDetailsWrapper}>
             <h1 className={css.modalTitle}>
-              <FormattedMessage id="EditListingWizard.payoutModalTitleOneMoreThing" />
-              <br />
+              {/* <FormattedMessage id="EditListingWizard.payoutModalTitleOneMoreThing" />
+              <br /> */}
               <FormattedMessage id="EditListingWizard.payoutModalTitlePayoutPreferences" />
             </h1>
             {!currentUserLoaded ? (
