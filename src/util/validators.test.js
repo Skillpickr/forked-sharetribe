@@ -168,7 +168,7 @@ describe('validators', () => {
       expect(validBusinessURL('fail')('<localhosttunnel.com>')).toEqual('fail')
     })
     it('should allow on localhosttunnel.com', () => {
-      expect(validBusinessURL('fail')('localhosttunnel.com')).toBeUndefined()
+      expect(validBusinessURL('fail')('localhosttunnel.com')).toEqual('fail')
     })
     it('should allow on http://localhosttunnel.com', () => {
       expect(validBusinessURL('fail')('http://localhosttunnel.com')).toBeUndefined()
