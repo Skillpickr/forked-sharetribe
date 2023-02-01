@@ -21,7 +21,6 @@ import { propTypes } from '../../util/types'
 
 const SectionHero = (props) => {
   const { locationm, intl, currentUser, onManageDisableScrolling } = props
-  console.log(onManageDisableScrolling)
   const { rootClassName, className } = props.className
   const [mounted, setMounted] = useState(false)
   const [ipLocation, setIpLocation] = useState('')

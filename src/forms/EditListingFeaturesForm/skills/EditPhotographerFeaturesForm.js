@@ -49,7 +49,7 @@ class EditPhotographerFeaturesComponent extends Component {
     })
 
     const soundLightExpKeyMessage = intl.formatMessage({
-      id: 'EditListingFeaturesForm.photoToVideoKeyMessage'
+      id: 'EditListingFeaturesForm.soundLightExpKeyMessage'
     })
 
     const soundLightExpLabelTooltip = intl.formatMessage({
@@ -107,7 +107,7 @@ class EditPhotographerFeaturesComponent extends Component {
               </option>
             ))}
           </FieldSelect>
-          <FieldSelect
+          {/* <FieldSelect
             className={css.features}
             name={editingServiceKey}
             id={editingServiceKey}
@@ -124,7 +124,7 @@ class EditPhotographerFeaturesComponent extends Component {
                 {o.label}
               </option>
             ))}
-          </FieldSelect>
+          </FieldSelect> */}
           <FieldTextInput
             id="gear"
             name="gear"
