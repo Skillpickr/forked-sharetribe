@@ -1040,7 +1040,7 @@
   "SignupForm.passwordRequired": "You need to add a password.",
   "SignupForm.passwordTooLong": "The password should be at most {maxLength} characters.",
   "SignupForm.passwordTooShort": "The password should be at least {minLength} characters.",
-  "SignupForm.phoneLabel": "Phone number (optional)",
+  "SignupForm.phoneLabel": "Phone",
   "SignupForm.phoneLabel.tooltip": "Contact number (for confirmed bookings and for SkillPickr to get in touch)",
   "SignupForm.phonePlaceholder": "54 54 54 54",
   "SignupForm.phoneRequired": "You need to add your phone number",

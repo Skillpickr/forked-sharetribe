@@ -157,9 +157,16 @@ const SignupFormComponent = (props) => (
                           text={phoneLabel}
                           id={formId ? `${formId}.phoneLabel` : 'phoneLabel'}
                           tooltip={true}
-                          tooltipString={phoneLabelTooltip}></InputLabel>
+                          tooltipString={phoneLabelTooltip}
+                        />
                       </div>
-                      <PhoneInput {...input} placeholder={phonePlaceholder} defaultCountry={location.country} />
+                      <PhoneInput
+                        {...input}
+                        placeholder={phonePlaceholder}
+                        defaultCountry={location.country}
+                        rules={{ required: true }}
+                      />
+                      {meta.touched && meta.error && <p style={{ color: 'red' }}>{meta.error}</p>}
                     </div>
                   )
                 }}
