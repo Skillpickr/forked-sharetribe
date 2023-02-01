@@ -57,7 +57,7 @@ class EditListingFeaturesPanel extends Component {
     const videoInteractiveService = publicData && publicData.videoInteractiveService
     const videoToPhotoService = publicData && publicData.videoToPhotoService
     const photoToVideoService = publicData && publicData.photoToVideoService
-    const editingService = publicData && publicData.editingService
+    // const editingService = publicData && publicData.editingService
     const djType = publicData && publicData.djType
     const technicalRider = publicData && publicData.technicalRider
     const cateringRider = publicData && publicData.cateringRider
@@ -77,7 +77,7 @@ class EditListingFeaturesPanel extends Component {
       videographerType,
       videoInteractiveService,
       videoToPhotoService,
-      editingService,
+      // editingService,
       photoToVideoService,
       gear,
       soundLightExp,
@@ -156,7 +156,7 @@ class EditListingFeaturesPanel extends Component {
         photoToVideoService = [],
         videoInteractiveService = [],
         videoToPhotoService = [],
-        editingService = [],
+        // editingService = [],
         soundLightExp = [],
         ownStudio = [],
         djType = [],
@@ -181,7 +181,7 @@ class EditListingFeaturesPanel extends Component {
           videographerType,
           videoInteractiveService,
           videoToPhotoService,
-          editingService,
+          // editingService,
           photoToVideoService,
           gear,
           soundLightExp,

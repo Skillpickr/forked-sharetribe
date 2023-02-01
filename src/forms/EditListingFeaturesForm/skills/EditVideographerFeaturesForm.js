@@ -134,7 +134,7 @@ class EditVideographerFeaturesComponent extends Component {
               </option>
             ))}
           </FieldSelect>
-          <FieldSelect className={css.features} name={editExpKey} id={editExpKey} label={editMessage}>
+          {/* <FieldSelect className={css.features} name={editExpKey} id={editExpKey} label={editMessage}>
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {(id) => (
                 <option disabled value="">
@@ -147,7 +147,7 @@ class EditVideographerFeaturesComponent extends Component {
                 {o.label}
               </option>
             ))}
-          </FieldSelect>
+          </FieldSelect> */}
           <FieldSelect
             className={css.features}
             name={videoToPhotoServiceKey}
