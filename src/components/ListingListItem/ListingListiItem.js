@@ -13,7 +13,7 @@ import config from '../../config'
 import * as custom from '../../marketplace-custom-config.js'
 import { NamedLink, ResponsiveImage } from '../../components'
 
-import css from './ListingCard.module.css'
+import css from './ListingListItem.module.css'
 import { Skills } from '../../util/category'
 
 const MIN_LENGTH_FOR_LONG_WORDS = 10
@@ -42,7 +42,7 @@ class ListingImage extends Component {
 }
 const LazyImage = lazyLoadWithDimensions(ListingImage, { loadAfterInitialRendering: 3000 })
 
-export const ListingCardComponent = (props) => {
+export const ListingListItemComponent = (props) => {
   const { className, rootClassName, intl, listing, renderSizes, filtersConfig, setActiveListing } = props
   const classes = classNames(rootClassName || css.root, className)
   const currentListing = ensureListing(listing)
@@ -117,7 +117,7 @@ export const ListingCardComponent = (props) => {
   )
 }
 
-ListingCardComponent.defaultProps = {
+ListingListItemComponent.defaultProps = {
   className: null,
   rootClassName: null,
   renderSizes: null,
@@ -125,7 +125,7 @@ ListingCardComponent.defaultProps = {
   setActiveListing: () => null
 }
 
-ListingCardComponent.propTypes = {
+ListingListItemComponent.propTypes = {
   className: string,
   rootClassName: string,
   filtersConfig: array,
@@ -138,4 +138,4 @@ ListingCardComponent.propTypes = {
   setActiveListing: func
 }
 
-export default injectIntl(ListingCardComponent)
+export default injectIntl(ListingListItemComponent)

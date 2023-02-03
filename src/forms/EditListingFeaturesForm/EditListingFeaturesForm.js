@@ -26,6 +26,28 @@ class DefaultComponent extends React.Component {
   }
 }
 
+const setCategory = (skillSet, categoryOptions) => {
+  switch (true) {
+    case skillSet.includes(Skills.photographer):
+    case skillSet.includes(Skills.videographer):
+      return categoryOptions.find((element) => element.key === Categories.creative).key
+    case skillSet.includes(Skills.musician):
+    case skillSet.includes(Skills.dj):
+    case skillSet.includes(Skills.band):
+      return categoryOptions.find((element) => element.key === Categories.performance).key
+    default:
+      return ''
+  }
+}
+
+const components = {
+  [Skills.photographer]: EditPhotographerFeaturesComponent,
+  [Skills.videographer]: EditVideographerFeaturesComponent,
+  [Skills.musician]: EditMusicianFeaturesComponent,
+  [Skills.dj]: EditDJFeaturesComponent,
+  [Skills.band]: EditBandFeaturesComponent
+}
+
 const EditListingFeaturesFormComponent = (props) => (
   <FinalForm
     {...props}
@@ -74,35 +96,15 @@ const EditListingFeaturesFormComponent = (props) => (
 
       // ############### MAIN COMPONENT ###########################
       const skillKey = 'skill'
-      const skillOptions = findOptionsForSelectFilter(skillKey, filterConfig)
-      const [state, setState] = useState(skill)
       const categoryKey = 'category'
+      const skillOptions = findOptionsForSelectFilter(skillKey, filterConfig)
       const categoryOptions = findOptionsForSelectFilter(categoryKey, filterConfig)
 
-      let category = ''
+      const [state, setState] = useState(skill)
+
       const handleChange = (skillSet) => {
         setState(skillSet)
-        if (skillSet.includes(Skills.photographer)) {
-          const opt = categoryOptions.find((element) => element.key === Categories.creative)
-          category = opt.key
-        }
-        if (skillSet.includes(Skills.videographer)) {
-          const opt = categoryOptions.find((element) => element.key === Categories.creative)
-          category = opt.key
-        }
-        if (skillSet.includes(Skills.musician)) {
-          const opt = categoryOptions.find((element) => element.key === Categories.performance)
-          category = opt.key
-        }
-        if (skillSet.includes(Skills.dj)) {
-          const opt = categoryOptions.find((element) => element.key === Categories.performance)
-          category = opt.key
-        }
-        if (skillSet.includes(Skills.band)) {
-          const opt = categoryOptions.find((element) => element.key === Categories.performance)
-          category = opt.key
-        }
-        props.parentCallback(category)
+        props.parentCallback(setCategory(skillSet, categoryOptions))
       }
 
       // TODO: Make compnents change programatically
