@@ -34,9 +34,9 @@
 
 .settings {
   background: none repeat scroll 0 0 #ffffff;
-  height: 41px;
+  height: 40px;
   position: absolute;
-  right: -41px;
+  right: -40px;
   top: 0px;
   width: 40px;
   padding: 3px;
@@ -48,4 +48,27 @@
 
 .shadow {
   box-shadow: 0 0 3px rgba(60, 72, 88, 0.15) !important;
+}
+
+.slideInLeft {
+  -webkit-animation: slideInLeft 0.5s ease-in-out;
+  animation: slideInLeft 0.5s ease-in-out;
+}
+
+@-webkit-keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

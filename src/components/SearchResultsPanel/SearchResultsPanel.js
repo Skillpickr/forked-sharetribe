@@ -9,9 +9,10 @@ const SearchResultsPanel = (props) => {
   const { className, rootClassName, listings, pagination, search, setActiveListing } = props
   const classes = classNames(rootClassName || css.root, className)
 
-  const [view, setView] = useState('card')
+  const [view, setView] = useState(localStorage.getItem('view') ? localStorage.getItem('view') : 'card')
 
   const handleViewChange = (newView) => {
+    localStorage.setItem('view', newView)
     setView(newView)
   }
 

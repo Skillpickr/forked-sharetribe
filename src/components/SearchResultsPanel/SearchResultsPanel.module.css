@@ -6,7 +6,6 @@
 }
 
 .viewSwitcher,
-.listing,
 .listingCards {
   padding: 0 24px 96px 24px;
 
@@ -24,6 +23,19 @@
   display: flex;
   justify-content: flex-end;
   padding-bottom: 24px;
+}
+.listingList {
+  padding: 0 24px 96px 24px;
+
+  @media (--viewportMedium) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  @media (--viewportLarge) {
+    padding: 0 36px 96px 36px;
+  }
 }
 
 .listButton,
@@ -91,6 +103,13 @@
     flex-basis: calc(33.33% - 16px);
     margin-right: 24px;
   }
+}
+.listing {
+  box-shadow: var(--boxShadowLight);
+  padding: 16px;
+}
+.listing:hover {
+  background-color: var(--matterColorNegative);
 }
 
 /**

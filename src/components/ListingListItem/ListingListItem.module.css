@@ -12,96 +12,6 @@
   }
 }
 
-.info {
-  /* Layout */
-  display: flex;
-  flex-direction: row;
-  padding: 16px 0 2px 0;
-}
-
-.price {
-  /* Layout */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  margin-right: 18px;
-}
-
-.priceValue {
-  /* Font */
-  composes: h2 from global;
-
-  /* Remove default margins from font */
-  margin-top: 0;
-  margin-bottom: 0;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.perUnit {
-  /* Font */
-  composes: marketplaceTinyFontStyles from global;
-  color: var(--matterColor);
-
-  /* Remove default margins from font */
-  margin-top: 0;
-  margin-bottom: 0;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.mainInfo {
-  display: flex;
-  flex-direction: column;
-}
-
-.title {
-  /* Font */
-  composes: h3 from global;
-  color: var(--matterColor);
-
-  /* Remove default margins from font */
-  margin-top: 0;
-  margin-bottom: 0;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.skillInfo {
-  /* Font */
-  composes: marketplaceTinyFontStyles from global;
-  color: var(--matterColor);
-
-  /* Remove default margins from font */
-  margin-top: 0;
-  margin-bottom: 0;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.longWord {
-  /* fallback option */
-  word-break: break-all;
-  /* use break-word if available */
-  word-break: break-word;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
-}
-
 .threeToTwoWrapper {
   /* Layout */
   display: flex;
@@ -127,13 +37,17 @@ background: var(--matterColorNegative); / Loading BG color */
   /* Layout - image will take space defined by aspect ratio wrapper */
   width: 100%;
   border-radius: var(--borderRadius);
+  min-width: 70px;
 }
 
 .info {
   /* Layout */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 16px;
+  @media (--viewportMedium) {
+    flex-direction: row;
+  }
 }
 
 .price {
@@ -143,6 +57,7 @@ background: var(--matterColorNegative); / Loading BG color */
   justify-content: flex-start;
   flex-shrink: 0;
   margin-right: 18px;
+  min-width: 150px;
 }
 
 .priceValue {
