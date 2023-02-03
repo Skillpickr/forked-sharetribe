@@ -5,6 +5,8 @@
   flex-direction: column;
 }
 
+.viewSwitcher,
+.listing,
 .listingCards {
   padding: 0 24px 96px 24px;
 
@@ -17,6 +19,34 @@
   @media (--viewportLarge) {
     padding: 0 36px 96px 36px;
   }
+}
+.viewSwitcher {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 24px;
+}
+
+.listButton,
+.gridButton {
+  color: var(--marketplaceColor);
+  border: 1px solid white;
+  padding: 4px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid var(--marketplaceColor);
+  margin-left: 16px;
+}
+
+.listButton:hover,
+.gridButton:hover {
+  background: var(--marketplaceColorLight);
+  color: white;
+}
+.gridButtonActive,
+.listButtonActive {
+  background: var(--marketplaceColor);
+  color: white;
 }
 
 .listingCard {

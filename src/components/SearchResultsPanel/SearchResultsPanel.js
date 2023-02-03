@@ -38,8 +38,16 @@ const SearchResultsPanel = (props) => {
   return (
     <div className={classes}>
       <div className={css.viewSwitcher}>
-        <button onClick={() => handleViewChange('card')}>Card View</button>
-        <button onClick={() => handleViewChange('list')}>List View</button>
+        <button
+          className={classNames(css.gridButton, { [css.gridButtonActive]: view === 'card' })}
+          onClick={() => handleViewChange('card')}>
+          Card View
+        </button>
+        <button
+          className={classNames(css.listButton, { [css.listButtonActive]: view === 'list' })}
+          onClick={() => handleViewChange('list')}>
+          List View
+        </button>
       </div>
       {view === 'card' ? (
         <div className={css.listingCards}>
