@@ -11,6 +11,7 @@ import * as log from './util/log'
 import { canonicalRoutePath } from './util/routes'
 import routeConfiguration from './routeConfiguration'
 import { createBrowserHistory } from 'history'
+import { GlobalStyles } from './util/fontawesome'
 
 const canShowComponent = (props) => {
   const { isAuthenticated, route } = props
@@ -164,12 +165,15 @@ const Routes = (props, context) => {
         path={route.path}
         exact={isExact}
         render={(matchProps) => (
-          <RouteComponentContainer
-            {...renderProps}
-            match={matchProps.match}
-            location={matchProps.location}
-            staticContext={matchProps.staticContext}
-          />
+          <div id="app">
+            <GlobalStyles />
+            <RouteComponentContainer
+              {...renderProps}
+              match={matchProps.match}
+              location={matchProps.location}
+              staticContext={matchProps.staticContext}
+            />
+          </div>
         )}
       />
     )

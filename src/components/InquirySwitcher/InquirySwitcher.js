@@ -1,37 +1,43 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ExternalLink } from '../../components'
-
 import css from './InquirySwitcher.module.css'
-import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FormattedMessage } from 'react-intl'
+import classNames from 'classnames'
 
 const InquirySwitcher = () => {
-  const [showComponent, setShowComponent] = useState(true)
+  const [showComponent, setShowComponent] = useState(false)
 
   useEffect(() => {
     const data = window.localStorage.getItem('SHOW_INQUIRY')
-    if (data !== null) setShowComponent(JSON.parse(data))
+
+    if (data === null) {
+      setTimeout(() => {
+        setShowComponent(true)
+        // window.localStorage.setItem('SHOW_INQUIRY', JSON.stringify(showComponent))
+      }, 10 * 1000)
+    } else {
+      setShowComponent(JSON.parse(data))
+    }
   }, [])
 
   useEffect(() => {
     window.localStorage.setItem('SHOW_INQUIRY', JSON.stringify(showComponent))
   }, [showComponent])
 
-  const switcherStyle = {
-    left: showComponent
-  }
+  const classes = classNames(css.container, {
+    [css.slideInLeft]: showComponent
+  })
 
   return (
-    <div className={css.container}>
+    <div className={classes}>
       {showComponent && (
         <div
           className={css.styleSwitcher}
           onClick={(e) => {
             e.preventDefault()
             setShowComponent(!showComponent)
-          }}
-          style={switcherStyle}>
+          }}>
           <div>
             <h6>
               <FormattedMessage id="InquirySwitcher.message" values={{ breakline: <br /> }} />

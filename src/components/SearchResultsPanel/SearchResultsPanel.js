@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { propTypes } from '../../util/types'
-import { ListingCard, PaginationLinks } from '../../components'
+import { ListingCard, ListingListItem, PaginationLinks } from '../../components'
 import css from './SearchResultsPanel.module.css'
 
 const SearchResultsPanel = (props) => {
   const { className, rootClassName, listings, pagination, search, setActiveListing } = props
   const classes = classNames(rootClassName || css.root, className)
+
+  const [view, setView] = useState(localStorage.getItem('view') ? localStorage.getItem('view') : 'card')
+
+  const handleViewChange = (newView) => {
+    localStorage.setItem('view', newView)
+    setView(newView)
+  }
 
   const paginationLinks =
     pagination && pagination.totalPages > 1 ? (
@@ -31,18 +38,38 @@ const SearchResultsPanel = (props) => {
 
   return (
     <div className={classes}>
-      <div className={css.listingCards}>
-        {listings.map((l) => (
-          <ListingCard
-            className={css.listingCard}
-            key={l.id.uuid}
-            listing={l}
-            renderSizes={cardRenderSizes}
-            setActiveListing={setActiveListing}
-          />
-        ))}
-        {props.children}
+      <div className={css.viewSwitcher}>
+        <button
+          className={classNames(css.gridButton, { [css.gridButtonActive]: view === 'card' })}
+          onClick={() => handleViewChange('card')}>
+          Card View
+        </button>
+        <button
+          className={classNames(css.listButton, { [css.listButtonActive]: view === 'list' })}
+          onClick={() => handleViewChange('list')}>
+          List View
+        </button>
       </div>
+      {view === 'card' ? (
+        <div className={css.listingCards}>
+          {listings.map((l) => (
+            <ListingCard className={css.listingCard} key={l.id.uuid} listing={l} setActiveListing={setActiveListing} />
+          ))}
+          {props.children}
+        </div>
+      ) : (
+        <div className={css.listingList}>
+          {listings.map((l) => (
+            <ListingListItem
+              className={css.listing}
+              renderSizes={cardRenderSizes}
+              key={l.id.uuid}
+              listing={l}
+              setActiveListing={setActiveListing}
+            />
+          ))}
+        </div>
+      )}
       {paginationLinks}
     </div>
   )
