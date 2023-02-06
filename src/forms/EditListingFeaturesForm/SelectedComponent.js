@@ -3,8 +3,9 @@ import EditVideographerFeaturesComponent from './skills/EditVideographerFeatures
 import EditDJFeaturesComponent from './skills/EditDJFeaturesComponent'
 import EditMusicianFeaturesComponent from './skills/EditMusicianFeaturesComponent'
 import EditBandFeaturesComponent from './skills/EditBandFeaturesComponent'
+import { Skills } from './EditListingFeaturesForm.example'
 
-const SelectedComponent = () => {
+const SelectedComponent = (skill) => {
   switch (skill) {
     case Skills.photographer:
       return <EditPhotographerFeaturesComponent filterConfig={filterConfig} intl={intl} />
@@ -15,6 +16,8 @@ const SelectedComponent = () => {
     case Skills.musician:
       return <EditMusicianFeaturesComponent filterConfig={filterConfig} intl={intl} />
     case Skills.band:
+      return <EditBandFeaturesComponent filterConfig={filterConfig} intl={intl} />
+    case Skills.makeupArtist:
       return <EditBandFeaturesComponent filterConfig={filterConfig} intl={intl} />
     default:
       return null
