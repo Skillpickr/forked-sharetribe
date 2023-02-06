@@ -165,7 +165,7 @@ const Routes = (props, context) => {
         path={route.path}
         exact={isExact}
         render={(matchProps) => (
-          <div id="global-component">
+          <div id="app">
             <GlobalStyles />
             <RouteComponentContainer
               {...renderProps}
