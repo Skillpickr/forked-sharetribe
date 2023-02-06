@@ -8,11 +8,13 @@ exports[`SearchResultsPanel matches snapshot 1`] = `
     className="viewSwitcher"
   >
     <button
+      className="gridButton gridButtonActive"
       onClick={[Function]}
     >
       Card View
     </button>
     <button
+      className="listButton"
       onClick={[Function]}
     >
       List View
