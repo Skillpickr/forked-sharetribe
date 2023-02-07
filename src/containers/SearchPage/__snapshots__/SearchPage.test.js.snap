@@ -154,6 +154,10 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                     "key": "band",
                     "label": "Band",
                   },
+                  Object {
+                    "key": "makeupArtist",
+                    "label": "Makeup Artist",
+                  },
                 ],
               },
               "group": "primary",
@@ -659,27 +663,27 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                   },
                   Object {
                     "key": "1950Band",
-                    "label": "1950s era tribute band",
+                    "label": "1950s tribute band",
                   },
                   Object {
                     "key": "1960Band",
-                    "label": "1960s era tribute band",
+                    "label": "1960s tribute band",
                   },
                   Object {
                     "key": "1970Band",
-                    "label": "1970s era tribute band",
+                    "label": "1970s tribute band",
                   },
                   Object {
                     "key": "1980Band",
-                    "label": "1980s era tribute band",
+                    "label": "1980s tribute band",
                   },
                   Object {
                     "key": "1990Band",
-                    "label": "1990s era tribute band",
+                    "label": "1990s tribute band",
                   },
                   Object {
                     "key": "2000Band",
-                    "label": "2000s era tribute band",
+                    "label": "2000s tribute band",
                   },
                   Object {
                     "key": "abbaTributeBand",
@@ -878,7 +882,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                     "label": "Brand Awareness Videos",
                   },
                   Object {
-                    "key": "Event",
+                    "key": "event",
                     "label": "Event Videography",
                   },
                   Object {
@@ -1643,6 +1647,14 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                     "key": "band",
                     "label": "Band (Stand in)",
                   },
+                  Object {
+                    "key": "session",
+                    "label": "Session musician",
+                  },
+                  Object {
+                    "key": "teacher",
+                    "label": "Music instructors or teacher",
+                  },
                 ],
                 "searchMode": "has_all",
               },
@@ -1743,6 +1755,104 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 "",
               ],
               "type": "",
+            },
+            Object {
+              "config": Object {
+                "options": Array [
+                  Object {
+                    "key": "beautyRetail",
+                    "label": "Beauty Retail",
+                  },
+                  Object {
+                    "key": "fashion",
+                    "label": "Fashion",
+                  },
+                  Object {
+                    "key": "bodyAndFacePainting",
+                    "label": "Body and Face Painting",
+                  },
+                  Object {
+                    "key": "theatre",
+                    "label": "Theatre",
+                  },
+                  Object {
+                    "key": "television",
+                    "label": "Television",
+                  },
+                  Object {
+                    "key": "filmAndMovies",
+                    "label": "Film and Movies",
+                  },
+                  Object {
+                    "key": "personalServices",
+                    "label": "Personal Services (e.g. special occasion makeup)",
+                  },
+                  Object {
+                    "key": "specializedMakeup",
+                    "label": "Specialized Makeup (e.g. scars/deformities coverage)",
+                  },
+                  Object {
+                    "key": "fxMakeup",
+                    "label": "FX Makeup (e.g. gore, creatures)",
+                  },
+                  Object {
+                    "key": "bridalMakeup",
+                    "label": "Bridal Makeup (wedding)",
+                  },
+                  Object {
+                    "key": "stageMakeup",
+                    "label": "Stage Makeup",
+                  },
+                  Object {
+                    "key": "performanceMakeup",
+                    "label": "Performance Makeup",
+                  },
+                  Object {
+                    "key": "airbrushMakeup",
+                    "label": "Airbrush Makeup",
+                  },
+                  Object {
+                    "key": "editorialMakeup",
+                    "label": "Editorial Makeup",
+                  },
+                  Object {
+                    "key": "photographicMakeup",
+                    "label": "Photographic Makeup",
+                  },
+                  Object {
+                    "key": "dragMakeup",
+                    "label": "Drag Makeup",
+                  },
+                  Object {
+                    "key": "fantasyMakeup",
+                    "label": "Fantasy Makeup",
+                  },
+                  Object {
+                    "key": "specialEffectsMakeup",
+                    "label": "Special Effects Makeup",
+                  },
+                  Object {
+                    "key": "prostheticMakeup",
+                    "label": "Prosthetic Makeup",
+                  },
+                  Object {
+                    "key": "characterMakeup",
+                    "label": "Character Makeup",
+                  },
+                  Object {
+                    "key": "runwayMakeup",
+                    "label": "Runway Makeup",
+                  },
+                ],
+                "searchMode": "has_all",
+              },
+              "group": "secondary",
+              "id": "makeupArtistType",
+              "label": "Makeup Artist",
+              "queryParamNames": Array [
+                "pub_makeupArtistTypeType",
+              ],
+              "type": "SelectMultipleFilter",
             },
           ]
         }

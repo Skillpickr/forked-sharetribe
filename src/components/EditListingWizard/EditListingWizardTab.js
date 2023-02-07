@@ -195,6 +195,7 @@ const EditListingWizardTab = (props) => {
             onCompleteEditListingWizardTab(tab, values)
           }}
           currentUser={currentUser}
+          intl={intl}
         />
       )
     }

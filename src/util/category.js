@@ -2,7 +2,8 @@ const Categories = {
   creative: 'creative',
   performance: 'performance',
   knowledge: 'knowledge',
-  audioProd: 'audio-prod'
+  audioProd: 'audio-prod',
+  mediaProd: 'media-prod'
 }
 
 const Skills = {
@@ -10,6 +11,7 @@ const Skills = {
   videographer: 'videographer',
   dj: 'dj',
   musician: 'musician',
-  band: 'band'
+  band: 'band',
+  makeupArtist: 'makeupArtist'
 }
 export { Categories, Skills }

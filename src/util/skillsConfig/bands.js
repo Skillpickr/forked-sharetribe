@@ -1,4 +1,17 @@
 import { CheckboxFieldsType, DropdownFieldsType } from '../featuresFields'
+import config from '../../config'
+import { createIntl, createIntlCache } from 'react-intl'
+
+import { messagesInLocale } from '../../intl'
+
+const cache = createIntlCache()
+const intl = createIntl(
+  {
+    locale: config.locale,
+    messages: messagesInLocale()
+  },
+  cache
+)
 
 export const bandConfig = [
   {
@@ -16,15 +29,15 @@ export const bandConfig = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
-        { key: 'ceremony', label: 'Ceremonial Events' },
-        { key: 'reception', label: 'Reception Events' },
-        { key: 'evening', label: 'Evening Events' },
-        { key: 'privateParty', label: 'Private Parties' },
-        { key: 'corporate', label: 'Corporate Parties' },
-        { key: 'wedding', label: 'Weddings' },
-        { key: 'birthday', label: 'Birthday parties' },
-        { key: 'christmas', label: 'Christmas parties' },
-        { key: 'newYear', label: 'New years Eve Parties' }
+        { key: 'ceremony', label: intl.formatMessage({ id: 'MarketplaceConfig.bandType.ceremony' }) },
+        { key: 'reception', label: intl.formatMessage({ id: 'MarketplaceConfig.bandType.reception' }) },
+        { key: 'evening', label: intl.formatMessage({ id: 'MarketplaceConfig.bandType.evening' }) },
+        { key: 'privateParty', label: intl.formatMessage({ id: 'MarketplaceConfig.bandType.privateParty' }) },
+        { key: 'corporate', label: intl.formatMessage({ id: 'MarketplaceConfig.bandType.corporate' }) },
+        { key: 'wedding', label: intl.formatMessage({ id: 'MarketplaceConfig.bandType.wedding' }) },
+        { key: 'birthday', label: intl.formatMessage({ id: 'MarketplaceConfig.bandType.birthday' }) },
+        { key: 'christmas', label: intl.formatMessage({ id: 'MarketplaceConfig.bandType.christmas' }) },
+        { key: 'newYear', label: intl.formatMessage({ id: 'MarketplaceConfig.bandType.newYear' }) }
       ]
     }
   },
@@ -137,12 +150,12 @@ export const bandConfig = [
         { key: 'tradChineseEnsemble', label: 'Traditional Chinese ensemble' },
         { key: 'tradArabicEnsemble', label: 'Traditional Arabic ensemble' },
         { key: 'earlyMusicEnsemble', label: 'Early music ensemble' },
-        { key: '1950Band', label: '1950s era tribute band' },
-        { key: '1960Band', label: '1960s era tribute band' },
-        { key: '1970Band', label: '1970s era tribute band' },
-        { key: '1980Band', label: '1980s era tribute band' },
-        { key: '1990Band', label: '1990s era tribute band' },
-        { key: '2000Band', label: '2000s era tribute band' },
+        { key: '1950Band', label: '1950s tribute band' },
+        { key: '1960Band', label: '1960s tribute band' },
+        { key: '1970Band', label: '1970s tribute band' },
+        { key: '1980Band', label: '1980s tribute band' },
+        { key: '1990Band', label: '1990s tribute band' },
+        { key: '2000Band', label: '2000s tribute band' },
         { key: 'abbaTributeBand', label: 'Tribute band - Abba' },
         { key: 'beatlesTributeBand', label: 'Tribute band - Beatles' },
         { key: 'queenTributeBand', label: 'Tribute band - Queen' }

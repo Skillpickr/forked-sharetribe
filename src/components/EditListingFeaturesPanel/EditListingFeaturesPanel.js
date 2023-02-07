@@ -53,6 +53,7 @@ class EditListingFeaturesPanel extends Component {
     const ownStudio = publicData && publicData.ownStudio
     const soundLightExp = publicData && publicData.soundLightExp
     const photographerType = publicData && publicData.photographerType
+    const makeupArtistType = publicData && publicData.makeupArtistType
     const videographerType = publicData && publicData.videographerType
     const videoInteractiveService = publicData && publicData.videoInteractiveService
     const videoToPhotoService = publicData && publicData.videoToPhotoService
@@ -74,6 +75,7 @@ class EditListingFeaturesPanel extends Component {
       title,
       description,
       photographerType,
+      makeupArtistType,
       videographerType,
       videoInteractiveService,
       videoToPhotoService,
@@ -151,6 +153,7 @@ class EditListingFeaturesPanel extends Component {
         description,
         skill = [],
         photographerType = [],
+        makeupArtistType = [],
         videographerType = [],
         gear = '',
         photoToVideoService = [],
@@ -178,6 +181,7 @@ class EditListingFeaturesPanel extends Component {
         publicData: {
           skill,
           photographerType,
+          makeupArtistType,
           videographerType,
           videoInteractiveService,
           videoToPhotoService,

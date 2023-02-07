@@ -37,6 +37,7 @@ import { bandConfig } from './util/skillsConfig/bands'
 import { sharedConfig } from './util/skillsConfig/shared'
 import { photographerConfig } from './util/skillsConfig/photographer'
 import { videographerConfig } from './util/skillsConfig/videographer'
+import { makeupArtistConfig } from './util/skillsConfig/makeupArtist'
 import { musicianConfig } from './util/skillsConfig/musician'
 import { djConfig } from './util/skillsConfig/dj'
 import { createIntl, createIntlCache } from 'react-intl'
@@ -144,7 +145,8 @@ const filterConfig = [
         { key: Skills.videographer, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.videographer' }) },
         { key: Skills.dj, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.dj' }) },
         { key: Skills.musician, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.musician' }) },
-        { key: Skills.band, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.band' }) }
+        { key: Skills.band, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.band' }) },
+        { key: Skills.makeupArtist, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.makeupArtist' }) }
       ]
     }
   }
@@ -155,7 +157,8 @@ export const filters = filterConfig.concat(
   photographerConfig,
   videographerConfig,
   musicianConfig,
-  djConfig
+  djConfig,
+  makeupArtistConfig
 )
 
 export const sortConfig = {

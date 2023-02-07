@@ -246,6 +246,24 @@ const SectionSpecificationsMaybe = (props) => {
     </div>
   )
 
+  const makeupComponent = (
+    <div>
+      {ownStudioLabel && (
+        <p className={css.description}>
+          <FormattedMessage id="ListingPage.ownStudio" values={{ ownStudio: ownStudioLabel }} />
+        </p>
+      )}
+      {gear && (
+        <div>
+          <p className={css.subTitle}>
+            <FormattedMessage id="ListingPage.gear" />
+          </p>
+          <p className={css.description}>{gear}</p>
+        </div>
+      )}
+    </div>
+  )
+
   const [state] = useState(skillType)
 
   return homepageUrl || skillType ? (
@@ -274,6 +292,8 @@ const SectionSpecificationsMaybe = (props) => {
 
       {/* Bands */}
       {state.includes(Skills.band) && bandComponent}
+      {/* Makeup Artist */}
+      {state.includes(Skills.makeupArtist) && makeupComponent}
     </div>
   ) : null
 }

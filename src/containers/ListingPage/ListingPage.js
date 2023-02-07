@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import { array, arrayOf, bool, func, object, shape, string, oneOf } from 'prop-types'
 import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl'
 import { compose } from 'redux'
@@ -380,6 +380,61 @@ export class ListingPageComponent extends Component {
       return null
     }
 
+    // const [subSkillOptions, setSubSkillOptions] = useState(null)
+    // const [selectedSubOptions, setSelectedSubOptions] = useState([])
+    // const [genreOptions, setGenreOptions] = useState(null)
+    // const [selectedConfigGenreOptions, setSelectedConfigGenreOptions] = useState([])
+    // const [selectedGenres, setSelectedGenres] = useState([])
+
+    // useEffect(() => {
+    //   // Find selected options label
+    //   const optionConfig = skillOptions.find((o) => o.key === selectedOption)
+    //   const optionLabel = optionConfig ? optionConfig.label : null
+
+    //   if (publicData) {
+    //     switch (optionConfig.key) {
+    //       case Skills.photographer:
+    //         setSubSkillOptions(findOptionsForSelectFilter(CheckboxFieldsType.photographerTypeKey, filterConfig))
+    //         setSelectedSubOptions(publicData.photographerType)
+    //         break
+    //       case Skills.videographer:
+    //         setSubSkillOptions(findOptionsForSelectFilter(CheckboxFieldsType.videographerTypeKey, filterConfig))
+    //         setSelectedSubOptions(publicData.videographerType)
+    //         break
+    //       case Skills.dj:
+    //         setSubSkillOptions(findOptionsForSelectFilter(CheckboxFieldsType.djTypeKey, filterConfig))
+    //         setSelectedSubOptions(publicData.djType)
+    //         break
+    //       case Skills.musician:
+    //         setSubSkillOptions(findOptionsForSelectFilter(CheckboxFieldsType.musicianTypeKey, filterConfig))
+    //         setSelectedSubOptions(publicData.musicianType)
+    //         setGenreOptions(findOptionsForSelectFilter(CheckboxFieldsType.musicianGenreKey, filterConfig))
+    //         setSelectedGenres(publicData.musicianGenre)
+    //         break
+    //       case Skills.band:
+    //         setSubSkillOptions(findOptionsForSelectFilter(CheckboxFieldsType.bandTypeKey, filterConfig))
+    //         setSelectedSubOptions(publicData.bandType)
+    //         setGenreOptions(findOptionsForSelectFilter(CheckboxFieldsType.bandGenreKey, filterConfig))
+    //         setSelectedGenres(publicData.bandGenre)
+    //         break
+    //       case Skills.makeupArtist:
+    //         setSubSkillOptions(findOptionsForSelectFilter(CheckboxFieldsType.makeupArtistTypeKey, filterConfig))
+    //         setSelectedSubOptions(publicData.makeupArtist)
+    //         break
+    //       default:
+    //         break
+    //     }
+    //   }
+    // }, [publicData, selectedOption, filterConfig])
+
+    // useEffect(() => {
+    //   setSelectedConfigGenreOptions(genreOptions.filter((o) => selectedGenres.find((s) => s === o.key)))
+    // }, [genreOptions, selectedGenres])
+
+    // const selectedConfigSubOptions = subSkillOptions ? subSkillOptions.filter((o) => selectedSubOptions.find((s) => s === o.key)) : []
+
+    // Render component using the updated state
+
     // Find selected options label
     const optionConfig = skillOptions.find((o) => o.key === selectedOption)
     const optionLabel = optionConfig ? optionConfig.label : null
@@ -412,6 +467,9 @@ export class ListingPageComponent extends Component {
         genreOptions = findOptionsForSelectFilter(CheckboxFieldsType.bandGenreKey, filterConfig)
         Array.prototype.push.apply(selectedGenres, publicData.bandGenre)
         selectedConfigGenreOptions = genreOptions.filter((o) => selectedGenres.find((s) => s === o.key))
+      } else if (optionConfig.key === Skills.makeupArtist) {
+        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.makeupArtistTypeKey, filterConfig)
+        Array.prototype.push.apply(selectedSubOptions, publicData.makeupArtistType)
       }
     } else null
     const selectedConfigSubOptions = subSkillOptions.filter((o) => selectedSubOptions.find((s) => s === o.key))

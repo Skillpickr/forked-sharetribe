@@ -7,7 +7,8 @@ const CheckboxFieldsType = {
   musicianTypeKey: 'musicianType',
   musicianGenreKey: 'musicianGenre',
   bandGenreKey: 'bandGenre',
-  bandTypeKey: 'bandType'
+  bandTypeKey: 'bandType',
+  makeupArtistTypeKey: 'makeupArtistType'
 }
 
 const DropdownFieldsType = {

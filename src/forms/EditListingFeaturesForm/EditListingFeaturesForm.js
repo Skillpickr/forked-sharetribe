@@ -19,6 +19,7 @@ import EditVideographerFeaturesComponent from './skills/EditVideographerFeatures
 import EditDJFeaturesComponent from './skills/EditDjFeaturesForm'
 import EditMusicianFeaturesComponent from './skills/EditMusicianFeaturesForm'
 import EditBandFeaturesComponent from './skills/EditBandFeaturesForm'
+import EditMakeupArtistFeaturesComponent from './skills/EditMakeupArtistFeaturesForm'
 
 class DefaultComponent extends React.Component {
   render() {
@@ -30,6 +31,7 @@ const setCategory = (skillSet, categoryOptions) => {
   switch (true) {
     case skillSet.includes(Skills.photographer):
     case skillSet.includes(Skills.videographer):
+    case skillSet.includes(Skills.makeupArtist):
       return categoryOptions.find((element) => element.key === Categories.creative).key
     case skillSet.includes(Skills.musician):
     case skillSet.includes(Skills.dj):
@@ -45,7 +47,8 @@ const components = {
   [Skills.videographer]: EditVideographerFeaturesComponent,
   [Skills.musician]: EditMusicianFeaturesComponent,
   [Skills.dj]: EditDJFeaturesComponent,
-  [Skills.band]: EditBandFeaturesComponent
+  [Skills.band]: EditBandFeaturesComponent,
+  [Skills.makeupArtist]: EditMakeupArtistFeaturesComponent
 }
 
 const EditListingFeaturesFormComponent = (props) => (
@@ -167,6 +170,11 @@ const EditListingFeaturesFormComponent = (props) => (
 
           {/* Bands */}
           {state.includes(Skills.band) && <EditBandFeaturesComponent filterConfig={filterConfig} intl={intl} />}
+
+          {/* Makeup Artist */}
+          {state.includes(Skills.makeupArtist) && (
+            <EditMakeupArtistFeaturesComponent filterConfig={filterConfig} intl={intl} />
+          )}
 
           <Button
             className={css.submitButton}
