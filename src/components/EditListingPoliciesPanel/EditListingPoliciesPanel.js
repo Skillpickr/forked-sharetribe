@@ -23,7 +23,8 @@ const EditListingPoliciesPanel = (props) => {
     panelUpdated,
     updateInProgress,
     errors,
-    currentUser
+    currentUser,
+    intl
   } = props
 
   const classes = classNames(rootClassName || css.root, className)
@@ -49,8 +50,8 @@ const EditListingPoliciesPanel = (props) => {
         initialValues={{ rules: publicData.rules }}
         onSubmit={(values) => {
           const updateValues = {
-            title: 'Write a title',
-            description: 'write a description'
+            title: intl.formatMessage({ id: 'EditListingPoliciesPanel.title.placeholder' }),
+            description: intl.formatMessage({ id: 'EditListingPoliciesPanel.description.placeholder' })
           }
           onSubmit(updateValues)
         }}

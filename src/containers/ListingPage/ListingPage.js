@@ -468,8 +468,8 @@ export class ListingPageComponent extends Component {
         Array.prototype.push.apply(selectedGenres, publicData.bandGenre)
         selectedConfigGenreOptions = genreOptions.filter((o) => selectedGenres.find((s) => s === o.key))
       } else if (optionConfig.key === Skills.makeupArtist) {
-        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.makeupArtist, filterConfig)
-        Array.prototype.push.apply(selectedSubOptions, publicData.makeupArtist)
+        subSkillOptions = findOptionsForSelectFilter(CheckboxFieldsType.makeupArtistTypeKey, filterConfig)
+        Array.prototype.push.apply(selectedSubOptions, publicData.makeupArtistType)
       }
     } else null
     const selectedConfigSubOptions = subSkillOptions.filter((o) => selectedSubOptions.find((s) => s === o.key))

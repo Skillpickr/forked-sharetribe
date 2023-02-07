@@ -30,7 +30,7 @@ export const videographerConfig = [
       options: [
         { key: 'brand', label: 'Brand documentary' },
         { key: 'brandAwareness', label: 'Brand Awareness Videos' },
-        { key: 'Event', label: 'Event Videography' },
+        { key: 'event', label: 'Event Videography' },
         { key: 'product', label: 'Product videos' },
         { key: 'documentary', label: 'Documentary films' },
         { key: 'wedding', label: 'Wedding Videography' },

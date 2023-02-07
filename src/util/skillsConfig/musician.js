@@ -1,5 +1,17 @@
 import { CheckboxFieldsType, DropdownFieldsType } from '../featuresFields'
+import config from '../../config'
+import { createIntl, createIntlCache } from 'react-intl'
 
+import { messagesInLocale } from '../../intl'
+
+const cache = createIntlCache()
+const intl = createIntl(
+  {
+    locale: config.locale,
+    messages: messagesInLocale()
+  },
+  cache
+)
 export const musicianConfig = [
   {
     id: DropdownFieldsType.musicianSoloKey,
@@ -207,11 +219,13 @@ export const musicianConfig = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
-        { key: 'studio', label: 'Studio musician' },
-        { key: 'live', label: 'Live musician' },
-        { key: 'private', label: 'Private events' },
-        { key: 'corporate', label: 'Corporate events' },
-        { key: 'band', label: 'Band (Stand in)' }
+        { key: 'studio', label: intl.formatMessage({ id: 'MarketplaceConfig.musicianType.studio' }) },
+        { key: 'live', label: intl.formatMessage({ id: 'MarketplaceConfig.musicianType.live' }) },
+        { key: 'private', label: intl.formatMessage({ id: 'MarketplaceConfig.musicianType.private' }) },
+        { key: 'corporate', label: intl.formatMessage({ id: 'MarketplaceConfig.musicianType.corporate' }) },
+        { key: 'band', label: intl.formatMessage({ id: 'MarketplaceConfig.musicianType.band' }) },
+        { key: 'session', label: intl.formatMessage({ id: 'MarketplaceConfig.musicianType.session' }) },
+        { key: 'teacher', label: intl.formatMessage({ id: 'MarketplaceConfig.musicianType.teacher' }) }
       ]
     }
   }

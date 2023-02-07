@@ -29,14 +29,14 @@ export const djConfig = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
-        { key: 'allround', label: 'All around DJ' },
-        { key: 'wedding', label: 'Wedding DJ' },
-        { key: 'radio', label: 'Radio DJ' },
-        { key: 'club', label: 'Club DJ' },
-        { key: 'mobile', label: 'Mobile DJ' },
-        { key: 'turntablist', label: 'Turntablist' },
-        { key: 'corporate', label: 'Corporate event DJ' },
-        { key: 'birthday', label: 'Birthday DJ' }
+        { key: 'allround', label: intl.formatMessage({ id: 'MarketplaceConfig.djType.allround' }) },
+        { key: 'wedding', label: intl.formatMessage({ id: 'MarketplaceConfig.djType.wedding' }) },
+        { key: 'radio', label: intl.formatMessage({ id: 'MarketplaceConfig.djType.radio' }) },
+        { key: 'club', label: intl.formatMessage({ id: 'MarketplaceConfig.djType.club' }) },
+        { key: 'mobile', label: intl.formatMessage({ id: 'MarketplaceConfig.djType.mobile' }) },
+        { key: 'turntablist', label: intl.formatMessage({ id: 'MarketplaceConfig.djType.turntablist' }) },
+        { key: 'corporate', label: intl.formatMessage({ id: 'MarketplaceConfig.djType.corporate' }) },
+        { key: 'birthday', label: intl.formatMessage({ id: 'MarketplaceConfig.djType.birthday' }) }
       ]
     }
   },

@@ -30,87 +30,87 @@ export const makeupArtistConfig = [
       options: [
         {
           key: 'beautyRetail',
-          label: 'Beauty Retail'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.beautyRetail' })
         },
         {
           key: 'fashion',
-          label: 'Fashion'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.fashion' })
         },
         {
           key: 'bodyAndFacePainting',
-          label: 'Body and Face Painting'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.bodyAndFacePainting' })
         },
         {
           key: 'theatre',
-          label: 'Theatre'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.theatre' })
         },
         {
           key: 'television',
-          label: 'Television'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.television' })
         },
         {
           key: 'filmAndMovies',
-          label: 'Film and Movies'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.filmAndMovies' })
         },
         {
           key: 'personalServices',
-          label: 'Personal Services (e.g. special occasion makeup)'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.personalServices' })
         },
         {
           key: 'specializedMakeup',
-          label: 'Specialized Makeup (e.g. scars/deformities coverage)'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.specializedMakeup' })
         },
         {
           key: 'fxMakeup',
-          label: 'FX Makeup (e.g. gore, creatures)'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.fxMakeup' })
         },
         {
           key: 'bridalMakeup',
-          label: 'Bridal Makeup (wedding)'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.bridalMakeup' })
         },
         {
           key: 'stageMakeup',
-          label: 'Stage Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.stageMakeup' })
         },
         {
           key: 'performanceMakeup',
-          label: 'Performance Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.performanceMakeup' })
         },
         {
           key: 'airbrushMakeup',
-          label: 'Airbrush Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.airbrushMakeup' })
         },
         {
           key: 'editorialMakeup',
-          label: 'Editorial Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.editorialMakeup' })
         },
         {
           key: 'photographicMakeup',
-          label: 'Photographic Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.photographicMakeup' })
         },
         {
           key: 'dragMakeup',
-          label: 'Drag Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.dragMakeup' })
         },
         {
           key: 'fantasyMakeup',
-          label: 'Fantasy Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.fantasyMakeup' })
         },
         {
           key: 'specialEffectsMakeup',
-          label: 'Special Effects Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.specialEffectsMakeup' })
         },
         {
           key: 'prostheticMakeup',
-          label: 'Prosthetic Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.prostheticMakeup' })
         },
         {
           key: 'characterMakeup',
-          label: 'Character Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.characterMakeup' })
         },
         {
           key: 'runwayMakeup',
-          label: 'Runway Makeup'
+          label: intl.formatMessage({ id: 'MarketplaceConfig.makeupType.runwayMakeup' })
         }
       ]
     }
