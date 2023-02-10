@@ -17,21 +17,14 @@ import { CheckboxFieldsType, DropdownFieldsType } from '../../../util/featuresFi
 import { required, composeValidators } from '../../../util/validators'
 import EditListingTitleForm from './EditListingTitleForm'
 
-class EditMakeupArtistFeaturesComponent extends Component {
+class EditMiscellaneousFeaturesComponent extends Component {
   render() {
     const { filterConfig, intl } = this.props
-    const requiredCheckbox = intl.formatMessage({
-      id: 'EditListingFeaturesForm.requiredCheckbox'
-    })
+    const requiredCheckbox = 'You need to check a box'
 
-    const makeupArtistKey = CheckboxFieldsType.makeupArtistTypeKey
-    const makeupArtistOptions = findOptionsForSelectFilter(makeupArtistKey, filterConfig)
     const ownStudioKey = DropdownFieldsType.ownStudioKey
     const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig)
 
-    const makeupArtistKeyMessage = intl.formatMessage({
-      id: 'EditListingFeaturesForm.makeupArtistKeyMessage'
-    })
     const ownStudioKeyMessage = intl.formatMessage({
       id: 'EditListingFeaturesForm.ownStudioKeyMessage'
     })
@@ -47,16 +40,8 @@ class EditMakeupArtistFeaturesComponent extends Component {
       <div>
         <div className={css.listingSectionContainer}>
           <h2>
-            <FormattedMessage id="EditListingFeaturesForm.makeupArtistTitle" />
+            <FormattedMessage id="EditListingFeaturesForm.miscellaneousTitle" />
           </h2>
-          <FieldCheckboxGroup
-            className={css.features}
-            id={makeupArtistKey}
-            name={makeupArtistKey}
-            options={makeupArtistOptions}
-            label={makeupArtistKeyMessage}
-            validate={composeValidators(required(requiredCheckbox))}
-          />
         </div>
         <EditListingTitleForm></EditListingTitleForm>
         <div className={css.listingSectionContainer}>
@@ -90,12 +75,12 @@ class EditMakeupArtistFeaturesComponent extends Component {
     )
   }
 }
-EditMakeupArtistFeaturesComponent.defaultProps = {
+EditMiscellaneousFeaturesComponent.defaultProps = {
   filterConfig: custom.filters
 }
-EditMakeupArtistFeaturesComponent.propTypes = {
+EditMiscellaneousFeaturesComponent.propTypes = {
   filterConfig: propTypes.filterConfig,
   intl: intlShape.isRequired
 }
 
-export default injectIntl(EditMakeupArtistFeaturesComponent)
+export default injectIntl(EditMiscellaneousFeaturesComponent)

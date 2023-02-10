@@ -52,5 +52,24 @@ export const sharedConfig = [
         { key: 'no', label: intl.formatMessage({ id: 'MarketplaceConfig.ownStudioKey.no' }) }
       ]
     }
+  },
+  {
+    id: DropdownFieldsType.constellationKey,
+    label: 'Constellation',
+    type: 'SelectSingleFilter',
+    group: 'primary',
+    queryParamNames: ['pub_constellation'],
+    config: {
+      // Schema type is enum for SelectSingleFilter
+      // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
+      searchMode: 'has_all',
+      options: [
+        { key: 'single', label: 'Single' },
+        { key: 'duo', label: 'Duo' },
+        { key: 'trio', label: 'Trio' },
+        { key: 'quartet', label: 'Quartet' },
+        { key: 'group', label: 'Group' }
+      ]
+    }
   }
 ]

@@ -241,6 +241,7 @@ class MainPanel extends Component {
     let musicianFilterIds = [CheckboxFieldsType.musicianGenreKey, CheckboxFieldsType.musicianTypeKey]
     let bandFilterIds = [CheckboxFieldsType.bandGenreKey, CheckboxFieldsType.bandTypeKey]
     let makeupFilterIds = [CheckboxFieldsType.makeupArtistTypeKey]
+    let dancerFilterIds = [CheckboxFieldsType.dancerTypeKey]
 
     const handleSecondaryFilters = (param) => {
       switch (param) {
@@ -256,6 +257,10 @@ class MainPanel extends Component {
           return secondaryFilters.filter((f) => bandFilterIds.includes(f.id))
         case Skills.makeupArtist:
           return secondaryFilters.filter((f) => makeupFilterIds.includes(f.id))
+        case Skills.dancer:
+          return secondaryFilters.filter((f) => dancerFilterIds.includes(f.id))
+        // case Skills.miscellaneous:
+        //   return 'Miscellaneous'
         default:
           return secondaryFilters
       }

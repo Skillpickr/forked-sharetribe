@@ -187,6 +187,10 @@ exports[`LandingPage matches snapshot 1`] = `
                         "key": "makeupArtist",
                         "label": "Makeup Artist",
                       },
+                      Object {
+                        "key": "dancer",
+                        "label": "Dancer",
+                      },
                     ],
                   },
                   "group": "primary",
@@ -260,6 +264,40 @@ exports[`LandingPage matches snapshot 1`] = `
                     "",
                   ],
                   "type": "",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "single",
+                        "label": "Single",
+                      },
+                      Object {
+                        "key": "duo",
+                        "label": "Duo",
+                      },
+                      Object {
+                        "key": "trio",
+                        "label": "Trio",
+                      },
+                      Object {
+                        "key": "quartet",
+                        "label": "Quartet",
+                      },
+                      Object {
+                        "key": "group",
+                        "label": "Group",
+                      },
+                    ],
+                    "searchMode": "has_all",
+                  },
+                  "group": "primary",
+                  "id": "constellation",
+                  "label": "Constellation",
+                  "queryParamNames": Array [
+                    "pub_constellation",
+                  ],
+                  "type": "SelectSingleFilter",
                 },
                 Object {
                   "config": Object {
@@ -1880,6 +1918,104 @@ exports[`LandingPage matches snapshot 1`] = `
                   "label": "Makeup Artist",
                   "queryParamNames": Array [
                     "pub_makeupArtistTypeType",
+                  ],
+                  "type": "SelectMultipleFilter",
+                },
+                Object {
+                  "config": Object {
+                    "options": Array [
+                      Object {
+                        "key": "ballet",
+                        "label": "Ballet dancer",
+                      },
+                      Object {
+                        "key": "jazz",
+                        "label": "Jazz dancer",
+                      },
+                      Object {
+                        "key": "contemporary",
+                        "label": "Contemporary dancer",
+                      },
+                      Object {
+                        "key": "tap",
+                        "label": "Tap dancer",
+                      },
+                      Object {
+                        "key": "hipHop",
+                        "label": "Hip Hop dancer",
+                      },
+                      Object {
+                        "key": "break",
+                        "label": "Break dancer",
+                      },
+                      Object {
+                        "key": "ballroom",
+                        "label": "Ballroom dancer",
+                      },
+                      Object {
+                        "key": "flamenco",
+                        "label": "Flamenco dancer",
+                      },
+                      Object {
+                        "key": "salsa",
+                        "label": "Salsa dancer",
+                      },
+                      Object {
+                        "key": "irish",
+                        "label": "Irish dancer",
+                      },
+                      Object {
+                        "key": "belly",
+                        "label": "Belly dancer",
+                      },
+                      Object {
+                        "key": "modern",
+                        "label": "Modern dancer",
+                      },
+                      Object {
+                        "key": "lyrical",
+                        "label": "Lyrical dancer",
+                      },
+                      Object {
+                        "key": "street",
+                        "label": "Street dancer",
+                      },
+                      Object {
+                        "key": "traditionalFolk",
+                        "label": "Traditional folk dancer",
+                      },
+                      Object {
+                        "key": "krumping",
+                        "label": "Krumping dancer",
+                      },
+                      Object {
+                        "key": "popping",
+                        "label": "Popping dancer",
+                      },
+                      Object {
+                        "key": "house",
+                        "label": "House dancer",
+                      },
+                      Object {
+                        "key": "commercial",
+                        "label": "Commercial dancer",
+                      },
+                      Object {
+                        "key": "latin",
+                        "label": "Latin dancer",
+                      },
+                      Object {
+                        "key": "samba",
+                        "label": "Samba dancer",
+                      },
+                    ],
+                    "searchMode": "has_all",
+                  },
+                  "group": "secondary",
+                  "id": "dancerType",
+                  "label": "Dancer",
+                  "queryParamNames": Array [
+                    "pub_dancerType",
                   ],
                   "type": "SelectMultipleFilter",
                 },

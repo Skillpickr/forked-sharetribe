@@ -29,8 +29,12 @@ class EditMusicianFeaturesComponent extends Component {
     const musicianGenreKey = CheckboxFieldsType.musicianGenreKey
     const musicianGenreOptions = findOptionsForSelectFilter(musicianGenreKey, filterConfig)
 
-    const requiredCheckbox = 'You need to check a box'
-    const requiredDropdown = 'You need to select a field'
+    const requiredCheckbox = intl.formatMessage({
+      id: 'EditListingFeaturesForm.requiredCheckbox'
+    })
+    const requiredDropdown = intl.formatMessage({
+      id: 'EditListingFeaturesForm.requiredDropdown'
+    })
 
     const musicSoloistKeyMessage = intl.formatMessage({
       id: 'EditListingFeaturesForm.musicSoloistKeyMessage'

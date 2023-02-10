@@ -20,6 +20,8 @@ import EditDJFeaturesComponent from './skills/EditDjFeaturesForm'
 import EditMusicianFeaturesComponent from './skills/EditMusicianFeaturesForm'
 import EditBandFeaturesComponent from './skills/EditBandFeaturesForm'
 import EditMakeupArtistFeaturesComponent from './skills/EditMakeupArtistFeaturesForm'
+import EditDancerFeaturesComponent from './skills/EditDancerFeaturesForm'
+import EditMiscellaneousFeaturesComponent from './skills/EditMiscellaneousFeaturesForm'
 
 class DefaultComponent extends React.Component {
   render() {
@@ -32,11 +34,13 @@ const setCategory = (skillSet, categoryOptions) => {
     case skillSet.includes(Skills.photographer):
     case skillSet.includes(Skills.videographer):
     case skillSet.includes(Skills.makeupArtist):
+    case skillSet.includes(Skills.dancer):
       return categoryOptions.find((element) => element.key === Categories.creative).key
     case skillSet.includes(Skills.musician):
     case skillSet.includes(Skills.dj):
     case skillSet.includes(Skills.band):
       return categoryOptions.find((element) => element.key === Categories.performance).key
+    case skillSet.includes(Skills.miscellaneous):
     default:
       return ''
   }
@@ -48,7 +52,9 @@ const components = {
   [Skills.musician]: EditMusicianFeaturesComponent,
   [Skills.dj]: EditDJFeaturesComponent,
   [Skills.band]: EditBandFeaturesComponent,
-  [Skills.makeupArtist]: EditMakeupArtistFeaturesComponent
+  [Skills.makeupArtist]: EditMakeupArtistFeaturesComponent,
+  [Skills.dancer]: EditDancerFeaturesComponent,
+  [Skills.miscellaneous]: EditMiscellaneousFeaturesComponent
 }
 
 const EditListingFeaturesFormComponent = (props) => (
@@ -81,8 +87,12 @@ const EditListingFeaturesFormComponent = (props) => (
       const submitReady = (updated && pristine) || ready
       const submitInProgress = updateInProgress
       const submitDisabled = disabled || submitInProgress
-      const requiredCheckbox = 'You need to check a box'
-      const requiredDropdown = 'You need to select a field'
+      const requiredCheckbox = intl.formatMessage({
+        id: 'EditListingFeaturesForm.requiredCheckbox'
+      })
+      const requiredDropdown = intl.formatMessage({
+        id: 'EditListingFeaturesForm.requiredDropdown'
+      })
 
       const { updateListingError, showListingsError } = fetchErrors || {}
       const errorMessage = updateListingError ? (
@@ -175,6 +185,14 @@ const EditListingFeaturesFormComponent = (props) => (
           {state.includes(Skills.makeupArtist) && (
             <EditMakeupArtistFeaturesComponent filterConfig={filterConfig} intl={intl} />
           )}
+
+          {/* Dancer */}
+          {state.includes(Skills.dancer) && <EditDancerFeaturesComponent filterConfig={filterConfig} intl={intl} />}
+
+          {/* Miscellaneous TODO: figure how the setup should be
+          {state.includes(Skills.miscellaneous) && (
+            <EditMiscellaneousFeaturesComponent filterConfig={filterConfig} intl={intl} />
+          )} */}
 
           <Button
             className={css.submitButton}

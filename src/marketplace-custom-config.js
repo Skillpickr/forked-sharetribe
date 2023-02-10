@@ -38,6 +38,8 @@ import { sharedConfig } from './util/skillsConfig/shared'
 import { photographerConfig } from './util/skillsConfig/photographer'
 import { videographerConfig } from './util/skillsConfig/videographer'
 import { makeupArtistConfig } from './util/skillsConfig/makeupArtist'
+import { dancerConfig } from './util/skillsConfig/dancer'
+import { miscellaneousConfig } from './util/skillsConfig/miscellaneous'
 import { musicianConfig } from './util/skillsConfig/musician'
 import { djConfig } from './util/skillsConfig/dj'
 import { createIntl, createIntlCache } from 'react-intl'
@@ -146,7 +148,9 @@ const filterConfig = [
         { key: Skills.dj, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.dj' }) },
         { key: Skills.musician, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.musician' }) },
         { key: Skills.band, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.band' }) },
-        { key: Skills.makeupArtist, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.makeupArtist' }) }
+        { key: Skills.makeupArtist, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.makeupArtist' }) },
+        { key: Skills.dancer, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.dancer' }) }
+        // { key: Skills.miscellaneous, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.miscellaneous' }) }
       ]
     }
   }
@@ -158,7 +162,9 @@ export const filters = filterConfig.concat(
   videographerConfig,
   musicianConfig,
   djConfig,
-  makeupArtistConfig
+  makeupArtistConfig,
+  dancerConfig,
+  miscellaneousConfig
 )
 
 export const sortConfig = {

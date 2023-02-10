@@ -12,6 +12,8 @@ const Skills = {
   dj: 'dj',
   musician: 'musician',
   band: 'band',
-  makeupArtist: 'makeupArtist'
+  makeupArtist: 'makeupArtist',
+  dancer: 'dancer',
+  miscellaneous: 'miscellaneous'
 }
 export { Categories, Skills }

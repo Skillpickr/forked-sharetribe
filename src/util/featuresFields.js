@@ -8,7 +8,8 @@ const CheckboxFieldsType = {
   musicianGenreKey: 'musicianGenre',
   bandGenreKey: 'bandGenre',
   bandTypeKey: 'bandType',
-  makeupArtistTypeKey: 'makeupArtistType'
+  makeupArtistTypeKey: 'makeupArtistType',
+  dancerTypeKey: 'dancerType'
 }
 
 const DropdownFieldsType = {
@@ -20,7 +21,8 @@ const DropdownFieldsType = {
   photoToVideoServiceKey: 'photoToVideoService',
   videoToPhotoServiceKey: 'videoToPhotoService',
   videoInteractiveKey: 'videoInteractiveService',
-  editingServiceKey: 'editingService'
+  editingServiceKey: 'editingService',
+  constellationKey: 'constellation'
 }
 
 export { InputFieldsType, CheckboxFieldsType, DropdownFieldsType }

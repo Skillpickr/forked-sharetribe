@@ -10,25 +10,9 @@ const getSkillInfo = (skillOptions, key) => {
 }
 
 const SectionHeading = (props) => {
-  const {
-    richTitle,
-    hostLink,
-    showContactUser,
-    listingSkill,
-    skillOptions,
-    onContactUser,
-    musician,
-    musicianSoloistOptions
-  } = props
+  const { richTitle, hostLink, showContactUser, listingSkill, skillOptions, onContactUser, skillTitle } = props
 
   const skill = getSkillInfo(skillOptions, listingSkill)
-  let skillTitle = ''
-  if (musician) {
-    const type = getSkillInfo(musicianSoloistOptions, musician)
-    skillTitle = skill.label + ' • ' + type.label
-  } else {
-    skillTitle = skill.label
-  }
 
   const showSkill = skill && !skill.hideFromListingInfo
 
