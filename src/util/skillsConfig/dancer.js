@@ -52,6 +52,5 @@ export const dancerConfig = [
         { key: 'samba', label: intl.formatMessage({ id: 'MarketplaceConfig.dancerType.samba' }) }
       ]
     }
-  },
-
+  }
 ]
