@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { intlShape, injectIntl } from '../../../util/reactIntl'
+import { intlShape, injectIntl, FormattedMessage } from '../../../util/reactIntl'
 import { findOptionsForSelectFilter } from '../../../util/search'
 import { propTypes } from '../../../util/types'
 import config from '../../../config'
@@ -15,14 +15,24 @@ import EditListingTitleForm from './EditListingTitleForm'
 class EditBandFeaturesComponent extends Component {
   render() {
     const { filterConfig, intl } = this.props
+    const requiredCheckbox = intl.formatMessage({
+      id: 'EditListingFeaturesForm.requiredCheckbox'
+    })
+    const requiredDropdown = intl.formatMessage({
+      id: 'EditListingFeaturesForm.requiredDropdown'
+    })
 
     const bandTypeKey = CheckboxFieldsType.bandTypeKey
     const bandTypeOptions = findOptionsForSelectFilter(bandTypeKey, filterConfig)
+    const bandTypeKeyMessage = intl.formatMessage({
+      id: 'EditListingFeaturesForm.bandTypeKeyMessage'
+    })
+
     const bandGenreKey = CheckboxFieldsType.bandGenreKey
     const bandGenreOptions = findOptionsForSelectFilter(bandGenreKey, filterConfig)
-
-    const requiredCheckbox = 'You need to check a box'
-    const requiredDropdown = 'You need to select a field'
+    const bandGenreKeyMessage = intl.formatMessage({
+      id: 'EditListingFeaturesForm.bandGenreKeyMessage'
+    })
 
     const technicalRiderMessage = intl.formatMessage({
       id: 'EditListingFeaturesForm.technicalRiderMessage'
@@ -38,16 +48,24 @@ class EditBandFeaturesComponent extends Component {
       id: 'EditListingFeaturesForm.cateringRiderPlaceholderMessage'
     })
 
+    const constellationKey = DropdownFieldsType.constellationKey
+    const constellationOptions = findOptionsForSelectFilter(constellationKey, filterConfig)
+    const constellationMessage = intl.formatMessage({
+      id: 'EditListingFeaturesForm.constellationKeyMessage'
+    })
+
     return (
       <div>
         <div className={css.listingSectionContainer}>
-          <h2>Hey, you awesome band</h2>
+          <h2>
+            <FormattedMessage id="EditListingFeaturesForm.bandTitle" />
+          </h2>
           <FieldCheckboxGroup
             className={css.features}
             id={bandTypeKey}
             name={bandTypeKey}
             options={bandTypeOptions}
-            label={'What type of events do you prefer?'}
+            label={bandTypeKeyMessage}
             validate={composeValidators(required(requiredCheckbox))}
           />
           <FieldCheckboxGroup
@@ -55,9 +73,28 @@ class EditBandFeaturesComponent extends Component {
             id={bandGenreKey}
             name={bandGenreKey}
             options={bandGenreOptions}
-            label={'What type of genre do you play?'}
+            label={bandGenreKeyMessage}
             validate={composeValidators(required(requiredCheckbox))}
           />
+          <FieldSelect
+            className={css.features}
+            name={constellationKey}
+            id={constellationKey}
+            label={constellationMessage}
+            validate={composeValidators(required(requiredDropdown))}>
+            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
+              {(id) => (
+                <option disabled value="">
+                  {id}
+                </option>
+              )}
+            </FormattedMessage>
+            {constellationOptions.map((o) => (
+              <option key={o.key} value={o.key}>
+                {o.label}
+              </option>
+            ))}
+          </FieldSelect>
         </div>
         <EditListingTitleForm></EditListingTitleForm>
         <div className={css.listingSectionContainer}>

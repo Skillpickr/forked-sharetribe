@@ -54,6 +54,8 @@ class EditListingFeaturesPanel extends Component {
     const soundLightExp = publicData && publicData.soundLightExp
     const photographerType = publicData && publicData.photographerType
     const makeupArtistType = publicData && publicData.makeupArtistType
+    const dancerType = publicData && publicData.dancerType
+    const constellation = publicData && publicData.constellation
     const videographerType = publicData && publicData.videographerType
     const videoInteractiveService = publicData && publicData.videoInteractiveService
     const videoToPhotoService = publicData && publicData.videoToPhotoService
@@ -76,6 +78,7 @@ class EditListingFeaturesPanel extends Component {
       description,
       photographerType,
       makeupArtistType,
+      dancerType,
       videographerType,
       videoInteractiveService,
       videoToPhotoService,
@@ -95,6 +98,7 @@ class EditListingFeaturesPanel extends Component {
       musicianGenre,
       bandGenre,
       bandType,
+      constellation,
       skill
     }
   }
@@ -154,6 +158,7 @@ class EditListingFeaturesPanel extends Component {
         skill = [],
         photographerType = [],
         makeupArtistType = [],
+        dancerType = [],
         videographerType = [],
         gear = '',
         photoToVideoService = [],
@@ -172,6 +177,7 @@ class EditListingFeaturesPanel extends Component {
         musicianType = [],
         musicianGenre = [],
         bandGenre = [],
+        constellation = '',
         bandType = []
       } = values
       let category = this.state.category
@@ -182,6 +188,7 @@ class EditListingFeaturesPanel extends Component {
           skill,
           photographerType,
           makeupArtistType,
+          dancerType,
           videographerType,
           videoInteractiveService,
           videoToPhotoService,
@@ -201,6 +208,7 @@ class EditListingFeaturesPanel extends Component {
           musicianType,
           musicianGenre,
           bandGenre,
+          constellation,
           bandType
         }
       }

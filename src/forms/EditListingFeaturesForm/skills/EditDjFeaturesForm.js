@@ -28,7 +28,9 @@ class EditDJFeaturesComponent extends Component {
     const djGearForPlayingOptions = findOptionsForSelectFilter(djGearForPlayingKey, filterConfig)
     const songRequestKey = DropdownFieldsType.songRequestKey
     const songRequestOptions = findOptionsForSelectFilter(songRequestKey, filterConfig)
-    const requiredCheckbox = 'You need to check a box'
+    const requiredCheckbox = intl.formatMessage({
+      id: 'EditListingFeaturesForm.requiredCheckbox'
+    })
     const djKeyMessage = intl.formatMessage({
       id: 'EditListingFeaturesForm.djKeyMessage'
     })

@@ -17,32 +17,34 @@ import { CheckboxFieldsType, DropdownFieldsType } from '../../../util/featuresFi
 import { required, composeValidators } from '../../../util/validators'
 import EditListingTitleForm from './EditListingTitleForm'
 
-class EditPhotographerFeaturesComponent extends Component {
+class EditDancerFeaturesComponent extends Component {
   render() {
     const { filterConfig, intl } = this.props
-
-    const photographerKey = CheckboxFieldsType.photographerTypeKey
-    const photographerOptions = findOptionsForSelectFilter(photographerKey, filterConfig)
-    const ownStudioKey = DropdownFieldsType.ownStudioKey
-    const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig)
-
-    const soundLightExpKey = DropdownFieldsType.soundLightExpKey
-    const soundLightExpOptions = findOptionsForSelectFilter(soundLightExpKey, filterConfig)
-    const editingServiceKey = DropdownFieldsType.editingServiceKey
-    const editingServiceOptions = findOptionsForSelectFilter(editingServiceKey, filterConfig)
-
+    const requiredDropdown = intl.formatMessage({
+      id: 'EditListingFeaturesForm.requiredDropdown'
+    })
     const requiredCheckbox = intl.formatMessage({
       id: 'EditListingFeaturesForm.requiredCheckbox'
     })
-    const photographerKeyMessage = intl.formatMessage({
-      id: 'EditListingFeaturesForm.photographerKeyMessage'
+
+    const dancerKey = CheckboxFieldsType.dancerTypeKey
+    const dancerOptions = findOptionsForSelectFilter(dancerKey, filterConfig)
+    const dancerKeyMessage = intl.formatMessage({
+      id: 'EditListingFeaturesForm.dancerKeyMessage'
     })
+
+    const ownStudioKey = DropdownFieldsType.ownStudioKey
+    const ownStudioOptions = findOptionsForSelectFilter(ownStudioKey, filterConfig)
     const ownStudioKeyMessage = intl.formatMessage({
       id: 'EditListingFeaturesForm.ownStudioKeyMessage'
     })
-    const editingServiceKeyMessage = intl.formatMessage({
-      id: 'EditListingFeaturesForm.editingServiceKeyMessage'
+
+    const constellationKey = DropdownFieldsType.constellationKey
+    const constellationOptions = findOptionsForSelectFilter(constellationKey, filterConfig)
+    const constellationMessage = intl.formatMessage({
+      id: 'EditListingFeaturesForm.constellationKeyMessage'
     })
+
     const gearMessage = intl.formatMessage({
       id: 'EditListingFeaturesForm.gear'
     })
@@ -50,38 +52,27 @@ class EditPhotographerFeaturesComponent extends Component {
       id: 'EditListingFeaturesForm.gearMessagePlaceholder'
     })
 
-    const soundLightExpKeyMessage = intl.formatMessage({
-      id: 'EditListingFeaturesForm.soundLightExpKeyMessage'
-    })
-
-    const soundLightExpLabelTooltip = intl.formatMessage({
-      id: 'EditListingFeaturesForm.soundLightExpKeyTooltip'
-    })
     return (
       <div>
         <div className={css.listingSectionContainer}>
           <h2>
-            <FormattedMessage id="EditListingFeaturesForm.photographerTitle" />
+            <FormattedMessage id="EditListingFeaturesForm.dancerTitle" />
           </h2>
           <FieldCheckboxGroup
             className={css.features}
-            id={photographerKey}
-            name={photographerKey}
-            options={photographerOptions}
-            label={photographerKeyMessage}
+            id={dancerKey}
+            name={dancerKey}
+            options={dancerOptions}
+            label={dancerKeyMessage}
             validate={composeValidators(required(requiredCheckbox))}
           />
-        </div>
-        <EditListingTitleForm></EditListingTitleForm>
-        <div className={css.listingSectionContainer}>
-          <h2>
-            <FormattedMessage id="EditListingFeaturesForm.practicalInfo.greeting" />
-          </h2>
+
           <FieldSelect
             className={css.features}
-            name={soundLightExpKey}
-            id={soundLightExpKey}
-            label={soundLightExpKeyMessage}>
+            name={constellationKey}
+            id={constellationKey}
+            label={constellationMessage}
+            validate={composeValidators(required(requiredDropdown))}>
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {(id) => (
                 <option disabled value="">
@@ -89,12 +80,18 @@ class EditPhotographerFeaturesComponent extends Component {
                 </option>
               )}
             </FormattedMessage>
-            {soundLightExpOptions.map((o) => (
+            {constellationOptions.map((o) => (
               <option key={o.key} value={o.key}>
                 {o.label}
               </option>
             ))}
           </FieldSelect>
+        </div>
+        <EditListingTitleForm></EditListingTitleForm>
+        <div className={css.listingSectionContainer}>
+          <h2>
+            <FormattedMessage id="EditListingFeaturesForm.practicalInfo.greeting" />
+          </h2>
           <FieldSelect className={css.features} name={ownStudioKey} id={ownStudioKey} label={ownStudioKeyMessage}>
             <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
               {(id) => (
@@ -109,24 +106,6 @@ class EditPhotographerFeaturesComponent extends Component {
               </option>
             ))}
           </FieldSelect>
-          {/* <FieldSelect
-            className={css.features}
-            name={editingServiceKey}
-            id={editingServiceKey}
-            label={editingServiceKeyMessage}>
-            <FormattedMessage id="EditListingFeaturesForm.chooseFromList">
-              {(id) => (
-                <option disabled value="">
-                  {id}
-                </option>
-              )}
-            </FormattedMessage>
-            {editingServiceOptions.map((o) => (
-              <option key={o.key} value={o.key}>
-                {o.label}
-              </option>
-            ))}
-          </FieldSelect> */}
           <FieldTextInput
             id="gear"
             name="gear"
@@ -140,12 +119,12 @@ class EditPhotographerFeaturesComponent extends Component {
     )
   }
 }
-EditPhotographerFeaturesComponent.defaultProps = {
+EditDancerFeaturesComponent.defaultProps = {
   filterConfig: custom.filters
 }
-EditPhotographerFeaturesComponent.propTypes = {
+EditDancerFeaturesComponent.propTypes = {
   filterConfig: propTypes.filterConfig,
   intl: intlShape.isRequired
 }
 
-export default injectIntl(EditPhotographerFeaturesComponent)
+export default injectIntl(EditDancerFeaturesComponent)

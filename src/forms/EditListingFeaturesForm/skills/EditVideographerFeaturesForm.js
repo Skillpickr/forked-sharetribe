@@ -35,7 +35,9 @@ class EditVideographerFeaturesComponent extends Component {
     const videoToPhotoServiceKey = DropdownFieldsType.videoToPhotoServiceKey
     const photoServiceOptions = findOptionsForSelectFilter(videoToPhotoServiceKey, filterConfig)
 
-    const requiredCheckbox = 'You need to check a box'
+    const requiredCheckbox = intl.formatMessage({
+      id: 'EditListingFeaturesForm.requiredCheckbox'
+    })
     const videographerKeyMessage = intl.formatMessage({
       id: 'EditListingFeaturesForm.videographerKeyMessage'
     })
