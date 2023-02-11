@@ -61,15 +61,16 @@ export const ListingListItemComponent = (props) => {
   const musician = publicData?.musicianSoloType
   const constellation = publicData?.constellation
   let skillTitle = ''
-
-  if (musician) {
-    const type = getItemFromList(musicSoloistOptions, musician)
-    skillTitle = `${skill.label} • ${type.label}`
-  } else if (constellation) {
-    const type = getItemFromList(constellationOptions, constellation)
-    skillTitle = `${skill.label} • ${type.label}`
-  } else {
-    skillTitle = skill.label
+  if (skill) {
+    if (musician) {
+      const type = getItemFromList(musicSoloistOptions, musician)
+      skillTitle = `${skill.label} • ${type.label}`
+    } else if (constellation) {
+      const type = getItemFromList(constellationOptions, constellation)
+      skillTitle = `${skill.label} • ${type.label}`
+    } else {
+      skillTitle = skill.label
+    }
   }
 
   const { formattedPrice, priceTitle } = priceData(price, intl)
