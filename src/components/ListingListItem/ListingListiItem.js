@@ -15,6 +15,7 @@ import { NamedLink, ResponsiveImage } from '../../components'
 
 import css from './ListingListItem.module.css'
 import { Skills } from '../../util/category'
+import { DropdownFieldsType } from '../../util/featuresFields'
 
 const MIN_LENGTH_FOR_LONG_WORDS = 10
 
@@ -31,7 +32,7 @@ const priceData = (price, intl) => {
   return {}
 }
 
-const getSkillInfo = (skillOptions, key) => {
+const getItemFromList = (skillOptions, key) => {
   return skillOptions.find((c) => c.key === key)
 }
 
@@ -50,19 +51,25 @@ export const ListingListItemComponent = (props) => {
   const { title = '', price, publicData } = currentListing.attributes
   const slug = createSlug(title)
   const firstImage = currentListing.images && currentListing.images.length > 0 ? currentListing.images[0] : null
+  const listingSkill = publicData?.skill
   const skillOptions = findOptionsForSelectFilter('skill', filtersConfig)
-  const skill = publicData ? getSkillInfo(skillOptions, publicData.skill) : null
+  const skill = publicData ? getItemFromList(skillOptions, listingSkill) : null
+  const constellationOptions = findOptionsForSelectFilter(DropdownFieldsType.constellationKey, filtersConfig)
 
-  const musicSoloistOptions = findOptionsForSelectFilter('musicianSoloType', filtersConfig)
-  const musicianSoloType = publicData ? getSkillInfo(musicSoloistOptions, publicData.musicianSoloType) : null
+  const musicSoloistOptions = findOptionsForSelectFilter(DropdownFieldsType.musicianSoloKey, filtersConfig)
 
+  const musician = publicData?.musicianSoloType
+  const constellation = publicData?.constellation
   let skillTitle = ''
-  if (skill) {
-    if (skill.key === Skills.musician) {
-      skillTitle = skill.label + ' • ' + musicianSoloType.label
-    } else {
-      skillTitle = skill.label
-    }
+
+  if (musician) {
+    const type = getItemFromList(musicSoloistOptions, musician)
+    skillTitle = `${skill.label} • ${type.label}`
+  } else if (constellation) {
+    const type = getItemFromList(constellationOptions, constellation)
+    skillTitle = `${skill.label} • ${type.label}`
+  } else {
+    skillTitle = skill.label
   }
 
   const { formattedPrice, priceTitle } = priceData(price, intl)
