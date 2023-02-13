@@ -16,17 +16,22 @@
   }
 }
 
-.container {
-  /* Layout */
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-
+.page {
   @media (--viewportMedium) {
     position: relative;
     padding-top: var(--topbarHeightDesktop);
     min-height: calc(100vh - var(--topbarHeightDesktop));
   }
+}
+.page > h1 {
+  padding: 0 36px;
+}
+
+.container {
+  /* Layout */
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
 }
 
 .searchResultContainer {
@@ -91,6 +96,12 @@
   @media (--viewportLarge) {
     padding: 0 36px 36px 36px;
   }
+}
+
+.searchFiltersPanel ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
 }
 
 .listings {

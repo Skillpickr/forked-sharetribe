@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import { array, bool, func, object, string } from 'prop-types';
-import { compose } from 'redux';
-import { Form as FinalForm, FormSpy } from 'react-final-form';
-import classNames from 'classnames';
-import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl';
-import { timestampToDate } from '../../util/dates';
-import { propTypes } from '../../util/types';
-import config from '../../config';
-import { Form, IconSpinner, PrimaryButton } from '../../components';
-import EstimatedBreakdownMaybe from './EstimatedBreakdownMaybe';
-import FieldDateAndTimeInput from './FieldDateAndTimeInput';
+import React, { Component } from 'react'
+import { array, bool, func, object, string } from 'prop-types'
+import { compose } from 'redux'
+import { Form as FinalForm, FormSpy } from 'react-final-form'
+import classNames from 'classnames'
+import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl'
+import { timestampToDate } from '../../util/dates'
+import { propTypes } from '../../util/types'
+import config from '../../config'
+import { Form, IconSpinner, PrimaryButton } from '../../components'
+import EstimatedBreakdownMaybe from './EstimatedBreakdownMaybe'
+import FieldDateAndTimeInput from './FieldDateAndTimeInput'
 
-import css from './BookingTimeForm.module.css';
+import css from './BookingTimeForm.module.css'
 
 export class BookingTimeFormComponent extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleOnChange = this.handleOnChange.bind(this)
   }
 
   handleFormSubmit(e) {
-    this.props.onSubmit(e);
+    this.props.onSubmit(e)
   }
 
   // When the values of the form are updated we need to fetch
@@ -30,29 +30,32 @@ export class BookingTimeFormComponent extends Component {
   // In case you add more fields to the form, make sure you add
   // the values here to the bookingData object.
   handleOnChange(formValues) {
-    const { bookingStartTime, bookingEndTime } = formValues.values;
-    const startDate = bookingStartTime ? timestampToDate(bookingStartTime) : null;
-    const endDate = bookingEndTime ? timestampToDate(bookingEndTime) : null;
+    const { bookingStartTime, bookingEndTime } = formValues.values
+    const startDate = bookingStartTime ? timestampToDate(bookingStartTime) : null
+    const endDate = bookingEndTime ? timestampToDate(bookingEndTime) : null
 
-    const listingId = this.props.listingId;
-    const isOwnListing = this.props.isOwnListing;
+    const listingId = this.props.listingId
+    const isOwnListing = this.props.isOwnListing
 
     // We expect values bookingStartTime and bookingEndTime to be strings
     // which is the default case when the value has been selected through the form
-    const isSameTime = bookingStartTime === bookingEndTime;
+    const isSameTime = bookingStartTime === bookingEndTime
 
     if (bookingStartTime && bookingEndTime && !isSameTime && !this.props.fetchLineItemsInProgress) {
       this.props.onFetchTransactionLineItems({
         bookingData: { startDate, endDate },
         listingId,
-        isOwnListing,
-      });
+        isOwnListing
+      })
     }
   }
 
   render() {
-    const { rootClassName, className, price: unitPrice, ...rest } = this.props;
-    const classes = classNames(rootClassName || css.root, className);
+    const { rootClassName, className, price: unitPrice, ...rest } = this.props
+    const classes = classNames(rootClassName || css.root, className)
+
+    // TODO: change currency
+    // console.log(unitPrice)
 
     if (!unitPrice) {
       return (
@@ -61,7 +64,7 @@ export class BookingTimeFormComponent extends Component {
             <FormattedMessage id="BookingTimeForm.listingPriceMissing" />
           </p>
         </div>
-      );
+      )
     }
     if (unitPrice.currency !== config.currency) {
       return (
@@ -70,7 +73,7 @@ export class BookingTimeFormComponent extends Component {
             <FormattedMessage id="BookingTimeForm.listingCurrencyInvalid" />
           </p>
         </div>
-      );
+      )
     }
 
     return (
@@ -78,7 +81,7 @@ export class BookingTimeFormComponent extends Component {
         {...rest}
         unitPrice={unitPrice}
         onSubmit={this.handleFormSubmit}
-        render={fieldRenderProps => {
+        render={(fieldRenderProps) => {
           const {
             endDatePlaceholder,
             startDatePlaceholder,
@@ -96,21 +99,21 @@ export class BookingTimeFormComponent extends Component {
             timeZone,
             lineItems,
             fetchLineItemsInProgress,
-            fetchLineItemsError,
-          } = fieldRenderProps;
+            fetchLineItemsError
+          } = fieldRenderProps
 
-          const startTime = values && values.bookingStartTime ? values.bookingStartTime : null;
-          const endTime = values && values.bookingEndTime ? values.bookingEndTime : null;
+          const startTime = values && values.bookingStartTime ? values.bookingStartTime : null
+          const endTime = values && values.bookingEndTime ? values.bookingEndTime : null
 
           const bookingStartLabel = intl.formatMessage({
-            id: 'BookingTimeForm.bookingStartTitle',
-          });
+            id: 'BookingTimeForm.bookingStartTitle'
+          })
           const bookingEndLabel = intl.formatMessage({
-            id: 'BookingTimeForm.bookingEndTitle',
-          });
+            id: 'BookingTimeForm.bookingEndTitle'
+          })
 
-          const startDate = startTime ? timestampToDate(startTime) : null;
-          const endDate = endTime ? timestampToDate(endTime) : null;
+          const startDate = startTime ? timestampToDate(startTime) : null
+          const endDate = endTime ? timestampToDate(endTime) : null
 
           // This is the place to collect breakdown estimation data. See the
           // EstimatedBreakdownMaybe component to change the calculations
@@ -121,12 +124,11 @@ export class BookingTimeFormComponent extends Component {
                   unitType,
                   startDate,
                   endDate,
-                  timeZone,
+                  timeZone
                 }
-              : null;
+              : null
 
-          const showEstimatedBreakdown =
-            bookingData && lineItems && !fetchLineItemsInProgress && !fetchLineItemsError;
+          const showEstimatedBreakdown = bookingData && lineItems && !fetchLineItemsInProgress && !fetchLineItemsError
 
           const bookingInfoMaybe = showEstimatedBreakdown ? (
             <div className={css.priceBreakdownContainer}>
@@ -135,42 +137,38 @@ export class BookingTimeFormComponent extends Component {
               </h3>
               <EstimatedBreakdownMaybe bookingData={bookingData} lineItems={lineItems} />
             </div>
-          ) : null;
+          ) : null
 
-          const loadingSpinnerMaybe = fetchLineItemsInProgress ? (
-            <IconSpinner className={css.spinner} />
-          ) : null;
+          const loadingSpinnerMaybe = fetchLineItemsInProgress ? <IconSpinner className={css.spinner} /> : null
 
           const bookingInfoErrorMaybe = fetchLineItemsError ? (
             <span className={css.sideBarError}>
               <FormattedMessage id="BookingTimeForm.fetchLineItemsError" />
             </span>
-          ) : null;
+          ) : null
 
-          const submitButtonClasses = classNames(
-            submitButtonWrapperClassName || css.submitButtonWrapper
-          );
+          const submitButtonClasses = classNames(submitButtonWrapperClassName || css.submitButtonWrapper)
 
           const startDateInputProps = {
             label: bookingStartLabel,
-            placeholderText: startDatePlaceholder,
-          };
+            placeholderText: startDatePlaceholder
+          }
           const endDateInputProps = {
             label: bookingEndLabel,
-            placeholderText: endDatePlaceholder,
-          };
+            placeholderText: endDatePlaceholder
+          }
 
           const dateInputProps = {
             startDateInputProps,
-            endDateInputProps,
-          };
+            endDateInputProps
+          }
 
           return (
             <Form onSubmit={handleSubmit} className={classes} enforcePagePreloadFor="CheckoutPage">
               <FormSpy
                 subscription={{ values: true }}
-                onChange={values => {
-                  this.handleOnChange(values);
+                onChange={(values) => {
+                  this.handleOnChange(values)
                 }}
               />
               {monthlyTimeSlots && timeZone ? (
@@ -195,11 +193,7 @@ export class BookingTimeFormComponent extends Component {
 
               <p className={css.smallPrint}>
                 <FormattedMessage
-                  id={
-                    isOwnListing
-                      ? 'BookingTimeForm.ownListing'
-                      : 'BookingTimeForm.youWontBeChargedInfo'
-                  }
+                  id={isOwnListing ? 'BookingTimeForm.ownListing' : 'BookingTimeForm.youWontBeChargedInfo'}
                 />
               </p>
               <div className={submitButtonClasses}>
@@ -208,10 +202,10 @@ export class BookingTimeFormComponent extends Component {
                 </PrimaryButton>
               </div>
             </Form>
-          );
+          )
         }}
       />
-    );
+    )
   }
 }
 
@@ -226,8 +220,8 @@ BookingTimeFormComponent.defaultProps = {
   endDatePlaceholder: null,
   monthlyTimeSlots: null,
   lineItems: null,
-  fetchLineItemsError: null,
-};
+  fetchLineItemsError: null
+}
 
 BookingTimeFormComponent.propTypes = {
   rootClassName: string,
@@ -251,10 +245,10 @@ BookingTimeFormComponent.propTypes = {
 
   // for tests
   startDatePlaceholder: string,
-  endDatePlaceholder: string,
-};
+  endDatePlaceholder: string
+}
 
-const BookingTimeForm = compose(injectIntl)(BookingTimeFormComponent);
-BookingTimeForm.displayName = 'BookingTimeForm';
+const BookingTimeForm = compose(injectIntl)(BookingTimeFormComponent)
+BookingTimeForm.displayName = 'BookingTimeForm'
 
-export default BookingTimeForm;
+export default BookingTimeForm

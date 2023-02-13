@@ -2,24 +2,19 @@
  *  TopbarMobileMenu prints the menu content for authenticated user or
  * shows login actions for those who are not authenticated.
  */
-import React from 'react';
-import { bool, func, number, string } from 'prop-types';
-import { FormattedMessage } from '../../util/reactIntl';
-import classNames from 'classnames';
-import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration';
-import { propTypes } from '../../util/types';
-import { ensureCurrentUser } from '../../util/data';
-import {
-  AvatarLarge,
-  InlineTextButton,
-  NamedLink,
-  NotificationBadge,
-  OwnListingLink,
-} from '../../components';
+import React from 'react'
+import { bool, func, number, string } from 'prop-types'
+import { FormattedMessage } from '../../util/reactIntl'
+import classNames from 'classnames'
+import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration'
+import { propTypes } from '../../util/types'
+import { ensureCurrentUser } from '../../util/data'
+import { AvatarLarge, InlineTextButton, NamedLink, NotificationBadge } from '../../components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import css from './TopbarMobileMenu.module.css';
+import css from './TopbarMobileMenu.module.css'
 
-const TopbarMobileMenu = props => {
+const TopbarMobileMenu = (props) => {
   const {
     isAuthenticated,
     currentPage,
@@ -28,29 +23,29 @@ const TopbarMobileMenu = props => {
     currentUserListingFetched,
     currentUser,
     notificationCount,
-    onLogout,
-  } = props;
+    onLogout
+  } = props
 
-  const user = ensureCurrentUser(currentUser);
+  const user = ensureCurrentUser(currentUser)
 
   if (!isAuthenticated) {
     const signup = (
       <NamedLink name="SignupPage" className={css.signupLink}>
         <FormattedMessage id="TopbarMobileMenu.signupLink" />
       </NamedLink>
-    );
+    )
 
     const login = (
       <NamedLink name="LoginPage" className={css.loginLink}>
         <FormattedMessage id="TopbarMobileMenu.loginLink" />
       </NamedLink>
-    );
+    )
 
     const signupOrLogin = (
       <span className={css.authenticationLinks}>
         <FormattedMessage id="TopbarMobileMenu.signupOrLogin" values={{ signup, login }} />
       </span>
-    );
+    )
     return (
       <div className={css.root}>
         <div className={css.content}>
@@ -67,20 +62,30 @@ const TopbarMobileMenu = props => {
           </NamedLink>
         </div>
       </div>
-    );
+    )
   }
 
   const notificationCountBadge =
-    notificationCount > 0 ? (
-      <NotificationBadge className={css.notificationBadge} count={notificationCount} />
-    ) : null;
+    notificationCount > 0 ? <NotificationBadge className={css.notificationBadge} count={notificationCount} /> : null
 
-  const displayName = user.attributes.profile.firstName;
-  const currentPageClass = page => {
-    const isAccountSettingsPage =
-      page === 'AccountSettingsPage' && ACCOUNT_SETTINGS_PAGES.includes(currentPage);
-    return currentPage === page || isAccountSettingsPage ? css.currentPage : null;
-  };
+  const displayName = user.attributes.profile.firstName
+  const currentPageClass = (page) => {
+    const isAccountSettingsPage = page === 'AccountSettingsPage' && ACCOUNT_SETTINGS_PAGES.includes(currentPage)
+    return currentPage === page || isAccountSettingsPage ? css.currentPage : null
+  }
+
+  const listingOrNot = currentUserHasListings ? (
+    <NamedLink className={css.createNewListingLink} name="ManageListingsPage">
+      <FontAwesomeIcon icon="fa-solid fa-rectangle-list" size="xl" className={css.icon} />
+      <FormattedMessage id="TopbarDesktop.yourListingsLink" />
+    </NamedLink>
+  ) : (
+    <NamedLink
+      className={classNames(css.createNewListingLink, currentPageClass('NewListingPage'))}
+      name="NewListingPage">
+      <FormattedMessage id="TopbarMobileMenu.newListingLink" />
+    </NamedLink>
+  )
 
   return (
     <div className={css.root}>
@@ -95,45 +100,39 @@ const TopbarMobileMenu = props => {
         <NamedLink
           className={classNames(css.inbox, currentPageClass('InboxPage'))}
           name="InboxPage"
-          params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}
-        >
+          params={{ tab: currentUserHasListings ? 'sales' : 'orders' }}>
           <FormattedMessage id="TopbarMobileMenu.inboxLink" />
           {notificationCountBadge}
         </NamedLink>
-        <OwnListingLink
-          listing={currentUserListing}
-          listingFetched={currentUserListingFetched}
-          className={css.navigationLink}
-        />
+
         <NamedLink
           className={classNames(css.navigationLink, currentPageClass('ProfileSettingsPage'))}
-          name="ProfileSettingsPage"
-        >
+          name="ProfileSettingsPage">
           <FormattedMessage id="TopbarMobileMenu.profileSettingsLink" />
         </NamedLink>
         <NamedLink
           className={classNames(css.navigationLink, currentPageClass('AccountSettingsPage'))}
-          name="AccountSettingsPage"
-        >
+          name="AccountSettingsPage">
           <FormattedMessage id="TopbarMobileMenu.accountSettingsLink" />
         </NamedLink>
       </div>
       <div className={css.footer}>
-        <NamedLink className={css.createNewListingLink} name="NewListingPage">
+        {listingOrNot}
+        {/* <NamedLink className={css.createNewListingLink} name="NewListingPage">
           <FormattedMessage id="TopbarMobileMenu.newListingLink" />
-        </NamedLink>
+        </NamedLink> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
 TopbarMobileMenu.defaultProps = {
   currentUser: null,
   notificationCount: 0,
   currentPage: null,
   currentUserListing: null,
-  currentUserListingFetched: false,
-};
+  currentUserListingFetched: false
+}
 
 TopbarMobileMenu.propTypes = {
   isAuthenticated: bool.isRequired,
@@ -143,7 +142,7 @@ TopbarMobileMenu.propTypes = {
   currentUser: propTypes.currentUser,
   currentPage: string,
   notificationCount: number,
-  onLogout: func.isRequired,
-};
+  onLogout: func.isRequired
+}
 
-export default TopbarMobileMenu;
+export default TopbarMobileMenu

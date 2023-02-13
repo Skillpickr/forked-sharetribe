@@ -16,6 +16,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
     <link rel="mask-icon" href="/static/icons/safari-pinned-tab.svg" color="#0095b3">
     <link rel="shortcut icon" href="/static/icons/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,700&display=swap"
+      rel="stylesheet">
     <meta name="msapplication-config" content="/static/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <!-- End Favicons -->
@@ -24,48 +28,6 @@
     <!--!ssrStyles-->
     <!--!ssrLinks-->
 
-    <style>
-     /**
-      * Poppins font is downloaded from Google Fonts but served from sharetribe.com / CDN
-      */
-
-      @font-face {
-        /* 'Poppins-Regular' */
-        font-family: 'poppins';
-        src: url('https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-Regular.ttf') format('truetype');
-        font-weight: 400; /* Regular */
-        font-style: normal;
-      }
-
-      @font-face {
-        font-family: 'poppins';
-        src: url('https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-Medium.ttf') format('truetype');
-        font-weight: 500; /* Medium */
-        font-style: normal;
-      }
-
-      @font-face {
-        font-family: 'poppins';
-        src: url('https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-MediumItalic.ttf') format('truetype');
-        font-weight: 500; /* Medium italics */
-        font-style: italic;
-      }
-
-      @font-face {
-        font-family: 'poppins';
-        src: url('https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-SemiBold.ttf') format('truetype');
-        font-weight: 600; /* SemiBold */
-        font-style: normal;
-      }
-
-      @font-face {
-        font-family: 'poppins';
-        src: url('https://assets-sharetribecom.sharetribe.com/webfonts/poppins/Poppins-Bold.ttf') format('truetype');
-        font-weight: 700; /* Bold */
-        font-style: normal;
-      }
-
-    </style>
     <script>
       (function(document){
         // Optimization for repeated views
@@ -77,10 +39,17 @@
       })(document);
     </script>
 
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1178163559771582&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+
     <link rel="stylesheet" href="%PUBLIC_URL%/static/reactDates.css" />
+    
   </head>
   <body>
-    <div id="root"><!--!body--></div>
+    <div id="root">
+      <!--!body-->
+    </div>
     <div id="portal-root"></div>
     <script>
       (function(document){
@@ -111,18 +80,18 @@
 
 
         // Fonts we use (Check font-face rules from <style> tag in <head> section)
-        var poppinsRegular = new FontFaceObserver('poppins', { weight: 400 });
-        var poppinsMedium = new FontFaceObserver('poppins', { weight: 500 });
-        var poppinsSemibold = new FontFaceObserver('poppins', { weight: 600 });
-        var poppinsBold = new FontFaceObserver('poppins', { weight: 700 });
+        var LatoRegular = new FontFaceObserver('Lato', { weight: 400 });
+        var LatoMedium = new FontFaceObserver('Lato', { weight: 700 });
+        var LatoSemibold = new FontFaceObserver('Lato', { weight: 700 });
+        var LatoBold = new FontFaceObserver('Lato', { weight: 900 });
 
         var fontLoadingTimeout = 5000;
 
         Promise.all([
-          poppinsRegular.load(null, fontLoadingTimeout),
-          poppinsMedium.load(null, fontLoadingTimeout),
-          poppinsSemibold.load(null, fontLoadingTimeout),
-          poppinsBold.load(null, fontLoadingTimeout)
+          LatoRegular.load(null, fontLoadingTimeout),
+          LatoMedium.load(null, fontLoadingTimeout),
+          LatoSemibold.load(null, fontLoadingTimeout),
+          LatoBold.load(null, fontLoadingTimeout)
         ])
           .then(function () {
             document.documentElement.classList.add("fontsLoaded");
@@ -172,5 +141,18 @@
 
          See docs/content-security-policy.md for more information.
     -->
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/631eeb8537898912e968955d/1gcocg0hs';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
   </body>
 </html>

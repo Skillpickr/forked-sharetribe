@@ -1,21 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-import css from './IconReviewUser.module.css';
+import css from './IconReviewUser.module.css'
 
-const IconReviewUser = props => {
-  const { className, rootClassName } = props;
-  const classes = classNames(rootClassName || css.root, className);
+const IconReviewUser = (props) => {
+  const { className, rootClassName } = props
+  const classes = classNames(rootClassName || css.root, className)
 
   return (
-    <svg
-      className={classes}
-      width="46"
-      height="47"
-      viewBox="0 0 46 47"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className={classes} width="46" height="47" viewBox="0 0 46 47" xmlns="http://www.w3.org/2000/svg">
       <g fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round">
         <path strokeWidth="2.75" d="M8 45h32V2H8z" />
         <path d="M8 2H4c-1.1 0-2 .84-2 1.87v39.26C2 44.16 2.9 45 4 45h4" strokeWidth="2.5" />
@@ -29,16 +23,16 @@ const IconReviewUser = props => {
         />
       </g>
     </svg>
-  );
-};
+  )
+}
 
-IconReviewUser.defaultProps = { className: null, rootClassName: null };
+IconReviewUser.defaultProps = { className: null, rootClassName: null }
 
-const { string } = PropTypes;
+const { string } = PropTypes
 
 IconReviewUser.propTypes = {
   className: string,
-  rootClassName: string,
-};
+  rootClassName: string
+}
 
-export default IconReviewUser;
+export default IconReviewUser

@@ -1,39 +1,44 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet-async';
-import { withRouter } from 'react-router-dom';
-import { injectIntl, intlShape } from '../../util/reactIntl';
-import classNames from 'classnames';
-import routeConfiguration from '../../routeConfiguration';
-import config from '../../config';
-import { metaTagProps } from '../../util/seo';
-import { canonicalRoutePath } from '../../util/routes';
-import { CookieConsent } from '../../components';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet-async'
+import { withRouter } from 'react-router-dom'
+import { injectIntl, intlShape } from '../../util/reactIntl'
+import classNames from 'classnames'
+import routeConfiguration from '../../routeConfiguration'
+import config from '../../config'
+import { metaTagProps } from '../../util/seo'
+import { canonicalRoutePath } from '../../util/routes'
+import { CookieConsent } from '../../components'
 
-import facebookImage from '../../assets/yogatimeFacebook-1200x630.jpg';
-import twitterImage from '../../assets/yogatimeTwitter-600x314.jpg';
-import css from './Page.module.css';
+import facebookImage from '../../assets/skillpickr-facebook1640x924.png'
+import twitterImage from '../../assets/skillpickr-facebook1640x924.png'
+import css from './Page.module.css'
 
-const preventDefault = e => {
-  e.preventDefault();
-};
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Toasts, InquirySwitcher } from '../../components'
+import { addToast } from '../../ducks/toasts.duck'
 
-const twitterPageURL = siteTwitterHandle => {
+const preventDefault = (e) => {
+  e.preventDefault()
+}
+
+const twitterPageURL = (siteTwitterHandle) => {
   if (siteTwitterHandle && siteTwitterHandle.charAt(0) === '@') {
-    return `https://twitter.com/${siteTwitterHandle.substring(1)}`;
+    return `https://twitter.com/${siteTwitterHandle.substring(1)}`
   } else if (siteTwitterHandle) {
-    return `https://twitter.com/${siteTwitterHandle}`;
+    return `https://twitter.com/${siteTwitterHandle}`
   }
-  return null;
-};
+  return null
+}
 
 class PageComponent extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     // Keeping scrollPosition out of state reduces rendering cycles (and no bad states rendered)
-    this.scrollPosition = 0;
-    this.contentDiv = null;
-    this.scrollingDisabledChanged = this.scrollingDisabledChanged.bind(this);
+    this.scrollPosition = 0
+    this.contentDiv = null
+    this.scrollingDisabledChanged = this.scrollingDisabledChanged.bind(this)
   }
 
   componentDidMount() {
@@ -41,30 +46,30 @@ class PageComponent extends Component {
     // file URL. We want to prevent this since it might loose a lot of
     // data the user has typed but not yet saved. Preventing requires
     // handling both dragover and drop events.
-    document.addEventListener('dragover', preventDefault);
-    document.addEventListener('drop', preventDefault);
+    document.addEventListener('dragover', preventDefault)
+    document.addEventListener('drop', preventDefault)
 
     // Remove duplicated server-side rendered page schema.
     // It's in <body> to improve initial rendering performance,
     // but after web app is initialized, react-helmet-async operates with <head>
-    const pageSchema = document.getElementById('page-schema');
+    const pageSchema = document.getElementById('page-schema')
     if (pageSchema) {
-      pageSchema.remove();
+      pageSchema.remove()
     }
   }
 
   componentWillUnmount() {
-    document.removeEventListener('dragover', preventDefault);
-    document.removeEventListener('drop', preventDefault);
+    document.removeEventListener('dragover', preventDefault)
+    document.removeEventListener('drop', preventDefault)
   }
 
   scrollingDisabledChanged(currentScrollingDisabled) {
     if (currentScrollingDisabled && currentScrollingDisabled !== this.scrollingDisabled) {
       // Update current scroll position, if scrolling is disabled (e.g. modal is open)
-      this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-      this.scrollingDisabled = currentScrollingDisabled;
+      this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop
+      this.scrollingDisabled = currentScrollingDisabled
     } else if (currentScrollingDisabled !== this.scrollingDisabled) {
-      this.scrollingDisabled = currentScrollingDisabled;
+      this.scrollingDisabled = currentScrollingDisabled
     }
   }
 
@@ -87,42 +92,44 @@ class PageComponent extends Component {
       title,
       twitterHandle,
       twitterImages,
-      updated,
-    } = this.props;
+      updated
+    } = this.props
 
     const classes = classNames(rootClassName || css.root, className, {
-      [css.scrollingDisabled]: scrollingDisabled,
-    });
+      [css.scrollingDisabled]: scrollingDisabled
+    })
 
-    this.scrollingDisabledChanged(scrollingDisabled);
-    const referrerMeta = referrer ? <meta name="referrer" content={referrer} /> : null;
+    this.scrollingDisabledChanged(scrollingDisabled)
+    const referrerMeta = referrer ? <meta name="referrer" content={referrer} /> : null
 
-    const canonicalRootURL = config.canonicalRootURL;
-    const shouldReturnPathOnly = referrer && referrer !== 'unsafe-url';
-    const canonicalPath = canonicalRoutePath(routeConfiguration(), location, shouldReturnPathOnly);
-    const canonicalUrl = `${canonicalRootURL}${canonicalPath}`;
+    const canonicalRootURL = config.canonicalRootURL
+    const shouldReturnPathOnly = referrer && referrer !== 'unsafe-url'
+    const canonicalPath = canonicalRoutePath(routeConfiguration(), location, shouldReturnPathOnly)
+    const canonicalUrl = `${canonicalRootURL}${canonicalPath}`
 
-    const siteTitle = config.siteTitle;
-    const schemaTitle = intl.formatMessage({ id: 'Page.schemaTitle' }, { siteTitle });
-    const schemaDescription = intl.formatMessage({ id: 'Page.schemaDescription' });
-    const metaTitle = title || schemaTitle;
-    const metaDescription = description || schemaDescription;
+    // console.log('test', canonicalPath)
+
+    const siteTitle = config.siteTitle
+    const schemaTitle = intl.formatMessage({ id: 'Page.schemaTitle' }, { siteTitle })
+    const schemaDescription = intl.formatMessage({ id: 'Page.schemaDescription' })
+    const metaTitle = title || schemaTitle
+    const metaDescription = description || schemaDescription
     const facebookImgs = facebookImages || [
       {
         name: 'facebook',
         url: `${canonicalRootURL}${facebookImage}`,
         width: 1200,
-        height: 630,
-      },
-    ];
+        height: 630
+      }
+    ]
     const twitterImgs = twitterImages || [
       {
         name: 'twitter',
         url: `${canonicalRootURL}${twitterImage}`,
         width: 600,
-        height: 314,
-      },
-    ];
+        height: 314
+      }
+    ]
 
     const metaToHead = metaTagProps({
       author,
@@ -136,16 +143,15 @@ class PageComponent extends Component {
       twitterHandle,
       updated,
       url: canonicalUrl,
-      locale: intl.locale,
-    });
+      locale: intl.locale
+    })
 
-    // eslint-disable-next-line react/no-array-index-key
-    const metaTags = metaToHead.map((metaProps, i) => <meta key={i} {...metaProps} />);
+    const metaTags = metaToHead.map((metaProps, i) => <meta key={i} {...metaProps} />)
 
-    const facebookPage = config.siteFacebookPage;
-    const twitterPage = twitterPageURL(config.siteTwitterHandle);
-    const instagramPage = config.siteInstagramPage;
-    const sameOrganizationAs = [facebookPage, twitterPage, instagramPage].filter(v => v != null);
+    const facebookPage = config.siteFacebookPage
+    const twitterPage = twitterPageURL(config.siteTwitterHandle)
+    const instagramPage = config.siteInstagramPage
+    const sameOrganizationAs = [facebookPage, twitterPage, instagramPage].filter((v) => v != null)
 
     // Schema for search engines (helps them to understand what this page is about)
     // http://schema.org
@@ -154,7 +160,7 @@ class PageComponent extends Component {
     // Schema attribute can be either single schema object or an array of objects
     // This makes it possible to include several different items from the same page.
     // E.g. Product, Place, Video
-    const schemaFromProps = Array.isArray(schema) ? schema : [schema];
+    const schemaFromProps = Array.isArray(schema) ? schema : [schema]
     const schemaArrayJSONString = JSON.stringify([
       ...schemaFromProps,
       {
@@ -164,8 +170,8 @@ class PageComponent extends Component {
         url: canonicalRootURL,
         name: siteTitle,
         sameAs: sameOrganizationAs,
-        logo: `${canonicalRootURL}/static/webapp-icon-192x192.png`,
-        address: config.address,
+        logo: `${canonicalRootURL}/static/img/skillpickr-logo-black-499x499.jpeg`,
+        address: config.address
       },
       {
         '@context': 'http://schema.org',
@@ -174,31 +180,28 @@ class PageComponent extends Component {
         description: schemaDescription,
         name: schemaTitle,
         publisher: {
-          '@id': `${canonicalRootURL}#organization`,
-        },
-      },
-    ]);
+          '@id': `${canonicalRootURL}#organization`
+        }
+      }
+    ])
 
-    const scrollPositionStyles = scrollingDisabled
-      ? { marginTop: `${-1 * this.scrollPosition}px` }
-      : {};
+    const scrollPositionStyles = scrollingDisabled ? { marginTop: `${-1 * this.scrollPosition}px` } : {}
 
     // If scrolling is not disabled, but content element has still scrollPosition set
     // in style attribute, we scrollTo scrollPosition.
-    const hasMarginTopStyle = this.contentDiv && this.contentDiv.style.marginTop;
+    const hasMarginTopStyle = this.contentDiv && this.contentDiv.style.marginTop
     if (!scrollingDisabled && hasMarginTopStyle) {
       window.requestAnimationFrame(() => {
-        window.scrollTo(0, this.scrollPosition);
-      });
+        window.scrollTo(0, this.scrollPosition)
+      })
     }
 
     return (
       <div className={classes}>
         <Helmet
           htmlAttributes={{
-            lang: intl.locale,
-          }}
-        >
+            lang: intl.locale
+          }}>
           <title>{title}</title>
           {referrerMeta}
           <link rel="canonical" href={canonicalUrl} />
@@ -213,18 +216,19 @@ class PageComponent extends Component {
         <div
           className={css.content}
           style={scrollPositionStyles}
-          ref={c => {
-            this.contentDiv = c;
-          }}
-        >
+          ref={(c) => {
+            this.contentDiv = c
+          }}>
           {children}
+          <Toasts />
+          <InquirySwitcher />
         </div>
       </div>
-    );
+    )
   }
 }
 
-const { any, array, arrayOf, bool, func, number, object, oneOfType, shape, string } = PropTypes;
+const { any, array, arrayOf, bool, func, number, object, oneOfType, shape, string } = PropTypes
 
 PageComponent.defaultProps = {
   className: null,
@@ -240,8 +244,8 @@ PageComponent.defaultProps = {
   schema: null,
   tags: null,
   twitterHandle: null,
-  updated: null,
-};
+  updated: null
+}
 
 PageComponent.propTypes = {
   className: string,
@@ -260,14 +264,14 @@ PageComponent.propTypes = {
     shape({
       width: number.isRequired,
       height: number.isRequired,
-      url: string.isRequired,
+      url: string.isRequired
     })
   ),
   twitterImages: arrayOf(
     shape({
       width: number.isRequired,
       height: number.isRequired,
-      url: string.isRequired,
+      url: string.isRequired
     })
   ),
   published: string, // article:published_time
@@ -277,17 +281,25 @@ PageComponent.propTypes = {
   twitterHandle: string, // twitter handle
   updated: string, // article:modified_time
 
+  actions: shape({
+    addToast: func.isRequired
+  }).isRequired,
+
   // from withRouter
   history: shape({
-    listen: func.isRequired,
+    listen: func.isRequired
   }).isRequired,
   location: object.isRequired,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const Page = injectIntl(withRouter(PageComponent));
-Page.displayName = 'Page';
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({ addToast }, dispatch)
+})
 
-export default Page;
+const Page = injectIntl(withRouter(PageComponent))
+Page.displayName = 'Page'
+
+export default connect(null, mapDispatchToProps)(Page)

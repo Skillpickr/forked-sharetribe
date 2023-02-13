@@ -5,6 +5,22 @@ exports[`SearchResultsPanel matches snapshot 1`] = `
   className="root"
 >
   <div
+    className="viewSwitcher"
+  >
+    <button
+      className="gridButton gridButtonActive"
+      onClick={[Function]}
+    >
+      Card View
+    </button>
+    <button
+      className="listButton"
+      onClick={[Function]}
+    >
+      List View
+    </button>
+  </div>
+  <div
     className="listingCards"
   />
 </div>

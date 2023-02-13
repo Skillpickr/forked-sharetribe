@@ -1,20 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
-import { Form as FinalForm } from 'react-final-form';
-import classNames from 'classnames';
-import * as validators from '../../util/validators';
-import { Form, PrimaryButton, FieldTextInput } from '../../components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { compose } from 'redux'
+import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
+import { Form as FinalForm } from 'react-final-form'
+import classNames from 'classnames'
+import * as validators from '../../util/validators'
+import { Form, PrimaryButton, FieldTextInput, InputLabel } from '../../components'
+import { Field } from 'react-final-form'
+import PhoneInput from 'react-phone-number-input'
+import './ConfirmSignupForm.module.css'
+import css from './ConfirmSignupForm.module.css'
+import useGeoLocation from '../../util/ipGeoLocation'
 
-import css from './ConfirmSignupForm.module.css';
+const KEY_CODE_ENTER = 13
 
-const KEY_CODE_ENTER = 13;
-
-const ConfirmSignupFormComponent = props => (
+const ConfirmSignupFormComponent = (props) => (
   <FinalForm
     {...props}
-    render={formRenderProps => {
+    render={(formRenderProps) => {
       const {
         rootClassName,
         className,
@@ -25,79 +28,93 @@ const ConfirmSignupFormComponent = props => (
         intl,
         onOpenTermsOfService,
         authInfo,
-        idp,
-      } = formRenderProps;
+        idp
+      } = formRenderProps
 
       // email
       const emailLabel = intl.formatMessage({
-        id: 'ConfirmSignupForm.emailLabel',
-      });
+        id: 'ConfirmSignupForm.emailLabel'
+      })
       const emailPlaceholder = intl.formatMessage({
-        id: 'ConfirmSignupForm.emailPlaceholder',
-      });
+        id: 'ConfirmSignupForm.emailPlaceholder'
+      })
       const emailRequiredMessage = intl.formatMessage({
-        id: 'ConfirmSignupForm.emailRequired',
-      });
-      const emailRequired = validators.required(emailRequiredMessage);
+        id: 'ConfirmSignupForm.emailRequired'
+      })
+      const emailRequired = validators.required(emailRequiredMessage)
       const emailInvalidMessage = intl.formatMessage({
-        id: 'ConfirmSignupForm.emailInvalid',
-      });
-      const emailValid = validators.emailFormatValid(emailInvalidMessage);
+        id: 'ConfirmSignupForm.emailInvalid'
+      })
+      const emailValid = validators.emailFormatValid(emailInvalidMessage)
 
       // firstName
       const firstNameLabel = intl.formatMessage({
-        id: 'ConfirmSignupForm.firstNameLabel',
-      });
+        id: 'ConfirmSignupForm.firstNameLabel'
+      })
       const firstNamePlaceholder = intl.formatMessage({
-        id: 'ConfirmSignupForm.firstNamePlaceholder',
-      });
+        id: 'ConfirmSignupForm.firstNamePlaceholder'
+      })
       const firstNameRequiredMessage = intl.formatMessage({
-        id: 'ConfirmSignupForm.firstNameRequired',
-      });
-      const firstNameRequired = validators.required(firstNameRequiredMessage);
+        id: 'ConfirmSignupForm.firstNameRequired'
+      })
+      const firstNameRequired = validators.required(firstNameRequiredMessage)
 
       // lastName
       const lastNameLabel = intl.formatMessage({
-        id: 'ConfirmSignupForm.lastNameLabel',
-      });
+        id: 'ConfirmSignupForm.lastNameLabel'
+      })
       const lastNamePlaceholder = intl.formatMessage({
-        id: 'ConfirmSignupForm.lastNamePlaceholder',
-      });
+        id: 'ConfirmSignupForm.lastNamePlaceholder'
+      })
       const lastNameRequiredMessage = intl.formatMessage({
-        id: 'ConfirmSignupForm.lastNameRequired',
-      });
-      const lastNameRequired = validators.required(lastNameRequiredMessage);
+        id: 'ConfirmSignupForm.lastNameRequired'
+      })
+      const phoneLabel = intl.formatMessage({
+        id: 'ConfirmSignupForm.phoneLabel'
+      })
+      const phonePlaceholder = intl.formatMessage({
+        id: 'ConfirmSignupForm.phonePlaceholder'
+      })
+      const phoneRequiredMessage = intl.formatMessage({
+        id: 'ConfirmSignupForm.phoneRequired'
+      })
+      const phoneLabelTooltip = intl.formatMessage({
+        id: 'SignupForm.phoneLabel.tooltip'
+      })
+      const lastNameRequired = validators.required(lastNameRequiredMessage)
 
-      const classes = classNames(rootClassName || css.root, className);
-      const submitInProgress = inProgress;
-      const submitDisabled = invalid || submitInProgress;
+      const classes = classNames(rootClassName || css.root, className)
+      const submitInProgress = inProgress
+      const submitDisabled = invalid || submitInProgress
 
-      const handleTermsKeyUp = e => {
+      const handleTermsKeyUp = (e) => {
         // Allow click action with keyboard like with normal links
         if (e.keyCode === KEY_CODE_ENTER) {
-          onOpenTermsOfService();
+          onOpenTermsOfService()
         }
-      };
+      }
       const termsLink = (
         <span
           className={css.termsLink}
           onClick={onOpenTermsOfService}
           role="button"
           tabIndex="0"
-          onKeyUp={handleTermsKeyUp}
-        >
+          onKeyUp={handleTermsKeyUp}>
           <FormattedMessage id="ConfirmSignupForm.termsAndConditionsLinkText" />
         </span>
-      );
+      )
 
       // If authInfo is not available we should not show the ConfirmForm
       if (!authInfo) {
-        return;
+        return
       }
 
       // Initial values from idp provider
-      const { email, firstName, lastName } = authInfo;
+      const { email, firstName, lastName, phone } = authInfo
 
+      const phoneRequired = validators.required(phoneRequiredMessage)
+
+      const location = useGeoLocation()
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           <div>
@@ -111,6 +128,34 @@ const ConfirmSignupFormComponent = props => (
               initialValue={email}
               validate={validators.composeValidators(emailRequired, emailValid)}
             />
+            <div className={css.phone}>
+              <Field
+                id={formId ? `${formId}.phoneNumber` : 'phoneNumber'}
+                name="phoneNumber"
+                validate={validators.composeValidators(phoneRequired)}>
+                {({ input, meta }) => {
+                  return (
+                    <div>
+                      <div>
+                        <InputLabel
+                          text={phoneLabel}
+                          id={formId ? `${formId}.phoneLabel` : 'phoneLabel'}
+                          tooltip={true}
+                          tooltipString={phoneLabelTooltip}
+                        />
+                      </div>
+                      <PhoneInput
+                        {...input}
+                        placeholder={phonePlaceholder}
+                        defaultCountry={location.country}
+                        rules={{ required: true }}
+                      />
+                      {meta.touched && meta.error && <p style={{ color: 'red' }}>{meta.error}</p>}
+                    </div>
+                  )
+                }}
+              </Field>
+            </div>
             <div className={css.name}>
               <FieldTextInput
                 className={css.firstNameRoot}
@@ -140,10 +185,7 @@ const ConfirmSignupFormComponent = props => (
           <div className={css.bottomWrapper}>
             <p className={css.bottomWrapperText}>
               <span className={css.termsText}>
-                <FormattedMessage
-                  id="ConfirmSignupForm.termsAndConditionsAcceptText"
-                  values={{ termsLink }}
-                />
+                <FormattedMessage id="ConfirmSignupForm.termsAndConditionsAcceptText" values={{ termsLink }} />
               </span>
             </p>
             <PrimaryButton type="submit" inProgress={submitInProgress} disabled={submitDisabled}>
@@ -151,14 +193,14 @@ const ConfirmSignupFormComponent = props => (
             </PrimaryButton>
           </div>
         </Form>
-      );
+      )
     }}
   />
-);
+)
 
-ConfirmSignupFormComponent.defaultProps = { inProgress: false };
+ConfirmSignupFormComponent.defaultProps = { inProgress: false }
 
-const { bool, func } = PropTypes;
+const { bool, func } = PropTypes
 
 ConfirmSignupFormComponent.propTypes = {
   inProgress: bool,
@@ -166,10 +208,10 @@ ConfirmSignupFormComponent.propTypes = {
   onOpenTermsOfService: func.isRequired,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const ConfirmSignupForm = compose(injectIntl)(ConfirmSignupFormComponent);
-ConfirmSignupForm.displayName = 'ConfirmSignupForm';
+const ConfirmSignupForm = compose(injectIntl)(ConfirmSignupFormComponent)
+ConfirmSignupForm.displayName = 'ConfirmSignupForm'
 
-export default ConfirmSignupForm;
+export default ConfirmSignupForm

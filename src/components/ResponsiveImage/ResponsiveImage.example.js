@@ -1,28 +1,28 @@
-import React from 'react';
-import ResponsiveImage from './ResponsiveImage';
-import { types as sdkTypes } from '../../util/sdkLoader';
+import React from 'react'
+import ResponsiveImage from './ResponsiveImage'
+import { types as sdkTypes } from '../../util/sdkLoader'
 
-import css from './ResponsiveImageExample.module.css';
+import css from './ResponsiveImageExample.module.css'
 
-const { UUID } = sdkTypes;
+const { UUID } = sdkTypes
 
-const ResponsiveImageWrapper = props => {
+const ResponsiveImageWrapper = (props) => {
   return (
     <div className={css.root}>
       <ResponsiveImage {...props} />
     </div>
-  );
-};
+  )
+}
 
-const ResponsiveImageWrapperWithAspectRatio = props => {
+const ResponsiveImageWrapperWithAspectRatio = (props) => {
   return (
     <div className={css.root}>
       <div className={css.aspectWrapper}>
         <ResponsiveImage {...props} rootClassName={css.rootForImageWithAspectRatio} />
       </div>
     </div>
-  );
-};
+  )
+}
 
 /* Image without aspect ratio wrapper */
 export const Image2X = {
@@ -38,20 +38,20 @@ export const Image2X = {
             name: 'crop',
             width: 200,
             height: 133,
-            url: 'https://via.placeholder.com/200x133',
+            url: 'https://via.placeholder.com/200x133'
           },
           crop2x: {
             name: 'crop2x',
             width: 400,
             height: 266,
-            url: 'https://via.placeholder.com/400x266',
-          },
-        },
-      },
+            url: 'https://via.placeholder.com/400x266'
+          }
+        }
+      }
     },
-    variants: ['crop', 'crop2x'],
-  },
-};
+    variants: ['crop', 'crop2x']
+  }
+}
 
 /* Image with aspect ratio wrapper */
 export const Image2XAspect = {
@@ -67,20 +67,20 @@ export const Image2XAspect = {
             name: 'crop',
             width: 200,
             height: 133,
-            url: 'https://via.placeholder.com/200x133',
+            url: 'https://via.placeholder.com/200x133'
           },
           crop2x: {
             name: 'crop2x',
             width: 400,
             height: 266,
-            url: 'https://via.placeholder.com/400x266',
-          },
-        },
-      },
+            url: 'https://via.placeholder.com/400x266'
+          }
+        }
+      }
     },
-    variants: ['crop', 'crop2x'],
-  },
-};
+    variants: ['crop', 'crop2x']
+  }
+}
 
 /* Image with aspect ratio wrapper and wrong aspect */
 export const Image2XWrongAspect = {
@@ -96,20 +96,20 @@ export const Image2XWrongAspect = {
             name: 'crop',
             width: 200,
             height: 133,
-            url: 'https://via.placeholder.com/200x133',
+            url: 'https://via.placeholder.com/200x133'
           },
           crop2x: {
             name: 'crop2x',
             width: 400,
             height: 266,
-            url: 'https://via.placeholder.com/400x266',
-          },
-        },
-      },
+            url: 'https://via.placeholder.com/400x266'
+          }
+        }
+      }
     },
-    variants: ['crop', 'crop2x'],
-  },
-};
+    variants: ['crop', 'crop2x']
+  }
+}
 
 export const Image2XWrongAspectNoWrapper = {
   component: ResponsiveImage,
@@ -124,20 +124,20 @@ export const Image2XWrongAspectNoWrapper = {
             name: 'crop',
             width: 200,
             height: 133,
-            url: 'https://via.placeholder.com/200x133',
+            url: 'https://via.placeholder.com/200x133'
           },
           crop2x: {
             name: 'crop2x',
             width: 400,
             height: 266,
-            url: 'https://via.placeholder.com/400x266',
-          },
-        },
-      },
+            url: 'https://via.placeholder.com/400x266'
+          }
+        }
+      }
     },
-    variants: ['crop', 'crop2x'],
-  },
-};
+    variants: ['crop', 'crop2x']
+  }
+}
 
 /* No image without aspect ratio wrapper */
 export const ImageEmpty = {
@@ -145,9 +145,9 @@ export const ImageEmpty = {
   props: {
     alt: 'img',
     image: null,
-    variants: ['crop', 'crop2x'],
-  },
-};
+    variants: ['crop', 'crop2x']
+  }
+}
 
 /* No image with aspect ratio wrapper */
 export const ImageEmptyWithAspect = {
@@ -155,18 +155,18 @@ export const ImageEmptyWithAspect = {
   props: {
     alt: 'img',
     image: null,
-    variants: ['crop', 'crop2x'],
-  },
-};
+    variants: ['crop', 'crop2x']
+  }
+}
 
 /* Image without aspect ratio wrapper usign sizes */
-const ResponsiveImageWrapperForSizes = props => (
+const ResponsiveImageWrapperForSizes = (props) => (
   <div className={css.rootForSizes}>
     <div className={css.aspectWrapper}>
       <ResponsiveImage {...props} />
     </div>
   </div>
-);
+)
 
 export const ImageWithSizes = {
   component: ResponsiveImageWrapperForSizes,
@@ -181,18 +181,18 @@ export const ImageWithSizes = {
             name: 'crop',
             width: 200,
             height: 133,
-            url: 'https://via.placeholder.com/200x133',
+            url: 'https://via.placeholder.com/200x133'
           },
           crop2x: {
             name: 'crop2x',
             width: 400,
             height: 266,
-            url: 'https://via.placeholder.com/400x266',
-          },
-        },
-      },
+            url: 'https://via.placeholder.com/400x266'
+          }
+        }
+      }
     },
     variants: ['crop', 'crop2x'],
-    sizes: '(max-width: 600px) 200px, 400px',
-  },
-};
+    sizes: '(max-width: 600px) 200px, 400px'
+  }
+}

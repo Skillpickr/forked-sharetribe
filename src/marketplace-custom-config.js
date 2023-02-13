@@ -32,11 +32,34 @@
  *         and tie them with correct extended data key
  *         (i.e. pub_<key> or meta_<key>).
  */
+import { Categories, Skills } from './util/category'
+import { bandConfig } from './util/skillsConfig/bands'
+import { sharedConfig } from './util/skillsConfig/shared'
+import { photographerConfig } from './util/skillsConfig/photographer'
+import { videographerConfig } from './util/skillsConfig/videographer'
+import { makeupArtistConfig } from './util/skillsConfig/makeupArtist'
+import { dancerConfig } from './util/skillsConfig/dancer'
+import { miscellaneousConfig } from './util/skillsConfig/miscellaneous'
+import { musicianConfig } from './util/skillsConfig/musician'
+import { djConfig } from './util/skillsConfig/dj'
+import { createIntl, createIntlCache } from 'react-intl'
+import config from './config'
 
-export const filters = [
+import { messagesInLocale } from './intl'
+
+const cache = createIntlCache()
+const intl = createIntl(
+  {
+    locale: config.locale,
+    messages: messagesInLocale()
+  },
+  cache
+)
+
+const filterConfig = [
   {
     id: 'dates-length',
-    label: 'Dates',
+    label: intl.formatMessage({ id: 'MarketplaceConfig.dates.label' }),
     type: 'BookingDateRangeLengthFilter',
     group: 'primary',
     // Note: BookingDateRangeFilter is fixed filter,
@@ -56,15 +79,17 @@ export const filters = [
 
       // Options for the minimum duration of the booking
       options: [
-        { key: '0', label: 'Any length' },
-        { key: '60', label: '1 hour', shortLabel: '1h' },
-        { key: '120', label: '2 hours', shortLabel: '2h' },
-      ],
-    },
+        { key: '0', label: intl.formatMessage({ id: 'MarketplaceConfig.dates.anyLength' }) },
+        { key: '60', label: intl.formatMessage({ id: 'MarketplaceConfig.dates.oneHour' }), shortLabel: '1h' },
+        { key: '120', label: intl.formatMessage({ id: 'MarketplaceConfig.dates.twoHour' }), shortLabel: '2h' },
+        { key: '240', label: intl.formatMessage({ id: 'MarketplaceConfig.dates.fourHour' }), shortLabel: '4h' },
+        { key: '480', label: intl.formatMessage({ id: 'MarketplaceConfig.dates.eightHour' }), shortLabel: '8h' }
+      ]
+    }
   },
   {
     id: 'price',
-    label: 'Price',
+    label: intl.formatMessage({ id: 'MarketplaceConfig.price.label' }),
     type: 'PriceFilter',
     group: 'primary',
     // Note: PriceFilter is fixed filter,
@@ -75,12 +100,12 @@ export const filters = [
     config: {
       min: 0,
       max: 1000,
-      step: 5,
-    },
+      step: 5
+    }
   },
   {
     id: 'keyword',
-    label: 'Keyword',
+    label: intl.formatMessage({ id: 'MarketplaceConfig.keyword.label' }),
     type: 'KeywordFilter',
     group: 'primary',
     // Note: KeywordFilter is fixed filter,
@@ -89,52 +114,58 @@ export const filters = [
     // NOTE: If you are ordering search results by distance
     // the keyword search can't be used at the same time.
     // You can turn on/off ordering by distance from config.js file.
-    config: {},
+    config: {}
   },
   {
-    id: 'yogaStyles',
-    label: 'Yoga styles',
-    type: 'SelectMultipleFilter',
-    group: 'secondary',
-    queryParamNames: ['pub_yogaStyles'],
+    id: 'category',
+    label: intl.formatMessage({ id: 'MarketplaceConfig.category.label' }),
+    type: '',
+    group: 'primary',
+    queryParamNames: ['pub_category'],
     config: {
-      // Optional modes: 'has_all', 'has_any'
+      // Schema type is enum for SelectSingleFilter
       // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
-      searchMode: 'has_all',
-
-      // "key" is the option you see in Flex Console.
-      // "label" is set here for this web app's UI only.
-      // Note: label is not added through the translation files
-      // to make filter customizations a bit easier.
       options: [
-        { key: 'ashtanga', label: 'Ashtanga' },
-        { key: 'hatha', label: 'Hatha' },
-        { key: 'kundalini', label: 'Kundalini' },
-        { key: 'restorative', label: 'Restorative' },
-        { key: 'vinyasa', label: 'Vinyasa' },
-        { key: 'yin', label: 'Yin' },
-      ],
-    },
+        { key: Categories.creative, label: intl.formatMessage({ id: 'MarketplaceConfig.category.performance' }) },
+        { key: Categories.performance, label: intl.formatMessage({ id: 'MarketplaceConfig.category.creative' }) },
+        { key: Categories.audioProd, label: intl.formatMessage({ id: 'MarketplaceConfig.category.audioProd' }) },
+        { key: Categories.knowledge, label: intl.formatMessage({ id: 'MarketplaceConfig.category.knowledge' }) }
+      ]
+    }
   },
   {
-    id: 'certificate',
-    label: 'Certificate',
+    id: 'skill',
+    label: intl.formatMessage({ id: 'MarketplaceConfig.skill.label' }),
     type: 'SelectSingleFilter',
-    group: 'secondary',
-    queryParamNames: ['pub_certificate'],
+    group: 'primary',
+    queryParamNames: ['pub_skill'],
     config: {
-      // "key" is the option you see in Flex Console.
-      // "label" is set here for the UI only.
-      // Note: label is not added through the translation files
-      // to make filter customizations a bit easier.
+      // Schema type is enum for SelectSingleFilter
+      // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
       options: [
-        { key: 'none', label: 'None', hideFromFilters: true, hideFromListingInfo: true },
-        { key: '200h', label: 'Registered yoga teacher 200h' },
-        { key: '500h', label: 'Registered yoga teacher 500h' },
-      ],
-    },
-  },
-];
+        { key: Skills.photographer, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.photographer' }) },
+        { key: Skills.videographer, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.videographer' }) },
+        { key: Skills.dj, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.dj' }) },
+        { key: Skills.musician, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.musician' }) },
+        { key: Skills.band, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.band' }) },
+        { key: Skills.makeupArtist, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.makeupArtist' }) },
+        { key: Skills.dancer, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.dancer' }) }
+        // { key: Skills.miscellaneous, label: intl.formatMessage({ id: 'MarketplaceConfig.skill.miscellaneous' }) }
+      ]
+    }
+  }
+]
+export const filters = filterConfig.concat(
+  sharedConfig,
+  bandConfig,
+  photographerConfig,
+  videographerConfig,
+  musicianConfig,
+  djConfig,
+  makeupArtistConfig,
+  dancerConfig,
+  miscellaneousConfig
+)
 
 export const sortConfig = {
   // Enable/disable the sorting control in the SearchPage
@@ -152,14 +183,18 @@ export const sortConfig = {
   conflictingFilters: ['keyword'],
 
   options: [
-    { key: 'createdAt', label: 'Newest' },
-    { key: '-createdAt', label: 'Oldest' },
-    { key: '-price', label: 'Lowest price' },
-    { key: 'price', label: 'Highest price' },
+    { key: 'createdAt', label: intl.formatMessage({ id: 'MarketplaceConfig.sort.newest' }) },
+    { key: '-createdAt', label: intl.formatMessage({ id: 'MarketplaceConfig.sort.oldest' }) },
+    { key: '-price', label: intl.formatMessage({ id: 'MarketplaceConfig.sort.lowest' }) },
+    { key: 'price', label: intl.formatMessage({ id: 'MarketplaceConfig.sort.highest' }) },
 
     // The relevance is only used for keyword search, but the
     // parameter isn't sent to the Marketplace API. The key is purely
     // for handling the internal state of the sorting dropdown.
-    { key: 'relevance', label: 'Relevance', longLabel: 'Relevance (Keyword search)' },
-  ],
-};
+    {
+      key: 'relevance',
+      label: intl.formatMessage({ id: 'MarketplaceConfig.sort.relevance' }),
+      longLabel: intl.formatMessage({ id: 'MarketplaceConfig.sort.relevanceLong' })
+    }
+  ]
+}

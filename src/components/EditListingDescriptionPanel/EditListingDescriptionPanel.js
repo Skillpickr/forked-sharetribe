@@ -1,17 +1,16 @@
-import React from 'react';
-import { bool, func, object, string } from 'prop-types';
-import classNames from 'classnames';
-import { FormattedMessage } from '../../util/reactIntl';
-import { ensureOwnListing } from '../../util/data';
-import { findOptionsForSelectFilter } from '../../util/search';
-import { LISTING_STATE_DRAFT } from '../../util/types';
-import { ListingLink } from '../../components';
-import { EditListingDescriptionForm } from '../../forms';
-import config from '../../config';
+import React from 'react'
+import { bool, func, object, string } from 'prop-types'
+import classNames from 'classnames'
+import { FormattedMessage } from '../../util/reactIntl'
+import { ensureOwnListing } from '../../util/data'
+import { LISTING_STATE_DRAFT } from '../../util/types'
+import { ListingLink } from '../../components'
+import { EditListingDescriptionForm } from '../../forms'
+import config from '../../config'
 
-import css from './EditListingDescriptionPanel.module.css';
+import css from './EditListingDescriptionPanel.module.css'
 
-const EditListingDescriptionPanel = props => {
+const EditListingDescriptionPanel = (props) => {
   const {
     className,
     rootClassName,
@@ -23,46 +22,45 @@ const EditListingDescriptionPanel = props => {
     submitButtonText,
     panelUpdated,
     updateInProgress,
-    errors,
-  } = props;
+    errors
+  } = props
 
-  const classes = classNames(rootClassName || css.root, className);
-  const currentListing = ensureOwnListing(listing);
-  const { description, title, publicData } = currentListing.attributes;
+  const classes = classNames(rootClassName || css.root, className)
+  const currentListing = ensureOwnListing(listing)
+  const { publicData } = currentListing.attributes
 
-  const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
+  const experience = publicData && publicData.experience
+  const track = publicData && publicData.track
+  const url = publicData && publicData.url
+  const bonus = publicData && publicData.bonus
+  const initialValues = { experience, track, url, bonus }
+
+  const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT
   const panelTitle = isPublished ? (
     <FormattedMessage
       id="EditListingDescriptionPanel.title"
-      values={{
-        listingTitle: (
-          <ListingLink listing={listing}>
-            <FormattedMessage id="EditListingDescriptionPanel.listingTitle" />
-          </ListingLink>
-        ),
-      }}
+      values={{ listingTitle: <ListingLink listing={listing} /> }}
     />
   ) : (
     <FormattedMessage id="EditListingDescriptionPanel.createListingTitle" />
-  );
+  )
+  let newDate = new Date()
+  let displayDate = newDate.toLocaleString('en-GB', { timeZone: 'UTC' })
 
-  const certificateOptions = findOptionsForSelectFilter('certificate', config.custom.filters);
   return (
     <div className={classes}>
       <h1 className={css.title}>{panelTitle}</h1>
       <EditListingDescriptionForm
         className={css.form}
-        initialValues={{ title, description, certificate: publicData.certificate }}
+        initialValues={initialValues}
         saveActionMsg={submitButtonText}
-        onSubmit={values => {
-          const { title, description, certificate } = values;
+        onSubmit={(values) => {
+          const { experience, track = '', url = '', bonus = '' } = values
           const updateValues = {
-            title: title.trim(),
-            description,
-            publicData: { certificate },
-          };
+            publicData: { experience, track, url, bonus }
+          }
 
-          onSubmit(updateValues);
+          onSubmit(updateValues)
         }}
         onChange={onChange}
         disabled={disabled}
@@ -70,18 +68,17 @@ const EditListingDescriptionPanel = props => {
         updated={panelUpdated}
         updateInProgress={updateInProgress}
         fetchErrors={errors}
-        certificateOptions={certificateOptions}
       />
     </div>
-  );
-};
+  )
+}
 
 EditListingDescriptionPanel.defaultProps = {
   className: null,
   rootClassName: null,
   errors: null,
-  listing: null,
-};
+  listing: null
+}
 
 EditListingDescriptionPanel.propTypes = {
   className: string,
@@ -97,7 +94,7 @@ EditListingDescriptionPanel.propTypes = {
   submitButtonText: string.isRequired,
   panelUpdated: bool.isRequired,
   updateInProgress: bool.isRequired,
-  errors: object.isRequired,
-};
+  errors: object.isRequired
+}
 
-export default EditListingDescriptionPanel;
+export default EditListingDescriptionPanel

@@ -8,6 +8,17 @@ exports[`EditListingPricingForm matches snapshot 1`] = `
   onSubmit={[Function]}
 >
   <div
+    className="alert secondary"
+  >
+    <div
+      className="container"
+    >
+      <span>
+        EditListingPricingForm.guide
+      </span>
+    </div>
+  </div>
+  <div
     className="priceInput"
   >
     <label
@@ -27,6 +38,13 @@ exports[`EditListingPricingForm matches snapshot 1`] = `
       value=""
     />
   </div>
+  <span
+    className="feeInfo"
+  >
+    <span>
+      EditListingPricingForm.commissionFeeNote
+    </span>
+  </span>
   <button
     className="root submitButton"
     disabled={true}

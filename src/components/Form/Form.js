@@ -1,27 +1,27 @@
-import React from 'react';
-import { func, node, string } from 'prop-types';
-import routeConfiguration from '../../routeConfiguration';
-import { findRouteByRouteName } from '../../util/routes';
+import React from 'react'
+import { func, node, string } from 'prop-types'
+import routeConfiguration from '../../routeConfiguration'
+import { findRouteByRouteName } from '../../util/routes'
 
-const Form = props => {
-  const { children, contentRef, enforcePagePreloadFor, ...restProps } = props;
+const Form = (props) => {
+  const { children, contentRef, enforcePagePreloadFor, ...restProps } = props
 
-  const onOverFormFn = enforcePreloadOfPage => () => {
+  const onOverFormFn = (enforcePreloadOfPage) => () => {
     // Enforce preloading of given page (loadable component)
-    const { component: Page } = findRouteByRouteName(enforcePreloadOfPage, routeConfiguration());
+    const { component: Page } = findRouteByRouteName(enforcePreloadOfPage, routeConfiguration())
     // Loadable Component has a "preload" function.
     if (Page.preload) {
-      Page.preload();
+      Page.preload()
     }
-  };
+  }
 
-  const onOverForm = enforcePagePreloadFor ? onOverFormFn(enforcePagePreloadFor) : null;
+  const onOverForm = enforcePagePreloadFor ? onOverFormFn(enforcePagePreloadFor) : null
   const onOverFormMaybe = onOverForm
     ? {
         onMouseOver: onOverForm,
-        onTouchStart: onOverForm,
+        onTouchStart: onOverForm
       }
-    : {};
+    : {}
 
   const formProps = {
     // These are mainly default values for the server
@@ -35,22 +35,22 @@ const Form = props => {
     ref: contentRef,
 
     ...onOverFormMaybe,
-    ...restProps,
-  };
+    ...restProps
+  }
 
-  return <form {...formProps}>{children}</form>;
-};
+  return <form {...formProps}>{children}</form>
+}
 
 Form.defaultProps = {
   children: null,
   contentRef: null,
-  enforcePagePreloadFor: null,
-};
+  enforcePagePreloadFor: null
+}
 
 Form.propTypes = {
   children: node,
   contentRef: func,
-  enforcePagePreloadFor: string,
-};
+  enforcePagePreloadFor: string
+}
 
-export default Form;
+export default Form

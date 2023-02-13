@@ -59,6 +59,64 @@
   margin: 0;
 }
 
+.list.collapsed {
+  -webkit-animation: mask-collapsing 0.5s;
+  animation: mask-collapsing 0.5s;
+  -webkit-mask-image: linear-gradient(black 50%, transparent);
+  mask-image: linear-gradient(black 50%, transparent);
+}
+
+.list.expanded {
+  -webkit-animation: mask-expanding 0.5s;
+  animation: mask-expanding 0.5s;
+  -webkit-mask-image: linear-gradient(black 100%, transparent);
+  mask-image: linear-gradient(black 100%, transparent);
+}
+
+@-webkit-keyframes mask-collapsing {
+  from {
+    -webkit-mask-image: linear-gradient(black 100%, transparent);
+    mask-image: linear-gradient(black 100%, transparent);
+  }
+  to {
+    -webkit-mask-image: linear-gradient(black 50%, transparent);
+    mask-image: linear-gradient(black 50%, transparent);
+  }
+}
+
+@keyframes mask-collapsing {
+  from {
+    -webkit-mask-image: linear-gradient(black 100%, transparent);
+    mask-image: linear-gradient(black 100%, transparent);
+  }
+  to {
+    -webkit-mask-image: linear-gradient(black 50%, transparent);
+    mask-image: linear-gradient(black 50%, transparent);
+  }
+}
+
+@-webkit-keyframes mask-expanding {
+  from {
+    -webkit-mask-image: linear-gradient(black 50%, transparent);
+    mask-image: linear-gradient(black 50%, transparent);
+  }
+  to {
+    -webkit-mask-image: linear-gradient(black 100%, transparent);
+    mask-image: linear-gradient(black 100%, transparent);
+  }
+}
+
+@keyframes mask-expanding {
+  from {
+    -webkit-mask-image: linear-gradient(black 50%, transparent);
+    mask-image: linear-gradient(black 50%, transparent);
+  }
+  to {
+    -webkit-mask-image: linear-gradient(black 100%, transparent);
+    mask-image: linear-gradient(black 100%, transparent);
+  }
+}
+
 .item {
   padding: 2px 0;
 

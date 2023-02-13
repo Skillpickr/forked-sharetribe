@@ -1,15 +1,15 @@
-import React from 'react';
-import { bool, func, object, string } from 'prop-types';
-import { FormattedMessage, intlShape } from '../../util/reactIntl';
-import { FieldArray } from 'react-final-form-arrays';
-import { ExternalLink, IconAdd, IconClose, InlineTextButton } from '../../components';
+import React from 'react'
+import { bool, func, object, string } from 'prop-types'
+import { FormattedMessage, intlShape } from '../../util/reactIntl'
+import { FieldArray } from 'react-final-form-arrays'
+import { ExternalLink, IconAdd, IconClose, InlineTextButton } from '../../components'
 
-import PayoutDetailsAddress from './PayoutDetailsAddress';
-import PayoutDetailsPersonalDetails from './PayoutDetailsPersonalDetails';
+import PayoutDetailsAddress from './PayoutDetailsAddress'
+import PayoutDetailsPersonalDetails from './PayoutDetailsPersonalDetails'
 
-import css from './PayoutDetailsForm.module.css';
+import css from './PayoutDetailsForm.module.css'
 
-const PayoutDetailsAdditionalPersons = props => {
+const PayoutDetailsAdditionalPersons = (props) => {
   const {
     fieldId,
     country,
@@ -23,25 +23,22 @@ const PayoutDetailsAdditionalPersons = props => {
     showPersonalAddressField,
     showPersonalIdNumberField,
     showPhoneNumberField,
-    values,
-  } = props;
+    values
+  } = props
 
   const additionalPersonInfoLink = (
-    <ExternalLink
-      href="https://support.stripe.com/questions/owners-and-directors"
-      className={css.termsLink}
-    >
+    <ExternalLink href="https://support.stripe.com/questions/owners-and-directors" className={css.termsLink}>
       <FormattedMessage id="PayoutDetailsForm.additionalPersonInfoLink" />
     </ExternalLink>
-  );
+  )
 
-  const showOwnershipPercentageField = index =>
+  const showOwnershipPercentageField = (index) =>
     showOwnerField &&
     values &&
     values[fieldId] &&
     values[fieldId][index] &&
     values[fieldId][index].role &&
-    values[fieldId][index].role.find(r => r === 'owner');
+    values[fieldId][index].role.find((r) => r === 'owner')
 
   return (
     <div className={css.additionalPersonsWrapper}>
@@ -49,11 +46,7 @@ const PayoutDetailsAdditionalPersons = props => {
         {({ fields }) =>
           fields.map((name, index) => (
             <div className={css.additionalPersonWrapper} key={name}>
-              <div
-                className={css.fieldArrayRemove}
-                onClick={() => fields.remove(index)}
-                style={{ cursor: 'pointer' }}
-              >
+              <div className={css.fieldArrayRemove} onClick={() => fields.remove(index)} style={{ cursor: 'pointer' }}>
                 <span className={css.additionalPersonLabel}>
                   <IconClose rootClassName={css.closeIcon} size="small" />
                   <FormattedMessage id="PayoutDetailsForm.additionalPersonRemove" />
@@ -92,26 +85,19 @@ const PayoutDetailsAdditionalPersons = props => {
       </FieldArray>
 
       <React.Fragment>
-        <InlineTextButton
-          type="button"
-          rootClassName={css.fieldArrayAdd}
-          onClick={() => push(fieldId, undefined)}
-        >
+        <InlineTextButton type="button" rootClassName={css.fieldArrayAdd} onClick={() => push(fieldId, undefined)}>
           <span className={css.additionalPersonLabel}>
             <IconAdd rootClassName={css.addIcon} />
             <FormattedMessage id="PayoutDetailsForm.additionalPersonLink" />
           </span>
         </InlineTextButton>
         <p className={css.additionalPersonInfo}>
-          <FormattedMessage
-            id="PayoutDetailsForm.additionalPersonInfoText"
-            values={{ additionalPersonInfoLink }}
-          />
+          <FormattedMessage id="PayoutDetailsForm.additionalPersonInfoText" values={{ additionalPersonInfoLink }} />
         </p>
       </React.Fragment>
     </div>
-  );
-};
+  )
+}
 
 PayoutDetailsAdditionalPersons.defaultProps = {
   disabled: false,
@@ -121,8 +107,8 @@ PayoutDetailsAdditionalPersons.defaultProps = {
   showPersonalAddressField: false,
   showPersonalIdNumberField: false,
   showPhoneNumberField: false,
-  values: null,
-};
+  values: null
+}
 
 PayoutDetailsAdditionalPersons.propTypes = {
   country: string.isRequired,
@@ -139,7 +125,7 @@ PayoutDetailsAdditionalPersons.propTypes = {
   values: object,
 
   // from parent
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-export default PayoutDetailsAdditionalPersons;
+export default PayoutDetailsAdditionalPersons

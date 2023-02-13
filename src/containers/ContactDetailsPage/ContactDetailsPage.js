@@ -1,11 +1,11 @@
-import React from 'react';
-import { bool, func } from 'prop-types';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
-import { propTypes } from '../../util/types';
-import { ensureCurrentUser } from '../../util/data';
-import { sendVerificationEmail } from '../../ducks/user.duck';
+import React from 'react'
+import { bool, func } from 'prop-types'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl'
+import { propTypes } from '../../util/types'
+import { ensureCurrentUser } from '../../util/data'
+import { sendVerificationEmail } from '../../ducks/user.duck'
 import {
   LayoutSideNavigation,
   LayoutWrapperMain,
@@ -14,20 +14,16 @@ import {
   LayoutWrapperFooter,
   Footer,
   Page,
-  UserNav,
-} from '../../components';
-import { ContactDetailsForm } from '../../forms';
-import { TopbarContainer } from '../../containers';
+  UserNav
+} from '../../components'
+import { ContactDetailsForm } from '../../forms'
+import { TopbarContainer } from '../../containers'
 
-import { isScrollingDisabled } from '../../ducks/UI.duck';
-import {
-  saveContactDetails,
-  saveContactDetailsClear,
-  resetPassword,
-} from './ContactDetailsPage.duck';
-import css from './ContactDetailsPage.module.css';
+import { isScrollingDisabled } from '../../ducks/UI.duck'
+import { saveContactDetails, saveContactDetailsClear, resetPassword } from './ContactDetailsPage.duck'
+import css from './ContactDetailsPage.module.css'
 
-export const ContactDetailsPageComponent = props => {
+export const ContactDetailsPageComponent = (props) => {
   const {
     saveEmailError,
     savePhoneNumberError,
@@ -44,13 +40,13 @@ export const ContactDetailsPageComponent = props => {
     onResetPassword,
     resetPasswordInProgress,
     resetPasswordError,
-    intl,
-  } = props;
+    intl
+  } = props
 
-  const user = ensureCurrentUser(currentUser);
-  const currentEmail = user.attributes.email || '';
-  const protectedData = user.attributes.profile.protectedData || {};
-  const currentPhoneNumber = protectedData.phoneNumber || '';
+  const user = ensureCurrentUser(currentUser)
+  const currentEmail = user.attributes.email || ''
+  const protectedData = user.attributes.profile.protectedData || {}
+  const currentPhoneNumber = protectedData.phoneNumber || ''
   const contactInfoForm = user.id ? (
     <ContactDetailsForm
       className={css.form}
@@ -60,7 +56,7 @@ export const ContactDetailsPageComponent = props => {
       currentUser={currentUser}
       onResendVerificationEmail={onResendVerificationEmail}
       onResetPassword={onResetPassword}
-      onSubmit={values => onSubmitContactDetails({ ...values, currentEmail, currentPhoneNumber })}
+      onSubmit={(values) => onSubmitContactDetails({ ...values, currentEmail, currentPhoneNumber })}
       onChange={onChange}
       inProgress={saveContactDetailsInProgress}
       ready={contactDetailsChanged}
@@ -69,9 +65,9 @@ export const ContactDetailsPageComponent = props => {
       resetPasswordInProgress={resetPasswordInProgress}
       resetPasswordError={resetPasswordError}
     />
-  ) : null;
+  ) : null
 
-  const title = intl.formatMessage({ id: 'ContactDetailsPage.title' });
+  const title = intl.formatMessage({ id: 'ContactDetailsPage.title' })
 
   return (
     <Page title={title} scrollingDisabled={scrollingDisabled}>
@@ -98,8 +94,8 @@ export const ContactDetailsPageComponent = props => {
         </LayoutWrapperFooter>
       </LayoutSideNavigation>
     </Page>
-  );
-};
+  )
+}
 
 ContactDetailsPageComponent.defaultProps = {
   saveEmailError: null,
@@ -107,8 +103,8 @@ ContactDetailsPageComponent.defaultProps = {
   currentUser: null,
   sendVerificationEmailError: null,
   resetPasswordInProgress: false,
-  resetPasswordError: null,
-};
+  resetPasswordError: null
+}
 
 ContactDetailsPageComponent.propTypes = {
   saveEmailError: propTypes.error,
@@ -127,25 +123,20 @@ ContactDetailsPageComponent.propTypes = {
   resetPasswordError: propTypes.error,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   // Topbar needs user info.
-  const {
-    currentUser,
-    currentUserListing,
-    sendVerificationEmailInProgress,
-    sendVerificationEmailError,
-  } = state.user;
+  const { currentUser, currentUserListing, sendVerificationEmailInProgress, sendVerificationEmailError } = state.user
   const {
     saveEmailError,
     savePhoneNumberError,
     saveContactDetailsInProgress,
     contactDetailsChanged,
     resetPasswordInProgress,
-    resetPasswordError,
-  } = state.ContactDetailsPage;
+    resetPasswordError
+  } = state.ContactDetailsPage
   return {
     saveEmailError,
     savePhoneNumberError,
@@ -157,23 +148,20 @@ const mapStateToProps = state => {
     sendVerificationEmailInProgress,
     sendVerificationEmailError,
     resetPasswordInProgress,
-    resetPasswordError,
-  };
-};
+    resetPasswordError
+  }
+}
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onChange: () => dispatch(saveContactDetailsClear()),
   onResendVerificationEmail: () => dispatch(sendVerificationEmail()),
-  onSubmitContactDetails: values => dispatch(saveContactDetails(values)),
-  onResetPassword: values => dispatch(resetPassword(values)),
-});
+  onSubmitContactDetails: (values) => dispatch(saveContactDetails(values)),
+  onResetPassword: (values) => dispatch(resetPassword(values))
+})
 
 const ContactDetailsPage = compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   injectIntl
-)(ContactDetailsPageComponent);
+)(ContactDetailsPageComponent)
 
-export default ContactDetailsPage;
+export default ContactDetailsPage

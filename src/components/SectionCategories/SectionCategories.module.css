@@ -1,0 +1,138 @@
+@import '../../styles/customMediaQueries.css';
+
+.title {
+  composes: marketplaceHeroTitleFontStyles from global;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+  color: white;
+}
+.profilePic {
+  max-width: 114px !important;
+  width: 114px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+
+  @media (--viewportMedium) {
+    max-width: 150px !important;
+    width: 150px !important;
+  }
+  @media (--viewportLarge) {
+    max-width: 200px !important;
+    width: 200px !important;
+  }
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: var(--boxShadowListingCard);
+  }
+}
+
+.heroSubTitle {
+  composes: h2 from global;
+  text-align: center;
+  color: var(--matterColorLight);
+  margin: 16px 0 32px 0;
+  /* composes: animation; */
+
+  @media (--viewportMedium) {
+    max-width: var(--SectionHero_desktopTitleMaxWidth);
+    margin: 0 0 47px 0;
+  }
+}
+
+.background {
+  height: 100%;
+  background: linear-gradient(90deg, var(--marketplaceColor) 50%, var(--marketplaceColorDark) 50%);
+  padding: 40px;
+  border-radius: 4px;
+}
+
+.categories {
+  display: inline-flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 0px;
+
+  @media (--viewportMedium) {
+    flex-direction: row;
+    margin-top: 33px;
+  }
+  @media (--viewportSmall) {
+    flex-direction: row;
+    margin-top: 33px;
+  }
+}
+
+.category {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 25px;
+  border-bottom: solid transparent;
+  padding-bottom: 16px;
+
+  /* Remove link's hover effect */
+  &:hover {
+    text-decoration: none;
+    border-bottom: solid white;
+  }
+
+  @media (--viewportMedium) {
+    margin-top: 0;
+  }
+}
+
+.categoryName {
+  color: var(--matterColorLight);
+}
+
+.comingSoon:after {
+  content: 'Coming Soon';
+  background: #006a70;
+  padding: 2px 6px 3px;
+  margin-left: 8px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: pre;
+}
+
+/* A wrapper for a responsive image that holds it's aspect ratio */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  transition: var(--transitionStyleButton);
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: var(--boxShadowSectionLocationHover);
+  }
+}
+
+/* An image wrapper that defines the images aspect ratio */
+.aspectWrapper {
+  padding-bottom: calc(6 / 13 * 100%); /* 13:6 Aspect Ratio */
+
+  @media (--viewportMedium) {
+    padding-bottom: calc(2 / 3 * 100%); /* 3:2 Aspect Ratio */
+  }
+}
+
+.linkText {
+  composes: h2 from global;
+  text-align: center;
+  display: inline-grid;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* text-align: center; */
+  /* align-content: space-evenly; */
+  justify-items: center;
+  margin: 0;
+}
+
+.linkText p span {
+  color: white;
+}

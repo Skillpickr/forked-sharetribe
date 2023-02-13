@@ -1,5 +1,5 @@
 .avatarBase {
-  font-family: 'poppins', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
   border-radius: 50%;
 
   /* Position possible initials to the center of the component */
@@ -8,11 +8,7 @@
   justify-content: center;
 
   /* Colors */
-  background-image: linear-gradient(
-    -180deg,
-    var(--marketplaceColorLight) 0%,
-    var(--marketplaceColor) 100%
-  );
+  background-image: linear-gradient(-180deg, var(--marketplaceColorLight) 0%, var(--marketplaceColor) 100%);
   color: var(--matterColorLight);
 
   &:hover {

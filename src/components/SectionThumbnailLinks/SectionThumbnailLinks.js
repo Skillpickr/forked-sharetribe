@@ -1,30 +1,22 @@
-import React from 'react';
-import { string, arrayOf, shape, node, object, oneOf, oneOfType } from 'prop-types';
-import classNames from 'classnames';
-import { ExternalLink, NamedLink } from '../../components';
+import React from 'react'
+import { string, arrayOf, shape, node, object, oneOf, oneOfType } from 'prop-types'
+import classNames from 'classnames'
+import { ExternalLink, NamedLink } from '../../components'
 
-import css from './SectionThumbnailLinks.module.css';
+import css from './SectionThumbnailLinks.module.css'
 
-const ThumbnailLink = props => {
-  const {
-    className,
-    rootClassName,
-    imageWrapperClassName,
-    linksPerRow,
-    imageUrl,
-    imageAltText,
-    linkProps,
-    text,
-  } = props;
-  const { type, name, params, to, href } = linkProps;
+const ThumbnailLink = (props) => {
+  const { className, rootClassName, imageWrapperClassName, linksPerRow, imageUrl, imageAltText, linkProps, text } =
+    props
+  const { type, name, params, to, href } = linkProps
   const classes = classNames(rootClassName || css.link, className, {
     [css.link2Columns]: linksPerRow === 2,
-    [css.link3Columns]: linksPerRow === 3,
-  });
-  const imageWrapperClasses = classNames(imageWrapperClassName || css.imageWrapper);
+    [css.link3Columns]: linksPerRow === 3
+  })
+  const imageWrapperClasses = classNames(imageWrapperClassName || css.imageWrapper)
 
-  const LinkComponentProps = type === 'NamedLink' ? { name, params, to } : { href };
-  const LinkComponent = type === 'NamedLink' ? NamedLink : ExternalLink;
+  const LinkComponentProps = type === 'NamedLink' ? { name, params, to } : { href }
+  const LinkComponent = type === 'NamedLink' ? NamedLink : ExternalLink
 
   return (
     <LinkComponent {...LinkComponentProps} className={classes}>
@@ -35,10 +27,10 @@ const ThumbnailLink = props => {
       </div>
       <div className={css.text}>{text}</div>
     </LinkComponent>
-  );
-};
+  )
+}
 
-const SectionThumbnailLinks = props => {
+const SectionThumbnailLinks = (props) => {
   const {
     rootClassName,
     className,
@@ -50,11 +42,11 @@ const SectionThumbnailLinks = props => {
     subHeadingRootClassName,
     linkClassName,
     linkRootClassName,
-    imageWrapperClassName,
-  } = props;
-  const classes = classNames(rootClassName || css.root, className);
-  const headingClasses = headingRootClassName || css.heading;
-  const subHeadingClasses = subHeadingRootClassName || css.subHeading;
+    imageWrapperClassName
+  } = props
+  const classes = classNames(rootClassName || css.root, className)
+  const headingClasses = headingRootClassName || css.heading
+  const subHeadingClasses = subHeadingRootClassName || css.subHeading
   return (
     <div className={classes}>
       {heading ? <h2 className={headingClasses}>{heading}</h2> : null}
@@ -72,8 +64,8 @@ const SectionThumbnailLinks = props => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
 SectionThumbnailLinks.defaultProps = {
   rootClassName: null,
@@ -82,8 +74,8 @@ SectionThumbnailLinks.defaultProps = {
   subHeading: null,
   headingRootClassName: null,
   subHeadingRootClassName: null,
-  imageWrapperClassName: null,
-};
+  imageWrapperClassName: null
+}
 
 const namedLinkShape = shape({
   type: oneOf(['NamedLink']).isRequired,
@@ -91,14 +83,14 @@ const namedLinkShape = shape({
   params: object,
   to: shape({
     search: string,
-    hash: string,
-  }),
-});
+    hash: string
+  })
+})
 
 const externalLinkShape = shape({
   type: oneOf(['ExternalLink']).isRequired,
-  href: string.isRequired,
-});
+  href: string.isRequired
+})
 
 SectionThumbnailLinks.propTypes = {
   rootClassName: string,
@@ -110,7 +102,7 @@ SectionThumbnailLinks.propTypes = {
       imageUrl: string.isRequired,
       imageAltText: string.isRequired,
       linkProps: oneOfType([namedLinkShape, externalLinkShape]).isRequired,
-      text: node.isRequired,
+      text: node.isRequired
     })
   ).isRequired,
 
@@ -124,7 +116,7 @@ SectionThumbnailLinks.propTypes = {
   subHeadingRootClassName: string,
   linkClassName: string,
   linkRootClassName: string,
-  imageWrapperClassName: string,
-};
+  imageWrapperClassName: string
+}
 
-export default SectionThumbnailLinks;
+export default SectionThumbnailLinks

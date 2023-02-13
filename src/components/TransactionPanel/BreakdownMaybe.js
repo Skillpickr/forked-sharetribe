@@ -1,24 +1,22 @@
-import React from 'react';
-import classNames from 'classnames';
-import config from '../../config';
-import { DATE_TYPE_DATETIME } from '../../util/types';
-import { ensureListing } from '../../util/data';
-import { BookingBreakdown } from '../../components';
+import React from 'react'
+import classNames from 'classnames'
+import config from '../../config'
+import { DATE_TYPE_DATETIME } from '../../util/types'
+import { ensureListing } from '../../util/data'
+import { BookingBreakdown } from '../../components'
 
-import css from './TransactionPanel.module.css';
+import css from './TransactionPanel.module.css'
 
 // Functional component as a helper to build BookingBreakdown
-const BreakdownMaybe = props => {
-  const { className, rootClassName, breakdownClassName, transaction, transactionRole } = props;
-  const loaded = transaction && transaction.id && transaction.booking && transaction.booking.id;
-  const listingAttributes = ensureListing(transaction.listing).attributes;
+const BreakdownMaybe = (props) => {
+  const { className, rootClassName, breakdownClassName, transaction, transactionRole } = props
+  const loaded = transaction && transaction.id && transaction.booking && transaction.booking.id
+  const listingAttributes = ensureListing(transaction.listing).attributes
   const timeZone =
-    loaded && listingAttributes.availabilityPlan
-      ? listingAttributes.availabilityPlan.timezone
-      : 'Etc/UTC';
+    loaded && listingAttributes.availabilityPlan ? listingAttributes.availabilityPlan.timezone : 'Etc/UTC'
 
-  const classes = classNames(rootClassName || css.breakdownMaybe, className);
-  const breakdownClasses = classNames(breakdownClassName || css.breakdown);
+  const classes = classNames(rootClassName || css.breakdownMaybe, className)
+  const breakdownClasses = classNames(breakdownClassName || css.breakdown)
 
   return loaded ? (
     <div className={classes}>
@@ -32,7 +30,7 @@ const BreakdownMaybe = props => {
         timeZone={timeZone}
       />
     </div>
-  ) : null;
-};
+  ) : null
+}
 
-export default BreakdownMaybe;
+export default BreakdownMaybe

@@ -1,31 +1,27 @@
-import React from 'react';
-import { FormattedMessage } from '../../util/reactIntl';
-import { PropertyGroup } from '../../components';
+import React from 'react'
+import { FormattedMessage } from '../../util/reactIntl'
+import { PropertyGroup } from '../../components'
 
-import css from './ListingPage.module.css';
+import css from './ListingPage.module.css'
 
-const SectionFeaturesMaybe = props => {
-  const { options, publicData } = props;
-  if (!publicData) {
-    return null;
-  }
-
-  const selectedOptions = publicData && publicData.yogaStyles ? publicData.yogaStyles : [];
-  const selectedConfigOptions = options.filter(o => selectedOptions.find(s => s === o.key));
+const SectionFeaturesMaybe = (props) => {
+  // Component's props should include all the possible options (from config)
+  // and listing's publicData
+  const { optionLabel, selectedSubOptions, selectedConfigSubOptions } = props
 
   return (
     <div className={css.sectionFeatures}>
       <h2 className={css.featuresTitle}>
-        <FormattedMessage id="ListingPage.featuresTitle" />
+        <FormattedMessage id="ListingPage.skill" values={{ skill: optionLabel.toLowerCase() }} />
       </h2>
       <PropertyGroup
-        id="ListingPage.yogaStyles"
-        options={selectedConfigOptions}
-        selectedOptions={selectedOptions}
-        twoColumns={selectedConfigOptions.length > 5}
+        id="ListingPage.skillType"
+        options={selectedConfigSubOptions}
+        selectedOptions={selectedSubOptions}
+        twoColumns={selectedConfigSubOptions.length > 5}
       />
     </div>
-  );
-};
+  )
+}
 
-export default SectionFeaturesMaybe;
+export default SectionFeaturesMaybe

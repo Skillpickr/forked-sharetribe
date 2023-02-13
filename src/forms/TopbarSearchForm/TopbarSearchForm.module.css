@@ -142,8 +142,7 @@
   z-index: calc(var(--zIndexPopup) + 1);
 
   margin-top: calc(
-    var(--topbarHeightDesktop) - var(--TopbarSearchForm_inputHeight) +
-      var(--TopbarSearchForm_bottomBorder)
+    var(--topbarHeightDesktop) - var(--TopbarSearchForm_inputHeight) + var(--TopbarSearchForm_bottomBorder)
   );
   max-width: 434px;
 }

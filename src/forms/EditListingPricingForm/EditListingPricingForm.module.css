@@ -33,3 +33,17 @@
     margin-top: 100px;
   }
 }
+
+.feeInfo {
+  composes: marketplaceTinyFontStyles from global;
+  flex-shrink: 0;
+  margin: 0;
+  color: var(--matterColorAnti);
+  padding-top: 4px;
+  padding-bottom: 14px;
+
+  @media (--viewportMedium) {
+    padding-top: 11px;
+    padding-bottom: 21px;
+  }
+}

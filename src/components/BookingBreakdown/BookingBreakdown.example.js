@@ -1,5 +1,5 @@
-import Decimal from 'decimal.js';
-import { types as sdkTypes } from '../../util/sdkLoader';
+import Decimal from 'decimal.js'
+import { types as sdkTypes } from '../../util/sdkLoader'
 import {
   TRANSITION_ACCEPT,
   TRANSITION_CANCEL,
@@ -8,33 +8,27 @@ import {
   TRANSITION_EXPIRE,
   TRANSITION_REQUEST_PAYMENT,
   TRANSITION_CONFIRM_PAYMENT,
-  TX_TRANSITION_ACTOR_CUSTOMER,
-} from '../../util/transaction';
-import {
-  LINE_ITEM_DAY,
-  LINE_ITEM_NIGHT,
-  LINE_ITEM_UNITS,
-  DATE_TYPE_DATE,
-  DATE_TYPE_DATETIME,
-} from '../../util/types';
-import config from '../../config';
-import BookingBreakdown from './BookingBreakdown';
+  TX_TRANSITION_ACTOR_CUSTOMER
+} from '../../util/transaction'
+import { LINE_ITEM_DAY, LINE_ITEM_NIGHT, LINE_ITEM_UNITS, DATE_TYPE_DATE, DATE_TYPE_DATETIME } from '../../util/types'
+import config from '../../config'
+import BookingBreakdown from './BookingBreakdown'
 
-const { UUID, Money } = sdkTypes;
+const { UUID, Money } = sdkTypes
 
-const CURRENCY = config.currency;
+const CURRENCY = config.currency
 
-const exampleBooking = attributes => {
+const exampleBooking = (attributes) => {
   return {
     id: new UUID('example-booking'),
     type: 'booking',
-    attributes,
-  };
-};
+    attributes
+  }
+}
 
-const exampleTransaction = params => {
-  const created = new Date(Date.UTC(2017, 1, 1));
-  const confirmed = new Date(Date.UTC(2017, 1, 1, 0, 1));
+const exampleTransaction = (params) => {
+  const created = new Date(Date.UTC(2017, 1, 1))
+  const confirmed = new Date(Date.UTC(2017, 1, 1, 0, 1))
   return {
     id: new UUID('example-transaction'),
     type: 'transaction',
@@ -46,20 +40,20 @@ const exampleTransaction = params => {
         {
           createdAt: created,
           by: TX_TRANSITION_ACTOR_CUSTOMER,
-          transition: TRANSITION_REQUEST_PAYMENT,
+          transition: TRANSITION_REQUEST_PAYMENT
         },
         {
           createdAt: confirmed,
           by: TX_TRANSITION_ACTOR_CUSTOMER,
-          transition: TRANSITION_CONFIRM_PAYMENT,
-        },
+          transition: TRANSITION_CONFIRM_PAYMENT
+        }
       ],
 
       // payinTotal, payoutTotal, and lineItems required in params
-      ...params,
-    },
-  };
-};
+      ...params
+    }
+  }
+}
 
 export const Checkout = {
   component: BookingBreakdown,
@@ -77,16 +71,16 @@ export const Checkout = {
           quantity: new Decimal(2),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(9000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 16)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 16))
+    })
+  }
+}
 
 export const CustomerOrder = {
   component: BookingBreakdown,
@@ -104,16 +98,16 @@ export const CustomerOrder = {
           quantity: new Decimal(2),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(9000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 16)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 16))
+    })
+  }
+}
 
 export const ProviderSale = {
   component: BookingBreakdown,
@@ -131,23 +125,23 @@ export const ProviderSale = {
           quantity: new Decimal(2),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(9000, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/provider-commission',
           includeFor: ['provider'],
           unitPrice: new Money(-2000, CURRENCY),
           lineTotal: new Money(-2000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 16)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 16))
+    })
+  }
+}
 
 export const ProviderSaleZeroCommission = {
   component: BookingBreakdown,
@@ -165,23 +159,23 @@ export const ProviderSaleZeroCommission = {
           quantity: new Decimal(2),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(9000, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/provider-commission',
           includeFor: ['provider'],
           unitPrice: new Money(0, CURRENCY),
           lineTotal: new Money(0, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 16)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 16))
+    })
+  }
+}
 
 export const ProviderSaleSingleNight = {
   component: BookingBreakdown,
@@ -199,23 +193,23 @@ export const ProviderSaleSingleNight = {
           quantity: new Decimal(1),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(4500, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/provider-commission',
           includeFor: ['provider'],
           unitPrice: new Money(-2000, CURRENCY),
           lineTotal: new Money(-2000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 15)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 15))
+    })
+  }
+}
 
 export const ProviderSalePreauthorized = {
   component: BookingBreakdown,
@@ -234,23 +228,23 @@ export const ProviderSalePreauthorized = {
           quantity: new Decimal(1),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(4500, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/provider-commission',
           includeFor: ['provider'],
           unitPrice: new Money(-2000, CURRENCY),
           lineTotal: new Money(-2000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 15)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 15))
+    })
+  }
+}
 
 export const ProviderSaleAccepted = {
   component: BookingBreakdown,
@@ -269,23 +263,23 @@ export const ProviderSaleAccepted = {
           quantity: new Decimal(1),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(4500, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/provider-commission',
           includeFor: ['provider'],
           unitPrice: new Money(-2000, CURRENCY),
           lineTotal: new Money(-2000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 15)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 15))
+    })
+  }
+}
 
 export const ProviderSaleDeclined = {
   component: BookingBreakdown,
@@ -304,23 +298,23 @@ export const ProviderSaleDeclined = {
           quantity: new Decimal(1),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(4500, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/provider-commission',
           includeFor: ['provider'],
           unitPrice: new Money(-2000, CURRENCY),
           lineTotal: new Money(-2000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 15)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 15))
+    })
+  }
+}
 
 export const ProviderSaleAutoDeclined = {
   component: BookingBreakdown,
@@ -339,23 +333,23 @@ export const ProviderSaleAutoDeclined = {
           quantity: new Decimal(1),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(4500, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/provider-commission',
           includeFor: ['provider'],
           unitPrice: new Money(-2000, CURRENCY),
           lineTotal: new Money(-2000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 15)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 15))
+    })
+  }
+}
 
 export const ProviderSaleDelivered = {
   component: BookingBreakdown,
@@ -374,23 +368,23 @@ export const ProviderSaleDelivered = {
           quantity: new Decimal(1),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(4500, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/provider-commission',
           includeFor: ['provider'],
           unitPrice: new Money(-2000, CURRENCY),
           lineTotal: new Money(-2000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 15)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 15))
+    })
+  }
+}
 
 export const ProviderSaleCanceled = {
   component: BookingBreakdown,
@@ -409,7 +403,7 @@ export const ProviderSaleCanceled = {
           quantity: new Decimal(1),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(4500, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/night',
@@ -417,7 +411,7 @@ export const ProviderSaleCanceled = {
           quantity: new Decimal(-1),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(-4500, CURRENCY),
-          reversal: true,
+          reversal: true
         },
         {
           code: 'line-item/provider-commission',
@@ -425,7 +419,7 @@ export const ProviderSaleCanceled = {
           quantity: new Decimal(1),
           unitPrice: new Money(-2000, CURRENCY),
           lineTotal: new Money(-2000, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/provider-commission',
@@ -433,16 +427,16 @@ export const ProviderSaleCanceled = {
           quantity: new Decimal(-1),
           unitPrice: new Money(2000, CURRENCY),
           lineTotal: new Money(-2000, CURRENCY),
-          reversal: true,
-        },
-      ],
+          reversal: true
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 15)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 15))
+    })
+  }
+}
 
 export const SingleDay = {
   component: BookingBreakdown,
@@ -460,16 +454,16 @@ export const SingleDay = {
           quantity: new Decimal(1),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(4500, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 15)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 15))
+    })
+  }
+}
 
 export const MultipleDays = {
   component: BookingBreakdown,
@@ -487,16 +481,16 @@ export const MultipleDays = {
           quantity: new Decimal(2),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(9000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 16)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 16))
+    })
+  }
+}
 
 export const UnitsType = {
   component: BookingBreakdown,
@@ -514,16 +508,16 @@ export const UnitsType = {
           quantity: new Decimal(2),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(9000, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 18)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 18))
+    })
+  }
+}
 
 export const CustomPricing = {
   component: BookingBreakdown,
@@ -541,7 +535,7 @@ export const CustomPricing = {
           quantity: new Decimal(2),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(9000, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/car-cleaning',
@@ -549,7 +543,7 @@ export const CustomPricing = {
           quantity: new Decimal(1),
           unitPrice: new Money(5000, CURRENCY),
           lineTotal: new Money(5000, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/season-discount',
@@ -557,7 +551,7 @@ export const CustomPricing = {
           percentage: new Decimal(-10),
           unitPrice: new Money(14000, CURRENCY),
           lineTotal: new Money(-1400, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/customer-commission',
@@ -565,16 +559,16 @@ export const CustomPricing = {
           percentage: new Decimal(10),
           unitPrice: new Money(2000, CURRENCY),
           lineTotal: new Money(200, CURRENCY),
-          reversal: false,
-        },
-      ],
+          reversal: false
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 16)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 16))
+    })
+  }
+}
 
 export const CustomPricingWithRefund = {
   component: BookingBreakdown,
@@ -592,7 +586,7 @@ export const CustomPricingWithRefund = {
           quantity: new Decimal(2),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(9000, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/night',
@@ -600,7 +594,7 @@ export const CustomPricingWithRefund = {
           quantity: new Decimal(-2),
           unitPrice: new Money(4500, CURRENCY),
           lineTotal: new Money(-9000, CURRENCY),
-          reversal: true,
+          reversal: true
         },
         {
           code: 'line-item/car-cleaning',
@@ -608,7 +602,7 @@ export const CustomPricingWithRefund = {
           quantity: new Decimal(1),
           unitPrice: new Money(5000, CURRENCY),
           lineTotal: new Money(5000, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/car-cleaning',
@@ -616,7 +610,7 @@ export const CustomPricingWithRefund = {
           quantity: new Decimal(-1),
           unitPrice: new Money(5000, CURRENCY),
           lineTotal: new Money(-5000, CURRENCY),
-          reversal: true,
+          reversal: true
         },
         {
           code: 'line-item/season-discount',
@@ -624,7 +618,7 @@ export const CustomPricingWithRefund = {
           percentage: new Decimal(-10),
           unitPrice: new Money(14000, CURRENCY),
           lineTotal: new Money(-1400, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/season-discount',
@@ -632,7 +626,7 @@ export const CustomPricingWithRefund = {
           percentage: new Decimal(10),
           unitPrice: new Money(14000, CURRENCY),
           lineTotal: new Money(1400, CURRENCY),
-          reversal: true,
+          reversal: true
         },
         {
           code: 'line-item/customer-commission',
@@ -640,7 +634,7 @@ export const CustomPricingWithRefund = {
           percentage: new Decimal(10),
           unitPrice: new Money(2000, CURRENCY),
           lineTotal: new Money(200, CURRENCY),
-          reversal: false,
+          reversal: false
         },
         {
           code: 'line-item/customer-commission',
@@ -648,13 +642,13 @@ export const CustomPricingWithRefund = {
           percentage: new Decimal(-10),
           unitPrice: new Money(2000, CURRENCY),
           lineTotal: new Money(-200, CURRENCY),
-          reversal: true,
-        },
-      ],
+          reversal: true
+        }
+      ]
     }),
     booking: exampleBooking({
       start: new Date(Date.UTC(2017, 3, 14)),
-      end: new Date(Date.UTC(2017, 3, 16)),
-    }),
-  },
-};
+      end: new Date(Date.UTC(2017, 3, 16))
+    })
+  }
+}

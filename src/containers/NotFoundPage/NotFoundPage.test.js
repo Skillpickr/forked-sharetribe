@@ -1,9 +1,9 @@
-import React from 'react';
-import { renderShallow } from '../../util/test-helpers';
-import { fakeIntl } from '../../util/test-data';
-import { NotFoundPageComponent } from './NotFoundPage';
+import React from 'react'
+import { renderShallow } from '../../util/test-helpers'
+import { fakeIntl } from '../../util/test-data'
+import { NotFoundPageComponent } from './NotFoundPage'
 
-const noop = () => null;
+const noop = () => null
 
 describe('NotFoundPageComponent', () => {
   it('matches snapshot', () => {
@@ -22,7 +22,7 @@ describe('NotFoundPageComponent', () => {
         onResendVerificationEmail={noop}
         intl={fakeIntl}
       />
-    );
-    expect(tree).toMatchSnapshot();
-  });
-});
+    )
+    expect(tree).toMatchSnapshot()
+  })
+})

@@ -1,15 +1,15 @@
-import React from 'react';
-import { array, arrayOf, bool, func, object, oneOf, shape, string } from 'prop-types';
-import { propTypes } from '../../util/types';
-import { intlShape } from '../../util/reactIntl';
-import routeConfiguration from '../../routeConfiguration';
+import React from 'react'
+import { array, arrayOf, bool, func, object, oneOf, shape, string } from 'prop-types'
+import { propTypes } from '../../util/types'
+import { intlShape } from '../../util/reactIntl'
+import routeConfiguration from '../../routeConfiguration'
 import {
   LISTING_PAGE_PARAM_TYPE_DRAFT,
   LISTING_PAGE_PARAM_TYPE_NEW,
-  LISTING_PAGE_PARAM_TYPES,
-} from '../../util/urlHelpers';
-import { ensureListing } from '../../util/data';
-import { createResourceLocatorString } from '../../util/routes';
+  LISTING_PAGE_PARAM_TYPES
+} from '../../util/urlHelpers'
+import { ensureListing } from '../../util/data'
+import { createResourceLocatorString } from '../../util/routes'
 import {
   EditListingAvailabilityPanel,
   EditListingDescriptionPanel,
@@ -17,62 +17,52 @@ import {
   EditListingLocationPanel,
   EditListingPhotosPanel,
   EditListingPoliciesPanel,
-  EditListingPricingPanel,
-} from '../../components';
+  EditListingPricingPanel
+} from '../../components'
 
-import css from './EditListingWizard.module.css';
+import css from './EditListingWizard.module.css'
 
-export const AVAILABILITY = 'availability';
-export const DESCRIPTION = 'description';
-export const FEATURES = 'features';
-export const POLICY = 'policy';
-export const LOCATION = 'location';
-export const PRICING = 'pricing';
-export const PHOTOS = 'photos';
+export const AVAILABILITY = 'availability'
+export const CREDENTIALS = 'credentials'
+export const FEATURES = 'features'
+export const INTRODUCTION = 'introduction'
+export const LOCATION = 'location'
+export const PRICING = 'pricing'
+export const PHOTOS = 'photos'
 
 // EditListingWizardTab component supports these tabs
-export const SUPPORTED_TABS = [
-  DESCRIPTION,
-  FEATURES,
-  POLICY,
-  LOCATION,
-  PRICING,
-  AVAILABILITY,
-  PHOTOS,
-];
+export const SUPPORTED_TABS = [INTRODUCTION, FEATURES, CREDENTIALS, LOCATION, PRICING, AVAILABILITY, PHOTOS]
 
 const pathParamsToNextTab = (params, tab, marketplaceTabs) => {
-  const nextTabIndex = marketplaceTabs.findIndex(s => s === tab) + 1;
+  const nextTabIndex = marketplaceTabs.findIndex((s) => s === tab) + 1
   const nextTab =
-    nextTabIndex < marketplaceTabs.length
-      ? marketplaceTabs[nextTabIndex]
-      : marketplaceTabs[marketplaceTabs.length - 1];
-  return { ...params, tab: nextTab };
-};
+    nextTabIndex < marketplaceTabs.length ? marketplaceTabs[nextTabIndex] : marketplaceTabs[marketplaceTabs.length - 1]
+  return { ...params, tab: nextTab }
+}
 
 // When user has update draft listing, he should be redirected to next EditListingWizardTab
 const redirectAfterDraftUpdate = (listingId, params, tab, marketplaceTabs, history) => {
   const currentPathParams = {
     ...params,
     type: LISTING_PAGE_PARAM_TYPE_DRAFT,
-    id: listingId,
-  };
-  const routes = routeConfiguration();
+    id: listingId
+  }
+  const routes = routeConfiguration()
 
   // Replace current "new" path to "draft" path.
   // Browser's back button should lead to editing current draft instead of creating a new one.
   if (params.type === LISTING_PAGE_PARAM_TYPE_NEW) {
-    const draftURI = createResourceLocatorString('EditListingPage', routes, currentPathParams, {});
-    history.replace(draftURI);
+    const draftURI = createResourceLocatorString('EditListingPage', routes, currentPathParams, {})
+    history.replace(draftURI)
   }
 
   // Redirect to next tab
-  const nextPathParams = pathParamsToNextTab(currentPathParams, tab, marketplaceTabs);
-  const to = createResourceLocatorString('EditListingPage', routes, nextPathParams, {});
-  history.push(to);
-};
+  const nextPathParams = pathParamsToNextTab(currentPathParams, tab, marketplaceTabs)
+  const to = createResourceLocatorString('EditListingPage', routes, nextPathParams, {})
+  history.push(to)
+}
 
-const EditListingWizardTab = props => {
+const EditListingWizardTab = (props) => {
   const {
     tab,
     marketplaceTabs,
@@ -99,59 +89,57 @@ const EditListingWizardTab = props => {
     intl,
     fetchExceptionsInProgress,
     availabilityExceptions,
-  } = props;
+    currentUser
+  } = props
+  const { type } = params
+  const isNewURI = type === LISTING_PAGE_PARAM_TYPE_NEW
+  const isDraftURI = type === LISTING_PAGE_PARAM_TYPE_DRAFT
+  const isNewListingFlow = isNewURI || isDraftURI
 
-  const { type } = params;
-  const isNewURI = type === LISTING_PAGE_PARAM_TYPE_NEW;
-  const isDraftURI = type === LISTING_PAGE_PARAM_TYPE_DRAFT;
-  const isNewListingFlow = isNewURI || isDraftURI;
-
-  const currentListing = ensureListing(listing);
-  const imageIds = images => {
-    return images ? images.map(img => img.imageId || img.id) : null;
-  };
+  const currentListing = ensureListing(listing)
+  const imageIds = (images) => {
+    return images ? images.map((img) => img.imageId || img.id) : null
+  }
 
   const onCompleteEditListingWizardTab = (tab, updateValues, passThrownErrors = false) => {
     // Normalize images for API call
-    const { images: updatedImages, ...otherValues } = updateValues;
-    const imageProperty =
-      typeof updatedImages !== 'undefined' ? { images: imageIds(updatedImages) } : {};
-    const updateValuesWithImages = { ...otherValues, ...imageProperty };
+
+    const { images: updatedImages, ...otherValues } = updateValues
+    const imageProperty = typeof updatedImages !== 'undefined' ? { images: imageIds(updatedImages) } : {}
+    const updateValuesWithImages = { ...otherValues, ...imageProperty }
 
     if (isNewListingFlow) {
       const onUpsertListingDraft = isNewURI
         ? (tab, updateValues) => onCreateListingDraft(updateValues)
-        : onUpdateListing;
+        : onUpdateListing
 
-      const upsertValues = isNewURI
-        ? updateValuesWithImages
-        : { ...updateValuesWithImages, id: currentListing.id };
+      const upsertValues = isNewURI ? updateValuesWithImages : { ...updateValuesWithImages, id: currentListing.id }
 
       return onUpsertListingDraft(tab, upsertValues)
-        .then(r => {
+        .then((r) => {
           if (tab !== AVAILABILITY && tab !== marketplaceTabs[marketplaceTabs.length - 1]) {
             // Create listing flow: smooth scrolling polyfill to scroll to correct tab
-            handleCreateFlowTabScrolling(false);
+            handleCreateFlowTabScrolling(false)
 
             // After successful saving of draft data, user should be redirected to next tab
-            redirectAfterDraftUpdate(r.data.data.id.uuid, params, tab, marketplaceTabs, history);
+            redirectAfterDraftUpdate(r.data.data.id.uuid, params, tab, marketplaceTabs, history)
           } else if (tab === marketplaceTabs[marketplaceTabs.length - 1]) {
-            handlePublishListing(currentListing.id);
+            handlePublishListing(currentListing.id)
           }
         })
-        .catch(e => {
+        .catch((e) => {
           if (passThrownErrors) {
-            throw e;
+            throw e
           }
           // No need for extra actions
           // Error is logged in EditListingPage.duck file.
-        });
+        })
     } else {
-      return onUpdateListing(tab, { ...updateValuesWithImages, id: currentListing.id });
+      return onUpdateListing(tab, { ...updateValuesWithImages, id: currentListing.id })
     }
-  };
+  }
 
-  const panelProps = tab => {
+  const panelProps = (tab) => {
     return {
       className: css.panel,
       errors,
@@ -162,85 +150,87 @@ const EditListingWizardTab = props => {
       onManageDisableScrolling,
       // newListingPublished and fetchInProgress are flags for the last wizard tab
       ready: newListingPublished,
-      disabled: fetchInProgress,
-    };
-  };
+      disabled: fetchInProgress
+    }
+  }
 
   switch (tab) {
-    case DESCRIPTION: {
+    case CREDENTIALS: {
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewDescription'
-        : 'EditListingWizard.saveEditDescription';
+        : 'EditListingWizard.saveEditDescription'
       return (
         <EditListingDescriptionPanel
-          {...panelProps(DESCRIPTION)}
+          {...panelProps(CREDENTIALS)}
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
+          onSubmit={(values) => {
+            onCompleteEditListingWizardTab(tab, values)
           }}
         />
-      );
+      )
     }
     case FEATURES: {
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewFeatures'
-        : 'EditListingWizard.saveEditFeatures';
+        : 'EditListingWizard.saveEditFeatures'
       return (
         <EditListingFeaturesPanel
           {...panelProps(FEATURES)}
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
+          onSubmit={(values) => {
+            onCompleteEditListingWizardTab(tab, values)
           }}
         />
-      );
+      )
     }
-    case POLICY: {
+    case INTRODUCTION: {
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewPolicies'
-        : 'EditListingWizard.saveEditPolicies';
+        : 'EditListingWizard.saveEditPolicies'
       return (
         <EditListingPoliciesPanel
-          {...panelProps(POLICY)}
+          {...panelProps(INTRODUCTION)}
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
+          onSubmit={(values) => {
+            onCompleteEditListingWizardTab(tab, values)
           }}
+          currentUser={currentUser}
+          intl={intl}
         />
-      );
+      )
     }
     case LOCATION: {
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewLocation'
-        : 'EditListingWizard.saveEditLocation';
+        : 'EditListingWizard.saveEditLocation'
       return (
         <EditListingLocationPanel
           {...panelProps(LOCATION)}
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
+          onSubmit={(values) => {
+            onCompleteEditListingWizardTab(tab, values)
           }}
         />
-      );
+      )
     }
     case PRICING: {
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewPricing'
-        : 'EditListingWizard.saveEditPricing';
+        : 'EditListingWizard.saveEditPricing'
       return (
         <EditListingPricingPanel
           {...panelProps(PRICING)}
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
+          onSubmit={(values) => {
+            onCompleteEditListingWizardTab(tab, values)
           }}
         />
-      );
+      )
     }
     case AVAILABILITY: {
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewAvailability'
-        : 'EditListingWizard.saveEditAvailability';
+        : 'EditListingWizard.saveEditAvailability'
       return (
         <EditListingAvailabilityPanel
           {...panelProps(AVAILABILITY)}
@@ -249,53 +239,61 @@ const EditListingWizardTab = props => {
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
           onAddAvailabilityException={onAddAvailabilityException}
           onDeleteAvailabilityException={onDeleteAvailabilityException}
-          onSubmit={values => {
+          onSubmit={(values) => {
             // We want to return the Promise to the form,
             // so that it doesn't close its modal if an error is thrown.
-            return onCompleteEditListingWizardTab(tab, values, true);
+            return onCompleteEditListingWizardTab(tab, values, true)
           }}
-          onNextTab={() =>
-            redirectAfterDraftUpdate(listing.id.uuid, params, tab, marketplaceTabs, history)
-          }
+          onNextTab={() => redirectAfterDraftUpdate(listing.id.uuid, params, tab, marketplaceTabs, history)}
         />
-      );
+      )
     }
     case PHOTOS: {
-      const submitButtonTranslationKey = isNewListingFlow
-        ? 'EditListingWizard.saveNewPhotos'
-        : 'EditListingWizard.saveEditPhotos';
+      const submitButtonTranslationKey = () => {
+        const stripeConnected = currentListing.author.attributes.stripeConnected
+        if (isNewListingFlow) {
+          if (stripeConnected) {
+            return 'EditListingWizard.publish'
+          }
+          return 'EditListingWizard.saveNewPhotos'
+        } else {
+          return 'EditListingWizard.saveEditPhotos'
+        }
+      }
 
       return (
         <EditListingPhotosPanel
           {...panelProps(PHOTOS)}
-          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
+          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey() })}
           images={images}
           onImageUpload={onImageUpload}
           onRemoveImage={onRemoveImage}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
+          onSubmit={(values) => {
+            onCompleteEditListingWizardTab(tab, values)
           }}
           onUpdateImageOrder={onUpdateImageOrder}
         />
-      );
+      )
     }
     default:
-      return null;
+      return null
   }
-};
+}
 
 EditListingWizardTab.defaultProps = {
   listing: null,
   updatedTab: null,
   availabilityExceptions: [],
-};
+  currentUser: null
+}
 
 EditListingWizardTab.propTypes = {
+  currentUser: propTypes.currentUser,
   params: shape({
     id: string.isRequired,
     slug: string.isRequired,
     type: oneOf(LISTING_PAGE_PARAM_TYPES).isRequired,
-    tab: oneOf(SUPPORTED_TABS).isRequired,
+    tab: oneOf(SUPPORTED_TABS).isRequired
   }).isRequired,
   availabilityExceptions: arrayOf(propTypes.availabilityException),
   errors: shape({
@@ -306,14 +304,14 @@ EditListingWizardTab.propTypes = {
     uploadImageError: object,
     fetchExceptionsError: object,
     addExceptionError: object,
-    deleteExceptionError: object,
+    deleteExceptionError: object
   }).isRequired,
   fetchInProgress: bool.isRequired,
   fetchExceptionsInProgress: bool.isRequired,
   newListingPublished: bool.isRequired,
   history: shape({
     push: func.isRequired,
-    replace: func.isRequired,
+    replace: func.isRequired
   }).isRequired,
   images: array.isRequired,
 
@@ -324,9 +322,9 @@ EditListingWizardTab.propTypes = {
       description: string,
       geolocation: object,
       pricing: object,
-      title: string,
+      title: string
     }),
-    images: array,
+    images: array
   }),
 
   handleCreateFlowTabScrolling: func.isRequired,
@@ -342,7 +340,7 @@ EditListingWizardTab.propTypes = {
   updatedTab: string,
   updateInProgress: bool.isRequired,
 
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-export default EditListingWizardTab;
+export default EditListingWizardTab

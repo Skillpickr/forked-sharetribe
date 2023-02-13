@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { bool, func, object, shape, string } from 'prop-types';
-import { Field } from 'react-final-form';
-import classNames from 'classnames';
-import { ValidationError, ExpandingTextarea } from '../../components';
+import React, { Component } from 'react'
+import { bool, func, object, shape, string } from 'prop-types'
+import { Field } from 'react-final-form'
+import classNames from 'classnames'
+import { ValidationError, ExpandingTextarea } from '../../components'
 
-import css from './FieldTextInput.module.css';
+import css from './FieldTextInput.module.css'
 
-const CONTENT_MAX_LENGTH = 5000;
+const CONTENT_MAX_LENGTH = 5000
 
 class FieldTextInputComponent extends Component {
   render() {
@@ -24,39 +24,39 @@ class FieldTextInputComponent extends Component {
       isUncontrolled,
       inputRef,
       ...rest
-    } = this.props;
+    } = this.props
     /* eslint-enable no-unused-vars */
 
     if (label && !id) {
-      throw new Error('id required when a label is given');
+      throw new Error('id required when a label is given')
     }
 
-    const { valid, invalid, touched, error } = meta;
-    const isTextarea = input.type === 'textarea';
+    const { valid, invalid, touched, error } = meta
+    const isTextarea = input.type === 'textarea'
 
-    const errorText = customErrorText || error;
+    const errorText = customErrorText || error
 
     // Error message and input error styles are only shown if the
     // field has been touched and the validation has failed.
-    const hasError = !!customErrorText || !!(touched && invalid && error);
+    const hasError = !!customErrorText || !!(touched && invalid && error)
 
-    const fieldMeta = { touched: hasError, error: errorText };
+    const fieldMeta = { touched: hasError, error: errorText }
 
     // Textarea doesn't need type.
-    const { type, ...inputWithoutType } = input;
+    const { type, ...inputWithoutType } = input
     // Uncontrolled input uses defaultValue instead of value.
-    const { value: defaultValue, ...inputWithoutValue } = input;
+    const { value: defaultValue, ...inputWithoutValue } = input
     // Use inputRef if it is passed as prop.
-    const refMaybe = inputRef ? { ref: inputRef } : {};
+    const refMaybe = inputRef ? { ref: inputRef } : {}
 
     const inputClasses =
       inputRootClass ||
       classNames(css.input, {
         [css.inputSuccess]: valid,
         [css.inputError]: hasError,
-        [css.textarea]: isTextarea,
-      });
-    const maxLength = CONTENT_MAX_LENGTH;
+        [css.textarea]: isTextarea
+      })
+    const maxLength = CONTENT_MAX_LENGTH
     const inputProps = isTextarea
       ? {
           className: inputClasses,
@@ -65,7 +65,7 @@ class FieldTextInputComponent extends Component {
           maxLength,
           ...refMaybe,
           ...inputWithoutType,
-          ...rest,
+          ...rest
         }
       : isUncontrolled
       ? {
@@ -75,18 +75,18 @@ class FieldTextInputComponent extends Component {
           defaultValue,
           ...refMaybe,
           ...inputWithoutValue,
-          ...rest,
+          ...rest
         }
-      : { className: inputClasses, id, type, ...refMaybe, ...input, ...rest };
+      : { className: inputClasses, id, type, ...refMaybe, ...input, ...rest }
 
-    const classes = classNames(rootClassName || css.root, className);
+    const classes = classNames(rootClassName || css.root, className)
     return (
       <div className={classes}>
         {label ? <label htmlFor={id}>{label}</label> : null}
         {isTextarea ? <ExpandingTextarea {...inputProps} /> : <input {...inputProps} />}
         <ValidationError fieldMeta={fieldMeta} />
       </div>
-    );
+    )
   }
 }
 
@@ -99,8 +99,8 @@ FieldTextInputComponent.defaultProps = {
   id: null,
   label: null,
   isUncontrolled: false,
-  inputRef: null,
-};
+  inputRef: null
+}
 
 FieldTextInputComponent.propTypes = {
   rootClassName: string,
@@ -128,10 +128,10 @@ FieldTextInputComponent.propTypes = {
   input: shape({
     onChange: func.isRequired,
     // Either 'textarea' or something that is passed to the input element
-    type: string.isRequired,
+    type: string.isRequired
   }).isRequired,
-  meta: object.isRequired,
-};
+  meta: object.isRequired
+}
 
 class FieldTextInput extends Component {
   componentWillUnmount() {
@@ -139,13 +139,13 @@ class FieldTextInput extends Component {
     // (Then Form has already registered its (new) fields and
     // changing the value without corresponding field is prohibited in Final Form
     if (this.props.onUnmount) {
-      this.props.onUnmount();
+      this.props.onUnmount()
     }
   }
 
   render() {
-    return <Field component={FieldTextInputComponent} {...this.props} />;
+    return <Field component={FieldTextInputComponent} {...this.props} />
   }
 }
 
-export default FieldTextInput;
+export default FieldTextInput

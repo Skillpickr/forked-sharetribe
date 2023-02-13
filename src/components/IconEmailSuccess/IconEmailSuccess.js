@@ -1,20 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-import css from './IconEmailSuccess.module.css';
+import css from './IconEmailSuccess.module.css'
 
-const IconEmailSuccess = props => {
-  const { rootClassName, className } = props;
-  const classes = classNames(rootClassName || css.root, className);
+const IconEmailSuccess = (props) => {
+  const { rootClassName, className } = props
+  const classes = classNames(rootClassName || css.root, className)
   return (
-    <svg
-      className={classes}
-      width="51"
-      height="44"
-      viewBox="0 0 51 44"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className={classes} width="51" height="44" viewBox="0 0 51 44" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(2 2)" fill="none" fillRule="evenodd">
         <circle className={css.successFill} cx="35.5" cy="28.5" r="13.5" />
         <path
@@ -40,13 +34,13 @@ const IconEmailSuccess = props => {
         />
       </g>
     </svg>
-  );
-};
+  )
+}
 
-IconEmailSuccess.defaultProps = { rootClassName: null, className: null };
+IconEmailSuccess.defaultProps = { rootClassName: null, className: null }
 
-const { string } = PropTypes;
+const { string } = PropTypes
 
-IconEmailSuccess.propTypes = { rootClassName: string, className: string };
+IconEmailSuccess.propTypes = { rootClassName: string, className: string }
 
-export default IconEmailSuccess;
+export default IconEmailSuccess

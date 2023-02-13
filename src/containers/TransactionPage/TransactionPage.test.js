@@ -1,23 +1,23 @@
-import React from 'react';
+import React from 'react'
 import {
   createBooking,
   createCurrentUser,
   createListing,
   createTransaction,
   createUser,
-  fakeIntl,
-} from '../../util/test-data';
-import { renderShallow } from '../../util/test-helpers';
-import { TRANSITION_CONFIRM_PAYMENT } from '../../util/transaction';
-import { TransactionPageComponent } from './TransactionPage';
+  fakeIntl
+} from '../../util/test-data'
+import { renderShallow } from '../../util/test-helpers'
+import { TRANSITION_CONFIRM_PAYMENT } from '../../util/transaction'
+import { TransactionPageComponent } from './TransactionPage'
 
-const noop = () => null;
+const noop = () => null
 
 describe('TransactionPage - Sale', () => {
   it('matches snapshot', () => {
-    const txId = 'tx-sale-1';
-    const start = new Date(Date.UTC(2017, 5, 10));
-    const end = new Date(Date.UTC(2017, 5, 13));
+    const txId = 'tx-sale-1'
+    const start = new Date(Date.UTC(2017, 5, 10))
+    const end = new Date(Date.UTC(2017, 5, 13))
     const transaction = createTransaction({
       id: txId,
       lastTransition: TRANSITION_CONFIRM_PAYMENT,
@@ -25,12 +25,12 @@ describe('TransactionPage - Sale', () => {
         start,
         end,
         displayStart: start,
-        displayEnd: end,
+        displayEnd: end
       }),
       listing: createListing('listing1'),
       customer: createUser('customer1'),
-      provider: createUser('provider1'),
-    });
+      provider: createUser('provider1')
+    })
 
     const props = {
       params: { id: txId },
@@ -61,23 +61,23 @@ describe('TransactionPage - Sale', () => {
       location: {
         pathname: `/sale/${txId}/details`,
         search: '',
-        hash: '',
+        hash: ''
       },
       history: {
-        push: () => console.log('HistoryPush called'),
-      },
-    };
+        push: () => console.log('HistoryPush called')
+      }
+    }
 
-    const tree = renderShallow(<TransactionPageComponent {...props} />);
-    expect(tree).toMatchSnapshot();
-  });
-});
+    const tree = renderShallow(<TransactionPageComponent {...props} />)
+    expect(tree).toMatchSnapshot()
+  })
+})
 
 describe('TransactionPage - Order', () => {
   it('matches snapshot', () => {
-    const txId = 'tx-order-1';
-    const start = new Date(Date.UTC(2017, 5, 10));
-    const end = new Date(Date.UTC(2017, 5, 13));
+    const txId = 'tx-order-1'
+    const start = new Date(Date.UTC(2017, 5, 10))
+    const end = new Date(Date.UTC(2017, 5, 13))
 
     const transaction = createTransaction({
       id: txId,
@@ -86,12 +86,12 @@ describe('TransactionPage - Order', () => {
         start,
         end,
         displayStart: start,
-        displayEnd: end,
+        displayEnd: end
       }),
       listing: createListing('listing1'),
       customer: createUser('customer1'),
-      provider: createUser('provider1'),
-    });
+      provider: createUser('provider1')
+    })
 
     const props = {
       params: { id: txId },
@@ -124,14 +124,14 @@ describe('TransactionPage - Order', () => {
       location: {
         pathname: `/order/${txId}/details`,
         search: '',
-        hash: '',
+        hash: ''
       },
       history: {
-        push: () => console.log('HistoryPush called'),
-      },
-    };
+        push: () => console.log('HistoryPush called')
+      }
+    }
 
-    const tree = renderShallow(<TransactionPageComponent {...props} />);
-    expect(tree).toMatchSnapshot();
-  });
-});
+    const tree = renderShallow(<TransactionPageComponent {...props} />)
+    expect(tree).toMatchSnapshot()
+  })
+})

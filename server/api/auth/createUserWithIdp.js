@@ -1,36 +1,36 @@
-const http = require('http');
-const https = require('https');
-const sharetribeSdk = require('sharetribe-flex-sdk');
-const { handleError, serialize, typeHandlers } = require('../../api-util/sdk');
+const http = require('http')
+const https = require('https')
+const sharetribeSdk = require('sharetribe-flex-sdk')
+const { handleError, serialize, typeHandlers } = require('../../api-util/sdk')
 
-const CLIENT_ID = process.env.REACT_APP_SHARETRIBE_SDK_CLIENT_ID;
-const CLIENT_SECRET = process.env.SHARETRIBE_SDK_CLIENT_SECRET;
-const TRANSIT_VERBOSE = process.env.REACT_APP_SHARETRIBE_SDK_TRANSIT_VERBOSE === 'true';
-const USING_SSL = process.env.REACT_APP_SHARETRIBE_USING_SSL === 'true';
-const BASE_URL = process.env.REACT_APP_SHARETRIBE_SDK_BASE_URL;
+const CLIENT_ID = process.env.REACT_APP_SHARETRIBE_SDK_CLIENT_ID
+const CLIENT_SECRET = process.env.SHARETRIBE_SDK_CLIENT_SECRET
+const TRANSIT_VERBOSE = process.env.REACT_APP_SHARETRIBE_SDK_TRANSIT_VERBOSE === 'true'
+const USING_SSL = process.env.REACT_APP_SHARETRIBE_USING_SSL === 'true'
+const BASE_URL = process.env.REACT_APP_SHARETRIBE_SDK_BASE_URL
 
-const FACBOOK_APP_ID = process.env.REACT_APP_FACEBOOK_APP_ID;
-const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+const FACBOOK_APP_ID = process.env.REACT_APP_FACEBOOK_APP_ID
+const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
-const FACEBOOK_IDP_ID = 'facebook';
-const GOOGLE_IDP_ID = 'google';
+const FACEBOOK_IDP_ID = 'facebook'
+const GOOGLE_IDP_ID = 'google'
 
 // Instantiate HTTP(S) Agents with keepAlive set to true.
 // This will reduce the request time for consecutive requests by
 // reusing the existing TCP connection, thus eliminating the time used
 // for setting up new TCP connections.
-const httpAgent = new http.Agent({ keepAlive: true });
-const httpsAgent = new https.Agent({ keepAlive: true });
+const httpAgent = new http.Agent({ keepAlive: true })
+const httpsAgent = new https.Agent({ keepAlive: true })
 
-const baseUrl = BASE_URL ? { baseUrl: BASE_URL } : {};
+const baseUrl = BASE_URL ? { baseUrl: BASE_URL } : {}
 
 module.exports = (req, res) => {
   const tokenStore = sharetribeSdk.tokenStore.expressCookieStore({
     clientId: CLIENT_ID,
     req,
     res,
-    secure: USING_SSL,
-  });
+    secure: USING_SSL
+  })
 
   const sdk = sharetribeSdk.createInstance({
     transitVerbose: TRANSIT_VERBOSE,
@@ -40,14 +40,13 @@ module.exports = (req, res) => {
     httpsAgent,
     tokenStore,
     typeHandlers,
-    ...baseUrl,
-  });
+    ...baseUrl
+  })
 
-  const { idpToken, idpId, ...rest } = req.body;
+  const { idpToken, idpId, ...rest } = req.body
 
   // Choose the idpClientId based on which authentication method is used.
-  const idpClientId =
-    idpId === FACEBOOK_IDP_ID ? FACBOOK_APP_ID : idpId === GOOGLE_IDP_ID ? GOOGLE_CLIENT_ID : null;
+  const idpClientId = idpId === FACEBOOK_IDP_ID ? FACBOOK_APP_ID : idpId === GOOGLE_IDP_ID ? GOOGLE_CLIENT_ID : null
 
   sdk.currentUser
     .createWithIdp({ idpId, idpClientId, idpToken, ...rest })
@@ -57,11 +56,11 @@ module.exports = (req, res) => {
       sdk.loginWithIdp({
         idpId,
         idpClientId: `${idpClientId}`,
-        idpToken: `${idpToken}`,
+        idpToken: `${idpToken}`
       })
     )
-    .then(apiResponse => {
-      const { status, statusText, data } = apiResponse;
+    .then((apiResponse) => {
+      const { status, statusText, data } = apiResponse
       res
         .clearCookie('st-authinfo')
         .status(status)
@@ -70,12 +69,12 @@ module.exports = (req, res) => {
           serialize({
             status,
             statusText,
-            data,
+            data
           })
         )
-        .end();
+        .end()
     })
-    .catch(e => {
-      handleError(res, e);
-    });
-};
+    .catch((e) => {
+      handleError(res, e)
+    })
+}

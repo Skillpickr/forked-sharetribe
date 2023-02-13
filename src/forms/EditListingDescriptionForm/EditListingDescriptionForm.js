@@ -1,24 +1,22 @@
-import React from 'react';
-import { arrayOf, bool, func, shape, string } from 'prop-types';
-import { compose } from 'redux';
-import { Form as FinalForm } from 'react-final-form';
-import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl';
-import classNames from 'classnames';
-import { propTypes } from '../../util/types';
-import { maxLength, required, composeValidators } from '../../util/validators';
-import { Form, Button, FieldTextInput } from '../../components';
-import CustomCertificateSelectFieldMaybe from './CustomCertificateSelectFieldMaybe';
+import React from 'react'
+import { arrayOf, bool, func, shape, string } from 'prop-types'
+import { compose } from 'redux'
+import { Form as FinalForm } from 'react-final-form'
+import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl'
+import classNames from 'classnames'
+import { propTypes } from '../../util/types'
+import { Form, Button, Alert } from '../../components'
 
-import css from './EditListingDescriptionForm.module.css';
+import css from './EditListingDescriptionForm.module.css'
+import EditListingOtherInfoForm from '../EditListingFeaturesForm/skills/EditListingOtherInfoForm'
 
-const TITLE_MAX_LENGTH = 60;
+const TITLE_MAX_LENGTH = 60
 
-const EditListingDescriptionFormComponent = props => (
+const EditListingDescriptionFormComponent = (props) => (
   <FinalForm
     {...props}
-    render={formRenderProps => {
+    render={(formRenderProps) => {
       const {
-        certificateOptions,
         className,
         disabled,
         ready,
@@ -29,109 +27,85 @@ const EditListingDescriptionFormComponent = props => (
         saveActionMsg,
         updated,
         updateInProgress,
-        fetchErrors,
-      } = formRenderProps;
+        fetchErrors
+      } = formRenderProps
 
-      const titleMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.title' });
-      const titlePlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.titlePlaceholder',
-      });
-      const titleRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.titleRequired',
-      });
-      const maxLengthMessage = intl.formatMessage(
-        { id: 'EditListingDescriptionForm.maxLength' },
-        {
-          maxLength: TITLE_MAX_LENGTH,
-        }
-      );
+      const shopMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.shop'
+      })
+      const shopPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.shopPlaceholder'
+      })
+      const shopRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.shopRequired'
+      })
 
-      const descriptionMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.description',
-      });
-      const descriptionPlaceholderMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.descriptionPlaceholder',
-      });
-      const maxLength60Message = maxLength(maxLengthMessage, TITLE_MAX_LENGTH);
-      const descriptionRequiredMessage = intl.formatMessage({
-        id: 'EditListingDescriptionForm.descriptionRequired',
-      });
-
-      const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {};
+      const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {}
       const errorMessageUpdateListing = updateListingError ? (
-        <p className={css.error}>
-          <FormattedMessage id="EditListingDescriptionForm.updateFailed" />
-        </p>
-      ) : null;
+        <Alert type="error">
+          <p className={css.error}>
+            <FormattedMessage id="EditListingDescriptionForm.updateFailed" />
+          </p>
+        </Alert>
+      ) : null
 
       // This error happens only on first tab (of EditListingWizard)
       const errorMessageCreateListingDraft = createListingDraftError ? (
-        <p className={css.error}>
-          <FormattedMessage id="EditListingDescriptionForm.createListingDraftError" />
-        </p>
-      ) : null;
+        <Alert type="error">
+          <p className={css.error}>
+            <FormattedMessage id="EditListingDescriptionForm.createListingDraftError" />
+          </p>
+        </Alert>
+      ) : null
 
       const errorMessageShowListing = showListingsError ? (
-        <p className={css.error}>
-          <FormattedMessage id="EditListingDescriptionForm.showListingFailed" />
-        </p>
-      ) : null;
+        <Alert type="error">
+          <p className={css.error}>
+            <FormattedMessage id="EditListingDescriptionForm.showListingFailed" />
+          </p>
+        </Alert>
+      ) : null
 
-      const classes = classNames(css.root, className);
-      const submitReady = (updated && pristine) || ready;
-      const submitInProgress = updateInProgress;
-      const submitDisabled = invalid || disabled || submitInProgress;
+      const classes = classNames(css.root, className)
+      const submitReady = (updated && pristine) || ready
+      const submitInProgress = updateInProgress
+      const submitDisabled = invalid || disabled || submitInProgress
 
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           {errorMessageCreateListingDraft}
           {errorMessageUpdateListing}
           {errorMessageShowListing}
-          <FieldTextInput
-            id="title"
-            name="title"
-            className={css.title}
-            type="text"
-            label={titleMessage}
-            placeholder={titlePlaceholderMessage}
-            maxLength={TITLE_MAX_LENGTH}
-            validate={composeValidators(required(titleRequiredMessage), maxLength60Message)}
-            autoFocus
-          />
-
-          <FieldTextInput
-            id="description"
-            name="description"
+          <Alert type="secondary">
+            <FormattedMessage id="EditListingDescriptionForm.guide.credentials" />
+          </Alert>
+          {/* SHOP NAME */}
+          {/* We find creative artists often draw inspiration from what they sell, their style, pretty much anything goes. */}
+          {/* <FieldTextInput
+            id="shop"
+            name="shop"
             className={css.description}
-            type="textarea"
-            label={descriptionMessage}
-            placeholder={descriptionPlaceholderMessage}
-            validate={composeValidators(required(descriptionRequiredMessage))}
-          />
-
-          <CustomCertificateSelectFieldMaybe
-            id="certificate"
-            name="certificate"
-            certificateOptions={certificateOptions}
-            intl={intl}
-          />
-
+            type="text"
+            label={shopMessage}
+            placeholder={shopPlaceholderMessage}
+            validate={composeValidators(required(shopRequiredMessage))}
+          /> */}
+          <EditListingOtherInfoForm></EditListingOtherInfoForm>
           <Button
             className={css.submitButton}
             type="submit"
             inProgress={submitInProgress}
             disabled={submitDisabled}
-            ready={submitReady}
-          >
+            ready={submitReady}>
             {saveActionMsg}
           </Button>
         </Form>
-      );
+      )
     }}
   />
-);
+)
 
-EditListingDescriptionFormComponent.defaultProps = { className: null, fetchErrors: null };
+EditListingDescriptionFormComponent.defaultProps = { className: null, fetchErrors: null }
 
 EditListingDescriptionFormComponent.propTypes = {
   className: string,
@@ -145,14 +119,8 @@ EditListingDescriptionFormComponent.propTypes = {
   fetchErrors: shape({
     createListingDraftError: propTypes.error,
     showListingsError: propTypes.error,
-    updateListingError: propTypes.error,
-  }),
-  certificateOptions: arrayOf(
-    shape({
-      key: string.isRequired,
-      label: string.isRequired,
-    })
-  ),
-};
+    updateListingError: propTypes.error
+  })
+}
 
-export default compose(injectIntl)(EditListingDescriptionFormComponent);
+export default compose(injectIntl)(EditListingDescriptionFormComponent)

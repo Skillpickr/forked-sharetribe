@@ -7,33 +7,86 @@ exports[`SectionHero matches snapshot 1`] = `
   <div
     className="heroContent"
   >
-    <h1
-      className="heroMainTitle heroMainTitleFEDelay"
+    <div
+      className=""
+    >
+      <div
+        className="cta"
+      >
+        <a
+          className="heroButton"
+          data-tip={true}
+          href="/s"
+          onClick={[Function]}
+          onMouseOver={[Function]}
+          onTouchStart={[Function]}
+          style={Object {}}
+          title={null}
+        >
+          <span>
+            SectionHero.browseButton
+          </span>
+        </a>
+        <button
+          className="root heroButton"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <span>
+            SectionHero.introductionVideo
+          </span>
+        </button>
+        <a
+          className="heroButton"
+          data-tip={true}
+          href="/signup"
+          onClick={[Function]}
+          onMouseOver={[Function]}
+          onTouchStart={[Function]}
+          style={Object {}}
+          title={null}
+        >
+          <span>
+            SectionHero.signUp
+          </span>
+        </a>
+      </div>
+    </div>
+    <div
+      className="someLinks"
     >
       <span>
-        SectionHero.title
+        SectionHero.followUs
       </span>
-    </h1>
-    <h2
-      className="heroSubTitle heroSubTitleFEDelay"
-    >
+      <a
+        className="icon"
+        href="https://www.instagram.com/skillpickr/"
+        rel="noopener noreferrer"
+        target="_blank"
+        title="Footer.goToInstagram"
+      >
+        <span>
+           Instagram 
+        </span>
+      </a>
       <span>
-        SectionHero.subTitle
+        SectionHero.or
       </span>
-    </h2>
-    <a
-      className="heroButton heroButtonFEDelay"
-      href="/s?address=United%20States%20of%20America&bounds=71.540724%2C-66.885444%2C18.765563%2C-179.9"
-      onClick={[Function]}
-      onMouseOver={[Function]}
-      onTouchStart={[Function]}
-      style={Object {}}
-      title={null}
-    >
+      <a
+        className="icon"
+        href="https://www.facebook.com/skillpickr/"
+        rel="noopener noreferrer"
+        target="_blank"
+        title="Footer.goToFacebook"
+      >
+        <span>
+           Facebook 
+        </span>
+      </a>
       <span>
-        SectionHero.browseButton
+        SectionHero.latestUpdate
       </span>
-    </a>
+    </div>
   </div>
 </div>
 `;

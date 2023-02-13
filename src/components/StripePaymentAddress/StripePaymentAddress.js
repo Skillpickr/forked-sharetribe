@@ -1,81 +1,78 @@
-import React from 'react';
-import { intlShape } from '../../util/reactIntl';
-import { bool, object, string } from 'prop-types';
-import config from '../../config';
-import * as validators from '../../util/validators';
-import getCountryCodes from '../../translations/countryCodes';
-import { FieldTextInput, FieldSelect } from '../../components';
+import React from 'react'
+import { intlShape } from '../../util/reactIntl'
+import { bool, object, string } from 'prop-types'
+import config from '../../config'
+import * as validators from '../../util/validators'
+import getCountryCodes from '../../translations/countryCodes'
+import { FieldTextInput, FieldSelect } from '../../components'
 
-import css from './StripePaymentAddress.module.css';
+import css from './StripePaymentAddress.module.css'
 
-const StripePaymentAddress = props => {
-  const { className, intl, disabled, form, fieldId, card } = props;
+const StripePaymentAddress = (props) => {
+  const { className, intl, disabled, form, fieldId, card } = props
 
   const optionalText = intl.formatMessage({
-    id: 'StripePaymentAddress.optionalText',
-  });
+    id: 'StripePaymentAddress.optionalText'
+  })
 
   const addressLine1Label = intl.formatMessage({
-    id: 'StripePaymentAddress.addressLine1Label',
-  });
+    id: 'StripePaymentAddress.addressLine1Label'
+  })
   const addressLine1Placeholder = intl.formatMessage({
-    id: 'StripePaymentAddress.addressLine1Placeholder',
-  });
+    id: 'StripePaymentAddress.addressLine1Placeholder'
+  })
   const addressLine1Required = validators.required(
     intl.formatMessage({
-      id: 'StripePaymentAddress.addressLine1Required',
+      id: 'StripePaymentAddress.addressLine1Required'
     })
-  );
+  )
 
   const addressLine2Label = intl.formatMessage(
     { id: 'StripePaymentAddress.addressLine2Label' },
     { optionalText: optionalText }
-  );
+  )
 
   const addressLine2Placeholder = intl.formatMessage({
-    id: 'StripePaymentAddress.addressLine2Placeholder',
-  });
+    id: 'StripePaymentAddress.addressLine2Placeholder'
+  })
 
-  const postalCodeLabel = intl.formatMessage({ id: 'StripePaymentAddress.postalCodeLabel' });
+  const postalCodeLabel = intl.formatMessage({ id: 'StripePaymentAddress.postalCodeLabel' })
   const postalCodePlaceholder = intl.formatMessage({
-    id: 'StripePaymentAddress.postalCodePlaceholder',
-  });
+    id: 'StripePaymentAddress.postalCodePlaceholder'
+  })
   const postalCodeRequired = validators.required(
     intl.formatMessage({
-      id: 'StripePaymentAddress.postalCodeRequired',
+      id: 'StripePaymentAddress.postalCodeRequired'
     })
-  );
+  )
 
-  const cityLabel = intl.formatMessage({ id: 'StripePaymentAddress.cityLabel' });
-  const cityPlaceholder = intl.formatMessage({ id: 'StripePaymentAddress.cityPlaceholder' });
+  const cityLabel = intl.formatMessage({ id: 'StripePaymentAddress.cityLabel' })
+  const cityPlaceholder = intl.formatMessage({ id: 'StripePaymentAddress.cityPlaceholder' })
   const cityRequired = validators.required(
     intl.formatMessage({
-      id: 'StripePaymentAddress.cityRequired',
+      id: 'StripePaymentAddress.cityRequired'
     })
-  );
+  )
 
-  const stateLabel = intl.formatMessage(
-    { id: 'StripePaymentAddress.stateLabel' },
-    { optionalText: optionalText }
-  );
-  const statePlaceholder = intl.formatMessage({ id: 'StripePaymentAddress.statePlaceholder' });
+  const stateLabel = intl.formatMessage({ id: 'StripePaymentAddress.stateLabel' }, { optionalText: optionalText })
+  const statePlaceholder = intl.formatMessage({ id: 'StripePaymentAddress.statePlaceholder' })
 
-  const countryLabel = intl.formatMessage({ id: 'StripePaymentAddress.countryLabel' });
-  const countryPlaceholder = intl.formatMessage({ id: 'StripePaymentAddress.countryPlaceholder' });
+  const countryLabel = intl.formatMessage({ id: 'StripePaymentAddress.countryLabel' })
+  const countryPlaceholder = intl.formatMessage({ id: 'StripePaymentAddress.countryPlaceholder' })
   const countryRequired = validators.required(
     intl.formatMessage({
-      id: 'StripePaymentAddress.countryRequired',
+      id: 'StripePaymentAddress.countryRequired'
     })
-  );
+  )
 
-  const handleOnChange = event => {
-    const value = event.target.value;
-    form.change('postal', value);
-    card.update({ value: { postalCode: value } });
-  };
+  const handleOnChange = (event) => {
+    const value = event.target.value
+    form.change('postal', value)
+    card.update({ value: { postalCode: value } })
+  }
 
   // Use tha language set in config.locale to get the correct translations of the country names
-  const countryCodes = getCountryCodes(config.locale);
+  const countryCodes = getCountryCodes(config.locale)
 
   return (
     <div className={className ? className : css.root}>
@@ -117,7 +114,7 @@ const StripePaymentAddress = props => {
           placeholder={postalCodePlaceholder}
           validate={postalCodeRequired}
           onUnmount={() => form.change('postal', undefined)}
-          onChange={event => handleOnChange(event)}
+          onChange={(event) => handleOnChange(event)}
         />
 
         <FieldTextInput
@@ -152,28 +149,27 @@ const StripePaymentAddress = props => {
           disabled={disabled}
           className={css.field}
           label={countryLabel}
-          validate={countryRequired}
-        >
+          validate={countryRequired}>
           <option disabled value="">
             {countryPlaceholder}
           </option>
-          {countryCodes.map(country => {
+          {countryCodes.map((country) => {
             return (
               <option key={country.code} value={country.code}>
                 {country.name}
               </option>
-            );
+            )
           })}
         </FieldSelect>
       </div>
     </div>
-  );
-};
+  )
+}
 StripePaymentAddress.defaultProps = {
   country: null,
   disabled: false,
-  fieldId: null,
-};
+  fieldId: null
+}
 
 StripePaymentAddress.propTypes = {
   country: string,
@@ -182,7 +178,7 @@ StripePaymentAddress.propTypes = {
   fieldId: string,
 
   // from injectIntl
-  intl: intlShape.isRequired,
-};
+  intl: intlShape.isRequired
+}
 
-export default StripePaymentAddress;
+export default StripePaymentAddress

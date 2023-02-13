@@ -2,6 +2,19 @@
 
 /* Animation for the hero elements */
 
+@-webkit-keyframes animationTitle {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    top: -20px;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    top: 0;
+  }
+}
+
 @keyframes animationTitle {
   0% {
     visibility: hidden;
@@ -17,10 +30,14 @@
 
 /* Shared animation rules */
 .animation {
+  -webkit-animation-name: animationTitle;
   animation-name: animationTitle;
+  -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
+  -webkit-animation-timing-function: ease-out;
   animation-timing-function: ease-out;
   -webkit-animation-fill-mode: forwards;
+  -webkit-animation-delay: 3s;
   animation-delay: 3s;
 
   visibility: hidden;
@@ -29,7 +46,7 @@
 }
 
 .root {
-  composes: defaultBackgroundImage from global;
+  /* composes: defaultBackgroundImage from global; */
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -58,17 +75,46 @@
     padding: 0 36px 0 36px;
   }
 }
+.icon {
+  display: inline-block;
+
+  margin: 0 4px;
+  text-align: center;
+}
+
+.someLinks {
+  display: block;
+  justify-content: center;
+  margin-top: 24px;
+  padding-left: 0px;
+
+  @media (--viewportMedium) {
+    display: flex;
+    padding-left: 8pxpadding-left;
+  }
+}
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (--viewportMedium) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
 
 .heroMainTitle {
-  composes: marketplaceHeroTitleFontStyles from global;
-  color: var(--matterColorLight);
+  composes: h2 from global;
+  color: var(--matterColorDark);
   composes: animation;
+  text-align: center;
 
   @media (--viewportMedium) {
     max-width: var(--SectionHero_desktopTitleMaxWidth);
   }
 }
 .heroMainTitleFEDelay {
+  -webkit-animation-delay: 0s;
   animation-delay: 0s;
 }
 
@@ -85,12 +131,16 @@
   }
 }
 .heroSubTitleFEDelay {
+  -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
 }
 
 .heroButton {
   composes: button buttonFont buttonText buttonBorders buttonColors from global;
   composes: animation;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 8px;
 
   @media (--viewportMedium) {
     display: block;
@@ -98,5 +148,6 @@
   }
 }
 .heroButtonFEDelay {
+  -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
 }

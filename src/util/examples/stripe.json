@@ -1,0 +1,435 @@
+{
+  "Første udtræk af data": {
+    "capabilities": {
+      "card_payments": "active",
+      "transfers": "active"
+    },
+    "details_submitted": true,
+    "requirements": {
+      "alternatives": [],
+      "current_deadline": null,
+      "currently_due": [],
+      "disabled_reason": null,
+      "errors": [],
+      "eventually_due": [],
+      "past_due": [],
+      "pending_verification": []
+    },
+    "future_requirements": {
+      "alternatives": [],
+      "current_deadline": null,
+      "currently_due": [],
+      "disabled_reason": null,
+      "errors": [],
+      "eventually_due": [],
+      "past_due": [],
+      "pending_verification": []
+    },
+    "email": "allan@klanghaus.dk",
+    "business_profile": {
+      "mcc": "5734",
+      "name": null,
+      "product_description": null,
+      "support_address": null,
+      "support_email": null,
+      "support_phone": null,
+      "support_url": null,
+      "url": "https://www.Klanghaus.dk"
+    },
+    "business_type": "individual",
+    "external_accounts": {
+      "object": "list",
+      "data": [
+        {
+          "account_type": null,
+          "bank_name": "STRIPE TEST BANK",
+          "account_holder_type": null,
+          "last4": "3000",
+          "account": "acct_1MWfsIFYyOkxLK0K",
+          "currency": "dkk",
+          "routing_number": "110000000",
+          "status": "new",
+          "id": "ba_1MWgQzFYyOkxLK0KacyTBBoX",
+          "account_holder_name": null,
+          "country": "DK",
+          "metadata": {},
+          "object": "bank_account",
+          "default_for_currency": true,
+          "fingerprint": "DUj8QqG8IvFvDuW5",
+          "available_payout_methods": ["standard"]
+        }
+      ],
+      "has_more": false,
+      "total_count": 1,
+      "url": "/v1/accounts/acct_1MWfsIFYyOkxLK0K/external_accounts"
+    },
+    "settings": {
+      "bacs_debit_payments": {},
+      "branding": {
+        "icon": "file_1MWfsJFa0uKQvFVtidVd01Rx",
+        "logo": null,
+        "primary_color": null,
+        "secondary_color": null
+      },
+      "card_issuing": {
+        "tos_acceptance": {
+          "date": null,
+          "ip": null
+        }
+      },
+      "card_payments": {
+        "decline_on": {
+          "avs_failure": false,
+          "cvc_failure": false
+        },
+        "statement_descriptor_prefix": null,
+        "statement_descriptor_prefix_kana": null,
+        "statement_descriptor_prefix_kanji": null
+      },
+      "dashboard": {
+        "display_name": "klanghaus.dk",
+        "timezone": "Etc/UTC"
+      },
+      "payments": {
+        "statement_descriptor": "TEST-MARKETPLACE.COM",
+        "statement_descriptor_kana": null,
+        "statement_descriptor_kanji": null
+      },
+      "payouts": {
+        "debit_negative_balances": false,
+        "schedule": {
+          "delay_days": 7,
+          "interval": "manual"
+        },
+        "statement_descriptor": null
+      },
+      "sepa_debit_payments": {}
+    },
+    "type": "custom",
+    "created": 1675256243,
+    "payouts_enabled": true,
+    "id": "acct_1MWfsIFYyOkxLK0K",
+    "tos_acceptance": {
+      "date": 1675256238,
+      "ip": "78.153.173.10",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+    },
+    "charges_enabled": true,
+    "default_currency": "dkk",
+    "individual": {
+      "requirements": {
+        "alternatives": [],
+        "currently_due": [],
+        "errors": [],
+        "eventually_due": [],
+        "past_due": [],
+        "pending_verification": []
+      },
+      "future_requirements": {
+        "alternatives": [],
+        "currently_due": [],
+        "errors": [],
+        "eventually_due": [],
+        "past_due": [],
+        "pending_verification": []
+      },
+      "address": {
+        "city": "København V",
+        "country": "DK",
+        "line1": "Vesterbrogade 10, 2tv",
+        "line2": null,
+        "postal_code": "1620",
+        "state": null
+      },
+      "email": "mail@allanasp.dk",
+      "first_name": "Allan",
+      "phone": "+4520778329",
+      "relationship": {
+        "director": false,
+        "executive": false,
+        "owner": false,
+        "percent_ownership": null,
+        "representative": true,
+        "title": null
+      },
+      "created": 1675256257,
+      "verification": {
+        "additional_document": {
+          "back": null,
+          "details": null,
+          "details_code": null,
+          "front": null
+        },
+        "details": null,
+        "details_code": null,
+        "document": {
+          "back": null,
+          "details": null,
+          "details_code": null,
+          "front": "file_1MWgd7GYmfBHZbWKC3bYTfnh"
+        },
+        "status": "verified"
+      },
+      "account": "acct_1MWfsIFYyOkxLK0K",
+      "dob": {
+        "day": 6,
+        "month": 9,
+        "year": 1985
+      },
+      "id": "person_1MWfsbFYyOkxLK0KvCwlVhcI",
+      "last_name": "Asp Christensen",
+      "metadata": {},
+      "object": "person"
+    },
+    "country": "DK",
+    "metadata": {
+      "sharetribe-platform": "sharetribe",
+      "sharetribe-request-id": "d6a5366d-7fa8-427f-ac9c-94db5d99e78b",
+      "sharetribe-stripe-account-id": "63da61ae-302f-4697-9026-c7448624cc67",
+      "sharetribe-user-id": "63da5192-ad1d-4f4d-b1bc-4611dcfb7d2b"
+    },
+    "object": "account",
+    "company": {
+      "address": {
+        "city": "København V",
+        "country": "DK",
+        "line1": "Vesterbrogade 10, 2tv",
+        "line2": null,
+        "postal_code": "1620",
+        "state": null
+      },
+      "directors_provided": true,
+      "executives_provided": true,
+      "name": null,
+      "owners_provided": true,
+      "phone": "+4520778329",
+      "tax_id_provided": false,
+      "verification": {
+        "document": {
+          "back": null,
+          "details": null,
+          "details_code": null,
+          "front": null
+        }
+      }
+    }
+  },
+
+  "Comment": " ",
+
+  "Andet udtræk af data med opdateret verification og profil": {
+    "capabilities": {
+      "card_payments": "active",
+      "transfers": "active"
+    },
+    "details_submitted": true,
+    "requirements": {
+      "alternatives": [],
+      "current_deadline": null,
+      "currently_due": [],
+      "disabled_reason": null,
+      "errors": [],
+      "eventually_due": [],
+      "past_due": [],
+      "pending_verification": []
+    },
+    "future_requirements": {
+      "alternatives": [],
+      "current_deadline": null,
+      "currently_due": [],
+      "disabled_reason": null,
+      "errors": [],
+      "eventually_due": [],
+      "past_due": [],
+      "pending_verification": []
+    },
+    "email": "allan@klanghaus.dk",
+    "business_profile": {
+      "mcc": "5734",
+      "name": null,
+      "product_description": null,
+      "support_address": null,
+      "support_email": null,
+      "support_phone": null,
+      "support_url": null,
+      "url": "https://www.Klanghaus.dk"
+    },
+    "business_type": "individual",
+    "external_accounts": {
+      "object": "list",
+      "data": [
+        {
+          "account_type": null,
+          "bank_name": "STRIPE TEST BANK",
+          "account_holder_type": null,
+          "last4": "3000",
+          "account": "acct_1MWfsIFYyOkxLK0K",
+          "currency": "dkk",
+          "routing_number": "110000000",
+          "status": "new",
+          "id": "ba_1MWgQzFYyOkxLK0KacyTBBoX",
+          "account_holder_name": null,
+          "country": "DK",
+          "metadata": {},
+          "object": "bank_account",
+          "default_for_currency": true,
+          "fingerprint": "DUj8QqG8IvFvDuW5",
+          "available_payout_methods": ["standard"]
+        }
+      ],
+      "has_more": false,
+      "total_count": 1,
+      "url": "/v1/accounts/acct_1MWfsIFYyOkxLK0K/external_accounts"
+    },
+    "settings": {
+      "bacs_debit_payments": {},
+      "branding": {
+        "icon": "file_1MWfsJFa0uKQvFVtidVd01Rx",
+        "logo": null,
+        "primary_color": null,
+        "secondary_color": null
+      },
+      "card_issuing": {
+        "tos_acceptance": {
+          "date": null,
+          "ip": null
+        }
+      },
+      "card_payments": {
+        "decline_on": {
+          "avs_failure": false,
+          "cvc_failure": false
+        },
+        "statement_descriptor_prefix": null,
+        "statement_descriptor_prefix_kana": null,
+        "statement_descriptor_prefix_kanji": null
+      },
+      "dashboard": {
+        "display_name": "klanghaus.dk",
+        "timezone": "Etc/UTC"
+      },
+      "payments": {
+        "statement_descriptor": "TEST-MARKETPLACE.COM",
+        "statement_descriptor_kana": null,
+        "statement_descriptor_kanji": null
+      },
+      "payouts": {
+        "debit_negative_balances": false,
+        "schedule": {
+          "delay_days": 7,
+          "interval": "manual"
+        },
+        "statement_descriptor": null
+      },
+      "sepa_debit_payments": {}
+    },
+    "type": "custom",
+    "created": 1675256243,
+    "payouts_enabled": true,
+    "id": "acct_1MWfsIFYyOkxLK0K",
+    "tos_acceptance": {
+      "date": 1675256238,
+      "ip": "78.153.173.10",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+    },
+    "charges_enabled": true,
+    "default_currency": "dkk",
+    "individual": {
+      "requirements": {
+        "alternatives": [],
+        "currently_due": [],
+        "errors": [],
+        "eventually_due": [],
+        "past_due": [],
+        "pending_verification": []
+      },
+      "future_requirements": {
+        "alternatives": [],
+        "currently_due": [],
+        "errors": [],
+        "eventually_due": [],
+        "past_due": [],
+        "pending_verification": []
+      },
+      "address": {
+        "city": "København V",
+        "country": "DK",
+        "line1": "Vesterbrogade 10, 2tv",
+        "line2": null,
+        "postal_code": "1620",
+        "state": null
+      },
+      "email": "mail@allanasp.dk",
+      "first_name": "Allan",
+      "phone": "+4520778329",
+      "relationship": {
+        "director": false,
+        "executive": false,
+        "owner": false,
+        "percent_ownership": null,
+        "representative": true,
+        "title": null
+      },
+      "created": 1675256257,
+      "verification": {
+        "additional_document": {
+          "back": null,
+          "details": null,
+          "details_code": null,
+          "front": null
+        },
+        "details": null,
+        "details_code": null,
+        "document": {
+          "back": null,
+          "details": null,
+          "details_code": null,
+          "front": "file_1MWgd7GYmfBHZbWKC3bYTfnh"
+        },
+        "status": "verified"
+      },
+      "account": "acct_1MWfsIFYyOkxLK0K",
+      "dob": {
+        "day": 6,
+        "month": 9,
+        "year": 1985
+      },
+      "id": "person_1MWfsbFYyOkxLK0KvCwlVhcI",
+      "last_name": "Asp Christensen",
+      "metadata": {},
+      "object": "person"
+    },
+    "country": "DK",
+    "metadata": {
+      "sharetribe-platform": "sharetribe",
+      "sharetribe-request-id": "d6a5366d-7fa8-427f-ac9c-94db5d99e78b",
+      "sharetribe-stripe-account-id": "63da61ae-302f-4697-9026-c7448624cc67",
+      "sharetribe-user-id": "63da5192-ad1d-4f4d-b1bc-4611dcfb7d2b"
+    },
+    "object": "account",
+    "company": {
+      "address": {
+        "city": "København V",
+        "country": "DK",
+        "line1": "Vesterbrogade 10, 2tv",
+        "line2": null,
+        "postal_code": "1620",
+        "state": null
+      },
+      "directors_provided": true,
+      "executives_provided": true,
+      "name": null,
+      "owners_provided": true,
+      "phone": "+4520778329",
+      "tax_id_provided": false,
+      "verification": {
+        "document": {
+          "back": null,
+          "details": null,
+          "details_code": null,
+          "front": null
+        }
+      }
+    }
+  }
+}

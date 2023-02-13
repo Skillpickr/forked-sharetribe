@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
-import NamedLink from './NamedLink';
+import NamedLink from './NamedLink'
 
 export const NamedLinkToSearchPage = {
   component: NamedLink,
   props: {
     name: 'SearchPage',
-    children: 'SearchPage',
+    children: 'SearchPage'
   },
-  group: 'navigation',
-};
+  group: 'navigation'
+}

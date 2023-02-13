@@ -1,26 +1,28 @@
-import React from 'react';
-import { func, node, object, string } from 'prop-types';
-import { Field } from 'react-final-form';
-import classNames from 'classnames';
-import { ValidationError } from '../../components';
+import React from 'react'
+import { func, node, object, string } from 'prop-types'
+import { Field } from 'react-final-form'
+import classNames from 'classnames'
+import { ValidationError } from '../../components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ReactTooltip from 'react-tooltip'
 
-import css from './FieldSelect.module.css';
+import css from './FieldSelect.module.css'
 
-const handleChange = (propsOnChange, inputOnChange) => event => {
+const handleChange = (propsOnChange, inputOnChange) => (event) => {
   // If "onChange" callback is passed through the props,
   // it can notify the parent when the content of the input has changed.
   if (propsOnChange) {
     // "handleChange" function is attached to the low level <select> component
     // value of the element needs to be picked from target
-    const value = event.nativeEvent.target.value;
-    propsOnChange(value);
+    const value = event.nativeEvent.target.value
+    propsOnChange(value)
   }
   // Notify Final Form that the input has changed.
   // (Final Form knows how to deal with synthetic events of React.)
-  inputOnChange(event);
-};
+  inputOnChange(event)
+}
 
-const FieldSelectComponent = props => {
+const FieldSelectComponent = (props) => {
   const {
     rootClassName,
     className,
@@ -31,42 +33,56 @@ const FieldSelectComponent = props => {
     meta,
     children,
     onChange,
+    tooltip,
+    tooltipString,
     ...rest
-  } = props;
+  } = props
 
   if (label && !id) {
-    throw new Error('id required when a label is given');
+    throw new Error('id required when a label is given')
   }
 
-  const { valid, invalid, touched, error } = meta;
+  const { valid, invalid, touched, error } = meta
 
   // Error message and input error styles are only shown if the
   // field has been touched and the validation has failed.
-  const hasError = touched && invalid && error;
+  const hasError = touched && invalid && error
 
   const selectClasses = classNames(selectClassName, css.select, {
     [css.selectSuccess]: input.value && valid,
-    [css.selectError]: hasError,
-  });
+    [css.selectError]: hasError
+  })
 
-  const { onChange: inputOnChange, ...restOfInput } = input;
+  const { onChange: inputOnChange, ...restOfInput } = input
   const selectProps = {
     className: selectClasses,
     id,
     onChange: handleChange(onChange, inputOnChange),
     ...restOfInput,
-    ...rest,
-  };
+    ...rest
+  }
 
-  const classes = classNames(rootClassName || css.root, className);
+  const classes = classNames(rootClassName || css.root, className)
   return (
     <div className={classes}>
-      {label ? <label htmlFor={id}>{label}</label> : null}
+      {label ? (
+        <div className={css.flex}>
+          <label htmlFor={id}>{label}</label>
+          {tooltip && (
+            <div className={css.icon}>
+              <FontAwesomeIcon data-tip data-for={'input-label-tooltip' + id} icon={['fas', 'fa-circle-question']} />
+              <ReactTooltip id={'input-label-tooltip' + id} type="light" effect="solid">
+                <p className={css.container}>{tooltipString}</p>
+              </ReactTooltip>
+            </div>
+          )}
+        </div>
+      ) : null}
       <select {...selectProps}>{children}</select>
       <ValidationError fieldMeta={meta} />
     </div>
-  );
-};
+  )
+}
 
 FieldSelectComponent.defaultProps = {
   rootClassName: null,
@@ -74,8 +90,8 @@ FieldSelectComponent.defaultProps = {
   selectClassName: null,
   id: null,
   label: null,
-  children: null,
-};
+  children: null
+}
 
 FieldSelectComponent.propTypes = {
   rootClassName: string,
@@ -93,11 +109,11 @@ FieldSelectComponent.propTypes = {
   input: object.isRequired,
   meta: object.isRequired,
 
-  children: node,
-};
+  children: node
+}
 
-const FieldSelect = props => {
-  return <Field component={FieldSelectComponent} {...props} />;
-};
+const FieldSelect = (props) => {
+  return <Field component={FieldSelectComponent} {...props} />
+}
 
-export default FieldSelect;
+export default FieldSelect

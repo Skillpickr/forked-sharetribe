@@ -1,13 +1,13 @@
-import React from 'react';
-import Map from './Map';
-import { types as sdkTypes } from '../../util/sdkLoader';
-import { obfuscatedCoordinates } from '../../util/maps';
-import config from '../../config';
+import React from 'react'
+import Map from './Map'
+import { types as sdkTypes } from '../../util/sdkLoader'
+import { obfuscatedCoordinates } from '../../util/maps'
+import config from '../../config'
 
-const { LatLng } = sdkTypes;
+const { LatLng } = sdkTypes
 
 export const WithMarker = {
-  component: props => (
+  component: (props) => (
     <div style={{ height: 400 }}>
       <Map {...props} />
     </div>
@@ -16,12 +16,12 @@ export const WithMarker = {
     center: new LatLng(60.16502999999999, 24.940064399999983),
     obfuscatedCenter: new LatLng(60.16502999999999, 24.940064399999983),
     address: 'Sharetribe',
-    zoom: 22,
-  },
-};
+    zoom: 22
+  }
+}
 
 export const WithObfuscatedLocation = {
-  component: props => (
+  component: (props) => (
     <div style={{ height: 400 }}>
       <Map {...props} />
     </div>
@@ -35,14 +35,14 @@ export const WithObfuscatedLocation = {
       ...config.maps,
       fuzzy: {
         ...config.maps.fuzzy,
-        enabled: true,
-      },
-    },
-  },
-};
+        enabled: true
+      }
+    }
+  }
+}
 
 export const WithCircleLocation = {
-  component: props => (
+  component: (props) => (
     <div style={{ height: 400 }}>
       <Map {...props} />
     </div>
@@ -55,8 +55,8 @@ export const WithCircleLocation = {
       ...config.maps,
       fuzzy: {
         ...config.maps.fuzzy,
-        enabled: true,
-      },
-    },
-  },
-};
+        enabled: true
+      }
+    }
+  }
+}

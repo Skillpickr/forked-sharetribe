@@ -1,37 +1,31 @@
-import React from 'react';
-import { bool } from 'prop-types';
-import { compose } from 'redux';
-import { FormattedMessage, injectIntl } from '../../util/reactIntl';
-import { Form as FinalForm, Field } from 'react-final-form';
-import {
-  Form,
-  NamedLink,
-  IconEmailAttention,
-  IconEmailSuccess,
-  PrimaryButton,
-} from '../../components';
-import { propTypes } from '../../util/types';
+import React from 'react'
+import { bool } from 'prop-types'
+import { compose } from 'redux'
+import { FormattedMessage, injectIntl } from '../../util/reactIntl'
+import { Form as FinalForm, Field } from 'react-final-form'
+import { Form, NamedLink, IconEmailAttention, IconEmailSuccess, PrimaryButton } from '../../components'
+import { propTypes } from '../../util/types'
 
-import css from './EmailVerificationForm.module.css';
+import css from './EmailVerificationForm.module.css'
 
-const EmailVerificationFormComponent = props => (
+const EmailVerificationFormComponent = (props) => (
   <FinalForm
     {...props}
-    render={formRenderProps => {
-      const { currentUser, inProgress, handleSubmit, verificationError } = formRenderProps;
+    render={(formRenderProps) => {
+      const { currentUser, inProgress, handleSubmit, verificationError } = formRenderProps
 
-      const { email, emailVerified, pendingEmail, profile } = currentUser.attributes;
-      const emailToVerify = <strong>{pendingEmail || email}</strong>;
-      const name = profile.firstName;
+      const { email, emailVerified, pendingEmail, profile } = currentUser.attributes
+      const emailToVerify = <strong>{pendingEmail || email}</strong>
+      const name = profile.firstName
 
       const errorMessage = (
         <div className={css.error}>
           <FormattedMessage id="EmailVerificationForm.verificationFailed" />
         </div>
-      );
+      )
 
-      const submitInProgress = inProgress;
-      const submitDisabled = submitInProgress;
+      const submitInProgress = inProgress
+      const submitDisabled = submitInProgress
 
       const verifyEmail = (
         <div className={css.root}>
@@ -42,10 +36,7 @@ const EmailVerificationFormComponent = props => (
             </h1>
 
             <p className={css.modalMessage}>
-              <FormattedMessage
-                id="EmailVerificationForm.finishAccountSetup"
-                values={{ email: emailToVerify }}
-              />
+              <FormattedMessage id="EmailVerificationForm.finishAccountSetup" values={{ email: emailToVerify }} />
             </p>
 
             {verificationError ? errorMessage : null}
@@ -65,7 +56,7 @@ const EmailVerificationFormComponent = props => (
             </div>
           </Form>
         </div>
-      );
+      )
 
       const alreadyVerified = (
         <div className={css.root}>
@@ -86,9 +77,9 @@ const EmailVerificationFormComponent = props => (
             </NamedLink>
           </div>
         </div>
-      );
+      )
 
-      const currentEmail = <strong>{email}</strong>;
+      const currentEmail = <strong>{email}</strong>
       const alreadyVerifiedButErrorReturned = (
         <div className={css.root}>
           <div>
@@ -111,30 +102,30 @@ const EmailVerificationFormComponent = props => (
             </NamedLink>
           </div>
         </div>
-      );
+      )
 
-      const anyPendingEmailHasBeenVerifiedForCurrentUser = emailVerified && !pendingEmail;
+      const anyPendingEmailHasBeenVerifiedForCurrentUser = emailVerified && !pendingEmail
       return anyPendingEmailHasBeenVerifiedForCurrentUser && verificationError
         ? alreadyVerifiedButErrorReturned
         : anyPendingEmailHasBeenVerifiedForCurrentUser
         ? alreadyVerified
-        : verifyEmail;
+        : verifyEmail
     }}
   />
-);
+)
 
 EmailVerificationFormComponent.defaultProps = {
   currentUser: null,
   inProgress: false,
-  verificationError: null,
-};
+  verificationError: null
+}
 
 EmailVerificationFormComponent.propTypes = {
   inProgress: bool,
   currentUser: propTypes.currentUser.isRequired,
-  verificationError: propTypes.error,
-};
+  verificationError: propTypes.error
+}
 
-const EmailVerificationForm = compose(injectIntl)(EmailVerificationFormComponent);
+const EmailVerificationForm = compose(injectIntl)(EmailVerificationFormComponent)
 
-export default EmailVerificationForm;
+export default EmailVerificationForm

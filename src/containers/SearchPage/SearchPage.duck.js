@@ -1,27 +1,28 @@
-import unionWith from 'lodash/unionWith';
-import { storableError } from '../../util/errors';
-import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck';
-import { convertUnitToSubUnit, unitDivisor } from '../../util/currency';
-import { formatDateStringToTz, getExclusiveEndDateWithTz } from '../../util/dates';
-import { parse } from '../../util/urlHelpers';
-import config from '../../config';
+import unionWith from 'lodash/unionWith'
+import { storableError } from '../../util/errors'
+import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck'
+import { convertUnitToSubUnit, unitDivisor } from '../../util/currency'
+import { formatDateStringToTz, getExclusiveEndDateWithTz } from '../../util/dates'
+import { parse } from '../../util/urlHelpers'
+import config from '../../config'
+import * as custom from '../../marketplace-custom-config.js'
 
 // Pagination page size might need to be dynamic on responsive page layouts
 // Current design has max 3 columns 12 is divisible by 2 and 3
 // So, there's enough cards to fill all columns on full pagination pages
-const RESULT_PAGE_SIZE = 24;
+const RESULT_PAGE_SIZE = 24
 
 // ================ Action types ================ //
 
-export const SEARCH_LISTINGS_REQUEST = 'app/SearchPage/SEARCH_LISTINGS_REQUEST';
-export const SEARCH_LISTINGS_SUCCESS = 'app/SearchPage/SEARCH_LISTINGS_SUCCESS';
-export const SEARCH_LISTINGS_ERROR = 'app/SearchPage/SEARCH_LISTINGS_ERROR';
+export const SEARCH_LISTINGS_REQUEST = 'app/SearchPage/SEARCH_LISTINGS_REQUEST'
+export const SEARCH_LISTINGS_SUCCESS = 'app/SearchPage/SEARCH_LISTINGS_SUCCESS'
+export const SEARCH_LISTINGS_ERROR = 'app/SearchPage/SEARCH_LISTINGS_ERROR'
 
-export const SEARCH_MAP_LISTINGS_REQUEST = 'app/SearchPage/SEARCH_MAP_LISTINGS_REQUEST';
-export const SEARCH_MAP_LISTINGS_SUCCESS = 'app/SearchPage/SEARCH_MAP_LISTINGS_SUCCESS';
-export const SEARCH_MAP_LISTINGS_ERROR = 'app/SearchPage/SEARCH_MAP_LISTINGS_ERROR';
+export const SEARCH_MAP_LISTINGS_REQUEST = 'app/SearchPage/SEARCH_MAP_LISTINGS_REQUEST'
+export const SEARCH_MAP_LISTINGS_SUCCESS = 'app/SearchPage/SEARCH_MAP_LISTINGS_SUCCESS'
+export const SEARCH_MAP_LISTINGS_ERROR = 'app/SearchPage/SEARCH_MAP_LISTINGS_ERROR'
 
-export const SEARCH_MAP_SET_ACTIVE_LISTING = 'app/SearchPage/SEARCH_MAP_SET_ACTIVE_LISTING';
+export const SEARCH_MAP_SET_ACTIVE_LISTING = 'app/SearchPage/SEARCH_MAP_SET_ACTIVE_LISTING'
 
 // ================ Reducer ================ //
 
@@ -32,13 +33,13 @@ const initialState = {
   searchListingsError: null,
   currentPageResultIds: [],
   searchMapListingIds: [],
-  searchMapListingsError: null,
-};
+  searchMapListingsError: null
+}
 
-const resultIds = data => data.data.map(l => l.id);
+const resultIds = (data) => data.data.map((l) => l.id)
 
 const listingPageReducer = (state = initialState, action = {}) => {
-  const { type, payload } = action;
+  const { type, payload } = action
   switch (type) {
     case SEARCH_LISTINGS_REQUEST:
       return {
@@ -46,118 +47,113 @@ const listingPageReducer = (state = initialState, action = {}) => {
         searchParams: payload.searchParams,
         searchInProgress: true,
         searchMapListingIds: [],
-        searchListingsError: null,
-      };
+        searchListingsError: null
+      }
     case SEARCH_LISTINGS_SUCCESS:
       return {
         ...state,
         currentPageResultIds: resultIds(payload.data),
         pagination: payload.data.meta,
-        searchInProgress: false,
-      };
+        searchInProgress: false
+      }
     case SEARCH_LISTINGS_ERROR:
       // eslint-disable-next-line no-console
-      console.error(payload);
-      return { ...state, searchInProgress: false, searchListingsError: payload };
+      console.error(payload)
+      return { ...state, searchInProgress: false, searchListingsError: payload }
 
     case SEARCH_MAP_LISTINGS_REQUEST:
       return {
         ...state,
-        searchMapListingsError: null,
-      };
+        searchMapListingsError: null
+      }
     case SEARCH_MAP_LISTINGS_SUCCESS: {
       const searchMapListingIds = unionWith(
         state.searchMapListingIds,
         resultIds(payload.data),
         (id1, id2) => id1.uuid === id2.uuid
-      );
+      )
       return {
         ...state,
-        searchMapListingIds,
-      };
+        searchMapListingIds
+      }
     }
     case SEARCH_MAP_LISTINGS_ERROR:
       // eslint-disable-next-line no-console
-      console.error(payload);
-      return { ...state, searchMapListingsError: payload };
+      console.error(payload)
+      return { ...state, searchMapListingsError: payload }
 
     case SEARCH_MAP_SET_ACTIVE_LISTING:
       return {
         ...state,
-        activeListingId: payload,
-      };
+        activeListingId: payload
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default listingPageReducer;
+export default listingPageReducer
 
 // ================ Action creators ================ //
 
-export const searchListingsRequest = searchParams => ({
+export const searchListingsRequest = (searchParams) => ({
   type: SEARCH_LISTINGS_REQUEST,
-  payload: { searchParams },
-});
+  payload: { searchParams }
+})
 
-export const searchListingsSuccess = response => ({
+export const searchListingsSuccess = (response) => ({
   type: SEARCH_LISTINGS_SUCCESS,
-  payload: { data: response.data },
-});
+  payload: { data: response.data }
+})
 
-export const searchListingsError = e => ({
+export const searchListingsError = (e) => ({
   type: SEARCH_LISTINGS_ERROR,
   error: true,
-  payload: e,
-});
+  payload: e
+})
 
-export const searchMapListingsRequest = () => ({ type: SEARCH_MAP_LISTINGS_REQUEST });
+export const searchMapListingsRequest = () => ({ type: SEARCH_MAP_LISTINGS_REQUEST })
 
-export const searchMapListingsSuccess = response => ({
+export const searchMapListingsSuccess = (response) => ({
   type: SEARCH_MAP_LISTINGS_SUCCESS,
-  payload: { data: response.data },
-});
+  payload: { data: response.data }
+})
 
-export const searchMapListingsError = e => ({
+export const searchMapListingsError = (e) => ({
   type: SEARCH_MAP_LISTINGS_ERROR,
   error: true,
-  payload: e,
-});
+  payload: e
+})
 
-export const searchListings = searchParams => (dispatch, getState, sdk) => {
-  dispatch(searchListingsRequest(searchParams));
+export const searchListings = (searchParams) => (dispatch, getState, sdk) => {
+  dispatch(searchListingsRequest(searchParams))
 
-  const priceSearchParams = priceParam => {
-    const inSubunits = value =>
-      convertUnitToSubUnit(value, unitDivisor(config.currencyConfig.currency));
-    const values = priceParam ? priceParam.split(',') : [];
+  const priceSearchParams = (priceParam) => {
+    const inSubunits = (value) => convertUnitToSubUnit(value, unitDivisor(config.currencyConfig.currency))
+    const values = priceParam ? priceParam.split(',') : []
     return priceParam && values.length === 2
       ? {
-          price: [inSubunits(values[0]), inSubunits(values[1]) + 1].join(','),
+          price: [inSubunits(values[0]), inSubunits(values[1]) + 1].join(',')
         }
-      : {};
-  };
+      : {}
+  }
 
   const availabilityParams = (datesParam, minDurationParam) => {
-    const dateValues = datesParam ? datesParam.split(',') : [];
-    const hasDateValues = datesParam && dateValues.length === 2;
-    const startDate = hasDateValues ? dateValues[0] : null;
-    const endDate = hasDateValues ? dateValues[1] : null;
+    const dateValues = datesParam ? datesParam.split(',') : []
+    const hasDateValues = datesParam && dateValues.length === 2
+    const startDate = hasDateValues ? dateValues[0] : null
+    const endDate = hasDateValues ? dateValues[1] : null
 
     const minDurationMaybe =
-      minDurationParam && Number.isInteger(minDurationParam) && hasDateValues
-        ? { minDuration: minDurationParam }
-        : {};
+      minDurationParam && Number.isInteger(minDurationParam) && hasDateValues ? { minDuration: minDurationParam } : {}
 
     // Find configs for 'dates-length' filter
     // (type: BookingDateRangeLengthFilter)
-    const filterConfigs = config.custom.filters;
-    const idOfBookingDateRangeLengthFilter = 'dates-length';
-    const dateLengthFilterConfig = filterConfigs.find(
-      f => f.id === idOfBookingDateRangeLengthFilter
-    );
+    const filterConfigs = custom.filters
+    const idOfBookingDateRangeLengthFilter = 'dates-length'
+    const dateLengthFilterConfig = filterConfigs.find((f) => f.id === idOfBookingDateRangeLengthFilter)
     // Extract time zone
-    const timeZone = dateLengthFilterConfig.config.searchTimeZone;
+    const timeZone = dateLengthFilterConfig.config.searchTimeZone
 
     return hasDateValues
       ? {
@@ -172,69 +168,69 @@ export const searchListings = searchParams => (dispatch, getState, sdk) => {
           // See: https://www.sharetribe.com/api-reference/marketplace.html#availability-filtering
           availability: 'time-partial',
 
-          ...minDurationMaybe,
+          ...minDurationMaybe
         }
-      : {};
-  };
+      : {}
+  }
 
-  const { perPage, price, dates, minDuration, ...rest } = searchParams;
-  const priceMaybe = priceSearchParams(price);
-  const availabilityMaybe = availabilityParams(dates, minDuration);
+  const { perPage, price, dates, minDuration, ...rest } = searchParams
+  const priceMaybe = priceSearchParams(price)
+  const availabilityMaybe = availabilityParams(dates, minDuration)
 
   const params = {
     ...rest,
     ...priceMaybe,
     ...availabilityMaybe,
-    per_page: perPage,
-  };
+    per_page: perPage
+  }
 
   return sdk.listings
     .query(params)
-    .then(response => {
-      dispatch(addMarketplaceEntities(response));
-      dispatch(searchListingsSuccess(response));
-      return response;
+    .then((response) => {
+      dispatch(addMarketplaceEntities(response))
+      dispatch(searchListingsSuccess(response))
+      return response
     })
-    .catch(e => {
-      dispatch(searchListingsError(storableError(e)));
-      throw e;
-    });
-};
+    .catch((e) => {
+      dispatch(searchListingsError(storableError(e)))
+      throw e
+    })
+}
 
-export const setActiveListing = listingId => ({
+export const setActiveListing = (listingId) => ({
   type: SEARCH_MAP_SET_ACTIVE_LISTING,
-  payload: listingId,
-});
+  payload: listingId
+})
 
-export const searchMapListings = searchParams => (dispatch, getState, sdk) => {
-  dispatch(searchMapListingsRequest(searchParams));
+export const searchMapListings = (searchParams) => (dispatch, getState, sdk) => {
+  dispatch(searchMapListingsRequest(searchParams))
 
-  const { perPage, ...rest } = searchParams;
+  const { perPage, ...rest } = searchParams
   const params = {
     ...rest,
-    per_page: perPage,
-  };
+    per_page: perPage
+  }
 
   return sdk.listings
     .query(params)
-    .then(response => {
-      dispatch(addMarketplaceEntities(response));
-      dispatch(searchMapListingsSuccess(response));
-      return response;
+    .then((response) => {
+      dispatch(addMarketplaceEntities(response))
+      dispatch(searchMapListingsSuccess(response))
+      return response
     })
-    .catch(e => {
-      dispatch(searchMapListingsError(storableError(e)));
-      throw e;
-    });
-};
+    .catch((e) => {
+      dispatch(searchMapListingsError(storableError(e)))
+      throw e
+    })
+}
 
 export const loadData = (params, search) => {
   const queryParams = parse(search, {
     latlng: ['origin'],
-    latlngBounds: ['bounds'],
-  });
-  const { page = 1, address, origin, ...rest } = queryParams;
-  const originMaybe = config.sortSearchByDistance && origin ? { origin } : {};
+    latlngBounds: ['bounds']
+  })
+  const { page = 1, address, origin, ...rest } = queryParams
+  const originMaybe = config.sortSearchByDistance && origin ? { origin } : {}
   return searchListings({
     ...rest,
     ...originMaybe,
@@ -244,6 +240,6 @@ export const loadData = (params, search) => {
     'fields.listing': ['title', 'geolocation', 'price', 'publicData'],
     'fields.user': ['profile.displayName', 'profile.abbreviatedName'],
     'fields.image': ['variants.landscape-crop', 'variants.landscape-crop2x'],
-    'limit.images': 1,
-  });
-};
+    'limit.images': 1
+  })
+}

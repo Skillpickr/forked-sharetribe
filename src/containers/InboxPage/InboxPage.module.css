@@ -61,7 +61,7 @@
     background-color: transparent;
   }
   @media (--viewportLargeWithPaddings) {
-    padding: 113px 0 82px calc((100% - 1056px) / 2);
+    padding: 24px 0 24px calc((100% - 1056px) / 2);
   }
 }
 
@@ -100,7 +100,7 @@
 
   @media (--viewportLarge) {
     padding-top: 53px;
-    flex-direction: column;
+    /* flex-direction: column; */
   }
 }
 
@@ -140,6 +140,18 @@
   padding: 0;
 }
 
+@-webkit-keyframes loadingSpinnerFadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes loadingSpinnerFadeIn {
   0% {
     opacity: 0;
@@ -161,8 +173,11 @@
   opacity: 0;
 
   /* animation shorthand property doesn't work with local scope of CSS Modules */
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
+  -webkit-animation-name: loadingSpinnerFadeIn;
   animation-name: loadingSpinnerFadeIn;
+  -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
 
@@ -185,11 +200,6 @@
   }
 }
 
-.item {
-  display: flex;
-  flex-direction: row;
-}
-
 .itemLink {
   flex: 1;
 
@@ -208,27 +218,6 @@
   }
 }
 
-.itemAvatar {
-  margin-right: 8px;
-
-  @media (--viewportLarge) {
-    margin-right: 15px;
-  }
-}
-
-.rowNotificationDot {
-  width: 6px;
-  height: 6px;
-  margin-top: 10px;
-  margin-right: 8px;
-
-  @media (--viewportLarge) {
-    margin-right: 13px;
-    width: 9px;
-    height: 9px;
-  }
-}
-
 .notificationDot {
   color: var(--matterColorLight);
 
@@ -238,99 +227,11 @@
   background-color: var(--failColor);
 }
 
-.itemInfo {
-  composes: h5 from global;
-
-  font-weight: var(--fontWeightSemiBold);
-
-  /* Layout */
-  flex-grow: 1;
-  flex: 1;
-  flex-direction: column;
-
-  margin-top: 5px;
-  margin-bottom: 0;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  color: var(--matterColor);
-}
-
-.itemUsername {
-  /* Font */
-  composes: h4 from global;
-  color: var(--matterColor);
-  line-height: 18px;
-
-  margin-top: 0;
-  margin-bottom: 0;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.bookingInfoWrapper {
-  composes: marketplaceTinyFontStyles from global;
-
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  line-height: 14px;
-  margin-top: 2px;
-  padding-top: 2px;
-
-  @media (--viewportMedium) {
-    padding-top: 0px;
-    margin-top: 2px;
-    line-height: 16px;
-  }
-}
-
-.itemPrice {
-  &::before {
-    font-size: 10px;
-    margin: 0 6px;
-    display: inline-block;
-    content: '\25CF'; /* middot */
-  }
-}
-
-.itemState {
-  /* Font */
-  composes: h5 from global;
-
-  font-weight: var(--fontWeightMedium);
-  margin-top: 6px;
-  margin-bottom: 0px;
-
-  @media (--viewportMedium) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.lastTransitionedAt {
-  composes: marketplaceTinyFontStyles from global;
-
-  margin-top: 4px;
-  text-align: right;
-  color: var(--matterColor);
-}
-
 .pagination {
   margin: auto 24px 0 24px;
 }
 
 /* Transaction status affects to certain font colors and weights */
-
-.stateName {
-  /* This class is empty on purpose, it is used below for banned users */
-}
 
 .stateActionNeeded {
   font-weight: var(--fontWeightSemiBold);

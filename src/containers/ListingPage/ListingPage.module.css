@@ -51,8 +51,8 @@
   top: 13px;
   left: 13px;
   width: calc(100% - 26px);
-  color: var(--matterColorNegative);
-  background-color: var(--matterColor);
+  color: white;
+  background-color: var(--marketplaceColor);
   z-index: 1; /* bring on top of mobile image */
 
   /* Action bar prevents the image click events going to the parent and
@@ -63,7 +63,7 @@
 }
 
 .ownListingText {
-  composes: h4 from global;
+  composes: h3 from global;
   margin: 14px 12px 11px 24px;
 
   @media (--viewportMedium) {
@@ -129,6 +129,7 @@
     right: auto;
     height: calc(0.41 * 100vw);
     max-height: 50vh;
+    -o-object-fit: cover;
     object-fit: cover;
     border-radius: var(--borderRadius);
 
@@ -355,6 +356,11 @@
   }
 }
 
+.subTitle {
+  font-weight: var(--fontWeightSemiBold);
+  margin-bottom: 0;
+}
+
 .author {
   width: 100%;
   composes: h5 from global;
@@ -450,6 +456,29 @@
 
 .featuresTitle {
   /* Font */
+  composes: h2 from global;
+  color: var(--matterColorAnti);
+
+  margin-top: 0;
+  margin-bottom: 16px;
+  @media (--viewportMedium) {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+}
+
+.sectionBonus {
+  padding: 0 24px;
+  margin-bottom: 32px;
+
+  @media (--viewportMedium) {
+    padding: 0;
+    margin-bottom: 52px;
+  }
+}
+
+.bonusTitle {
+  /* Font */
   composes: h3 from global;
   color: var(--matterColorAnti);
 
@@ -467,11 +496,16 @@
 
   /* Preserve newlines, but collapse other whitespace */
   white-space: pre-line;
-
-  @media (--viewportMedium) {
+  white-space @media (--viewportMedium) {
     margin-top: 0;
     margin-bottom: 0;
   }
+}
+
+.sectionFeatures ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
 }
 
 .sectionMap {
@@ -609,5 +643,7 @@
   word-break: break-all;
   /* use break-word if available */
   word-break: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   hyphens: auto;
 }

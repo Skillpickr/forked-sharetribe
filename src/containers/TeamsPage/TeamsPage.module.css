@@ -1,0 +1,7 @@
+@import '../../styles/customMediaQueries.css';
+
+.content {
+  @media (--viewportLarge) {
+    max-width: 563px;
+  }
+}

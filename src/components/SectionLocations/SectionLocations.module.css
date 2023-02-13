@@ -1,8 +1,7 @@
 @import '../../styles/customMediaQueries.css';
 
 .title {
-  composes: h1 from global;
-
+  composes: h2 from global;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -77,6 +76,7 @@
   width: 100%;
   height: 100%;
   border-radius: 4px;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 

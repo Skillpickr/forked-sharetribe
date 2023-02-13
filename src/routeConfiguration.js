@@ -11,19 +11,27 @@ import { NamedRedirect } from './components';
 const pageDataLoadingAPI = getPageDataLoadingAPI();
 
 const AboutPage = loadable(() => import(/* webpackChunkName: "AboutPage" */ './containers/AboutPage/AboutPage'));
+const WelcomePage = loadable(() => import(/* webpackChunkName: "AboutPage" */ './containers/WelcomePage/WelcomePage'));
+const GuidingPrincipalsPage = loadable(() => import(/* webpackChunkName: "GuidingPrincipalsPage" */ './containers/GuidingPrincipalsPage/GuidingPrincipalsPage'));
+const PurposePage = loadable(() => import(/* webpackChunkName: "PurposePage" */ './containers/PurposePage/PurposePage'));
+const TeamsPage = loadable(() => import(/* webpackChunkName: "TeamsPage" */ './containers/TeamsPage/TeamsPage'));
+const ContactPage = loadable(() => import(/* webpackChunkName: "ContactPage" */ './containers/ContactPage/ContactPage'));
 const AuthenticationPage = loadable(() => import(/* webpackChunkName: "AuthenticationPage" */ './containers/AuthenticationPage/AuthenticationPage'));
 const CheckoutPage = loadable(() => import(/* webpackChunkName: "CheckoutPage" */ './containers/CheckoutPage/CheckoutPage'));
 const ContactDetailsPage = loadable(() => import(/* webpackChunkName: "ContactDetailsPage" */ './containers/ContactDetailsPage/ContactDetailsPage'));
+const DeleteAccountPage = loadable(() => import(/* webpackChunkName: "DeleteAccountPage" */ './containers/DeleteAccountPage/DeleteAccountPage'));
 const EditListingPage = loadable(() => import(/* webpackChunkName: "EditListingPage" */ './containers/EditListingPage/EditListingPage'));
 const EmailVerificationPage = loadable(() => import(/* webpackChunkName: "EmailVerificationPage" */ './containers/EmailVerificationPage/EmailVerificationPage'));
 const InboxPage = loadable(() => import(/* webpackChunkName: "InboxPage" */ './containers/InboxPage/InboxPage'));
 const LandingPage = loadable(() => import(/* webpackChunkName: "LandingPage" */ './containers/LandingPage/LandingPage'));
 const ListingPage = loadable(() => import(/* webpackChunkName: "ListingPage" */ /* webpackPrefetch: true */ './containers/ListingPage/ListingPage'));
+const ManageListingsPage = loadable(() => import(/* webpackChunkName: "ManageListingsPage" */ './containers/ManageListingsPage/ManageListingsPage'));
 const PasswordChangePage = loadable(() => import(/* webpackChunkName: "PasswordChangePage" */ './containers/PasswordChangePage/PasswordChangePage'));
 const PasswordRecoveryPage = loadable(() => import(/* webpackChunkName: "PasswordRecoveryPage" */ './containers/PasswordRecoveryPage/PasswordRecoveryPage'));
 const PasswordResetPage = loadable(() => import(/* webpackChunkName: "PasswordResetPage" */ './containers/PasswordResetPage/PasswordResetPage'));
 const PaymentMethodsPage = loadable(() => import(/* webpackChunkName: "PaymentMethodsPage" */ './containers/PaymentMethodsPage/PaymentMethodsPage'));
 const PrivacyPolicyPage = loadable(() => import(/* webpackChunkName: "PrivacyPolicyPage" */ './containers/PrivacyPolicyPage/PrivacyPolicyPage'));
+const CookiePolicyPage = loadable(() => import(/* webpackChunkName: "CookiePolicyPage" */ './containers/CookiePolicyPage/CookiePolicyPage'));
 const ProfilePage = loadable(() => import(/* webpackChunkName: "ProfilePage" */ './containers/ProfilePage/ProfilePage'));
 const ProfileSettingsPage = loadable(() => import(/* webpackChunkName: "ProfileSettingsPage" */ './containers/ProfileSettingsPage/ProfileSettingsPage'));
 const SearchPage = loadable(() => import(/* webpackChunkName: "SearchPage" */ /* webpackPrefetch: true */  './containers/SearchPage/SearchPage'));
@@ -39,6 +47,7 @@ export const ACCOUNT_SETTINGS_PAGES = [
   'PasswordChangePage',
   'StripePayoutPage',
   'PaymentMethodsPage',
+  'DeleteAccountPage',
 ];
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Nil_UUID
@@ -61,11 +70,38 @@ const routeConfiguration = () => {
       path: '/',
       name: 'LandingPage',
       component: LandingPage,
+      loadData: pageDataLoadingAPI.SearchPage.loadData,
+
     },
     {
       path: '/about',
       name: 'AboutPage',
       component: AboutPage,
+    },
+    {
+      path: '/welcome',
+      name: 'WelcomePage',
+      component: WelcomePage,
+    },
+    {
+      path: '/teams',
+      name: 'TeamsPage',
+      component: TeamsPage,
+    },
+        {
+      path: '/purpose',
+      name: 'PurposePage',
+      component: PurposePage,
+    },
+        {
+      path: '/guiding-principals',
+      name: 'GuidingPrincipalsPage',
+      component: GuidingPrincipalsPage,
+    },
+    {
+      path: '/contact',
+      name: 'ContactPage',
+      component: ContactPage,
     },
     {
       path: '/s',
@@ -115,7 +151,6 @@ const routeConfiguration = () => {
       name: 'EditListingPage',
       auth: true,
       component: EditListingPage,
-      extraProps: { allowOnlyOneListing: true },
       loadData: pageDataLoadingAPI.EditListingPage.loadData,
     },
     {
@@ -220,6 +255,14 @@ const routeConfiguration = () => {
       component: props => <NamedRedirect name="SaleDetailsPage" params={{ ...props.params }} />,
     },
     {
+      path: '/listings',
+      name: 'ManageListingsPage',
+      auth: true,
+      authPage: 'LoginPage',
+      component: ManageListingsPage,
+      loadData: pageDataLoadingAPI.ManageListingsPage.loadData,
+    },
+    {
       path: '/sale/:id/details',
       name: 'SaleDetailsPage',
       auth: true,
@@ -276,6 +319,13 @@ const routeConfiguration = () => {
       loadData: pageDataLoadingAPI.PaymentMethodsPage.loadData,
     },
     {
+     path: '/account/delete-profile',
+     name: 'DeleteAccountPage',
+     auth: true,
+     authPage: 'LoginPage',
+     component: DeleteAccountPage,
+    },
+    {
       path: '/terms-of-service',
       name: 'TermsOfServicePage',
       component: TermsOfServicePage,
@@ -284,6 +334,11 @@ const routeConfiguration = () => {
       path: '/privacy-policy',
       name: 'PrivacyPolicyPage',
       component: PrivacyPolicyPage,
+    },
+    {
+      path: '/cookie-policy',
+      name: 'CookiePolicyPage',
+      component: CookiePolicyPage,
     },
     {
       path: '/styleguide',

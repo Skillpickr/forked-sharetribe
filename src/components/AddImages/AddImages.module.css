@@ -1,3 +1,5 @@
+@import '../../styles/customMediaQueries.css';
+
 .root {
   width: 100%;
   min-height: 120px;
@@ -12,6 +14,36 @@
   }
 }
 
+.setThumbnail {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 33px;
+  height: 33px;
+}
+
+.gridItem {
+  composes: button buttonFont buttonText buttonBorders from global;
+  position: relative;
+  top: -50%;
+  right: -50%;
+  transform: translate(-50%, -25%);
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  background-color: rgba(211, 211, 211, 0.8);
+  padding: 16px;
+  border-radius: 25px;
+  background-color: rgba;
+  cursor: pointer;
+  margin: 0;
+}
+
+.coverPhotoText {
+  composes: h4 from global;
+  text-align: center;
+}
+
 .thumbnail {
   display: block;
   float: left;
@@ -19,7 +51,8 @@
   width: 100%;
   margin: 0;
   overflow: hidden;
-  background-color: var(--matterColorNegative); /* Loading BG color */
+  /* background-color: var(--matterColorNegative);  */
+  padding-bottom: 1rem;
 }
 
 .threeToTwoWrapper {
@@ -38,6 +71,7 @@
   border-radius: 0;
   border-bottom-left-radius: 2px;
   cursor: pointer;
+  z-index: 2000;
 
   & svg {
     position: absolute;
@@ -68,8 +102,16 @@
   right: 0;
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   border-radius: var(--borderRadius);
+}
+
+.uploadInfo {
+  composes: marketplaceTinyFontStyles from global;
+  color: var(--matterColor);
+  text-align: center;
+  /* Remove default margins from font */
 }
 
 .thumbnailLoading {

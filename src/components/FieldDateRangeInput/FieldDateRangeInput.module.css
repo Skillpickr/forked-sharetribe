@@ -13,7 +13,7 @@
 .endDateLabel {
   flex-basis: 50%;
   composes: h4 from global;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--matterColor);
   margin-top: 0;
   margin-bottom: 0;
@@ -21,7 +21,7 @@
   @media (--viewportMedium) {
     margin-top: 0;
     margin-bottom: 0;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   @media (--viewportMedium) {

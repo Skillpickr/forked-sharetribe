@@ -1,80 +1,79 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import SelectMultipleFilter from './SelectMultipleFilter';
-import { stringify, parse } from '../../util/urlHelpers';
+import React from 'react'
+import { withRouter } from 'react-router-dom'
+import SelectMultipleFilter from './SelectMultipleFilter'
+import { stringify, parse } from '../../util/urlHelpers'
 
-const URL_PARAM = 'pub_yogaStyles';
+const URL_PARAM = 'pub_skills'
 
 const options = [
-  { key: 'ashtanga', label: 'Ashtanga' },
-  { key: 'hatha', label: 'Hatha' },
-  { key: 'kundalini', label: 'Kundalini' },
-  { key: 'restorative', label: 'Restorative' },
-  { key: 'vinyasa', label: 'Vinyasa' },
-  { key: 'yin', label: 'yin' },
-];
+  { key: 'influencer', label: 'Influencer' },
+  { key: 'keynote-speaker', label: 'Keynote Speaker' },
+  { key: 'teacher', label: 'Teacher' },
+  { key: 'animator', label: 'Animator' },
+  { key: 'designer', label: 'Designer' }
+]
 
 const handleSubmit = (values, history) => {
-  console.log('Submitting values', values);
-  const queryParams = values ? `?${stringify(values)}` : '';
-  history.push(`${window.location.pathname}${queryParams}`);
-};
+  console.log('Submitting values', values)
+  const queryParams = values ? `?${stringify(values)}` : ''
+  history.push(`${window.location.pathname}${queryParams}`)
+}
 
-const YogaStylesFilterPopup = withRouter(props => {
-  const { history, location } = props;
+const SkillsFilterPopup = withRouter((props) => {
+  const { history, location } = props
 
-  const params = parse(location.search);
-  const yogaStyles = params[URL_PARAM];
-  const initialValues = { [URL_PARAM]: !!yogaStyles ? yogaStyles : null };
+  const params = parse(location.search)
+  const skills = params[URL_PARAM]
+  const initialValues = { [URL_PARAM]: skills ? skills : null }
 
   return (
     <SelectMultipleFilter
       id="SelectMultipleFilterPopupExample"
-      name="yogaStyles"
+      name="skills"
       queryParamNames={[URL_PARAM]}
-      label="yogaStyles"
-      onSubmit={values => handleSubmit(values, history)}
+      label="skills"
+      onSubmit={(values) => handleSubmit(values, history)}
       showAsPopup={true}
       liveEdit={false}
       options={options}
       initialValues={initialValues}
       contentPlacementOffset={-14}
     />
-  );
-});
+  )
+})
 
-export const YogaStylesFilterPopupExample = {
-  component: YogaStylesFilterPopup,
+export const SkillsFilterPopupExample = {
+  component: SkillsFilterPopup,
   props: {},
-  group: 'filters',
-};
+  group: 'filters'
+}
 
-const YogaStylesFilterPlain = withRouter(props => {
-  const { history, location } = props;
+const SkillsFilterPlain = withRouter((props) => {
+  const { history, location } = props
 
-  const params = parse(location.search);
-  const yogaStyles = params[URL_PARAM];
-  const initialValues = { [URL_PARAM]: !!yogaStyles ? yogaStyles : null };
+  const params = parse(location.search)
+  const skills = params[URL_PARAM]
+  const initialValues = { [URL_PARAM]: skills ? skills : null }
 
   return (
     <SelectMultipleFilter
       id="SelectMultipleFilterPlainExample"
-      name="yogaStyles"
+      name="skills"
       queryParamNames={[URL_PARAM]}
-      label="yogaStyles"
-      onSubmit={values => {
-        handleSubmit(values, history);
+      label="skills"
+      onSubmit={(values) => {
+        handleSubmit(values, history)
       }}
       showAsPopup={false}
       liveEdit={true}
       options={options}
       initialValues={initialValues}
     />
-  );
-});
+  )
+})
 
-export const YogaStylesFilterPlainExample = {
-  component: YogaStylesFilterPlain,
+export const SkillsFilterPlainExample = {
+  component: SkillsFilterPlain,
   props: {},
-  group: 'filters',
-};
+  group: 'filters'
+}
