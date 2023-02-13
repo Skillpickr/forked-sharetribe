@@ -136,7 +136,7 @@ const Teams = (props) => {
           </div>
         </div > */}
 
-        <div div className="container" >
+        <div className="container" >
           <div className="row xs-justify-center">
             <div className="md">
               <div className="section-title text-center mb4 pb2">
