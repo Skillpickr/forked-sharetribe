@@ -18,6 +18,9 @@
     "@mapbox/polyline": "^1.1.1",
     "@sentry/browser": "^6.19.7",
     "@sentry/node": "^6.19.7",
+    "@sentry/react": "^7.14.1",
+    "@sentry/tracing": "^7.14.1",
+    "animejs": "^3.2.1",
     "array-includes": "^3.1.5",
     "array.prototype.find": "^2.2.0",
     "autosize": "^5.0.1",
@@ -39,6 +42,7 @@
     "flexgrid.io": "^3.0.4",
     "full-icu": "^1.4.0",
     "helmet": "^4.6.0",
+    "history": "^5.3.0",
     "jose": "4.9.2",
     "jstimezonedetect": "^1.0.7",
     "lodash": "^4.17.21",
@@ -46,6 +50,8 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.35",
     "passport": "^0.6.0",
+    "object.entries": "^1.1.5",
+    "object.values": "^1.1.5",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth": "^2.0.0",
     "path-to-regexp": "^6.2.1",
@@ -80,6 +86,7 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.18.9",
     "bfj": "^7.0.2",
     "chalk": "^v4.1.2",
     "concurrently": "^7.2.0",
@@ -87,9 +94,13 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.1",
     "inquirer": "^8.2.4",
     "nodemon": "^2.0.16",
-    "prettier": "^1.18.2"
+    "prettier": "^2.7.1"
   },
   "resolutions": {
     "react-dates/lodash": "^4.17.21",
