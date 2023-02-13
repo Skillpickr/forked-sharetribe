@@ -1,6 +1,6 @@
 {
-  "name": "app",
-  "version": "11.1.0",
+  "name": "SkillPickr",
+  "version": "1.4.9",
   "private": true,
   "license": "Apache-2.0",
   "dependencies": {
@@ -111,6 +111,8 @@
     "build": "yarn build-web&&yarn build-server",
     "build-web": "sharetribe-scripts build",
     "build-server": "sharetribe-scripts build-server",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
     "format": "prettier --write '**/*.{js,css}'",
     "format-ci": "prettier --list-different '**/*.{js,css}'",
     "format-docs": "prettier --write '**/*.md'",
